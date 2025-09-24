@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🇷🇺 Force Audio Test - Real Russian TTS</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #1a1a1a; color: white; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .connected { background: #2d5a2d; }
+        .disconnected { background: #5a2d2d; }
+        button { padding: 15px 30px; margin: 10px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; background: #4CAF50; color: white; }
+        .log { background: #2a2a2a; padding: 20px; border-radius: 10px; margin: 20px 0; height: 300px; overflow-y: auto; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🇷🇺 Force Audio Test - Bypass Browser TTS</h1>
+        <div id="status" class="status disconnected">Disconnected</div>
+
+        <button onclick="forceTestAudio()">🔊 Force Play Russian Audio</button>
+        <button onclick="testCommand('spin up crates')">📦 Spin Up Crates</button>
+        <button onclick="testCommand('emergency broadcast')">🚨 Emergency Broadcast</button>
+
+        <div id="log" class="log">
+            Starting force audio test...<br>
+        </div>
+    </div>
+
+    <script>
+        let ws = null;
+
+        function log(message) {
+            const logDiv = document.getElementById('log');
+            logDiv.innerHTML += new Date().toISOString() + ': ' + message + '<br>';
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        function connect() {
+            ws = new WebSocket('ws://localhost:8765');
+
+            ws.onopen = function() {
+                document.getElementById('status').className = 'status connected';
+                document.getElementById('status').textContent = 'Connected to CTAS Voice System';
+                log('✅ Connected to voice backend');
+            };
+
+            ws.onclose = function() {
+                document.getElementById('status').className = 'status disconnected';
+                document.getElementById('status').textContent = 'Disconnected';
+                log('❌ Disconnected from voice backend');
+            };
+
+            ws.onmessage = function(event) {
+                if (event.data instanceof Blob) {
+                    log('🔊 Received binary audio: ' + event.data.size + ' bytes');
+                    forcePlayAudio(event.data);
+                } else {
+                    const data = JSON.parse(event.data);
+                    log('📝 Text response: ' + JSON.stringify(data));
+                }
+            };
+
+            ws.onerror = function(error) {
+                log('💥 WebSocket error: ' + error);
+            };
+        }
+
+        function forcePlayAudio(audioBlob) {
+            try {
+                // Force create audio element and play
+                const audioUrl = URL.createObjectURL(audioBlob);
+                const audio = new Audio(audioUrl);
+
+                log('🎵 Creating audio element with URL: ' + audioUrl.substring(0, 50) + '...');
+
+                audio.onloadstart = () => log('🔄 Audio loading started');
+                audio.oncanplay = () => log('✅ Audio can play');
+                audio.onplay = () => log('🔊 Audio playback started');
+                audio.onended = () => {
+                    log('🏁 Audio playback ended');
+                    URL.revokeObjectURL(audioUrl);
+                };
+                audio.onerror = (e) => log('💥 Audio error: ' + e.message);
+
+                // Force play with user interaction bypass
+                audio.play().then(() => {
+                    log('✅ Audio.play() succeeded');
+                }).catch(error => {
+                    log('❌ Audio.play() failed: ' + error.message);
+                    // Try alternative method
+                    document.body.appendChild(audio);
+                    audio.controls = true;
+                    log('🔧 Added audio controls to page - click to play manually');
+                });
+
+            } catch (error) {
+                log('💥 forcePlayAudio error: ' + error.message);
+            }
+        }
+
+        function testCommand(command) {
+            if (!ws || ws.readyState !== WebSocket.OPEN) {
+                log('❌ Not connected to backend');
+                return;
+            }
+
+            log('📤 Sending command: ' + command);
+            const message = {
+                type: 'voice_command',
+                text: command
+            };
+            ws.send(JSON.stringify(message));
+        }
+
+        function forceTestAudio() {
+            log('🧪 Starting force audio test...');
+            testCommand('spin up crates');
+        }
+
+        // Auto-connect on load
+        window.onload = function() {
+            log('🚀 Starting force audio test page');
+            connect();
+        };
+    </script>
+</body>
+</html>

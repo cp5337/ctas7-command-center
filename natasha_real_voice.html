@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🇷🇺 Natasha Real Voice Control</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #1a1a1a; color: white; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .connected { background: #2d5a2d; }
+        .disconnected { background: #5a2d2d; }
+        button { padding: 15px 30px; margin: 10px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+        .mic-btn { background: #4CAF50; color: white; }
+        .mic-btn.recording { background: #f44336; animation: pulse 1s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        .conversation { background: #2a2a2a; padding: 20px; border-radius: 10px; margin: 20px 0; height: 300px; overflow-y: auto; }
+        .message { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .user { background: #3a4a8a; text-align: right; }
+        .natasha { background: #8a3a3a; }
+        .audio-controls { margin: 20px 0; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🇷🇺 Natasha Real Voice Control - Full Duplex</h1>
+        <div id="status" class="status disconnected">Disconnected</div>
+
+        <div class="audio-controls">
+            <button id="micBtn" class="mic-btn" onclick="toggleRecording()">🎤 Start Recording</button>
+            <button onclick="testAudio()" style="background: #ff6b35; color: white;">🔊 Test Audio</button>
+        </div>
+
+        <div id="conversation" class="conversation">
+            <div class="message natasha">Privet, Boss! Ready for real voice commands...</div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <small>Real Voice: Speak commands, Natasha responds with Russian accent</small>
+        </div>
+    </div>
+
+    <script>
+        let ws = null;
+        let mediaRecorder = null;
+        let audioChunks = [];
+        let isRecording = false;
+        let audioContext = null;
+
+        // Connect to WebSocket
+        function connect() {
+            ws = new WebSocket('ws://localhost:8765');
+
+            ws.onopen = function() {
+                document.getElementById('status').className = 'status connected';
+                document.getElementById('status').textContent = 'Connected to Natasha Voice System';
+            };
+
+            ws.onclose = function() {
+                document.getElementById('status').className = 'status disconnected';
+                document.getElementById('status').textContent = 'Disconnected';
+            };
+
+            ws.onmessage = function(event) {
+                if (event.data instanceof Blob) {
+                    // Binary audio data from Natasha
+                    playAudioResponse(event.data);
+                } else {
+                    // Text response
+                    const data = JSON.parse(event.data);
+                    if (data.type === 'command_result') {
+                        const responseText = data.response || 'Command received';
+                        addMessage('natasha', responseText);
+                    }
+                }
+            };
+        }
+
+        // Initialize audio capture
+        async function initAudio() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    audio: {
+                        sampleRate: 16000,
+                        channelCount: 1,
+                        echoCancellation: true,
+                        noiseSuppression: true
+                    }
+                });
+
+                mediaRecorder = new MediaRecorder(stream, {
+                    mimeType: 'audio/webm;codecs=opus'
+                });
+
+                mediaRecorder.ondataavailable = function(event) {
+                    audioChunks.push(event.data);
+                };
+
+                mediaRecorder.onstop = function() {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                    audioChunks = [];
+
+                    // Convert to WAV and send to backend
+                    sendAudioToBackend(audioBlob);
+                };
+
+                console.log('Audio initialized successfully');
+                return true;
+            } catch (error) {
+                console.error('Failed to initialize audio:', error);
+                addMessage('natasha', 'Audio initialization failed: ' + error.message);
+                return false;
+            }
+        }
+
+        // Toggle recording
+        async function toggleRecording() {
+            if (!mediaRecorder) {
+                const success = await initAudio();
+                if (!success) return;
+            }
+
+            if (!isRecording) {
+                audioChunks = [];
+                mediaRecorder.start();
+                isRecording = true;
+                document.getElementById('micBtn').textContent = '🛑 Stop Recording';
+                document.getElementById('micBtn').className = 'mic-btn recording';
+                addMessage('user', '🎤 Recording...');
+            } else {
+                mediaRecorder.stop();
+                isRecording = false;
+                document.getElementById('micBtn').textContent = '🎤 Start Recording';
+                document.getElementById('micBtn').className = 'mic-btn';
+            }
+        }
+
+        // Send audio to backend for Whisper transcription
+        async function sendAudioToBackend(audioBlob) {
+            try {
+                // Convert blob to array buffer
+                const arrayBuffer = await audioBlob.arrayBuffer();
+                const audioData = new Uint8Array(arrayBuffer);
+
+                console.log('Sending audio data:', audioData.length, 'bytes');
+                addMessage('user', `Sent ${audioData.length} bytes of audio for transcription`);
+
+                // Send binary audio data via WebSocket
+                if (ws && ws.readyState === WebSocket.OPEN) {
+                    ws.send(audioData);
+                }
+            } catch (error) {
+                console.error('Failed to send audio:', error);
+                addMessage('natasha', 'Failed to send audio: ' + error.message);
+            }
+        }
+
+        // Play audio response from Natasha
+        function playAudioResponse(audioBlob) {
+            try {
+                const audioUrl = URL.createObjectURL(audioBlob);
+                const audio = new Audio(audioUrl);
+
+                audio.onplay = function() {
+                    addMessage('natasha', '🔊 Natasha speaking...');
+                };
+
+                audio.onended = function() {
+                    URL.revokeObjectURL(audioUrl);
+                };
+
+                audio.play().catch(error => {
+                    console.error('Audio playback failed:', error);
+                    addMessage('natasha', 'Audio playback failed: ' + error.message);
+                });
+            } catch (error) {
+                console.error('Failed to play audio response:', error);
+            }
+        }
+
+        function addMessage(sender, text) {
+            const conversation = document.getElementById('conversation');
+            const message = document.createElement('div');
+            message.className = `message ${sender}`;
+            message.textContent = text;
+            conversation.appendChild(message);
+            conversation.scrollTop = conversation.scrollHeight;
+        }
+
+        function testAudio() {
+            addMessage('natasha', 'Testing audio system...');
+            // Send a test text command
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify({
+                    type: 'voice_command',
+                    text: 'spin up crates'
+                }));
+            }
+        }
+
+        // Auto-connect on load
+        window.onload = function() {
+            connect();
+        };
+    </script>
+</body>
+</html>

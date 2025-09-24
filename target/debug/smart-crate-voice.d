@@ -1,0 +1,1 @@
+/Users/cp5337/Developer/ui/ctas-7-ui-command-center/target/debug/smart-crate-voice: /Users/cp5337/Developer/HOLD\ DURING\ REORG/ctas-6-6-mono/crates/ctas-core-foundation/src/lib.rs /Users/cp5337/Developer/ui/ctas-7-ui-command-center/src/main.rs /Users/cp5337/Developer/ui/ctas-7-ui-command-center/src/voice_engine.rs

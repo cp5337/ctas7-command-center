@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(30 41 59 / 1); /* slate-800 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(71 85 105 / 1); /* slate-600 */
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(100 116 139 / 1); /* slate-500 */
+}

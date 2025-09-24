@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🇷🇺 Natasha Voice Control</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #1a1a1a; color: white; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .connected { background: #2d5a2d; }
+        .disconnected { background: #5a2d2d; }
+        button { padding: 15px 30px; margin: 10px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+        .mic-btn { background: #4CAF50; color: white; }
+        .mic-btn.listening { background: #f44336; animation: pulse 1s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        .conversation { background: #2a2a2a; padding: 20px; border-radius: 10px; margin: 20px 0; height: 300px; overflow-y: auto; }
+        .message { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .user { background: #3a4a8a; text-align: right; }
+        .natasha { background: #8a3a3a; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🇷🇺 Natasha Voice Control - Smart Crate Orchestration</h1>
+        <div id="status" class="status disconnected">Disconnected</div>
+
+        <div style="text-align: center;">
+            <button id="micBtn" class="mic-btn" onclick="toggleListening()">🎤 Start Listening</button>
+            <button onclick="testCommands()">🧪 Test Commands</button>
+            <button onclick="testTTS()" style="background: #ff6b35; color: white;">🔊 Test Voice</button>
+        </div>
+
+        <div id="conversation" class="conversation">
+            <div class="message natasha">Privet, Boss! Ready for Smart Crate commands...</div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <small>Voice Commands: "spin up crates", "retrofit crates", "build crate", "orchestrate swarm"</small>
+        </div>
+    </div>
+
+    <script>
+        let ws = null;
+        let recognition = null;
+        let isListening = false;
+
+        // Connect to WebSocket
+        function connect() {
+            ws = new WebSocket('ws://localhost:8765');
+
+            ws.onopen = function() {
+                document.getElementById('status').className = 'status connected';
+                document.getElementById('status').textContent = 'Connected to Natasha';
+            };
+
+            ws.onclose = function() {
+                document.getElementById('status').className = 'status disconnected';
+                document.getElementById('status').textContent = 'Disconnected';
+            };
+
+            ws.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+                if (data.type === 'command_result') {
+                    const responseText = data.response || data.accented || 'Command received';
+                    addMessage('natasha', responseText);
+
+                    // Make Natasha speak with TTS
+                    speakAsNatasha(responseText);
+                }
+            };
+        }
+
+        // Speech recognition setup
+        if ('webkitSpeechRecognition' in window) {
+            recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US';
+
+            recognition.onresult = function(event) {
+                const command = event.results[0][0].transcript;
+                addMessage('user', command);
+
+                if (ws && ws.readyState === WebSocket.OPEN) {
+                    ws.send(JSON.stringify({
+                        type: 'voice_command',
+                        text: command
+                    }));
+                }
+            };
+        }
+
+        function toggleListening() {
+            if (!isListening && recognition) {
+                recognition.start();
+                isListening = true;
+                document.getElementById('micBtn').textContent = '🛑 Stop Listening';
+                document.getElementById('micBtn').className = 'mic-btn listening';
+            } else {
+                recognition.stop();
+                isListening = false;
+                document.getElementById('micBtn').textContent = '🎤 Start Listening';
+                document.getElementById('micBtn').className = 'mic-btn';
+            }
+        }
+
+        function addMessage(sender, text) {
+            const conversation = document.getElementById('conversation');
+            const message = document.createElement('div');
+            message.className = `message ${sender}`;
+            message.textContent = text;
+            conversation.appendChild(message);
+            conversation.scrollTop = conversation.scrollHeight;
+        }
+
+        function speakAsNatasha(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+
+            // Find best voice for Natasha (prioritize natural sounding voices)
+            const voices = speechSynthesis.getVoices();
+            const preferredVoice = voices.find(voice =>
+                voice.name.toLowerCase().includes('samantha') ||
+                voice.name.toLowerCase().includes('karen') ||
+                voice.name.toLowerCase().includes('victoria') ||
+                voice.name.toLowerCase().includes('zira') ||
+                voice.name.toLowerCase().includes('female')
+            ) || voices.find(voice => voice.lang.includes('en') && voice.gender === 'female');
+
+            if (preferredVoice) {
+                utterance.voice = preferredVoice;
+                console.log('Using voice:', preferredVoice.name);
+            }
+
+            // Emergency broadcast gets special urgent settings
+            if (text.includes('ALERT') || text.includes('EMERGENCY') || text.includes('CODE BLACK')) {
+                utterance.rate = 1.1;    // Faster for urgency
+                utterance.pitch = 1.4;   // Higher pitch for alarm
+                utterance.volume = 1.0;  // Maximum volume
+            } else {
+                utterance.rate = 0.75;   // Normal Natasha pace
+                utterance.pitch = 1.2;   // Normal Natasha pitch
+                utterance.volume = 1.0;  // Full volume
+            }
+
+            speechSynthesis.speak(utterance);
+        }
+
+        function testCommands() {
+            const testMsg = 'Test commands: spin up crates, retrofit crates, build crate, orchestrate swarm';
+            addMessage('natasha', testMsg);
+            speakAsNatasha(testMsg);
+        }
+
+        function testTTS() {
+            console.log('Testing TTS directly...');
+            speakAsNatasha("Da, Boss! Zis is a direct TTS test. Can you hear Natasha now?");
+        }
+
+        // Load voices and test TTS
+        function loadVoices() {
+            const voices = speechSynthesis.getVoices();
+            console.log('Available voices:', voices.map(v => v.name));
+
+            if (voices.length > 0) {
+                // Test TTS immediately
+                const testUtterance = new SpeechSynthesisUtterance("Privet, Boss! Natasha is ready for Smart Crate commands!");
+                testUtterance.rate = 0.85;
+                testUtterance.pitch = 1.1;
+                speechSynthesis.speak(testUtterance);
+            }
+        }
+
+        // Auto-connect on load
+        window.onload = function() {
+            connect();
+
+            // Load voices (sometimes takes time)
+            if (speechSynthesis.getVoices().length > 0) {
+                loadVoices();
+            } else {
+                speechSynthesis.onvoiceschanged = loadVoices;
+            }
+        };
+    </script>
+</body>
+</html>
