@@ -1,0 +1,71 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Production builds
+dist/
+build/
+target/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Rust specific
+Cargo.lock
+target/
+**/*.rs.bk
+
+# Audio/video files (voice processing artifacts)
+*.wav
+*.mp3
+*.mp4
+*.avi
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Whisper model files
+whisper.cpp/models/
+*.bin
+
+# GGUF model files
+*.gguf
+*.ggml
+
+# Git LFS tracked files (but not the .gitattributes)
+# Large models should be in LFS, not ignored
+# *.safetensors
+# *.pt
+# *.pth
+
+# Azure/Cloud credentials
+*.key
+*.pem
+*.crt
