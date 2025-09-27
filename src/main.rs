@@ -20,9 +20,9 @@ async fn main() -> Result<()> {
     let voice_engine = Arc::new(SmartCrateVoiceEngine::new().await?);
 
     println!("✅ Voice engine ready");
-    println!("🚀 WebSocket server starting on ws://localhost:8765");
+    println!("🚀 WebSocket server starting on ws://localhost:15180");
 
-    let listener = TcpListener::bind("127.0.0.1:8765").await?;
+    let listener = TcpListener::bind("127.0.0.1:15180").await?;
 
     while let Ok((stream, _)) = listener.accept().await {
         let engine = voice_engine.clone();
