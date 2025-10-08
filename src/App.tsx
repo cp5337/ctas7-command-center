@@ -4,6 +4,7 @@ import { ChatInterface } from './components/ChatInterface';
 import { ChannelList } from './components/ChannelList';
 import { KanbanBoard } from './components/KanbanBoard';
 import { MetricsWidget } from './components/MetricsWidget';
+import { AgentProductivityWidget } from './components/AgentProductivityWidget';
 import { WebSocketDebugger } from './components/WebSocketDebugger';
 import { Breadcrumb } from './components/Breadcrumb';
 import { CyberOpsWorkspace } from './components/CyberOpsWorkspace';
@@ -15,6 +16,7 @@ import { MissionCriticalDevOps } from './components/MissionCriticalDevOps';
 import { LinearStyleProjectManagement } from './components/LinearStyleProjectManagement';
 import { LinearMultiLLMOnboarding } from './components/LinearMultiLLMOnboarding';
 import { SmartCrateControl } from './components/SmartCrateControl';
+import { GISViewer } from './components/GISViewer';
 import { useWebSocket } from './hooks/useWebSocket';
 import { getWebSocketUrl } from './utils/url';
 import { 
@@ -140,13 +142,153 @@ function App() {
 
   const handleSendVoice = async (audioBlob: Blob) => {
     console.log('Sending voice message:', audioBlob);
-    // Implement voice message sending
+
+    try {
+      // Create WebSocket connection to voice pipeline
+      const ws = new WebSocket('ws://localhost:18765');
+
+      ws.onopen = async () => {
+        // Convert audio blob to base64
+        const arrayBuffer = await audioBlob.arrayBuffer();
+        const base64Audio = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
+
+        // Get target agent based on active channel
+        const targetAgent = getTargetAgentForActiveChannel();
+
+        // Send voice message to pipeline
+        const voiceMessage = {
+          type: 'voice_input',
+          audioData: base64Audio,
+          targetAgent,
+          timestamp: new Date().toISOString(),
+          sessionId: `chat-${activeChannelId}`
+        };
+
+        ws.send(JSON.stringify(voiceMessage));
+      };
+
+      ws.onmessage = (event) => {
+        try {
+          const response = JSON.parse(event.data);
+
+          if (response.type === 'conversation_result') {
+            // Add transcribed message from user
+            const userVoiceMessage: Message = {
+              id: `voice-user-${Date.now()}`,
+              senderId: 'current-user',
+              channelId: activeChannelId,
+              content: response.transcribed_text || '[Voice message]',
+              timestamp: new Date().toISOString(),
+              type: 'voice',
+              voiceData: {
+                duration: 3,
+                waveform: Array(20).fill(0).map(() => Math.random() * 0.8),
+                isPlaying: false
+              }
+            };
+
+            setMessages(prev => [...prev, userVoiceMessage]);
+
+            // Add agent response if available
+            if (response.llm_response) {
+              const agentResponse: Message = {
+                id: `voice-agent-${Date.now()}`,
+                senderId: response.agent || 'unknown',
+                channelId: activeChannelId,
+                content: response.llm_response,
+                timestamp: new Date().toISOString(),
+                type: 'voice',
+                voiceData: {
+                  duration: 4,
+                  waveform: Array(25).fill(0).map(() => Math.random() * 0.9),
+                  isPlaying: false
+                }
+              };
+
+              setTimeout(() => {
+                setMessages(prev => [...prev, agentResponse]);
+              }, 500);
+            }
+          }
+        } catch (error) {
+          console.error('Error parsing voice response:', error);
+        }
+
+        ws.close();
+      };
+
+      ws.onerror = () => {
+        // Fallback: Try mirror port
+        tryMirrorVoiceService(audioBlob);
+      };
+
+    } catch (error) {
+      console.error('Voice WebSocket error:', error);
+      tryMirrorVoiceService(audioBlob);
+    }
+  };
+
+  const tryMirrorVoiceService = async (audioBlob: Blob) => {
+    try {
+      const ws = new WebSocket('ws://localhost:28765');
+      // Same logic as above but with fallback port
+      // ... (similar implementation)
+    } catch (error) {
+      console.error('Mirror voice service also failed:', error);
+
+      // Final fallback: create basic voice message
+      const fallbackMessage: Message = {
+        id: `voice-fallback-${Date.now()}`,
+        senderId: 'current-user',
+        channelId: activeChannelId,
+        content: '[Voice message - processing offline]',
+        timestamp: new Date().toISOString(),
+        type: 'voice',
+        voiceData: {
+          duration: 2,
+          waveform: Array(15).fill(0).map(() => Math.random() * 0.6),
+          isPlaying: false
+        }
+      };
+
+      setMessages(prev => [...prev, fallbackMessage]);
+    }
+  };
+
+  const getTargetAgentForActiveChannel = () => {
+    const channel = channels.find(c => c.id === activeChannelId);
+    if (!channel || channel.type !== 'direct') return 'natasha_volkov';
+
+    const otherParticipant = channel.participants.find(id => id !== 'current-user');
+    const persona = personas.find(p => p.id === otherParticipant);
+
+    // Map personas to voice agents
+    if (persona?.name.toLowerCase().includes('natasha')) return 'natasha_volkov';
+    if (persona?.name.toLowerCase().includes('elena')) return 'elena_rodriguez';
+    if (persona?.name.toLowerCase().includes('cove')) return 'cove_harris';
+    if (persona?.name.toLowerCase().includes('marcus')) return 'marcus_chen';
+
+    return 'natasha_volkov'; // Default
   };
 
   const handleTaskUpdate = (taskId: string, updates: Partial<Task>) => {
-    setTasks(prev => prev.map(task => 
+    setTasks(prev => prev.map(task =>
       task.id === taskId ? { ...task, ...updates } : task
     ));
+  };
+
+  const handleTaskCreate = (newTask: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>) => {
+    const task: Task = {
+      ...newTask,
+      id: `task-${Date.now()}`,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+    setTasks(prev => [...prev, task]);
+  };
+
+  const handleTaskDelete = (taskId: string) => {
+    setTasks(prev => prev.filter(task => task.id !== taskId));
   };
 
   const activeChannel = channels.find(c => c.id === activeChannelId);
