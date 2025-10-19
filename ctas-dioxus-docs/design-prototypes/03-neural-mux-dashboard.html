@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Neural Mux Dashboard - CTAS-7</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-500: #6B7280;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+            --blue-500: #3B82F6;
+            --green-500: #10B981;
+            --yellow-500: #F59E0B;
+            --red-500: #EF4444;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+            background: var(--gray-900);
+            color: var(--white);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--green-500);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px 20px;
+        }
+
+        /* Grid Layout */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+        }
+
+        /* Card */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .card-action {
+            font-size: 14px;
+            color: var(--blue-500);
+            cursor: pointer;
+        }
+
+        /* System Topology */
+        .topology-card {
+            grid-column: span 8;
+        }
+
+        .topology-view {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 32px;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .node {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--blue-500), #2563EB);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .node:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+        }
+
+        .node-label {
+            margin-top: 4px;
+            font-size: 10px;
+            opacity: 0.8;
+        }
+
+        .connection {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.5), rgba(59, 130, 246, 0.1));
+            transform-origin: left center;
+        }
+
+        /* Health Metrics */
+        .metrics-card {
+            grid-column: span 4;
+        }
+
+        .metric {
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .metric:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .metric-unit {
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .metric-trend {
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .trend-up {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--green-500);
+        }
+
+        .trend-down {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--red-500);
+        }
+
+        /* OODA Loop */
+        .ooda-card {
+            grid-column: span 6;
+        }
+
+        .ooda-stages {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .ooda-stage {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .ooda-stage.active {
+            border-color: var(--blue-500);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .ooda-stage-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .ooda-stage-status {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Event Log */
+        .log-card {
+            grid-column: span 6;
+        }
+
+        .log-entry {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            gap: 12px;
+        }
+
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+
+        .log-time {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.4);
+            min-width: 60px;
+        }
+
+        .log-message {
+            font-size: 13px;
+            flex: 1;
+        }
+
+        .log-level {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .log-level.info {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--blue-500);
+        }
+
+        .log-level.success {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--green-500);
+        }
+
+        .log-level.warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--yellow-500);
+        }
+
+        /* Port Allocation */
+        .ports-card {
+            grid-column: span 12;
+        }
+
+        .port-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .port-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .port-number {
+            font-family: 'SF Mono', monospace;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--blue-500);
+        }
+
+        .port-service {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .topology-card,
+            .metrics-card,
+            .ooda-card,
+            .log-card,
+            .ports-card {
+                grid-column: span 12;
+            }
+            
+            .ooda-stages {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ooda-stages {
+                grid-template-columns: 1fr;
+            }
+            
+            .port-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Neural Mux Dashboard</h1>
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span>System Operational</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="dashboard-grid">
+            <!-- System Topology -->
+            <div class="card topology-card">
+                <div class="card-header">
+                    <h2 class="card-title">System Topology</h2>
+                    <span class="card-action">Full Screen</span>
+                </div>
+                <div class="topology-view">
+                    <!-- Nodes -->
+                    <div class="node" style="left: 50%; top: 20%; transform: translate(-50%, -50%);">
+                        <div>Neural Mux</div>
+                        <div class="node-label">:18100</div>
+                    </div>
+                    <div class="node" style="left: 20%; top: 60%; transform: translate(-50%, -50%);">
+                        <div>GIS</div>
+                        <div class="node-label">:18400</div>
+                    </div>
+                    <div class="node" style="left: 50%; top: 70%; transform: translate(-50%, -50%);">
+                        <div>Command</div>
+                        <div class="node-label">:15180</div>
+                    </div>
+                    <div class="node" style="left: 80%; top: 60%; transform: translate(-50%, -50%);">
+                        <div>HFT</div>
+                        <div class="node-label">:18200</div>
+                    </div>
+                    
+                    <!-- Connections -->
+                    <div class="connection" style="left: 50%; top: 30%; width: 200px; transform: rotate(45deg);"></div>
+                    <div class="connection" style="left: 50%; top: 30%; width: 200px; transform: rotate(-45deg);"></div>
+                </div>
+            </div>
+
+            <!-- Health Metrics -->
+            <div class="card metrics-card">
+                <div class="card-header">
+                    <h2 class="card-title">Health Metrics</h2>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">System Load</div>
+                    <div class="metric-value">
+                        <span>42</span>
+                        <span class="metric-unit">%</span>
+                        <span class="metric-trend trend-up">↑ 5%</span>
+                    </div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Active Connections</div>
+                    <div class="metric-value">
+                        <span>1,247</span>
+                    </div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Avg Latency</div>
+                    <div class="metric-value">
+                        <span>12</span>
+                        <span class="metric-unit">ms</span>
+                        <span class="metric-trend trend-down">↓ 3ms</span>
+                    </div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Throughput</div>
+                    <div class="metric-value">
+                        <span>2.4</span>
+                        <span class="metric-unit">Gbps</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OODA Loop -->
+            <div class="card ooda-card">
+                <div class="card-header">
+                    <h2 class="card-title">OODA Loop Status</h2>
+                </div>
+                <div class="ooda-stages">
+                    <div class="ooda-stage">
+                        <div class="ooda-stage-title">Observe</div>
+                        <div class="ooda-stage-status">24 sensors</div>
+                    </div>
+                    <div class="ooda-stage active">
+                        <div class="ooda-stage-title">Orient</div>
+                        <div class="ooda-stage-status">Analyzing</div>
+                    </div>
+                    <div class="ooda-stage">
+                        <div class="ooda-stage-title">Decide</div>
+                        <div class="ooda-stage-status">Pending</div>
+                    </div>
+                    <div class="ooda-stage">
+                        <div class="ooda-stage-title">Act</div>
+                        <div class="ooda-stage-status">Ready</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Log -->
+            <div class="card log-card">
+                <div class="card-header">
+                    <h2 class="card-title">Event Log</h2>
+                    <span class="card-action">View All</span>
+                </div>
+                <div class="log-entry">
+                    <div class="log-time">14:23:45</div>
+                    <div class="log-message">Neural Mux route optimization complete</div>
+                    <div class="log-level success">Success</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-time">14:22:18</div>
+                    <div class="log-message">GIS service health check passed</div>
+                    <div class="log-level info">Info</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-time">14:21:03</div>
+                    <div class="log-message">Port 18400 bandwidth spike detected</div>
+                    <div class="log-level warning">Warning</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-time">14:19:47</div>
+                    <div class="log-message">Smart crate deployment: beam-patterns-wasm</div>
+                    <div class="log-level success">Success</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-time">14:18:22</div>
+                    <div class="log-message">OODA loop cycle completed (2.4s)</div>
+                    <div class="log-level info">Info</div>
+                </div>
+            </div>
+
+            <!-- Port Allocation -->
+            <div class="card ports-card">
+                <div class="card-header">
+                    <h2 class="card-title">Active Port Allocation</h2>
+                    <span class="card-action">Manage Ports</span>
+                </div>
+                <div class="port-grid">
+                    <div class="port-item">
+                        <div>
+                            <div class="port-number">:15180</div>
+                            <div class="port-service">Command Center API</div>
+                        </div>
+                    </div>
+                    <div class="port-item">
+                        <div>
+                            <div class="port-number">:15181</div>
+                            <div class="port-service">WebSocket</div>
+                        </div>
+                    </div>
+                    <div class="port-item">
+                        <div>
+                            <div class="port-number">:18100</div>
+                            <div class="port-service">Neural Mux</div>
+                        </div>
+                    </div>
+                    <div class="port-item">
+                        <div>
+                            <div class="port-number">:18400</div>
+                            <div class="port-service">GIS Backend</div>
+                        </div>
+                    </div>
+                    <div class="port-item">
+                        <div>
+                            <div class="port-number">:18401</div>
+                            <div class="port-service">GIS WebSocket</div>
+                        </div>
+                    </div>
+                    <div class="port-item">
+                        <div>
+                            <div class="port-number">:21575</div>
+                            <div class="port-service">Frontend Dev</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

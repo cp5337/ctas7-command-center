@@ -1,24 +1,74 @@
 {
-  "name": "ctas-7-main-dashboard",
+  "name": "ctas7-dioxus-ea-console",
+  "version": "0.7.0",
   "private": true,
-  "version": "0.0.0",
+  "description": "CTAS-7 Enterprise Architecture Console with Dioxus + Playwright Test Harness",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 15175",
+    "dev": "vite --port 21575",
     "dev-mirror": "vite --port 25175",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview --port 25175"
+    "preview": "vite preview --port 25175",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:ctas7": "CTAS_BASE=${CTAS_BASE:-http://localhost:3000} playwright test --project=CTAS7-Dioxus",
+    "test:mobile": "playwright test --project=CTAS7-Mobile",
+    "test:tablet": "playwright test --project=CTAS7-Tablet",
+    "test:all-devices": "playwright test --project=CTAS7-Dioxus --project=CTAS7-Mobile --project=CTAS7-Tablet",
+    "test:trace": "playwright test --trace=on --project=CTAS7-Dioxus",
+    "inventory": "playwright test tests/playwright/ctas7-environment-inventory.spec.ts --headed --project=chromium",
+    "bootstrap": "playwright test tests/playwright/ctas7-environment-inventory.spec.ts --project=chromium --grep '@bootstrap' --reporter=list,json --output=analysis/reports",
+    "inventory:full": "playwright test tests/playwright/ctas7-environment-inventory.spec.ts --project=chromium --reporter=list,json --output=analysis/reports --config=playwright.config.ts",
+    "layer2:fabric": "playwright test tests/playwright/ctas7-environment-inventory.spec.ts --project=chromium --grep '@layer2' --reporter=list,json --output=analysis/fabric",
+    "validate:merge": "node scripts/consolidate-inventory.js",
+    "report:open": "playwright show-report ./tests/reports/html-report",
+    "report:json": "node -e \"console.log(JSON.stringify(require('./tests/reports/playwright_actions_report.json'), null, 2))\"",
+    "report:matrix": "cat ./tests/reports/playwright_action_matrix.md",
+    "db:seed": "surreal import --conn ws://localhost:8000 --user root --pass root --ns ctas --db docgraph ./database/surrealdb_seed.surql",
+    "validate:schema": "xmllint --schema ./schemas/ctas7_ea.xsd ./manifests/ctas7_ea_manifest.xml",
+    "dev:setup": "npm run db:seed && echo 'CTAS-7 development environment ready'",
+    "clean": "rm -rf ./tests/reports ./tests/screenshots ./tests/results && echo 'Test artifacts cleaned'",
+    "ci": "npm run test:all-devices -- --reporter=json --output-dir=./tests/reports"
   },
   "dependencies": {
+    "@deck.gl/core": "^9.2.1",
+    "@deck.gl/extensions": "^9.2.1",
+    "@deck.gl/geo-layers": "^9.2.1",
+    "@deck.gl/layers": "^9.2.1",
+    "@deck.gl/mapbox": "^9.2.1",
     "@linear/sdk": "^59.1.0",
+    "@radix-ui/react-checkbox": "^1.3.3",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-icons": "^1.3.2",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slider": "^1.3.6",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "@supabase/supabase-js": "^2.75.1",
+    "@types/mapbox-gl": "^3.4.1",
+    "@types/three": "^0.180.0",
+    "cesium": "^1.134.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.24",
     "lucide-react": "^0.344.0",
+    "mapbox-gl": "^3.15.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-map-gl": "^8.1.0",
+    "react-redux": "^8.1.3",
+    "recharts": "^3.3.0",
+    "redux": "^4.2.1",
+    "satellite.js": "^6.0.1",
+    "tailwind-merge": "^3.3.1",
+    "three": "^0.180.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
-    "@playwright/test": "^1.56.0",
+    "@playwright/test": "^1.56.1",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
@@ -32,6 +82,25 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
-    "vite": "^7.1.5"
-  }
+    "vite": "^7.1.5",
+    "vite-plugin-cesium": "^1.2.23",
+    "vite-plugin-top-level-await": "^1.4.4",
+    "vite-plugin-wasm": "^3.3.0"
+  },
+  "main": "analyze-dev-center.js",
+  "directories": {
+    "example": "examples",
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cp5337/ctas7-command-center.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cp5337/ctas7-command-center/issues"
+  },
+  "homepage": "https://github.com/cp5337/ctas7-command-center#readme"
 }

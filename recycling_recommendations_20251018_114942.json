@@ -1,0 +1,169 @@
+[
+  {
+    "source_path": "/Users/cp5337/Developer/ctas7-command-center/test_voice_system.py",
+    "target_use_case": "Crypto functionality for new projects",
+    "confidence": 0.9689944134078212,
+    "required_modifications": [
+      "Add comprehensive documentation"
+    ],
+    "integration_effort": "trivial",
+    "value_proposition": "Provides 3 reusable crypto functions; Quality score: 96.9; Archaeological value: 43.0; Substantial implementation (170 LOC)"
+  },
+  {
+    "source_path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/test_integration.py",
+    "target_use_case": "Crypto functionality for new projects",
+    "confidence": 0.9322033898305085,
+    "required_modifications": [
+      "Add comprehensive documentation",
+      "Improve test coverage"
+    ],
+    "integration_effort": "trivial",
+    "value_proposition": "Provides 8 reusable crypto functions; Quality score: 93.2; Archaeological value: 63.0; Substantial implementation (224 LOC)"
+  },
+  {
+    "source_path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/test_core_functionality.py",
+    "target_use_case": "Crypto functionality for new projects",
+    "confidence": 0.9666666666666666,
+    "required_modifications": [
+      "Add comprehensive documentation"
+    ],
+    "integration_effort": "trivial",
+    "value_proposition": "Provides 6 reusable crypto functions; Quality score: 96.7; Archaeological value: 65.0; Substantial implementation (151 LOC)"
+  },
+  {
+    "source_path": "/Users/cp5337/Developer/ctas7-command-center/test_runner.py",
+    "target_use_case": "Data functionality for new projects",
+    "confidence": 0.9355871886120997,
+    "required_modifications": [
+      "Add comprehensive documentation"
+    ],
+    "integration_effort": "trivial",
+    "value_proposition": "Provides 10 reusable data functions; Quality score: 93.6; Archaeological value: 58.0; Substantial implementation (245 LOC)"
+  },
+  {
+    "source_path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/test_harness.py",
+    "target_use_case": "Data functionality for new projects",
+    "confidence": 0.8269372693726937,
+    "required_modifications": [
+      "Add comprehensive documentation"
+    ],
+    "integration_effort": "low",
+    "value_proposition": "Provides 10 reusable data functions; Quality score: 82.7; Archaeological value: 53.0; Substantial implementation (516 LOC)"
+  },
+  {
+    "source_path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/test_integration.py",
+    "target_use_case": "Data functionality for new projects",
+    "confidence": 0.9322033898305085,
+    "required_modifications": [
+      "Add comprehensive documentation",
+      "Improve test coverage"
+    ],
+    "integration_effort": "trivial",
+    "value_proposition": "Provides 8 reusable data functions; Quality score: 93.2; Archaeological value: 63.0; Substantial implementation (224 LOC)"
+  },
+  {
+    "source_path": "/Users/cp5337/Developer/ctas7-command-center/test_runner.py",
+    "target_use_case": "System functionality for new projects",
+    "confidence": 0.9355871886120997,
+    "required_modifications": [
+      "Add comprehensive documentation"
+    ],
+    "integration_effort": "trivial",
+    "value_proposition": "Provides 10 reusable system functions; Quality score: 93.6; Archaeological value: 58.0; Substantial implementation (245 LOC)"
+  },
+  {
+    "source_path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/test_module_structure.py",
+    "target_use_case": "System functionality for new projects",
+    "confidence": 0.8833333333333334,
+    "required_modifications": [
+      "Add comprehensive documentation",
+      "Improve test coverage"
+    ],
+    "integration_effort": "trivial",
+    "value_proposition": "Provides 7 reusable system functions; Quality score: 88.3; Archaeological value: 40.0; Substantial implementation (132 LOC)"
+  },
+  {
+    "source_path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/test_integration.py",
+    "target_use_case": "System functionality for new projects",
+    "confidence": 0.9322033898305085,
+    "required_modifications": [
+      "Add comprehensive documentation",
+      "Improve test coverage"
+    ],
+    "integration_effort": "trivial",
+    "value_proposition": "Provides 8 reusable system functions; Quality score: 93.2; Archaeological value: 63.0; Substantial implementation (224 LOC)"
+  },
+  {
+    "source_path": "/Users/cp5337/Developer/ctas-7-shipyard-staging/test-voice-round-robin.py",
+    "target_use_case": "Utility functionality for new projects",
+    "confidence": 0.96625,
+    "required_modifications": [
+      "Add comprehensive documentation"
+    ],
+    "integration_effort": "trivial",
+    "value_proposition": "Provides 1 reusable utility functions; Quality score: 96.6; Archaeological value: 38.0; Substantial implementation (153 LOC)"
+  },
+  {
+    "source_path": "/Users/cp5337/Developer/ctas-7-shipyard-staging/test_figma_md_push.py",
+    "target_use_case": "Utility functionality for new projects",
+    "confidence": 0.9866972477064221,
+    "required_modifications": [
+      "Add comprehensive documentation",
+      "Improve test coverage"
+    ],
+    "integration_effort": "trivial",
+    "value_proposition": "Provides 3 reusable utility functions; Quality score: 98.7; Archaeological value: 35.0"
+  },
+  {
+    "source_path": "/Users/cp5337/Developer/ctas-v6.6/test_qa_system.py",
+    "target_use_case": "Utility functionality for new projects",
+    "confidence": 0.9279999999999999,
+    "required_modifications": [
+      "Add comprehensive documentation",
+      "Improve test coverage"
+    ],
+    "integration_effort": "trivial",
+    "value_proposition": "Provides 2 reusable utility functions; Quality score: 92.8; Archaeological value: 30.0"
+  },
+  {
+    "source_path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/test_harness.py",
+    "target_use_case": "Network functionality for new projects",
+    "confidence": 0.8269372693726937,
+    "required_modifications": [
+      "Add comprehensive documentation"
+    ],
+    "integration_effort": "low",
+    "value_proposition": "Provides 10 reusable network functions; Quality score: 82.7; Archaeological value: 53.0; Substantial implementation (516 LOC)"
+  },
+  {
+    "source_path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/tests/test_database.py",
+    "target_use_case": "Network functionality for new projects",
+    "confidence": 0.8227272727272728,
+    "required_modifications": [
+      "Improve test coverage"
+    ],
+    "integration_effort": "low",
+    "value_proposition": "Provides 2 reusable network functions; Quality score: 82.3; Archaeological value: 35.0"
+  },
+  {
+    "source_path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/aiohttp/test_utils.py",
+    "target_use_case": "Network functionality for new projects",
+    "confidence": 0.7174454493252944,
+    "required_modifications": [
+      "Add comprehensive documentation",
+      "Improve test coverage"
+    ],
+    "integration_effort": "low",
+    "value_proposition": "Provides 10 reusable network functions; Quality score: 71.7; Archaeological value: 100.0; Substantial implementation (676 LOC)"
+  },
+  {
+    "source_path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/patsy/test_highlevel.py",
+    "target_use_case": "Ai functionality for new projects",
+    "confidence": 0.8184713375796179,
+    "required_modifications": [
+      "Add comprehensive documentation"
+    ],
+    "integration_effort": "low",
+    "value_proposition": "Provides 10 reusable ai functions; Quality score: 81.8; Archaeological value: 60.0; Substantial implementation (882 LOC)"
+  }
+]

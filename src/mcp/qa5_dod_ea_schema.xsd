@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://ctas7.com/qa5-dod-ea"
+           xmlns:qa5="https://ctas7.com/qa5-dod-ea"
+           elementFormDefault="qualified">
+
+  <!-- QA5 DoD Enterprise Architecture Schema -->
+  <!-- 🎯 Demo-Ready DoD EA Compliance with Source Reliability & Information Credibility -->
+
+  <!-- Root Element -->
+  <xs:element name="DoDAF_View" type="qa5:DoDAFViewType"/>
+
+  <!-- Main DoDAF View Type -->
+  <xs:complexType name="DoDAFViewType">
+    <xs:sequence>
+      <xs:element name="ViewMetadata" type="qa5:ViewMetadataType"/>
+      <xs:element name="QA5Assessment" type="qa5:QA5AssessmentType"/>
+      <xs:element name="DoDAFContent" type="qa5:DoDAFContentType"/>
+      <xs:element name="ComplianceValidation" type="qa5:ComplianceValidationType"/>
+      <xs:element name="AutomationArtifacts" type="qa5:AutomationArtifactsType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="version" type="xs:string" fixed="2.02"/>
+    <xs:attribute name="classification" type="qa5:ClassificationType" use="required"/>
+  </xs:complexType>
+
+  <!-- View Metadata -->
+  <xs:complexType name="ViewMetadataType">
+    <xs:sequence>
+      <xs:element name="ViewType" type="qa5:DoDAFViewTypeEnum"/>
+      <xs:element name="Title" type="xs:string"/>
+      <xs:element name="Description" type="xs:string"/>
+      <xs:element name="Author" type="qa5:AuthorType"/>
+      <xs:element name="CreationDate" type="xs:dateTime"/>
+      <xs:element name="LastModified" type="xs:dateTime"/>
+      <xs:element name="Version" type="xs:string"/>
+      <xs:element name="Status" type="qa5:StatusType"/>
+      <xs:element name="Purpose" type="xs:string"/>
+      <xs:element name="Scope" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- QA5 Assessment (Source Reliability + Information Credibility) -->
+  <xs:complexType name="QA5AssessmentType">
+    <xs:sequence>
+      <xs:element name="SourceReliability" type="qa5:SourceReliabilityType"/>
+      <xs:element name="InformationCredibility" type="qa5:InformationCredibilityType"/>
+      <xs:element name="OverallQA5Score" type="qa5:QA5ScoreType"/>
+      <xs:element name="AssessmentTimestamp" type="xs:dateTime"/>
+      <xs:element name="AssessmentMethod" type="qa5:AssessmentMethodType"/>
+      <xs:element name="ValidationNotes" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- DoDAF Content Structure -->
+  <xs:complexType name="DoDAFContentType">
+    <xs:choice>
+      <xs:element name="OperationalView" type="qa5:OperationalViewType"/>
+      <xs:element name="SystemsView" type="qa5:SystemsViewType"/>
+      <xs:element name="TechnicalView" type="qa5:TechnicalViewType"/>
+      <xs:element name="DataView" type="qa5:DataViewType"/>
+      <xs:element name="CapabilityView" type="qa5:CapabilityViewType"/>
+      <xs:element name="ProjectView" type="qa5:ProjectViewType"/>
+      <xs:element name="StandardsView" type="qa5:StandardsViewType"/>
+      <xs:element name="ServicesView" type="qa5:ServicesViewType"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <!-- Operational Views (OV-1, OV-2, OV-3, etc.) -->
+  <xs:complexType name="OperationalViewType">
+    <xs:sequence>
+      <xs:element name="HighLevelConcept" type="qa5:OperationalConceptType" minOccurs="0"/>
+      <xs:element name="OperationalNodes" type="qa5:OperationalNodesType" minOccurs="0"/>
+      <xs:element name="InformationExchange" type="qa5:InformationExchangeType" minOccurs="0"/>
+      <xs:element name="ConceptOfOperations" type="qa5:ConceptOfOperationsType" minOccurs="0"/>
+      <xs:element name="ActivityModel" type="qa5:ActivityModelType" minOccurs="0"/>
+      <xs:element name="StateMachineDescription" type="qa5:StateMachineType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="subview" type="qa5:OperationalSubviewEnum" use="required"/>
+  </xs:complexType>
+
+  <!-- Systems Views (SV-1, SV-2, SV-3, etc.) -->
+  <xs:complexType name="SystemsViewType">
+    <xs:sequence>
+      <xs:element name="SystemsInterface" type="qa5:SystemsInterfaceType" minOccurs="0"/>
+      <xs:element name="SystemsCommunications" type="qa5:SystemsCommunicationsType" minOccurs="0"/>
+      <xs:element name="SystemsFunctionality" type="qa5:SystemsFunctionalityType" minOccurs="0"/>
+      <xs:element name="SystemsEvolution" type="qa5:SystemsEvolutionType" minOccurs="0"/>
+      <xs:element name="OperationalMapping" type="qa5:OperationalMappingType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="subview" type="qa5:SystemsSubviewEnum" use="required"/>
+  </xs:complexType>
+
+  <!-- Technical Views (TV-1, TV-2, etc.) -->
+  <xs:complexType name="TechnicalViewType">
+    <xs:sequence>
+      <xs:element name="TechnicalStandards" type="qa5:TechnicalStandardsType"/>
+      <xs:element name="TechnicalArchitecture" type="qa5:TechnicalArchitectureType" minOccurs="0"/>
+      <xs:element name="StandardsProfile" type="qa5:StandardsProfileType" minOccurs="0"/>
+      <xs:element name="TechnicalForecast" type="qa5:TechnicalForecastType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="subview" type="qa5:TechnicalSubviewEnum" use="required"/>
+  </xs:complexType>
+
+  <!-- Compliance Validation -->
+  <xs:complexType name="ComplianceValidationType">
+    <xs:sequence>
+      <xs:element name="DoDAFCompliance" type="qa5:ComplianceScoreType"/>
+      <xs:element name="NISTAlignment" type="qa5:ComplianceScoreType"/>
+      <xs:element name="RMFCompliance" type="qa5:ComplianceScoreType"/>
+      <xs:element name="FEAAlignment" type="qa5:ComplianceScoreType"/>
+      <xs:element name="SecurityCompliance" type="qa5:SecurityComplianceType"/>
+      <xs:element name="InteroperabilityCompliance" type="qa5:InteroperabilityComplianceType"/>
+      <xs:element name="OverallComplianceScore" type="qa5:ComplianceScoreType"/>
+      <xs:element name="ComplianceGaps" type="qa5:ComplianceGapsType" minOccurs="0"/>
+      <xs:element name="Recommendations" type="qa5:RecommendationsType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="validatedBy" type="xs:string"/>
+    <xs:attribute name="validationDate" type="xs:dateTime"/>
+  </xs:complexType>
+
+  <!-- Automation Artifacts (Figma, Canva, Generated Content) -->
+  <xs:complexType name="AutomationArtifactsType">
+    <xs:sequence>
+      <xs:element name="FigmaProject" type="qa5:FigmaProjectType" minOccurs="0"/>
+      <xs:element name="CanvaDocument" type="qa5:CanvaDocumentType" minOccurs="0"/>
+      <xs:element name="GeneratedCode" type="qa5:GeneratedCodeType" minOccurs="0"/>
+      <xs:element name="TestAutomation" type="qa5:TestAutomationType" minOccurs="0"/>
+      <xs:element name="Documentation" type="qa5:DocumentationType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="generatedBy" type="qa5:GenerationMethodEnum"/>
+    <xs:attribute name="generationTimestamp" type="xs:dateTime"/>
+  </xs:complexType>
+
+  <!-- Enumerations -->
+  <xs:simpleType name="DoDAFViewTypeEnum">
+    <xs:restriction base="xs:string">
+      <!-- Operational Views -->
+      <xs:enumeration value="OV-1"/>
+      <xs:enumeration value="OV-2"/>
+      <xs:enumeration value="OV-3"/>
+      <xs:enumeration value="OV-4"/>
+      <xs:enumeration value="OV-5a"/>
+      <xs:enumeration value="OV-5b"/>
+      <xs:enumeration value="OV-6a"/>
+      <xs:enumeration value="OV-6b"/>
+      <xs:enumeration value="OV-6c"/>
+      <!-- Systems Views -->
+      <xs:enumeration value="SV-1"/>
+      <xs:enumeration value="SV-2"/>
+      <xs:enumeration value="SV-3"/>
+      <xs:enumeration value="SV-4"/>
+      <xs:enumeration value="SV-5a"/>
+      <xs:enumeration value="SV-5b"/>
+      <xs:enumeration value="SV-6"/>
+      <xs:enumeration value="SV-7"/>
+      <xs:enumeration value="SV-8"/>
+      <xs:enumeration value="SV-9"/>
+      <xs:enumeration value="SV-10a"/>
+      <xs:enumeration value="SV-10b"/>
+      <xs:enumeration value="SV-10c"/>
+      <!-- Technical Views -->
+      <xs:enumeration value="TV-1"/>
+      <xs:enumeration value="TV-2"/>
+      <!-- Data Views -->
+      <xs:enumeration value="DIV-1"/>
+      <xs:enumeration value="DIV-2"/>
+      <xs:enumeration value="DIV-3"/>
+      <!-- Capability Views -->
+      <xs:enumeration value="CV-1"/>
+      <xs:enumeration value="CV-2"/>
+      <xs:enumeration value="CV-3"/>
+      <xs:enumeration value="CV-4"/>
+      <xs:enumeration value="CV-5"/>
+      <xs:enumeration value="CV-6"/>
+      <xs:enumeration value="CV-7"/>
+      <!-- Project Views -->
+      <xs:enumeration value="PV-1"/>
+      <xs:enumeration value="PV-2"/>
+      <xs:enumeration value="PV-3"/>
+      <!-- Standards Views -->
+      <xs:enumeration value="StdV-1"/>
+      <xs:enumeration value="StdV-2"/>
+      <!-- Services Views -->
+      <xs:enumeration value="SvcV-1"/>
+      <xs:enumeration value="SvcV-2"/>
+      <xs:enumeration value="SvcV-3a"/>
+      <xs:enumeration value="SvcV-3b"/>
+      <xs:enumeration value="SvcV-4"/>
+      <xs:enumeration value="SvcV-5"/>
+      <xs:enumeration value="SvcV-6"/>
+      <xs:enumeration value="SvcV-7"/>
+      <xs:enumeration value="SvcV-8"/>
+      <xs:enumeration value="SvcV-9"/>
+      <xs:enumeration value="SvcV-10a"/>
+      <xs:enumeration value="SvcV-10b"/>
+      <xs:enumeration value="SvcV-10c"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- QA5 Source Reliability (A-F Scale) -->
+  <xs:simpleType name="SourceReliabilityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A">
+        <xs:annotation>
+          <xs:documentation>Completely reliable - Official DoD sources, verified documentation</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="B">
+        <xs:annotation>
+          <xs:documentation>Usually reliable - Established government sources</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="C">
+        <xs:annotation>
+          <xs:documentation>Fairly reliable - Industry standards, reputable organizations</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="D">
+        <xs:annotation>
+          <xs:documentation>Not usually reliable - Unverified sources</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="E">
+        <xs:annotation>
+          <xs:documentation>Unreliable - Questionable sources</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="F">
+        <xs:annotation>
+          <xs:documentation>Reliability cannot be judged</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- QA5 Information Credibility (1-6 Scale) -->
+  <xs:simpleType name="InformationCredibilityType">
+    <xs:restriction base="xs:integer">
+      <xs:enumeration value="1">
+        <xs:annotation>
+          <xs:documentation>Confirmed by other independent sources</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="2">
+        <xs:annotation>
+          <xs:documentation>Probably true - consistent with other information</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3">
+        <xs:annotation>
+          <xs:documentation>Possibly true - somewhat consistent</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="4">
+        <xs:annotation>
+          <xs:documentation>Doubtful - inconsistent with other information</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="5">
+        <xs:annotation>
+          <xs:documentation>Improbable - contradicts other sources</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="6">
+        <xs:annotation>
+          <xs:documentation>Truth cannot be judged</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- QA5 Overall Score -->
+  <xs:simpleType name="QA5ScoreType">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0.0"/>
+      <xs:maxInclusive value="100.0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Classification Types -->
+  <xs:simpleType name="ClassificationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNCLASSIFIED"/>
+      <xs:enumeration value="CUI"/>
+      <xs:enumeration value="CONFIDENTIAL"/>
+      <xs:enumeration value="SECRET"/>
+      <xs:enumeration value="TOP_SECRET"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Generation Method -->
+  <xs:simpleType name="GenerationMethodEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MANUAL"/>
+      <xs:enumeration value="AI_ASSISTED"/>
+      <xs:enumeration value="FULLY_AUTOMATED"/>
+      <xs:enumeration value="MULTI_AI_COORDINATED"/>
+      <xs:enumeration value="ABE_GENERATED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Supporting Complex Types -->
+  <xs:complexType name="AuthorType">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Organization" type="xs:string"/>
+      <xs:element name="Email" type="xs:string" minOccurs="0"/>
+      <xs:element name="Role" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ComplianceScoreType">
+    <xs:sequence>
+      <xs:element name="Score" type="qa5:QA5ScoreType"/>
+      <xs:element name="Details" type="xs:string" minOccurs="0"/>
+      <xs:element name="ValidationMethod" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="FigmaProjectType">
+    <xs:sequence>
+      <xs:element name="ProjectID" type="xs:string"/>
+      <xs:element name="ProjectURL" type="xs:anyURI"/>
+      <xs:element name="TemplateUsed" type="xs:string"/>
+      <xs:element name="CreationTimestamp" type="xs:dateTime"/>
+      <xs:element name="DiagramType" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CanvaDocumentType">
+    <xs:sequence>
+      <xs:element name="DocumentID" type="xs:string"/>
+      <xs:element name="DocumentURL" type="xs:anyURI"/>
+      <xs:element name="DocumentType" type="xs:string"/>
+      <xs:element name="CreationTimestamp" type="xs:dateTime"/>
+      <xs:element name="DoDCompliant" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Technical Standards Reference -->
+  <xs:complexType name="TechnicalStandardsType">
+    <xs:sequence>
+      <xs:element name="ApplicableStandards" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="StandardID" type="xs:string"/>
+            <xs:element name="StandardName" type="xs:string"/>
+            <xs:element name="StandardType" type="qa5:StandardTypeEnum"/>
+            <xs:element name="ComplianceLevel" type="qa5:ComplianceLevelEnum"/>
+            <xs:element name="ImplementationGuidance" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="StandardTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="IEEE"/>
+      <xs:enumeration value="ISO"/>
+      <xs:enumeration value="NIST"/>
+      <xs:enumeration value="DOD-STD"/>
+      <xs:enumeration value="MIL-STD"/>
+      <xs:enumeration value="FIPS"/>
+      <xs:enumeration value="RFC"/>
+      <xs:enumeration value="W3C"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ComplianceLevelEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MANDATORY"/>
+      <xs:enumeration value="RECOMMENDED"/>
+      <xs:enumeration value="OPTIONAL"/>
+      <xs:enumeration value="CONDITIONAL"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Status enumeration -->
+  <xs:simpleType name="StatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DRAFT"/>
+      <xs:enumeration value="REVIEW"/>
+      <xs:enumeration value="APPROVED"/>
+      <xs:enumeration value="PUBLISHED"/>
+      <xs:enumeration value="ARCHIVED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Assessment Method -->
+  <xs:simpleType name="AssessmentMethodType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MANUAL_REVIEW"/>
+      <xs:enumeration value="AUTOMATED_ANALYSIS"/>
+      <xs:enumeration value="AI_VALIDATION"/>
+      <xs:enumeration value="EXPERT_EVALUATION"/>
+      <xs:enumeration value="MULTI_AI_CONSENSUS"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

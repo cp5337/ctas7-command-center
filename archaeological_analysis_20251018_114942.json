@@ -1,0 +1,1413 @@
+[
+  {
+    "path": "/Users/cp5337/Developer/ctas7-command-center/test_voice.py",
+    "name": "test_voice",
+    "lines_of_code": 21,
+    "file_type": "python",
+    "quality_score": 66.73913043478261,
+    "functions": [],
+    "dependencies": [
+      "asyncio",
+      "websockets",
+      "json"
+    ],
+    "recycling_potential": "low",
+    "archaeological_value": 35.0,
+    "last_modified": "2025-09-24T15:43:49.565228",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.08695652173913043,
+    "test_coverage_estimate": 0.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/ctas7-command-center/test_voice_client.py",
+    "name": "test_voice_client",
+    "lines_of_code": 30,
+    "file_type": "python",
+    "quality_score": 66.25,
+    "functions": [],
+    "dependencies": [
+      "asyncio",
+      "websockets",
+      "json"
+    ],
+    "recycling_potential": "low",
+    "archaeological_value": 35.0,
+    "last_modified": "2025-09-24T15:43:49.565472",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.0625,
+    "test_coverage_estimate": 0.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/ctas7-command-center/test_voice_system.py",
+    "name": "test_voice_system",
+    "lines_of_code": 170,
+    "file_type": "python",
+    "quality_score": 96.89944134078212,
+    "functions": [
+      "__init__",
+      "print_header",
+      "test_api_key_validation"
+    ],
+    "dependencies": [
+      "asyncio",
+      "os",
+      "sys",
+      "json",
+      "subprocess",
+      "time",
+      "datetime",
+      "voice_test_reporter"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 43.0,
+    "last_modified": "2025-10-07T17:06:39.545238",
+    "complexity_score": 5.294117647058823,
+    "documentation_ratio": 0.09497206703910614,
+    "test_coverage_estimate": 100.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/ctas7-command-center/test_runner.py",
+    "name": "test_runner",
+    "lines_of_code": 245,
+    "file_type": "python",
+    "quality_score": 93.55871886120997,
+    "functions": [
+      "main",
+      "__init__",
+      "log_test_result",
+      "print_test_header",
+      "print_test_result",
+      "test_ascii_agent_basic",
+      "test_voice_reporter_basic",
+      "test_realtime_monitor_basic",
+      "test_json_format_validation",
+      "test_error_handling"
+    ],
+    "dependencies": [
+      "asyncio",
+      "sys",
+      "os",
+      "json",
+      "subprocess",
+      "time",
+      "datetime",
+      "typing",
+      "threading",
+      "ascii_test_output_agent"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 58.0,
+    "last_modified": "2025-10-07T16:58:28.373461",
+    "complexity_score": 18.775510204081634,
+    "documentation_ratio": 0.17793594306049823,
+    "test_coverage_estimate": 100.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/ctas-7-shipyard-staging/test-voice-round-robin.py",
+    "name": "test-voice-round-robin",
+    "lines_of_code": 153,
+    "file_type": "python",
+    "quality_score": 96.625,
+    "functions": [
+      "__init__"
+    ],
+    "dependencies": [
+      "asyncio",
+      "json",
+      "websockets",
+      "datetime"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 38.0,
+    "last_modified": "2025-10-05T21:58:22.592375",
+    "complexity_score": 2.6143790849673203,
+    "documentation_ratio": 0.08125,
+    "test_coverage_estimate": 100.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/ctas-7-shipyard-staging/test_figma_md_push.py",
+    "name": "test_figma_md_push",
+    "lines_of_code": 96,
+    "file_type": "python",
+    "quality_score": 98.6697247706422,
+    "functions": [
+      "test_figma_mcp_integration",
+      "test_operational_persona_workflow",
+      "main"
+    ],
+    "dependencies": [
+      "requests",
+      "json",
+      "time",
+      "pathlib"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 35.0,
+    "last_modified": "2025-10-01T17:12:10.417901",
+    "complexity_score": 25.0,
+    "documentation_ratio": 0.1834862385321101,
+    "test_coverage_estimate": 40.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/ctas-v6.6/test_qa_system.py",
+    "name": "test_qa_system",
+    "lines_of_code": 47,
+    "file_type": "python",
+    "quality_score": 92.8,
+    "functions": [
+      "test_qa_binary",
+      "main"
+    ],
+    "dependencies": [
+      "subprocess",
+      "sys"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 30.0,
+    "last_modified": "2025-09-19T19:08:43.790581",
+    "complexity_score": 23.404255319148938,
+    "documentation_ratio": 0.14,
+    "test_coverage_estimate": 20.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/ctas-6-6-mono/test_qa_system.py",
+    "name": "test_qa_system",
+    "lines_of_code": 47,
+    "file_type": "python",
+    "quality_score": 92.8,
+    "functions": [
+      "test_qa_binary",
+      "main"
+    ],
+    "dependencies": [
+      "subprocess",
+      "sys"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 30.0,
+    "last_modified": "2025-08-31T21:37:01.233955",
+    "complexity_score": 23.404255319148938,
+    "documentation_ratio": 0.14,
+    "test_coverage_estimate": 20.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/test_ai_gis_simple.py",
+    "name": "test_ai_gis_simple",
+    "lines_of_code": 74,
+    "file_type": "python",
+    "quality_score": 96.6,
+    "functions": [
+      "test_ai_gis_core",
+      "test_ai_gis_imports",
+      "test_syntax_only"
+    ],
+    "dependencies": [
+      "ast",
+      "visualization.analytics.ai_gis.core"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 25.0,
+    "last_modified": "2025-09-09T21:23:02.292371",
+    "complexity_score": 17.56756756756757,
+    "documentation_ratio": 0.08,
+    "test_coverage_estimate": 40.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/test_billion_scale.py",
+    "name": "test_billion_scale",
+    "lines_of_code": 57,
+    "file_type": "python",
+    "quality_score": 73.63636363636364,
+    "functions": [],
+    "dependencies": [
+      "asyncio",
+      "logging",
+      "billion_scale_testing_system"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 25.0,
+    "last_modified": "2025-09-09T20:07:32.145591",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.18181818181818182,
+    "test_coverage_estimate": 0.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/test_harness.py",
+    "name": "test_harness",
+    "lines_of_code": 516,
+    "file_type": "python",
+    "quality_score": 82.69372693726937,
+    "functions": [
+      "__init__",
+      "run_test",
+      "test_mypy_type_checking",
+      "test_syntax_validation",
+      "test_import_validation",
+      "analyze_data_sources",
+      "test_database_connections",
+      "test_performance_benchmarks",
+      "test_security_validation",
+      "generate_recommendations"
+    ],
+    "dependencies": [
+      "sys",
+      "os",
+      "json",
+      "time",
+      "hashlib",
+      "subprocess",
+      "importlib",
+      "Path",
+      "Dict",
+      "dataclass"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 53.0,
+    "last_modified": "2025-09-09T20:12:52.738092",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.13468634686346864,
+    "test_coverage_estimate": 65.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/test_imports.py",
+    "name": "test_imports",
+    "lines_of_code": 36,
+    "file_type": "python",
+    "quality_score": 67.10526315789474,
+    "functions": [],
+    "dependencies": [
+      "sys",
+      "pathlib",
+      "streamlit",
+      "main_dashboard_modules.config",
+      "main_dashboard_modules.header",
+      "main_dashboard_modules.sidebar",
+      "main_dashboard_modules.dashboard_view",
+      "main_dashboard_modules",
+      "app",
+      "traceback"
+    ],
+    "recycling_potential": "low",
+    "archaeological_value": 30.0,
+    "last_modified": "2025-09-10T01:34:41.170211",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.10526315789473684,
+    "test_coverage_estimate": 0.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/test_simple.py",
+    "name": "test_simple",
+    "lines_of_code": 23,
+    "file_type": "python",
+    "quality_score": 66.6,
+    "functions": [],
+    "dependencies": [
+      "streamlit",
+      "pandas",
+      "numpy",
+      "plotly.express",
+      "main_dashboard_modules.config",
+      "main_dashboard_modules"
+    ],
+    "recycling_potential": "low",
+    "archaeological_value": 30.0,
+    "last_modified": "2025-08-17T21:16:52.627544",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.08,
+    "test_coverage_estimate": 0.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/test_module_structure.py",
+    "name": "test_module_structure",
+    "lines_of_code": 132,
+    "file_type": "python",
+    "quality_score": 88.33333333333334,
+    "functions": [
+      "test_module_structure",
+      "test_file_contents",
+      "show_geospatial_analysis",
+      "prepare_geospatial_data",
+      "test_new_page_file",
+      "test_original_file_preserved",
+      "main"
+    ],
+    "dependencies": [
+      "os",
+      "sys",
+      "show_geospatial_analysis",
+      "modules"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 40.0,
+    "last_modified": "2025-09-09T20:12:45.195567",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.16666666666666666,
+    "test_coverage_estimate": 25.714285714285715
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/test_integration.py",
+    "name": "test_integration",
+    "lines_of_code": 224,
+    "file_type": "python",
+    "quality_score": 93.22033898305085,
+    "functions": [
+      "test_hash_framework_import",
+      "test_main_dashboard",
+      "test_database_config",
+      "test_refactored_components",
+      "test_database_schemas",
+      "test_rust_scanner",
+      "test_file_count",
+      "main"
+    ],
+    "dependencies": [
+      "sys",
+      "os",
+      "json",
+      "hashlib",
+      "base64",
+      "time",
+      "Path",
+      "ctas_hash_framework_utils",
+      "failed",
+      "importlib"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 63.0,
+    "last_modified": "2025-09-09T20:12:52.741046",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.16101694915254236,
+    "test_coverage_estimate": 37.5
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/test_modular_structure.py",
+    "name": "test_modular_structure",
+    "lines_of_code": 154,
+    "file_type": "python",
+    "quality_score": 91.85185185185185,
+    "functions": [
+      "test_imports",
+      "test_utilities",
+      "test_analysis_classes",
+      "test_main_dashboard_import",
+      "main"
+    ],
+    "dependencies": [
+      "sys",
+      "pandas",
+      "numpy",
+      "modules.geospatial.utilities",
+      "modules.geospatial.hotspot_analysis",
+      "modules.geospatial.network_intelligence",
+      "modules.geospatial.hexagonal_grid",
+      "modules.geospatial.google_earth",
+      "modules.geospatial.plugin_management",
+      "modules.geospatial.utilities"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 28.0,
+    "last_modified": "2025-09-09T21:12:14.524158",
+    "complexity_score": 18.83116883116883,
+    "documentation_ratio": 0.09259259259259259,
+    "test_coverage_estimate": 80.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/test_core_functionality.py",
+    "name": "test_core_functionality",
+    "lines_of_code": 151,
+    "file_type": "python",
+    "quality_score": 96.66666666666666,
+    "functions": [
+      "test_hash_framework",
+      "test_file_structure",
+      "test_python_syntax",
+      "test_refactored_modules",
+      "test_database_schemas",
+      "main"
+    ],
+    "dependencies": [
+      "sys",
+      "os",
+      "json",
+      "hashlib",
+      "base64",
+      "time",
+      "pathlib"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 65.0,
+    "last_modified": "2025-09-09T21:12:14.541187",
+    "complexity_score": 28.47682119205298,
+    "documentation_ratio": 0.08333333333333333,
+    "test_coverage_estimate": 60.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/tests/test_database.py",
+    "name": "test_database",
+    "lines_of_code": 11,
+    "file_type": "python",
+    "quality_score": 82.27272727272728,
+    "functions": [
+      "test_database_connection",
+      "test_schema_validation"
+    ],
+    "dependencies": [
+      "pytest"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 35.0,
+    "last_modified": "2025-09-09T20:12:45.255062",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.36363636363636365,
+    "test_coverage_estimate": 40.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/tests/test_harness.py",
+    "name": "test_harness",
+    "lines_of_code": 291,
+    "file_type": "python",
+    "quality_score": 92.67100977198697,
+    "functions": [
+      "__init__",
+      "to_dict",
+      "__str__",
+      "__init__",
+      "discover_scenarios",
+      "run_monte_carlo",
+      "run_all_scenarios",
+      "run_category",
+      "generate_report",
+      "save_report"
+    ],
+    "dependencies": [
+      "os",
+      "sys",
+      "json",
+      "time",
+      "logging",
+      "argparse",
+      "importlib",
+      "traceback",
+      "statistics",
+      "Path"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 46.0,
+    "last_modified": "2025-09-09T20:12:45.255461",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.13355048859934854,
+    "test_coverage_estimate": 1.5384615384615385
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/tests/test_core.py",
+    "name": "test_core",
+    "lines_of_code": 12,
+    "file_type": "python",
+    "quality_score": 81.66666666666666,
+    "functions": [
+      "test_hash_framework",
+      "test_imports"
+    ],
+    "dependencies": [
+      "pytest",
+      "ctas_hash_framework_utils"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 50.0,
+    "last_modified": "2025-09-09T20:12:45.255554",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.3333333333333333,
+    "test_coverage_estimate": 40.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/tests/test_hash_engine.py",
+    "name": "test_hash_engine",
+    "lines_of_code": 352,
+    "file_type": "python",
+    "quality_score": 83.01986121081598,
+    "functions": [
+      "setUp",
+      "test_sch_hash_generation",
+      "test_cuid_hash_generation",
+      "test_uuid_hash_generation",
+      "test_hash_to_numeric_conversion",
+      "test_hash_uniqueness_across_tasks",
+      "test_ttl_calculation",
+      "test_context_extraction",
+      "setUp",
+      "test_hash_aware_feature_creation"
+    ],
+    "dependencies": [
+      "unittest",
+      "time",
+      "hashlib",
+      "List",
+      "sys",
+      "os",
+      "load_sample_tasks",
+      "typing",
+      "gnn",
+      "gnn"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 100.0,
+    "last_modified": "2025-09-09T20:12:45.256448",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.24623115577889448,
+    "test_coverage_estimate": 84.76190476190476
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/organized_results/team_files/team_a/test_team_a_fixes.py",
+    "name": "test_team_a_fixes",
+    "lines_of_code": 54,
+    "file_type": "python",
+    "quality_score": 98.15789473684211,
+    "functions": [
+      "test_file_exists_and_imports",
+      "main"
+    ],
+    "dependencies": [
+      "os",
+      "sys",
+      "importlib",
+      "the"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 30.0,
+    "last_modified": "2025-09-09T20:12:52.412934",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.15789473684210525,
+    "test_coverage_estimate": 20.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/aiohttp/test_utils.py",
+    "name": "test_utils",
+    "lines_of_code": 676,
+    "file_type": "python",
+    "quality_score": 71.74454493252944,
+    "functions": [
+      "get_unused_port_socket",
+      "get_port_socket",
+      "unused_port",
+      "__init__",
+      "start_server",
+      "_make_runner",
+      "make_url",
+      "placeholder_method",
+      "started",
+      "placeholder_method"
+    ],
+    "dependencies": [
+      "asyncio",
+      "contextlib",
+      "gc",
+      "inspect",
+      "ipaddress",
+      "os",
+      "socket",
+      "sys",
+      "warnings",
+      "ABC"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 100.0,
+    "last_modified": "2025-09-09T20:12:46.112501",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.1119186046511628,
+    "test_coverage_estimate": 16.54320987654321
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/shapely/testing.py",
+    "name": "testing",
+    "lines_of_code": 168,
+    "file_type": "python",
+    "quality_score": 97.41758241758242,
+    "functions": [
+      "_equals_exact_with_ndim",
+      "_replace_nan",
+      "_assert_nan_coords_same",
+      "_assert_none_same",
+      "assert_geometries_equal",
+      "build_err_msg"
+    ],
+    "dependencies": [
+      "partial",
+      "numpy",
+      "shapely",
+      "functools",
+      "numpy",
+      "numpy"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 40.0,
+    "last_modified": "2025-09-09T20:12:46.342886",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.12087912087912088,
+    "test_coverage_estimate": 56.66666666666667
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/annotated_types/test_cases.py",
+    "name": "test_cases",
+    "lines_of_code": 119,
+    "file_type": "python",
+    "quality_score": 92.1875,
+    "functions": [
+      "cases",
+      "__iter__"
+    ],
+    "dependencies": [
+      "math",
+      "sys",
+      "date",
+      "Decimal",
+      "Any",
+      "Annotated",
+      "Annotated",
+      "annotated_types",
+      "datetime",
+      "decimal"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 40.0,
+    "last_modified": "2025-09-09T20:12:46.530690",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.109375,
+    "test_coverage_estimate": 0.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/pyparsing/testing.py",
+    "name": "testing",
+    "lines_of_code": 334,
+    "file_type": "python",
+    "quality_score": 93.42128801431127,
+    "functions": [
+      "__init__",
+      "save",
+      "restore",
+      "copy",
+      "__enter__",
+      "__exit__",
+      "assertParseResultsEquals",
+      "assertParseAndCheckList",
+      "assertParseAndCheckDict",
+      "assertRunTestResults"
+    ],
+    "dependencies": [
+      "contextmanager",
+      "re",
+      "typing",
+      "contextlib",
+      "runTests"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 63.0,
+    "last_modified": "2025-09-09T20:12:47.299028",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.11337209302325581,
+    "test_coverage_estimate": 100.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/jinja2/tests.py",
+    "name": "tests",
+    "lines_of_code": 183,
+    "file_type": "python",
+    "quality_score": 89.10810810810811,
+    "functions": [
+      "test_odd",
+      "test_even",
+      "test_divisibleby",
+      "test_defined",
+      "test_undefined",
+      "test_filter",
+      "test_test",
+      "test_none",
+      "test_boolean",
+      "test_false"
+    ],
+    "dependencies": [
+      "operator",
+      "typing",
+      "collections",
+      "numbers",
+      "runtime",
+      "utils",
+      "environment"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 40.0,
+    "last_modified": "2025-07-30T19:38:21.259073",
+    "complexity_score": 26.229508196721312,
+    "documentation_ratio": 0.20540540540540542,
+    "test_coverage_estimate": 40.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/geopandas/testing.py",
+    "name": "testing",
+    "lines_of_code": 303,
+    "file_type": "python",
+    "quality_score": 92.34177215189874,
+    "functions": [
+      "_isna",
+      "_geom_equals_mask",
+      "geom_equals",
+      "_geom_almost_equals_mask",
+      "geom_almost_equals",
+      "assert_geoseries_equal",
+      "_truncated_string",
+      "_check_equality",
+      "assert_geodataframe_equal"
+    ],
+    "dependencies": [
+      "warnings",
+      "pandas",
+      "GeoDataFrame",
+      "GeometryDtype",
+      "assert_frame_equal",
+      "assert_frame_equal",
+      "geopandas",
+      "geopandas",
+      "pandas",
+      "pandas"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 40.0,
+    "last_modified": "2025-09-09T20:12:47.354744",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.11708860759493671,
+    "test_coverage_estimate": 62.22222222222222
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/torch_cluster/testing.py",
+    "name": "testing",
+    "lines_of_code": 16,
+    "file_type": "python",
+    "quality_score": 75.0,
+    "functions": [
+      "tensor"
+    ],
+    "dependencies": [
+      "typing",
+      "torch"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 40.0,
+    "last_modified": "2025-08-14T09:27:08.306584",
+    "complexity_score": 6.25,
+    "documentation_ratio": 0.0,
+    "test_coverage_estimate": 0.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/click/testing.py",
+    "name": "testing",
+    "lines_of_code": 504,
+    "file_type": "python",
+    "quality_score": 76.85404339250493,
+    "functions": [
+      "_pause_echo",
+      "make_input_stream",
+      "__init__",
+      "__getattr__",
+      "_echo",
+      "read",
+      "read1",
+      "readline",
+      "readlines",
+      "__iter__"
+    ],
+    "dependencies": [
+      "__future__",
+      "collections.abc",
+      "contextlib",
+      "io",
+      "os",
+      "shlex",
+      "shutil",
+      "sys",
+      "tempfile",
+      "typing"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 68.0,
+    "last_modified": "2025-09-09T20:12:47.665751",
+    "complexity_score": 28.968253968253972,
+    "documentation_ratio": 0.09270216962524655,
+    "test_coverage_estimate": 8.717948717948719
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/tornado/testing.py",
+    "name": "testing",
+    "lines_of_code": 694,
+    "file_type": "python",
+    "quality_score": 73.10779696493982,
+    "functions": [
+      "bind_unused_port",
+      "get_async_test_timeout",
+      "test_http_fetch",
+      "test_http_fetch",
+      "__init__",
+      "setUp",
+      "tearDown",
+      "get_new_ioloop",
+      "_handle_exception",
+      "__rethrow"
+    ],
+    "dependencies": [
+      "asyncio",
+      "Generator",
+      "functools",
+      "inspect",
+      "logging",
+      "os",
+      "re",
+      "signal",
+      "socket",
+      "sys"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 100.0,
+    "last_modified": "2025-09-09T20:12:49.531072",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.2064102564102564,
+    "test_coverage_estimate": 29.387755102040817
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/joblib/testing.py",
+    "name": "testing",
+    "lines_of_code": 85,
+    "file_type": "python",
+    "quality_score": 88.02325581395348,
+    "functions": [
+      "warnings_to_stdout",
+      "showwarning",
+      "check_subprocess_call",
+      "terminate_process",
+      "kill_process"
+    ],
+    "dependencies": [
+      "os",
+      "re",
+      "subprocess",
+      "sys",
+      "threading",
+      "warnings",
+      "_pytest",
+      "pytest"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 65.0,
+    "last_modified": "2025-09-09T20:12:49.911452",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.1511627906976744,
+    "test_coverage_estimate": 16.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/patsy/test_splines_crs_data.py",
+    "name": "test_splines_crs_data",
+    "lines_of_code": 322,
+    "file_type": "python",
+    "quality_score": 70.24691358024691,
+    "functions": [],
+    "dependencies": [
+      "numpy"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 40.0,
+    "last_modified": "2025-07-30T19:38:19.944633",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.012345679012345678,
+    "test_coverage_estimate": 0.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/patsy/test_state.py",
+    "name": "test_state",
+    "lines_of_code": 167,
+    "file_type": "python",
+    "quality_score": 93.28205128205128,
+    "functions": [
+      "check_stateful",
+      "test_Center",
+      "test_stateful_transform_wrapper",
+      "test_Standardize"
+    ],
+    "dependencies": [
+      "numpy",
+      "Center",
+      "atleast_2d_column_default",
+      "have_pandas",
+      "pandas",
+      "have_pandas",
+      "pandas",
+      "patsy",
+      "patsy",
+      "patsy"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 40.0,
+    "last_modified": "2025-09-09T20:12:50.693396",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.1641025641025641,
+    "test_coverage_estimate": 100.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/patsy/test_splines_bs_data.py",
+    "name": "test_splines_bs_data",
+    "lines_of_code": 604,
+    "file_type": "python",
+    "quality_score": 65.13201320132013,
+    "functions": [],
+    "dependencies": [
+      "numpy"
+    ],
+    "recycling_potential": "low",
+    "archaeological_value": 40.0,
+    "last_modified": "2025-07-30T19:38:19.944154",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.006600660066006601,
+    "test_coverage_estimate": 0.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/patsy/test_regressions.py",
+    "name": "test_regressions",
+    "lines_of_code": 15,
+    "file_type": "python",
+    "quality_score": 82.27272727272728,
+    "functions": [
+      "test_issue_11"
+    ],
+    "dependencies": [
+      "EvalEnvironment",
+      "patsy"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 40.0,
+    "last_modified": "2025-09-09T20:12:50.698650",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.36363636363636365,
+    "test_coverage_estimate": 60.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/patsy/test_highlevel.py",
+    "name": "test_highlevel",
+    "lines_of_code": 882,
+    "file_type": "python",
+    "quality_score": 81.84713375796179,
+    "functions": [
+      "check_result",
+      "dmatrix_pandas",
+      "dmatrices_pandas",
+      "t",
+      "data_iter_maker",
+      "t_invalid",
+      "test_formula_likes",
+      "__patsy_get_model_desc__",
+      "__patsy_get_model_desc__",
+      "check_nested_call"
+    ],
+    "dependencies": [
+      "numpy",
+      "pytest",
+      "PatsyError",
+      "DesignMatrix",
+      "EvalEnvironment",
+      "ModelDesc",
+      "C",
+      "Helmert",
+      "balanced",
+      "design_matrix_builders"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 60.0,
+    "last_modified": "2025-09-09T20:12:50.699400",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.09235668789808917,
+    "test_coverage_estimate": 97.41935483870968
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/torch_scatter/testing.py",
+    "name": "testing",
+    "lines_of_code": 13,
+    "file_type": "python",
+    "quality_score": 75.0,
+    "functions": [
+      "tensor"
+    ],
+    "dependencies": [
+      "typing",
+      "torch"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 40.0,
+    "last_modified": "2025-08-14T09:27:08.276121",
+    "complexity_score": 7.6923076923076925,
+    "documentation_ratio": 0.0,
+    "test_coverage_estimate": 0.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/torch_spline_conv/testing.py",
+    "name": "testing",
+    "lines_of_code": 8,
+    "file_type": "python",
+    "quality_score": 75.0,
+    "functions": [
+      "tensor"
+    ],
+    "dependencies": [
+      "typing",
+      "torch"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 40.0,
+    "last_modified": "2025-08-14T09:27:08.268864",
+    "complexity_score": 12.5,
+    "documentation_ratio": 0.0,
+    "test_coverage_estimate": 0.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/torch_sparse/testing.py",
+    "name": "testing",
+    "lines_of_code": 15,
+    "file_type": "python",
+    "quality_score": 75.0,
+    "functions": [
+      "tensor"
+    ],
+    "dependencies": [
+      "typing",
+      "torch",
+      "torch_scatter",
+      "packaging"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 40.0,
+    "last_modified": "2025-08-14T09:27:08.287143",
+    "complexity_score": 6.666666666666667,
+    "documentation_ratio": 0.0,
+    "test_coverage_estimate": 0.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/pandas/testing.py",
+    "name": "testing",
+    "lines_of_code": 15,
+    "file_type": "python",
+    "quality_score": 62.666666666666664,
+    "functions": [],
+    "dependencies": [
+      "pandas._testing"
+    ],
+    "recycling_potential": "low",
+    "archaeological_value": 40.0,
+    "last_modified": "2025-07-30T19:38:22.937465",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.13333333333333333,
+    "test_coverage_estimate": 0.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/pyarrow/tests/test_tensor.py",
+    "name": "test_tensor",
+    "lines_of_code": 178,
+    "file_type": "python",
+    "quality_score": 88.8235294117647,
+    "functions": [
+      "test_tensor_attrs",
+      "test_tensor_base_object",
+      "test_tensor_numpy_roundtrip",
+      "test_tensor_ipc_roundtrip",
+      "test_tensor_ipc_read_from_compressed",
+      "test_tensor_ipc_strided",
+      "test_tensor_equals",
+      "eq",
+      "ne",
+      "test_tensor_hashing"
+    ],
+    "dependencies": [
+      "os",
+      "sys",
+      "pytest",
+      "warnings",
+      "weakref",
+      "numpy",
+      "pyarrow"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 50.0,
+    "last_modified": "2025-09-09T20:12:52.336592",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.19117647058823528,
+    "test_coverage_estimate": 76.92307692307692
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/pyarrow/tests/test_ipc.py",
+    "name": "test_ipc",
+    "lines_of_code": 1131,
+    "file_type": "python",
+    "quality_score": 72.68557130942452,
+    "functions": [
+      "__init__",
+      "get_sink",
+      "get_source",
+      "write_batches",
+      "_get_writer",
+      "_check_roundtrip",
+      "_get_writer",
+      "_get_writer",
+      "ipc_fixture",
+      "file_fixture"
+    ],
+    "dependencies": [
+      "UserList",
+      "datetime",
+      "io",
+      "pathlib",
+      "pytest",
+      "random",
+      "socket",
+      "threading",
+      "weakref",
+      "numpy"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 100.0,
+    "last_modified": "2025-09-09T20:12:52.337548",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.13427856547122602,
+    "test_coverage_estimate": 59.30232558139535
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/pyarrow/tests/test_flight_async.py",
+    "name": "test_flight_async",
+    "lines_of_code": 67,
+    "file_type": "python",
+    "quality_score": 90.95238095238095,
+    "functions": [
+      "get_flight_info",
+      "async_or_skip",
+      "flight_client",
+      "async_client",
+      "test_async_support_property",
+      "test_get_flight_info",
+      "_test",
+      "test_get_flight_info_error",
+      "_test"
+    ],
+    "dependencies": [
+      "asyncio",
+      "pytest",
+      "pyarrow"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 40.0,
+    "last_modified": "2025-09-09T20:12:52.338066",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.2976190476190476,
+    "test_coverage_estimate": 13.333333333333332
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/pyarrow/tests/test_convert_builtin.py",
+    "name": "test_convert_builtin",
+    "lines_of_code": 2260,
+    "file_type": "python",
+    "quality_score": 67.42904841402337,
+    "functions": [
+      "__init__",
+      "__iter__",
+      "__init__",
+      "__int__",
+      "__int__",
+      "check_struct_type",
+      "test_iterable_types",
+      "test_empty_iterable",
+      "test_limited_iterator_types",
+      "test_limited_iterator_size_overflow"
+    ],
+    "dependencies": [
+      "collections",
+      "datetime",
+      "decimal",
+      "itertools",
+      "math",
+      "re",
+      "hypothesis",
+      "pytest",
+      "numpy",
+      "_pandas_api"
+    ],
+    "recycling_potential": "low",
+    "archaeological_value": 69.0,
+    "last_modified": "2025-09-09T20:12:52.339846",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.12145242070116861,
+    "test_coverage_estimate": 98.9041095890411
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/pyarrow/tests/test_misc.py",
+    "name": "test_misc",
+    "lines_of_code": 236,
+    "file_type": "python",
+    "quality_score": 83.10077519379846,
+    "functions": [
+      "test_get_include",
+      "test_get_library_dirs_win32",
+      "test_cpu_count",
+      "test_io_thread_count",
+      "test_env_var_io_thread_count",
+      "run_with_env_var",
+      "test_build_info",
+      "test_runtime_info",
+      "test_import_at_shutdown",
+      "import_arrow"
+    ],
+    "dependencies": [
+      "os",
+      "subprocess",
+      "sys",
+      "pytest",
+      "pyarrow",
+      "ArrowInvalid",
+      "pyarrow",
+      "pyarrow",
+      "atexit",
+      "pyarrow"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 60.0,
+    "last_modified": "2025-09-09T20:12:52.340178",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.15503875968992248,
+    "test_coverage_estimate": 53.33333333333333
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/pyarrow/tests/test_acero.py",
+    "name": "test_acero",
+    "lines_of_code": 400,
+    "file_type": "python",
+    "quality_score": 92.85077951002228,
+    "functions": [
+      "table_source",
+      "test_declaration",
+      "test_declaration_repr",
+      "test_declaration_to_reader",
+      "test_table_source",
+      "test_filter",
+      "test_filter_all_rows",
+      "test_project",
+      "test_aggregate_scalar",
+      "test_aggregate_hash"
+    ],
+    "dependencies": [
+      "pytest",
+      "pyarrow",
+      "pyarrow",
+      "field",
+      "pyarrow",
+      "ScanNodeOptions",
+      "pyarrow",
+      "pyarrow",
+      "pyarrow",
+      "expression"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 55.0,
+    "last_modified": "2025-09-09T20:12:52.340942",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.14253897550111358,
+    "test_coverage_estimate": 100.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/pyarrow/tests/test_gandiva.py",
+    "name": "test_gandiva",
+    "lines_of_code": 313,
+    "file_type": "python",
+    "quality_score": 92.75071633237823,
+    "functions": [
+      "test_tree_exp_builder",
+      "test_table",
+      "test_filter",
+      "test_in_expr",
+      "test_in_expr_todo",
+      "test_boolean",
+      "test_literals",
+      "test_regex",
+      "test_get_registered_function_signatures",
+      "test_filter_project"
+    ],
+    "dependencies": [
+      "datetime",
+      "pytest",
+      "pyarrow",
+      "pyarrow",
+      "pyarrow",
+      "pyarrow",
+      "pyarrow",
+      "pyarrow",
+      "pyarrow",
+      "pyarrow"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 40.0,
+    "last_modified": "2025-09-09T20:12:52.341322",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.13753581661891118,
+    "test_coverage_estimate": 65.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/pyarrow/tests/test_adhoc_memory_leak.py",
+    "name": "test_adhoc_memory_leak",
+    "lines_of_code": 25,
+    "file_type": "python",
+    "quality_score": 89.04761904761905,
+    "functions": [
+      "test_deserialize_pandas_arrow_7956",
+      "action"
+    ],
+    "dependencies": [
+      "pytest",
+      "numpy",
+      "pyarrow",
+      "pyarrow",
+      "pandas"
+    ],
+    "recycling_potential": "high",
+    "archaeological_value": 45.0,
+    "last_modified": "2025-09-09T20:12:52.341782",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.4523809523809524,
+    "test_coverage_estimate": 40.0
+  },
+  {
+    "path": "/Users/cp5337/Developer/HOLD DURING REORG/nyx-hold-reorg/nyx-trace-6-6-ACTIVE-MAIN/venv/lib/python3.13/site-packages/pyarrow/tests/test_orc.py",
+    "name": "test_orc",
+    "lines_of_code": 559,
+    "file_type": "python",
+    "quality_score": 82.86634460547504,
+    "functions": [
+      "datadir",
+      "fix_example_values",
+      "check_example_values",
+      "check_example_file",
+      "test_example_using_json",
+      "test_timezone_database_absent",
+      "test_timezone_absent",
+      "test_orcfile_empty",
+      "test_filesystem_uri",
+      "test_orcfile_readwrite"
+    ],
+    "dependencies": [
+      "decimal",
+      "datetime",
+      "Path",
+      "shutil",
+      "subprocess",
+      "sys",
+      "pytest",
+      "pyarrow",
+      "fs",
+      "util"
+    ],
+    "recycling_potential": "medium",
+    "archaeological_value": 80.0,
+    "last_modified": "2025-09-09T20:12:52.342568",
+    "complexity_score": 0.0,
+    "documentation_ratio": 0.143317230273752,
+    "test_coverage_estimate": 100.0
+  }
+]

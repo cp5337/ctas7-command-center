@@ -1,0 +1,556 @@
+[
+  {
+    "tab": "overview",
+    "screenshot": "./screenshots/overview-screen.png",
+    "content": {
+      "title": "CTAS 7.0 Command Center",
+      "mainHeadings": [
+        "CTAS 7.0",
+        "Team Personas",
+        "Natasha Volkov",
+        "Marcus Chen",
+        "Elena Rodriguez",
+        "David Kim",
+        "Sarah Johnson",
+        "Alex Petrov",
+        "System Metrics",
+        "CPU Usage",
+        "Memory Usage",
+        "Network Latency",
+        "Active Connections",
+        "Error Rate",
+        "Response Time",
+        "Operations Board",
+        "To Do",
+        "In Progress",
+        "Review",
+        "Done",
+        "System Health",
+        "Recent Activity"
+      ],
+      "buttons": [
+        "Overview",
+        "Chat",
+        "DevOps",
+        "Metrics",
+        "Enterprise",
+        "CyberOps",
+        "Ontology",
+        "Crates",
+        "Tools",
+        "Home",
+        "Overview",
+        "Chat",
+        "Chat",
+        "Chat",
+        "Chat",
+        "Chat",
+        "Chat",
+        "New Task"
+      ],
+      "inputs": [
+        {
+          "type": "text",
+          "placeholder": "Search tasks...",
+          "label": ""
+        },
+        {
+          "type": "select-one",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "type": "select-one",
+          "placeholder": "",
+          "label": ""
+        }
+      ],
+      "cards": 104,
+      "tables": 0,
+      "forms": 0,
+      "modals": 1
+    },
+    "timestamp": "2025-10-07T07:05:12.724Z"
+  },
+  {
+    "tab": "chat",
+    "screenshot": "./screenshots/chat-screen.png",
+    "content": {
+      "title": "CTAS 7.0 Command Center",
+      "mainHeadings": [
+        "CTAS 7.0",
+        "Channels",
+        "General",
+        "Natasha Volkov",
+        "Marcus Chen",
+        "Operations",
+        "General"
+      ],
+      "buttons": [
+        "Overview",
+        "Chat",
+        "DevOps",
+        "Metrics",
+        "Enterprise",
+        "CyberOps",
+        "Ontology",
+        "Crates",
+        "Tools",
+        "Home",
+        "Chat"
+      ],
+      "inputs": [
+        {
+          "type": "text",
+          "placeholder": "Type a message...",
+          "label": ""
+        },
+        {
+          "type": "file",
+          "placeholder": "",
+          "label": ""
+        }
+      ],
+      "cards": 31,
+      "tables": 0,
+      "forms": 0,
+      "modals": 1
+    },
+    "timestamp": "2025-10-07T07:05:13.838Z"
+  },
+  {
+    "tab": "tasks",
+    "screenshot": "./screenshots/tasks-screen.png",
+    "content": {
+      "title": "CTAS 7.0 Command Center",
+      "mainHeadings": [
+        "CTAS 7.0",
+        "Tesla/SpaceX/NASA-Grade DevOps",
+        "Mission Critical DevOps",
+        "System Availability",
+        "P99 Response Time",
+        "Error Rate",
+        "Security Posture",
+        "Deployment Frequency",
+        "Mean Time to Recovery",
+        "System Health Dashboard",
+        "Linear-Style Project Management",
+        "Linear-Style Project Management",
+        "Kanban Operations Board",
+        "To Do",
+        "In Progress",
+        "Review",
+        "Done"
+      ],
+      "buttons": [
+        "Overview",
+        "Chat",
+        "DevOps",
+        "Metrics",
+        "Enterprise",
+        "CyberOps",
+        "Ontology",
+        "Crates",
+        "Tools",
+        "Home",
+        "DevOps",
+        "Pause Live Data",
+        "Mission Control",
+        "Launch Pipelines",
+        "Live Telemetry",
+        "Flight Readiness",
+        "Anomaly Response",
+        "New IssueC",
+        "Issues",
+        "Projects",
+        "Cycles",
+        "Roadmap",
+        "Insights",
+        "New Task"
+      ],
+      "inputs": [
+        {
+          "type": "text",
+          "placeholder": "Search issues...",
+          "label": ""
+        },
+        {
+          "type": "select-one",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "type": "select-one",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "type": "text",
+          "placeholder": "Search tasks...",
+          "label": ""
+        },
+        {
+          "type": "select-one",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "type": "select-one",
+          "placeholder": "",
+          "label": ""
+        }
+      ],
+      "cards": 90,
+      "tables": 0,
+      "forms": 0,
+      "modals": 1
+    },
+    "timestamp": "2025-10-07T07:05:15.010Z"
+  },
+  {
+    "tab": "metrics",
+    "screenshot": "./screenshots/metrics-screen.png",
+    "content": {
+      "title": "CTAS 7.0 Command Center",
+      "mainHeadings": [
+        "CTAS 7.0",
+        "System Performance",
+        "CPU Usage",
+        "Memory Usage",
+        "Network Latency",
+        "Active Connections",
+        "Error Rate",
+        "Response Time",
+        "API Endpoints",
+        "Hash Cache Status"
+      ],
+      "buttons": [
+        "Overview",
+        "Chat",
+        "DevOps",
+        "Metrics",
+        "Enterprise",
+        "CyberOps",
+        "Ontology",
+        "Crates",
+        "Tools",
+        "Home",
+        "Metrics"
+      ],
+      "inputs": [],
+      "cards": 26,
+      "tables": 0,
+      "forms": 0,
+      "modals": 1
+    },
+    "timestamp": "2025-10-07T07:05:16.106Z"
+  },
+  {
+    "tab": "enterprise",
+    "screenshot": "./screenshots/enterprise-screen.png",
+    "content": {
+      "title": "CTAS 7.0 Command Center",
+      "mainHeadings": [
+        "CTAS 7.0",
+        "Linear Multi-LLM Onboarding",
+        "Linear Configuration",
+        "AI Team Members",
+        "Enterprise Integration Hub",
+        "NIEM Core Schema",
+        "N-DEX Primary",
+        "Weather API",
+        "System Status",
+        "Leptos Documentation Bridge",
+        "NIEM Integration Implementation Guide",
+        "N-DEX Implementation and Agency Integration",
+        "Weather API Integration for Operational Intelligence",
+        "Custom Kali Tools Development Framework",
+        "Document Preview"
+      ],
+      "buttons": [
+        "Overview",
+        "Chat",
+        "DevOps",
+        "Metrics",
+        "Enterprise",
+        "CyberOps",
+        "Ontology",
+        "Crates",
+        "Tools",
+        "Home",
+        "Enterprise",
+        "Start Onboarding",
+        "Overview",
+        "NIEM",
+        "N-DEX",
+        "Weather",
+        "XSD Schema",
+        "Sync to Leptos",
+        "Open Leptos Site",
+        "Documentation",
+        "Knowledge Graph",
+        "Leptos Sync",
+        "Export"
+      ],
+      "inputs": [
+        {
+          "type": "password",
+          "placeholder": "lin_api_...",
+          "label": ""
+        },
+        {
+          "type": "text",
+          "placeholder": "team_...",
+          "label": ""
+        },
+        {
+          "type": "text",
+          "placeholder": "https://linear.app/company",
+          "label": ""
+        },
+        {
+          "type": "text",
+          "placeholder": "Search documentation, knowledge graph, or integration guides...",
+          "label": ""
+        }
+      ],
+      "cards": 75,
+      "tables": 0,
+      "forms": 0,
+      "modals": 1
+    },
+    "timestamp": "2025-10-07T07:05:17.272Z"
+  },
+  {
+    "tab": "cyberops",
+    "screenshot": "./screenshots/cyberops-screen.png",
+    "content": {
+      "title": "CTAS 7.0 Command Center",
+      "mainHeadings": [
+        "CTAS 7.0",
+        "Cyber Operations Workspace",
+        "Web Application Honeypot",
+        "SSH Honeypot",
+        "API Gateway Honeypot",
+        "Code Preview"
+      ],
+      "buttons": [
+        "Overview",
+        "Chat",
+        "DevOps",
+        "Metrics",
+        "Enterprise",
+        "CyberOps",
+        "Ontology",
+        "Crates",
+        "Tools",
+        "Home",
+        "CyberOps",
+        "Deploy Honeypot",
+        "Monitor Threats",
+        "Honeypots",
+        "Threat Intel",
+        "Analysis",
+        "Integrations"
+      ],
+      "inputs": [],
+      "cards": 28,
+      "tables": 0,
+      "forms": 0,
+      "modals": 1
+    },
+    "timestamp": "2025-10-07T07:05:18.341Z"
+  },
+  {
+    "tab": "ontology",
+    "screenshot": "./screenshots/ontology-screen.png",
+    "content": {
+      "title": "CTAS 7.0 Command Center",
+      "mainHeadings": [
+        "CTAS 7.0",
+        "CTAS Ontology Manager",
+        "Threat Actor",
+        "Digital Asset",
+        "Attack Surface",
+        "Initial Access",
+        "Honeypot",
+        "Entity Details"
+      ],
+      "buttons": [
+        "Overview",
+        "Chat",
+        "DevOps",
+        "Metrics",
+        "Enterprise",
+        "CyberOps",
+        "Ontology",
+        "Crates",
+        "Tools",
+        "Home",
+        "Ontology",
+        "Add Entity",
+        "Visualize Graph",
+        "Entities",
+        "Relationships",
+        "Reasoning",
+        "XSD Schema",
+        "Import/Export"
+      ],
+      "inputs": [
+        {
+          "type": "text",
+          "placeholder": "Search entities, relationships, or concepts...",
+          "label": ""
+        },
+        {
+          "type": "select-one",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "type": "select-one",
+          "placeholder": "",
+          "label": ""
+        }
+      ],
+      "cards": 46,
+      "tables": 0,
+      "forms": 0,
+      "modals": 1
+    },
+    "timestamp": "2025-10-07T07:05:19.466Z"
+  },
+  {
+    "tab": "crates",
+    "screenshot": "./screenshots/crates-screen.png",
+    "content": {
+      "title": "CTAS 7.0 Command Center",
+      "mainHeadings": [
+        "CTAS 7.0",
+        "Smart Crate Orchestration",
+        "Crate Analysis & Shipyard",
+        "Cannon Plug API Status",
+        "Core Services",
+        "Cannon Plug Endpoints",
+        "Crate Analysis Data Preview",
+        "Shipyard Readout - Raw API Data"
+      ],
+      "buttons": [
+        "Overview",
+        "Chat",
+        "DevOps",
+        "Metrics",
+        "Enterprise",
+        "CyberOps",
+        "Ontology",
+        "Crates",
+        "Tools",
+        "Home",
+        "Crates",
+        "Scan Legacy Repos",
+        "Connect to Registry",
+        "Build Crate",
+        "Retrofit Crates",
+        "Orchestrate",
+        "xsd_p1",
+        "xsd_p2",
+        "xsd_p3",
+        "ooda",
+        "hd4",
+        "neural_mux",
+        "Retrofit 0 Crates",
+        "Connect to Registry",
+        "Analyze"
+      ],
+      "inputs": [
+        {
+          "type": "text",
+          "placeholder": "Search crates...",
+          "label": ""
+        },
+        {
+          "type": "select-one",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "type": "select-one",
+          "placeholder": "",
+          "label": ""
+        },
+        {
+          "type": "text",
+          "placeholder": "e.g., sigint, data-analysis, network-recon",
+          "label": ""
+        },
+        {
+          "type": "text",
+          "placeholder": "e.g., cybersecurity, intelligence",
+          "label": ""
+        },
+        {
+          "type": "select-one",
+          "placeholder": "",
+          "label": ""
+        }
+      ],
+      "cards": 62,
+      "tables": 0,
+      "forms": 0,
+      "modals": 1
+    },
+    "timestamp": "2025-10-07T07:05:20.607Z"
+  },
+  {
+    "tab": "tools",
+    "screenshot": "./screenshots/tools-screen.png",
+    "content": {
+      "title": "CTAS 7.0 Command Center",
+      "mainHeadings": [
+        "CTAS 7.0",
+        "Development Tools",
+        "Tool Forge",
+        "CTAS Purple Defender",
+        "OSINT Harvester Pro",
+        "Neural Mux Connector",
+        "Project Details"
+      ],
+      "buttons": [
+        "Overview",
+        "Chat",
+        "DevOps",
+        "Metrics",
+        "Enterprise",
+        "CyberOps",
+        "Ontology",
+        "Crates",
+        "Tools",
+        "Home",
+        "Tools",
+        "New Project",
+        "Clone Repo",
+        "Projects",
+        "Tool Forge",
+        "Git Operations",
+        "Deployment"
+      ],
+      "inputs": [
+        {
+          "type": "text",
+          "placeholder": "Search projects, tools, or repositories...",
+          "label": ""
+        },
+        {
+          "type": "select-one",
+          "placeholder": "",
+          "label": ""
+        }
+      ],
+      "cards": 28,
+      "tables": 0,
+      "forms": 0,
+      "modals": 1
+    },
+    "timestamp": "2025-10-07T07:05:21.729Z"
+  }
+]

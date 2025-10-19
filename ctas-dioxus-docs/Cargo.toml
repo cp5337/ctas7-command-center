@@ -1,0 +1,52 @@
+[package]
+name = "ctas-dioxus-docs"
+version = "0.1.0"
+edition = "2021"
+authors = ["CTAS 7.0 Engineering Team"]
+description = "Live, self-discovering documentation system for CTAS-7 that queries Neural Mux"
+
+[dependencies]
+# Dioxus Framework
+dioxus = { version = "0.6", features = ["desktop", "router"] }
+dioxus-desktop = "0.6"
+dioxus-router = "0.6"
+
+# Async Runtime
+tokio = { version = "1.0", features = ["full"] }
+reqwest = { version = "0.12", features = ["json"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Markdown Parsing
+pulldown-cmark = "0.11"
+
+# Syntax Highlighting
+syntect = "5.2"
+
+# Time
+chrono = { version = "0.4", features = ["serde"] }
+
+# Error Handling
+anyhow = "1.0"
+thiserror = "2.0"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# UUID for routing
+uuid = { version = "1.0", features = ["v4", "serde"] }
+
+# Cache for Neural Mux responses
+moka = { version = "0.12", features = ["future"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+
+
+

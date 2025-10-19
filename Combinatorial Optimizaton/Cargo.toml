@@ -1,0 +1,108 @@
+[package]
+name = "ctas7-layer2-mathematical-intelligence-frontend"
+version = "7.0.0"
+edition = "2021"
+description = "CTAS 7.0 Layer 2 Mathematical Intelligence Frontend - Command Center Integration"
+license = "MIT"
+repository = "https://github.com/ctas7/layer2-mathematical-intelligence-frontend"
+
+[[bin]]
+name = "layer2_mathematical_frontend"
+path = "unified_layer2_system.rs"
+
+[dependencies]
+# CTAS Foundation Dependencies - Leveraging existing mature ecosystem
+ctas7-layer2-mathematical-intelligence = { path = "../../../ctas-7-shipyard-staging/ctas7-layer2-mathematical-intelligence" }
+
+# Foundation Crate Re-exports for convenience
+[dependencies.tokio]
+workspace = true
+
+[dependencies.serde]
+workspace = true
+
+[dependencies.blake3]
+workspace = true
+
+[dependencies.anyhow]
+workspace = true
+
+[dependencies.uuid]
+workspace = true
+
+[dependencies.tracing]
+workspace = true
+
+# Specialized dependencies not covered by foundation
+pnet = "0.34"
+pnet_datalink = "0.34"
+nalgebra = "0.32"
+ndarray = "0.15"
+statrs = "0.16"
+petgraph = "0.6"
+
+[dev-dependencies]
+criterion = "0.5"
+proptest = "1.4"
+tokio-test = "0.4"
+
+[features]
+default = ["full"]
+full = ["network", "mathematical", "learning"]
+network = ["pnet", "pnet_datalink"]
+mathematical = ["nalgebra", "ndarray", "statrs"]
+learning = ["petgraph"]
+
+# Optimization profiles
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[profile.dev]
+opt-level = 0
+debug = true
+overflow-checks = true
+
+# Benchmarking profile
+[profile.bench]
+opt-level = 3
+debug = false
+rpath = false
+lto = true
+debug-assertions = false
+codegen-units = 1
+panic = "abort"
+incremental = false
+overflow-checks = false
+
+# Documentation
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+# Command Center Frontend - Links to foundation crate
+# The core intelligence is implemented in the foundation crate
+# This frontend provides command center integration
+
+# CTAS-7 Smart Crate System metadata
+[package.metadata.ctas7]
+crate_type = "frontend-integration"
+mission = "Layer2MathematicalIntelligenceFrontend"
+security_level = "Production"
+orchestrator_compatible = true
+cannibalization_protected = true
+foundation_integration = true
+foundation_dependencies = ["layer2-mathematical-intelligence"]
+mathematical_framework = "PTCC-7.0"
+network_layer = "Layer2-Direct"
+threat_intelligence = "TETH-LStar"
+
+# Smart Crate System integration
+[package.metadata.smart_crate]
+template_version = "7.0.0"
+orchestrator_version = "7.0.0"
+frontend_mode = true
+foundation_crate_integration = true
+neural_mux_integration = true

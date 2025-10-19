@@ -1,0 +1,1991 @@
+{
+  "config": {
+    "configFile": "/Users/cp5337/Developer/ctas7-command-center/playwright.config.ts",
+    "rootDir": "/Users/cp5337/Developer/ctas7-command-center/tests/playwright",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "/Users/cp5337/Developer/ctas7-command-center/tests/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 600000,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "framework": "CTAS-7 Dioxus",
+      "version": "0.7.0",
+      "environment": "development",
+      "neural_mux": "ws://localhost:18100",
+      "database": "ws://localhost:8000"
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "./tests/reports/playwright-report.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "./tests/reports/html-report"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/cp5337/Developer/ctas7-command-center/tests/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "framework": "CTAS-7 Dioxus",
+          "version": "0.7.0",
+          "environment": "development",
+          "neural_mux": "ws://localhost:18100",
+          "database": "ws://localhost:8000"
+        },
+        "id": "CTAS7-Dioxus",
+        "name": "CTAS7-Dioxus",
+        "testDir": "/Users/cp5337/Developer/ctas7-command-center/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*ctas7.*\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/cp5337/Developer/ctas7-command-center/tests/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "framework": "CTAS-7 Dioxus",
+          "version": "0.7.0",
+          "environment": "development",
+          "neural_mux": "ws://localhost:18100",
+          "database": "ws://localhost:8000"
+        },
+        "id": "CTAS7-Mobile",
+        "name": "CTAS7-Mobile",
+        "testDir": "/Users/cp5337/Developer/ctas7-command-center/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*ctas7.*\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/cp5337/Developer/ctas7-command-center/tests/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "framework": "CTAS-7 Dioxus",
+          "version": "0.7.0",
+          "environment": "development",
+          "neural_mux": "ws://localhost:18100",
+          "database": "ws://localhost:8000"
+        },
+        "id": "CTAS7-Tablet",
+        "name": "CTAS7-Tablet",
+        "testDir": "/Users/cp5337/Developer/ctas7-command-center/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*ctas7.*\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/cp5337/Developer/ctas7-command-center/tests/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "framework": "CTAS-7 Dioxus",
+          "version": "0.7.0",
+          "environment": "development",
+          "neural_mux": "ws://localhost:18100",
+          "database": "ws://localhost:8000"
+        },
+        "id": "CTAS7-Firefox",
+        "name": "CTAS7-Firefox",
+        "testDir": "/Users/cp5337/Developer/ctas7-command-center/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*ctas7.*\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 7,
+    "webServer": {
+      "command": "cargo run --bin ctas-dioxus-server",
+      "port": 3000,
+      "reuseExistingServer": true,
+      "timeout": 120000,
+      "env": {
+        "CTAS_ENV": "test",
+        "CTAS_DB_URL": "ws://localhost:8000",
+        "CTAS_NEURAL_MUX": "ws://localhost:18100",
+        "RUST_LOG": "info"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "ctas7_dioxus_harness.spec.ts",
+      "file": "ctas7_dioxus_harness.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "CTAS-7 Dioxus Dashboard Test Harness",
+          "file": "ctas7_dioxus_harness.spec.ts",
+          "line": 43,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Auto-discover and classify UI elements",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fdc870a74a815a6a8377-fd1bdc55ca7bc01c4ec8",
+              "file": "ctas7_dioxus_harness.spec.ts",
+              "line": 60,
+              "column": 3
+            },
+            {
+              "title": "Validate Neural-Mux event binding",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fdc870a74a815a6a8377-661abb3ba5514339e125",
+              "file": "ctas7_dioxus_harness.spec.ts",
+              "line": 94,
+              "column": 3
+            },
+            {
+              "title": "Validate database route connectivity",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fdc870a74a815a6a8377-e5eecd319ef3c20ae95c",
+              "file": "ctas7_dioxus_harness.spec.ts",
+              "line": 122,
+              "column": 3
+            },
+            {
+              "title": "Mobile responsiveness validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fdc870a74a815a6a8377-854af4edcaf2fa90a3ed",
+              "file": "ctas7_dioxus_harness.spec.ts",
+              "line": 148,
+              "column": 3
+            },
+            {
+              "title": "Auto-discover and classify UI elements",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fdc870a74a815a6a8377-f77bbbd026fca693ec9f",
+              "file": "ctas7_dioxus_harness.spec.ts",
+              "line": 60,
+              "column": 3
+            },
+            {
+              "title": "Validate Neural-Mux event binding",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fdc870a74a815a6a8377-6175fc23716eb01f5b7f",
+              "file": "ctas7_dioxus_harness.spec.ts",
+              "line": 94,
+              "column": 3
+            },
+            {
+              "title": "Validate database route connectivity",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fdc870a74a815a6a8377-432e27f25dc09114af42",
+              "file": "ctas7_dioxus_harness.spec.ts",
+              "line": 122,
+              "column": 3
+            },
+            {
+              "title": "Mobile responsiveness validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fdc870a74a815a6a8377-71cb73e780a7eb31cfa3",
+              "file": "ctas7_dioxus_harness.spec.ts",
+              "line": 148,
+              "column": 3
+            },
+            {
+              "title": "Auto-discover and classify UI elements",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fdc870a74a815a6a8377-52758ca4509cb60a39f7",
+              "file": "ctas7_dioxus_harness.spec.ts",
+              "line": 60,
+              "column": 3
+            },
+            {
+              "title": "Validate Neural-Mux event binding",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fdc870a74a815a6a8377-4d265fa61a62e4fbfcb7",
+              "file": "ctas7_dioxus_harness.spec.ts",
+              "line": 94,
+              "column": 3
+            },
+            {
+              "title": "Validate database route connectivity",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fdc870a74a815a6a8377-ebe3a22302a6ac4c0df9",
+              "file": "ctas7_dioxus_harness.spec.ts",
+              "line": 122,
+              "column": 3
+            },
+            {
+              "title": "Mobile responsiveness validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fdc870a74a815a6a8377-ab528e5770d58302013c",
+              "file": "ctas7_dioxus_harness.spec.ts",
+              "line": 148,
+              "column": 3
+            },
+            {
+              "title": "Auto-discover and classify UI elements",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fdc870a74a815a6a8377-cbdb6402294ddbbc299c",
+              "file": "ctas7_dioxus_harness.spec.ts",
+              "line": 60,
+              "column": 3
+            },
+            {
+              "title": "Validate Neural-Mux event binding",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fdc870a74a815a6a8377-ad6e71fb89485152a18d",
+              "file": "ctas7_dioxus_harness.spec.ts",
+              "line": 94,
+              "column": 3
+            },
+            {
+              "title": "Validate database route connectivity",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fdc870a74a815a6a8377-a44f256aba4d81c03d36",
+              "file": "ctas7_dioxus_harness.spec.ts",
+              "line": 122,
+              "column": 3
+            },
+            {
+              "title": "Mobile responsiveness validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "fdc870a74a815a6a8377-e2dd56b97966f79209f0",
+              "file": "ctas7_dioxus_harness.spec.ts",
+              "line": 148,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ctas7-bootstrap-validation.spec.ts",
+      "file": "ctas7-bootstrap-validation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "CTAS-7 Bootstrap Validation",
+          "file": "ctas7-bootstrap-validation.spec.ts",
+          "line": 12,
+          "column": 6,
+          "specs": [
+            {
+              "title": "System Initialization Sequence",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1290968f116debf7814b-283ae2220ab1817944d0",
+              "file": "ctas7-bootstrap-validation.spec.ts",
+              "line": 13,
+              "column": 3
+            },
+            {
+              "title": "Environment Configuration Validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1290968f116debf7814b-50e15afe0843c7db144e",
+              "file": "ctas7-bootstrap-validation.spec.ts",
+              "line": 262,
+              "column": 3
+            },
+            {
+              "title": "System Initialization Sequence",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1290968f116debf7814b-e5d80aa36587cc43a3e7",
+              "file": "ctas7-bootstrap-validation.spec.ts",
+              "line": 13,
+              "column": 3
+            },
+            {
+              "title": "Environment Configuration Validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1290968f116debf7814b-816fad620c9d8215d377",
+              "file": "ctas7-bootstrap-validation.spec.ts",
+              "line": 262,
+              "column": 3
+            },
+            {
+              "title": "System Initialization Sequence",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1290968f116debf7814b-968ba266f182cc627903",
+              "file": "ctas7-bootstrap-validation.spec.ts",
+              "line": 13,
+              "column": 3
+            },
+            {
+              "title": "Environment Configuration Validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1290968f116debf7814b-5efcd92e7f078a9388e0",
+              "file": "ctas7-bootstrap-validation.spec.ts",
+              "line": 262,
+              "column": 3
+            },
+            {
+              "title": "System Initialization Sequence",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1290968f116debf7814b-5a92a9d9595f774f3b50",
+              "file": "ctas7-bootstrap-validation.spec.ts",
+              "line": 13,
+              "column": 3
+            },
+            {
+              "title": "Environment Configuration Validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "1290968f116debf7814b-31f8b9b68a8365bc609f",
+              "file": "ctas7-bootstrap-validation.spec.ts",
+              "line": 262,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ctas7-environment-inventory.spec.ts",
+      "file": "ctas7-environment-inventory.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "CTAS-7 Environment Inventory and Bootstrap",
+          "file": "ctas7-environment-inventory.spec.ts",
+          "line": 12,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CTAS-7 Primary Dashboard Inventory",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-bf37b64e9033eca80db8",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 37,
+              "column": 3
+            },
+            {
+              "title": "Service Discovery and Health Check",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-a95ff2eab76ac10fa8e0",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 143,
+              "column": 3
+            },
+            {
+              "title": "Data Export and Configuration Discovery",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-c6055898fa525417a252",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 190,
+              "column": 3
+            },
+            {
+              "title": "Network Topology and Configuration Analysis",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-99676afe2af77c1ed7e3",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 244,
+              "column": 3
+            },
+            {
+              "title": "Performance Metrics Collection",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-14239279ab29ebf5c413",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 292,
+              "column": 3
+            },
+            {
+              "title": "CTAS-7 Primary Dashboard Inventory",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-c50d0b99c1516a8f227c",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 37,
+              "column": 3
+            },
+            {
+              "title": "Service Discovery and Health Check",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-805be401c93d3d2395dc",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 143,
+              "column": 3
+            },
+            {
+              "title": "Data Export and Configuration Discovery",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-7ef4954c4c1cdfa65c9e",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 190,
+              "column": 3
+            },
+            {
+              "title": "Network Topology and Configuration Analysis",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-cdbf788619f85b12075f",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 244,
+              "column": 3
+            },
+            {
+              "title": "Performance Metrics Collection",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-98cd98c12eaa448047af",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 292,
+              "column": 3
+            },
+            {
+              "title": "CTAS-7 Primary Dashboard Inventory",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-b93500a76ed210ea1e1b",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 37,
+              "column": 3
+            },
+            {
+              "title": "Service Discovery and Health Check",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-33bbf6d95ee1b85ba84a",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 143,
+              "column": 3
+            },
+            {
+              "title": "Data Export and Configuration Discovery",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-2d4641681544d2b42bb1",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 190,
+              "column": 3
+            },
+            {
+              "title": "Network Topology and Configuration Analysis",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-aff3112d93b79f34f430",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 244,
+              "column": 3
+            },
+            {
+              "title": "Performance Metrics Collection",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-def68b89b466933f21ee",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 292,
+              "column": 3
+            },
+            {
+              "title": "CTAS-7 Primary Dashboard Inventory",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-3f1b79f1c20cf80b38b1",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 37,
+              "column": 3
+            },
+            {
+              "title": "Service Discovery and Health Check",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-b930ac631443c3f818d0",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 143,
+              "column": 3
+            },
+            {
+              "title": "Data Export and Configuration Discovery",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-102b1736249e95ec3d2c",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 190,
+              "column": 3
+            },
+            {
+              "title": "Network Topology and Configuration Analysis",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-ccf77235174f9854f057",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 244,
+              "column": 3
+            },
+            {
+              "title": "Performance Metrics Collection",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "7ff35666cb2a31f67bf1-22efb4447fae0ccabbba",
+              "file": "ctas7-environment-inventory.spec.ts",
+              "line": 292,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "layer2-fabric-stealth.spec.ts",
+      "file": "layer2-fabric-stealth.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "CTAS-7 Layer 2 Mathematical Intelligence Fabric",
+          "file": "layer2-fabric-stealth.spec.ts",
+          "line": 10,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TETH Algorithm Integration and Entropy Analysis",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-15ee98a879718bbf9715",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 22,
+              "column": 3
+            },
+            {
+              "title": "L* Learning Algorithm Active Learning",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-b88994acd687acac0a86",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 48,
+              "column": 3
+            },
+            {
+              "title": "Blake3 Authentication Layer 2 Security",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-b24ed751151f400ba34b",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 75,
+              "column": 3
+            },
+            {
+              "title": "QKD Encryption Integration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-75428829538ee4012e6a",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 99,
+              "column": 3
+            },
+            {
+              "title": "Multi-Domain Network Fabric Integration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-f7bcedc7fb7e9eb3dd55",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 118,
+              "column": 3
+            },
+            {
+              "title": "Neural Mux Event Processing",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-3a0b981f5c5f94171699",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 147,
+              "column": 3
+            },
+            {
+              "title": "SurrealDB Telemetry Integration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-5a0f8b476e3197c83fe0",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 168,
+              "column": 3
+            },
+            {
+              "title": "Dioxus Component Discovery and Validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-a09b911935af83b67a8d",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 191,
+              "column": 3
+            },
+            {
+              "title": "Command Center Enhanced Threat Profiles",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-a4c56054fcbaccaf67ea",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 209,
+              "column": 3
+            },
+            {
+              "title": "Foundation Crate Integration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-e32c2406ee0fea5f2d10",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 232,
+              "column": 3
+            },
+            {
+              "title": "TETH Algorithm Integration and Entropy Analysis",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-ec96f76553c3dcdac123",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 22,
+              "column": 3
+            },
+            {
+              "title": "L* Learning Algorithm Active Learning",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-cce71e5f469526dd2e4e",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 48,
+              "column": 3
+            },
+            {
+              "title": "Blake3 Authentication Layer 2 Security",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-8753186bfe6eb3615e9c",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 75,
+              "column": 3
+            },
+            {
+              "title": "QKD Encryption Integration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-1b3672bc01aa5f88792c",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 99,
+              "column": 3
+            },
+            {
+              "title": "Multi-Domain Network Fabric Integration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-f17bd22a009f0301d207",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 118,
+              "column": 3
+            },
+            {
+              "title": "Neural Mux Event Processing",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-e96b0882fc4d98daaf21",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 147,
+              "column": 3
+            },
+            {
+              "title": "SurrealDB Telemetry Integration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-6edcf72c694fa67861b9",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 168,
+              "column": 3
+            },
+            {
+              "title": "Dioxus Component Discovery and Validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-ce63e35c3056906b0543",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 191,
+              "column": 3
+            },
+            {
+              "title": "Command Center Enhanced Threat Profiles",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-b83fe2176558ec96c251",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 209,
+              "column": 3
+            },
+            {
+              "title": "Foundation Crate Integration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-fe138b73f18cfcd8f773",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 232,
+              "column": 3
+            },
+            {
+              "title": "TETH Algorithm Integration and Entropy Analysis",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-39091f38f5ef6cc4627c",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 22,
+              "column": 3
+            },
+            {
+              "title": "L* Learning Algorithm Active Learning",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-61ea395aecfee996f5a8",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 48,
+              "column": 3
+            },
+            {
+              "title": "Blake3 Authentication Layer 2 Security",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-9c40e161bb439be6eeea",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 75,
+              "column": 3
+            },
+            {
+              "title": "QKD Encryption Integration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-3d907a51a5c3682a2376",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 99,
+              "column": 3
+            },
+            {
+              "title": "Multi-Domain Network Fabric Integration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-461b29154fe246274c8d",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 118,
+              "column": 3
+            },
+            {
+              "title": "Neural Mux Event Processing",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-ada16cb5b3600d142a93",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 147,
+              "column": 3
+            },
+            {
+              "title": "SurrealDB Telemetry Integration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-5ed2b1392e1417932d64",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 168,
+              "column": 3
+            },
+            {
+              "title": "Dioxus Component Discovery and Validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-58c8050a8d6ba2b6f493",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 191,
+              "column": 3
+            },
+            {
+              "title": "Command Center Enhanced Threat Profiles",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-fdcdf1192f5385462b26",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 209,
+              "column": 3
+            },
+            {
+              "title": "Foundation Crate Integration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-5e08a117279f7ec8863d",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 232,
+              "column": 3
+            },
+            {
+              "title": "TETH Algorithm Integration and Entropy Analysis",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-9747c55fb3a5c9d29e04",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 22,
+              "column": 3
+            },
+            {
+              "title": "L* Learning Algorithm Active Learning",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-9708bc4e7047302b77cc",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 48,
+              "column": 3
+            },
+            {
+              "title": "Blake3 Authentication Layer 2 Security",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-46c37bba25f148eccdb8",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 75,
+              "column": 3
+            },
+            {
+              "title": "QKD Encryption Integration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-547ba23a145de9cc0db6",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 99,
+              "column": 3
+            },
+            {
+              "title": "Multi-Domain Network Fabric Integration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-8bcf4630595e53129610",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 118,
+              "column": 3
+            },
+            {
+              "title": "Neural Mux Event Processing",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-6a4daba7670ca079318b",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 147,
+              "column": 3
+            },
+            {
+              "title": "SurrealDB Telemetry Integration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-81997a66515ab5514825",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 168,
+              "column": 3
+            },
+            {
+              "title": "Dioxus Component Discovery and Validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-1c6f64008b3f560df334",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 191,
+              "column": 3
+            },
+            {
+              "title": "Command Center Enhanced Threat Profiles",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-489b8198ff3e7bc8cbe2",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 209,
+              "column": 3
+            },
+            {
+              "title": "Foundation Crate Integration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-c6e028c352f4bff8f181",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 232,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Layer 2 Fabric Stealth Performance Tests",
+          "file": "layer2-fabric-stealth.spec.ts",
+          "line": 251,
+          "column": 6,
+          "specs": [
+            {
+              "title": "High-Speed Routing Performance",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Dioxus",
+                  "projectName": "CTAS7-Dioxus",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-cadd39c442d3fdc62e89",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 252,
+              "column": 3
+            },
+            {
+              "title": "High-Speed Routing Performance",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Mobile",
+                  "projectName": "CTAS7-Mobile",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-278f901397ac2e7fe3cc",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 252,
+              "column": 3
+            },
+            {
+              "title": "High-Speed Routing Performance",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Tablet",
+                  "projectName": "CTAS7-Tablet",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-c6d66339f3ecb3843a30",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 252,
+              "column": 3
+            },
+            {
+              "title": "High-Speed Routing Performance",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "CTAS7-Firefox",
+                  "projectName": "CTAS7-Firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a55656862a941bb3d6ac-2867c3358947288c6ff0",
+              "file": "layer2-fabric-stealth.spec.ts",
+              "line": 252,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-10-19T03:02:47.403Z",
+    "duration": 137.56799999999998,
+    "expected": 0,
+    "skipped": 88,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

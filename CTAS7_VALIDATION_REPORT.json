@@ -1,0 +1,228 @@
+{
+  "validation_timestamp": "2025-10-18T20:50:00Z",
+  "canonical_reference": "CTAS-7 Legion ECS & SlotGraph Analysis (Oct 18, 2025)",
+
+  "validated_components": [
+    {
+      "component": "LegionExecutionEngine",
+      "path": "./src/services/LegionExecutionEngine.ts",
+      "loc": 231,
+      "status": "partial",
+      "data_sources": ["missing_DatabaseMuxConnector"],
+      "integration": "missing",
+      "exports": ["LegionExecutionEngine", "LegionTask", "ExecutionContext"],
+      "issues": ["Missing DatabaseMuxConnector dependency", "Database namespace mismatch"]
+    },
+    {
+      "component": "SlotGraphQueryEngine",
+      "path": "./src/services/SlotGraphQueryEngine.ts",
+      "loc": 594,
+      "status": "ok",
+      "data_sources": ["surrealdb:ctas7/hft_network", "supabase"],
+      "integration": "complete",
+      "exports": ["SlotGraphQueryEngine", "slotGraphQueryEngine"],
+      "issues": []
+    },
+    {
+      "component": "LegionSlotGraphSchema",
+      "path": "./src/services/LegionSlotGraphSchema.ts",
+      "loc": 363,
+      "status": "ok",
+      "data_sources": ["schema_definitions"],
+      "integration": "complete",
+      "exports": ["SlotGraphNode", "SlotGraphEdge", "TimeSeriesSlot", "Route"],
+      "issues": []
+    },
+    {
+      "component": "SpaceWorldDemo",
+      "path": "./src/components/SpaceWorldDemo.tsx",
+      "loc": "650+",
+      "status": "ok",
+      "data_sources": ["cesium", "supabase"],
+      "integration": "complete",
+      "exports": ["SpaceWorldDemo"],
+      "issues": []
+    },
+    {
+      "component": "NetworkWorldTransformer",
+      "path": "./src/transformers/NetworkWorldTransformer.ts",
+      "loc": 105,
+      "status": "ok",
+      "data_sources": ["ground_stations", "network_links"],
+      "integration": "complete",
+      "exports": ["NetworkWorldTransformer"],
+      "issues": []
+    },
+    {
+      "component": "DioxusDashboard",
+      "path": "./src/dioxus_dashboard/mod.rs",
+      "loc": "400+",
+      "status": "partial",
+      "data_sources": ["surrealdb:ctas/docgraph", "supabase:ctas-core", "neural-mux:18100"],
+      "integration": "partial",
+      "exports": ["CTASDashboard", "ActionElement"],
+      "issues": ["Data routes are static, no live binding validation"]
+    },
+    {
+      "component": "DatabaseMuxConnector",
+      "path": "MISSING",
+      "loc": 0,
+      "status": "missing",
+      "data_sources": ["none"],
+      "integration": "missing",
+      "exports": [],
+      "issues": ["Referenced in LegionExecutionEngine but file does not exist"]
+    },
+    {
+      "component": "SurrealDBSeed",
+      "path": "./database/surrealdb_seed.surql",
+      "loc": "120+",
+      "status": "ok",
+      "data_sources": ["surrealdb"],
+      "integration": "complete",
+      "exports": ["seed_data"],
+      "issues": []
+    }
+  ],
+
+  "missing_worlds": [
+    {
+      "world": "Maritime",
+      "referenced_in": ["LegionExecutionEngine.ts:6"],
+      "expected_path": "./src/components/MaritimeWorldDemo.tsx",
+      "status": "missing"
+    },
+    {
+      "world": "GroundWorld",
+      "referenced_in": ["analysis"],
+      "expected_path": "./src/components/GroundWorldDemo.tsx",
+      "status": "missing"
+    },
+    {
+      "world": "FusionWorld",
+      "referenced_in": ["analysis"],
+      "expected_path": "./src/transformers/FusionWorldTransformer.ts",
+      "status": "missing"
+    }
+  ],
+
+  "database_gaps": [
+    {
+      "issue": "namespace_mismatch",
+      "description": "Legion queries 'legion_slot_graph' but SlotGraph uses 'hft_network'",
+      "affected_files": ["LegionExecutionEngine.ts:73,164", "SlotGraphQueryEngine.ts:25"],
+      "severity": "high"
+    },
+    {
+      "issue": "missing_rls",
+      "description": "No Row Level Security or tenant_id found in database schema",
+      "affected_files": ["supabase tables"],
+      "severity": "medium"
+    },
+    {
+      "issue": "missing_connector",
+      "description": "DatabaseMuxConnector referenced but not implemented",
+      "affected_files": ["LegionExecutionEngine.ts:1,27,31"],
+      "severity": "high"
+    }
+  ],
+
+  "validation_matrix": [
+    ["Component", "Path", "LOC", "Data Sources", "Integration"],
+    ["LegionExecutionEngine", "./src/services/LegionExecutionEngine.ts", "231", "missing_DatabaseMux", "Missing"],
+    ["SlotGraphQueryEngine", "./src/services/SlotGraphQueryEngine.ts", "594", "surrealdb+supabase", "OK"],
+    ["LegionSlotGraphSchema", "./src/services/LegionSlotGraphSchema.ts", "363", "schema_defs", "OK"],
+    ["SpaceWorldDemo", "./src/components/SpaceWorldDemo.tsx", "650+", "cesium+supabase", "OK"],
+    ["NetworkWorldTransformer", "./src/transformers/NetworkWorldTransformer.ts", "105", "ground_stations", "OK"],
+    ["DioxusDashboard", "./src/dioxus_dashboard/mod.rs", "400+", "multi_db", "Partial"],
+    ["DatabaseMuxConnector", "MISSING", "0", "none", "Missing"]
+  ],
+
+  "bridge_check": [
+    ["Stage", "Component", "Status", "Issues"],
+    ["Legion → SlotGraph", "LegionExecutionEngine → SlotGraphQueryEngine", "Broken", "Missing DatabaseMuxConnector, namespace mismatch"],
+    ["SlotGraph → Database", "SlotGraphQueryEngine → SurrealDB/Supabase", "OK", "Dual database working"],
+    ["SlotGraph → Dioxus", "data-route attributes → Dioxus components", "Partial", "Static routes, no live validation"],
+    ["Dioxus → UI", "Rust components → DOM elements", "OK", "Playwright can discover elements"]
+  ],
+
+  "slotgraph_bridge": {
+    "status": "partial",
+    "recommendations": [
+      "Fix database namespace mismatch between Legion and SlotGraph",
+      "Implement missing DatabaseMuxConnector",
+      "Add live data validation for SlotGraph queries",
+      "Standardize on single database namespace"
+    ]
+  },
+
+  "dioxus_bridge": {
+    "status": "partial",
+    "recommendations": [
+      "Add live data binding validation for data-route attributes",
+      "Implement real-time SlotGraph updates in Dioxus components",
+      "Add error handling for failed database connections",
+      "Create integration tests for Dioxus → SlotGraph → Database chain"
+    ]
+  },
+
+  "quick_fix_plan": [
+    {
+      "file": "./src/services/LegionExecutionEngine.ts",
+      "line": "73,164",
+      "change": "Replace 'legion_slot_graph' with 'hft_network' to match SlotGraph namespace"
+    },
+    {
+      "file": "./src/services/LegionExecutionEngine.ts",
+      "line": "1",
+      "change": "Create DatabaseMuxConnector.ts or remove import and use SlotGraphQueryEngine directly"
+    },
+    {
+      "file": "./src/services/DatabaseMuxConnector.ts",
+      "line": "new_file",
+      "change": "Implement DatabaseMuxConnector class with query() and getConnection() methods"
+    },
+    {
+      "file": "./database/supabase_tables.sql",
+      "line": "new_file",
+      "change": "Add tenant_id UUID columns and RLS policies to all tables"
+    },
+    {
+      "file": "./src/dioxus_dashboard/mod.rs",
+      "line": "121,142,150,183",
+      "change": "Add data validation for data-route attributes and error handling for failed connections"
+    },
+    {
+      "file": "./src/components/MaritimeWorldDemo.tsx",
+      "line": "new_file",
+      "change": "Implement Maritime world component to match Legion world references"
+    },
+    {
+      "file": "./tests/playwright/ctas7_dioxus_harness.spec.ts",
+      "line": "450+",
+      "change": "Add test cases for missing worlds and database connection validation"
+    }
+  ],
+
+  "compilation_status": {
+    "typescript": "errors_present",
+    "rust": "not_tested",
+    "critical_missing": ["DatabaseMuxConnector.ts"],
+    "namespace_conflicts": 1,
+    "obsolete_patterns": 0
+  },
+
+  "integration_readiness": {
+    "playwright_harness": "70%",
+    "missing_components": 3,
+    "database_issues": 3,
+    "world_coverage": "60%",
+    "recommendations": [
+      "Implement DatabaseMuxConnector to fix Legion integration",
+      "Standardize database namespaces across all components",
+      "Add missing Maritime/Ground/Fusion world implementations",
+      "Add live data binding validation for Dioxus components",
+      "Implement RLS and tenant isolation for multi-tenancy"
+    ]
+  }
+}

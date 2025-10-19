@@ -1,0 +1,104 @@
+name: SatelliteNetwork
+display_name: "CTAS Satellite Network"
+bundle_id: com.ctas7.satellite-network
+category: utilities
+target_devices:
+  - iPhone
+  - iPad
+  - Mac
+
+features:
+  - "Real-time satellite tracking using SGP4 propagation"
+  - "257 ground station network visualization"
+  - "Orbital prediction with <1km accuracy"
+  - "Collision avoidance alerts"
+  - "Embedded Phi-3 for satellite health prediction"
+
+data_models:
+  - name: Satellite
+    properties:
+      - name: id
+        type: String
+      - name: name
+        type: String
+      - name: noradId
+        type: Int
+      - name: latitude
+        type: Double
+      - name: longitude
+        type: Double
+      - name: altitude
+        type: Double
+    protocols:
+      - Codable
+      - Identifiable
+      - Equatable
+  
+  - name: GroundStation
+    properties:
+      - name: id
+        type: String
+      - name: name
+        type: String
+      - name: latitude
+        type: Double
+      - name: longitude
+        type: Double
+      - name: elevation
+        type: Double
+    protocols:
+      - Codable
+      - Identifiable
+
+views:
+  - name: SatelliteMapView
+    view_model: SatelliteMapViewModel
+    subviews:
+      - MapView
+      - SatelliteAnnotations
+      - GroundStationMarkers
+  
+  - name: GroundStationListView
+    view_model: GroundStationViewModel
+    subviews:
+      - List
+      - StationDetailRow
+
+services:
+  - name: OrbitPropagatorService
+    methods:
+      - name: propagateOrbit
+        signature: "func propagateOrbit(tle: TLE, to epoch: Date) -> ECICoordinate"
+    dependencies:
+      - SGP4Swift
+  
+  - name: TLEDataService
+    methods:
+      - name: fetchLatestTLEs
+        signature: "func fetchLatestTLEs() async -> [TLE]"
+    dependencies:
+      - CTASFoundation
+
+math_functions:
+  - name: propagateOrbit
+    description: "SGP4 orbital propagation"
+    reference_implementation: "NORAD SGP4"
+    test_cases:
+      - input: { "tle_line1": "1 25544U...", "epoch": "2025-10-13T00:00:00Z" }
+        expected: { "x": 3531.552, "y": -5073.042, "z": -1816.214 }
+        tolerance: 1.0
+
+phi_prompts:
+  - "Predict satellite health status based on telemetry"
+  - "Estimate optimal ground station for next pass"
+  - "Analyze orbital debris risk for satellite path"
+
+dependencies:
+  - SGP4Swift
+  - CTASFoundation
+  - NeuralMuxClient
+  - PhiRuntimeCoreML
+
+
+
+

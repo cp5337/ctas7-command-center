@@ -1,0 +1,6 @@
+#V2
+USE NS ctas7 DB hft_network; INFO FOR DB;
+REMOVE DATABASE hft_network; DEFINE DATABASE hft_network;
+SELECT count() FROM ov_1 GROUP ALL; SELECT count() FROM satellite GROUP ALL; SELECT count() FROM cyber_event GROUP ALL; SELECT count() FROM vessel GROUP ALL;
+SELECT * FROM satellite LIMIT 1;
+SELECT count() FROM satellite GROUP ALL; SELECT count() FROM cyber_event GROUP ALL; SELECT count() FROM vessel GROUP ALL;

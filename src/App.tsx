@@ -4,7 +4,6 @@ import { ChatInterface } from './components/ChatInterface';
 import { ChannelList } from './components/ChannelList';
 import { KanbanBoard } from './components/KanbanBoard';
 import { MetricsWidget } from './components/MetricsWidget';
-import { AgentProductivityWidget } from './components/AgentProductivityWidget';
 import { WebSocketDebugger } from './components/WebSocketDebugger';
 import { Breadcrumb } from './components/Breadcrumb';
 import { CyberOpsWorkspace } from './components/CyberOpsWorkspace';
@@ -19,13 +18,7 @@ import { SmartCrateControl } from './components/SmartCrateControl';
 import { GISViewer } from './components/GISViewer';
 import { useWebSocket } from './hooks/useWebSocket';
 import { getWebSocketUrl } from './utils/url';
-import { 
-  mockPersonas, 
-  mockChannels, 
-  mockMessages, 
-  mockTasks, 
-  mockMetrics 
-} from './data/mockData';
+import { getRealPersonas, getRealTasks, getRealMetrics } from './services/realDataService';
 import { 
   Persona, 
   Channel, 
@@ -33,42 +26,98 @@ import {
   Task, 
   SystemMetric 
 } from './types';
-import { 
-  Command, 
-  Users, 
-  MessageSquare, 
-  BarChart3, 
+import {
+  Command,
+  Users,
+  MessageSquare,
+  BarChart3,
   Settings,
   Zap,
   Shield,
   Activity,
-  Package
+  Package,
+  Satellite
 } from 'lucide-react';
 
 function App() {
-  const [personas] = useState<Persona[]>(mockPersonas);
-  const [channels, setChannels] = useState<Channel[]>(mockChannels);
-  const [messages, setMessages] = useState<Message[]>(mockMessages);
-  const [tasks, setTasks] = useState<Task[]>(mockTasks);
-  const [metrics, setMetrics] = useState<SystemMetric[]>(mockMetrics);
-  const [activeChannelId, setActiveChannelId] = useState<string>('general');
-  const [activeTab, setActiveTab] = useState<'overview' | 'chat' | 'tasks' | 'metrics' | 'enterprise' | 'cyberops' | 'ontology' | 'crates' | 'tools'>('overview');
+  const [personas, setPersonas] = useState<Persona[]>([]);
+  const [channels, setChannels] = useState<Channel[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [metrics, setMetrics] = useState<SystemMetric[]>([]);
+  const [activeChannelId, setActiveChannelId] = useState<string>('');
+  const [activeTab, setActiveTab] = useState<'overview' | 'chat' | 'tasks' | 'metrics' | 'enterprise' | 'cyberops' | 'ontology' | 'crates' | 'tools' | 'gis' | 'hft' | 'sdc'>('overview');
   const [selectedCrate, setSelectedCrate] = useState<string>('');
   const [crateData, setCrateData] = useState<any>(null);
 
   // WebSocket connection for real-time updates
   const { isConnected, sendMessage } = useWebSocket(getWebSocketUrl());
 
+  // Load real data on startup
   useEffect(() => {
-    // Simulate real-time updates
-    const interval = setInterval(() => {
-      setMetrics(prev => prev.map(metric => ({
-        ...metric,
-        value: Math.max(0, metric.value + (Math.random() - 0.5) * 10),
-        trend: Math.random() > 0.5 ? 'up' : Math.random() > 0.5 ? 'down' : 'stable'
-      })));
-    }, 5000);
+    const loadRealData = async () => {
+      try {
+        // Load real personas
+        const realPersonas = await getRealPersonas();
+        setPersonas(realPersonas);
+        console.log('✅ Loaded real personas:', realPersonas.length);
 
+        // Auto-create group and DM channels for personas if none exist
+        if (realPersonas.length > 0 && channels.length === 0) {
+          const baseChannels: Channel[] = [];
+          // General group channel containing all personas + current-user
+          baseChannels.push({
+            id: 'general',
+            name: 'General',
+            type: 'group',
+            participants: ['current-user', ...realPersonas.map(p => p.id)],
+            unreadCount: 0,
+          });
+          // One DM per persona
+          for (const p of realPersonas) {
+            baseChannels.push({
+              id: `dm-${p.id}`,
+              name: p.name,
+              type: 'direct',
+              participants: ['current-user', p.id],
+              unreadCount: 0,
+            });
+          }
+          setChannels(baseChannels);
+          setActiveChannelId('general');
+        }
+
+        // Load real tasks from Linear
+        const realTasks = await getRealTasks();
+        if (realTasks.length > 0) {
+          setTasks(realTasks);
+          console.log('✅ Loaded real Linear tasks:', realTasks.length);
+        }
+
+        // Load real metrics
+        const realMetrics = await getRealMetrics();
+        setMetrics(realMetrics);
+        console.log('✅ Loaded real system metrics:', realMetrics.length);
+      } catch (error) {
+        console.error('Failed to load real data:', error);
+      }
+    };
+
+    loadRealData();
+  }, []);
+
+  // Update metrics periodically with REAL backend checks
+  useEffect(() => {
+    const updateMetrics = async () => {
+      try {
+        const realMetrics = await getRealMetrics();
+        setMetrics(realMetrics);
+      } catch (error) {
+        console.error('Failed to update metrics:', error);
+      }
+    };
+
+    const interval = setInterval(updateMetrics, 10000); // Every 10 seconds
     return () => clearInterval(interval);
   }, []);
 
@@ -303,7 +352,8 @@ function App() {
     { id: 'cyberops', label: 'CyberOps', icon: Shield },
     { id: 'ontology', label: 'Ontology', icon: Users },
     { id: 'crates', label: 'Crates', icon: Package },
-    { id: 'tools', label: 'Tools', icon: Zap }
+    { id: 'tools', label: 'Tools', icon: Zap },
+    { id: 'gis', label: '3D Satellites', icon: Satellite }
   ];
 
   return (
@@ -314,7 +364,7 @@ function App() {
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2">
               <Shield className="w-8 h-8 text-cyan-400" />
-              <h1 className="text-2xl font-bold text-slate-100">CTAS 7.0</h1>
+              <h1 className="text-2xl font-bold text-slate-100">Development Center</h1>
             </div>
             <div className="flex items-center space-x-1 text-sm">
               <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-400 animate-pulse' : 'bg-red-400'}`}></div>
@@ -868,6 +918,27 @@ function App() {
                 <h3 className="text-lg font-semibold text-slate-100">Development Tools</h3>
               </div>
               <ToolForge />
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'gis' && (
+          <div className="h-[calc(100vh-200px)]">
+            <div className="bg-slate-800 border border-cyan-400/20 rounded-lg h-full overflow-hidden">
+              <div className="flex items-center space-x-2 p-4 border-b border-slate-700">
+                <Satellite className="w-5 h-5 text-cyan-400" />
+                <h3 className="text-lg font-semibold text-slate-100">3D Orbital Satellite Tracking</h3>
+                <div className="flex items-center space-x-2 text-xs text-slate-400 ml-auto">
+                  <span>MEO Constellation</span>
+                  <span>•</span>
+                  <span>N2YO API</span>
+                  <span>•</span>
+                  <span>Real-time 3D</span>
+                </div>
+              </div>
+              <div className="h-[calc(100%-4rem)]">
+                <GISViewer />
+              </div>
             </div>
           </div>
         )}

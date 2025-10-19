@@ -1,0 +1,68 @@
+[package]
+name = "neural-mux-scaffold"
+version = "1.0.0"
+edition = "2021"
+authors = ["CTAS-7 Engineering Team"]
+description = "Neural Mux-powered iOS product scaffold generator with Tesla-grade quality enforcement"
+license = "MIT"
+
+[[bin]]
+name = "scaffold"
+path = "src/main.rs"
+
+[[bin]]
+name = "validate-quality"
+path = "src/bin/validate_quality.rs"
+
+[[bin]]
+name = "transition-react"
+path = "src/bin/transition_react.rs"
+
+[dependencies]
+# Core dependencies
+tokio = { version = "1.0", features = ["full"] }
+anyhow = "1.0"
+thiserror = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_yaml = "0.9"
+
+# Template engine
+tera = "1.19"
+handlebars = "5.1"
+
+# File system operations
+walkdir = "2.5"
+fs_extra = "1.3"
+glob = "0.3"
+
+# CLI
+clap = { version = "4.5", features = ["derive", "cargo"] }
+colored = "2.1"
+indicatif = "0.17"
+
+# Code analysis
+syn = { version = "2.0", features = ["full", "parsing"] }
+quote = "1.0"
+proc-macro2 = "1.0"
+
+# Quality metrics
+rayon = "1.10"
+regex = "1.10"
+
+# Neural Mux integration
+reqwest = { version = "0.11", features = ["json"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Swift/iOS specific
+plist = "1.6"
+
+[dev-dependencies]
+tempfile = "3.10"
+assert_cmd = "2.0"
+predicates = "3.1"
+
+
+
+

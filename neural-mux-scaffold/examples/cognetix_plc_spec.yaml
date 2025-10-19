@@ -1,0 +1,108 @@
+name: CognetixPLC
+display_name: "Cognetix PLC Controller"
+bundle_id: com.ctas7.cognetix-plc
+category: utilities
+target_devices:
+  - iPhone
+  - iPad
+  - Mac
+
+features:
+  - "Real-time PLC node monitoring and control"
+  - "Intelligent command routing via Neural Mux"
+  - "AI-powered command suggestions using Phi-3"
+  - "Event logging with severity levels"
+  - "TTL-based command lifecycle management"
+
+data_models:
+  - name: PLCNode
+    properties:
+      - name: id
+        type: String
+      - name: name
+        type: String
+      - name: status
+        type: String
+      - name: lastSeen
+        type: String
+      - name: ttl
+        type: Int
+    protocols:
+      - Codable
+      - Identifiable
+  
+  - name: PLCCommand
+    properties:
+      - name: node
+        type: String
+      - name: command
+        type: String
+      - name: ttl
+        type: Int
+    protocols:
+      - Codable
+  
+  - name: PLCStatus
+    properties:
+      - name: connected
+        type: Bool
+    protocols:
+      - Codable
+  
+  - name: PLCEvent
+    properties:
+      - name: id
+        type: UUID
+      - name: timestamp
+        type: Date
+      - name: level
+        type: String
+      - name: message
+        type: String
+    protocols:
+      - Identifiable
+
+views:
+  - name: CognetixPLCView
+    view_model: CognetixPLCViewModel
+    subviews:
+      - ConnectionStatusView
+      - PLCNodesList
+      - EventLogView
+  
+  - name: PLCNodeDetailView
+    view_model: PLCNodeDetailViewModel
+    subviews:
+      - NodeStatusCard
+      - CommandControlPanel
+
+services:
+  - name: PLCService
+    methods:
+      - name: getStatus
+        signature: "func getStatus() async throws -> PLCStatus"
+      - name: fetchNodes
+        signature: "func fetchNodes() async throws -> [PLCNode]"
+      - name: sendCommand
+        signature: "func sendCommand(_ command: PLCCommand) async throws"
+      - name: suggestOptimalCommand
+        signature: "func suggestOptimalCommand(for node: PLCNode) async throws -> String"
+    dependencies:
+      - NeuralMuxClient
+      - CTASFoundation
+
+math_functions: []  # No mathematical functions requiring validation
+
+phi_prompts:
+  - "Suggest optimal control command for PLC node based on status and TTL"
+  - "Analyze PLC event log and identify anomalies"
+  - "Predict optimal TTL value based on historical node behavior"
+
+dependencies:
+  - CTASFoundation
+  - NeuralMuxClient
+  - PhiRuntimeCoreML
+
+
+
+

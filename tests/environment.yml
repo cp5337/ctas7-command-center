@@ -1,0 +1,42 @@
+name: hft-test-harness
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - numpy=1.26.0
+  - pandas=2.1.1
+  - scipy=1.11.3
+  - matplotlib=3.8.0
+  - jupyter=1.0.0
+  - ipython=8.16.1
+  
+  # Google Cloud
+  - google-cloud-sdk=450.0.0
+  
+  # Async/Performance
+  - aiohttp=3.8.6
+  - asyncio
+  - uvloop=0.18.0
+  
+  # Data processing
+  - pyarrow=13.0.0
+  - fastparquet=2023.10.0
+  
+  # Testing
+  - pytest=7.4.2
+  - pytest-asyncio=0.21.1
+  - pytest-benchmark=4.0.0
+  
+  # Pip dependencies
+  - pip
+  - pip:
+    - google-cloud-functions==1.13.3
+    - google-cloud-run==0.10.1
+    - google-cloud-firestore==2.13.0
+    - google-cloud-pubsub==2.18.4
+    - google-cloud-bigquery==3.13.0
+    - google-cloud-storage==2.10.0
+    - supabase==2.0.3
+    - playwright==1.40.0
+

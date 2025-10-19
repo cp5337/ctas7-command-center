@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ctas:CTASManifest xmlns:ctas="https://ctas7.dev/schema"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="https://ctas7.dev/schema ../schemas/ctas7_ea.xsd">
+
+  <ctas:App>CTAS-7 EA Console</ctas:App>
+  <ctas:Version>0.7.0</ctas:Version>
+  <ctas:StoreAtomicPostulate>true</ctas:StoreAtomicPostulate>
+
+  <ctas:SmartCrateFabric>
+    <ctas:Mux>
+      <ctas:Item>neural-mux://default</ctas:Item>
+    </ctas:Mux>
+
+    <ctas:Databases>
+      <ctas:Database>
+        <ctas:Id>supabase-core</ctas:Id>
+        <ctas:URI>supabase://ctas-core</ctas:URI>
+        <ctas:Endpoint>https://ctas-core.supabase.co</ctas:Endpoint>
+        <ctas:Tables>
+          <ctas:Item>standards</ctas:Item>
+          <ctas:Item>qa5_sources</ctas:Item>
+          <ctas:Item>users</ctas:Item>
+        </ctas:Tables>
+      </ctas:Database>
+
+      <ctas:Database>
+        <ctas:Id>surreal-docgraph</ctas:Id>
+        <ctas:URI>surrealdb://ctas/docgraph</ctas:URI>
+        <ctas:Endpoint>ws://localhost:8000</ctas:Endpoint>
+        <ctas:Namespaces>
+          <ctas:Item>ov</ctas:Item>
+          <ctas:Item>sv</ctas:Item>
+          <ctas:Item>bne_cases</ctas:Item>
+        </ctas:Namespaces>
+      </ctas:Database>
+
+      <ctas:Database>
+        <ctas:Id>redis-edge</ctas:Id>
+        <ctas:URI>redis://edge-cache</ctas:URI>
+        <ctas:Endpoint>redis://localhost:6379</ctas:Endpoint>
+        <ctas:Tables>
+          <ctas:Item>kpi:recycling</ctas:Item>
+          <ctas:Item>ops:latency</ctas:Item>
+        </ctas:Tables>
+      </ctas:Database>
+    </ctas:Databases>
+
+    <ctas:CDN>
+      <ctas:CDN>
+        <ctas:Id>r2-media</ctas:Id>
+        <ctas:URI>r2://media</ctas:URI>
+      </ctas:CDN>
+      <ctas:CDN>
+        <ctas:Id>s3-telemetry</ctas:Id>
+        <ctas:URI>s3://telemetry-archive</ctas:URI>
+      </ctas:CDN>
+    </ctas:CDN>
+
+    <ctas:Postulate>store_atomic_release</ctas:Postulate>
+  </ctas:SmartCrateFabric>
+
+</ctas:CTASManifest>

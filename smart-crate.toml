@@ -1,0 +1,251 @@
+# CTAS7 Command Center - Smart Crate Manifest
+# Generated: October 18, 2025
+# Status: COMMAND CENTER SYSTEM
+
+[smart-crate]
+name = "ctas7-command-center"
+version = "1.0.0"
+edition = "2021"
+smart_crate_version = "1.0"
+foundation = "ctas7-foundation-core"
+classification = "command-center"
+tesla_grade = true
+
+[smart_meta]
+description = "CTAS7 Command Center - Unified development and operations management platform"
+domains = ["command", "control", "operations", "development"]
+capabilities = ["project-management", "agent-coordination", "real-time-chat", "gis-visualization", "system-monitoring"]
+build_system = "vite"
+backend_language = "typescript"
+frontend_language = "typescript"
+
+# XSD validation schemas
+xsd_schemas = [
+    "config/command-center-config.xsd",
+    "config/agent-coordination.xsd"
+]
+
+# Unicode metaprogramming
+unicode_operators = true
+unicode_symbols = ["∀", "∃", "⊕", "⊗", "≡", "⇒", "∈", "∉", "∩", "∪"]
+
+[integration]
+gold_disk_compatible = true
+neural_mux_enabled = true
+hash_engine_integrated = true
+unicode_assembly_support = true
+multi_tenant = true
+real_time_capable = true
+
+# CTAS 7.0 Port Allocations (Official CTAS7 Port Blocks)
+[ports]
+# Frontend (external access)
+frontend_dev = 21575     # Vite dev server (CANONICAL)
+frontend_mirror = 25175  # Mirror port
+frontend_prod = 3000     # Production frontend
+
+# Backend API
+backend_api = 15180      # Command center API bridge
+backend_api_sister = 47948  # Sister port (15180 + 32768)
+
+# WebSocket
+websocket = 15181        # Real-time updates
+websocket_sister = 47949 # Sister port (15181 + 32768)
+
+# Integration Ports
+linear_integration = 15182  # Linear webhook server
+gis_backend = 18400      # Canonical GIS backend (integration)
+gis_websocket = 18401    # Canonical GIS WebSocket (integration)
+
+# Foundation Services (CTAS7 Core)
+foundation_core = 18001  # ctas7-core-foundation
+port_manager = 18104     # ctas7-port-manager
+hashing_engine = 18105   # ctas7-hashing-engine
+
+[metadata]
+ctas_version = "7.0.0"
+smart_crate_type = "command-center"
+original_crate = true
+retrofit_timestamp = "20251018-000000"
+build_targets = ["native", "docker"]
+
+[endpoints]
+health = "/health"
+metrics = "/metrics"
+status = "/smart-crate/status"
+api_base = "/api"
+websocket = "/ws"
+
+# Foundation Discovery Configuration
+[smart_foundations]
+auto_discover = true
+fallback_enabled = true
+cache_duration = "24h"
+
+# Core Runtime Foundation
+[[smart_foundations.required]]
+type = "core_runtime"
+preferred = ["node-runtime"]
+fallback = "minimal-runtime"
+minimum_version = "20.0"
+features = ["async", "multi-threaded", "io"]
+
+# Communication Layer Foundation
+[[smart_foundations.required]]
+type = "communication_layer"
+preferred = ["websocket-layer", "http-layer"]
+fallback = "polling-layer"
+minimum_version = "1.0"
+features = ["real-time", "bidirectional", "secure"]
+
+# GIS Integration Foundation
+[[smart_foundations.required]]
+type = "gis_integration"
+preferred = ["cesium-integration", "canonical-gis-integration"]
+fallback = "mapbox-integration"
+minimum_version = "1.0"
+features = ["3d-visualization", "real-time-tracking", "multi-layer"]
+
+# Build Configuration
+[build]
+optimization_level = "production"
+target_features = ["sse4.2", "avx2"]
+link_time_optimization = true
+strip_symbols = false  # Keep for debugging
+
+[build.profiles.dev]
+optimization = "fast-compile"
+debug_info = true
+incremental = true
+
+[build.profiles.release]
+optimization = "maximum"
+debug_info = false
+incremental = false
+lto = true
+
+# Security Configuration
+[security]
+slsa_level = 3
+hermetic_builds = true
+provenance_required = true
+source_verification = true
+supply_chain_security = true
+
+[security.operational]
+hash_centric = true
+content_addressable = true
+cryptographic_verification = true
+zero_trust_architecture = true
+
+# Semantic Lock Management
+[semantic_lock]
+enabled = true
+lock_file = "smart-crate.lock"
+auto_update = false
+verify_on_build = true
+
+[semantic_lock.hashes]
+content_hash_algorithm = "blake3"
+interface_hash_algorithm = "sha3-256"
+dependency_hash_algorithm = "blake3"
+
+# Integration Points
+[integration.linear]
+enabled = true
+issue_creation = true
+task_tracking = true
+quality_gates = true
+
+[integration.command_center]
+enabled = true
+port = 21575
+api_endpoints = ["agents", "tasks", "metrics", "chat"]
+real_time_metrics = true
+
+[integration.canonical_gis]
+enabled = true
+backend_port = 18400
+websocket_port = 18401
+integration_mode = "embedded"
+real_time_sync = true
+
+[integration.neural_mux]
+enabled = true
+signal_fusion = true
+ooda_loop = true
+low_latency_routing = true
+
+# Quality Assurance
+[qa]
+phd_suite_enabled = true
+minimum_score = 90
+automated_testing = true
+continuous_validation = true
+
+[qa.metrics]
+code_coverage_minimum = 80
+complexity_threshold = 15
+maintainability_index_minimum = 70
+technical_debt_ratio_maximum = 5
+
+# Deployment Configuration
+[deployment]
+strategy = "blue-green"
+health_check_interval = "30s"
+rollback_on_failure = true
+canary_percentage = 10
+
+[deployment.docker]
+base_image = "node:20-alpine"
+multi_stage = true
+layer_caching = true
+security_scanning = true
+
+# Monitoring and Observability
+[observability]
+metrics_enabled = true
+tracing_enabled = true
+logging_level = "info"
+structured_logging = true
+
+[observability.metrics]
+prometheus_enabled = true
+custom_metrics = ["agent_activity", "task_completion", "gis_updates"]
+export_interval = "15s"
+
+[observability.tracing]
+jaeger_enabled = false
+sampling_rate = 0.1
+trace_context_propagation = true
+
+# Feature Flags
+[features]
+gis_integration = true
+agent_coordination = true
+linear_integration = true
+voice_interface = false
+neural_mux = true
+smart_crate_orchestration = true
+
+# Documentation
+[documentation]
+readme = "README.md"
+architecture = "docs/ARCHITECTURE.md"
+api_spec = "docs/API.md"
+deployment_guide = "docs/DEPLOYMENT.md"
+
+# License and Attribution
+[license]
+type = "MIT"
+file = "LICENSE"
+year = 2025
+organization = "CTAS7"
+
+# Maintenance
+[maintenance]
+active = true
+support_level = "production"
+update_frequency = "continuous"
+deprecation_policy = "semantic-versioning"
+

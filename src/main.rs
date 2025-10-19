@@ -123,7 +123,21 @@ async fn handle_voice_command(data: &Value, voice_engine: &SmartCrateVoiceEngine
 async fn process_smart_crate_command(text: &str) -> Value {
     let command = text.to_lowercase();
 
-    if command.contains("spin up crates") || command.contains("spin up") {
+    // QA Panel Commands
+    if command.contains("qa") || command.contains("quality") || command.contains("cognivault") {
+        // Initialize QA Panel (in a real system, this would be a singleton)
+        use std::sync::OnceLock;
+        static QA_PANEL: OnceLock<ctas7_qa_analyzer::CommandCenterQAPanel> = OnceLock::new();
+
+        let qa_panel = QA_PANEL.get_or_init(|| {
+            ctas7_qa_analyzer::CommandCenterQAPanel::new()
+        });
+
+        match qa_panel.handle_voice_command(text).await {
+            Ok(response) => natasha_response(&response, "qa_command"),
+            Err(e) => natasha_response(&format!("QA system error, Boss: {}", e), "qa_error"),
+        }
+    } else if command.contains("spin up crates") || command.contains("spin up") {
         natasha_response("Da, Boss! Spinning up Smart Crate Orchestration system now...", "spin_up_crates")
     } else if command.contains("retrofit crates") || command.contains("retrofit") {
         natasha_response("Copy zat, Boss! Retrofitting legacy crates zrough VASM pipeline...", "retrofit_crates")

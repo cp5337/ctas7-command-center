@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.ctas7.repoagent</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/cp5337/.cargo/bin/cargo</string>
+        <string>run</string>
+        <string>--release</string>
+        <string>-p</string>
+        <string>ctas7-repoagent</string>
+        <string>--features</string>
+        <string>neural-mux unicode-assembly</string>
+        <string>--bin</string>
+        <string>repoagent-server</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/cp5337/Developer/ctas-7-shipyard-staging</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>RUST_LOG</key>
+        <string>info</string>
+        <key>CTAS_ENV</key>
+        <string>development</string>
+        <key>PATH</key>
+        <string>/Users/cp5337/.cargo/bin:/usr/local/bin:/usr/bin:/bin</string>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/cp5337/Developer/ctas7-command-center/logs/repoagent.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/cp5337/Developer/ctas7-command-center/logs/repoagent.error.log</string>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <key>ThrottleInterval</key>
+    <integer>5</integer>
+
+    <key>ExitTimeOut</key>
+    <integer>30</integer>
+
+    <key>NetworkState</key>
+    <true/>
+</dict>
+</plist>

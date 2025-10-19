@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Smart Crate Registry - Ops Style - CTAS-7</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+            color: #ffffff;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px 20px;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 32px;
+        }
+
+        .header-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(90deg, #06b6d4, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .stat-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .stat-icon {
+            font-size: 20px;
+        }
+
+        /* Search & Filters */
+        .controls {
+            margin-bottom: 24px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        input[type="search"] {
+            flex: 1;
+            min-width: 280px;
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            color: #ffffff;
+            transition: all 0.2s;
+        }
+
+        input[type="search"]:focus {
+            outline: none;
+            border-color: #06b6d4;
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        input[type="search"]::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            min-height: 44px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            border-color: transparent;
+        }
+
+        /* Crate List */
+        .crate-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .crate-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .crate-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(6, 182, 212, 0.5);
+            transform: translateX(4px);
+        }
+
+        .crate-card.selected {
+            background: rgba(6, 182, 212, 0.15);
+            border-color: #06b6d4;
+        }
+
+        .crate-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .crate-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .category-icon.foundation {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .category-icon.candidate {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .category-icon.analysis {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .category-icon.infrastructure {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .crate-details {
+            flex: 1;
+        }
+
+        .crate-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .crate-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .crate-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-badge.active {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+
+        .status-badge.building {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+
+        .status-badge.passed {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+
+        .status-badge.running {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+
+        /* Progress Indicators */
+        .progress-bars {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+            margin-top: 12px;
+        }
+
+        .progress-bar {
+            height: 4px;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .progress-bar.wasm {
+            background: #10b981;
+        }
+
+        .progress-bar.eei {
+            background: #3b82f6;
+        }
+
+        .progress-bar.xsd {
+            background: #8b5cf6;
+        }
+
+        .progress-bar.playbook {
+            background: #f59e0b;
+        }
+
+        .progress-bar.complexity-low {
+            background: #10b981;
+        }
+
+        .progress-bar.complexity-medium {
+            background: #f59e0b;
+        }
+
+        .progress-bar.complexity-high {
+            background: #ef4444;
+        }
+
+        .progress-bar.inactive {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Trivariate Hash */
+        .hash-display {
+            font-family: 'SF Mono', 'Monaco', monospace;
+            font-size: 10px;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
+            margin-top: 8px;
+            word-break: break-all;
+            line-height: 1.6;
+        }
+
+        .hash-sch { color: #06b6d4; }
+        .hash-cuid { color: #8b5cf6; }
+        .hash-uuid { color: #10b981; }
+
+        /* Port Badge */
+        .port-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 6px;
+            font-family: 'SF Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            color: #06b6d4;
+        }
+
+        /* Responsive Design */
+        
+        /* Tablet (768px and below) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px 12px;
+            }
+            
+            .header-title {
+                font-size: 28px;
+            }
+            
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            input[type="search"] {
+                width: 100%;
+            }
+            
+            .filter-group {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 8px;
+            }
+            
+            .crate-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            
+            .crate-info {
+                width: 100%;
+            }
+            
+            .crate-status {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            
+            .category-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
+            }
+            
+            .crate-name {
+                font-size: 13px;
+            }
+            
+            .crate-meta {
+                font-size: 11px;
+            }
+        }
+        
+        /* Mobile (480px and below) */
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 24px;
+            }
+            
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-badge {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+            
+            .filter-btn {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+            
+            .crate-card {
+                padding: 12px;
+            }
+            
+            .category-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
+            }
+            
+            .crate-name {
+                font-size: 12px;
+            }
+            
+            .crate-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            
+            .status-badge {
+                font-size: 10px;
+                padding: 3px 6px;
+            }
+            
+            .progress-bars {
+                gap: 4px;
+            }
+            
+            .progress-bar {
+                height: 3px;
+            }
+            
+            .hash-display {
+                font-size: 9px;
+                padding: 6px;
+            }
+            
+            .port-badge {
+                font-size: 10px;
+                padding: 2px 6px;
+            }
+        }
+        
+        /* Large Desktop (1400px and above) */
+        @media (min-width: 1400px) {
+            .crate-list {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+        }
+        
+        /* Extra Large Desktop (1920px and above) */
+        @media (min-width: 1920px) {
+            .container {
+                max-width: 1800px;
+            }
+            
+            .crate-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Animations */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .spin {
+            animation: spin 2s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="header-title">CTAS-7 Smart Crate Registry</h1>
+            <div class="stats-row">
+                <div class="stat-badge">
+                    <span class="stat-icon">📦</span>
+                    <span>24 Total Crates</span>
+                </div>
+                <div class="stat-badge">
+                    <span class="stat-icon">✅</span>
+                    <span>18 QA Certified</span>
+                </div>
+                <div class="stat-badge">
+                    <span class="stat-icon">🌐</span>
+                    <span>20 WASM Ready</span>
+                </div>
+                <div class="stat-badge">
+                    <span class="stat-icon">🔌</span>
+                    <span>16 Ports Assigned</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search & Filters -->
+        <div class="controls">
+            <input type="search" placeholder="Search crates by name, category, or port...">
+            <div class="filter-group">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Foundation</button>
+                <button class="filter-btn">Candidate</button>
+                <button class="filter-btn">Analysis</button>
+                <button class="filter-btn">Infrastructure</button>
+            </div>
+        </div>
+
+        <!-- Crate List -->
+        <div class="crate-list">
+            <!-- Foundation Crate -->
+            <div class="crate-card selected">
+                <div class="crate-header">
+                    <div class="crate-info">
+                        <div class="category-icon foundation">🛡️</div>
+                        <div class="crate-details">
+                            <div class="crate-name">ctas7-core-foundation-staging</div>
+                            <div class="crate-meta">
+                                <span>Foundation</span>
+                                <span class="port-badge">:18001</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="crate-status">
+                        <div class="status-badge active">Active</div>
+                        <div class="status-badge passed">Passed</div>
+                    </div>
+                </div>
+                <div class="progress-bars">
+                    <div class="progress-bar wasm" title="WASM Ready"></div>
+                    <div class="progress-bar eei" title="EEI Assigned"></div>
+                    <div class="progress-bar xsd" title="XSD Validated"></div>
+                    <div class="progress-bar playbook" title="Playbook Ready"></div>
+                    <div class="progress-bar complexity-low" title="Complexity: 12"></div>
+                </div>
+                <div class="hash-display">
+                    <span class="hash-sch">A1B2C3D4E5F6G7H8</span><span class="hash-cuid">I9J0K1L2M3N4O5P6</span><span class="hash-uuid">Q7R8S9T0U1V2W3X4</span>
+                </div>
+            </div>
+
+            <!-- Candidate Crate -->
+            <div class="crate-card">
+                <div class="crate-header">
+                    <div class="crate-info">
+                        <div class="category-icon candidate">📦</div>
+                        <div class="crate-details">
+                            <div class="crate-name">ctas7-streaming-engine</div>
+                            <div class="crate-meta">
+                                <span>Candidate</span>
+                                <span class="port-badge">:18201</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="crate-status">
+                        <div class="status-badge active">Active</div>
+                        <div class="status-badge passed">Passed</div>
+                    </div>
+                </div>
+                <div class="progress-bars">
+                    <div class="progress-bar wasm"></div>
+                    <div class="progress-bar eei"></div>
+                    <div class="progress-bar xsd"></div>
+                    <div class="progress-bar playbook"></div>
+                    <div class="progress-bar complexity-low"></div>
+                </div>
+                <div class="hash-display">
+                    <span class="hash-sch">Y5Z6A7B8C9D0E1F2</span><span class="hash-cuid">G3H4I5J6K7L8M9N0</span><span class="hash-uuid">O1P2Q3R4S5T6U7V8</span>
+                </div>
+            </div>
+
+            <!-- Analysis Crate -->
+            <div class="crate-card">
+                <div class="crate-header">
+                    <div class="crate-info">
+                        <div class="category-icon analysis">🎯</div>
+                        <div class="crate-details">
+                            <div class="crate-name">ctas7-qa-analyzer</div>
+                            <div class="crate-meta">
+                                <span>Analysis</span>
+                                <span class="port-badge">:18107</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="crate-status">
+                        <div class="status-badge active">Active</div>
+                        <div class="status-badge passed">Passed</div>
+                    </div>
+                </div>
+                <div class="progress-bars">
+                    <div class="progress-bar wasm"></div>
+                    <div class="progress-bar eei"></div>
+                    <div class="progress-bar xsd"></div>
+                    <div class="progress-bar playbook"></div>
+                    <div class="progress-bar complexity-low"></div>
+                </div>
+                <div class="hash-display">
+                    <span class="hash-sch">W9X0Y1Z2A3B4C5D6</span><span class="hash-cuid">E7F8G9H0I1J2K3L4</span><span class="hash-uuid">M5N6O7P8Q9R0S1T2</span>
+                </div>
+            </div>
+
+            <!-- Infrastructure Crate (Building) -->
+            <div class="crate-card">
+                <div class="crate-header">
+                    <div class="crate-info">
+                        <div class="category-icon infrastructure">🖥️</div>
+                        <div class="crate-details">
+                            <div class="crate-name">ctas7-isolated-monitoring-cdn-staging</div>
+                            <div class="crate-meta">
+                                <span>Infrastructure</span>
+                                <span class="port-badge">:18108</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="crate-status">
+                        <div class="status-badge active">Active</div>
+                        <div class="status-badge running">
+                            <span class="spin">⏳</span>
+                            Running
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-bars">
+                    <div class="progress-bar inactive"></div>
+                    <div class="progress-bar eei"></div>
+                    <div class="progress-bar xsd"></div>
+                    <div class="progress-bar inactive"></div>
+                    <div class="progress-bar complexity-medium"></div>
+                </div>
+                <div class="hash-display">
+                    <span class="hash-sch">U3V4W5X6Y7Z8A9B0</span><span class="hash-cuid">C1D2E3F4G5H6I7J8</span><span class="hash-uuid">K9L0M1N2O3P4Q5R6</span>
+                </div>
+            </div>
+
+            <!-- Candidate Crate (High Complexity) -->
+            <div class="crate-card">
+                <div class="crate-header">
+                    <div class="crate-info">
+                        <div class="category-icon candidate">📦</div>
+                        <div class="crate-details">
+                            <div class="crate-name">ctas7-leptose-knowledge-engine</div>
+                            <div class="crate-meta">
+                                <span>Candidate</span>
+                                <span class="port-badge">:18205</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="crate-status">
+                        <div class="status-badge active">Active</div>
+                        <div class="status-badge running">
+                            <span class="spin">⏳</span>
+                            Running
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-bars">
+                    <div class="progress-bar inactive"></div>
+                    <div class="progress-bar eei"></div>
+                    <div class="progress-bar xsd"></div>
+                    <div class="progress-bar inactive"></div>
+                    <div class="progress-bar complexity-high"></div>
+                </div>
+                <div class="hash-display">
+                    <span class="hash-sch">T7U8V9W0X1Y2Z3A4</span><span class="hash-cuid">B5C6D7E8F9G0H1I2</span><span class="hash-uuid">J3K4L5M6N7O8P9Q0</span>
+                </div>
+            </div>
+
+            <!-- Infrastructure Crate (Building, No Port) -->
+            <div class="crate-card">
+                <div class="crate-header">
+                    <div class="crate-info">
+                        <div class="category-icon infrastructure">🖥️</div>
+                        <div class="crate-details">
+                            <div class="crate-name">ctas7-exploit-vector-machine-staging</div>
+                            <div class="crate-meta">
+                                <span>Infrastructure</span>
+                                <span style="color: rgba(255,255,255,0.4); font-size: 11px;">No Port</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="crate-status">
+                        <div class="status-badge building">Building</div>
+                        <div class="status-badge" style="background: rgba(156, 163, 175, 0.2); color: #9ca3af;">Pending</div>
+                    </div>
+                </div>
+                <div class="progress-bars">
+                    <div class="progress-bar inactive"></div>
+                    <div class="progress-bar inactive"></div>
+                    <div class="progress-bar inactive"></div>
+                    <div class="progress-bar inactive"></div>
+                    <div class="progress-bar complexity-high"></div>
+                </div>
+                <div class="hash-display">
+                    <span class="hash-sch">R1S2T3U4V5W6X7Y8</span><span class="hash-cuid">Z9A0B1C2D3E4F5G6</span><span class="hash-uuid">H7I8J9K0L1M2N3O4</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

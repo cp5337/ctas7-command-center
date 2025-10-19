@@ -1,0 +1,218 @@
+{
+  "strip_report_specification": "v1.0",
+  "format_definition": {
+    "report_type": "real_time_test_strip",
+    "target_systems": ["ios_ui", "react_dashboard", "voice_reporting", "ascii_terminal"],
+    "update_frequency": "1s",
+    "retention_policy": "7_days_local_30_days_supabase"
+  },
+  "strip_report_structure": {
+    "header": {
+      "test_id": "string",
+      "agent_name": "string",
+      "timestamp": "iso8601",
+      "blockchain_hash": "string",
+      "execution_status": "enum[running|passed|failed|timeout|error]"
+    },
+    "visual_indicators": {
+      "status_icon": {
+        "running": "●",
+        "passed": "✓",
+        "failed": "✗",
+        "timeout": "⧗",
+        "error": "⚠"
+      },
+      "progress_bar": {
+        "width": 30,
+        "filled_char": "█",
+        "empty_char": "░",
+        "format": "[████████████░░░░░░] 67.5%"
+      },
+      "health_meter": {
+        "critical": "🔴",
+        "warning": "🟡",
+        "healthy": "🟢",
+        "unknown": "⚪"
+      }
+    },
+    "metrics_summary": {
+      "execution_time": {
+        "current": "float_seconds",
+        "target": "string_with_unit",
+        "status": "enum[pass|fail|warning]"
+      },
+      "voice_response_time": {
+        "current": "float_seconds",
+        "target": "string_with_unit",
+        "status": "enum[pass|fail|warning]"
+      },
+      "tool_activation_rate": {
+        "current": "percentage",
+        "target": "percentage",
+        "status": "enum[pass|fail|warning]"
+      },
+      "prism_confidence": {
+        "current": "percentage",
+        "target": "percentage",
+        "status": "enum[pass|fail|warning]"
+      }
+    },
+    "step_summary": {
+      "total_steps": "integer",
+      "completed_steps": "integer",
+      "failed_steps": "integer",
+      "current_step": "string",
+      "estimated_completion": "iso8601_or_null"
+    }
+  },
+  "output_formats": {
+    "ascii_terminal": {
+      "width": 80,
+      "compact_mode": true,
+      "template": "═══ {status_icon} {test_id} │ {status} │ {duration}s │ {progress} │ {health} ═══"
+    },
+    "ios_ui_json": {
+      "format": "json",
+      "real_time_updates": true,
+      "push_notifications": true,
+      "fields": [
+        "test_id", "status", "progress_percentage", "execution_time",
+        "voice_summary", "critical_alerts", "step_details"
+      ]
+    },
+    "react_dashboard": {
+      "format": "json",
+      "websocket_updates": true,
+      "chart_data": true,
+      "fields": [
+        "test_metrics", "time_series_data", "step_timeline",
+        "voice_transcripts", "blockchain_verification"
+      ]
+    },
+    "voice_report": {
+      "format": "structured_text",
+      "voice_agent": "natasha_volkov",
+      "summary_length": "30_seconds_max",
+      "natural_language": true,
+      "priority_alerts": true
+    }
+  },
+  "sample_strip_reports": [
+    {
+      "ascii_format": "═══ ● docker_web_threat_simulation │ RUNNING │ 12.3s │ [████████░░] 80% │ 🟢 ═══",
+      "ios_json": {
+        "test_id": "docker_web_threat_simulation",
+        "status": "running",
+        "progress_percentage": 80,
+        "execution_time": 12.3,
+        "health_status": "healthy",
+        "current_step": "voice_trigger_sqlmap",
+        "estimated_completion": "2025-10-07T16:45:22Z",
+        "voice_summary": "Web threat simulation proceeding normally. SQL injection tools activated successfully.",
+        "critical_alerts": []
+      },
+      "react_dashboard": {
+        "test_metrics": {
+          "execution_time": {"current": 12.3, "target": 15.0, "status": "pass"},
+          "voice_response": {"current": 2.1, "target": 3.0, "status": "pass"},
+          "tool_activation": {"current": 95, "target": 90, "status": "pass"}
+        },
+        "time_series_data": [
+          {"timestamp": "2025-10-07T16:45:10Z", "metric": "execution_time", "value": 10.1},
+          {"timestamp": "2025-10-07T16:45:15Z", "metric": "execution_time", "value": 12.3}
+        ],
+        "step_timeline": [
+          {"step": 1, "name": "inject_sqli_signature", "status": "completed", "duration": 4.2},
+          {"step": 2, "name": "activate_nikto_burpsuite", "status": "completed", "duration": 6.1},
+          {"step": 3, "name": "voice_trigger_sqlmap", "status": "running", "duration": 2.0}
+        ]
+      },
+      "voice_report": "Test docker web threat simulation is currently running at 80 percent completion. Execution time is 12.3 seconds, well within the 15 second target. All tools have activated successfully with voice response time under 3 seconds. No critical issues detected."
+    },
+    {
+      "ascii_format": "═══ ✓ docker_l_star_validation │ PASSED │ 28.7s │ [██████████] 100% │ 🟢 ═══",
+      "ios_json": {
+        "test_id": "docker_l_star_validation",
+        "status": "passed",
+        "progress_percentage": 100,
+        "execution_time": 28.7,
+        "health_status": "healthy",
+        "current_step": "completed",
+        "estimated_completion": null,
+        "voice_summary": "L-star interface discovery completed successfully. All validation criteria met.",
+        "critical_alerts": []
+      },
+      "voice_report": "Test docker L-star validation has completed successfully in 28.7 seconds. Interface discovery accuracy exceeded 90 percent target. Algorithm convergence achieved within acceptable timeframe. No false positives detected."
+    },
+    {
+      "ascii_format": "═══ ✗ docker_voice_integration_e2e │ FAILED │ 8.2s │ [██████░░░░] 60% │ 🔴 ═══",
+      "ios_json": {
+        "test_id": "docker_voice_integration_e2e",
+        "status": "failed",
+        "progress_percentage": 60,
+        "execution_time": 8.2,
+        "health_status": "critical",
+        "current_step": "failed_at_transcription",
+        "estimated_completion": null,
+        "voice_summary": "Voice integration test failed during transcription validation. Manual review required.",
+        "critical_alerts": [
+          "Voice recognition accuracy below 94% threshold",
+          "Transcription validation failed for SQLMap command"
+        ]
+      },
+      "voice_report": "Critical alert: Voice integration end-to-end test has failed. Voice recognition accuracy dropped below the 94 percent threshold during transcription validation. The system failed to properly transcribe the SQLMap deployment command. Manual intervention required before proceeding with deployment."
+    }
+  ],
+  "integration_specifications": {
+    "supabase_logging": {
+      "table": "test_execution_reports",
+      "real_time_subscription": true,
+      "fields_to_log": [
+        "test_execution_id", "strip_report_json", "ascii_output",
+        "voice_summary", "metrics_snapshot", "timestamp", "blockchain_hash"
+      ]
+    },
+    "voice_system_integration": {
+      "trigger_conditions": [
+        "test_completion", "critical_failure", "threshold_breach", "manual_request"
+      ],
+      "voice_agent": "natasha_volkov",
+      "language_model": "natural_conversational",
+      "audio_format": "mp3_44khz",
+      "delivery_method": "websocket_stream"
+    },
+    "ui_real_time_updates": {
+      "ios_push_notifications": {
+        "critical_failures": "immediate",
+        "test_completions": "batched_5min",
+        "progress_updates": "realtime_websocket"
+      },
+      "react_websocket": {
+        "endpoint": "wss://ctas7-dashboard.internal/test-updates",
+        "authentication": "jwt_token",
+        "message_format": "json",
+        "compression": "gzip"
+      }
+    }
+  },
+  "natural_voice_conversation_framework": {
+    "conversation_starters": [
+      "How is the {test_name} progressing?",
+      "What's the current status of our test suite?",
+      "Any critical issues I should know about?",
+      "Give me a summary of today's test results."
+    ],
+    "response_templates": {
+      "status_update": "The {test_name} is currently {status} at {progress_percentage}% completion. {additional_context}",
+      "metric_report": "Current metrics show {metric_name} at {current_value}, which is {status} compared to our target of {target_value}.",
+      "failure_alert": "We have a {severity} issue with {test_name}. {failure_description}. {recommended_action}.",
+      "completion_summary": "Test {test_name} completed {status} in {duration}. {key_metrics_summary}."
+    },
+    "context_awareness": {
+      "remember_previous_conversations": true,
+      "track_user_preferences": true,
+      "adapt_detail_level": "based_on_user_role",
+      "priority_filtering": "user_configurable"
+    }
+  }
+}

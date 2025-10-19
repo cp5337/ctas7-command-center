@@ -1,0 +1,44 @@
+[Unit]
+Description=CTAS-7 RepoAgent Multi-Agent Orchestration System
+Documentation=https://github.com/anthropics/ctas-7-command-center
+After=network.target network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+Type=simple
+User=ctas
+Group=ctas
+WorkingDirectory=/opt/ctas7-shipyard-staging
+Environment=RUST_LOG=info
+Environment=CTAS_ENV=production
+ExecStart=/opt/ctas7-shipyard-staging/target/release/repoagent-server
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=5
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=30
+
+# Security settings
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/opt/ctas7-shipyard-staging/logs
+ReadWritePaths=/tmp
+
+# Network security
+IPAddressDeny=any
+IPAddressAllow=localhost
+IPAddressAllow=127.0.0.0/8
+IPAddressAllow=::1/128
+
+# Resource limits
+LimitNOFILE=65536
+MemoryMax=2G
+CPUQuota=200%
+
+[Install]
+WantedBy=multi-user.target

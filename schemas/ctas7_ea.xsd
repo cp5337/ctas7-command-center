@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:ctas="https://ctas7.dev/schema"
+           targetNamespace="https://ctas7.dev/schema"
+           elementFormDefault="qualified">
+
+  <!-- Core Types -->
+  <xs:complexType name="DatabaseLinkType">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:string"/>
+      <xs:element name="URI" type="xs:anyURI"/>
+      <xs:element name="Endpoint" type="xs:anyURI" minOccurs="0"/>
+      <xs:element name="Tables" type="ctas:StringList" minOccurs="0"/>
+      <xs:element name="Namespaces" type="ctas:StringList" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SmartCrateFabricType">
+    <xs:sequence>
+      <xs:element name="Mux" type="ctas:StringList" minOccurs="1"/>
+      <xs:element name="Databases" type="ctas:DatabaseArray" minOccurs="1"/>
+      <xs:element name="CDN" type="ctas:CDNArray" minOccurs="0"/>
+      <xs:element name="Postulate" type="xs:string" default="store_atomic_release"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CDNType">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:string"/>
+      <xs:element name="URI" type="xs:anyURI"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ManifestType">
+    <xs:sequence>
+      <xs:element name="App" type="xs:string"/>
+      <xs:element name="Version" type="xs:string"/>
+      <xs:element name="StoreAtomicPostulate" type="xs:boolean"/>
+      <xs:element name="SmartCrateFabric" type="ctas:SmartCrateFabricType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Supporting collections -->
+  <xs:complexType name="DatabaseArray">
+    <xs:sequence>
+      <xs:element name="Database" type="ctas:DatabaseLinkType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CDNArray">
+    <xs:sequence>
+      <xs:element name="CDN" type="ctas:CDNType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="StringList">
+    <xs:sequence>
+      <xs:element name="Item" type="xs:string" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Root element -->
+  <xs:element name="CTASManifest" type="ctas:ManifestType"/>
+</xs:schema>

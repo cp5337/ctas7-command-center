@@ -1,0 +1,70 @@
+# {{ spec.display_name }}
+
+**Bundle ID**: {{ spec.bundle_id }}  
+**Category**: {{ spec.category }}  
+**Target Devices**: {{ spec.target_devices | join(sep=", ") }}
+
+## Features
+
+{% for feature in spec.features %}
+- {{ feature }}
+{% endfor %}
+
+## Architecture
+
+This project follows CTAS-7 MVC-M (Model-View-Controller-Mux) architecture with Tesla/SpaceX/NASA-grade quality standards.
+
+### Directory Structure
+
+```
+{{ spec.name }}/
+├── Models/            # Data structures (Codable, Identifiable)
+├── Views/             # SwiftUI views (<200 LOC each)
+├── ViewModels/        # UI state management (@Published properties)
+├── Services/          # Business logic and API integration
+├── NeuralMux/         # Neural Mux client integration
+└── PhiIntegration/    # Embedded Phi-3 CoreML inference
+```
+
+## Quality Standards
+
+- **File Size**: Maximum 200 LOC per file (Tesla standard)
+- **Cyclomatic Complexity**: Target <10 per function
+- **Mathematical Validation**: All math functions have test coverage
+- **Naming Honesty**: Class names must match implementation capabilities
+
+## Development
+
+### Building
+
+```bash
+open {{ spec.name }}.xcodeproj
+# Build: Cmd+B
+# Run: Cmd+R
+```
+
+### Testing
+
+```bash
+xcodebuild test -scheme {{ spec.name }} -destination 'platform=iOS Simulator,name=iPhone 17'
+```
+
+### Quality Validation
+
+```bash
+scaffold validate .
+```
+
+## Neural Mux Integration
+
+This app integrates with Neural Mux for intelligent routing and Phi-3 for on-device AI inference.
+
+**Neural Mux Base URL**: `http://localhost:18113`
+
+## License
+
+MIT
+
+
+
+
