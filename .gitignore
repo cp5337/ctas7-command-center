@@ -74,3 +74,12 @@ whisper.cpp/models/
 *.key
 *.pem
 *.crt
+# MCP Configuration files (may contain secrets)
+.mcp.json
+mcp-config.json
+
+# iOS/Swift build artifacts
+*.xcworkspace/
+*.xcuserdata/
+**/*.xcuserdata/**
+UserInterfaceState.xcuserstate
