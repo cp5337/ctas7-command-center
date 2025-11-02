@@ -26,6 +26,15 @@ export default defineConfig({
     host: true,
     strictPort: true,
     proxy: {
+      '/health': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/health/, '/health'),
+      },
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+      },
       '/api/repo': {
         target: 'http://localhost:15180',
         changeOrigin: true,

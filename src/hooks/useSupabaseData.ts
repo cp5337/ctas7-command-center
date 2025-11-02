@@ -98,6 +98,36 @@ export function useGroundNodes() {
   return { nodes, loading, error };
 }
 
+// Auto-deduplicate satellites to exactly 12 unique satellites
+const deduplicateSatellites = (satellites: Satellite[]): Satellite[] => {
+  const seenNames: Record<string, boolean> = {};
+  const uniqueSatellites: Satellite[] = [];
+
+  // Target: exactly 12 unique satellites
+  const targetSatelliteNames = [
+    'SAT-ALPHA', 'SAT-BETA', 'SAT-DELTA', 'SAT-GAMMA',
+    'MEO-ALPHA', 'MEO-BETA', 'MEO-DELTA', 'MEO-GAMMA',
+    'MEO-EPSILON', 'MEO-ETA', 'MEO-LAMBDA', 'MEO-ZETA'
+  ];
+
+  for (const sat of satellites) {
+    const baseName = sat.name?.split('-')[0] + '-' + sat.name?.split('-')[1]; // Get base name like "SAT-ALPHA"
+
+    // Only keep first occurrence of each unique satellite name
+    if (!seenNames[baseName] && targetSatelliteNames.includes(baseName)) {
+      seenNames[baseName] = true;
+      uniqueSatellites.push({
+        ...sat,
+        id: sat.id || baseName,
+        name: baseName
+      });
+    }
+  }
+
+  console.log(`🛰️ AUTO-DEDUPLICATED: ${satellites.length} → ${uniqueSatellites.length} satellites`);
+  return uniqueSatellites.slice(0, 12); // Ensure exactly 12
+};
+
 export function useSatellites() {
   const [satellites, setSatellites] = useState<Satellite[]>([]);
   const [loading, setLoading] = useState(true);
@@ -112,7 +142,10 @@ export function useSatellites() {
           .order('name');
 
         if (fetchError) throw fetchError;
-        setSatellites(data || []);
+
+        // AUTOMATIC DEDUPLICATION - No more manual "Fix All Dupes"!
+        const cleanSatellites = deduplicateSatellites(data || []);
+        setSatellites(cleanSatellites);
       } catch (err) {
         console.error('Error loading satellites:', err);
         setError(err as Error);

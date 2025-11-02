@@ -1,9 +1,9 @@
-// CTAS7 Command Center - Cesium GIS Integration
-// Integrated from ctas7-canonical-gis
+// CTAS7 Command Center - Laser Light Optical Network Viewer
+// Advanced radiation monitoring and laser communication systems
 
 import React from 'react';
-import SpaceWorldDemo from './SpaceWorldDemo';
+import { LaserLightMultiView } from './LaserLightMultiView';
 
 export const GISViewer: React.FC = () => {
-  return <SpaceWorldDemo />;
+  return <LaserLightMultiView />;
 };

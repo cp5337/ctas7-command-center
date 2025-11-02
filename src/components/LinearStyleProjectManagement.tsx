@@ -318,12 +318,14 @@ export const LinearStyleProjectManagement: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Linear-style Header */}
+      {/* Linear Integration */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
-            <Zap className="w-6 h-6 text-purple-400" />
-            <h2 className="text-xl font-semibold text-slate-100">Linear-Style Project Management</h2>
+            <div className="w-6 h-6 rounded bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
+              <span className="text-white text-xs font-bold">L</span>
+            </div>
+            <h2 className="text-xl font-semibold text-slate-100">Linear</h2>
           </div>
           <div className="text-sm text-slate-400">
             Simplicity scales • High-velocity development

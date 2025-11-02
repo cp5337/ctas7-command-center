@@ -31,5 +31,16 @@ tokio-tungstenite = "0.21"
 futures-util = "0.3"
 anyhow = "1.0"
 
+# SGP4 Orbital Propagation for Satellite Tracking
+sgp4 = "2.0"
+satellite-rs = "0.3"
+
+# Coordinate System Transformations
+nalgebra = "0.32"
+approx = "0.5"
+
+# Time handling for orbital mechanics
+time = { version = "0.3", features = ["macros", "serde"] }
+
 # QA Integration (temporarily disabled for telemetry testing)
 # ctas7-qa-analyzer = { path = "../ctas-7-shipyard-staging/ctas7-qa-analyzer", package = "ctas7-phd-analyzer" }

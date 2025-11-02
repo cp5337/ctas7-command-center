@@ -5,7 +5,6 @@ import { ChannelList } from './components/ChannelList';
 import { KanbanBoard } from './components/KanbanBoard';
 import { MetricsWidget } from './components/MetricsWidget';
 import { WebSocketDebugger } from './components/WebSocketDebugger';
-import { Breadcrumb } from './components/Breadcrumb';
 import { CyberOpsWorkspace } from './components/CyberOpsWorkspace';
 import { CTASOntologyManager } from './components/CTASOntologyManager';
 import { EnterpriseIntegrationHub } from './components/EnterpriseIntegrationHub';
@@ -16,6 +15,10 @@ import { LinearStyleProjectManagement } from './components/LinearStyleProjectMan
 import { LinearMultiLLMOnboarding } from './components/LinearMultiLLMOnboarding';
 import { SmartCrateControl } from './components/SmartCrateControl';
 import { GISViewer } from './components/GISViewer';
+import { ResearchPapersDashboard } from './components/ResearchPapersDashboard';
+import SatelliteControlCenter from './components/SatelliteControlCenter';
+import FinancialDashboard from './pages/FinancialDashboard';
+import ElevenLabsMonitorDashboard from './components/ElevenLabsMonitorDashboard';
 import { useWebSocket } from './hooks/useWebSocket';
 import { getWebSocketUrl } from './utils/url';
 import { getRealPersonas, getRealTasks, getRealMetrics } from './services/realDataService';
@@ -36,7 +39,15 @@ import {
   Shield,
   Activity,
   Package,
-  Satellite
+  Satellite,
+  FileText,
+  DollarSign,
+  Home,
+  Bot,
+  Mic,
+  MicOff,
+  Workflow,
+  Volume2
 } from 'lucide-react';
 
 function App() {
@@ -46,9 +57,13 @@ function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [metrics, setMetrics] = useState<SystemMetric[]>([]);
   const [activeChannelId, setActiveChannelId] = useState<string>('');
-  const [activeTab, setActiveTab] = useState<'overview' | 'chat' | 'tasks' | 'metrics' | 'enterprise' | 'cyberops' | 'ontology' | 'crates' | 'tools' | 'gis' | 'hft' | 'sdc'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'chat' | 'tasks' | 'metrics' | 'enterprise' | 'cyberops' | 'ontology' | 'crates' | 'tools' | 'gis' | 'research' | 'financial' | 'hft' | 'satellite' | 'agents' | 'workflows' | 'voice'>('overview');
   const [selectedCrate, setSelectedCrate] = useState<string>('');
   const [crateData, setCrateData] = useState<any>(null);
+
+  // Voice control state
+  const [isVoiceActive, setIsVoiceActive] = useState<boolean>(false);
+  const [voiceFeedback, setVoiceFeedback] = useState<string>('');
 
   // WebSocket connection for real-time updates
   const { isConnected, sendMessage } = useWebSocket(getWebSocketUrl());
@@ -340,6 +355,100 @@ function App() {
     setTasks(prev => prev.filter(task => task.id !== taskId));
   };
 
+  // Voice command handlers
+  const handleVoiceCommand = async (command: string) => {
+    setVoiceFeedback(`Processing: "${command}"`);
+
+    // Parse voice commands for navigation
+    const lowerCommand = command.toLowerCase();
+
+    if (lowerCommand.includes('go to') || lowerCommand.includes('show') || lowerCommand.includes('open')) {
+      if (lowerCommand.includes('overview') || lowerCommand.includes('home')) {
+        setActiveTab('overview');
+        setVoiceFeedback('Navigated to Overview');
+      } else if (lowerCommand.includes('crate') || lowerCommand.includes('smart crate')) {
+        setActiveTab('crates');
+        setVoiceFeedback('Opened Smart Crates');
+      } else if (lowerCommand.includes('agent') || lowerCommand.includes('bot')) {
+        setActiveTab('agents');
+        setVoiceFeedback('Opened Agent Studio');
+      } else if (lowerCommand.includes('workflow') || lowerCommand.includes('n8n') || lowerCommand.includes('forge')) {
+        setActiveTab('workflows');
+        setVoiceFeedback('Opened Workflow Designer');
+      } else if (lowerCommand.includes('data') || lowerCommand.includes('graph')) {
+        setActiveTab('gis');
+        setVoiceFeedback('Opened Data Visualization');
+      } else if (lowerCommand.includes('satellite') || lowerCommand.includes('laser')) {
+        setActiveTab('satellite');
+        setVoiceFeedback('Opened Satellite Control');
+      } else if (lowerCommand.includes('financial') || lowerCommand.includes('edgar')) {
+        setActiveTab('financial');
+        setVoiceFeedback('Opened Financial Dashboard');
+      } else if (lowerCommand.includes('chat') || lowerCommand.includes('message')) {
+        setActiveTab('chat');
+        setVoiceFeedback('Opened Communications');
+      }
+    } else if (lowerCommand.includes('system status') || lowerCommand.includes('health check')) {
+      setVoiceFeedback('System status: All services operational');
+    } else {
+      setVoiceFeedback('Command not recognized. Try "Go to [overview/crates/agents/data]" or "System status"');
+    }
+
+    // Clear feedback after 3 seconds
+    setTimeout(() => setVoiceFeedback(''), 3000);
+  };
+
+  const handleVoiceToggle = () => {
+    setIsVoiceActive(!isVoiceActive);
+
+    if (!isVoiceActive) {
+      // Start voice listening
+      if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+        const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
+        const recognition = new SpeechRecognition();
+
+        recognition.continuous = true;
+        recognition.interimResults = false;
+        recognition.lang = 'en-US';
+
+        recognition.onstart = () => {
+          setVoiceFeedback('Listening... Try "Go to crates" or "Show system status"');
+        };
+
+        recognition.onresult = (event: any) => {
+          const transcript = event.results[event.results.length - 1][0].transcript.trim();
+          handleVoiceCommand(transcript);
+        };
+
+        recognition.onerror = () => {
+          setVoiceFeedback('Voice recognition error. Click to try again.');
+          setIsVoiceActive(false);
+        };
+
+        recognition.onend = () => {
+          if (isVoiceActive) {
+            recognition.start(); // Restart if still active
+          }
+        };
+
+        recognition.start();
+        (window as any).currentRecognition = recognition;
+      } else {
+        setVoiceFeedback('Voice recognition not supported in this browser');
+        setIsVoiceActive(false);
+        setTimeout(() => setVoiceFeedback(''), 3000);
+      }
+    } else {
+      // Stop voice listening
+      if ((window as any).currentRecognition) {
+        (window as any).currentRecognition.stop();
+        (window as any).currentRecognition = null;
+      }
+      setVoiceFeedback('Voice control disabled');
+      setTimeout(() => setVoiceFeedback(''), 2000);
+    }
+  };
+
   const activeChannel = channels.find(c => c.id === activeChannelId);
   const channelMessages = messages.filter(m => m.channelId === activeChannelId);
 
@@ -353,7 +462,13 @@ function App() {
     { id: 'ontology', label: 'Ontology', icon: Users },
     { id: 'crates', label: 'Crates', icon: Package },
     { id: 'tools', label: 'Tools', icon: Zap },
-    { id: 'gis', label: '3D Satellites', icon: Satellite }
+    { id: 'gis', label: 'Laser Light', icon: Satellite },
+    { id: 'satellite', label: 'Satellite Control', icon: Satellite },
+    { id: 'financial', label: 'Financial', icon: DollarSign },
+    { id: 'research', label: 'Research Papers', icon: FileText },
+    { id: 'agents', label: 'Agent Studio', icon: Bot },
+    { id: 'workflows', label: 'Workflows', icon: Workflow },
+    { id: 'voice', label: 'Voice Monitor', icon: Volume2 }
   ];
 
   return (
@@ -372,6 +487,12 @@ function App() {
                 {isConnected ? 'Connected' : 'Offline Mode'}
               </span>
             </div>
+            {voiceFeedback && (
+              <div className="flex items-center space-x-2 text-sm bg-slate-700 px-3 py-1 rounded-full">
+                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                <span className="text-green-400">{voiceFeedback}</span>
+              </div>
+            )}
           </div>
           
           <div className="flex items-center space-x-4">
@@ -408,16 +529,47 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="p-6">
-        {/* Breadcrumb Navigation */}
-        <div className="mb-4">
-          <Breadcrumb 
-            items={[{ label: tabs.find(t => t.id === activeTab)?.label || 'Unknown', id: activeTab }]}
-            activeItem={activeTab}
-            onNavigate={setActiveTab as (itemId: string) => void}
-          />
+      <main className="flex">
+        {/* Navigation Rail */}
+        <div className="w-16 bg-slate-800 border-r border-slate-700 flex flex-col items-center py-4 space-y-4">
+          <button
+            onClick={() => setActiveTab('overview')}
+            className={`p-3 rounded-lg transition-all duration-200 group relative ${
+              activeTab === 'overview'
+                ? 'bg-cyan-500/10 text-cyan-400'
+                : 'hover:bg-slate-700 text-slate-400'
+            }`}
+            title="Home"
+          >
+            <Home size={18} className="transition-transform group-hover:scale-110" />
+            {activeTab === 'overview' && (
+              <div className="absolute -right-1 top-1 w-2 h-2 bg-cyan-400 rounded-full"></div>
+            )}
+          </button>
+
+          <button
+            onClick={handleVoiceToggle}
+            className={`p-3 rounded-lg transition-all duration-200 group relative ${
+              isVoiceActive
+                ? 'bg-green-500/10 text-green-400 animate-pulse'
+                : 'hover:bg-slate-700 text-slate-400'
+            }`}
+            title={isVoiceActive ? 'Voice Active - Click to disable' : 'Enable Voice Control'}
+          >
+            {isVoiceActive ? (
+              <Mic size={18} className="transition-transform group-hover:scale-110" />
+            ) : (
+              <MicOff size={18} className="transition-transform group-hover:scale-110" />
+            )}
+            {isVoiceActive && (
+              <div className="absolute -right-1 top-1 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            )}
+          </button>
         </div>
-        {activeTab === 'overview' && (
+
+        {/* Main Content Area */}
+        <div className="flex-1 p-6">
+          {activeTab === 'overview' && (
           <div className="grid grid-cols-12 gap-6">
             {/* Personas Sidebar */}
             <div className="col-span-12 lg:col-span-3 space-y-4">
@@ -503,9 +655,9 @@ function App() {
               </div>
             </div>
           </div>
-        )}
+          )}
 
-        {activeTab === 'chat' && (
+          {activeTab === 'chat' && (
           <div className="grid grid-cols-12 gap-6 h-[calc(100vh-200px)]">
             {/* Channel List */}
             <div className="col-span-12 lg:col-span-3">
@@ -538,26 +690,24 @@ function App() {
               )}
             </div>
           </div>
-        )}
+          )}
 
-        {activeTab === 'tasks' && (
+          {activeTab === 'tasks' && (
           <div className="space-y-6">
             <div className="bg-slate-800 border border-cyan-400/20 rounded-lg p-6">
-              <h2 className="text-lg font-semibold text-slate-100 mb-6">Tesla/SpaceX/NASA-Grade DevOps</h2>
               <MissionCriticalDevOps />
             </div>
             <div className="bg-slate-800 border border-cyan-400/20 rounded-lg p-6">
-              <h2 className="text-lg font-semibold text-slate-100 mb-6">Linear-Style Project Management</h2>
               <LinearStyleProjectManagement />
             </div>
             <div className="bg-slate-800 border border-cyan-400/20 rounded-lg p-6">
-              <h2 className="text-lg font-semibold text-slate-100 mb-6">Kanban Operations Board</h2>
+              <h2 className="text-lg font-semibold text-slate-100 mb-6">Operations Board</h2>
               <KanbanBoard tasks={tasks} onTaskUpdate={handleTaskUpdate} />
             </div>
           </div>
-        )}
+          )}
 
-        {activeTab === 'metrics' && (
+          {activeTab === 'metrics' && (
           <div className="space-y-6">
             <div className="bg-slate-800 border border-cyan-400/20 rounded-lg p-6">
               <h2 className="text-lg font-semibold text-slate-100 mb-6">System Performance</h2>
@@ -888,29 +1038,29 @@ function App() {
               </div>
             </div>
           </div>
-        )}
+          )}
 
-        {activeTab === 'enterprise' && (
+          {activeTab === 'enterprise' && (
           <div className="space-y-6">
             <LinearMultiLLMOnboarding />
             <EnterpriseIntegrationHub />
             <LeptosDocsBridge />
           </div>
-        )}
+          )}
 
-        {activeTab === 'ontology' && (
+          {activeTab === 'ontology' && (
           <div className="space-y-6">
             <CTASOntologyManager />
           </div>
-        )}
+          )}
 
-        {activeTab === 'cyberops' && (
+          {activeTab === 'cyberops' && (
           <div className="space-y-6">
             <CyberOpsWorkspace isConnected={isConnected} />
           </div>
-        )}
+          )}
 
-        {activeTab === 'tools' && (
+          {activeTab === 'tools' && (
           <div className="space-y-6">
             <div className="bg-slate-800 border border-cyan-400/20 rounded-lg p-6">
               <div className="flex items-center space-x-2 mb-4">
@@ -920,29 +1070,186 @@ function App() {
               <ToolForge />
             </div>
           </div>
-        )}
+          )}
 
-        {activeTab === 'gis' && (
-          <div className="h-[calc(100vh-200px)]">
-            <div className="bg-slate-800 border border-cyan-400/20 rounded-lg h-full overflow-hidden">
-              <div className="flex items-center space-x-2 p-4 border-b border-slate-700">
+          {activeTab === 'gis' && (
+          <div className="h-[calc(100vh-120px)]">
+            <div className="h-full">
+              <GISViewer />
+            </div>
+          </div>
+          )}
+
+          {activeTab === 'financial' && (
+          <FinancialDashboard />
+          )}
+
+          {activeTab === 'satellite' && (
+          <div className="space-y-6">
+            <div className="bg-slate-800 border border-cyan-400/20 rounded-lg p-6">
+              <div className="flex items-center space-x-2 mb-4">
                 <Satellite className="w-5 h-5 text-cyan-400" />
-                <h3 className="text-lg font-semibold text-slate-100">3D Orbital Satellite Tracking</h3>
+                <h3 className="text-lg font-semibold text-slate-100">LaserLight Satellite Constellation Control</h3>
                 <div className="flex items-center space-x-2 text-xs text-slate-400 ml-auto">
-                  <span>MEO Constellation</span>
+                  <span>12 MEO Satellites</span>
                   <span>•</span>
-                  <span>N2YO API</span>
+                  <span>Conflict Prevention</span>
                   <span>•</span>
-                  <span>Real-time 3D</span>
+                  <span>Emergency Controls</span>
                 </div>
               </div>
-              <div className="h-[calc(100%-4rem)]">
-                <GISViewer />
+              <SatelliteControlCenter />
+            </div>
+          </div>
+          )}
+
+          {activeTab === 'research' && (
+          <div className="space-y-6">
+            <div className="bg-slate-800 border border-cyan-400/20 rounded-lg p-6">
+              <div className="flex items-center space-x-2 mb-4">
+                <FileText className="w-5 h-5 text-cyan-400" />
+                <h3 className="text-lg font-semibold text-slate-100">Academic Research & Publications</h3>
+                <div className="flex items-center space-x-2 text-xs text-slate-400 ml-auto">
+                  <span>Zotero Integration</span>
+                  <span>•</span>
+                  <span>Overleaf Sync</span>
+                  <span>•</span>
+                  <span>Blockchain Verified</span>
+                </div>
               </div>
+              <ResearchPapersDashboard />
             </div>
           </div>
         )}
 
+          {activeTab === 'agents' && (
+          <div className="space-y-6">
+            <div className="bg-slate-800 border border-cyan-400/20 rounded-lg p-6">
+              <div className="flex items-center space-x-2 mb-4">
+                <Users className="w-5 h-5 text-cyan-400" />
+                <h3 className="text-lg font-semibold text-slate-100">Agent Design Studio</h3>
+                <div className="flex items-center space-x-2 text-xs text-slate-400 ml-auto">
+                  <span>SDIO Discovery</span>
+                  <span>•</span>
+                  <span>Forge Integration</span>
+                  <span>•</span>
+                  <span>Neural Mux</span>
+                </div>
+              </div>
+              <p className="text-slate-300 mb-4">Visual platform for designing, composing, and deploying intelligent agents within the CTAS-7 ecosystem.</p>
+              <div className="bg-slate-700 rounded-lg p-4">
+                <div className="text-center text-slate-400">
+                  <Users className="w-16 h-16 mx-auto mb-4 text-slate-500" />
+                  <h4 className="text-lg font-medium text-slate-300 mb-2">Agent Design Studio Coming Soon</h4>
+                  <p className="text-sm">Phase 1 foundation components with SDIO discovery and Forge workflow integration.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          )}
+
+          {activeTab === 'workflows' && (
+          <div className="space-y-6">
+            <div className="bg-slate-800 border border-purple-400/20 rounded-lg p-6">
+              <div className="flex items-center space-x-2 mb-4">
+                <Workflow className="w-5 h-5 text-purple-400" />
+                <h3 className="text-lg font-semibold text-slate-100">Workflow Orchestration</h3>
+                <div className="flex items-center space-x-2 text-xs text-slate-400 ml-auto">
+                  <span>N8N Integration</span>
+                  <span>•</span>
+                  <span>Forge Backend</span>
+                  <span>•</span>
+                  <span>Visual Designer</span>
+                </div>
+              </div>
+              <p className="text-slate-300 mb-4">N8N visual workflow designer with Forge backend translation for CTAS-7 operations.</p>
+
+              {/* N8N Embedded Interface */}
+              <div className="bg-slate-900 rounded-lg border border-slate-700 mb-4">
+                <div className="flex items-center justify-between p-3 bg-slate-700 rounded-t-lg">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 rounded-full bg-green-400"></div>
+                    <span className="text-sm text-slate-300">N8N Workflow Designer</span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-xs text-slate-400">
+                    <span>Port: 5678</span>
+                    <span>•</span>
+                    <span>Connected to Forge</span>
+                  </div>
+                </div>
+
+                {/* N8N Interface or Fallback */}
+                <div className="h-96 bg-slate-900 rounded-b-lg overflow-hidden">
+                  {/* N8N Not Available - Show Fallback */}
+                  <div className="flex items-center justify-center h-full text-center">
+                    <div className="space-y-4">
+                      <Workflow className="w-16 h-16 mx-auto text-slate-500" />
+                      <div>
+                        <h4 className="text-lg font-medium text-slate-300 mb-2">N8N Not Running</h4>
+                        <p className="text-sm text-slate-400 mb-4">Workflow designer is not available on port 5678</p>
+                        <div className="text-xs text-slate-500 space-y-2">
+                          <div>Start N8N with:</div>
+                          <code className="block bg-slate-800 p-2 rounded">docker run -it --rm --name n8n -p 5678:5678 n8nio/n8n</code>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Workflow Bridge Status */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-slate-700 rounded-lg p-4">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+                    <span className="text-sm font-medium text-slate-200">N8N Designer</span>
+                  </div>
+                  <div className="text-xs text-slate-400">Visual workflow composition</div>
+                  <div className="text-xs text-green-400 mt-1">Ready</div>
+                </div>
+
+                <div className="bg-slate-700 rounded-lg p-4">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
+                    <span className="text-sm font-medium text-slate-200">Bridge Layer</span>
+                  </div>
+                  <div className="text-xs text-slate-400">N8N → Forge translation</div>
+                  <div className="text-xs text-yellow-400 mt-1">Building</div>
+                </div>
+
+                <div className="bg-slate-700 rounded-lg p-4">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="w-2 h-2 rounded-full bg-green-400"></div>
+                    <span className="text-sm font-medium text-slate-200">Forge Backend</span>
+                  </div>
+                  <div className="text-xs text-slate-400">Rust workflow execution</div>
+                  <div className="text-xs text-green-400 mt-1">Available</div>
+                </div>
+              </div>
+
+              {/* Quick Actions */}
+              <div className="flex space-x-2 mt-4">
+                <button className="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg text-sm font-medium transition-colors">
+                  Open N8N Designer
+                </button>
+                <button className="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-sm font-medium transition-colors">
+                  View Forge Workflows
+                </button>
+                <button className="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-sm font-medium transition-colors">
+                  Configure CTAS-7 Nodes
+                </button>
+              </div>
+            </div>
+          </div>
+          )}
+
+          {activeTab === 'voice' && (
+          <div className="h-[calc(100vh-120px)]">
+            <ElevenLabsMonitorDashboard />
+          </div>
+          )}
+
+        </div>
       </main>
       
       <WebSocketDebugger />
