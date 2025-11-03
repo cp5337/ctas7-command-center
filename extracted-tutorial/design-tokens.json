@@ -1,0 +1,103 @@
+{
+  "color": {
+    "primary": { "value": "#38bdf8" },
+    "secondary": { "value": "#818cf8" },
+    "accent": { "value": "#f472b6" },
+    "success": { "value": "#10b981" },
+    "warning": { "value": "#f59e0b" },
+    "error": { "value": "#ef4444" },
+    "background": {
+      "primary": { "value": "#0f172a" },
+      "secondary": { "value": "#1e293b" },
+      "tertiary": { "value": "#334155" }
+    },
+    "surface": {
+      "primary": { "value": "#1e293b" },
+      "secondary": { "value": "#334155" },
+      "elevated": { "value": "#475569" }
+    },
+    "text": {
+      "primary": { "value": "#e2e8f0" },
+      "secondary": { "value": "#94a3b8" },
+      "tertiary": { "value": "#64748b" },
+      "inverse": { "value": "#0f172a" }
+    },
+    "border": {
+      "primary": { "value": "#334155" },
+      "secondary": { "value": "#475569" },
+      "focus": { "value": "#38bdf8" }
+    }
+  },
+  "spacing": {
+    "xs": { "value": 4 },
+    "sm": { "value": 8 },
+    "md": { "value": 16 },
+    "lg": { "value": 24 },
+    "xl": { "value": 32 },
+    "2xl": { "value": 48 },
+    "3xl": { "value": 64 }
+  },
+  "typography": {
+    "fontSize": {
+      "xs": { "value": 12 },
+      "sm": { "value": 14 },
+      "base": { "value": 16 },
+      "lg": { "value": 18 },
+      "xl": { "value": 20 },
+      "2xl": { "value": 24 },
+      "3xl": { "value": 30 },
+      "4xl": { "value": 36 },
+      "5xl": { "value": 48 }
+    },
+    "fontWeight": {
+      "regular": { "value": "400" },
+      "medium": { "value": "500" },
+      "semibold": { "value": "600" },
+      "bold": { "value": "700" }
+    },
+    "lineHeight": {
+      "tight": { "value": 1.25 },
+      "normal": { "value": 1.5 },
+      "relaxed": { "value": 1.75 }
+    }
+  },
+  "borderRadius": {
+    "sm": { "value": 4 },
+    "md": { "value": 8 },
+    "lg": { "value": 12 },
+    "xl": { "value": 16 },
+    "full": { "value": 9999 }
+  },
+  "shadow": {
+    "sm": {
+      "shadowColor": "#000",
+      "shadowOffset": { "width": 0, "height": 1 },
+      "shadowOpacity": 0.05,
+      "shadowRadius": 2,
+      "elevation": 1
+    },
+    "md": {
+      "shadowColor": "#000",
+      "shadowOffset": { "width": 0, "height": 4 },
+      "shadowOpacity": 0.1,
+      "shadowRadius": 6,
+      "elevation": 3
+    },
+    "lg": {
+      "shadowColor": "#000",
+      "shadowOffset": { "width": 0, "height": 10 },
+      "shadowOpacity": 0.15,
+      "shadowRadius": 15,
+      "elevation": 5
+    }
+  },
+  "breakpoints": {
+    "mobile": { "value": 320 },
+    "tablet": { "value": 768 },
+    "desktop": { "value": 1024 },
+    "wide": { "value": 1440 }
+  },
+  "touchTarget": {
+    "minimum": { "value": 44 }
+  }
+}

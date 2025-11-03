@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CTAS-7 Ground Station Control Interface</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #0a0a0a;
+        color: #e0e0e0;
+        font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono",
+          monospace;
+        font-size: 12px;
+        line-height: 1.4;
+        overflow: hidden;
+      }
+
+      .control-panel {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        width: 280px;
+        background: rgba(10, 10, 10, 0.95);
+        border: 1px solid #333;
+        border-radius: 4px;
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        transform: translateX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .control-panel.collapsed {
+        transform: translateX(-260px);
+      }
+
+      .panel-header {
+        background: #1a1a1a;
+        padding: 12px 16px;
+        border-bottom: 1px solid #333;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .panel-title {
+        font-weight: 600;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #00ff00;
+      }
+
+      .collapse-btn {
+        background: none;
+        border: none;
+        color: #666;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 2px;
+      }
+
+      .collapse-btn:hover {
+        background: #333;
+        color: #00ff00;
+      }
+
+      .control-section {
+        padding: 16px;
+      }
+
+      .control-group {
+        margin-bottom: 20px;
+      }
+
+      .control-label {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #888;
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      .control-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border-bottom: 1px solid #222;
+      }
+
+      .control-item:last-child {
+        border-bottom: none;
+      }
+
+      .control-name {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .control-glyph {
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+        border: 1px solid #444;
+        transition: all 0.2s ease;
+        position: relative;
+      }
+
+      .control-glyph.active {
+        background: #00ff00;
+        border-color: #00ff00;
+        box-shadow: 0 0 8px rgba(0, 255, 0, 0.3);
+      }
+
+      .control-glyph.warning {
+        background: #ff9500;
+        border-color: #ff9500;
+        box-shadow: 0 0 8px rgba(255, 149, 0, 0.3);
+      }
+
+      .control-glyph.critical {
+        background: #ff3333;
+        border-color: #ff3333;
+        box-shadow: 0 0 8px rgba(255, 51, 51, 0.3);
+        animation: pulse 1s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      .control-text {
+        font-size: 11px;
+        color: #ccc;
+      }
+
+      .control-value {
+        font-size: 10px;
+        color: #888;
+        font-family: monospace;
+      }
+
+      .slider-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .control-slider {
+        flex: 1;
+        -webkit-appearance: none;
+        appearance: none;
+        height: 2px;
+        background: #333;
+        outline: none;
+        border-radius: 1px;
+      }
+
+      .control-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 12px;
+        height: 12px;
+        background: #00ff00;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .control-slider::-webkit-slider-thumb:hover {
+        background: #00cc00;
+        transform: scale(1.2);
+      }
+
+      .toggle-switch {
+        width: 32px;
+        height: 16px;
+        background: #333;
+        border-radius: 8px;
+        position: relative;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .toggle-switch.active {
+        background: #00ff00;
+      }
+
+      .toggle-switch::before {
+        content: "";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background: #fff;
+        border-radius: 50%;
+        top: 2px;
+        left: 2px;
+        transition: transform 0.3s ease;
+      }
+
+      .toggle-switch.active::before {
+        transform: translateX(16px);
+      }
+
+      .preset-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .preset-btn {
+        background: #1a1a1a;
+        border: 1px solid #333;
+        color: #ccc;
+        padding: 8px 12px;
+        font-size: 10px;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 2px;
+        transition: all 0.2s ease;
+      }
+
+      .preset-btn:hover {
+        background: #333;
+        border-color: #00ff00;
+        color: #00ff00;
+      }
+
+      .preset-btn.active {
+        background: #00ff00;
+        border-color: #00ff00;
+        color: #000;
+      }
+
+      /* Tooltip */
+      .tooltip {
+        position: absolute;
+        background: #000;
+        color: #fff;
+        padding: 6px 8px;
+        font-size: 9px;
+        border-radius: 2px;
+        white-space: nowrap;
+        z-index: 1001;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        border: 1px solid #333;
+      }
+
+      .tooltip.show {
+        opacity: 1;
+      }
+
+      /* Status bar */
+      .status-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 24px;
+        background: #1a1a1a;
+        border-top: 1px solid #333;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        font-size: 10px;
+        color: #666;
+      }
+
+      .status-item {
+        margin-right: 20px;
+      }
+
+      .status-value {
+        color: #00ff00;
+      }
+
+      /* Main viewport */
+      .viewport {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #000;
+      }
+
+      #cesiumContainer {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="viewport">
+      <div id="cesiumContainer"></div>
+    </div>
+
+    <div class="control-panel" id="controlPanel">
+      <div class="panel-header">
+        <span class="panel-title">Ground Station Control</span>
+        <button class="collapse-btn" onclick="togglePanel()">⟨</button>
+      </div>
+
+      <div class="control-section">
+        <div class="control-group">
+          <label class="control-label">Orbital Dynamics</label>
+
+          <div
+            class="control-item"
+            onmouseenter="showTooltip(event, 'Earth rotation rate - affects ground track calculations')"
+            onmouseleave="hideTooltip()"
+          >
+            <div class="control-name">
+              <div class="control-glyph active" id="earthGlyph"></div>
+              <span class="control-text">Earth Rotation</span>
+            </div>
+            <div class="slider-container">
+              <input
+                type="range"
+                class="control-slider"
+                min="0"
+                max="2"
+                step="0.1"
+                value="0.25"
+                oninput="updateValue(this, 'earthValue')"
+                id="earthSlider"
+              />
+              <span class="control-value" id="earthValue">0.25°/min</span>
+            </div>
+          </div>
+
+          <div
+            class="control-item"
+            onmouseenter="showTooltip(event, 'Satellite angular velocity multiplier')"
+            onmouseleave="hideTooltip()"
+          >
+            <div class="control-name">
+              <div class="control-glyph active" id="satGlyph"></div>
+              <span class="control-text">Satellite Velocity</span>
+            </div>
+            <div class="slider-container">
+              <input
+                type="range"
+                class="control-slider"
+                min="0"
+                max="5"
+                step="0.1"
+                value="1.0"
+                oninput="updateValue(this, 'satValue')"
+                id="satSlider"
+              />
+              <span class="control-value" id="satValue">1.0x</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">System Performance</label>
+
+          <div
+            class="control-item"
+            onmouseenter="showTooltip(event, 'Laser communication pulse rate')"
+            onmouseleave="hideTooltip()"
+          >
+            <div class="control-name">
+              <div class="control-glyph warning" id="laserGlyph"></div>
+              <span class="control-text">Laser Pulse Rate</span>
+            </div>
+            <div class="slider-container">
+              <input
+                type="range"
+                class="control-slider"
+                min="0"
+                max="2"
+                step="0.1"
+                value="0.5"
+                oninput="updateValue(this, 'laserValue')"
+                id="laserSlider"
+              />
+              <span class="control-value" id="laserValue">0.5x</span>
+            </div>
+          </div>
+
+          <div
+            class="control-item"
+            onmouseenter="showTooltip(event, 'Cross-routing efficiency between nodes')"
+            onmouseleave="hideTooltip()"
+          >
+            <div class="control-name">
+              <div class="control-glyph active" id="routingGlyph"></div>
+              <span class="control-text">Cross-Routing</span>
+            </div>
+            <div class="slider-container">
+              <input
+                type="range"
+                class="control-slider"
+                min="0"
+                max="1"
+                step="0.1"
+                value="0.4"
+                oninput="updateValue(this, 'routingValue')"
+                id="routingSlider"
+              />
+              <span class="control-value" id="routingValue">0.4x</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Display Options</label>
+
+          <div
+            class="control-item"
+            onmouseenter="showTooltip(event, 'Solar panel orientation optimization')"
+            onmouseleave="hideTooltip()"
+          >
+            <div class="control-name">
+              <div class="control-glyph" id="solarGlyph"></div>
+              <span class="control-text">Solar Optimization</span>
+            </div>
+            <div
+              class="toggle-switch"
+              onclick="toggleOption('solar')"
+              id="solarToggle"
+            ></div>
+          </div>
+
+          <div
+            class="control-item"
+            onmouseenter="showTooltip(event, 'Ground station communication links')"
+            onmouseleave="hideTooltip()"
+          >
+            <div class="control-name">
+              <div class="control-glyph active" id="groundGlyph"></div>
+              <span class="control-text">Ground Links</span>
+            </div>
+            <div
+              class="toggle-switch active"
+              onclick="toggleOption('ground')"
+              id="groundToggle"
+            ></div>
+          </div>
+
+          <div
+            class="control-item"
+            onmouseenter="showTooltip(event, 'Inter-satellite communication network')"
+            onmouseleave="hideTooltip()"
+          >
+            <div class="control-name">
+              <div class="control-glyph active" id="intersatGlyph"></div>
+              <span class="control-text">Inter-Sat Links</span>
+            </div>
+            <div
+              class="toggle-switch active"
+              onclick="toggleOption('intersat')"
+              id="intersatToggle"
+            ></div>
+          </div>
+
+          <div
+            class="control-item"
+            onmouseenter="showTooltip(event, 'Van Allen radiation belt visualization')"
+            onmouseleave="hideTooltip()"
+          >
+            <div class="control-name">
+              <div class="control-glyph critical" id="radiationGlyph"></div>
+              <span class="control-text">Radiation Belts</span>
+            </div>
+            <div
+              class="toggle-switch"
+              onclick="toggleOption('radiation')"
+              id="radiationToggle"
+            ></div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Quick Presets</label>
+          <div class="preset-buttons">
+            <button class="preset-btn" onclick="setPreset('operational')">
+              Operational
+            </button>
+            <button class="preset-btn active" onclick="setPreset('briefing')">
+              Briefing
+            </button>
+            <button class="preset-btn" onclick="setPreset('minimal')">
+              Minimal
+            </button>
+            <button class="preset-btn" onclick="setPreset('debug')">
+              Debug
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-bar">
+      <div class="status-item">
+        FPS: <span class="status-value" id="fpsCounter">60</span>
+      </div>
+      <div class="status-item">
+        Satellites: <span class="status-value">247</span>
+      </div>
+      <div class="status-item">
+        Ground Stations: <span class="status-value">18</span>
+      </div>
+      <div class="status-item">
+        Links Active: <span class="status-value">156</span>
+      </div>
+      <div class="status-item">
+        System: <span class="status-value">NOMINAL</span>
+      </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+      let panelCollapsed = false;
+      let tooltip = document.getElementById("tooltip");
+
+      function togglePanel() {
+        const panel = document.getElementById("controlPanel");
+        const btn = panel.querySelector(".collapse-btn");
+        panelCollapsed = !panelCollapsed;
+
+        if (panelCollapsed) {
+          panel.classList.add("collapsed");
+          btn.textContent = "⟩";
+        } else {
+          panel.classList.remove("collapsed");
+          btn.textContent = "⟨";
+        }
+      }
+
+      function updateValue(slider, valueId) {
+        const value = parseFloat(slider.value);
+        const valueElement = document.getElementById(valueId);
+
+        if (valueId.includes("earth")) {
+          valueElement.textContent = value.toFixed(2) + "°/min";
+        } else {
+          valueElement.textContent = value.toFixed(1) + "x";
+        }
+
+        // Update glyph status based on value
+        const glyphId = valueId.replace("Value", "Glyph");
+        const glyph = document.getElementById(glyphId);
+
+        glyph.classList.remove("active", "warning", "critical");
+
+        if (value === 0) {
+          // Inactive
+        } else if (value > 1.5) {
+          glyph.classList.add("critical");
+        } else if (value > 0.8) {
+          glyph.classList.add("warning");
+        } else {
+          glyph.classList.add("active");
+        }
+      }
+
+      function toggleOption(option) {
+        const toggle = document.getElementById(option + "Toggle");
+        const glyph = document.getElementById(option + "Glyph");
+
+        toggle.classList.toggle("active");
+
+        if (toggle.classList.contains("active")) {
+          glyph.classList.add("active");
+        } else {
+          glyph.classList.remove("active", "warning", "critical");
+        }
+      }
+
+      function setPreset(preset) {
+        // Remove active class from all preset buttons
+        document.querySelectorAll(".preset-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        // Add active class to clicked button
+        event.target.classList.add("active");
+
+        // Apply preset configurations
+        switch (preset) {
+          case "operational":
+            applyPreset({
+              earth: 0.25,
+              sat: 1.0,
+              laser: 0.5,
+              routing: 0.4,
+              solar: false,
+              ground: true,
+              intersat: true,
+              radiation: false,
+            });
+            break;
+          case "briefing":
+            applyPreset({
+              earth: 0.1,
+              sat: 0.5,
+              laser: 0.2,
+              routing: 0.6,
+              solar: false,
+              ground: true,
+              intersat: false,
+              radiation: false,
+            });
+            break;
+          case "minimal":
+            applyPreset({
+              earth: 0.0,
+              sat: 0.0,
+              laser: 0.0,
+              routing: 0.0,
+              solar: false,
+              ground: false,
+              intersat: false,
+              radiation: false,
+            });
+            break;
+          case "debug":
+            applyPreset({
+              earth: 1.0,
+              sat: 2.0,
+              laser: 1.5,
+              routing: 1.0,
+              solar: true,
+              ground: true,
+              intersat: true,
+              radiation: true,
+            });
+            break;
+        }
+      }
+
+      function applyPreset(config) {
+        // Apply slider values
+        document.getElementById("earthSlider").value = config.earth;
+        updateValue(document.getElementById("earthSlider"), "earthValue");
+
+        document.getElementById("satSlider").value = config.sat;
+        updateValue(document.getElementById("satSlider"), "satValue");
+
+        document.getElementById("laserSlider").value = config.laser;
+        updateValue(document.getElementById("laserSlider"), "laserValue");
+
+        document.getElementById("routingSlider").value = config.routing;
+        updateValue(document.getElementById("routingSlider"), "routingValue");
+
+        // Apply toggle states
+        ["solar", "ground", "intersat", "radiation"].forEach((option) => {
+          const toggle = document.getElementById(option + "Toggle");
+          const glyph = document.getElementById(option + "Glyph");
+
+          if (config[option]) {
+            toggle.classList.add("active");
+            glyph.classList.add("active");
+          } else {
+            toggle.classList.remove("active");
+            glyph.classList.remove("active", "warning", "critical");
+          }
+        });
+      }
+
+      function showTooltip(event, text) {
+        tooltip.textContent = text;
+        tooltip.style.left = event.pageX + 10 + "px";
+        tooltip.style.top = event.pageY - 10 + "px";
+        tooltip.classList.add("show");
+      }
+
+      function hideTooltip() {
+        tooltip.classList.remove("show");
+      }
+
+      // FPS Counter simulation
+      let fps = 60;
+      setInterval(() => {
+        fps = 58 + Math.random() * 4;
+        document.getElementById("fpsCounter").textContent = Math.round(fps);
+      }, 100);
+
+      // Initialize with briefing preset
+      setPreset("briefing");
+    </script>
+  </body>
+</html>

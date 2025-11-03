@@ -1,0 +1,159 @@
+{
+  "config": {
+    "configFile": "/Users/cp5337/Developer/ctas7-command-center/playwright.config.ts",
+    "rootDir": "/Users/cp5337/Developer/ctas7-command-center/tests/playwright",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "/Users/cp5337/Developer/ctas7-command-center/tests/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 600000,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "framework": "CTAS-7 Dioxus",
+      "version": "0.7.0",
+      "environment": "development",
+      "neural_mux": "ws://localhost:18100",
+      "database": "ws://localhost:8000"
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "./tests/reports/playwright-report.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "./tests/reports/html-report"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/cp5337/Developer/ctas7-command-center/tests/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "framework": "CTAS-7 Dioxus",
+          "version": "0.7.0",
+          "environment": "development",
+          "neural_mux": "ws://localhost:18100",
+          "database": "ws://localhost:8000"
+        },
+        "id": "CTAS7-Dioxus",
+        "name": "CTAS7-Dioxus",
+        "testDir": "/Users/cp5337/Developer/ctas7-command-center/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*ctas7.*\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/cp5337/Developer/ctas7-command-center/tests/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "framework": "CTAS-7 Dioxus",
+          "version": "0.7.0",
+          "environment": "development",
+          "neural_mux": "ws://localhost:18100",
+          "database": "ws://localhost:8000"
+        },
+        "id": "CTAS7-Mobile",
+        "name": "CTAS7-Mobile",
+        "testDir": "/Users/cp5337/Developer/ctas7-command-center/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*ctas7.*\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/cp5337/Developer/ctas7-command-center/tests/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "framework": "CTAS-7 Dioxus",
+          "version": "0.7.0",
+          "environment": "development",
+          "neural_mux": "ws://localhost:18100",
+          "database": "ws://localhost:8000"
+        },
+        "id": "CTAS7-Tablet",
+        "name": "CTAS7-Tablet",
+        "testDir": "/Users/cp5337/Developer/ctas7-command-center/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*ctas7.*\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/cp5337/Developer/ctas7-command-center/tests/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "framework": "CTAS-7 Dioxus",
+          "version": "0.7.0",
+          "environment": "development",
+          "neural_mux": "ws://localhost:18100",
+          "database": "ws://localhost:8000"
+        },
+        "id": "CTAS7-Firefox",
+        "name": "CTAS7-Firefox",
+        "testDir": "/Users/cp5337/Developer/ctas7-command-center/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*ctas7.*\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 7,
+    "webServer": {
+      "command": "cargo run --bin ctas-dioxus-server",
+      "port": 3000,
+      "reuseExistingServer": true,
+      "timeout": 120000,
+      "env": {
+        "CTAS_ENV": "test",
+        "CTAS_DB_URL": "ws://localhost:8000",
+        "CTAS_NEURAL_MUX": "ws://localhost:18100",
+        "RUST_LOG": "info"
+      }
+    }
+  },
+  "suites": [],
+  "errors": [
+    {
+      "message": "Error: Process from config.webServer was not able to start. Exit code: 101",
+      "stack": "Error: Process from config.webServer was not able to start. Exit code: 101"
+    }
+  ],
+  "stats": {
+    "startTime": "2025-11-02T21:43:45.417Z",
+    "duration": 991.544,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

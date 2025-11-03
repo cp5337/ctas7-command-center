@@ -1,0 +1,49 @@
+{
+  "meta_agent": {
+    "id": "pipeline_supervisor",
+    "role": "Supervises React Native ↔ Web synchronization",
+    "objectives": [
+      "Validate parity between canonical and web components",
+      "Ensure dark-mode visual consistency",
+      "Document and track iOS WebKit compliance",
+      "Trigger synchronization events via GitHub Actions"
+    ]
+  },
+  "sub_agents": [
+    {
+      "id": "BuildSync",
+      "task": "Mirror code changes between canonical and web repos",
+      "trigger": "git_push",
+      "actions": ["sync_components", "update_docs", "notify_supervisor"]
+    },
+    {
+      "id": "DesignAudit",
+      "task": "Compare and validate design-tokens.json across repos",
+      "trigger": "daily_cron",
+      "actions": ["diff_tokens", "report_variances", "push_fixes"]
+    },
+    {
+      "id": "iOSValidator",
+      "task": "Check Apple HIG and WebKit compliance",
+      "trigger": "weekly",
+      "actions": ["run_safari_tests", "log_results", "create_variations_report"]
+    },
+    {
+      "id": "LLMTrainer",
+      "task": "Feed tokenized hybrid examples into CTAS Forge",
+      "trigger": "nightly",
+      "actions": ["collect_samples", "vectorize_data", "train_model"]
+    },
+    {
+      "id": "BoltRegistrar",
+      "task": "Sync operational metadata into Bolt DB",
+      "trigger": "continuous",
+      "actions": ["register_builds", "update_status", "report_metrics"]
+    }
+  ],
+  "reporting": {
+    "destination": "https://bolt.ctas.dev/ops/ingest",
+    "format": "JSON",
+    "interval": "6h"
+  }
+}

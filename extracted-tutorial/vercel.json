@@ -1,0 +1,14 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "regions": ["iad1"],
+  "env": {
+    "BOLT_DB_URL": "@bolt-db-url",
+    "MCP_ENDPOINT": "@mcp-endpoint",
+    "ABE_API_KEY": "@abe-api-key",
+    "OPS_WEBHOOK": "@ops-webhook",
+    "DEV_SYNC_TOKEN": "@dev-sync-token"
+  }
+}
