@@ -1,0 +1,195 @@
+# CTAS-7 Canonical Backend Docker Preservation
+# This Docker configuration preserves the working backend with all foundation crates
+# DO NOT REPLACE - ADD TO existing configurations
+
+version: '3.8'
+
+services:
+  # ====== AUTHORITATIVE PORT MANAGER ======
+  ctas7-real-port-manager:
+    build:
+      context: ../ctas-7-shipyard-staging/ctas7-real-port-manager
+      dockerfile: Dockerfile
+    ports:
+      - "18103:18103"  # Authoritative source for all ports
+    environment:
+      - RUST_LOG=info
+      - CTAS7_MODE=production
+    volumes:
+      - port_registry:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:18103/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ====== SYNAPTIX CORE UPDATED ======
+  ctas7-synaptix-core:
+    build:
+      context: ../ctas-7-shipyard-staging/
+      dockerfile: synaptix-core/Dockerfile
+    ports:
+      - "8080:8080"    # Main API Gateway
+      - "8081:8081"    # Foundation Crates Hub
+    environment:
+      - RUST_LOG=info
+      - SYNAPTIX_MODE=production
+      - PORT_MANAGER_URL=http://ctas7-real-port-manager:18103
+      - FOUNDATION_CRATES_ENABLED=true
+    depends_on:
+      - ctas7-real-port-manager
+      - ctas7-sledis-cache
+    volumes:
+      - synaptix_data:/app/data
+    restart: unless-stopped
+
+  # ====== MEMORY MESH v2.0 RC1 (SLEDIS) ======
+  ctas7-sledis-cache:
+    build:
+      context: ../ctas-7-shipyard-staging/ctas7-sledis
+      dockerfile: Dockerfile
+    ports:
+      - "19014:19014"  # Redis protocol + Memory Mesh
+      - "20014:20014"  # gRPC Health monitoring
+    environment:
+      - RUST_LOG=info
+      - SLEDIS_MODE=production
+      - MEMORY_MESH_VERSION=2.0-RC1
+    volumes:
+      - sledis_data:/app/data
+    restart: unless-stopped
+
+  # ====== NEURAL MUX + ATOMIC CLIPBOARD ======
+  ctas7-neural-mux:
+    build:
+      context: ../ctas-7-shipyard-staging/Cognitive\ Tactics\ Engine/cte-backend/cte-neural-mux
+      dockerfile: Dockerfile
+    ports:
+      - "50051:50051"  # gRPC Core
+      - "50052:50052"  # SDIO Discovery
+      - "50053:50053"  # SDIO Discovery 
+      - "50054:50054"  # SDIO Discovery
+      - "50055:50055"  # SDIO Discovery
+      - "15001:15001"  # gRPC Web Bridge
+      - "19011:19011"  # Context Mesh
+      - "19012:19012"  # Atomic Clipboard
+    environment:
+      - RUST_LOG=info
+      - NEURAL_MUX_MODE=production
+      - ATOMIC_CLIPBOARD_ENABLED=true
+      - CONTEXT_MESH_ENABLED=true
+    depends_on:
+      - ctas7-real-port-manager
+      - ctas7-sledis-cache
+    volumes:
+      - neural_data:/app/data
+    restart: unless-stopped
+
+  # ====== DATABASE LAYER ======
+  ctas7-surrealdb:
+    image: surrealdb/surrealdb:latest
+    command: start --log info --user root --pass root memory
+    ports:
+      - "8000:8000"
+    volumes:
+      - surrealdb_data:/app/data
+    restart: unless-stopped
+
+  ctas7-database-bridge:
+    build:
+      context: ../ctas-7-shipyard-staging/
+      dockerfile: database-bridge/Dockerfile
+    ports:
+      - "8005:8005"  # All database coordination
+    environment:
+      - RUST_LOG=info
+      - SURREALDB_URL=ws://ctas7-surrealdb:8000
+      - SLEDIS_URL=redis://ctas7-sledis-cache:19014
+      - SUPABASE_INTEGRATION=true
+    depends_on:
+      - ctas7-surrealdb
+      - ctas7-sledis-cache
+    restart: unless-stopped
+
+  # ====== FOUNDATION CRATES ======
+  ctas7-enhanced-geolocation:
+    build:
+      context: ../ctas-7-shipyard-staging/ctas7-enhanced-geolocation
+      dockerfile: Dockerfile
+    ports:
+      - "18122:18122"  # Enhanced Geolocation
+      - "18405:18405"  # Alternative geolocation port
+    environment:
+      - RUST_LOG=info
+      - PORT_MANAGER_URL=http://ctas7-real-port-manager:18103
+      - GEOLOCATION_MODE=production
+    depends_on:
+      - ctas7-real-port-manager
+    restart: unless-stopped
+
+  ctas7-layer2-mathematical-intelligence:
+    build:
+      context: ../ctas-7-shipyard-staging/ctas7-layer2-mathematical-intelligence
+      dockerfile: Dockerfile
+    ports:
+      - "18140:18140"  # Layer2 Mathematical Intelligence
+    environment:
+      - RUST_LOG=info
+      - PORT_MANAGER_URL=http://ctas7-real-port-manager:18103
+      - LAYER2_MODE=production
+    depends_on:
+      - ctas7-real-port-manager
+      - ctas7-neural-mux
+    restart: unless-stopped
+
+  # ====== ORBITAL SERVICES ======
+  ctas7-orbital-mechanics:
+    build:
+      context: ../ctas-7-shipyard-staging/
+      dockerfile: orbital-mechanics/Dockerfile
+    ports:
+      - "18130:18130"  # Orbital Mechanics
+      - "18121:18121"  # Alternative orbital port
+    environment:
+      - RUST_LOG=info
+      - PORT_MANAGER_URL=http://ctas7-real-port-manager:18103
+      - ORBITAL_MODE=production
+    depends_on:
+      - ctas7-real-port-manager
+    restart: unless-stopped
+
+  # ====== VOICE GATEWAY ======
+  ctas7-voice-gateway:
+    build:
+      context: ../ctas-7-shipyard-staging/
+      dockerfile: voice-gateway/Dockerfile
+    ports:
+      - "19015:19015"  # Voice-driven orchestration
+    environment:
+      - RUST_LOG=info
+      - PORT_MANAGER_URL=http://ctas7-real-port-manager:18103
+      - VOICE_MODE=production
+    depends_on:
+      - ctas7-real-port-manager
+      - ctas7-neural-mux
+    restart: unless-stopped
+
+volumes:
+  port_registry:
+    driver: local
+  synaptix_data:
+    driver: local
+  sledis_data:
+    driver: local
+  neural_data:
+    driver: local
+  surrealdb_data:
+    driver: local
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

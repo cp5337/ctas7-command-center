@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # Main Operations Platform (7.0 → 7.1)
+  main-ops-frontend:
+    build: 
+      context: ../ctas-7-shipyard-staging/ctas-7.0-main-ops-platform
+      dockerfile: Dockerfile
+    ports:
+      - "15173:3000"
+    environment:
+      - NODE_ENV=production
+      - VITE_BACKEND_URL=http://localhost:15174
+      - VITE_NEURAL_MUX_URL=http://localhost:15175
+      - VITE_REAL_PORT_MANAGER_URL=http://localhost:15173
+      - VITE_SYNAPTIX_CORE_URL=http://localhost:15174
+    networks:
+      - ctas-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      - wait-for-backend
+
+  # Wait for canonical backend to be ready
+  wait-for-backend:
+    image: busybox:latest
+    command: >
+      sh -c "
+        echo 'Waiting for canonical backend services...'
+        until nc -z host.docker.internal 15174; do
+          echo 'Waiting for Synaptix Core (15174)...'
+          sleep 2
+        done
+        until nc -z host.docker.internal 15175; do
+          echo 'Waiting for Neural Mux (15175)...'
+          sleep 2
+        done
+        echo 'Backend services are ready!'
+      "
+    networks:
+      - ctas-network
+
+networks:
+  ctas-network:
+    driver: bridge
+    external: false

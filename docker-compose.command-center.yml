@@ -1,0 +1,86 @@
+version: '3.8'
+
+services:
+  # Command Center Frontend
+  command-center:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "15180:3000"
+    environment:
+      - VITE_BACKEND_URL=http://localhost:15174
+      - VITE_NEURAL_MUX_URL=http://localhost:15175
+      - VITE_SYNAPTIX_URL=http://localhost:15174
+      - VITE_VOICE_ENABLED=true
+      - VITE_COMMAND_CENTER_MODE=true
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - wait-for-backend
+    networks:
+      - ctas7-network
+
+  # Voice Service for Command Center DevSecOps
+  voice-service:
+    image: node:18-alpine
+    working_dir: /app
+    command: >
+      sh -c "
+        echo 'Installing voice service dependencies...'
+        npm install express cors ws axios
+        echo 'Starting voice service...'
+        node -e \"
+          const express = require('express');
+          const cors = require('cors');
+          const app = express();
+          app.use(cors());
+          app.use(express.json());
+          
+          app.get('/health', (req, res) => res.json({status: 'ok', service: 'voice-devsecops'}));
+          app.post('/voice/command', (req, res) => {
+            console.log('DevSecOps Voice command:', req.body);
+            res.json({status: 'processed', command: req.body.command, mode: 'devsecops'});
+          });
+          
+          app.listen(15185, '0.0.0.0', () => {
+            console.log('Voice DevSecOps service listening on port 15185');
+          });
+        \"
+      "
+    ports:
+      - "15185:15185"
+    environment:
+      - NODE_ENV=development
+      - VOICE_MODE=devsecops
+      - COMMAND_CENTER_URL=http://command-center:3000
+    networks:
+      - ctas7-network
+    restart: unless-stopped
+
+  # Wait for canonical backend to be ready
+  wait-for-backend:
+    image: alpine:latest
+    command: >
+      sh -c "
+        echo 'Waiting for canonical backend services...'
+        while ! nc -z host.docker.internal 15174; do
+          echo 'Waiting for Synaptix Core (15174)...'
+          sleep 2
+        done
+        while ! nc -z host.docker.internal 15175; do
+          echo 'Waiting for Neural Mux (15175)...'
+          sleep 2
+        done
+        echo 'Backend services are ready!'
+      "
+    networks:
+      - ctas7-network
+
+networks:
+  ctas7-network:
+    driver: bridge
+
+# Note: This assumes canonical backend is already running via:
+# ./start-canonical-backend-docker.sh

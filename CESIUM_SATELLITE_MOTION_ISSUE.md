@@ -69,3 +69,6 @@ window.cesiumViewer.entities.values[0].position instanceof Cesium.SampledPositio
 *User going to bed, will fix tomorrow*
 
 
+
+
+

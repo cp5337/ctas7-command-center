@@ -1,7 +1,9 @@
-# 🏗️ Smart Crates ↔️ Main Ops Integration Architecture Map
+# 🏗️ Smart Crates ↔️ CTAS (Main Ops) Integration Architecture Map
 
 ## Executive Summary
 Smart Crates are the **foundational infrastructure** that powers all CTAS-7 operations. They provide containerized, orchestrated services that directly support LaserLight satellite operations, data processing, and mission-critical workflows.
+
+**IMPORTANT**: "Main ops" refers to **CTAS (Convergent Threat Analysis System)** - the primary operational world.
 
 ---
 
@@ -9,7 +11,8 @@ Smart Crates are the **foundational infrastructure** that powers all CTAS-7 oper
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                     CTAS-7 MAIN OPERATIONS                     │
+│               CTAS (CONVERGENT THREAT ANALYSIS SYSTEM)         │
+│                        [MAIN OPERATIONS]                       │
 ├─────────────────────────────────────────────────────────────────┤
 │  🛰️ LaserLight Ops  │  📊 Data Intelligence  │  🤖 AI Agents   │
 │  ├── Satellite Ctrl │  ├── Financial (EDGAR) │  ├── Agent Studio│
