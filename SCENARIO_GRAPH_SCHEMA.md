@@ -330,6 +330,15 @@
   },
   
   "geospatial_data": {
+    "primary_location": {
+      "location_id": "LOC-PRIMARY",
+      "name": "New York City",
+      "lat": 40.7128,
+      "lon": -74.0060,
+      "zoom_level": 10,
+      "description": "Primary operational area for scenario"
+    },
+    
     "locations": [
       {
         "location_id": "LOC-001",
@@ -338,7 +347,11 @@
         "lon": -86.8515,
         "location_type": "maritime",
         "events": ["EVT-001"],
-        "actors": ["ACT-001", "ACT-003"]
+        "actors": ["ACT-001", "ACT-003"],
+        "marker_icon": "ship",
+        "marker_color": "red",
+        "radius_km": 50,
+        "visibility": "always"
       },
       {
         "location_id": "LOC-002",
@@ -347,10 +360,252 @@
         "lon": -74.0060,
         "location_type": "urban",
         "events": ["EVT-003", "EVT-004"],
-        "objects": ["OBJ-002"]
+        "objects": ["OBJ-002"],
+        "marker_icon": "building",
+        "marker_color": "orange",
+        "radius_km": 10,
+        "visibility": "always"
+      },
+      {
+        "location_id": "LOC-003",
+        "name": "LaserLight Ground Station - Chile",
+        "lat": -33.4489,
+        "lon": -70.6693,
+        "location_type": "infrastructure",
+        "objects": ["OBJ-001"],
+        "marker_icon": "satellite",
+        "marker_color": "cyan",
+        "radius_km": 5,
+        "visibility": "on_zoom"
+      },
+      {
+        "location_id": "LOC-004",
+        "name": "LaserLight Ground Station - Kazakhstan",
+        "lat": 51.1694,
+        "lon": 71.4491,
+        "location_type": "infrastructure",
+        "objects": ["OBJ-001"],
+        "marker_icon": "satellite",
+        "marker_color": "cyan",
+        "radius_km": 5,
+        "visibility": "on_zoom"
+      },
+      {
+        "location_id": "LOC-005",
+        "name": "LaserLight Ground Station - Nigeria",
+        "lat": 9.0820,
+        "lon": 8.6753,
+        "location_type": "infrastructure",
+        "objects": ["OBJ-001"],
+        "marker_icon": "satellite",
+        "marker_color": "cyan",
+        "radius_km": 5,
+        "visibility": "on_zoom"
       }
     ],
-    "kmz_layers": ["power_grid.kmz", "submarine_cables.kmz", "ground_stations.kmz"]
+    
+    "connections": [
+      {
+        "connection_id": "CONN-001",
+        "name": "Attack Arc - Yucatán to NYC",
+        "from": "LOC-001",
+        "to": "LOC-002",
+        "connection_type": "threat_vector",
+        "line_style": "dashed",
+        "line_color": "red",
+        "line_width": 3,
+        "animated": true,
+        "animation_direction": "from_to_to",
+        "events": ["EVT-001"],
+        "visibility": "T+0 to T+4"
+      },
+      {
+        "connection_id": "CONN-002",
+        "name": "Satellite Uplink - Chile to Space",
+        "from": "LOC-003",
+        "to": {"lat": -33.4489, "lon": -70.6693, "alt_km": 15000},
+        "connection_type": "infrastructure",
+        "line_style": "solid",
+        "line_color": "cyan",
+        "line_width": 2,
+        "animated": false,
+        "events": ["EVT-002"],
+        "visibility": "always"
+      }
+    ],
+    
+    "areas_of_interest": [
+      {
+        "aoi_id": "AOI-001",
+        "name": "Gulf of Mexico Operational Zone",
+        "geometry_type": "polygon",
+        "coordinates": [
+          [21.0, -87.0],
+          [21.5, -87.0],
+          [21.5, -86.5],
+          [21.0, -86.5],
+          [21.0, -87.0]
+        ],
+        "fill_color": "rgba(255, 0, 0, 0.2)",
+        "border_color": "red",
+        "border_width": 2,
+        "description": "Maritime interdiction zone",
+        "active_window": "T-7 to T+4"
+      },
+      {
+        "aoi_id": "AOI-002",
+        "name": "NYC Critical Infrastructure Zone",
+        "geometry_type": "circle",
+        "center": [40.7128, -74.0060],
+        "radius_km": 15,
+        "fill_color": "rgba(255, 165, 0, 0.2)",
+        "border_color": "orange",
+        "border_width": 2,
+        "description": "Urban response perimeter",
+        "active_window": "T+0 to T+4"
+      }
+    ],
+    
+    "heatmap_data": [
+      {
+        "heatmap_id": "HEAT-001",
+        "name": "Threat Density",
+        "data_points": [
+          {"lat": 40.7128, "lon": -74.0060, "intensity": 0.9, "timestamp": "T+0"},
+          {"lat": 21.1619, "lon": -86.8515, "intensity": 0.8, "timestamp": "T+0"},
+          {"lat": -33.4489, "lon": -70.6693, "intensity": 0.6, "timestamp": "T+2"}
+        ],
+        "gradient": {
+          "0.0": "blue",
+          "0.5": "yellow",
+          "1.0": "red"
+        },
+        "radius": 50,
+        "blur": 15,
+        "active_window": "T+0 to T+4"
+      }
+    ],
+    
+    "temporal_animation": {
+      "enabled": true,
+      "start_time": "T-14",
+      "end_time": "T+4",
+      "current_time": "T+0",
+      "playback_speed": "1x",
+      "keyframes": [
+        {
+          "time": "T-14",
+          "visible_locations": ["LOC-001"],
+          "visible_connections": [],
+          "camera_position": {"lat": 21.1619, "lon": -86.8515, "zoom": 8}
+        },
+        {
+          "time": "T+0",
+          "visible_locations": ["LOC-001", "LOC-002"],
+          "visible_connections": ["CONN-001"],
+          "camera_position": {"lat": 30.0, "lon": -80.0, "zoom": 5}
+        },
+        {
+          "time": "T+2",
+          "visible_locations": ["LOC-001", "LOC-002", "LOC-003", "LOC-004", "LOC-005"],
+          "visible_connections": ["CONN-001", "CONN-002"],
+          "camera_position": {"lat": 0.0, "lon": 0.0, "zoom": 2}
+        }
+      ]
+    },
+    
+    "layer_overlays": {
+      "base_layers": [
+        {
+          "layer_id": "BASE-001",
+          "name": "Mapbox Dark",
+          "type": "mapbox",
+          "style": "mapbox://styles/mapbox/dark-v11",
+          "default": true
+        },
+        {
+          "layer_id": "BASE-002",
+          "name": "Satellite",
+          "type": "mapbox",
+          "style": "mapbox://styles/mapbox/satellite-v9",
+          "default": false
+        }
+      ],
+      
+      "data_layers": [
+        {
+          "layer_id": "LAYER-001",
+          "name": "Power Grid",
+          "type": "kmz",
+          "source": "power_grid.kmz",
+          "visible": true,
+          "opacity": 0.7,
+          "color": "yellow"
+        },
+        {
+          "layer_id": "LAYER-002",
+          "name": "Submarine Cables",
+          "type": "kmz",
+          "source": "submarine_cables.kmz",
+          "visible": true,
+          "opacity": 0.8,
+          "color": "cyan"
+        },
+        {
+          "layer_id": "LAYER-003",
+          "name": "Ground Stations",
+          "type": "geojson",
+          "source": "ground_stations.geojson",
+          "visible": false,
+          "opacity": 0.9,
+          "color": "green"
+        },
+        {
+          "layer_id": "LAYER-004",
+          "name": "BGP Peering Points",
+          "type": "geojson",
+          "source": "bgp_peers.geojson",
+          "visible": false,
+          "opacity": 0.6,
+          "color": "magenta"
+        }
+      ]
+    },
+    
+    "superimpose_options": {
+      "allow_custom_location": true,
+      "allow_location_override": true,
+      "allow_multi_location": true,
+      "location_templates": [
+        {
+          "template_id": "TMPL-001",
+          "name": "Urban Attack",
+          "locations": ["major_city", "critical_infrastructure", "transport_hub"],
+          "default_zoom": 12
+        },
+        {
+          "template_id": "TMPL-002",
+          "name": "Maritime Interdiction",
+          "locations": ["port", "shipping_lane", "coastal_area"],
+          "default_zoom": 8
+        },
+        {
+          "template_id": "TMPL-003",
+          "name": "Cyber-Physical",
+          "locations": ["data_center", "power_substation", "telecom_hub"],
+          "default_zoom": 10
+        }
+      ],
+      
+      "location_picker": {
+        "enabled": true,
+        "search_providers": ["nominatim", "mapbox_geocoding"],
+        "allow_coordinates": true,
+        "allow_address": true,
+        "allow_poi": true,
+        "recent_locations": []
+      }
+    }
   },
   
   "integration": {
