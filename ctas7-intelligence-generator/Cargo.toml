@@ -10,6 +10,7 @@ license = "MIT OR Apache-2.0"
 # Foundation
 ctas7-foundation-core = { path = "../../ctas-7-shipyard-staging/ctas7-foundation-core" }
 ctas7-foundation-data = { path = "../../ctas-7-shipyard-staging/ctas7-foundation-data" }
+ctas7-foundation-math = { path = "../../ctas-7-shipyard-staging/ctas7-foundation-math" }
 
 # Serialization
 serde = { version = "1.0", features = ["derive"] }
@@ -21,7 +22,12 @@ tokio = { version = "1", features = ["full"] }
 
 # Database
 sled = "0.34"
-sqlx = { version = "0.7", features = ["postgres", "runtime-tokio-rustls", "uuid", "chrono"] }
+sqlx = { version = "0.7", features = [
+    "postgres",
+    "runtime-tokio-rustls",
+    "uuid",
+    "chrono",
+] }
 
 # Hashing
 murmur3 = "0.5"
@@ -60,4 +66,3 @@ path = "src/main.rs"
 [[bench]]
 name = "interview_generation"
 harness = false
-
