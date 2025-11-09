@@ -2,13 +2,13 @@
 
 use dioxus::prelude::*;
 
-mod neural_mux_client;
 mod components;
-mod routes;
+mod figma_export;
 mod markdown_loader;
 mod markdown_table;
 mod mermaid_renderer;
-mod figma_export;
+mod neural_mux_client;
+mod routes;
 
 use routes::Route;
 
@@ -23,6 +23,3 @@ fn App() -> Element {
         Router::<Route> {}
     }
 }
-
-
-
