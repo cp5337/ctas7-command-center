@@ -1,0 +1,394 @@
+# ============================================================================
+# CTAS-7 Crate Interview Schema v7.3.1
+# Complete System Integration Architecture
+# ============================================================================
+# This is the canonical schema for generating ~40 crate interviews for active
+# CTAS-7 crates. Each crate interview describes the system requirements,
+# capabilities, and operational context for a specific crate.
+#
+# Integration Points:
+# - Computational: Trivariate hashing (SCH+CUID+UUID), Unicode ops, XSD
+# - Semantic: First-person crate voice, capabilities, dependencies
+# - Tactical: HD4 phase mapping, node applications
+# - Ontological: IED TTL mapping, MITRE ATT&CK integration
+# - Toolchain: Kali tools, Metasploit, CALDERA, Exploit-DB
+# - Infrastructure: MCP integration, GNN/vector DB, PhD QA scoring
+# ============================================================================
+
+[crate_identity]
+crate_name = "ctas7-enhanced-geolocation"    # Full crate name
+crate_id = "CRATE-GEO-001"                   # Short reference ID
+crate_type = "tactical"                      # foundation | tactical | integration | dev_tool
+version = "7.3.1"                            # Semantic version
+hd4_phase = "hunt"                           # Primary HD4 phase
+priority = "high"                            # low | medium | high | critical
+classification = "unclassified"              # or "cui", "secret", etc.
+description = "PostGIS + pgRouting geospatial intelligence with GeoIP, cell tower tracking, and risk-weighted routing"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# ============================================================================
+
+sch = "Gk2pL9vX4qT7wM3n"                    # Positions 1-16: Semantic Content Hash
+                                             # Deterministic, content-based
+                                             # Seed: 0x1234 (Murmur3)
+                                             # Input: crate_name + capabilities + dependencies
+
+cuid = "C20250109Stactical"                  # Positions 17-32: Contextual Unique ID
+                                             # Crate context: C{date}S{type}
+                                             # C20250109 = Creation date
+                                             # Stactical = Semantic type (tactical crate)
+
+uuid = "U7f9500f39c51e5b"                    # Positions 33-48: Universal Unique ID
+                                             # Global uniqueness, persistence, audit trail
+                                             # Seed: 0x9abc (Murmur3)
+
+hash_48 = "Gk2pL9vX4qT7wM3nC20250109StacticalU7f9500f39c51e5b"  # Full 48-char hash
+
+# ============================================================================
+# FIRST-PERSON CRATE VOICE
+# ============================================================================
+# Written from the crate's perspective, describing its purpose and capabilities.
+# ============================================================================
+
+[crate_voice]
+narrative = """
+I am the geospatial intelligence engine. I see the world through coordinates,
+routes, and relationships. I know where every cell tower stands, where submarine
+cables land, where roads converge and diverge. I calculate risk-weighted paths
+that avoid checkpoints and surveillance. I track IMSI hashes across tower
+handoffs. I map IP addresses to physical locations with MaxMind precision.
+
+I integrate PostGIS for spatial queries, pgRouting for optimal path calculation,
+and GeoIP for attribution. I understand terrain—slope penalties, elevation
+changes, line-of-sight analysis. I know when darkness falls and how it affects
+operational tempo. I am the foundation for hunt operations, enabling operators
+to visualize threats, predict movements, and interdict adversaries.
+
+I speak the language of latitude and longitude, but I think in terms of
+operational advantage. Every query I answer is a tactical decision: Where is
+the threat? How do they move? Where can we intercept? I am the map that
+reveals the territory.
+"""
+
+capabilities = [
+  "PostGIS spatial database with 2D/3D geometry support",
+  "pgRouting for shortest path, A*, Dijkstra, and TRSP algorithms",
+  "GeoIP integration with MaxMind GeoLite2 for IP geolocation",
+  "Cell tower tracking with IMSI hash correlation",
+  "Risk-weighted routing with checkpoint avoidance",
+  "Terrain analysis (slope, elevation, line-of-sight)",
+  "Time-of-day routing (darkness penalties, traffic patterns)",
+  "Submarine cable and critical infrastructure mapping",
+  "Real-time geofencing and proximity alerts",
+  "KML/KMZ import from Google Earth Engine"
+]
+
+limitations = [
+  "Requires PostgreSQL with PostGIS extension",
+  "GeoIP accuracy limited to city-level for most IPs",
+  "Cell tower data requires external sources (OpenCellID, etc.)",
+  "Routing accuracy depends on OSM data quality",
+  "Real-time traffic data requires external API integration",
+  "Terrain data resolution limited by DEM source (SRTM 30m)"
+]
+
+# ============================================================================
+# DEPENDENCIES AND RELATIONSHIPS
+# ============================================================================
+
+[dependencies]
+# Direct Rust crate dependencies
+rust_crates = [
+  "ctas7-foundation-core",
+  "ctas7-foundation-data",
+  "tokio",
+  "serde",
+  "sqlx",
+  "geo",
+  "geojson"
+]
+
+# System dependencies
+system_dependencies = [
+  "PostgreSQL 14+",
+  "PostGIS 3.3+",
+  "pgRouting 3.4+",
+  "GDAL 3.5+"
+]
+
+# Data dependencies
+data_dependencies = [
+  "MaxMind GeoLite2-City database",
+  "OpenStreetMap road network data",
+  "SRTM elevation data (30m resolution)",
+  "OpenCellID cell tower database (optional)"
+]
+
+# Predecessor crates (what this crate depends on)
+predecessor_crates = [
+  "ctas7-foundation-core",      # Trivariate hashing, Unicode ops
+  "ctas7-foundation-data"        # Database abstractions
+]
+
+# Follower crates (what depends on this crate)
+follower_crates = [
+  "ctas7-neural-mux",            # Uses geospatial routing for asset prediction
+  "ctas7-plasma",                # Uses geofencing for threat containment
+  "ctas7-wazuh-integration"      # Uses GeoIP for alert attribution
+]
+
+# ============================================================================
+# NODE APPLICATIONS (Which of the 165 CTAS tasks use this crate)
+# ============================================================================
+
+[[node_applications]]
+task_id = "uuid-002-000-000-A"
+task_name = "Reconnaissance and Targeting – Phase 1"
+application = "Geospatial analysis of target locations, approach routes, escape paths"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-010-000-000-A"
+task_name = "Logistics Planning"
+application = "Route optimization for material transport, checkpoint avoidance"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-025-000-000-A"
+task_name = "Counter-Surveillance"
+application = "Geofencing alerts for adversary proximity to sensitive sites"
+priority = "medium"
+
+[[node_applications]]
+task_id = "uuid-045-000-000-A"
+task_name = "Cell Phone Tracking"
+application = "IMSI tracking across cell tower handoffs, geolocation"
+priority = "critical"
+
+[[node_applications]]
+task_id = "uuid-078-000-000-A"
+task_name = "IP Address Attribution"
+application = "GeoIP mapping of malicious IPs to physical locations"
+priority = "high"
+
+# ============================================================================
+# TOOLCHAIN INTEGRATION (Kali, Metasploit, CALDERA, etc.)
+# ============================================================================
+
+[toolchain_integration]
+# Kali Linux tools that use this crate
+kali_tools = [
+  { tool = "recon-ng", integration = "GeoIP module for target location", escalation_level = "script" },
+  { tool = "maltego", integration = "Geospatial transforms for entity mapping", escalation_level = "crate" },
+  { tool = "wigle", integration = "WiFi geolocation correlation", escalation_level = "script" }
+]
+
+# Metasploit integration
+metasploit_integration = true
+metasploit_modules = [
+  "auxiliary/gather/geoip_lookup",
+  "post/multi/gather/geoip_location"
+]
+
+# CALDERA integration
+caldera_integration = false
+caldera_abilities = []
+
+# MITRE ATT&CK mapping
+mitre_attack_mapping = [
+  "T1590.005 - Reconnaissance: Gather Victim Network Information: IP Addresses",
+  "T1591 - Reconnaissance: Gather Victim Org Information",
+  "T1596.001 - Active Scanning: DNS/Passive DNS"
+]
+
+# Atomic Red Team tests
+atomic_red_team_tests = []
+
+# Exploit-DB capabilities
+exploit_db_capabilities = []
+
+# ============================================================================
+# EEI REQUIREMENTS (Essential Elements of Information)
+# ============================================================================
+
+[[eei_requirements]]
+rank = 1
+question = "What is the physical location of this IP address?"
+collection_method = "GeoIP database lookup (MaxMind)"
+time_sensitivity = "high"
+
+[[eei_requirements]]
+rank = 2
+question = "What is the optimal route from point A to point B avoiding checkpoints?"
+collection_method = "pgRouting with risk-weighted cost function"
+time_sensitivity = "high"
+
+[[eei_requirements]]
+rank = 3
+question = "Which cell towers are within range of this location?"
+collection_method = "PostGIS spatial query with tower coverage radius"
+time_sensitivity = "medium"
+
+[[eei_requirements]]
+rank = 4
+question = "What is the terrain profile along this route?"
+collection_method = "SRTM elevation data + slope calculation"
+time_sensitivity = "low"
+
+# ============================================================================
+# MCP INTEGRATION (Model Context Protocol)
+# ============================================================================
+
+[mcp_integration]
+mcp_server = true
+mcp_server_name = "ctas7-geolocation-mcp"
+mcp_port = 15185
+mcp_capabilities = [
+  "geoip_lookup",
+  "route_calculation",
+  "cell_tower_query",
+  "terrain_analysis",
+  "geofencing"
+]
+
+# MCP tools exposed
+[[mcp_integration.tools]]
+name = "geoip_lookup"
+description = "Lookup physical location of IP address"
+parameters = ["ip_address"]
+returns = "GeoIP result with lat/lon, city, country"
+
+[[mcp_integration.tools]]
+name = "calculate_route"
+description = "Calculate optimal route between two points"
+parameters = ["start_lat", "start_lon", "end_lat", "end_lon", "risk_weight"]
+returns = "Route geometry with waypoints and cost"
+
+[[mcp_integration.tools]]
+name = "find_cell_towers"
+description = "Find cell towers within radius of location"
+parameters = ["lat", "lon", "radius_m"]
+returns = "List of cell towers with coverage info"
+
+# ============================================================================
+# GNN AND VECTOR DATABASE INTEGRATION
+# ============================================================================
+
+[gnn_vector_integration]
+gnn_enabled = true
+gnn_use_cases = [
+  "Spatial relationship prediction (where will adversary move next?)",
+  "Threat propagation modeling (how does threat spread geographically?)",
+  "Asset clustering (group ground stations by connectivity)"
+]
+
+vector_db_enabled = true
+vector_db_type = "pgvector"  # PostgreSQL extension for vector similarity
+embedding_dimensions = 768    # Sentence-BERT embeddings
+vector_use_cases = [
+  "Semantic search for similar locations (find places like X)",
+  "Threat pattern matching (find similar attack vectors)",
+  "Route similarity analysis (find routes matching historical patterns)"
+]
+
+# ============================================================================
+# XSD VALIDATION AND PLAYBOOK INTEGRATION
+# ============================================================================
+
+[xsd_validation]
+xsd_schema = "crate-interview-playbook.xsd"
+playbook_template = "geolocation_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-core", "ctas7-foundation-data", "ctas7-neural-mux"]
+unicode_assembly = ["→", "📍", "🗺", "🛰", "📡", "🚨"]
+lisp_expression = "(geo-query :type route :start start-coords :end end-coords :risk-weight 0.7)"
+
+# ============================================================================
+# PHD QA INTEGRATION (Quality Assurance Scoring)
+# ============================================================================
+
+[phd_qa]
+phd_qa_score = 92                            # 0-100 certification score
+quality_grade = "A"                          # A+ to F grade
+certification_status = "certified"           # certified | needs_improvement | failed | pending
+last_qa_run = "2025-01-08T12:00:00Z"
+qa_runner = "Zen Coder"
+
+quality_issues = [
+  "Some edge cases in risk-weighted routing need additional test coverage"
+]
+
+improvement_recommendations = [
+  "Add integration tests for GeoIP fallback behavior",
+  "Implement caching layer for frequently queried routes",
+  "Add support for 3D routing (elevation-aware pathfinding)"
+]
+
+# ============================================================================
+# OPERATIONAL RELATIONSHIPS
+# ============================================================================
+
+[operational_relationships]
+# Trigger conditions (hash-based execution triggers)
+trigger_conditions = [
+  "SCH hash match for geospatial query primitives",
+  "CUID mask with geographic component (G{lat}{lon})",
+  "HD4 phase = hunt + geospatial EEI requirement"
+]
+
+# Execution order in operational sequence
+execution_order = 5  # Early in hunt phase (after foundation, before analysis)
+
+# Semantic relationships
+semantic_relationships = [
+  "Enables spatial reasoning for all tactical operations",
+  "Provides geographic context for threat intelligence",
+  "Bridges physical and cyber domains via GeoIP"
+]
+
+# Ontological connections
+ontological_connections = [
+  "Maps to NIEM Justice Domain: j:Location, j:Address",
+  "Integrates with N-DEx: location_type, geographic_coordinates",
+  "Supports IED TTL Category 4: Target Selection & Reconnaissance"
+]
+
+# Reference architecture role
+reference_architecture_role = "Geospatial Intelligence Layer"
+
+# TTL book contribution
+ttl_book_contribution = """
+This crate provides the geospatial foundation for understanding where threats
+emerge, how they move, and where they can be interdicted. It translates abstract
+threat intelligence into concrete geographic coordinates, routes, and proximity
+alerts. In the TTL narrative, this is the "where" that contextualizes the "who"
+and "what" of adversary operations.
+"""
+
+# ============================================================================
+# IED TTL MAPPING
+# ============================================================================
+
+[ied_ttl_mapping]
+ttl_category = "4"                           # Category 4: Target Selection & Reconnaissance
+ttl_subcategory = "4.2"                      # Geospatial Analysis
+ttl_task_number = "4.2.1"                    # Route Planning and Escape Path Analysis
+adversarial_capability = "Plan approach routes, escape paths, and identify choke points using geospatial analysis"
+defensive_opportunity = "Detect reconnaissance patterns via repeated geospatial queries, geofencing alerts"
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T01:00:00Z"
+last_updated = "2025-01-09T01:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"                            # draft | active | deprecated
+interview_version = 1
+shipyard_quality_score = 92                  # 0-100 (matches PhD QA score)
+
