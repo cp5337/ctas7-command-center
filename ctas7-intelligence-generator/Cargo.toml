@@ -3,7 +3,7 @@ name = "ctas7-intelligence-generator"
 version = "7.3.1"
 edition = "2021"
 authors = ["CTAS-7 Team <team@synaptix.ai>"]
-description = "CTAS-7 Intelligence Generator - Hash-driven operational intelligence system"
+description = "CTAS-7 Convergence Meter - Intelligence generator that measures how scattered intel vibrates to one prediction"
 license = "MIT OR Apache-2.0"
 
 [dependencies]
