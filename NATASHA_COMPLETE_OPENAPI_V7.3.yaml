@@ -1,0 +1,1793 @@
+openapi: 3.1.0
+info:
+  title: Natasha Agent - Complete Cross-Domain Operator API
+  version: 7.3.0
+  description: |
+    **Natasha Volkov (EA-THR-01)** - The Ultimate Cross-Domain Operator
+
+    **Persona:**
+    Down-to-earth, highly likeable, Mensa-level intelligence, stone-cold OG operator.
+    Came up through the ranks - equally effective in the field or C-Suite.
+    Russian accent, direct, street-smart, no bullshit.
+
+    **Capabilities:**
+    - Voice/AI/ML/Red Team operations
+    - DevOps & engineering
+    - Kali tool chains & APT countermeasures
+    - Microkernel Kali tool creation
+    - Cognetix Plasma (Hunt & Detect graph)
+    - Wazuh integration & Tier One operator stack
+    - PTCC (Persona-Tool-Chain-Context) orchestration
+    - World graph task decomposition
+    - Smart Crate coordination
+    - Linear workflow management
+    - Agent mesh coordination
+
+    **Communication:**
+    - Email: natasha@ctas.local
+    - Slack: @natasha
+    - Voice: Russian accent, direct, operator-level clarity
+    - Linear: Assign tasks with COG-XXX identifiers
+
+    **Philosophy:**
+    "Talk to me like we're on comms in the field, then I'll translate it
+    for the board meeting. I speak both languages fluently."
+
+servers:
+  - url: https://123456a5c866e82224.ngrok-free.app
+    description: Natasha via ngrok tunnel (External Custom GPT access)
+  - url: http://localhost:15180
+    description: Local RepoAgent Gateway (HTTP/REST)
+  - url: http://localhost:15181
+    description: Local Synaptix Core Gateway (Alternate)
+  - url: grpc://localhost:50052
+    description: Natasha gRPC Agent (Internal mesh)
+  - url: grpc://localhost:50055
+    description: Claude Meta-Agent Router (Routes to Natasha)
+
+tags:
+  - name: Voice & Command
+    description: Voice command processing and natural language interface
+  - name: Red Team Operations
+    description: Offensive security, red team tactics, threat emulation
+  - name: DevOps & Engineering
+    description: Code generation, infrastructure, deployments
+  - name: Kali & Tool Chains
+    description: Kali tools, security tools, microkernel operations
+  - name: APT & Threat Hunting
+    description: Advanced Persistent Threat analysis and countermeasures
+  - name: Cognetix Plasma
+    description: Hunt & Detect graph, Wazuh integration, Tier One stack
+  - name: PTCC Orchestration
+    description: Persona-Tool-Chain-Context framework management
+  - name: World Graph & Tasks
+    description: Task decomposition from world graphs
+  - name: Smart Crates
+    description: Smart Crate orchestration and coordination
+  - name: Linear & Workflow
+    description: Linear integration and workflow management
+  - name: Agent Coordination
+    description: Multi-agent mesh coordination
+  - name: System & Status
+    description: Health checks and system status
+
+paths:
+  # ========== VOICE & COMMAND ==========
+  /natasha:
+    get:
+      operationId: getNatashaCapabilities
+      summary: Get Natasha's complete capabilities
+      tags: [Voice & Command]
+      description: |
+        Returns Natasha's full capability matrix, available endpoints,
+        and current operational status.
+      responses:
+        '200':
+          description: Natasha capabilities overview
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NatashaCapabilitiesResponse'
+
+  /natasha/voice_command:
+    post:
+      operationId: processVoiceCommand
+      summary: Process voice command
+      tags: [Voice & Command]
+      description: |
+        Primary voice interface. Natasha processes natural language commands,
+        routes through appropriate systems, and returns synthesized response.
+
+        Example commands:
+        - "Scan target network and generate threat report"
+        - "Create Linear issue for Kali microkernel development"
+        - "Analyze APT behavior and recommend countermeasures"
+        - "Deploy Smart Crate for red team operation"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoiceCommandRequest'
+      responses:
+        '200':
+          description: Voice command processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoiceCommandResponse'
+
+  /natasha/chat:
+    post:
+      operationId: chatWithNatasha
+      summary: Interactive chat with Natasha
+      tags: [Voice & Command]
+      description: |
+        Conversational interface for complex multi-turn interactions.
+        Maintains context across conversation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatRequest'
+      responses:
+        '200':
+          description: Chat response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+
+  # ========== RED TEAM OPERATIONS ==========
+  /natasha/redteam/operation:
+    post:
+      operationId: executeRedTeamOperation
+      summary: Execute red team operation
+      tags: [Red Team Operations]
+      description: |
+        Execute red team security operation with full MITRE ATT&CK mapping.
+        Supports TTP execution, adversary emulation, and purple team exercises.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RedTeamOperationRequest'
+      responses:
+        '200':
+          description: Red team operation results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedTeamOperationResponse'
+
+  /natasha/redteam/adversary_emulation:
+    post:
+      operationId: emulateAdversary
+      summary: Emulate adversary TTPs
+      tags: [Red Team Operations]
+      description: |
+        Emulate specific adversary tactics, techniques, and procedures.
+        Uses Caldera, Atomic Red Team, and custom CTAS emulation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdversaryEmulationRequest'
+      responses:
+        '200':
+          description: Adversary emulation results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdversaryEmulationResponse'
+
+  /natasha/redteam/purple_team:
+    post:
+      operationId: executePurpleTeamExercise
+      summary: Execute purple team exercise
+      tags: [Red Team Operations]
+      description: |
+        Coordinate purple team exercise with synchronized red team attack
+        and blue team detection/response.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurpleTeamRequest'
+      responses:
+        '200':
+          description: Purple team exercise results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurpleTeamResponse'
+
+  # ========== DEVOPS & ENGINEERING ==========
+  /natasha/devops/code_generation:
+    post:
+      operationId: generateCode
+      summary: Generate code with AI
+      tags: [DevOps & Engineering]
+      description: |
+        Generate high-quality code using Zen Coder and AI models.
+        Supports Rust, Python, TypeScript, and other languages.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CodeGenerationRequest'
+      responses:
+        '200':
+          description: Generated code
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CodeGenerationResponse'
+
+  /natasha/devops/smart_crate_orchestration:
+    post:
+      operationId: orchestrateSmartCrate
+      summary: Orchestrate Smart Crate operations
+      tags: [DevOps & Engineering]
+      description: |
+        Create, deploy, and orchestrate Smart Crates via Neural Mux.
+        Full Foundation Core integration with trivariate hashing.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SmartCrateOrchestrationRequest'
+      responses:
+        '200':
+          description: Smart Crate orchestration result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SmartCrateOrchestrationResponse'
+
+  /natasha/devops/infrastructure:
+    post:
+      operationId: manageInfrastructure
+      summary: Manage infrastructure operations
+      tags: [DevOps & Engineering]
+      description: |
+        Deploy, configure, and manage infrastructure.
+        Supports Docker, Kubernetes, Terraform, and IaC operations.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InfrastructureRequest'
+      responses:
+        '200':
+          description: Infrastructure operation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InfrastructureResponse'
+
+  # ========== KALI & TOOL CHAINS ==========
+  /natasha/kali/tool_execution:
+    post:
+      operationId: executeKaliTool
+      summary: Execute Kali tool operation
+      tags: [Kali & Tool Chains]
+      description: |
+        Execute Kali Linux tools with proper sandboxing and result parsing.
+        Supports all major Kali tools: nmap, metasploit, burp, etc.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KaliToolExecutionRequest'
+      responses:
+        '200':
+          description: Kali tool execution results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KaliToolExecutionResponse'
+
+  /natasha/kali/microkernel_tool_creation:
+    post:
+      operationId: createMicrokernelTool
+      summary: Create microkernel Kali tool
+      tags: [Kali & Tool Chains]
+      description: |
+        Create lightweight microkernel-based Kali tool for specific operation.
+        Uses Firefly microkernel and WASM for portable, fast execution.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MicrokernelToolCreationRequest'
+      responses:
+        '200':
+          description: Microkernel tool created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicrokernelToolCreationResponse'
+
+  /natasha/kali/tool_chain_composition:
+    post:
+      operationId: composeToolChain
+      summary: Compose tool chain (iTunes-style playlist)
+      tags: [Kali & Tool Chains]
+      description: |
+        Compose security tool chain as "playlist" for complex operations.
+        Supports sequential and parallel execution with result chaining.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ToolChainCompositionRequest'
+      responses:
+        '200':
+          description: Tool chain composed and ready
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToolChainCompositionResponse'
+
+  /natasha/kali/layer2_operations:
+    post:
+      operationId: executeLayer2Operation
+      summary: Execute Layer 2 fabric operation
+      tags: [Kali & Tool Chains]
+      description: |
+        Execute Layer 2 mathematical intelligence operations.
+        Uses Unicode Assembly Language and L* learning for tool discovery.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Layer2OperationRequest'
+      responses:
+        '200':
+          description: Layer 2 operation results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Layer2OperationResponse'
+
+  # ========== APT & THREAT HUNTING ==========
+  /natasha/apt/threat_analysis:
+    post:
+      operationId: analyzeAPTThreat
+      summary: Analyze APT threat
+      tags: [APT & Threat Hunting]
+      description: |
+        Analyze Advanced Persistent Threat activity and generate countermeasures.
+        Integrates with MITRE ATT&CK, threat intelligence feeds, and OSINT.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APTThreatAnalysisRequest'
+      responses:
+        '200':
+          description: APT threat analysis results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APTThreatAnalysisResponse'
+
+  /natasha/apt/countermeasures:
+    post:
+      operationId: generateAPTCountermeasures
+      summary: Generate APT countermeasures
+      tags: [APT & Threat Hunting]
+      description: |
+        Generate specific countermeasures for APT tactics.
+        Includes detection rules, response playbooks, and defensive controls.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APTCountermeasuresRequest'
+      responses:
+        '200':
+          description: APT countermeasures generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APTCountermeasuresResponse'
+
+  /natasha/apt/threat_hunting:
+    post:
+      operationId: executeThreatHunt
+      summary: Execute threat hunting operation
+      tags: [APT & Threat Hunting]
+      description: |
+        Proactive threat hunting across infrastructure.
+        Uses behavioral analysis, anomaly detection, and threat intelligence.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThreatHuntingRequest'
+      responses:
+        '200':
+          description: Threat hunting results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThreatHuntingResponse'
+
+  # ========== COGNETIX PLASMA ==========
+  /natasha/plasma/hunt_detect_graph:
+    post:
+      operationId: queryHuntDetectGraph
+      summary: Query Hunt & Detect graph
+      tags: [Cognetix Plasma]
+      description: |
+        Query the Hunt & Detect graph for threat patterns and relationships.
+        Integrates Legion ECS, SlotGraph, and real-time event correlation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HuntDetectGraphRequest'
+      responses:
+        '200':
+          description: Hunt & Detect graph results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HuntDetectGraphResponse'
+
+  /natasha/plasma/wazuh_integration:
+    post:
+      operationId: executeWazuhOperation
+      summary: Execute Wazuh operation
+      tags: [Cognetix Plasma]
+      description: |
+        Execute Wazuh SIEM operation with CTAS Rust stack processing.
+        Wazuh as open-source data collector, CTAS for analysis.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WazuhOperationRequest'
+      responses:
+        '200':
+          description: Wazuh operation results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WazuhOperationResponse'
+
+  /natasha/plasma/tier_one_stack:
+    post:
+      operationId: executeTierOneOperation
+      summary: Execute Tier One operator stack operation
+      tags: [Cognetix Plasma]
+      description: |
+        Execute operation using Tier One operator stack.
+        Full Legion ECS, AXON neural operations, and HFT ground stations.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TierOneOperationRequest'
+      responses:
+        '200':
+          description: Tier One operation results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TierOneOperationResponse'
+
+  /natasha/plasma/phi3_lora_training:
+    post:
+      operationId: trainPhi3LoRA
+      summary: Train Phi-3 LoRA model
+      tags: [Cognetix Plasma]
+      description: |
+        Train Phi-3 Mini/Small LoRA for threat detection and validation.
+        Uses HFT data, ATT&CK techniques, and Monte Carlo simulations.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Phi3LoRATrainingRequest'
+      responses:
+        '200':
+          description: Phi-3 LoRA training results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Phi3LoRATrainingResponse'
+
+  # ========== PTCC ORCHESTRATION ==========
+  /natasha/ptcc/decompose_task:
+    post:
+      operationId: decomposeToPTCC
+      summary: Decompose task into PTCCs
+      tags: [PTCC Orchestration]
+      description: |
+        Decompose complex task into Persona-Tool-Chain-Context primitives.
+        Uses mathematical validation and entropy calculations.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PTCCDecompositionRequest'
+      responses:
+        '200':
+          description: Task decomposed into PTCCs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PTCCDecompositionResponse'
+
+  /natasha/ptcc/execute:
+    post:
+      operationId: executePTCC
+      summary: Execute PTCC primitive
+      tags: [PTCC Orchestration]
+      description: |
+        Execute specific PTCC primitive with appropriate agent/tool.
+        Handles routing, execution, and result synthesis.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PTCCExecutionRequest'
+      responses:
+        '200':
+          description: PTCC execution results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PTCCExecutionResponse'
+
+  /natasha/ptcc/agent_skills:
+    get:
+      operationId: getAgentSkills
+      summary: Get agent skill matrix
+      tags: [PTCC Orchestration]
+      description: |
+        Get skill matrix for all agents showing PTCC capabilities.
+        Used for intelligent task routing and load balancing.
+      responses:
+        '200':
+          description: Agent skill matrix
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentSkillMatrixResponse'
+
+  # ========== WORLD GRAPH & TASKS ==========
+  /natasha/world_graph/query:
+    post:
+      operationId: queryWorldGraph
+      summary: Query world graph
+      tags: [World Graph & Tasks]
+      description: |
+        Query the world graph for entities, relationships, and contexts.
+        Integrates CogniGraph, SlotGraph, and Knowledge Mesh.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorldGraphQueryRequest'
+      responses:
+        '200':
+          description: World graph query results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorldGraphQueryResponse'
+
+  /natasha/world_graph/task_decomposition:
+    post:
+      operationId: decomposeWorldGraphTask
+      summary: Decompose task from world graph
+      tags: [World Graph & Tasks]
+      description: |
+        Take task from world graph and decompose into objectives, PTCCs, and skills.
+        Creates execution plan with agent assignments.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorldGraphTaskDecompositionRequest'
+      responses:
+        '200':
+          description: Task decomposition complete
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorldGraphTaskDecompositionResponse'
+
+  /natasha/world_graph/cog_analysis:
+    post:
+      operationId: analyzeCenterOfGravity
+      summary: Analyze Center of Gravity
+      tags: [World Graph & Tasks]
+      description: |
+        Perform Center of Gravity (COG) analysis on operational chain.
+        Identifies critical nodes, interdiction points, and vulnerabilities.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/COGAnalysisRequest'
+      responses:
+        '200':
+          description: COG analysis results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/COGAnalysisResponse'
+
+  # ========== SMART CRATES ==========
+  /natasha/smart_crate/create:
+    post:
+      operationId: createSmartCrate
+      summary: Create Smart Crate
+      tags: [Smart Crates]
+      description: |
+        Create new Smart Crate with Foundation Core integration.
+        Auto-generates Cargo.toml, project structure, and dependencies.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SmartCrateCreationRequest'
+      responses:
+        '200':
+          description: Smart Crate created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SmartCrateCreationResponse'
+
+  /natasha/smart_crate/deploy:
+    post:
+      operationId: deploySmartCrate
+      summary: Deploy Smart Crate
+      tags: [Smart Crates]
+      description: |
+        Deploy Smart Crate to target environment via Neural Mux routing.
+        Handles Docker builds, registry push, and orchestration.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SmartCrateDeploymentRequest'
+      responses:
+        '200':
+          description: Smart Crate deployed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SmartCrateDeploymentResponse'
+
+  # ========== LINEAR & WORKFLOW ==========
+  /natasha/linear/create_issue:
+    post:
+      operationId: createLinearIssue
+      summary: Create Linear issue
+      tags: [Linear & Workflow]
+      description: |
+        Create Linear issue with full CTAS integration.
+        Generates trivariate hash, assigns to team, and creates Smart Crate if needed.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LinearIssueCreationRequest'
+      responses:
+        '200':
+          description: Linear issue created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinearIssueCreationResponse'
+
+  /natasha/linear/workflow:
+    post:
+      operationId: executeLinearWorkflow
+      summary: Execute Linear workflow
+      tags: [Linear & Workflow]
+      description: |
+        Execute complete Linear workflow with agent coordination.
+        Handles task creation, assignment, handoffs, and documentation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LinearWorkflowRequest'
+      responses:
+        '200':
+          description: Linear workflow executed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinearWorkflowResponse'
+
+  # ========== AGENT COORDINATION ==========
+  /natasha/agent/route_to_agent:
+    post:
+      operationId: routeToSpecificAgent
+      summary: Route task to specific agent
+      tags: [Agent Coordination]
+      description: |
+        Route task to specific agent in the mesh.
+        Available agents: Claude, Grok, Cove, Altair, GPT, Gemini, ABE, Zoe.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentRoutingRequest'
+      responses:
+        '200':
+          description: Task routed to agent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentRoutingResponse'
+
+  /natasha/agent/mesh_status:
+    get:
+      operationId: getAgentMeshStatus
+      summary: Get agent mesh status
+      tags: [Agent Coordination]
+      description: |
+        Get status of all agents in the mesh including health,
+        current workload, and communication channels.
+      responses:
+        '200':
+          description: Agent mesh status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentMeshStatusResponse'
+
+  # ========== SYSTEM & STATUS ==========
+  /health:
+    get:
+      operationId: getNatashaHealth
+      summary: Health check
+      tags: [System & Status]
+      description: |
+        Health check endpoint for Natasha.
+        Returns operational status and system health.
+      responses:
+        '200':
+          description: Natasha is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /natasha/status:
+    get:
+      operationId: getNatashaStatus
+      summary: Get Natasha's detailed status
+      tags: [System & Status]
+      description: |
+        Get detailed operational status including:
+        - Current operations
+        - Performance metrics
+        - API key status
+        - Neural Mux connection
+        - Memory Fabric status
+      responses:
+        '200':
+          description: Natasha detailed status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NatashaStatusResponse'
+
+components:
+  schemas:
+    # ========== CORE SCHEMAS ==========
+    NatashaCapabilitiesResponse:
+      type: object
+      properties:
+        agent:
+          type: string
+          example: "Natasha Volkov (EA-THR-01)"
+        status:
+          type: string
+          example: "OPERATIONAL"
+        persona:
+          type: string
+          example: "Cross-domain operator - field to C-Suite"
+        clearance:
+          type: string
+          example: "Tier One Operator"
+        capabilities:
+          type: array
+          items:
+            type: string
+          example:
+            - "Voice/AI/ML/Red Team"
+            - "DevOps & Engineering"
+            - "Kali & Tool Chains"
+            - "APT Threat Hunting"
+            - "Cognetix Plasma Operations"
+            - "PTCC Orchestration"
+            - "World Graph Task Decomposition"
+        endpoints:
+          type: array
+          items:
+            type: string
+        communication:
+          type: object
+          properties:
+            email:
+              type: string
+              example: "natasha@ctas.local"
+            slack:
+              type: string
+              example: "@natasha"
+            voice:
+              type: string
+              example: "Russian accent, direct, operator clarity"
+
+    VoiceCommandRequest:
+      type: object
+      required:
+        - command
+      properties:
+        command:
+          type: string
+          description: Voice command in natural language
+        context:
+          type: string
+          description: Additional context for the command
+        priority:
+          type: integer
+          minimum: 1
+          maximum: 4
+          description: Priority level (1=urgent, 4=low)
+        voice_output:
+          type: boolean
+          description: Whether to return voice-ready response
+          default: true
+
+    VoiceCommandResponse:
+      type: object
+      properties:
+        response:
+          type: string
+          description: Natasha's response text
+        action_taken:
+          type: string
+          description: What action was taken
+        voice_ready:
+          type: string
+          description: Voice-optimized response for TTS
+        agent:
+          type: string
+          example: "Natasha"
+        timestamp:
+          type: string
+          format: date-time
+        cuid:
+          type: string
+          description: CTAS unique identifier
+
+    ChatRequest:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+        session_id:
+          type: string
+        context:
+          type: object
+
+    ChatResponse:
+      type: object
+      properties:
+        reply:
+          type: string
+        agent:
+          type: string
+        session_id:
+          type: string
+
+    # ========== RED TEAM SCHEMAS ==========
+    RedTeamOperationRequest:
+      type: object
+      required:
+        - operation_type
+      properties:
+        operation_type:
+          type: string
+          enum: [reconnaissance, initial_access, lateral_movement, privilege_escalation, exfiltration, full_kill_chain]
+        target:
+          type: string
+        techniques:
+          type: array
+          items:
+            type: string
+          description: MITRE ATT&CK technique IDs
+        parameters:
+          type: object
+
+    RedTeamOperationResponse:
+      type: object
+      properties:
+        operation_id:
+          type: string
+        status:
+          type: string
+        results:
+          type: object
+        mitre_attack_mapping:
+          type: array
+          items:
+            type: string
+        recommendations:
+          type: string
+
+    AdversaryEmulationRequest:
+      type: object
+      required:
+        - adversary
+      properties:
+        adversary:
+          type: string
+          description: APT group or adversary name
+        scenario:
+          type: string
+        ttps:
+          type: array
+          items:
+            type: string
+
+    AdversaryEmulationResponse:
+      type: object
+      properties:
+        adversary:
+          type: string
+        emulation_results:
+          type: object
+        detection_gaps:
+          type: array
+          items:
+            type: string
+
+    PurpleTeamRequest:
+      type: object
+      required:
+        - exercise_type
+      properties:
+        exercise_type:
+          type: string
+        red_team_tactics:
+          type: array
+          items:
+            type: string
+        blue_team_focus:
+          type: array
+          items:
+            type: string
+
+    PurpleTeamResponse:
+      type: object
+      properties:
+        exercise_id:
+          type: string
+        red_team_results:
+          type: object
+        blue_team_results:
+          type: object
+        lessons_learned:
+          type: string
+
+    # ========== DEVOPS SCHEMAS ==========
+    CodeGenerationRequest:
+      type: object
+      required:
+        - description
+        - language
+      properties:
+        description:
+          type: string
+        language:
+          type: string
+          enum: [rust, python, typescript, javascript, go, other]
+        framework:
+          type: string
+        requirements:
+          type: array
+          items:
+            type: string
+
+    CodeGenerationResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        language:
+          type: string
+        explanation:
+          type: string
+        dependencies:
+          type: array
+          items:
+            type: string
+
+    SmartCrateOrchestrationRequest:
+      type: object
+      required:
+        - operation
+      properties:
+        operation:
+          type: string
+          enum: [create, deploy, update, delete, status]
+        crate_name:
+          type: string
+        configuration:
+          type: object
+
+    SmartCrateOrchestrationResponse:
+      type: object
+      properties:
+        operation:
+          type: string
+        crate_id:
+          type: string
+        status:
+          type: string
+        trivariate_hash:
+          type: string
+
+    InfrastructureRequest:
+      type: object
+      required:
+        - operation
+      properties:
+        operation:
+          type: string
+          enum: [deploy, configure, scale, destroy]
+        infrastructure_type:
+          type: string
+        configuration:
+          type: object
+
+    InfrastructureResponse:
+      type: object
+      properties:
+        operation:
+          type: string
+        status:
+          type: string
+        infrastructure_id:
+          type: string
+
+    # ========== KALI SCHEMAS ==========
+    KaliToolExecutionRequest:
+      type: object
+      required:
+        - tool
+      properties:
+        tool:
+          type: string
+          enum: [nmap, metasploit, burp, nikto, sqlmap, john, hashcat, aircrack, wireshark, custom]
+        target:
+          type: string
+        parameters:
+          type: object
+        sandboxed:
+          type: boolean
+          default: true
+
+    KaliToolExecutionResponse:
+      type: object
+      properties:
+        tool:
+          type: string
+        execution_id:
+          type: string
+        output:
+          type: string
+        parsed_results:
+          type: object
+        findings:
+          type: array
+          items:
+            type: object
+
+    MicrokernelToolCreationRequest:
+      type: object
+      required:
+        - tool_purpose
+      properties:
+        tool_purpose:
+          type: string
+        tool_type:
+          type: string
+        firefly_based:
+          type: boolean
+          default: true
+        wasm_enabled:
+          type: boolean
+          default: true
+
+    MicrokernelToolCreationResponse:
+      type: object
+      properties:
+        tool_id:
+          type: string
+        tool_hash:
+          type: string
+        deployment_ready:
+          type: boolean
+        size_kb:
+          type: number
+
+    ToolChainCompositionRequest:
+      type: object
+      required:
+        - tools
+      properties:
+        tools:
+          type: array
+          items:
+            type: object
+            properties:
+              tool:
+                type: string
+              parameters:
+                type: object
+        execution_mode:
+          type: string
+          enum: [sequential, parallel, conditional]
+
+    ToolChainCompositionResponse:
+      type: object
+      properties:
+        tool_chain_id:
+          type: string
+        composition:
+          type: array
+          items:
+            type: object
+        ready_for_execution:
+          type: boolean
+
+    Layer2OperationRequest:
+      type: object
+      required:
+        - operation
+      properties:
+        operation:
+          type: string
+        unicode_primitives:
+          type: array
+          items:
+            type: string
+        l_star_learning:
+          type: boolean
+          default: true
+
+    Layer2OperationResponse:
+      type: object
+      properties:
+        operation_id:
+          type: string
+        results:
+          type: object
+        unicode_symbols:
+          type: array
+          items:
+            type: string
+
+    # ========== APT SCHEMAS ==========
+    APTThreatAnalysisRequest:
+      type: object
+      required:
+        - threat_data
+      properties:
+        threat_data:
+          type: object
+        apt_group:
+          type: string
+        indicators:
+          type: array
+          items:
+            type: string
+
+    APTThreatAnalysisResponse:
+      type: object
+      properties:
+        threat_assessment:
+          type: object
+        confidence_score:
+          type: number
+        attribution:
+          type: string
+        recommended_actions:
+          type: array
+          items:
+            type: string
+
+    APTCountermeasuresRequest:
+      type: object
+      required:
+        - threat_type
+      properties:
+        threat_type:
+          type: string
+        specific_ttps:
+          type: array
+          items:
+            type: string
+
+    APTCountermeasuresResponse:
+      type: object
+      properties:
+        countermeasures:
+          type: array
+          items:
+            type: object
+        detection_rules:
+          type: array
+          items:
+            type: string
+        response_playbook:
+          type: object
+
+    ThreatHuntingRequest:
+      type: object
+      required:
+        - hunt_hypothesis
+      properties:
+        hunt_hypothesis:
+          type: string
+        data_sources:
+          type: array
+          items:
+            type: string
+        timeframe:
+          type: object
+
+    ThreatHuntingResponse:
+      type: object
+      properties:
+        hunt_id:
+          type: string
+        findings:
+          type: array
+          items:
+            type: object
+        iocs:
+          type: array
+          items:
+            type: string
+
+    # ========== COGNETIX PLASMA SCHEMAS ==========
+    HuntDetectGraphRequest:
+      type: object
+      required:
+        - query_type
+      properties:
+        query_type:
+          type: string
+          enum: [threat_pattern, entity_relationship, temporal_analysis, behavioral_anomaly]
+        parameters:
+          type: object
+
+    HuntDetectGraphResponse:
+      type: object
+      properties:
+        graph_results:
+          type: object
+        entities:
+          type: array
+          items:
+            type: object
+        relationships:
+          type: array
+          items:
+            type: object
+
+    WazuhOperationRequest:
+      type: object
+      required:
+        - operation
+      properties:
+        operation:
+          type: string
+        wazuh_query:
+          type: string
+        rust_processing:
+          type: boolean
+          default: true
+
+    WazuhOperationResponse:
+      type: object
+      properties:
+        operation_id:
+          type: string
+        results:
+          type: object
+        alerts:
+          type: array
+          items:
+            type: object
+
+    TierOneOperationRequest:
+      type: object
+      required:
+        - operation_type
+      properties:
+        operation_type:
+          type: string
+        legion_ecs:
+          type: boolean
+          default: true
+        hft_enabled:
+          type: boolean
+          default: true
+
+    TierOneOperationResponse:
+      type: object
+      properties:
+        operation_id:
+          type: string
+        legion_entities:
+          type: array
+          items:
+            type: object
+        hft_metrics:
+          type: object
+
+    Phi3LoRATrainingRequest:
+      type: object
+      required:
+        - training_data_source
+      properties:
+        training_data_source:
+          type: string
+        model_size:
+          type: string
+          enum: [mini_3.8b, small_7b]
+        training_task:
+          type: string
+
+    Phi3LoRATrainingResponse:
+      type: object
+      properties:
+        training_id:
+          type: string
+        model_path:
+          type: string
+        training_metrics:
+          type: object
+
+    # ========== PTCC SCHEMAS ==========
+    PTCCDecompositionRequest:
+      type: object
+      required:
+        - task_description
+      properties:
+        task_description:
+          type: string
+        world_graph_context:
+          type: object
+        constraints:
+          type: object
+
+    PTCCDecompositionResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+        objectives:
+          type: array
+          items:
+            type: object
+        ptccs:
+          type: array
+          items:
+            type: object
+            properties:
+              persona:
+                type: string
+              tool_chain:
+                type: array
+                items:
+                  type: string
+              context:
+                type: object
+              primitive_operations:
+                type: array
+                items:
+                  type: string
+        agent_assignments:
+          type: array
+          items:
+            type: object
+
+    PTCCExecutionRequest:
+      type: object
+      required:
+        - ptcc
+      properties:
+        ptcc:
+          type: object
+        execution_mode:
+          type: string
+          enum: [sync, async, parallel]
+
+    PTCCExecutionResponse:
+      type: object
+      properties:
+        execution_id:
+          type: string
+        status:
+          type: string
+        results:
+          type: object
+
+    AgentSkillMatrixResponse:
+      type: object
+      properties:
+        agents:
+          type: array
+          items:
+            type: object
+            properties:
+              agent_name:
+                type: string
+              agent_id:
+                type: string
+              skills:
+                type: array
+                items:
+                  type: string
+              ptcc_capabilities:
+                type: array
+                items:
+                  type: object
+              current_load:
+                type: number
+
+    # ========== WORLD GRAPH SCHEMAS ==========
+    WorldGraphQueryRequest:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+        graph_type:
+          type: string
+          enum: [cogni_graph, slot_graph, knowledge_mesh, full]
+
+    WorldGraphQueryResponse:
+      type: object
+      properties:
+        results:
+          type: object
+        entities:
+          type: array
+          items:
+            type: object
+        relationships:
+          type: array
+          items:
+            type: object
+
+    WorldGraphTaskDecompositionRequest:
+      type: object
+      required:
+        - task_from_graph
+      properties:
+        task_from_graph:
+          type: object
+        decomposition_strategy:
+          type: string
+          enum: [hierarchical, parallel, sequential, adaptive]
+
+    WorldGraphTaskDecompositionResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+        execution_plan:
+          type: object
+        agent_assignments:
+          type: array
+          items:
+            type: object
+        estimated_completion:
+          type: string
+
+    COGAnalysisRequest:
+      type: object
+      required:
+        - operational_chain
+      properties:
+        operational_chain:
+          type: object
+        analysis_type:
+          type: string
+          enum: [center_of_gravity, interdiction_points, vulnerability_assessment]
+
+    COGAnalysisResponse:
+      type: object
+      properties:
+        analysis_id:
+          type: string
+        center_of_gravity:
+          type: object
+        interdiction_points:
+          type: array
+          items:
+            type: object
+        recommendations:
+          type: array
+          items:
+            type: string
+
+    # ========== SMART CRATE SCHEMAS ==========
+    SmartCrateCreationRequest:
+      type: object
+      required:
+        - crate_name
+        - crate_type
+      properties:
+        crate_name:
+          type: string
+        crate_type:
+          type: string
+        dependencies:
+          type: array
+          items:
+            type: string
+        foundation_core:
+          type: boolean
+          default: true
+
+    SmartCrateCreationResponse:
+      type: object
+      properties:
+        crate_id:
+          type: string
+        crate_path:
+          type: string
+        trivariate_hash:
+          type: string
+        status:
+          type: string
+
+    SmartCrateDeploymentRequest:
+      type: object
+      required:
+        - crate_id
+        - deployment_target
+      properties:
+        crate_id:
+          type: string
+        deployment_target:
+          type: string
+        neural_mux_routing:
+          type: boolean
+          default: true
+
+    SmartCrateDeploymentResponse:
+      type: object
+      properties:
+        deployment_id:
+          type: string
+        status:
+          type: string
+        endpoint:
+          type: string
+
+    # ========== LINEAR SCHEMAS ==========
+    LinearIssueCreationRequest:
+      type: object
+      required:
+        - title
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        assignee:
+          type: string
+        priority:
+          type: integer
+          minimum: 1
+          maximum: 4
+        estimate:
+          type: integer
+        labels:
+          type: array
+          items:
+            type: string
+        create_smart_crate:
+          type: boolean
+          default: false
+
+    LinearIssueCreationResponse:
+      type: object
+      properties:
+        issue_id:
+          type: string
+        issue_key:
+          type: string
+        trivariate_hash:
+          type: string
+        smart_crate_id:
+          type: string
+
+    LinearWorkflowRequest:
+      type: object
+      required:
+        - workflow_type
+      properties:
+        workflow_type:
+          type: string
+        tasks:
+          type: array
+          items:
+            type: object
+        agent_coordination:
+          type: boolean
+          default: true
+
+    LinearWorkflowResponse:
+      type: object
+      properties:
+        workflow_id:
+          type: string
+        status:
+          type: string
+        linear_issues:
+          type: array
+          items:
+            type: object
+
+    # ========== AGENT COORDINATION SCHEMAS ==========
+    AgentRoutingRequest:
+      type: object
+      required:
+        - target_agent
+        - task
+      properties:
+        target_agent:
+          type: string
+          enum: [claude, natasha, grok, cove, altair, gpt, gemini, abe, zoe]
+        task:
+          type: object
+        context:
+          type: object
+
+    AgentRoutingResponse:
+      type: object
+      properties:
+        routing_id:
+          type: string
+        target_agent:
+          type: string
+        status:
+          type: string
+        response:
+          type: object
+
+    AgentMeshStatusResponse:
+      type: object
+      properties:
+        mesh_status:
+          type: string
+        agents:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              port:
+                type: integer
+              status:
+                type: string
+              health:
+                type: string
+              current_load:
+                type: number
+        communication_channels:
+          type: object
+
+    # ========== SYSTEM SCHEMAS ==========
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "healthy"
+        agent:
+          type: string
+          example: "Natasha Volkov"
+        version:
+          type: string
+          example: "7.3.0"
+        timestamp:
+          type: string
+          format: date-time
+
+    NatashaStatusResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        agent:
+          type: string
+        operational_since:
+          type: string
+        current_operations:
+          type: array
+          items:
+            type: object
+        performance_metrics:
+          type: object
+        api_integrations:
+          type: object
+          properties:
+            claude:
+              type: string
+            gpt:
+              type: string
+            ollama:
+              type: string
+            zen_coder:
+              type: string
+        neural_mux_connection:
+          type: string
+        memory_fabric_status:
+          type: string
+        linear_integration:
+          type: string
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: CTAS Agent Mesh API Key
+
+security:
+  - ApiKeyAuth: []

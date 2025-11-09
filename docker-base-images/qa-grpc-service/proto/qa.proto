@@ -1,0 +1,61 @@
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// CTAS-7 PhD QA gRPC Service Protocol
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+syntax = "proto3";
+
+package ctas.qa;
+
+// PhD QA Service
+service QaService {
+  // Invoke PhD QA analysis on a crate
+  rpc InvokeQa(QaInvokeRequest) returns (QaInvokeResponse);
+
+  // Get QA service status
+  rpc GetStatus(QaStatusRequest) returns (QaStatusResponse);
+
+  // Get QA results for a service
+  rpc GetResults(QaResultsRequest) returns (QaResultsResponse);
+}
+
+// Request to invoke QA analysis
+message QaInvokeRequest {
+  string service_name = 1;    // Name of the service
+  string crate_path = 2;      // Path to crate root
+  bool full_suite = 3;        // Run full PhD suite vs quick check
+  repeated string tools = 4;   // Specific tools to run (empty = all)
+}
+
+// Response from QA invocation
+message QaInvokeResponse {
+  bool success = 1;
+  string results_path = 2;
+  string summary = 3;
+  int32 errors = 4;
+  int32 warnings = 5;
+}
+
+// Request for QA status
+message QaStatusRequest {
+  // Empty for now
+}
+
+// QA service status
+message QaStatusResponse {
+  bool qa_enabled = 1;
+  bool tools_installed = 2;
+  string last_run = 3;
+  string version = 4;
+}
+
+// Request for QA results
+message QaResultsRequest {
+  string service_name = 1;
+}
+
+// QA results response
+message QaResultsResponse {
+  string service_name = 1;
+  string results = 2;       // JSON or formatted text
+  string timestamp = 3;
+}

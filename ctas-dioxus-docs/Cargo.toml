@@ -2,51 +2,45 @@
 name = "ctas-dioxus-docs"
 version = "0.1.0"
 edition = "2021"
-authors = ["CTAS 7.0 Engineering Team"]
-description = "Live, self-discovering documentation system for CTAS-7 that queries Neural Mux"
 
 [dependencies]
-# Dioxus Framework
-dioxus = { version = "0.6", features = ["desktop", "router"] }
-dioxus-desktop = "0.6"
-dioxus-router = "0.6"
+dioxus = { version = "0.6", features = ["web", "router"] }
+dioxus-logger = "0.5"
 
-# Async Runtime
-tokio = { version = "1.0", features = ["full"] }
-reqwest = { version = "0.12", features = ["json"] }
+# Markdown parsing
+pulldown-cmark = { version = "0.12", default-features = false }
+
+# Syntax highlighting
+syntect = "5.2"
 
 # Serialization
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 
-# Markdown Parsing
-pulldown-cmark = "0.11"
+# HTTP client for loading markdown files
+reqwest = { version = "0.12", features = ["json"] }
 
-# Syntax Highlighting
-syntect = "5.2"
-
-# Time
-chrono = { version = "0.4", features = ["serde"] }
-
-# Error Handling
-anyhow = "1.0"
-thiserror = "2.0"
+# Async runtime
+tokio = { version = "1.0", features = ["full"] }
 
 # Logging
-tracing = "0.1"
-tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+log = "0.4"
 
-# UUID for routing
+# Link updating
+regex = "1.10"
+pathdiff = "0.2"
+
+# UUID generation
 uuid = { version = "1.0", features = ["v4", "serde"] }
 
-# Cache for Neural Mux responses
-moka = { version = "0.12", features = ["future"] }
-
 [profile.release]
-opt-level = 3
+opt-level = "z"
 lto = true
 codegen-units = 1
 
+[profile.dev]
+opt-level = 0
 
-
-
+[[bin]]
+name = "ctas-docs"
+path = "src/main.rs"

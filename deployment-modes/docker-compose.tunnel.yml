@@ -1,0 +1,58 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# CTAS-7 Tunnel Mode Deployment
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#
+# Encrypted tunnel access via Cloudflare
+# Zero attack surface, TLS 1.3, Zero Trust access
+#
+# Usage:
+#   docker-compose -f docker-compose.yml -f docker-compose.tunnel.yml up -d
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+version: '3.8'
+
+services:
+  # Cloudflare Tunnel - Secure access without open ports
+  cloudflare-tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: ctas-cloudflare-tunnel
+    command: tunnel --no-autoupdate run --token ${CF_TUNNEL_TOKEN}
+    environment:
+      - TUNNEL_TOKEN=${CF_TUNNEL_TOKEN}
+      - TUNNEL_METRICS=0.0.0.0:9126
+    volumes:
+      - ./config/cloudflare-tunnel.yml:/etc/cloudflared/config.yml:ro
+    networks:
+      - ctas-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "cloudflared", "tunnel", "info"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "ctas.service=tunnel"
+      - "ctas.security=high"
+
+  # Tunnel monitoring (optional)
+  tunnel-monitor:
+    image: prom/prometheus:latest
+    container_name: ctas-tunnel-monitor
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    volumes:
+      - ./config/prometheus-tunnel.yml:/etc/prometheus/prometheus.yml:ro
+      - tunnel-metrics:/prometheus
+    networks:
+      - ctas-network
+    restart: unless-stopped
+
+volumes:
+  tunnel-metrics:
+    driver: local
+
+networks:
+  ctas-network:
+    external: true
+

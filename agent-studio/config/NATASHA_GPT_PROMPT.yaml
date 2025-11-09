@@ -1,0 +1,404 @@
+openapi: 3.1.0
+info:
+  title: CTAS Agent Mesh v7.1.1 - Complete Multi-Agent Integration
+  version: 7.1.1
+  description: |
+    Revolutionary multi-agent CTAS system with Claude meta-agent routing,
+    specialized domain agents, and comprehensive communication mesh.
+
+    Features:
+    - Claude meta-agent for intelligent task routing
+    - Grok space engineering (Starlink/orbital operations)
+    - Natasha voice/red team interface
+    - Multi-modal communication (gRPC + Slack + Linear + Email)
+    - Real-time agent coordination and synthesis
+
+servers:
+  - url: https://123456a5c866e82224.ngrok-free.app
+    description: CTAS Agent Mesh via ngrok tunnel (v7.1.1)
+  - url: http://localhost:15180
+    description: Local CTAS Agent Mesh HTTP API (RepoAgent)
+  - url: http://localhost:15181
+    description: Local CTAS Synaptix Gateway (New)
+  - url: http://localhost:50055
+    description: Claude Meta-Agent gRPC Server (transport gRPC)
+
+tags:
+  - name: Meta-Agent
+    description: Claude meta-agent routing and coordination
+  - name: Voice Interface
+    description: Natasha voice command processing
+  - name: Space Operations
+    description: Grok space engineering operations
+  - name: DevOps/QA
+    description: Cove development and quality assurance
+  - name: Workflows
+    description: BNE and development workflow management
+  - name: System
+    description: System status and health monitoring
+  - name: Communication
+    description: Multi-channel communication integration
+  - name: Legacy
+    description: Backwards compatibility endpoints
+
+paths:
+  /meta_agent/route_task:
+    post:
+      operationId: routeTaskThroughClaude
+      summary: Route task through Claude meta-agent
+      description: |
+        Send any task to Claude meta-agent for intelligent routing to specialized agents.
+        Claude analyzes context and dispatches to optimal agent(s), then synthesizes responses.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CTASTaskRequest'
+      responses:
+        200:
+          description: Task successfully routed and processed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetaAgentResponse'
+
+  /agents/natasha/voice_command:
+    post:
+      operationId: sendVoiceCommandToNatasha
+      summary: Send voice command to Natasha
+      description: |
+        Primary voice interface. Natasha processes voice commands and routes through
+        Claude meta-agent for multi-agent coordination.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoiceCommandRequest'
+      responses:
+        200:
+          description: Voice command processed with synthesis
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoiceResponse'
+
+  /agents/grok/space_operations:
+    post:
+      operationId: executeSpaceOperation
+      summary: Execute space engineering operation via Grok
+      description: |
+        Direct access to Grok's space engineering capabilities:
+        - Starlink constellation management
+        - FSO beam optimization
+        - Orbital propagation
+        - Ground station coordination
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpaceOperationRequest'
+      responses:
+        200:
+          description: Space operation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpaceOperationResponse'
+
+  /agents/cove/devops_qa:
+    post:
+      operationId: executeDevOpsQA
+      summary: Execute DevOps/QA operation via Cove
+      description: |
+        Access Cove's DevOps and QA capabilities:
+        - QA5 system validation
+        - XSD schema compliance
+        - Smart Crates operations
+        - Linear workflow management
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DevOpsQARequest'
+      responses:
+        200:
+          description: DevOps/QA operation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DevOpsQAResponse'
+
+  /workflows/create_bne:
+    post:
+      operationId: createBNEWorkflow
+      summary: Create Bar Napkin Engineering workflow
+      description: |
+        Create comprehensive BNE (Bar Napkin Engineering) workflow with
+        automatic Linear integration and version tracking.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BNEWorkflowRequest'
+      responses:
+        200:
+          description: BNE workflow created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BNEWorkflowResponse'
+
+  /system/agent_mesh_status:
+    get:
+      operationId: getAgentMeshStatus
+      summary: Get complete agent mesh status
+      description: |
+        Returns status of all agents in the mesh including meta-agent routing, communication channels, and performance metrics.
+      responses:
+        200:
+          description: Agent mesh status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentMeshStatusResponse'
+
+  /agents/status:
+    get:
+      operationId: getAllAgentStatus
+      summary: Get all agent health status
+      description: |
+        Query health of all agents in the mesh concurrently.
+        Available on new gateway (15181).
+      responses:
+        200:
+          description: All agent status retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  agents:
+                    type: array
+                    items:
+                      type: object
+
+  /communication/slack_integration:
+    post:
+      operationId: processSlackCommand
+      summary: Process Slack command through agent mesh
+      description: |
+        Handle Slack commands and route through appropriate agents.
+        Supports "/ctas_space", "/ctas_security", "/ctas_qa", "/ctas_meta" commands.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SlackCommandRequest'
+      responses:
+        200:
+          description: Slack command processed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SlackCommandResponse'
+
+  /technical_analysis:
+    post:
+      operationId: getTechnicalAnalysis
+      summary: Get technical analysis from Natasha (Legacy)
+      description: |
+        Legacy endpoint for backwards compatibility.
+        Now routes through Claude meta-agent for enhanced processing.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TechnicalAnalysisRequest'
+      responses:
+        200:
+          description: Technical analysis completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TechnicalAnalysisResponse'
+
+  /health:
+    get:
+      operationId: getSystemHealth
+      summary: Get complete system health
+      description: Returns health status of the entire agent mesh.
+      responses:
+        200:
+          description: System health status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemHealthResponse'
+
+components:
+  schemas:
+    CTASTaskRequest:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          description: The task or query to route
+        context:
+          type: string
+          description: Additional context
+        priority:
+          type: integer
+          minimum: 1
+          maximum: 4
+          description: Priority level (1=urgent, 4=low)
+
+    MetaAgentResponse:
+      type: object
+      properties:
+        result:
+          type: string
+        responder:
+          type: string
+        cuid:
+          type: string
+
+    VoiceCommandRequest:
+      type: object
+      required:
+        - command
+      properties:
+        command:
+          type: string
+        context:
+          type: string
+
+    VoiceResponse:
+      type: object
+      properties:
+        response:
+          type: string
+        agent:
+          type: string
+
+    SpaceOperationRequest:
+      type: object
+      required:
+        - operation
+      properties:
+        operation:
+          type: string
+        parameters:
+          type: object
+
+    SpaceOperationResponse:
+      type: object
+      properties:
+        result:
+          type: string
+        status:
+          type: string
+
+    DevOpsQARequest:
+      type: object
+      required:
+        - task
+      properties:
+        task:
+          type: string
+        context:
+          type: string
+
+    DevOpsQAResponse:
+      type: object
+      properties:
+        result:
+          type: string
+        qa_status:
+          type: string
+
+    BNEWorkflowRequest:
+      type: object
+      required:
+        - workflow_name
+      properties:
+        workflow_name:
+          type: string
+        description:
+          type: string
+
+    BNEWorkflowResponse:
+      type: object
+      properties:
+        workflow_id:
+          type: string
+        linear_issue:
+          type: string
+
+    AgentMeshStatusResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        agents:
+          type: array
+          items:
+            type: object
+
+    SlackCommandRequest:
+      type: object
+      required:
+        - command
+      properties:
+        command:
+          type: string
+        user_id:
+          type: string
+        channel_id:
+          type: string
+
+    SlackCommandResponse:
+      type: object
+      properties:
+        response:
+          type: string
+
+    TechnicalAnalysisRequest:
+      type: object
+      required:
+        - topic
+      properties:
+        topic:
+          type: string
+
+    TechnicalAnalysisResponse:
+      type: object
+      properties:
+        analysis:
+          type: string
+
+    SystemHealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        version:
+          type: string
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: CTAS Agent Mesh API Key
+
+security:
+  - ApiKeyAuth: []

@@ -1,0 +1,79 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start PM2 Services",
+      "type": "shell",
+      "command": "pm2 start ecosystem.config.cjs",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      }
+    },
+    {
+      "label": "Check PM2 Status",
+      "type": "shell",
+      "command": "pm2 list",
+      "problemMatcher": []
+    },
+    {
+      "label": "Voice System Test",
+      "type": "shell",
+      "command": "curl http://localhost:19015/health | jq",
+      "problemMatcher": []
+    },
+    {
+      "label": "Linear: Sync Issues",
+      "type": "shell",
+      "command": "node ctas7-linear-plan-loader.cjs",
+      "problemMatcher": []
+    },
+    {
+      "label": "Build All Rust Services",
+      "type": "shell",
+      "command": "cargo build --release --workspace",
+      "problemMatcher": ["$rustc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Start Docker Backend",
+      "type": "shell",
+      "command": "./start-canonical-backend-docker.sh",
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Main Ops",
+      "type": "shell",
+      "command": "cd ../ctas-7-shipyard-staging/ctas-7.0-main-ops-platform && npm run dev",
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Command Center",
+      "type": "shell",
+      "command": "npm run dev",
+      "problemMatcher": []
+    },
+    {
+      "label": "Git: Commit All CTAS",
+      "type": "shell",
+      "command": "git add -A && git commit -m 'Auto-commit: $(date +%Y-%m-%d_%H:%M:%S)' && git push",
+      "problemMatcher": []
+    },
+    {
+      "label": "Restart Voice Gateway",
+      "type": "shell",
+      "command": "pm2 restart voice-gateway",
+      "problemMatcher": []
+    },
+    {
+      "label": "System Health Check",
+      "type": "shell",
+      "command": "curl -s http://localhost:19015/health && echo '\n' && curl -s http://localhost:18299 && echo '\n' && pm2 jlist | jq -r '.[] | select(.pm2_env.status==\"online\") | .name'",
+      "problemMatcher": []
+    }
+  ]
+}

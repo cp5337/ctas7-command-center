@@ -1,0 +1,92 @@
+{
+  "name": "CTAS-7 bolt.diy Code Generator",
+  "version": "7.1.0",
+  "description": "Containerized AI code generation engine for CTAS Agent Studio",
+
+  "llm_providers": {
+    "primary": "anthropic",
+    "fallback": ["openai", "google", "groq"],
+    "models": {
+      "anthropic": "claude-3-5-sonnet-20241022",
+      "openai": "gpt-4-turbo-preview",
+      "google": "gemini-1.5-pro",
+      "groq": "mixtral-8x7b-32768"
+    }
+  },
+
+  "integrations": {
+    "github": {
+      "enabled": true,
+      "auto_commit": true,
+      "branch_strategy": "feature/*"
+    },
+    "vercel": {
+      "enabled": true,
+      "auto_deploy": true,
+      "production_branch": "main"
+    },
+    "linear": {
+      "enabled": true,
+      "auto_create_issues": true,
+      "team_key": "COG"
+    }
+  },
+
+  "code_generation": {
+    "frameworks": [
+      "react",
+      "react-native",
+      "dioxus",
+      "next.js",
+      "vite"
+    ],
+    "typescript": true,
+    "strict_mode": true,
+    "style_system": "tailwind",
+    "component_library": "shadcn/ui"
+  },
+
+  "ctas_specific": {
+    "neural_mux_integration": true,
+    "ontology_driven": true,
+    "design_tokens_import": true,
+    "figma_templates": true,
+    "transpiler_ready": true,
+    "dod_compliant": true
+  },
+
+  "security": {
+    "sandbox_execution": true,
+    "code_review": true,
+    "dependency_scanning": true,
+    "secrets_detection": true
+  },
+
+  "output": {
+    "format": ["web", "react-native", "ios-ready"],
+    "quality": "production",
+    "documentation": "auto-generate",
+    "tests": "auto-generate"
+  },
+
+  "storage": {
+    "projects_path": "/app/projects",
+    "cache_path": "/app/cache",
+    "max_project_size": "100MB"
+  },
+
+  "api": {
+    "port": 5173,
+    "cors_enabled": true,
+    "allowed_origins": [
+      "http://localhost:15181",
+      "http://localhost:15174",
+      "http://localhost:25174"
+    ],
+    "rate_limit": {
+      "enabled": true,
+      "max_requests": 100,
+      "window": "15m"
+    }
+  }
+}

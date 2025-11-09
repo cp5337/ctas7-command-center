@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "ctas7-figma": {
+      "command": "/Users/cp5337/Developer/ctas-7-shipyard-staging/ctas7-figma-mcp-server/target/release/figma_mcp_server",
+      "args": [],
+      "env": {
+        "FIGMA_API_TOKEN": "your_figma_api_token_here",
+        "FIGMA_MCP_SERVER_PORT": "18120",
+        "FIGMA_MCP_SERVER_HOST": "localhost",
+        "RUST_LOG": "info"
+      }
+    }
+  }
+}

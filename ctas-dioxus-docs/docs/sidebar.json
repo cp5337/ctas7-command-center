@@ -1,0 +1,219 @@
+{
+  "documentation": [
+    {
+      "title": "Getting Started",
+      "icon": "🚀",
+      "items": [
+        {
+          "title": "Introduction",
+          "path": "/docs/index"
+        },
+        {
+          "title": "Quick Start",
+          "path": "/docs/quickstart"
+        },
+        {
+          "title": "Installation",
+          "path": "/docs/installation"
+        }
+      ]
+    },
+    {
+      "title": "Architecture",
+      "icon": "🏗️",
+      "items": [
+        {
+          "title": "PLASMA-PRISM-PTCC",
+          "path": "/docs/architecture/plasma-prism-ptcc"
+        },
+        {
+          "title": "Kali Synaptix",
+          "path": "/docs/architecture/kali-synaptix"
+        },
+        {
+          "title": "Legion Multi-World",
+          "path": "/docs/architecture/legion"
+        },
+        {
+          "title": "Universal GIS",
+          "path": "/docs/architecture/gis"
+        },
+        {
+          "title": "Threat Emulation",
+          "path": "/docs/architecture/threat-emulation"
+        },
+        {
+          "title": "Security & Compliance",
+          "path": "/docs/architecture/security"
+        }
+      ]
+    },
+    {
+      "title": "Agent Systems",
+      "icon": "🤖",
+      "items": [
+        {
+          "title": "Overview",
+          "path": "/docs/agents/overview"
+        },
+        {
+          "title": "Dual-LLM Architecture",
+          "path": "/docs/agents/dual-llm"
+        },
+        {
+          "title": "Agent Profiles",
+          "path": "/docs/agents/profiles"
+        },
+        {
+          "title": "Deployment",
+          "path": "/docs/agents/deployment"
+        },
+        {
+          "title": "Linear Integration",
+          "path": "/docs/agents/linear"
+        },
+        {
+          "title": "Voice System",
+          "path": "/docs/agents/voice"
+        }
+      ]
+    },
+    {
+      "title": "Foundation",
+      "icon": "🔧",
+      "items": [
+        {
+          "title": "USIM System",
+          "path": "/docs/foundation/usim"
+        },
+        {
+          "title": "PTCC 7.0 Validation",
+          "path": "/docs/foundation/ptcc"
+        },
+        {
+          "title": "Trivariate Hashing",
+          "path": "/docs/foundation/hashing"
+        },
+        {
+          "title": "Mathematical Methods",
+          "path": "/docs/foundation/mathematical"
+        },
+        {
+          "title": "Smart Crates",
+          "path": "/docs/foundation/smart-crates"
+        }
+      ]
+    },
+    {
+      "title": "Products",
+      "icon": "📦",
+      "items": [
+        {
+          "title": "ABE Platform",
+          "path": "/docs/products/abe"
+        },
+        {
+          "title": "Synaptix Plasma",
+          "path": "/docs/products/plasma"
+        },
+        {
+          "title": "LaserLight Communications",
+          "path": "/docs/products/laserlight"
+        },
+        {
+          "title": "Mobile (iOS)",
+          "path": "/docs/products/mobile"
+        }
+      ]
+    },
+    {
+      "title": "Development",
+      "icon": "🛠️",
+      "items": [
+        {
+          "title": "Development Setup",
+          "path": "/docs/development/setup"
+        },
+        {
+          "title": "Git Workflow",
+          "path": "/docs/development/git"
+        },
+        {
+          "title": "Docker & OrbStack",
+          "path": "/docs/development/docker"
+        },
+        {
+          "title": "Testing & QA",
+          "path": "/docs/development/testing"
+        },
+        {
+          "title": "CI/CD Pipeline",
+          "path": "/docs/development/cicd"
+        }
+      ]
+    },
+    {
+      "title": "Operations",
+      "icon": "⚙️",
+      "items": [
+        {
+          "title": "HD4 Framework",
+          "path": "/docs/operations/hd4"
+        },
+        {
+          "title": "Threat Intelligence",
+          "path": "/docs/operations/threat-intel"
+        },
+        {
+          "title": "GIS Operations",
+          "path": "/docs/operations/gis"
+        },
+        {
+          "title": "OSINT Collection",
+          "path": "/docs/operations/osint"
+        }
+      ]
+    },
+    {
+      "title": "Research",
+      "icon": "📚",
+      "items": [
+        {
+          "title": "White Papers",
+          "path": "/docs/research/white-papers"
+        },
+        {
+          "title": "Experiments",
+          "path": "/docs/research/experiments"
+        },
+        {
+          "title": "Bibliography",
+          "path": "/docs/research/bibliography"
+        }
+      ]
+    },
+    {
+      "title": "API Reference",
+      "icon": "📖",
+      "items": [
+        {
+          "title": "REST API",
+          "path": "/docs/api/rest"
+        },
+        {
+          "title": "GraphQL API",
+          "path": "/docs/api/graphql"
+        },
+        {
+          "title": "gRPC Services",
+          "path": "/docs/api/grpc"
+        },
+        {
+          "title": "WebSocket",
+          "path": "/docs/api/websocket"
+        }
+      ]
+    }
+  ]
+}
+

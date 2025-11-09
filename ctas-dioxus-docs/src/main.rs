@@ -5,6 +5,10 @@ use dioxus::prelude::*;
 mod neural_mux_client;
 mod components;
 mod routes;
+mod markdown_loader;
+mod markdown_table;
+mod mermaid_renderer;
+mod figma_export;
 
 use routes::Route;
 

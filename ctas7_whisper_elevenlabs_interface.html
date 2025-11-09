@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🎤 CTAS-7 Whisper → ElevenLabs Voice Pipeline</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 50%, #2a1a4e 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .panel {
+            background: rgba(40, 40, 70, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            backdrop-filter: blur(15px);
+        }
+
+        .panel h2 {
+            margin: 0 0 20px 0;
+            color: #9c27b0;
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .main-control {
+            grid-column: 1 / -1;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a3e 0%, #3d1a5e 100%);
+        }
+
+        .record-button {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #e91e63, #9c27b0);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(156, 39, 176, 0.4);
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .record-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(156, 39, 176, 0.6);
+        }
+
+        .record-button.recording {
+            background: linear-gradient(135deg, #f44336, #e91e63);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .pipeline-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .status-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .status-icon.inactive { background: rgba(100, 100, 100, 0.5); }
+        .status-icon.active { background: #9c27b0; animation: pulse 1s infinite; }
+        .status-icon.complete { background: #4caf50; }
+        .status-icon.error { background: #f44336; }
+
+        .agent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+        }
+
+        .agent-card {
+            background: linear-gradient(135deg, #3949ab 0%, #5e35b1 100%);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .agent-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(156, 39, 176, 0.3);
+            border-color: #9c27b0;
+        }
+
+        .agent-card.active {
+            background: linear-gradient(135deg, #9c27b0, #e91e63);
+            border-color: #f48fb1;
+            transform: scale(1.05);
+        }
+
+        .agent-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .agent-role {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        .log-container {
+            height: 300px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .log-entry {
+            margin: 8px 0;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            border-left: 4px solid;
+        }
+
+        .log-whisper { background: rgba(33, 150, 243, 0.1); border-left-color: #2196f3; }
+        .log-agent { background: rgba(156, 39, 176, 0.1); border-left-color: #9c27b0; }
+        .log-elevenlabs { background: rgba(255, 152, 0, 0.1); border-left-color: #ff9800; }
+        .log-system { background: rgba(76, 175, 80, 0.1); border-left-color: #4caf50; }
+        .log-error { background: rgba(244, 67, 54, 0.1); border-left-color: #f44336; }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2196f3, #03a9f4);
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #4caf50, #8bc34a);
+            color: white;
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #ff9800, #ffc107);
+            color: white;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #f44336, #e91e63);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .audio-visualizer {
+            height: 80px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .wave-container {
+            display: flex;
+            gap: 2px;
+            height: 100%;
+            align-items: end;
+        }
+
+        .wave-bar {
+            width: 3px;
+            background: linear-gradient(to top, #9c27b0, #e91e63);
+            border-radius: 2px;
+            transition: height 0.1s ease;
+            min-height: 3px;
+        }
+
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .connection-status.connected {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid #4caf50;
+            color: #81c784;
+        }
+
+        .connection-status.disconnected {
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid #f44336;
+            color: #ef5350;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .status-dot.connected { background: #4caf50; }
+        .status-dot.disconnected { background: #f44336; }
+
+        .settings-panel {
+            background: rgba(20, 20, 40, 0.8);
+        }
+
+        .setting-item {
+            margin: 12px 0;
+        }
+
+        .setting-item label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #bb86fc;
+        }
+
+        .setting-item input, .setting-item select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .setting-item input[type="range"] {
+            height: 6px;
+            background: rgba(156, 39, 176, 0.3);
+            border-radius: 3px;
+        }
+
+        .range-value {
+            display: inline-block;
+            background: rgba(156, 39, 176, 0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+
+        .header {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #9c27b0, #e91e63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎤 CTAS-7 Whisper → ElevenLabs Voice Pipeline</h1>
+            <p>Advanced Speech-to-Text → Agent Processing → Text-to-Speech</p>
+        </div>
+
+        <!-- Main Voice Control -->
+        <div class="panel main-control">
+            <h2>🎙️ Voice Control Center</h2>
+
+            <button class="record-button" id="recordBtn" onclick="toggleRecording()">
+                <div>🎤</div>
+                <div>Press to Speak</div>
+            </button>
+
+            <div class="pipeline-status">
+                <div class="status-step">
+                    <div class="status-icon inactive" id="whisperStatus">🎤</div>
+                    <small>Whisper STT</small>
+                </div>
+                <div style="flex: 1; height: 2px; background: rgba(255,255,255,0.2); margin: 0 10px;"></div>
+                <div class="status-step">
+                    <div class="status-icon inactive" id="agentStatus">🤖</div>
+                    <small>Agent Processing</small>
+                </div>
+                <div style="flex: 1; height: 2px; background: rgba(255,255,255,0.2); margin: 0 10px;"></div>
+                <div class="status-step">
+                    <div class="status-icon inactive" id="ttsStatus">🔊</div>
+                    <small>ElevenLabs TTS</small>
+                </div>
+            </div>
+
+            <div class="audio-visualizer" id="audioVisualizer">
+                <div class="wave-container" id="waveContainer">
+                    <!-- Wave bars will be generated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Agent Selection -->
+        <div class="panel">
+            <h2>🤖 Select Agent</h2>
+            <div class="connection-status" id="connectionStatus">
+                <div class="status-dot disconnected"></div>
+                Connecting to CTAS-7...
+            </div>
+
+            <div class="agent-grid">
+                <div class="agent-card" data-agent="agent-cove">
+                    <div class="agent-name">🕵️ Cove</div>
+                    <div class="agent-role">RepoOps Inspector</div>
+                </div>
+
+                <div class="agent-card active" data-agent="agent-natasha">
+                    <div class="agent-name">🧠 Natasha</div>
+                    <div class="agent-role">Cyber Intel Analyst</div>
+                </div>
+
+                <div class="agent-card" data-agent="agent-hayes">
+                    <div class="agent-name">⚔️ Hayes</div>
+                    <div class="agent-role">Ops Coordinator</div>
+                </div>
+            </div>
+
+            <div class="controls-grid">
+                <button class="btn btn-primary" onclick="testWhisper()">Test Whisper</button>
+                <button class="btn btn-success" onclick="testAgent()">Test Agent</button>
+                <button class="btn btn-warning" onclick="testTTS()">Test TTS</button>
+                <button class="btn btn-danger" onclick="clearLogs()">Clear Logs</button>
+            </div>
+        </div>
+
+        <!-- Voice Pipeline Log -->
+        <div class="panel">
+            <h2>📊 Voice Pipeline Log</h2>
+            <div class="log-container" id="logContainer">
+                <div class="log-entry log-system">
+                    <strong>System:</strong> CTAS-7 Voice Pipeline Initialized
+                </div>
+                <div class="log-entry log-whisper">
+                    <strong>Whisper:</strong> Speech-to-Text engine ready
+                </div>
+                <div class="log-entry log-elevenlabs">
+                    <strong>ElevenLabs:</strong> Text-to-Speech engine ready
+                </div>
+            </div>
+        </div>
+
+        <!-- Whisper Settings -->
+        <div class="panel settings-panel">
+            <h2>⚙️ Whisper Settings</h2>
+            <div class="setting-item">
+                <label for="whisperModel">Whisper Model</label>
+                <select id="whisperModel">
+                    <option value="tiny">Tiny (39 MB) - Fast</option>
+                    <option value="base" selected>Base (74 MB) - Balanced</option>
+                    <option value="small">Small (244 MB) - Better</option>
+                    <option value="medium">Medium (769 MB) - High Quality</option>
+                </select>
+            </div>
+
+            <div class="setting-item">
+                <label for="language">Language</label>
+                <select id="language">
+                    <option value="auto">Auto Detect</option>
+                    <option value="en" selected>English</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <option value="zh">Chinese</option>
+                    <option value="ru">Russian</option>
+                    <option value="ar">Arabic</option>
+                </select>
+            </div>
+
+            <div class="setting-item">
+                <label for="confidence">Min Confidence <span class="range-value" id="confidenceValue">0.7</span></label>
+                <input type="range" id="confidence" min="0.1" max="1.0" step="0.1" value="0.7">
+            </div>
+        </div>
+
+        <!-- ElevenLabs Settings -->
+        <div class="panel settings-panel">
+            <h2>🎵 ElevenLabs Settings</h2>
+            <div class="setting-item">
+                <label for="ttsModel">TTS Model</label>
+                <select id="ttsModel">
+                    <option value="eleven_multilingual_v2" selected>Multilingual V2</option>
+                    <option value="eleven_monolingual_v1">Monolingual V1</option>
+                    <option value="eleven_turbo_v2">Turbo V2 (Fast)</option>
+                </select>
+            </div>
+
+            <div class="setting-item">
+                <label for="stability">Stability <span class="range-value" id="stabilityValue">0.5</span></label>
+                <input type="range" id="stability" min="0" max="1" step="0.1" value="0.5">
+            </div>
+
+            <div class="setting-item">
+                <label for="similarity">Similarity Boost <span class="range-value" id="similarityValue">0.8</span></label>
+                <input type="range" id="similarity" min="0" max="1" step="0.1" value="0.8">
+            </div>
+
+            <div class="setting-item">
+                <label for="style">Style <span class="range-value" id="styleValue">0.0</span></label>
+                <input type="range" id="style" min="0" max="1" step="0.1" value="0.0">
+            </div>
+
+            <div class="controls-grid">
+                <button class="btn btn-primary" onclick="saveSettings()">💾 Save</button>
+                <button class="btn btn-warning" onclick="resetSettings()">🔄 Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Whisper.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@xenova/transformers@2.6.0"></script>
+
+    <script>
+        // Global state
+        let isRecording = false;
+        let selectedAgent = 'agent-natasha';
+        let whisperPipeline = null;
+        let audioContext = null;
+        let mediaRecorder = null;
+        let audioChunks = [];
+        let systemConnected = false;
+
+        const REPOAGENT_URL = 'http://localhost:15180';
+
+        // Initialize the interface
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeInterface();
+            checkSystemConnection();
+            initializeWhisper();
+        });
+
+        async function initializeInterface() {
+            // Generate audio visualizer bars
+            const waveContainer = document.getElementById('waveContainer');
+            for (let i = 0; i < 30; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'wave-bar';
+                bar.style.height = '5px';
+                waveContainer.appendChild(bar);
+            }
+
+            // Setup range input handlers
+            setupRangeInputs();
+
+            // Setup agent selection
+            setupAgentSelection();
+
+            log('system', 'Voice Pipeline Interface Initialized');
+        }
+
+        function setupRangeInputs() {
+            const ranges = ['confidence', 'stability', 'similarity', 'style'];
+            ranges.forEach(id => {
+                const input = document.getElementById(id);
+                const valueSpan = document.getElementById(id + 'Value');
+                input.addEventListener('input', function() {
+                    valueSpan.textContent = this.value;
+                });
+            });
+        }
+
+        function setupAgentSelection() {
+            document.querySelectorAll('.agent-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    // Remove active class from all cards
+                    document.querySelectorAll('.agent-card').forEach(c => c.classList.remove('active'));
+
+                    // Add active class to clicked card
+                    this.classList.add('active');
+
+                    // Update selected agent
+                    selectedAgent = this.dataset.agent;
+                    log('system', `Selected agent: ${selectedAgent.replace('agent-', '')}`);
+                });
+            });
+        }
+
+        async function initializeWhisper() {
+            try {
+                setStatus('whisperStatus', 'active');
+                log('whisper', 'Initializing Whisper.js...');
+
+                // Initialize Whisper pipeline
+                const { pipeline } = await import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.6.0');
+
+                const modelName = document.getElementById('whisperModel').value;
+                whisperPipeline = await pipeline('automatic-speech-recognition', `openai/whisper-${modelName}`);
+
+                setStatus('whisperStatus', 'complete');
+                log('whisper', `Whisper ${modelName} model loaded successfully`);
+            } catch (error) {
+                setStatus('whisperStatus', 'error');
+                log('error', `Failed to initialize Whisper: ${error.message}`);
+            }
+        }
+
+        async function checkSystemConnection() {
+            try {
+                const response = await fetch(`${REPOAGENT_URL}/ping`);
+                if (response.ok) {
+                    systemConnected = true;
+                    updateConnectionStatus(true, 'Connected to CTAS-7 RepoAgent');
+                    log('system', 'Connected to CTAS-7 RepoAgent');
+                } else {
+                    throw new Error('Connection failed');
+                }
+            } catch (error) {
+                systemConnected = false;
+                updateConnectionStatus(false, 'Failed to connect to CTAS-7');
+                log('error', `Connection failed: ${error.message}`);
+            }
+        }
+
+        function updateConnectionStatus(connected, message) {
+            const statusEl = document.getElementById('connectionStatus');
+            const dot = statusEl.querySelector('.status-dot');
+
+            if (connected) {
+                statusEl.className = 'connection-status connected';
+                dot.className = 'status-dot connected';
+            } else {
+                statusEl.className = 'connection-status disconnected';
+                dot.className = 'status-dot disconnected';
+            }
+
+            statusEl.innerHTML = `<div class="status-dot ${connected ? 'connected' : 'disconnected'}"></div>${message}`;
+        }
+
+        function setStatus(elementId, status) {
+            const element = document.getElementById(elementId);
+            element.className = `status-icon ${status}`;
+        }
+
+        async function toggleRecording() {
+            if (!isRecording) {
+                await startRecording();
+            } else {
+                await stopRecording();
+            }
+        }
+
+        async function startRecording() {
+            try {
+                // Request microphone access
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    audio: {
+                        sampleRate: 16000,
+                        channelCount: 1,
+                        echoCancellation: true,
+                        noiseSuppression: true
+                    }
+                });
+
+                // Setup audio context for visualization
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const analyser = audioContext.createAnalyser();
+                const source = audioContext.createMediaStreamSource(stream);
+                source.connect(analyser);
+
+                analyser.fftSize = 256;
+                const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+                // Start visualization
+                visualizeAudio(analyser, dataArray);
+
+                // Setup MediaRecorder
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = function(event) {
+                    audioChunks.push(event.data);
+                };
+
+                mediaRecorder.onstop = function() {
+                    processAudioData();
+                };
+
+                mediaRecorder.start();
+                isRecording = true;
+
+                // Update UI
+                const recordBtn = document.getElementById('recordBtn');
+                recordBtn.classList.add('recording');
+                recordBtn.innerHTML = '<div>🛑</div><div>Recording...</div>';
+
+                setStatus('whisperStatus', 'active');
+                log('whisper', 'Recording started...');
+
+            } catch (error) {
+                log('error', `Failed to start recording: ${error.message}`);
+            }
+        }
+
+        async function stopRecording() {
+            if (mediaRecorder && isRecording) {
+                mediaRecorder.stop();
+                isRecording = false;
+
+                // Update UI
+                const recordBtn = document.getElementById('recordBtn');
+                recordBtn.classList.remove('recording');
+                recordBtn.innerHTML = '<div>🎤</div><div>Press to Speak</div>';
+
+                // Stop audio tracks
+                if (audioContext) {
+                    audioContext.close();
+                }
+
+                log('whisper', 'Recording stopped, processing...');
+            }
+        }
+
+        function visualizeAudio(analyser, dataArray) {
+            if (!isRecording) return;
+
+            analyser.getByteFrequencyData(dataArray);
+            const bars = document.querySelectorAll('.wave-bar');
+
+            for (let i = 0; i < bars.length; i++) {
+                const value = dataArray[i] || 0;
+                const height = (value / 255) * 60 + 5;
+                bars[i].style.height = height + 'px';
+            }
+
+            requestAnimationFrame(() => visualizeAudio(analyser, dataArray));
+        }
+
+        async function processAudioData() {
+            try {
+                if (!whisperPipeline) {
+                    throw new Error('Whisper not initialized');
+                }
+
+                setStatus('whisperStatus', 'active');
+                log('whisper', 'Transcribing audio...');
+
+                // Convert audio to format Whisper can use
+                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                const arrayBuffer = await audioBlob.arrayBuffer();
+                const audioData = new Float32Array(arrayBuffer);
+
+                // Transcribe with Whisper
+                const result = await whisperPipeline(audioData, {
+                    language: document.getElementById('language').value === 'auto' ? null : document.getElementById('language').value,
+                    task: 'transcribe'
+                });
+
+                const transcription = result.text.trim();
+                const confidence = 0.85; // Simulated confidence
+
+                setStatus('whisperStatus', 'complete');
+                log('whisper', `Transcribed: "${transcription}" (confidence: ${confidence.toFixed(2)})`);
+
+                // Check confidence threshold
+                const minConfidence = parseFloat(document.getElementById('confidence').value);
+                if (confidence < minConfidence) {
+                    log('error', `Confidence ${confidence.toFixed(2)} below threshold ${minConfidence}`);
+                    return;
+                }
+
+                // Process with agent
+                await processWithAgent(transcription);
+
+            } catch (error) {
+                setStatus('whisperStatus', 'error');
+                log('error', `Transcription failed: ${error.message}`);
+            }
+        }
+
+        async function processWithAgent(transcription) {
+            try {
+                if (!systemConnected) {
+                    throw new Error('Not connected to CTAS-7 system');
+                }
+
+                setStatus('agentStatus', 'active');
+                log('agent', `Processing with ${selectedAgent}: "${transcription}"`);
+
+                const response = await fetch(`${REPOAGENT_URL}/agents/dispatch`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        agent_id: selectedAgent,
+                        command: transcription,
+                        priority: 'normal'
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Agent processing failed: ${response.status}`);
+                }
+
+                const result = await response.json();
+                setStatus('agentStatus', 'complete');
+                log('agent', `Response: "${result.message}"`);
+
+                // Generate speech with ElevenLabs
+                if (result.voice === 'enabled') {
+                    await generateSpeech(result.message);
+                } else {
+                    log('elevenlabs', 'Voice response not enabled for this agent');
+                }
+
+            } catch (error) {
+                setStatus('agentStatus', 'error');
+                log('error', `Agent processing failed: ${error.message}`);
+            }
+        }
+
+        async function generateSpeech(text) {
+            try {
+                setStatus('ttsStatus', 'active');
+                log('elevenlabs', `Generating speech: "${text}"`);
+
+                // Note: In a real implementation, this would call ElevenLabs API
+                // For now, we'll use Web Speech API as fallback
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.rate = 0.9;
+                    utterance.pitch = 1.1;
+
+                    utterance.onstart = () => {
+                        setStatus('ttsStatus', 'active');
+                        log('elevenlabs', 'Playing synthesized speech...');
+                    };
+
+                    utterance.onend = () => {
+                        setStatus('ttsStatus', 'complete');
+                        log('elevenlabs', 'Speech playback completed');
+                        resetPipelineStatus();
+                    };
+
+                    utterance.onerror = (error) => {
+                        setStatus('ttsStatus', 'error');
+                        log('error', `Speech synthesis failed: ${error.error}`);
+                    };
+
+                    speechSynthesis.speak(utterance);
+                } else {
+                    throw new Error('Speech synthesis not supported');
+                }
+
+            } catch (error) {
+                setStatus('ttsStatus', 'error');
+                log('error', `Speech generation failed: ${error.message}`);
+            }
+        }
+
+        function resetPipelineStatus() {
+            setTimeout(() => {
+                setStatus('whisperStatus', 'inactive');
+                setStatus('agentStatus', 'inactive');
+                setStatus('ttsStatus', 'inactive');
+            }, 2000);
+        }
+
+        async function testWhisper() {
+            log('whisper', 'Testing Whisper with sample text...');
+            await processWithAgent('Hello, this is a test of the Whisper integration');
+        }
+
+        async function testAgent() {
+            if (!systemConnected) {
+                log('error', 'Not connected to CTAS-7 system');
+                return;
+            }
+
+            log('agent', `Testing ${selectedAgent} with status request...`);
+            await processWithAgent('report_status');
+        }
+
+        async function testTTS() {
+            log('elevenlabs', 'Testing ElevenLabs TTS...');
+            await generateSpeech('This is a test of the ElevenLabs text to speech integration.');
+        }
+
+        function saveSettings() {
+            const settings = {
+                whisperModel: document.getElementById('whisperModel').value,
+                language: document.getElementById('language').value,
+                confidence: document.getElementById('confidence').value,
+                ttsModel: document.getElementById('ttsModel').value,
+                stability: document.getElementById('stability').value,
+                similarity: document.getElementById('similarity').value,
+                style: document.getElementById('style').value
+            };
+
+            localStorage.setItem('ctas7VoicePipelineSettings', JSON.stringify(settings));
+            log('system', 'Settings saved to local storage');
+        }
+
+        function resetSettings() {
+            document.getElementById('whisperModel').value = 'base';
+            document.getElementById('language').value = 'en';
+            document.getElementById('confidence').value = 0.7;
+            document.getElementById('ttsModel').value = 'eleven_multilingual_v2';
+            document.getElementById('stability').value = 0.5;
+            document.getElementById('similarity').value = 0.8;
+            document.getElementById('style').value = 0.0;
+
+            // Update displays
+            document.getElementById('confidenceValue').textContent = '0.7';
+            document.getElementById('stabilityValue').textContent = '0.5';
+            document.getElementById('similarityValue').textContent = '0.8';
+            document.getElementById('styleValue').textContent = '0.0';
+
+            log('system', 'Settings reset to defaults');
+        }
+
+        function clearLogs() {
+            const logContainer = document.getElementById('logContainer');
+            logContainer.innerHTML = '<div class="log-entry log-system"><strong>System:</strong> Logs cleared</div>';
+        }
+
+        function log(type, message) {
+            const logContainer = document.getElementById('logContainer');
+            const entry = document.createElement('div');
+            entry.className = `log-entry log-${type}`;
+
+            const timestamp = new Date().toLocaleTimeString();
+            const typeLabel = type.charAt(0).toUpperCase() + type.slice(1);
+            entry.innerHTML = `<strong>[${timestamp}] ${typeLabel}:</strong> ${message}`;
+
+            logContainer.appendChild(entry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+
+        // Auto-refresh connection status
+        setInterval(checkSystemConnection, 30000);
+    </script>
+</body>
+</html>

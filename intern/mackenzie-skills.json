@@ -1,0 +1,50 @@
+{
+  "intern": {
+    "id": "mackenzie",
+    "name": "Mackenzie",
+    "email": "",
+    "github": "",
+    "slack": "",
+    "location": "Atlanta, GA",
+    "startDate": "",
+    "expectedGraduationDate": "2025-08"
+  },
+  "week": 0,
+  "phase": "pre-start",
+  "currentTask": null,
+  "skills": {
+    "linux": 0.0,
+    "python": 0.0,
+    "kali": 0.0,
+    "docker": 0.0,
+    "rust": 0.0,
+    "git": 0.0,
+    "networking": 0.0,
+    "pentesting": 0.0,
+    "frontend": 0.0,
+    "backend": 0.0,
+    "documentation": 0.0,
+    "research": 0.0,
+    "communication": 0.0
+  },
+  "portfolio": {
+    "completion": 0.0,
+    "githubCommits": 0,
+    "pullRequests": 0,
+    "blogPosts": 0,
+    "trainingRangePRs": 0,
+    "documentationPRs": 0,
+    "customGPTCreated": false,
+    "researchPaperContributions": 0,
+    "videoDemoCreated": false
+  },
+  "codebase_understanding": 0.0,
+  "career_readiness": 0.0,
+  "completedTasks": [],
+  "concerns": [],
+  "recommendations": [],
+  "nextMilestone": "Week 1: Setup & CTAS Understanding",
+  "lastUpdated": "",
+  "notes": "Skills matrix initialized. Awaiting start date and onboarding."
+}
+

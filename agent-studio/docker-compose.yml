@@ -1,0 +1,144 @@
+version: '3.8'
+
+services:
+  # Agent Gateway
+  agent-gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    container_name: ctas-agent-gateway
+    ports:
+      - "15181:15181"
+    environment:
+      - GATEWAY_PORT=15181
+      - NEURAL_MUX_URL=http://neural-mux:50051
+      - ABE_URL=http://abe-service:15170
+    env_file:
+      - ./config/.env
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - ctas-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:15181/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ABE Document Intelligence Service
+  abe-service:
+    image: gcr.io/cognetix-abe/abe-service:latest
+    container_name: ctas-abe-service
+    ports:
+      - "15170:15170"
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/config/abe-service-account.json
+      - ABE_PROJECT_ID=gen-lang-client-0779767785
+      - ABE_GOOGLE_DRIVE_ROOT_FOLDER=CTAS Knowledge Base
+      - ABE_MODE=production
+      - MARC21_VALIDATION=enabled
+    env_file:
+      - ./config/.env
+    volumes:
+      - ./config/abe-service-account.json:/app/config/abe-service-account.json:ro
+      - abe-data:/app/data
+      - ./logs:/app/logs
+    networks:
+      - ctas-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:15170/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Neural Mux (if not running externally)
+  neural-mux:
+    image: ctas7/neural-mux:latest
+    container_name: ctas-neural-mux
+    ports:
+      - "50051:50051"
+      - "15001:15001"
+    environment:
+      - GRPC_PORT=50051
+      - GRPC_WEB_PORT=15001
+    volumes:
+      - neural-mux-data:/data
+    networks:
+      - ctas-network
+    restart: unless-stopped
+
+  # SurrealDB
+  surrealdb:
+    image: surrealdb/surrealdb:latest
+    container_name: ctas-surrealdb
+    command: start --log trace --user root --pass root file:/data/database.db
+    ports:
+      - "8000:8000"
+    volumes:
+      - surrealdb-data:/data
+    networks:
+      - ctas-network
+    restart: unless-stopped
+
+  # Redis for caching
+  redis:
+    image: redis:7-alpine
+    container_name: ctas-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - ctas-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  # bolt.diy - AI Code Generation Engine (Direct Forge Integration)
+  bolt-diy:
+    build:
+      context: ./bolt-diy
+      dockerfile: Dockerfile
+    container_name: ctas-bolt-diy
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=production
+      - PORT=5173
+      - HOST=0.0.0.0
+    env_file:
+      - ./config/.env
+    volumes:
+      - bolt-projects:/app/projects
+      - bolt-cache:/app/cache
+      - ./bolt-diy/bolt-config.json:/app/config.json:ro
+    networks:
+      - ctas-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5173/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  abe-data:
+    driver: local
+  neural-mux-data:
+    driver: local
+  surrealdb-data:
+    driver: local
+  redis-data:
+    driver: local
+  bolt-projects:
+    driver: local
+  bolt-cache:
+    driver: local
+
+networks:
+  ctas-network:
+    driver: bridge
+    labels:
+      - "ctas.network=agent-studio"
+

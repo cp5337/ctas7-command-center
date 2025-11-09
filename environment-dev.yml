@@ -1,0 +1,88 @@
+name: ctas7-command-center-dev
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Python version
+  - python=3.11
+
+  # Core development tools
+  - pip>=23.0
+  - nodejs>=20.0
+  - npm>=10.0
+
+  # Rust development (for backend services)
+  - rust>=1.70
+  - cargo
+
+  # Database clients
+  - postgresql>=15.0
+  - redis-py>=5.0.0
+  - psycopg2>=2.9.0
+
+  # API development
+  - fastapi>=0.104.0
+  - uvicorn>=0.24.0
+  - aiohttp>=3.9.0
+  - httpx>=0.25.0
+  - requests>=2.31.0
+
+  # Agent development tools
+  - openai>=1.6.0
+  - anthropic>=0.7.8
+
+  # CLI tools
+  - click>=8.1.0
+  - rich>=13.0.0
+  - typer>=0.9.0
+
+  # Testing and quality
+  - pytest>=7.4.0
+  - pytest-asyncio>=0.21.0
+  - pytest-cov>=4.1.0
+  - black>=23.0.0
+  - flake8>=6.1.0
+  - mypy>=1.5.0
+  - ruff>=0.1.0
+
+  # Git and version control
+  - git>=2.40.0
+  - pre-commit>=3.5.0
+
+  # Container tools
+  - docker-py>=6.1.0
+
+  # Documentation
+  - mkdocs>=1.5.0
+  - mkdocs-material>=9.4.0
+
+  # Jupyter for dev notebooks
+  - jupyter>=1.0.0
+  - jupyterlab>=4.0.0
+  - ipykernel>=6.25.0
+
+  # Utilities
+  - pyyaml>=6.0
+  - python-dotenv>=1.0.0
+  - tqdm>=4.66.0
+  - colorama>=0.4.6
+  - loguru>=0.7.0
+
+  # Voice integration
+  - sounddevice>=0.4.6
+  - soundfile>=0.12.0
+
+  # Linear integration
+  - gql>=3.4.0
+
+  # Pip-only packages
+  - pip:
+      # RepoAgent specific
+      - deepgram-sdk>=3.0.0
+      - elevenlabs>=0.2.0
+
+      # MCP (Model Context Protocol)
+      - mcp>=0.1.0
+
+      # Additional tools
+      - python-json-logger>=2.0.0

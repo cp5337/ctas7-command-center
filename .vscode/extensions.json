@@ -1,0 +1,47 @@
+{
+  "recommendations": [
+    // Rust Development
+    "rust-lang.rust-analyzer",
+    "tamasfe.even-better-toml",
+    "serayuzgur.crates",
+    "vadimcn.vscode-lldb",
+
+    // TypeScript/JavaScript Development
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "jpoissonnier.vscode-styled-components",
+
+    // Docker & Containers
+    "ms-azuretools.vscode-docker",
+    "ms-vscode-remote.remote-containers",
+
+    // Git & Version Control
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    "GitHub.vscode-pull-request-github",
+
+    // Linear Integration
+    "linear.linear-vscode",
+
+    // Markdown & Documentation
+    "yzhang.markdown-all-in-one",
+    "shd101wyy.markdown-preview-enhanced",
+    "bierner.markdown-mermaid",
+
+    // Code Quality
+    "wayou.vscode-todo-highlight",
+    "streetsidesoftware.code-spell-checker",
+    "editorconfig.editorconfig",
+
+    // Utilities
+    "christian-kohler.path-intellisense",
+    "formulahendry.auto-rename-tag",
+    "formulahendry.code-runner",
+    "gruntfuggly.todo-tree",
+
+    // Themes
+    "enkia.tokyo-night"
+  ]
+}
+

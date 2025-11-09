@@ -1,0 +1,114 @@
+{
+  "// SYNAPTIX CTAS-7 VS CODE CONFIGURATION": "Optimized for Fortune 10 workflows",
+  
+  "// ========== LINEAR INTEGRATION ==========": "",
+  "linear.apiKey": "${env:LINEAR_API_KEY}",
+  "linear.teamId": "979acadf-8301-459e-9e51-bf3c1f60e496",
+  "linear.autoRefresh": true,
+  "linear.defaultAssignee": "me",
+  
+  "// ========== GIT WORKFLOW ==========": "",
+  "git.enabled": true,
+  "git.autofetch": true,
+  "git.autoStash": true,
+  "git.confirmSync": false,
+  "git.enableCommitSigning": true,
+  "git.defaultBranchName": "main",
+  "git.rebaseWhenSync": true,
+  
+  "// ========== AUTO SAVE & FORMATTING ==========": "",
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  
+  "// ========== RUST CONFIGURATION ==========": "",
+  "rust-analyzer.checkOnSave.command": "clippy",
+  "rust-analyzer.cargo.allFeatures": true,
+  "rust-analyzer.inlayHints.enable": true,
+  "rust-analyzer.lens.enable": true,
+  
+  "// ========== TYPESCRIPT/JAVASCRIPT ==========": "",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  
+  "// ========== DOCKER & CONTAINERS ==========": "",
+  "docker.containers.sortBy": "Status",
+  "docker.showExplorer": true,
+  
+  "// ========== TERMINAL ==========": "",
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  
+  "// ========== SYNAPTIX SPECIFIC ==========": "",
+  "synaptix.port_manager_url": "http://localhost:18103",
+  "synaptix.neural_mux_url": "http://localhost:50051",
+  "synaptix.voice_gateway_url": "http://localhost:19015",
+  "synaptix.slack_interface_url": "http://localhost:18299",
+  "synaptix.main_ops_url": "http://localhost:25174",
+  "synaptix.command_center_url": "http://localhost:5173",
+  
+  "// ========== FILE ASSOCIATIONS ==========": "",
+  "files.associations": {
+    "*.cjs": "javascript",
+    "*.mjs": "javascript",
+    "Dockerfile*": "dockerfile",
+    "docker-compose*.yml": "yaml",
+    "ecosystem.config.*": "javascript"
+  },
+  
+  "// ========== SEARCH EXCLUSIONS ==========": "",
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/target": true,
+    "**/.git": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.next": true
+  },
+  
+  "// ========== FILE WATCHER EXCLUSIONS ==========": "",
+  "files.watcherExclude": {
+    "**/target/**": true,
+    "**/node_modules/**": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true
+  },
+  
+  "// ========== CURSOR AI CONFIGURATION ==========": "",
+  "cursor.general.enableCodeActions": true,
+  "cursor.cmdk.useThemedDiffBackground": true,
+  
+  "// ========== TASKS & AUTOMATION ==========": "",
+  "tasks.autoDetect": "on",
+  "npm.autoDetect": "on",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  
+  "// ========== EXTENSIONS ==========": "",
+  "recommendations": [
+    "rust-lang.rust-analyzer",
+    "tamasfe.even-better-toml",
+    "serayuzgur.crates",
+    "vadimcn.vscode-lldb",
+    "ms-azuretools.vscode-docker",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
+    "github.copilot",
+    "linear.linear",
+    "ms-vscode.vscode-typescript-next"
+  ]
+}

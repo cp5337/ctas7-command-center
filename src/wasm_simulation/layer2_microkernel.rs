@@ -6,7 +6,7 @@
 use wasm_bindgen::prelude::*;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use blake3;
+use ctas7_foundation_core::hash_engine::HashEngine;
 
 // ====== ⬇ LAYER 2 MICROKERNEL CORE =====================
 
@@ -331,7 +331,7 @@ impl Layer2Microkernel {
 
 impl Layer2Microkernel {
     fn calculate_component_hash(&self, component_data: &str) -> String {
-        let hash = blake3::hash(component_data.as_bytes());
+        let hash = murmurhash3::hash(component_data.as_bytes());
         hex::encode(hash.as_bytes())
     }
 

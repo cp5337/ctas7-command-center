@@ -1,0 +1,9 @@
+Service,Port,Status,Uptime,Memory,CPU,Last Check
+abe-local,N/A,🔴 Offline,7h 34m,N/A,0.0%,2025-11-06
+osint-engine,18200,🟢 Online,7h 34m,13 MB,0.0%,2025-11-06
+corporate-analyzer,18201,🟢 Online,7h 34m,23 MB,0.0%,2025-11-06
+neural-mux,50051,🔴 Offline,7h 34m,N/A,0.0%,2025-11-06
+zoe-agent,N/A,🔴 Offline,7h 34m,N/A,0.0%,2025-11-06
+tool-server,18295,🟢 Online,7h 34m,51 MB,0.0%,2025-11-06
+slack-interface,18299,🟢 Online,7h 33m,55 MB,0.2%,2025-11-06
+voice-gateway,19015,🟢 Online,7h 28m,60 MB,0.0%,2025-11-06

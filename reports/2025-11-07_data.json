@@ -1,0 +1,106 @@
+{
+  "timestamp": "2025-11-07T01:26:17.868Z",
+  "date": "2025-11-07",
+  "pm2": {
+    "online": 5,
+    "errored": 3,
+    "services": [
+      {
+        "name": "abe-local",
+        "status": "errored",
+        "uptime": 1762435229145,
+        "memory": 0,
+        "cpu": 0
+      },
+      {
+        "name": "osint-engine",
+        "status": "online",
+        "uptime": 1762435228930,
+        "memory": 3276800,
+        "cpu": 0
+      },
+      {
+        "name": "corporate-analyzer",
+        "status": "online",
+        "uptime": 1762435228937,
+        "memory": 3293184,
+        "cpu": 0
+      },
+      {
+        "name": "neural-mux",
+        "status": "errored",
+        "uptime": 1762435229002,
+        "memory": 0,
+        "cpu": 0
+      },
+      {
+        "name": "zoe-agent",
+        "status": "errored",
+        "uptime": 1762435229517,
+        "memory": 0,
+        "cpu": 0
+      },
+      {
+        "name": "tool-server",
+        "status": "online",
+        "uptime": 1762435228942,
+        "memory": 49152000,
+        "cpu": 0.1
+      },
+      {
+        "name": "slack-interface",
+        "status": "online",
+        "uptime": 1762435285731,
+        "memory": 50495488,
+        "cpu": 0.1
+      },
+      {
+        "name": "voice-gateway",
+        "status": "online",
+        "uptime": 1762435555666,
+        "memory": 54575104,
+        "cpu": 0.1
+      }
+    ]
+  },
+  "docker": {
+    "running": 0,
+    "stopped": 1,
+    "containers": [
+      {
+        "name": "ctas7-surrealdb",
+        "status": "exited",
+        "image": "surrealdb/surrealdb:latest",
+        "ports": "0.0.0.0:8000->8000/tcp"
+      }
+    ]
+  },
+  "health": {
+    "Voice Gateway": {
+      "status": "online",
+      "statusCode": 200
+    },
+    "Slack Interface": {
+      "status": "online",
+      "statusCode": 200
+    },
+    "OSINT Engine": {
+      "status": "offline",
+      "error": "fetch failed"
+    },
+    "Corporate Analyzer": {
+      "status": "offline",
+      "error": "fetch failed"
+    },
+    "Tool Server": {
+      "status": "error",
+      "statusCode": 404
+    }
+  },
+  "linear": {
+    "initiatives": 0,
+    "projects": 0,
+    "issues": 0,
+    "completed": 0
+  }
+}
