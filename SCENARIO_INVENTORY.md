@@ -30,7 +30,32 @@
 
 ---
 
-## 📊 SCENARIO DATA FILES
+## 📊 REAL-WORLD CYBER SCENARIOS (19 Total)
+
+**Location:** `ctas_json scenarios-actual/` + `ctas_scenario_actual_monte_carlo/`
+
+### **Kinetic Terrorism (9 scenarios)**
+1. **Mumbai** - 2008 coordinated attacks
+2. **Oct 7** - Hamas attack on Israel
+3. **Sept 11** - 9/11 World Trade Center
+4. **Bojinka** - 1995 airline bombing plot
+5. **Moscow Theater** - 2002 hostage crisis
+6. **London** - 7/7 bombings
+7. **Madrid** - 2004 train bombings
+8. **Paris** - 2015 coordinated attacks
+9. **Dupont** - Chemical plant scenario
+
+### **Cyber Warfare (10 scenarios)**
+10. **Chimera** - Multi-domain convergence
+11. **Crimea** - Russian annexation cyber ops
+12. **Salt Typhoon** - Chinese APT telecom breach
+13. **NotPetya** - Russian destructive malware (Ukraine power grid)
+14. **Power Grid** - Cyber-physical infrastructure attack
+15. **Bangladesh Bank** - $81M cyber heist (SWIFT)
+16. **Sony** - North Korean destructive attack
+17. **Volt Typhoon** - Chinese APT critical infrastructure
+18. **OPM Breach** - Chinese theft of 21M personnel records
+19. **WannaCry** - North Korean global ransomware
 
 ### **CSV Exports**
 - `GPT_ctas_refined_scenarios_for-WOlfram.csv`
@@ -38,13 +63,10 @@
 - `ctas_refined_scenarios2.csv`
 - `modernized_top_5_nps_scenarios.csv`
 
-### **JSON Scenarios**
-- **Folder:** `ctas_json scenarios-actual/`
-- **Zip:** `ctas_json scenarios-actual.zip`
-
-### **Monte Carlo Runs**
-- **Folder:** `ctas_scenario_actual_monte_carlo/`
-- **Zip:** `ctas_scenario_actual_monte_carlo.zip`
+### **Monte Carlo Data**
+- `Randoms for Blue Dust v1.csv`
+- `RandomsforBlueDust v2.csv`
+- All 19 scenarios have Monte Carlo simulation runs
 
 ### **Synthetic Scenarios**
 - **Folder:** `ctas_scnario_synth_json/`
