@@ -104,65 +104,89 @@ Backup: Full snapshot to Supabase every hour
 
 ---
 
-### **2. SlotGraph (Distributed Coordination)**
+### **2. SlotGraph (Distributed Coordination with Legion ECS)**
 
-**Purpose**: Coordinate distributed processing across ground stations and gateways
+**Purpose**: Coordinate distributed processing across ground stations and gateways using Legion ECS for entity management
 
 **What Goes Here:**
 ```rust
 pub struct SlotGraphData {
-    // Ground stations (247 OSINT nodes)
-    ground_stations: HashMap<StationId, GroundStation> {
-        station_id: u16,              // 1-247
-        location: LatLon,
-        slot_capacity: u32,           // Processing slots available
-        current_load: u32,            // Current processing load
-        capabilities: Vec<Capability>, // What can this station do?
-        status: StationStatus,        // Online, Offline, Degraded
+    // Ground stations (247 OSINT nodes) - STORED AS LEGION ECS ENTITIES
+    ground_stations: HashMap<StationId, Entity> {
+        // Legion ECS Entity with components:
+        // - Position(LatLon)
+        // - SlotCapacity(u32)
+        // - CurrentLoad(u32)
+        // - Capabilities(Vec<Capability>)
+        // - StationStatus(Online/Offline/Degraded)
     },
     
-    // Gateways (regional hubs)
-    gateways: HashMap<GatewayId, Gateway> {
-        gateway_id: String,           // "Phoenix", "Denver", "Atlanta"
-        slot_capacity: u32,           // 1000-1500 slots
-        current_load: u32,
-        connected_stations: Vec<StationId>,
-        load_balancing: LoadBalancingStrategy,
+    // Gateways (regional hubs) - STORED AS LEGION ECS ENTITIES
+    gateways: HashMap<GatewayId, Entity> {
+        // Legion ECS Entity with components:
+        // - GatewayId(String)
+        // - SlotCapacity(u32)
+        // - ConnectedStations(Vec<Entity>)
+        // - LoadBalancingStrategy
     },
     
-    // Processing tasks
-    tasks: HashMap<TaskId, SlotGraphTask> {
-        task_id: Uuid,
-        node_id: String,              // CTAS task node (165 tasks)
-        assigned_station: Option<StationId>,
-        priority: Priority,
-        resource_requirements: ResourceRequirements,
-        status: TaskStatus,           // Pending, Running, Complete, Failed
+    // Processing tasks - STORED AS LEGION ECS ENTITIES
+    tasks: HashMap<TaskId, Entity> {
+        // Legion ECS Entity with components:
+        // - TaskId(Uuid)
+        // - NodeId(String)              // CTAS task node (165 tasks)
+        // - AssignedStation(Option<Entity>)
+        // - Priority(Priority)
+        // - ResourceRequirements
+        // - TaskStatus(Pending/Running/Complete/Failed)
     },
     
-    // Network topology
+    // Network topology - STORED AS LEGION ECS RELATIONSHIPS
     topology: NetworkGraph {
-        nodes: Vec<NodeId>,           // Stations + Gateways
-        edges: Vec<Edge>,             // Connections
-        latency_matrix: Vec<Vec<Duration>>,
-        bandwidth_matrix: Vec<Vec<u64>>,
+        // Legion ECS entities with relationship components:
+        // - Connection(from: Entity, to: Entity)
+        // - Latency(Duration)
+        // - Bandwidth(u64)
     },
 }
 ```
 
 **Storage:**
 ```
-Format: Custom binary format (optimized for speed)
-Location: Distributed (each gateway has a copy)
-Sync: Real-time (via gRPC)
-Persistence: Snapshot to Sled every minute
+Format: Legion ECS (in-memory entities + components)
+Location: Distributed (each gateway has ECS world instance)
+Sync: Real-time (via gRPC + ECS replication)
+Persistence: Snapshot to Sled every minute (ECS world state)
+```
+
+**Legion ECS Integration:**
+```rust
+// SlotGraph IS BUILT ON Legion ECS
+// All SlotGraph entities are Legion ECS entities
+// SlotGraph provides the coordination logic
+// Legion ECS provides the entity storage and query system
+
+// Example: Query all available ground stations
+let available_stations: Vec<Entity> = world
+    .query::<(&GroundStation, &SlotCapacity, &StationStatus)>()
+    .iter()
+    .filter(|(_, capacity, status)| {
+        status.is_online() && capacity.available() > 0
+    })
+    .map(|(entity, _, _)| entity)
+    .collect();
+
+// Example: Assign task to station
+world.insert_one(task_entity, AssignedStation(station_entity));
+world.insert_one(station_entity, CurrentLoad(load + 1));
 ```
 
 **Integration:**
 ```rust
-// SlotGraph → Legion ECS (entity locations)
-// SlotGraph → Sled (fast task lookups)
-// SlotGraph → SurrealDB (topology queries)
+// SlotGraph + Legion ECS → Sled (snapshot ECS world state)
+// SlotGraph + Legion ECS → SurrealDB (topology queries)
+// SlotGraph + Legion ECS ← CTAS tasks (165 nodes as entities)
+// SlotGraph + Legion ECS ← Ground stations (247 OSINT nodes as entities)
 ```
 
 ---
