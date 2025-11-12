@@ -3,17 +3,10 @@
 
 # ========== ENVIRONMENT & SECRETS ==========
 .env
-.env.local
-.env.*.local
-.env.bak
-*.key
-*.pem
-*.p12
-*.pfx
+.env.runtime
 secrets/
-credentials/
-agent-studio/config/abe-service-account.json
-.google-key.json
+secrets/*
+secrets/**
 
 # ========== NODE ==========
 node_modules/
