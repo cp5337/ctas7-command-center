@@ -3,10 +3,16 @@
  * Create Linear issue for incremental Synaptix rename
  */
 
+require('dotenv').config();
 const { LinearClient } = require('@linear/sdk');
 
-const LINEAR_API_KEY = process.env.LINEAR_API_KEY || 'YOUR_LINEAR_API_KEY';
+const LINEAR_API_KEY = process.env.LINEAR_API_KEY;
 const TEAM_ID = '979acadf-8301-459e-9e51-bf3c1f60e496';
+
+if (!LINEAR_API_KEY) {
+  console.error('❌ LINEAR_API_KEY not set. Add it to your .env file.');
+  process.exit(1);
+}
 
 const client = new LinearClient({ apiKey: LINEAR_API_KEY });
 

@@ -5,12 +5,14 @@
 .env
 .env.local
 .env.*.local
+.env.bak
 *.key
 *.pem
 *.p12
 *.pfx
 secrets/
 credentials/
+agent-studio/config/abe-service-account.json
 
 # ========== NODE ==========
 node_modules/

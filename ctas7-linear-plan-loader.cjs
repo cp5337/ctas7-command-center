@@ -9,14 +9,20 @@
  * No dashes before "linear" - consistent naming
  */
 
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const { LinearClient } = require('@linear/sdk');
 
 // Linear Configuration
-const LINEAR_API_KEY = process.env.LINEAR_API_KEY || 'YOUR_LINEAR_API_KEY';
+const LINEAR_API_KEY = process.env.LINEAR_API_KEY;
 const TEAM_ID = '979acadf-8301-459e-9e51-bf3c1f60e496'; // CognetixALPHA
 const TEAM_KEY = 'COG';
+
+if (!LINEAR_API_KEY) {
+  console.error('❌ LINEAR_API_KEY not set. Add it to your .env file before running this loader.');
+  process.exit(1);
+}
 
 // Initialize Linear client
 const client = new LinearClient({ apiKey: LINEAR_API_KEY });
