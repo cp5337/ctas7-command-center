@@ -13,6 +13,7 @@
 secrets/
 credentials/
 agent-studio/config/abe-service-account.json
+.google-key.json
 
 # ========== NODE ==========
 node_modules/
