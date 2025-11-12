@@ -1,0 +1,434 @@
+```toml
+[node_identity]
+task_id = "uuid-131-000-000-A"
+task_name = "Task 131 - Phase 4"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "a92BwL7QmY5dK8n1"
+cuid = "T20240815G34N11SX4a516e72f8cd90"
+uuid = "Vb63ga901z437bc8s90g1h2jk6"
+hash_48 = "a92BwL7QmY5dK8n1T20240815G34N11SX4a516e72f8cd90Vb63ga901z437bc8s90g1h2jk6"
+
+[capabilities]
+narrative = """
+I am the orchestrator of chaos, the silent mover of pawns. I delve into the intricate details of my target, seeking vulnerabilities like a predator stalking its prey.
+I begin by leveraging open-source intelligence, scouring public records, social media, and news articles for any sliver of information. I seek to understand the target's operations, key personnel, and potential weaknesses.
+
+I utilize sophisticated scanning techniques to map out network infrastructure, identify open ports, and uncover vulnerable services. I scrutinize employee profiles, searching for patterns, habits, and relationships that could be exploited.
+I craft believable pretexts and engage in targeted phishing campaigns, aiming to glean sensitive information directly from unsuspecting individuals. I create fake profiles and infiltrate online forums to gain access to restricted information.
+
+I am relentless in my pursuit, leaving no stone unturned. My goal is to build a comprehensive understanding of the target's weaknesses, paving the way for a successful breach.
+I understand the importance of patience and precision. I bide my time, waiting for the opportune moment to strike. My knowledge becomes my weapon.
+"""
+
+limitations = """
+I am limited by the availability of information and the target's security posture. A well-defended target can be difficult to penetrate, requiring advanced techniques and significant resources.
+My activities can be detected by sophisticated security systems and vigilant employees. I must be careful to avoid raising suspicion and alerting the target to my presence.
+
+I am also vulnerable to counterintelligence operations. If discovered, my identity and intentions could be exposed, jeopardizing the entire operation.
+I am constantly evolving my techniques to stay ahead of the curve. However, there is always a risk of being caught, and the consequences can be severe.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [2, 8], units = "weeks" }
+collection_phase = { words = "months before", range = [2, 6], units = "months" }
+actionable_window = { words = "months", range = [1, 3], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in target's security posture (new firewalls, IDS)",
+  "Employee awareness training and security protocols",
+  "Patching of vulnerable systems and services"
+]
+persistence_conditions = [
+  "Underlying network infrastructure and topology",
+  "Key personnel and their roles within the organization",
+  "Long-term business relationships and dependencies"
+]
+
+[cuid_mask]
+temporal = "T-{60-180}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "SX"
+semantic_full = "recon:cyber:exploitation"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactively search for indicators of active exploitation planning." }
+detect = { enabled = true, priority = "critical", description = "Identify network scanning and intrusion attempts in real-time." }
+disrupt = { enabled = true, priority = "medium", description = "Implement countermeasures to block exploitation attempts and limit damage." }
+disable = { enabled = false, priority = "low", description = "Not applicable for initial exploitation phase." }
+dominate = { enabled = false, priority = "low", description = "Not applicable for initial exploitation phase." }
+
+[[indicators]]
+observable = "Unusual network scanning activity targeting internal systems"
+priority = "critical"
+detection_method = "IDS/IPS alerts, SIEM correlation"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Successful phishing attempts leading to credential compromise"
+priority = "critical"
+detection_method = "Email security gateways, user behavior analytics"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Exploitation of known vulnerabilities in web applications"
+priority = "critical"
+detection_method = "WAF logs, application security testing"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Lateral movement within the internal network"
+priority = "high"
+detection_method = "Network traffic analysis, endpoint detection and response"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Privilege escalation attempts on critical systems"
+priority = "high"
+detection_method = "Audit logs, security event monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Data exfiltration attempts to external locations"
+priority = "critical"
+detection_method = "DLP systems, network monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Creation of unauthorized accounts with elevated privileges"
+priority = "high"
+detection_method = "Account monitoring, access control audits"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of obfuscation techniques to hide malicious activity"
+priority = "medium"
+detection_method = "Behavioral analysis, machine learning models"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Discovery of sensitive data on compromised systems"
+priority = "critical"
+detection_method = "Data loss prevention, file integrity monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Changes to critical system configurations"
+priority = "high"
+detection_method = "Configuration management, file integrity monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of custom or uncommon tools for reconnaissance"
+priority = "medium"
+detection_method = "Endpoint detection, network traffic analysis"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Anomalous access to sensitive files"
+priority = "high"
+detection_method = "Data Loss Prevention, SIEM"
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Identify open ports and services on target systems"
+mode_2n = "Map network topology and identify potential attack vectors"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Test system vulnerabilities and implement patches"
+mode_2n = "Exploit known vulnerabilities to gain access to target systems"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Identify and mitigate web application vulnerabilities"
+mode_2n = "Exploit web application vulnerabilities to gain unauthorized access"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Mimikatz"
+mode_1n = "Detect and prevent credential theft attacks"
+mode_2n = "Extract credentials from memory and escalate privileges"
+escalation_level = "microkernel"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "PowerShell Empire"
+mode_1n = "Detect and prevent PowerShell-based attacks"
+mode_2n = "Establish persistent access to compromised systems"
+escalation_level = "crate"
+kali_package = "powershell-empire"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Identify weak passwords and enforce password policies"
+mode_2n = "Brute-force credentials for access to target systems"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = ""
+impact_on_comms = ""
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = ""
+cost_factors = []
+escape_route_priority = ""
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = ""
+
+[niem_mapping]
+justice_domain = "j:Cybercrime"
+intelligence_domain = "intel:ThreatIntelligence"
+iepd_type = "Cyber-Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Computer Intrusion"
+incident_subcategory = "Exploitation"
+location_type = "Networked System"
+subject_role = "Actor"
+activity_type = "Malware Infection"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Network Exploitation"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_network }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse)"
+
+[[relationships]]
+target_node = "uuid-132-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.9
+description = "Network exploitation enables installation of persistence mechanisms."
+
+[[relationships]]
+target_node = "uuid-133-000-000-A"
+relationship_type = "precedes"
+unicode_op = "⇢"
+strength = 0.8
+description = "Network exploitation typically precedes lateral movement within the network."
+
+[[relationships]]
+target_node = "uuid-135-000-000-A"
+relationship_type = "leads_to"
+unicode_op = "→"
+strength = 0.7
+description = "Exploitation can lead to data exfiltration."
+
+[[eei_priority]]
+rank = 1
+question = "What vulnerabilities exist in the target network infrastructure?"
+collection_method = "Network scanning, vulnerability assessment"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What credentials have been compromised?"
+collection_method = "Phishing simulations, credential harvesting"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 3
+question = "What sensitive data is accessible from compromised systems?"
+collection_method = "Data discovery, file analysis"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 4
+question = "What internal systems can be accessed from compromised systems?"
+collection_method = "Lateral movement analysis, network mapping"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 5
+question = "What security measures are in place to detect and prevent exploitation?"
+collection_method = "Security architecture review, penetration testing"
+time_sensitivity = "medium"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Equifax Data Breach",
+    date = "2017-05-13",
+    description = "Exploitation of Apache Struts vulnerability led to massive data breach",
+    source = "https://www.ftc.gov/news-events/news/press-releases/2019/07/equifax-pay-least-575-million-settle-ftc-state-claims-related-data-breach"
+  },
+  {
+    name = "WannaCry Ransomware Attack",
+    date = "2017-05-12",
+    description = "Exploitation of EternalBlue SMB vulnerability led to widespread ransomware infection",
+    source = "https://www.justice.gov/opa/pr/north-korean-computer-programmer-indicted-cyber-attacks-and-conspiracies-targeting"
+  },
+  {
+    name = "SolarWinds Supply Chain Attack",
+    date = "2020-12-13",
+    description = "Compromise of SolarWinds software build process led to widespread espionage",
+    source = "https://www.cisa.gov/news-events/news/joint-statement-federal-bureau-investigation-fbi-cybersecurity-and-infrastructure"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Exploit a vulnerability in a public-facing application to gain initial access."
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "T1566.001 - Spearphishing Attachment"
+description = "Send spearphishing emails with malicious attachments to compromise user credentials."
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.001 - PowerShell"
+description = "Use PowerShell to execute malicious commands and scripts."
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Defense Evasion"
+technique = "Valid Accounts"
+sub_technique = "T1078.002 - Domain Accounts"
+description = "Use compromised domain accounts to evade defenses."
+
+[[ttps]]
+mitre_attack_id = "T1003"
+tactic = "Credential Access"
+technique = "OS Credential Dumping"
+sub_technique = "T1003.001 - LSASS Memory"
+description = "Dump credentials from LSASS memory."
+
+[[ttps]]
+mitre_attack_id = "T1016"
+tactic = "Discovery"
+technique = "System Network Configuration Discovery"
+sub_technique = ""
+description = "Discover network configuration information to facilitate lateral movement."
+
+[[ttps]]
+mitre_attack_id = "T1082"
+tactic = "Discovery"
+technique = "System Information Discovery"
+sub_technique = ""
+description = "Gather detailed system information to assist in exploitation and post-exploitation activities."
+
+[[ttps]]
+mitre_attack_id = "T1110"
+tactic = "Credential Access"
+technique = "Brute Force"
+sub_technique = "T1110.001 - Password Guessing"
+description = "Attempt to gain access to accounts by guessing passwords."
+
+[[ttps]]
+mitre_attack_id = "T1136"
+tactic = "Privilege Escalation"
+technique = "Create Account"
+sub_technique = "T1136.001 - Local Account"
+description = "Create local accounts to establish persistence."
+
+[[ttps]]
+mitre_attack_id = "T1555"
+tactic = "Credential Access"
+technique = "Credentials in Files"
+sub_technique = ""
+description = "Obtain credentials from files stored on compromised systems."
+
+[xsd_integration]
+playbook_template = "exploitation_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-cyber", "ctas7-enhanced-network"]
+unicode_assembly = ["→", "⇢", "⚠", "🦠", "🔒", "💥"]
+lisp_expression = "(exploit-task :target target-id :phase exploitation :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

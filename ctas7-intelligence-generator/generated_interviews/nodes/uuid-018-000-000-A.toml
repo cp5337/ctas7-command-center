@@ -1,0 +1,409 @@
+```toml
+[node_identity]
+task_id = "uuid-018-000-000-A"
+task_name = "Access Point Identification"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "aW6R9zBv3yG1pT2h"
+cuid = "T20250110G34N84S6U5e92016a3c82f0b"
+uuid = "U5e92016a3c82f0b"
+hash_48 = "aW6R9zBv3yG1pT2hT20250110G34N84S6U5e92016a3c82f0b"
+
+[capabilities]
+narrative = """
+I am the seeker of weaknesses, the finder of open doors. My objective is to identify every potential access point - physical, logical, and wireless - that can be exploited. I scan the perimeter of buildings, noting every door, window, vent, and utility access. I study blueprints, online maps, and satellite imagery to create a detailed architectural model.
+
+I use specialized tools to detect and analyze wireless networks. I map out WiFi coverage, identify encryption methods, and probe for vulnerabilities. I search for open ports, weak passwords, and outdated software. I examine the physical security measures: fences, cameras, motion sensors, and lighting. I look for gaps in coverage, blind spots, and areas where security is lax.
+
+I document everything meticulously: GPS coordinates, photographs, network configurations, and security protocols. I analyze the data to identify the most promising access points and assess their potential for exploitation. My findings are the foundation for future operations, providing the keys to unlock the target's defenses.
+"""
+
+limitations = """
+My effectiveness is limited by several factors. Strong physical security measures, such as reinforced doors, bulletproof windows, and robust perimeter fences, can prevent me from gaining physical access. Sophisticated intrusion detection systems and vigilant security personnel can detect and deter my activities.
+
+Advanced wireless security protocols, such as WPA3 encryption and multi-factor authentication, make it difficult to penetrate networks. Firewalls, intrusion prevention systems, and endpoint detection and response (EDR) solutions can block my attempts to exploit vulnerabilities. High levels of network traffic and strong encryption can obscure my activities and make it difficult to gather intelligence. Furthermore, my activities can be detected through network monitoring, intrusion detection systems, and other security measures. I am also limited by my own skills and resources.
+"""
+
+[time_of_value]
+half_life = { words = "days to weeks", range = [3, 14], units = "days" }
+collection_phase = { words = "weeks to months", range = [4, 12], units = "weeks" }
+actionable_window = { words = "days to weeks", range = [7, 28], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Physical security upgrades (new locks, fences, cameras)",
+  "Network security enhancements (firewall rules, patching)",
+  "Wireless network configuration changes (SSID, password)",
+  "Changes in staff schedules or security protocols"
+]
+persistence_conditions = [
+  "Building architecture and layout",
+  "Underlying network infrastructure",
+  "Physical location of access points",
+  "Wireless signal propagation characteristics"
+]
+
+[cuid_mask]
+temporal = "T-{28-84}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "S6"
+semantic_full = "recon:access_point_identification"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactive search for patterns indicating access point probing." }
+detect = { enabled = true, priority = "critical", description = "Real-time identification of unauthorized network scanning or physical intrusion attempts." }
+disrupt = { enabled = true, priority = "medium", description = "Employing countermeasures to confuse or deter access point identification efforts." }
+disable = { enabled = false, priority = "low", description = "Not applicable for access point identification." }
+dominate = { enabled = false, priority = "low", description = "Not applicable for access point identification." }
+
+[[indicators]]
+observable = "Unusual network scanning activity originating from outside the organization's network."
+priority = "critical"
+detection_method = "Intrusion detection systems (IDS), security information and event management (SIEM) systems."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Detection of rogue access points within or near the organization's premises."
+priority = "critical"
+detection_method = "Wireless intrusion detection systems (WIDS), rogue access point detectors."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Increased physical surveillance around building perimeters and known access points."
+priority = "high"
+detection_method = "Security cameras, security personnel observations, witness reports."
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unexplained proximity scans using Bluetooth or WiFi devices."
+priority = "medium"
+detection_method = "Bluetooth/WiFi sniffers, mobile device management (MDM) software."
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Presence of unauthorized devices connected to the network via physical access points."
+priority = "critical"
+detection_method = "Network access control (NAC) systems, endpoint detection and response (EDR) solutions."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Anomalous after-hours activity near known entrances."
+priority = "high"
+detection_method = "CCTV review, security alarm logs"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Discovery of unlocked or easily accessible utility panels or maintenance hatches."
+priority = "high"
+detection_method = "Physical security inspections, employee reports."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Repeated attempts to probe or brute-force network credentials."
+priority = "critical"
+detection_method = "Account lockout policies, intrusion detection systems."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Identification of vulnerabilities in access control systems or security protocols."
+priority = "critical"
+detection_method = "Penetration testing, vulnerability assessments."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unauthorized attempts to gain physical access to restricted areas or facilities."
+priority = "critical"
+detection_method = "Access control systems, security personnel intervention."
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Discover open ports and services to identify potential vulnerabilities in network devices."
+mode_2n = "Map network topology and identify vulnerable devices for exploitation."
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Detect and analyze wireless networks to identify vulnerabilities and weak encryption protocols."
+mode_2n = "Crack WEP/WPA/WPA2 encryption and gain unauthorized access to wireless networks."
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Intercept and analyze web traffic to identify vulnerabilities in web applications."
+mode_2n = "Exploit web application vulnerabilities to gain unauthorized access and control."
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Verify vulnerabilities identified by other tools and develop defensive strategies."
+mode_2n = "Exploit vulnerabilities to gain unauthorized access and control of systems."
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Kismet"
+mode_1n = "Identify and map wireless networks for security auditing"
+mode_2n = "Map wireless networks for exploitation and geolocation"
+escalation_level = "microkernel"
+kali_package = "kismet"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "RFID Toolkit"
+mode_1n = "Analyze RFID systems for vulnerabilities"
+mode_2n = "Clone or spoof RFID cards"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+distance_range = { min_km = 0.1, max_km = 2, optimal_km = 0.5 }
+time_to_target = { min_minutes = 5, max_minutes = 30, optimal_minutes = 10 }
+
+terrain_factors = ["urban_density", "line_of_sight", "elevation", "building_density"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed"]
+operational_threshold = { visibility_km = 2.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Reduced visibility impacts visual confirmation of access points."
+impact_on_comms = "Adverse weather can interfere with wireless communication."
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -80
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station"]
+proximity_threshold_m = 250
+impact_assessment = "Reconnaissance near critical infrastructure raises security concerns."
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Suspicious Activity"
+incident_subcategory = "Surveillance/Access Point Identification"
+location_type = "Building"
+subject_role = "Suspect"
+activity_type = "Pre-Operational Surveillance"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Access Point Identification"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-019-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.90
+description = "Access point identification enables intrusion planning."
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.70
+description = "Access point identification is vulnerable to detection by intrusion detection systems."
+
+[[relationships]]
+target_node = "uuid-009-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.65
+description = "Access point identification informs network mapping efforts."
+
+[[eei_priority]]
+rank = 1
+question = "What are the physical security measures in place at each access point?"
+collection_method = "Physical observation, security camera footage, personnel reports."
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the network configurations and security protocols for each access point?"
+collection_method = "Network scanning, wireless analysis, penetration testing."
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the vulnerabilities associated with each access point?"
+collection_method = "Vulnerability scanning, penetration testing, exploit research."
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What are the potential consequences of exploiting each access point?"
+collection_method = "Risk assessments, impact analysis."
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What is the layout of interior and exterior cameras?"
+collection_method = "Physical observation, security personnel"
+time_sensitivity = "high"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Target Data Breach (2013)",
+    date = "2013-11-27",
+    description = "Attackers gained access through a third-party HVAC vendor.",
+    source = "https://en.wikipedia.org/wiki/2013_Target_data_breach"
+  },
+  {
+    name = "SolarWinds Supply Chain Attack (2020)",
+    date = "2020-12-13",
+    description = "Attackers compromised the SolarWinds Orion platform to distribute malware.",
+    source = "https://www.cisa.gov/news-events/news/cisa-releases-guidance-related-solarwinds-orion-supply-chain-attack"
+  },
+  {
+    name = "Colonial Pipeline Ransomware Attack (2021)",
+    date = "2021-05-07",
+    description = "Attackers gained access through a compromised VPN account.",
+    source = "https://www.justice.gov/opa/pr/justice-department-seizes-23-million-cryptocurrency-paid-ransomware-attackers-colonial"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.002 - Vulnerability Scanning"
+description = "Adversary uses active scanning techniques to identify vulnerabilities."
+
+[[ttps]]
+mitre_attack_id = "T1590"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "T1590.001 - Domain Properties"
+description = "Collect domain registration information."
+
+[[ttps]]
+mitre_attack_id = "T1083"
+tactic = "Discovery"
+technique = "File and Directory Discovery"
+sub_technique = "N/A"
+description = "Adversary attempts to list files and directories."
+
+[[ttps]]
+mitre_attack_id = "T1046"
+tactic = "Discovery"
+technique = "Network Service Scanning"
+sub_technique = "N/A"
+description = "Use network scanning tools to identify open ports and services."
+
+[[ttps]]
+mitre_attack_id = "T1018"
+tactic = "Discovery"
+technique = "Remote System Discovery"
+sub_technique = "N/A"
+description = "Use tools to identify remote systems on the network."
+
+[[ttps]]
+mitre_attack_id = "T1591"
+tactic = "Reconnaissance"
+technique = "Gather Victim System Information"
+sub_technique = "T1591.002 - Hardware"
+description = "Collect hardware information on victim systems"
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Victim Infrastructure Information"
+sub_technique = "T1592.004 - Software"
+description = "Collect software information on victim infrastructure"
+
+[xsd_integration]
+playbook_template = "access_point_identification_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-network", "ctas7-enhanced-physical"]
+unicode_assembly = ["→", "⚠", "⇢", "🔑", "📍", "📡"]
+lisp_expression = "(access-point-task :target target-id :phase pre-attack :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-10T00:00:00Z"
+last_updated = "2025-01-10T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

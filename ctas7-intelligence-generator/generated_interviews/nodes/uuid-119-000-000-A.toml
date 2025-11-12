@@ -1,0 +1,394 @@
+```toml
+[node_identity]
+task_id = "uuid-119-000-000-A"
+task_name = "Task 119 - Phase 3"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "Wz6r1j3pB9y0Xl4q"
+cuid = "T20250315G34S12SZ2d345abc"
+uuid = "V7f9a2b1c8d5e6f7"
+hash_48 = "Wz6r1j3pB9y0Xl4qT20250315G34S12SZ2d345abcV7f9a2b1c8d5e6f7"
+
+[capabilities]
+narrative = """
+I am the architect of infiltration. I piece together the vulnerabilities that others overlook. My canvas is the target facility, my brushstroke is meticulous observation. I exploit construction projects, vendor deliveries, and shift changes.
+
+I track the movement of cleaning crews, maintenance personnel, and even the local food delivery drivers. I am a shadow in plain sight. I blend in with the landscape, noting patterns, weaknesses, and opportunities.
+
+I observe parking lot entry/exit procedures, noting security patrol patterns. I analyze trash disposal methods and locations for possible intel leaks. I document all anomalies: unlocked doors, malfunctioning cameras, areas with poor lighting. I find the cracks in the facade.
+"""
+
+limitations = """
+I am limited by time and resources. Extended surveillance increases the risk of detection. My reliance on observation makes me susceptible to deception and misdirection. I am vulnerable to changes in operational procedures and security posture. I can be defeated by vigilant security personnel.
+
+My effectiveness is diminished in high-security environments with multiple layers of defense. I am only as good as the information I gather. Incomplete or inaccurate intelligence can lead to mission failure. I am reliant on blending in which can be hampered by physical characteristics, mannerisms and language skills.
+"""
+
+[time_of_value]
+half_life = { words = "days to weeks", range = [3, 14], units = "days" }
+collection_phase = { words = "weeks to months", range = [4, 12], units = "weeks" }
+actionable_window = { words = "weeks", range = [1, 4], units = "weeks" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in security personnel or procedures",
+  "Construction or maintenance activities",
+  "Implementation of new security measures",
+  "Alterations to shift schedules"
+]
+persistence_conditions = [
+  "Physical layout of the target facility",
+  "Established traffic patterns",
+  "Geographic location of the facility",
+  "Fixed infrastructure"
+]
+
+[cuid_mask]
+temporal = "T-{28-84}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "SZ"
+semantic_full = "recon:staging_area:zone"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+priority = "medium"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Search for patterns indicating staging area reconnaissance" }
+detect = { enabled = true, priority = "high", description = "Identify individuals loitering or observing access points" }
+disrupt = { enabled = true, priority = "low", description = "Increase security patrols in suspected staging areas" }
+disable = { enabled = false, priority = "low", description = "Not applicable" }
+dominate = { enabled = false, priority = "low", description = "Not applicable" }
+
+[[indicators]]
+observable = "Repeated visits to nearby businesses or public areas"
+priority = "medium"
+detection_method = "Surveillance camera analysis, security personnel reports"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Inquiries about facility operations or access policies"
+priority = "high"
+detection_method = "Employee interviews, customer service logs"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Loitering near loading docks or delivery entrances"
+priority = "high"
+detection_method = "Security camera analysis, physical observation"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Photography or video recording of non-public areas"
+priority = "critical"
+detection_method = "Security camera analysis, employee reports"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unusual interest in facility security features (cameras, gates, fences)"
+priority = "high"
+detection_method = "Security personnel reports, suspicious activity reporting"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Attempts to access restricted areas or unauthorized information"
+priority = "critical"
+detection_method = "Access control logs, intrusion detection systems"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Use of binoculars or other observation equipment in public areas"
+priority = "medium"
+detection_method = "Security personnel reports, suspicious activity reporting"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Gathering information on local law enforcement response times"
+priority = "medium"
+detection_method = "OSINT analysis, social media monitoring"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Requests for information from vendors or contractors"
+priority = "medium"
+detection_method = "Vendor communication logs, employee interviews"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Mapping Wi-Fi coverage from outside the building"
+priority = "medium"
+detection_method = "Wigle analysis, network monitoring"
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Identify open ports and running services"
+mode_2n = "Map network vulnerabilities for exploitation"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Test for vulnerabilities in staging area network"
+mode_2n = "Exploit vulnerabilities in staging area network"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for suspicious activity"
+mode_2n = "Capture network credentials"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Detect rogue access points"
+mode_2n = "Crack Wi-Fi passwords"
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Analyze web application vulnerabilities"
+mode_2n = "Exploit web application vulnerabilities"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Social Engineering Toolkit (SET)"
+mode_1n = "Phishing awareness training"
+mode_2n = "Phishing for information"
+escalation_level = "crate"
+kali_package = "set"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+distance_range = { min_km = 0.1, max_km = 2, optimal_km = 0.5 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+terrain_factors = ["urban_density", "line_of_sight", "building_height", "access_routes"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed"]
+operational_threshold = { visibility_km = 2.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Limited visibility impedes observations. Strong winds affect drone stability."
+impact_on_comms = "Heavy rain can degrade wireless signal strength."
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "traffic_density"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -85
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "fuel_depots", "transport_hubs"]
+proximity_threshold_m = 250
+impact_assessment = "Proximity to critical infrastructure increases risk of detection and heightens security posture."
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Suspicious Activity"
+incident_subcategory = "Loitering/Surveillance"
+location_type = "Business/Commercial"
+subject_role = "Suspect"
+activity_type = "Pre-Attack Planning"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Reconnaissance"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ staging_area }"
+"j:Charge" = "18 USC 2332b (Terrorism)"
+
+[[relationships]]
+target_node = "uuid-120-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.85
+description = "Staging area reconnaissance enables weapon selection and preparation"
+
+[[relationships]]
+target_node = "uuid-121-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.70
+description = "Staging area reconnaissance informs communications planning and coordination"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.50
+description = "Staging area reconnaissance is vulnerable to local law enforcement patrols"
+
+[[eei_priority]]
+rank = 1
+question = "What are the common pedestrian routes and vehicular access points?"
+collection_method = "Physical observation, traffic analysis"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the security measures implemented in the area (cameras, patrols, lighting)?"
+collection_method = "Physical observation, OSINT"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the operational hours and staffing levels?"
+collection_method = "Physical observation, social engineering"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the local law enforcement response times?"
+collection_method = "OSINT, monitoring of local communication channels"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the alternative escape routes?"
+collection_method = "Traffic analysis, physical reconnaissance"
+time_sensitivity = "low"
+
+[historical_reference]
+incidents = [
+  {
+    name = "IRA Bombing Campaigns",
+    date = "various",
+    description = "Extensive staging area reconnaissance to identify secure locations and assess security posture.",
+    source = "Various historical reports and documentaries"
+  },
+  {
+    name = "Paris Attacks (2015)",
+    date = "2015-11-13",
+    description = "Pre-attack staging areas were selected and monitored for law enforcement presence.",
+    source = "French Intelligence Reports"
+  },
+  {
+    name = "Madrid Train Bombings (2004)",
+    date = "2004-03-11",
+    description = "Staging areas were used for bomb construction and final preparations.",
+    source = "Spanish Intelligence Reports"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.002 - Vulnerability Scanning"
+description = "Scan for known vulnerabilities in local network"
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.004 - Credentials"
+description = "Attempt to gather credentials from nearby networks"
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.001 - Spearphishing Attachment"
+description = "Send targeted phishing to local employees"
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Infrastructure Information"
+sub_technique = "T1592.002 - DNS"
+description = "Gather DNS information about local businesses"
+
+[[ttps]]
+mitre_attack_id = "T1590"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "T1590.001 - IP Addresses"
+description = "Gather IP addresses of local networks"
+
+[xsd_integration]
+playbook_template = "staging_area_recon_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-geolocation"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🛰"]
+lisp_expression = "(staging-recon :target target-id :phase operational :priority medium)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-03-15T00:00:00Z"
+last_updated = "2025-03-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

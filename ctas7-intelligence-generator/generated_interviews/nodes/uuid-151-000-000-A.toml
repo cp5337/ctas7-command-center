@@ -1,0 +1,502 @@
+```toml
+[node_identity]
+task_id = "uuid-151-000-000-A"
+task_name = "Task 151 - Phase 4"
+classification = "unclassified"
+ttl_category = "optional"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# Full hash example: "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+# ============================================================================
+
+sch = "aBcD1234EfGh5678"
+cuid = "T20241225G34S89SpU1234567"
+uuid = "V7f9511f3ab52e5b"
+
+hash_48 = "aBcD1234EfGh5678T20241225G34S89SpU1234567V7f9511f3ab52e5b"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+# This is the core intelligence requirement. Written from the adversary's
+# perspective, describing capabilities, methods, and intent.
+# ============================================================================
+
+[capabilities]
+narrative = """
+I am the final arbiter of success. I move into position, ensuring all pieces are in place. I verify timing, validate entry points, confirm routes and escape paths. I observe the site one last time, looking for any changes, any anomalies. I communicate status to the team.
+
+I monitor communications, listening for any signs of disruption or interference. I stand ready to adapt to unforeseen circumstances. I confirm the target is in the right place, at the right time. I manage distractions and diversions, ensuring a clear path.
+
+I'm the go/no-go. My assessment is final. If conditions are not optimal, I recommend a delay. I ensure all equipment is functioning properly, ready for deployment. I coordinate with support elements, confirming their readiness.
+
+My role is to ensure success. I am the last line of defense against failure.
+"""
+
+limitations = """
+My limitations are tied to the quality of prior reconnaissance. If previous phases were incomplete or inaccurate, my assessment will be flawed. I'm vulnerable to detection by enhanced security measures implemented after prior surveillance. Unexpected events can disrupt my plans. I require reliable communications to coordinate with the team.
+
+I am only effective if all prior planning has been thorough and accurate. I have little flexibility to make major changes. If the plan is compromised, my presence may alert the target.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+# Defines the actionable window and decay curve for this intelligence type.
+# Uses "on the order of" language for human readability + numerical ranges.
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "hours to days", range = [6, 48], units = "hours" }
+collection_phase = { words = "days before", range = [1, 7], units = "days" }
+actionable_window = { words = "hours", range = [1, 12], units = "hours" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Target moves or changes location",
+  "Security posture changes",
+  "Weather conditions deviate from plan",
+  "Equipment malfunction"
+]
+persistence_conditions = [
+  "Confirmed routes and escape paths",
+  "Validated entry points",
+  "Placement of equipment or personnel"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+# The CUID (positions 17-32) encodes spatio-temporal + semantic + environmental
+# context using PREFIX and SUFFIX masks from CTAS 7.3 Ground Truth.
+# ============================================================================
+
+[cuid_mask]
+# Temporal context
+temporal = "T-{1-7}d"
+temporal_format = "YYYYMMDD"
+
+# Geographic context
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+
+# Semantic domain
+semantic = "Sp"
+semantic_full = "staging:planning:validation"
+
+# PREFIX MASKS (Global Environmental Context) - Domain-Specific
+[cuid_mask.prefix]
+# Universal masks (all domains)
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+# Domain-Specific Extensions (v7.3)
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+# SUFFIX MASKS (Local Operational Context)
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+# Priority
+priority = "critical"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+# Maps this node to the 5 phases of the HD4 kill chain.
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = false, priority = "low", description = "N/A" }
+detect = { enabled = true, priority = "high", description = "Detect final staging activity" }
+disrupt = { enabled = true, priority = "critical", description = "Disrupt final preparations" }
+disable = { enabled = true, priority = "critical", description = "Disable staging elements" }
+dominate = { enabled = false, priority = "low", description = "N/A" }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+# Key indicators that this task is occurring. Used for detection and hunting.
+# ============================================================================
+
+[[indicators]]
+observable = "Increased radio chatter near target location"
+priority = "high"
+detection_method = "COMINT, SDR analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unusual vehicle activity in staging areas"
+priority = "high"
+detection_method = "Surveillance cameras, traffic analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Verified access points are re-checked."
+priority = "critical"
+detection_method = "Physical security patrol reports."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Spike in encrypted communications"
+priority = "medium"
+detection_method = "Network monitoring, SIEM"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Movement of personnel or equipment towards target"
+priority = "critical"
+detection_method = "Physical surveillance, asset tracking"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Signal jamming attempts"
+priority = "high"
+detection_method = "RF spectrum analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Compromised credentials used for final checks"
+priority = "medium"
+detection_method = "SIEM, IDPS"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Unauthorized access to control systems"
+priority = "critical"
+detection_method = "SCADA monitoring, ICS security"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Last minute changes to pre-planned routes detected"
+priority = "high"
+detection_method = "Traffic cams, intel"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Anomalous power consumption near staging area."
+priority = "medium"
+detection_method = "Smart grid monitoring"
+false_positive_rate = "high"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+# Dual-mode tool stacks: same tools, different semantic context.
+# ============================================================================
+
+[[toolchain]]
+tool = "nmap"
+mode_1n = "Detect rogue devices connected to network"
+mode_2n = "Verify target system is accessible and vulnerable"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for malicious activity"
+mode_2n = "Monitor communications channels for vulnerabilities"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Test security defenses against known exploits"
+mode_2n = "Deploy final exploit against target"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Detect brute force attempts on network services"
+mode_2n = "Brute force final access points"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Audit wireless network security"
+mode_2n = "Gain access to wireless networks"
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Custom Crates"
+mode_1n = "Detect changes to the system"
+mode_2n = "Deploy custom designed malware against target."
+escalation_level = "crate"
+kali_package = "n/a"
+resource_cost = "high"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+# Location-dependent intelligence requirements and operational factors.
+# ============================================================================
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+# Distance and time constraints
+distance_range = { min_km = 0.1, max_km = 1.0, optimal_km = 0.5 }
+time_to_target = { min_minutes = 1, max_minutes = 15, optimal_minutes = 5 }
+
+# Terrain factors (affects approach, escape, line-of-sight)
+terrain_factors = []
+
+# Weather impact (from existing weather_data table)
+[geospatial.weather]
+critical_factors = ["precipitation", "wind_speed"]
+operational_threshold = { visibility_km = 1.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Rain or high winds can affect visibility"
+impact_on_comms = "May impact satellite communications"
+
+# Traffic and routing (from pgRouting + PostGIS)
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "pgr_dijkstra"
+cost_factors = []
+escape_route_priority = "high"
+choke_point_analysis = false
+traffic_pattern_window = { peak_hours = [], off_peak_hours = [] }
+
+# COMINT (Communications Intelligence)
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 1000
+signal_strength_threshold_dbm = -80
+imsi_tracking = true
+wifi_mapping = true
+wifi_tools = ["kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+# Critical infrastructure proximity
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 100
+impact_assessment = "Proximity to infrastructure requires additional security."
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+# Maps CTAS ontology to NIEM IEPDs for law enforcement interoperability.
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:ThreatAssessment"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+# N-DEx field mapping
+[niem_mapping.ndex_fields]
+incident_category = "Pre-Incident Planning"
+incident_subcategory = "Final Validation"
+location_type = "Target Location"
+subject_role = "Perpetrator"
+activity_type = "Operational Staging"
+
+# NIEM core elements
+[niem_mapping.niem_core]
+"nc:Activity" = "Validation"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 2332b (Terrorism), 18 USC 842 (Explosives)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+# Defines how this node connects to other nodes in the 165-task graph.
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-152-000-000-A"
+relationship_type = "precedes"
+unicode_op = "→"
+strength = 0.9
+description = "Leads directly to the final act"
+
+[[relationships]]
+target_node = "uuid-001-000-000-A"
+relationship_type = "depends_on"
+unicode_op = "⇢"
+strength = 0.9
+description = "Depends on target selected by the operation"
+
+[[relationships]]
+target_node = "uuid-010-000-000-A"
+relationship_type = "refines"
+unicode_op = "⇢"
+strength = 0.7
+description = "Refines logistics planning."
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+# Ranked intelligence requirements for this task.
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "Has the target changed?"
+collection_method = "Active monitoring."
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "Are all team members ready and in place?"
+collection_method = "Communications check."
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 3
+question = "Are all tools and resources ready and available?"
+collection_method = "Equipment verification."
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "Is the communication channel reliable?"
+collection_method = "Communication testing"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 5
+question = "Is the exit route still secure?"
+collection_method = "Visual check."
+time_sensitivity = "high"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+# Links to actual incidents where this task was observed.
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Final checks on the truck and its placement near the building",
+    source = "https://en.wikipedia.org/wiki/Oklahoma_City_bombing"
+  },
+  {
+    name = "London 7/7 Bombings",
+    date = "2005-07-07",
+    description = "Coordination to confirm the timing and location",
+    source = "https://en.wikipedia.org/wiki/7_July_2005_London_bombings"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+# MITRE ATT&CK mapping for cyber TTPs (where applicable).
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1587"
+tactic = "Resource Development"
+technique = "Obtain Capabilities"
+sub_technique = "T1587.001 - Acquire Infrastructure"
+description = "Setting up infrastructure for final stage"
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - Web Protocols"
+description = "Using web protocols to communicate."
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "T1566.001 - Spearphishing Attachment"
+description = "Using phishing to get control of targets."
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.004 - Unix Shell"
+description = "Using a unix shell to execute commands"
+
+[[ttps]]
+mitre_attack_id = "T1105"
+tactic = "Command and Control"
+technique = "Ingress Tool Transfer"
+description = "Transferring tools to the system."
+
+[[ttps]]
+mitre_attack_id = "T1574"
+tactic = "Privilege Escalation"
+technique = "Hijack Execution Flow"
+sub_technique = "T1574.001 - DLL Search Order Hijacking"
+description = "DLL Hijacking to cause privilege escalation."
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+# Links this node to XSD playbooks for executable document generation.
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "final_validation_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-staging"]
+unicode_assembly = ["→", "⇢", "⚠", "📍", "🏁", "💣"]
+lisp_expression = "(final-validation :target target-id :phase final :priority critical)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2024-12-24T00:00:00Z"
+last_updated = "2024-12-24T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

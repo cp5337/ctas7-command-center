@@ -1,0 +1,430 @@
+```toml
+[node_identity]
+task_id = "uuid-005-000-000-A"
+task_name = "Communications and C2"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "Ys1wU347Ka92Lm1q"
+cuid = "T20240715G37N12SU8ca72e931c6fa8"
+uuid = "Q1d9919504418a73"
+hash_48 = "Ys1wU347Ka92Lm1qT20240715G37N12SU8ca72e931c6fa8Q1d9919504418a73"
+
+[capabilities]
+narrative = """
+I am the architect of whispers, the weaver of unseen threads. My purpose is to establish reliable, covert channels of communication, enabling command and control for our operations. I begin by identifying vulnerabilities in existing systems – unencrypted radio frequencies, weak Wi-Fi networks, compromised satellite links. I procure and modify equipment to create secure communication nodes: encrypted radios, satellite phones, disposable burner devices, and anonymized VPN routers.
+
+I establish redundant communication pathways, anticipating surveillance and interference. I utilize steganography, embedding messages within innocuous files, hiding data in plain sight. I train operatives in secure communication protocols, ensuring operational security and minimizing the risk of exposure. I exploit social media and online forums for disseminating coded messages and coordinating activities, blending into the digital noise.
+
+I constantly monitor and adapt our communication infrastructure, responding to evolving threats and technological advancements. I test security measures and implement countermeasures to maintain confidentiality, integrity, and availability. I am the backbone of our organization, ensuring seamless communication and control, even in the face of adversity.
+"""
+
+limitations = """
+I am constrained by technological limitations and the vigilance of surveillance agencies. Sophisticated encryption can be broken, and hardware vulnerabilities can be exploited. My activities leave digital traces, which can be traced back to me.
+
+I am vulnerable to signal interception, traffic analysis, and decryption efforts. My communications can be compromised through social engineering and insider threats. My reliance on technology introduces dependencies that can be exploited by adversaries.
+
+I am limited by the skill and discipline of my operatives. Human error can compromise even the most secure communication channels. My effectiveness degrades as security technologies advance and surveillance capabilities improve. I can be deanonymized.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months before", range = [3, 12], units = "months" }
+actionable_window = { words = "months", range = [1, 6], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Compromised communication channels",
+  "Technological advancements in surveillance",
+  "Changes in encryption standards",
+  "Discovery of steganographic techniques",
+  "Interception of key personnel"
+]
+persistence_conditions = [
+  "Established protocols",
+  "Geographically dispersed infrastructure",
+  "Redundant communication pathways",
+  "Cryptographic algorithm strength"
+]
+
+[cuid_mask]
+temporal = "T-{3-12}m"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 100.0
+semantic = "SU"
+semantic_full = "support:communications:secure"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactively search for covert communications channels" }
+detect = { enabled = true, priority = "critical", description = "Identify unusual network traffic and communication patterns in real-time" }
+disrupt = { enabled = true, priority = "medium", description = "Interfere with adversary communications through jamming, traffic shaping, or deception" }
+disable = { enabled = true, priority = "high", description = "Compromise or shut down adversary communication infrastructure" }
+dominate = { enabled = false, priority = "low", description = "Not applicable for communications and C2 itself." }
+
+[[indicators]]
+observable = "Use of unusual or uncommon ports and protocols"
+priority = "high"
+detection_method = "Network intrusion detection systems (NIDS)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Encrypted communication traffic originating from unusual locations"
+priority = "critical"
+detection_method = "Geographic filtering, anomaly detection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Sudden increase in network traffic to known anonymity networks (Tor, I2P)"
+priority = "medium"
+detection_method = "SIEM alerts, network traffic analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of steganography to hide messages within images or audio files"
+priority = "high"
+detection_method = "Steganography detection tools, heuristic analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Compromised satellite communication signals"
+priority = "critical"
+detection_method = "Signal monitoring, interference detection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Establishment of rogue Wi-Fi access points"
+priority = "high"
+detection_method = "Rogue AP detection systems, wireless intrusion prevention systems (WIPS)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of burner phones for short-term communications"
+priority = "medium"
+detection_method = "Cell tower analysis, call record analysis"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Unusual activity on social media platforms linked to known adversaries"
+priority = "low"
+detection_method = "Social media monitoring tools, OSINT"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Use of mesh networks for localized communications"
+priority = "medium"
+detection_method = "RF triangulation, network mapping"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Increased activity on dark web forums related to C2 infrastructure"
+priority = "medium"
+detection_method = "Dark web monitoring tools, intelligence gathering"
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "Cryptcat"
+mode_1n = "Secure network communications monitoring and logging"
+mode_2n = "Establish encrypted communication channels for covert operations"
+escalation_level = "script"
+kali_package = "cryptcat"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "OpenVPN"
+mode_1n = "Secure internal network communications, monitor VPN traffic"
+mode_2n = "Establish secure VPN tunnels for anonymized communications"
+escalation_level = "binary"
+kali_package = "openvpn"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Tor"
+mode_1n = "Monitor Tor network for malicious activity, analyze exit nodes"
+mode_2n = "Anonymize communications and access restricted content"
+escalation_level = "crate"
+kali_package = "tor"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "SilentEye"
+mode_1n = "Detect hidden messages using steganography"
+mode_2n = "Hide messages inside images and audio files"
+escalation_level = "script"
+kali_package = "silenteye"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "GNU Radio"
+mode_1n = "Analyze radio frequencies, detect unauthorized transmissions"
+mode_2n = "Create custom communication protocols, intercept signals"
+escalation_level = "microkernel"
+kali_package = "gnuradio"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "ZMap/Nmap"
+mode_1n = "Detect rogue access points"
+mode_2n = "Find open ports"
+escalation_level = "crate"
+kali_package = "nmap"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 1.0, max_km = 1000, optimal_km = 100 }
+time_to_target = { min_minutes = 5, max_minutes = 1440, optimal_minutes = 60 }
+
+terrain_factors = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "Heavy rain/snow may affect satcom signal strength. Atmospheric conditions can impact long-range radio comms."
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "N/A"
+cost_factors = []
+escape_route_priority = "N/A"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 10000
+signal_strength_threshold_dbm = -80
+imsi_tracking = true
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "wardriving"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500", "SATCOM", "HF", "VHF", "UHF"]
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 1000
+impact_assessment = "N/A"
+
+[niem_mapping]
+justice_domain = "j:Subject"
+intelligence_domain = "intel:RawIntelligenceReport"
+iepd_type = "IntelligenceReportExchange"
+iepd_version = "4.1"
+
+[niem_mapping.ndex_fields]
+incident_category = "Communications"
+incident_subcategory = "Secure Communications"
+location_type = "Network Infrastructure"
+subject_role = "Operator"
+activity_type = "Command and Control"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Communication"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ communication_node_location }"
+"j:Charge" = "18 USC 1029 (Fraud and related activity in connection with access devices)"
+
+[[relationships]]
+target_node = "uuid-001-000-000-A"
+relationship_type = "supports"
+unicode_op = "→"
+strength = 0.9
+description = "Communications enable all operations"
+
+[[relationships]]
+target_node = "uuid-090-000-000-A"
+relationship_type = "depends_on"
+unicode_op = "⇢"
+strength = 0.8
+description = "Communications are vital for coordination."
+
+[[relationships]]
+target_node = "uuid-160-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.7
+description = "Communications are vulnerable to interception and disruption"
+
+[[eei_priority]]
+rank = 1
+question = "What are the vulnerabilities in existing communication systems?"
+collection_method = "Network scanning, vulnerability assessments, OSINT"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the optimal methods for establishing secure communications?"
+collection_method = "Research, testing, experimentation"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the potential countermeasures to communication security?"
+collection_method = "Threat modeling, red teaming"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the strengths and weaknesses of various encryption algorithms?"
+collection_method = "Cryptography research, algorithm analysis"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What is the likelihood of signal interception or decryption?"
+collection_method = "Signal analysis, threat intelligence"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 6
+question = "What are the best practices for maintaining operational security?"
+collection_method = "Training, policy development"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 7
+question = "Which social media or online forums can be used for covert communication?"
+collection_method = "OSINT, social media monitoring"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 8
+question = "Which satellite frequencies are less monitored?"
+collection_method = "RF analysis, signals intelligence"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 9
+question = "How can steganography be used effectively without detection?"
+collection_method = "Experimentation, literature review"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 10
+question = "What are the best methods for destroying or wiping communication devices?"
+collection_method = "Testing, research"
+time_sensitivity = "low"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Al-Qaeda Communication Methods",
+    date = "2001-09-11",
+    description = "Used satellite phones, coded messages, and couriers for secure communications.",
+    source = "https://www.9-11commission.gov/report/"
+  },
+  {
+    name = "ISIS Online Propaganda",
+    date = "2014-06-29",
+    description = "Employed encrypted messaging apps and social media for disseminating propaganda and coordinating attacks.",
+    source = "https://ctc.westpoint.edu/wp-content/uploads/2017/07/Lesson-from-the-Virtual- battlefield-The-ISIS-Experience.pdf"
+  },
+  {
+    name = "Stuxnet Worm",
+    date = "2010-06-01",
+    description = "Employed sophisticated communication protocols to target Iranian nuclear facilities.",
+    source = "https://www.wired.com/2014/11/countdown-to-zero-day-stuxnet/"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1572"
+tactic = "Command and Control"
+technique = "Protocol Tunneling"
+sub_technique = "T1572.001 - HTTP"
+description = "Tunneling traffic through HTTP."
+
+[[ttps]]
+mitre_attack_id = "T1573"
+tactic = "Command and Control"
+technique = "Encrypted Channel"
+sub_technique = "T1573.001 - Symmetric Cryptography"
+description = "Use symmetric cryptography for encrypted communication."
+
+[[ttps]]
+mitre_attack_id = "T1573"
+tactic = "Command and Control"
+technique = "Encrypted Channel"
+sub_technique = "T1573.002 - Asymmetric Cryptography"
+description = "Use asymmetric cryptography for encrypted communication."
+
+[[ttps]]
+mitre_attack_id = "T1041"
+tactic = "Command and Control"
+technique = "Exfiltration Over C2 Channel"
+sub_technique = ""
+description = "Exfiltrate data over the C2 channel."
+
+[[ttps]]
+mitre_attack_id = "T1102"
+tactic = "Command and Control"
+technique = "Web Service"
+sub_technique = "T1102.001 - Command and Control"
+description = "Use web services as a C2 channel."
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - DNS"
+description = "Use DNS protocol for command and control."
+
+[xsd_integration]
+playbook_template = "communications_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-comms"]
+unicode_assembly = ["→", "⇢", "⚠", "📡", "🔒", "🔑"]
+lisp_expression = "(comms-task :c2-type secure :priority critical :ops-security high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

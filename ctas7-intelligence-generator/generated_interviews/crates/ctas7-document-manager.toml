@@ -1,0 +1,358 @@
+```toml
+[crate_identity]
+crate_name = "ctas7-document-manager"
+crate_id = "CRATE-DOC-001"
+crate_type = "service"
+version = "7.3.1"
+hd4_phase = "all"
+priority = "medium"
+classification = "unclassified"
+description = "Manages documents, metadata, and access control policies."
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+
+sch = "aB9zXy7W4q1R6s2T"
+cuid = "C20250109Sservice"
+uuid = "U3a1b8c9d2e4f506"
+hash_48 = "aB9zXy7W4q1R6s2TC20250109SserviceU3a1b8c9d2e4f506"
+
+# ============================================================================
+# FIRST-PERSON CRATE VOICE
+# ============================================================================
+
+[crate_voice]
+narrative = """
+I am the silent guardian of your documents. I am the librarian, the archivist, the gatekeeper. My purpose is to organize, protect, and provide access to your critical information.
+
+I manage documents of all types, extracting metadata, indexing content, and enforcing access control policies. I understand permissions – who can view, who can edit, who can delete. I integrate with existing identity management systems to ensure seamless authentication and authorization.
+
+I track document versions, maintain audit logs, and prevent data loss. I am the foundation for secure collaboration, enabling teams to work together without compromising sensitive information. I am the single source of truth for your documents.
+"""
+
+capabilities = [
+  "Document storage and retrieval",
+  "Metadata extraction and indexing",
+  "Access control policy enforcement",
+  "Version control and audit logging",
+  "Full-text search",
+  "Integration with identity management systems (LDAP, Active Directory)",
+  "Document watermarking",
+  "Data loss prevention (DLP)",
+  "Optical Character Recognition (OCR)",
+  "Secure document sharing"
+]
+
+limitations = [
+  "Requires robust storage infrastructure",
+  "OCR accuracy dependent on document quality",
+  "Complex access control policies can impact performance",
+  "Metadata extraction limited by document format",
+  "Integration with legacy systems may require custom development"
+]
+
+# ============================================================================
+# DEPENDENCIES AND RELATIONSHIPS
+# ============================================================================
+
+[dependencies]
+rust_crates = [
+  "ctas7-foundation-core",
+  "ctas7-foundation-data",
+  "tokio",
+  "serde",
+  "sqlx",
+  "tesseract" # For OCR
+]
+
+system_dependencies = [
+  "PostgreSQL 14+",
+  "Tesseract OCR engine",
+  "LDAP/Active Directory server (optional)"
+]
+
+data_dependencies = [
+  "None"
+]
+
+predecessor_crates = [
+  "ctas7-foundation-core",
+  "ctas7-foundation-data"
+]
+
+follower_crates = [
+  "ctas7-intelligence-analyzer", # Uses documents for analysis
+  "ctas7-incident-response", # Stores incident reports
+  "ctas7-training-platform" # Manages training materials
+]
+
+# ============================================================================
+# NODE APPLICATIONS (Which of the 165 CTAS tasks use this crate)
+# ============================================================================
+
+[[node_applications]]
+task_id = "uuid-005-000-000-A"
+task_name = "Vulnerability Management"
+application = "Stores vulnerability assessment reports"
+priority = "medium"
+
+[[node_applications]]
+task_id = "uuid-015-000-000-A"
+task_name = "Insider Threat Detection"
+application = "Audit logs of document access to detect suspicious behavior"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-030-000-000-A"
+task_name = "Incident Reporting"
+application = "Stores incident reports and supporting documentation"
+priority = "critical"
+
+[[node_applications]]
+task_id = "uuid-040-000-000-A"
+task_name = "Policy Enforcement"
+application = "Manages and enforces data access policies"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-055-000-000-A"
+task_name = "Training and Education"
+application = "Stores training materials and documentation"
+priority = "medium"
+
+[[node_applications]]
+task_id = "uuid-070-000-000-A"
+task_name = "Compliance Reporting"
+application = "Generates compliance reports from stored documents"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-085-000-000-A"
+task_name = "Threat Intelligence Sharing"
+application = "Stores and manages threat intelligence reports"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-100-000-000-A"
+task_name = "Data Loss Prevention"
+application = "Enforces policies to prevent unauthorized data exfiltration"
+priority = "critical"
+
+[[node_applications]]
+task_id = "uuid-115-000-000-A"
+task_name = "Knowledge Management"
+application = "Centralized repository for organizational knowledge"
+priority = "medium"
+
+[[node_applications]]
+task_id = "uuid-130-000-000-A"
+task_name = "Legal Hold"
+application = "Preserves documents subject to litigation"
+priority = "high"
+
+# ============================================================================
+# TOOLCHAIN INTEGRATION (Kali, Metasploit, CALDERA, etc.)
+# ============================================================================
+
+[toolchain_integration]
+kali_tools = [
+  { tool = "pdfminer", integration = "Extracts text and metadata from PDF files", escalation_level = "script" },
+  { tool = "exiftool", integration = "Extracts metadata from various file formats", escalation_level = "script" }
+]
+
+metasploit_integration = false
+metasploit_modules = []
+
+caldera_integration = false
+caldera_abilities = []
+
+mitre_attack_mapping = [
+  "T1119 - Automated Collection",
+  "T1530 - Data Encrypted for Impact",
+  "T1071.001 - Application Layer Protocol: Web Protocols"
+]
+
+atomic_red_team_tests = []
+
+exploit_db_capabilities = []
+
+# ============================================================================
+# EEI REQUIREMENTS (Essential Elements of Information)
+# ============================================================================
+
+[[eei_requirements]]
+rank = 1
+question = "Who has access to this document?"
+collection_method = "Access control policy lookup"
+time_sensitivity = "high"
+
+[[eei_requirements]]
+rank = 2
+question = "When was this document last modified?"
+collection_method = "Version control metadata"
+time_sensitivity = "medium"
+
+[[eei_requirements]]
+rank = 3
+question = "What keywords are present in this document?"
+collection_method = "Full-text search"
+time_sensitivity = "low"
+
+[[eei_requirements]]
+rank = 4
+question = "Is this document subject to a legal hold?"
+collection_method = "Legal hold metadata lookup"
+time_sensitivity = "high"
+
+# ============================================================================
+# MCP INTEGRATION (Model Context Protocol)
+# ============================================================================
+
+[mcp_integration]
+mcp_server = true
+mcp_server_name = "ctas7-document-manager-mcp"
+mcp_port = 15186
+mcp_capabilities = [
+  "document_upload",
+  "document_download",
+  "access_control_check",
+  "search_documents"
+]
+
+[[mcp_integration.tools]]
+name = "document_upload"
+description = "Uploads a document to the repository."
+parameters = ["document_name", "document_content", "metadata"]
+returns = "Document ID"
+
+[[mcp_integration.tools]]
+name = "document_download"
+description = "Downloads a document from the repository."
+parameters = ["document_id"]
+returns = "Document content"
+
+[[mcp_integration.tools]]
+name = "access_control_check"
+description = "Checks if a user has access to a document."
+parameters = ["document_id", "user_id", "permission"]
+returns = "Boolean (access granted/denied)"
+
+[[mcp_integration.tools]]
+name = "search_documents"
+description = "Searches for documents based on keywords."
+parameters = ["keywords"]
+returns = "List of document IDs"
+
+# ============================================================================
+# GNN AND VECTOR DATABASE INTEGRATION
+# ============================================================================
+
+[gnn_vector_integration]
+gnn_enabled = true
+gnn_use_cases = [
+  "Document relationship analysis (who collaborates on which documents?)",
+  "Anomaly detection (unusual document access patterns)",
+  "Influence mapping (who are the key knowledge holders?)"
+]
+
+vector_db_enabled = true
+vector_db_type = "pgvector"
+embedding_dimensions = 768
+vector_use_cases = [
+  "Semantic search for similar documents (find documents like X)",
+  "Content-based document clustering (group documents by topic)",
+  "Plagiarism detection (find documents with similar content)"
+]
+
+# ============================================================================
+# XSD VALIDATION AND PLAYBOOK INTEGRATION
+# ============================================================================
+
+[xsd_validation]
+xsd_schema = "crate-interview-playbook.xsd"
+playbook_template = "document_management_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-core", "ctas7-foundation-data"]
+unicode_assembly = ["📄", "🔒", "🔑", "🔎", "📜", "💾"]
+lisp_expression = "(doc-access :user user-id :doc doc-id :permission read)"
+
+# ============================================================================
+# PHD QA INTEGRATION (Quality Assurance Scoring)
+# ============================================================================
+
+[phd_qa]
+phd_qa_score = 85
+quality_grade = "B"
+certification_status = "certified"
+last_qa_run = "2025-01-08T12:00:00Z"
+qa_runner = "Zen Coder"
+
+quality_issues = [
+  "OCR accuracy needs improvement for handwritten documents",
+  "Scalability testing required for large document repositories"
+]
+
+improvement_recommendations = [
+  "Implement support for more document formats",
+  "Improve OCR engine with custom training data",
+  "Add caching layer for frequently accessed documents"
+]
+
+# ============================================================================
+# OPERATIONAL RELATIONSHIPS
+# ============================================================================
+
+[operational_relationships]
+trigger_conditions = [
+  "SCH hash match for document access primitives",
+  "CUID mask with document component (D{doc-id})",
+  "HD4 phase = all + document EEI requirement"
+]
+
+execution_order = 3
+semantic_relationships = [
+  "Provides secure storage for all critical data",
+  "Enables data governance and compliance",
+  "Supports knowledge management and collaboration"
+]
+
+ontological_connections = [
+  "Maps to NIEM Information Domain: i:Document",
+  "Integrates with N-DEx: document_type, document_date",
+  "Supports IED TTL Category 2: Information Collection & Analysis"
+]
+
+reference_architecture_role = "Data Storage Layer"
+
+ttl_book_contribution = """
+This crate provides the foundation for secure document storage and access control,
+ensuring that critical information is protected and accessible when needed. It
+plays a key role in supporting various operational phases, from information
+collection to decision making.
+"""
+
+# ============================================================================
+# IED TTL MAPPING
+# ============================================================================
+
+[ied_ttl_mapping]
+ttl_category = "2"
+ttl_subcategory = "2.1"
+ttl_task_number = "2.1.3"
+adversarial_capability = "Store and manage stolen documents"
+defensive_opportunity = "Detect unauthorized access to sensitive documents"
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T01:00:00Z"
+last_updated = "2025-01-09T01:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+interview_version = 1
+shipyard_quality_score = 85
+```

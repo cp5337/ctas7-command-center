@@ -1,0 +1,420 @@
+```toml
+[node_identity]
+task_id = "uuid-099-000-000-A"
+task_name = "Task 99 - Phase 3"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "W23nL7pM9rX4kQ5h"
+cuid = "T20250110G34N84Sc7d61a4b9c2e3f0"
+uuid = "d827e50f3a1b42c9a7d0e63b5f4c1a86"
+hash_48 = "W23nL7pM9rX4kQ5hT20250110G34N84Sc7d61a4b9c2e3f0d827e50f3a1b42c9a7d0e63b5f4c1a86"
+
+[capabilities]
+narrative = """
+I am the whisper in the wind, the shadow in the corner. I specialize in identifying vulnerabilities that others overlook. I will locate the weakest link.
+
+My priority is to locate any physical or digital assets that are vulnerable to exploitation. I search for unprotected systems, unguarded access points, and unmonitored communications channels.
+
+I identify patterns in human behavior. I can target individuals who are susceptible to manipulation, who are disgruntled or compromised.
+
+I use advanced intrusion tools to gain access to sensitive information. I can also locate vulnerable targets. My objective is to deliver a precise, strategic advantage that enables a successful operation.
+"""
+
+limitations = """
+I am limited by the constraints of complexity and uncertainty. The environment that I analyze is highly variable.
+
+I can be exposed when my methodologies are detected. I am particularly vulnerable when I have to maintain a physical presence near the target.
+
+My effectiveness is dependent on the quality of my tools and their capacity to resist countermeasures. I am exposed whenever I must move my operations to maintain persistent access.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 48], units = "hours" }
+collection_phase = { words = "days to weeks", range = [7, 21], units = "days" }
+actionable_window = { words = "hours to days", range = [6, 72], units = "hours" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Patching of vulnerabilities",
+  "Implementation of new security controls",
+  "Changes in user behavior or access patterns",
+  "Detection of reconnaissance activity"
+]
+persistence_conditions = [
+  "Legacy systems or configurations",
+  "Unpatched software or firmware",
+  "Human factors vulnerabilities (e.g., password reuse)",
+  "Network architecture weaknesses"
+]
+
+[cuid_mask]
+temporal = "T-{7-21}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "Sc"
+semantic_full = "recon:cyber:vulnerability_scan"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Actively seek patterns of vulnerability scanning and exploitation attempts." }
+detect = { enabled = true, priority = "critical", description = "Real-time detection of vulnerability scanning and exploitation activity." }
+disrupt = { enabled = true, priority = "high", description = "Implement countermeasures to disrupt vulnerability scanning and exploitation efforts." }
+disable = { enabled = true, priority = "medium", description = "Disable compromised systems or accounts to prevent further damage." }
+dominate = { enabled = false, priority = "low", description = "Not applicable in this phase." }
+
+[[indicators]]
+observable = "Unusual network scanning activity"
+priority = "critical"
+detection_method = "IDS/IPS, SIEM"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Exploitation attempts against known vulnerabilities"
+priority = "critical"
+detection_method = "IDS/IPS, WAF"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Privilege escalation attempts"
+priority = "high"
+detection_method = "SIEM, host-based intrusion detection"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Lateral movement within the network"
+priority = "high"
+detection_method = "Network traffic analysis, SIEM"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Data exfiltration attempts"
+priority = "critical"
+detection_method = "DLP, network monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Use of exploit kits"
+priority = "critical"
+detection_method = "Web proxy logs, network traffic analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Malware infections"
+priority = "critical"
+detection_method = "Antivirus, EDR"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Compromised credentials"
+priority = "critical"
+detection_method = "SIEM, account monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Application vulnerabilities"
+priority = "high"
+detection_method = "Vulnerability scans, penetration testing"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Configuration weaknesses"
+priority = "medium"
+detection_method = "Security audits, configuration management tools"
+false_positive_rate = "high"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Identify open ports and services to detect potential vulnerabilities."
+mode_2n = "Map network topology and identify attack vectors."
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Nessus"
+mode_1n = "Scan for known vulnerabilities and misconfigurations in systems."
+mode_2n = "Identify exploitable weaknesses in target infrastructure."
+escalation_level = "crate"
+kali_package = "nessus"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Test and validate vulnerabilities to improve patching strategies."
+mode_2n = "Exploit identified vulnerabilities to gain access to target systems."
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Identify web application vulnerabilities and security flaws."
+mode_2n = "Exploit web application vulnerabilities for information gathering and control."
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic to detect malicious activity and data leakage."
+mode_2n = "Capture and analyze network traffic to extract sensitive information."
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Identify weak passwords and brute force login attempts."
+mode_2n = "Crack passwords and gain unauthorized access to systems."
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "SQLmap"
+mode_1n = "Identify SQL injection vulnerabilities and prevent database breaches."
+mode_2n = "Exploit SQL injection vulnerabilities to access and manipulate databases."
+escalation_level = "script"
+kali_package = "sqlmap"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "John the Ripper"
+mode_1n = "Audit password strength and identify weak or default passwords."
+mode_2n = "Crack password hashes to gain unauthorized access to accounts."
+escalation_level = "script"
+kali_package = "john"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Identify weak WiFi passwords and brute force access to networks"
+mode_2n = "Crack WEP/WPA/WPA2 encryption keys to gain unauthorized network access."
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Social-Engineer Toolkit (SET)"
+mode_1n = "Test employee susceptibility to social engineering attacks"
+mode_2n = "Execute phishing and pretexting attacks to harvest credentials or deploy malware."
+escalation_level = "crate"
+kali_package = "set"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+terrain_factors = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "N/A"
+cost_factors = []
+escape_route_priority = "N/A"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+[niem_mapping]
+justice_domain = "j:Cybercrime"
+intelligence_domain = "intel:CyberThreatIntelligence"
+iepd_type = "Cyber-Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Cyber Attack"
+incident_subcategory = "Vulnerability Exploitation"
+location_type = "Network Infrastructure"
+subject_role = "Attacker"
+activity_type = "Cyber Reconnaissance"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Vulnerability Scanning"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_network }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-098-000-000-A"
+relationship_type = "follows"
+unicode_op = "→"
+strength = 0.9
+description = "This phase is necessary to locate vulnerabilities to exploit in Phase 4"
+
+[[relationships]]
+target_node = "uuid-100-000-000-A"
+relationship_type = "precedes"
+unicode_op = "→"
+strength = 0.8
+description = "This phase is necessary to prepare for exploiting vulnerabilities in Phase 4"
+
+[[relationships]]
+target_node = "uuid-101-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.7
+description = "This phase is necessary to set the conditions to carry out a cyber attack in Phase 4"
+
+[[eei_priority]]
+rank = 1
+question = "What are the externally facing IPs and services?"
+collection_method = "Nmap, Shodan"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the known vulnerabilities in the systems?"
+collection_method = "Nessus, OpenVAS"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the weak or default credentials?"
+collection_method = "Hydra, Medusa, John the Ripper"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "Are there any exposed databases?"
+collection_method = "SQLmap, manual inspection"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the internal network topology and services?"
+collection_method = "Nmap, traceroute"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 6
+question = "What are the firewall rules and configurations?"
+collection_method = "Manual inspection, configuration audits"
+time_sensitivity = "low"
+
+[historical_reference]
+incidents = []
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.002 - Vulnerability Scanning"
+description = "Adversary performs vulnerability scans of the target network"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Adversary exploits a vulnerability in a public-facing application to gain initial access"
+
+[[ttps]]
+mitre_attack_id = "T1189"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = ""
+description = "Adversary compromises a website to deliver malware to unsuspecting victims"
+
+[[ttps]]
+mitre_attack_id = "T1199"
+tactic = "Initial Access"
+technique = "Trusted Relationship"
+sub_technique = ""
+description = "Adversary uses a trusted relationship to gain access to the target network"
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Defense Evasion"
+technique = "Valid Accounts"
+sub_technique = "T1078.001 - Default Accounts"
+description = "Adversary uses default accounts to gain access"
+
+[[ttps]]
+mitre_attack_id = "T1068"
+tactic = "Privilege Escalation"
+technique = "Exploitation for Privilege Escalation"
+sub_technique = ""
+description = "Adversary exploits a vulnerability to gain elevated privileges"
+
+[xsd_integration]
+playbook_template = "vulnerability_scan_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-cyber", "ctas7-enhanced-network"]
+unicode_assembly = ["→", "⚠", "🕸", "🔒"]
+lisp_expression = "(vuln-scan-task :target target-id :phase pre-exploitation :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-10T00:00:00Z"
+last_updated = "2025-01-10T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

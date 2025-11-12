@@ -1,0 +1,396 @@
+```toml
+[node_identity]
+task_id = "uuid-038-000-000-A"
+task_name = "Post-Attack Escape"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+cuid = "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+uuid = "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+hash_48 = "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+
+[capabilities]
+narrative = """
+I am the shadow in retreat. My route is planned long before the flash. I memorize every alley, every service entrance, every detour that can shake pursuers. I know the bus schedules, the subway lines, the hidden stairwells that lead to nowhere, then somewhere.
+
+I stash escape kits: burner phones, cash, disguises, maps, and a change of clothes. I rehearse the plan in my mind, visualizing every turn, every obstacle, every contingency. I listen to police scanners, anticipating their movements, their roadblocks, their blind spots.
+
+I use decoys: leaving behind false trails, discarded identities, and misleading clues. I blend into the crowd, becoming invisible, a ghost in the machine. My goal is to vanish, to disappear without a trace, to melt into the anonymity of the urban landscape. The longer it takes them to find me, the better my odds of evading capture.
+"""
+
+limitations = """
+I am vulnerable to surveillance, especially if the authorities have anticipated my escape routes. Traffic cameras, facial recognition, and mobile phone tracking can expose me. Roadblocks, checkpoints, and increased police presence can disrupt my plan.
+
+My escape kits can be discovered. My disguises can be penetrated. My knowledge of the terrain can be outdated. If I am injured, my mobility is compromised. If I am recognized, my anonymity is shattered. Every second counts; hesitation can be fatal.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [6, 48], units = "hours" }
+collection_phase = { words = "days to weeks", range = [3, 14], units = "days" }
+actionable_window = { words = "hours to days", range = [12, 72], units = "hours" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Road closures or detours",
+  "Increased police presence or roadblocks",
+  "Weather conditions (flooding, snow)",
+  "Public transportation disruptions (delays, closures)",
+  "Significant events causing crowd movement"
+]
+persistence_conditions = [
+  "Underground tunnels and sewage systems",
+  "Pre-planned safe houses or rendezvous points",
+  "Network of contacts for transportation and shelter",
+  "False documentation"
+]
+
+[cuid_mask]
+temporal = "T+0d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "Pe"
+semantic_full = "post_attack:evasion"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = false, priority = "low", description = "Difficult to proactively hunt for escape activity. Focus on pre-attack disruption." }
+detect = { enabled = true, priority = "critical", description = "Real-time monitoring of escape routes and identification of suspicious individuals." }
+disrupt = { enabled = true, priority = "high", description = "Deployment of roadblocks, checkpoints, and surveillance to impede escape." }
+disable = { enabled = true, priority = "medium", description = "Disabling transportation systems or communication networks to hinder escape." }
+dominate = { enabled = true, priority = "high", description = "Capture or neutralization of fleeing suspects." }
+
+[[indicators]]
+observable = "Sudden appearance of pre-staged escape vehicles"
+priority = "critical"
+detection_method = "CCTV, ALPR, Law Enforcement"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Use of pre-planned escape routes observed"
+priority = "critical"
+detection_method = "Patrol Observation, CCTV"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Discarded clothing or disguise materials found"
+priority = "high"
+detection_method = "Scene Investigation, Trash Can Searches"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Use of burner phones or encrypted communications"
+priority = "high"
+detection_method = "Signal Analysis, Telecom Intercept"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unusual activity in public transportation hubs"
+priority = "medium"
+detection_method = "Undercover Operations, CCTV"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Attempts to cross borders or enter secure areas"
+priority = "critical"
+detection_method = "Border Patrol, Security Checkpoints"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "GPS Trackers activating or being disabled in specific areas"
+priority = "high"
+detection_method = "GPS tracking logs, digital forensics"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Requests for Cash and false Documents"
+priority = "high"
+detection_method = "ATM usage, fake document vendors"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Loitering at the outskirts of an event"
+priority = "medium"
+detection_method = "Scene Investigation, Police Record"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Contact of previous associates"
+priority = "medium"
+detection_method = "Informants, Telecom Intercept"
+false_positive_rate = "high"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Analyzing system vulnerabilities and developing exploit mitigations"
+mode_2n = "Gaining remote access to devices for data exfiltration or control"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyzing network traffic to detect malicious activity and data breaches"
+mode_2n = "Capturing sensitive data from network communications for reconnaissance"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scanning networks to identify open ports, services, and vulnerabilities"
+mode_2n = "Mapping network topology to locate vulnerable targets"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Testing web applications for security vulnerabilities and flaws"
+mode_2n = "Exploiting web application vulnerabilities to gain unauthorized access"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Auditing and testing wireless network security"
+mode_2n = "Cracking WiFi passwords for unauthorized network access"
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "John the Ripper"
+mode_1n = "Analyzing password policies and password hashes to assess security posture"
+mode_2n = "Cracking password hashes to gain unauthorized access to user accounts"
+escalation_level = "script"
+kali_package = "john"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 1, max_minutes = 60, optimal_minutes = 5 }
+
+terrain_factors = ["urban_density", "line_of_sight", "elevation", "vegetation_cover"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "temperature"]
+operational_threshold = { visibility_km = 1.0, wind_speed_ms = 20.0 }
+impact_on_surveillance = "Poor weather reduces effectiveness of surveillance, aiding escape."
+impact_on_comms = "Heavy rain may disrupt some communications."
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -100
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["transit_station", "emergency_services", "telecom_hub"]
+proximity_threshold_m = 250
+impact_assessment = "Proximity to infrastructure can aid or hinder escape depending on planning"
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Escape"
+incident_subcategory = "Flight from Scene"
+location_type = "Public Transportation"
+subject_role = "Suspect"
+activity_type = "Post-Attack Evasion"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Evasion"
+"nc:ActivityDate" = "{ event_time }"
+"nc:Location" = "{ escape_route }"
+"j:Charge" = "18 USC 3 (Accessory After the Fact), State Penal Code: Evasion of Police"
+
+[[relationships]]
+target_node = "uuid-037-000-000-A"
+relationship_type = "follows"
+unicode_op = "→"
+strength = 0.95
+description = "Escape directly follows the attack"
+
+[[relationships]]
+target_node = "uuid-045-000-000-A"
+relationship_type = "may require"
+unicode_op = "⇢"
+strength = 0.65
+description = "May require access to stolen funds"
+
+[[relationships]]
+target_node = "uuid-050-000-000-A"
+relationship_type = "could result in"
+unicode_op = "⚠"
+strength = 0.40
+description = "Could result in capture"
+
+[[eei_priority]]
+rank = 1
+question = "What are the planned escape routes and alternate routes?"
+collection_method = "Surveillance, traffic analysis, informants"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "What vehicles or transportation methods are being used?"
+collection_method = "Surveillance, vehicle registration checks"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 3
+question = "Where are the pre-staged safe houses or rendezvous points?"
+collection_method = "Surveillance, informants"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What are the communication methods being used?"
+collection_method = "Signal intelligence, telecom intercepts"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 5
+question = "What disguises or false identities are being used?"
+collection_method = "Undercover operations, document analysis"
+time_sensitivity = "medium"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Timothy McVeigh's planned escape route and subsequent capture.",
+    source = "FBI Investigation Report"
+  },
+  {
+    name = "Assassination of Archduke Franz Ferdinand",
+    date = "1914-06-28",
+    description = "Gavrilio Princip's attempted escape and capture after the assassination.",
+    source = "Various Historical Accounts"
+  },
+  {
+    name = "9/11 Terrorist Attacks",
+    date = "2001-09-11",
+    description = "Failed escape of individuals involved in plotting and planning attacks.",
+    source = "9/11 Commission Report"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1608"
+tactic = "Evasion"
+technique = "Obfuscated Files or Information"
+sub_technique = "N/A"
+description = "Using encrypted or hidden communications."
+
+[[ttps]]
+mitre_attack_id = "T1027"
+tactic = "Evasion"
+technique = "Obfuscated Files or Information"
+sub_technique = "N/A"
+description = "Using aliases and false names."
+
+[[ttps]]
+mitre_attack_id = "T1070"
+tactic = "Evasion"
+technique = "Indicator Removal on Host"
+sub_technique = "T1070.001 - Clear Windows Event Logs"
+description = "Deleting evidence of presence/activities on devices (though not necessarily applicable in this scenario)"
+
+[[ttps]]
+mitre_attack_id = "T1112"
+tactic = "Evasion"
+technique = "Modify Registry"
+sub_technique = "N/A"
+description = "Modifying registries on devices to hide presence."
+
+[[ttps]]
+mitre_attack_id = "T1140"
+tactic = "Evasion"
+technique = "Deobfuscate/Decode Files or Information"
+sub_technique = "N/A"
+description = "Using coded messages to converse."
+
+[xsd_integration]
+playbook_template = "escape_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-geolocation"]
+unicode_assembly = ["→", "⇢", "⚠", "🏃", "📍", "🚗"]
+lisp_expression = "(escape-task :target target-id :phase post-attack :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

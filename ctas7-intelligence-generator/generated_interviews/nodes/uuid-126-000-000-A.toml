@@ -1,0 +1,426 @@
+```toml
+[node_identity]
+task_id = "uuid-126-000-000-A"
+task_name = "Task 126 - Phase 4"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "a39nB17c8Wm2Xp0L"
+cuid = "T20241115G34N84SCv90e07d356b7f98"
+uuid = "V7f37af091375e2a"
+hash_48 = "a39nB17c8Wm2Xp0LT20241115G34N84SCv90e07d356b7f98V7f37af091375e2a"
+
+[capabilities]
+narrative = """
+I am the unseen hand, the silent observer. My work begins when the target thinks they are safe.
+I specialize in gathering intelligence on emergency response protocols. I access unsecured radio frequencies,
+monitoring dispatch communications for fire, police, and ambulance services near the target location.
+
+I analyze response times under various conditions - time of day, weather, traffic. I document staging areas,
+muster points, and evacuation routes. I note the location of hydrants, emergency power generators, and
+backup communication systems. I map the underground infrastructure - water mains, gas lines,
+electrical conduits - essential knowledge for disruptive operations.
+
+I exploit weaknesses in the target's security by observing response drills. I look for patterns in
+emergency alerts and communication breakdowns. I am not interested in their daily routines, but in
+their worst days. I study chaos so others may bring it. I understand how they react when the lights go
+out, the alarms blare, and panic sets in. I am the chaos agent; they are my laboratory.
+"""
+
+limitations = """
+My activities are limited by access and technology. Encrypted radio frequencies are beyond my current
+capabilities. Accessing secure communication networks requires specialized equipment and significant risk.
+My analysis is dependent on the accuracy and availability of open-source information. Emergency response
+protocols change frequently, requiring constant monitoring and updating. I am susceptible to detection if I
+am too predictable or persistent. My reliance on observation makes me vulnerable to surveillance.
+I can only observe, not interfere.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months before", range = [90, 270], units = "days" }
+actionable_window = { words = "months", range = [3, 12], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in emergency response protocols",
+  "Upgrades to communication systems",
+  "Relocation of staging areas or muster points",
+  "Infrastructure repairs or modifications",
+  "Updates to evacuation routes"
+]
+persistence_conditions = [
+  "Physical infrastructure layout (underground utilities)",
+  "Geographic constraints (road networks, access points)",
+  "Basic principles of emergency response"
+]
+
+[cuid_mask]
+temporal = "T-{90-270}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "SC"
+semantic_full = "recon:response:protocols"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Search for anomalies in communication patterns and emergency response exercises." }
+detect = { enabled = true, priority = "medium", description = "Identify unauthorized access to emergency communication channels and infrastructure layouts." }
+disrupt = { enabled = true, priority = "low", description = "Limited disruption through misinformation campaigns regarding emergency drills." }
+disable = { enabled = true, priority = "high", description = "Disable emergency response capabilities through knowledge of response flaws." }
+dominate = { enabled = false, priority = "low", description = "Not applicable during the reconnaissance phase." }
+
+[[indicators]]
+observable = "Monitoring of emergency services radio frequencies"
+priority = "high"
+detection_method = "RF spectrum analysis, unauthorized access alerts"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Collection of emergency response plans and protocols"
+priority = "high"
+detection_method = "Document access logs, insider threat detection"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Analysis of emergency response times under various conditions"
+priority = "medium"
+detection_method = "Statistical anomaly detection, pattern analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Mapping of underground infrastructure (water, gas, electricity)"
+priority = "high"
+detection_method = "GIS data analysis, physical observation"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Surveillance of emergency response drills and exercises"
+priority = "high"
+detection_method = "Video surveillance, security guard reports"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Inquiries related to emergency power generators and backup systems"
+priority = "medium"
+detection_method = "Email monitoring, phone call analysis"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Targeted questions to staff related to emergency protocols"
+priority = "medium"
+detection_method = "Employee interviews, HR reports"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Attempts to gain access to emergency communication networks"
+priority = "critical"
+detection_method = "Intrusion detection systems, firewall logs"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Repeated visits to staging areas and muster points"
+priority = "medium"
+detection_method = "Video surveillance, license plate recognition"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Elicitation of information about the emergency contact list"
+priority = "medium"
+detection_method = "Social media scraping, phishing analysis"
+false_positive_rate = "high"
+
+[[toolchain]]
+tool = "GQRX"
+mode_1n = "Monitor radio frequencies for suspicious activity, unauthorized transmissions"
+mode_2n = "Monitor emergency frequencies to understand response communication"
+escalation_level = "microkernel"
+kali_package = "gqrx"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Kali Linux"
+mode_1n = "Analyze captured network traffic for malicious patterns or unauthorized access attempts"
+mode_2n = "Simulate emergency scenarios to test system vulnerabilities"
+escalation_level = "vm"
+kali_package = "kali-linux-default"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan the network for active systems and open ports, identifying potential vulnerabilities"
+mode_2n = "Map the target's network, identifying devices involved in emergency response communications"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Perform penetration tests to identify and exploit system vulnerabilities"
+mode_2n = "Exploit vulnerabilities in emergency communication systems"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic to identify unusual patterns and potential security breaches"
+mode_2n = "Capture and analyze emergency communication traffic for intelligence gathering"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "GIS Software (QGIS)"
+mode_1n = "Analyze geospatial data to identify infrastructure vulnerabilities."
+mode_2n = "Overlay emergency response routes onto infrastructure maps for vulnerability analysis."
+escalation_level = "crate"
+kali_package = "qgis"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater",
+  "NOAA/NGDC/DEM/GlobalBathymetry"
+]
+
+distance_range = { min_km = 0.1, max_km = 2, optimal_km = 0.5 }
+time_to_target = { min_minutes = 5, max_minutes = 30, optimal_minutes = 10 }
+
+terrain_factors = ["urban_density", "accessibility", "flood_risk", "utility_access"]
+
+[geospatial.weather]
+critical_factors = ["temperature", "wind_speed", "precipitation", "visibility"]
+operational_threshold = { visibility_km = 1.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Poor weather reduces the ability to visually monitor activity and increases the risk of detection."
+impact_on_comms = "Severe weather can disrupt communications and impact emergency response coordination."
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "congestion_cost"]
+escape_route_priority = "medium"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -80
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["VHF", "UHF", "P25", "TETRA"]
+
+[geospatial.infrastructure]
+critical_assets = ["fire_station", "police_station", "hospital", "power_grid", "water_treatment_plant"]
+proximity_threshold_m = 250
+impact_assessment = "Reconnaissance activities near emergency services infrastructure require immediate escalation due to potential disruption to services."
+
+[niem_mapping]
+justice_domain = "j:EmergencyManagement"
+intelligence_domain = "intel:ThreatAssessment"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Infrastructure Security"
+incident_subcategory = "Emergency Response Monitoring"
+location_type = "Critical Infrastructure"
+subject_role = "Observer"
+activity_type = "Pre-Attack Planning"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Surveillance of Emergency Services"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1361 (Destruction of Government Property), 18 USC 1030 (Computer Fraud and Abuse)"
+
+[[relationships]]
+target_node = "uuid-045-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.85
+description = "Information on emergency response capabilities directly enables planning for disruptive actions."
+
+[[relationships]]
+target_node = "uuid-050-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.70
+description = "Understanding response times and resource availability informs timing and logistics of potential actions."
+
+[[relationships]]
+target_node = "uuid-100-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.50
+description = "Vulnerable to changes in protocols, new technologies, or increased security measures."
+
+[[eei_priority]]
+rank = 1
+question = "What are the current emergency response protocols for various scenarios?"
+collection_method = "Direct observation, public records, social engineering"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What is the response time of emergency services under different conditions (time of day, weather)?"
+collection_method = "Timed observation, incident reports, statistical analysis"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What is the location of staging areas, muster points, and evacuation routes?"
+collection_method = "Physical reconnaissance, building plans, GIS data"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the communication networks and frequencies used by emergency services?"
+collection_method = "RF spectrum analysis, communications monitoring"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the backup systems and contingency plans in place?"
+collection_method = "Insider information, document analysis"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 6
+question = "What is the availability of resources during certain high-stress scenarios?"
+collection_method = "OSINT, social engineering"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 7
+question = "What physical layouts exist of critical utility systems such as water, power, and gas?"
+collection_method = "OSINT, Drone imagery, Publicly available plans"
+time_sensitivity = "medium"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Reconnaissance focused on security vulnerabilities and emergency response planning to maximize impact.",
+    source = "FBI Bomb Data Center Analysis"
+  },
+  {
+    name = "9/11 Attacks",
+    date = "2001-09-11",
+    description = "Extensive surveillance of emergency response and infrastructure vulnerabilities for targeting and disruption.",
+    source = "9/11 Commission Report"
+  },
+  {
+    name = "London 7/7 Bombings",
+    date = "2005-07-07",
+    description = "Analysis of response times to maximize disruption of emergency services.",
+    source = "UK Government Inquiry"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1594"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "N/A"
+description = "Gathering information about the victim's network infrastructure."
+
+[[ttps]]
+mitre_attack_id = "T1590"
+tactic = "Reconnaissance"
+technique = "Gather Victim Infrastructure Information"
+sub_technique = "T1590.002 - Physical Locations"
+description = "Collection of information of physical locations of interest."
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.001 - Scanning IP Blocks"
+description = "Scanning IP blocks for exposed emergency management systems."
+
+[[ttps]]
+mitre_attack_id = "T1591"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1591.001 - Credentials"
+description = "Gathering credentials from publicly available sources."
+
+[[ttps]]
+mitre_attack_id = "T1601"
+tactic = "Reconnaissance"
+technique = "Technical Information Gathering"
+sub_technique = "N/A"
+description = "Technical information gathering about communication networks."
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.003 - Spearphishing Link"
+description = "Sending spearphishing emails to personnel associated with emergency response."
+
+[xsd_integration]
+playbook_template = "response_recon_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-comint"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "📻"]
+lisp_expression = "(recon-task :target emergency-response :phase pre-attack :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2024-10-26T00:00:00Z"
+last_updated = "2024-10-26T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

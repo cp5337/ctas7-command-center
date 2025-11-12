@@ -1,0 +1,481 @@
+```toml
+[node_identity]
+task_id = "uuid-003-000-000-A"
+task_name = "Logistics and Resource Acquisition"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+
+sch = "y5n9R3p1K7w0L8gB"
+cuid = "T20250215G34N84RL"
+uuid = "F9a2b6d1c7e83f04"
+hash_48 = "y5n9R3p1K7w0L8gBT20250215G34N84RLF9a2b6d1c7e83f04"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+
+[capabilities]
+narrative = """
+I am the quartermaster. I locate and secure everything we need to execute the mission.
+This could mean sourcing vehicles, explosives, weapons, communications equipment, or safe houses.
+I start by identifying potential sources - legal and illegal. I exploit weaknesses in supply chains.
+I acquire funds through various means, including theft, fraud, or existing accounts.
+I establish secure communication channels with suppliers.
+I manage inventory and distribution, ensuring resources are available when and where they're needed.
+I bypass security measures, navigate customs, and procure restricted items.
+I use front companies and intermediaries to obscure the origin of resources.
+I adapt to changing circumstances and resource availability.
+I anticipate needs and proactively acquire replacements.
+
+I coordinate transportation logistics, considering delivery times, routes, and potential roadblocks.
+I establish contingency plans in case of disruptions or shortages.
+I cultivate relationships with individuals who can provide assistance or access to resources.
+I maintain detailed records of all transactions and inventory.
+I prioritize operational security above all else, minimizing the risk of detection.
+"""
+
+limitations = """
+My access to resources is constrained by available funds and contacts.
+Acquiring certain materials or equipment requires specialized knowledge and expertise.
+I am vulnerable to supply chain disruptions and law enforcement interdiction.
+My activities leave a paper trail, no matter how careful I am.
+I rely on the cooperation and reliability of my suppliers.
+My effectiveness degrades as resources are depleted or compromised.
+I am limited by the legal and regulatory environment in which I operate.
+I am vulnerable to informants and infiltrators.
+My activities attract attention from law enforcement and intelligence agencies.
+My resources are finite and must be managed carefully.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months before", range = [3, 12], units = "months" }
+actionable_window = { words = "weeks to months", range = [4, 24], units = "weeks" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in suppliers or contacts",
+  "Seizure or compromise of resources",
+  "Changes in law enforcement focus",
+  "Increased security measures",
+  "Fluctuations in resource availability"
+]
+persistence_conditions = [
+  "Established relationships with suppliers",
+  "Existing infrastructure (safe houses, storage facilities)",
+  "Access to funds",
+  "Established supply chains"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+
+[cuid_mask]
+temporal = "T-{90-365}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 25.0
+semantic = "Rl"
+semantic_full = "resource:logistics:acquisition"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Proactive search for logistical activities" }
+detect = { enabled = true, priority = "high", description = "Identify resource acquisition attempts in real-time" }
+disrupt = { enabled = true, priority = "medium", description = "Interdict or sabotage logistical operations" }
+disable = { enabled = true, priority = "high", description = "Confiscate or render useless acquired resources" }
+dominate = { enabled = false, priority = "low", description = "Not applicable for logistics phase" }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+
+[[indicators]]
+observable = "Unusual cash withdrawals or transfers"
+priority = "high"
+detection_method = "Financial institution monitoring, AML systems"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Purchase of large quantities of precursor chemicals"
+priority = "critical"
+detection_method = "Chemical supplier reporting, regulatory monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Acquisition of specialized equipment (e.g., radios, GPS devices)"
+priority = "high"
+detection_method = "Retailer monitoring, import/export controls"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Rental or purchase of vehicles under false pretenses"
+priority = "medium"
+detection_method = "Rental car company reporting, DMV records"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Storage of materials in unusual locations"
+priority = "high"
+detection_method = "Physical surveillance, informant reporting"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Increased communication with known or suspected suppliers"
+priority = "medium"
+detection_method = "SIGINT, HUMINT"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Use of front companies or shell corporations"
+priority = "high"
+detection_method = "Financial intelligence, corporate records analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Attempting to acquire restricted items (e.g., weapons, explosives)"
+priority = "critical"
+detection_method = "Law enforcement sting operations, informant reporting"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Surveillance of supply routes or storage facilities"
+priority = "high"
+detection_method = "Physical security measures, counter-surveillance"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Elicitation of sensitive information from logistics personnel"
+priority = "medium"
+detection_method = "Awareness training, reporting mechanisms"
+false_positive_rate = "high"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+
+[[toolchain]]
+tool = "Maltego"
+mode_1n = "Investigate financial transactions and identify front companies"
+mode_2n = "Map supply chains and identify potential points of compromise"
+escalation_level = "crate"
+kali_package = "maltego"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Recon-ng"
+mode_1n = "Identify exposed financial records or supplier information"
+mode_2n = "Gather intelligence on suppliers and their security measures"
+escalation_level = "script"
+kali_package = "recon-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "theHarvester"
+mode_1n = "Identify employees with access to financial or logistical systems"
+mode_2n = "Collect employee data for social engineering attacks"
+escalation_level = "script"
+kali_package = "theharvester"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Social-Engineer Toolkit (SET)"
+mode_1n = "Test employee susceptibility to phishing attacks for logistical information"
+mode_2n = "Execute phishing and pretexting attacks to gain access to accounts"
+escalation_level = "crate"
+kali_package = "set"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for suspicious communications with suppliers"
+mode_2n = "Capture credentials or sensitive information transmitted over the network"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan supplier networks for vulnerabilities"
+mode_2n = "Identify open ports or services that can be exploited"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+distance_range = { min_km = 1.0, max_km = 100, optimal_km = 10 }
+time_to_target = { min_minutes = 30, max_minutes = 360, optimal_minutes = 120 }
+
+terrain_factors = ["urban_density", "road_network", "elevation", "vegetation_cover"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "temperature"]
+operational_threshold = { visibility_km = 2.0, wind_speed_ms = 20.0 }
+impact_on_surveillance = "Adverse weather may hinder visual reconnaissance"
+impact_on_comms = "Extreme weather can disrupt communication channels"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "medium"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 10000
+signal_strength_threshold_dbm = -80
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transportation_hub", "emergency_services"]
+proximity_threshold_m = 1000
+impact_assessment = "Logistics operations near critical infrastructure triggers heightened alerts"
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Suspicious Activity"
+incident_subcategory = "Resource Acquisition"
+location_type = "Storage Facility"
+subject_role = "Suspect"
+activity_type = "Logistics Preparation"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Resource Acquisition"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ storage_facility }"
+"j:Charge" = "18 USC 371 (Conspiracy), 18 USC 2339A (Material Support)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-004-000-000-A"
+relationship_type = "requires"
+unicode_op = "→"
+strength = 0.90
+description = "Logistics is essential for operational execution"
+
+[[relationships]]
+target_node = "uuid-005-000-000-A"
+relationship_type = "supports"
+unicode_op = "⇢"
+strength = 0.80
+description = "Logistics supports operational staging and preparation"
+
+[[relationships]]
+target_node = "uuid-026-000-000-A"
+relationship_type = "mitigated_by"
+unicode_op = "🛡"
+strength = 0.70
+description = "Effective supply chain security mitigates resource acquisition"
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "What resources are needed for the operation?"
+collection_method = "Operational planning, requirements analysis"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "Who are the potential suppliers and their capabilities?"
+collection_method = "Intelligence gathering, open source research, HUMINT"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the most secure transportation routes and methods?"
+collection_method = "Traffic analysis, geospatial intelligence, HUMINT"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the vulnerabilities in the supply chain?"
+collection_method = "Security audits, threat assessments, red teaming"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the alternative sources of supply in case of disruption?"
+collection_method = "Contingency planning, network analysis"
+time_sensitivity = "low"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "IRA Arms Smuggling",
+    date = "1980-1990",
+    description = "Extensive logistics network for acquiring weapons and explosives",
+    source = "Academic Report"
+  },
+  {
+    name = "Al-Qaeda Logistics",
+    date = "2001-2011",
+    description = "Complex supply chains for supporting global operations",
+    source = "The Looming Tower"
+  },
+  {
+    name = "Hizballah Resource Acquisition",
+    date = "2006-Present",
+    description = "Acquisition of weapons, funds, and support from various sources",
+    source = "RAND Corporation Report"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1195"
+tactic = "Resource Development"
+technique = "Supply Chain Compromise"
+sub_technique = "N/A"
+description = "Compromise a supplier to gain access to resources"
+
+[[ttps]]
+mitre_attack_id = "T1588"
+tactic = "Resource Development"
+technique = "Obtain Capabilities"
+sub_technique = "T1588.001 - Obtain Access"
+description = "Acquire access to financial accounts or systems"
+
+[[ttps]]
+mitre_attack_id = "T1583"
+tactic = "Resource Development"
+technique = "Obtain Capabilities"
+sub_technique = "T1583.001 - Acquire Infrastructure"
+description = "Acquire infrastructure (e.g., servers, domains) for logistics"
+
+[[ttps]]
+mitre_attack_id = "T1584"
+tactic = "Resource Development"
+technique = "Compromise Infrastructure"
+sub_technique = "N/A"
+description = "Compromise infrastructure for logistics purposes"
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "N/A"
+description = "Use application layer protocols for covert communications with suppliers"
+
+[[ttps]]
+mitre_attack_id = "T1027"
+tactic = "Defense Evasion"
+technique = "Obfuscated Files or Information"
+sub_technique = "N/A"
+description = "Obfuscate financial transactions and records"
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "logistics_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-financial", "ctas7-enhanced-supplychain"]
+unicode_assembly = ["→", "⇢", "🛡", "📦", "🚚", "💰"]
+lisp_expression = "(logistics-task :resource resource-id :priority high :timing ASAP)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-10T00:00:00Z"
+last_updated = "2025-01-10T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

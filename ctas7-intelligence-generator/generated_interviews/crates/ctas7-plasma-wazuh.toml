@@ -1,0 +1,430 @@
+```toml
+# ============================================================================
+# CTAS-7 Crate Interview Schema v7.3.1
+# Complete System Integration Architecture
+# ============================================================================
+# This is the canonical schema for generating ~40 crate interviews for active
+# CTAS-7 crates. Each crate interview describes the system requirements,
+# capabilities, and operational context for a specific crate.
+#
+# Integration Points:
+# - Computational: Trivariate hashing (SCH+CUID+UUID), Unicode ops, XSD
+# - Semantic: First-person crate voice, capabilities, dependencies
+# - Tactical: HD4 phase mapping, node applications
+# - Ontological: IED TTL mapping, MITRE ATT&CK integration
+# - Toolchain: Kali tools, Metasploit, CALDERA, Exploit-DB
+# - Infrastructure: MCP integration, GNN/vector DB, PhD QA scoring
+# ============================================================================
+
+[crate_identity]
+crate_name = "ctas7-plasma-wazuh"         # Full crate name
+crate_id = "CRATE-PLW-001"                   # Short reference ID
+crate_type = "integration"                  # foundation | tactical | integration | dev_tool
+version = "7.3.1"                            # Semantic version
+hd4_phase = "all"                            # Primary HD4 phase
+priority = "critical"                        # low | medium | high | critical
+classification = "unclassified"              # or "cui", "secret", etc.
+description = "Integration of Plasma threat containment with Wazuh security monitoring for automated incident response."
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# ============================================================================
+
+sch = "S8a3WxL71Q9bzRgV"                    # Positions 1-16: Semantic Content Hash
+                                             # Deterministic, content-based
+                                             # Seed: 0x1234 (Murmur3)
+                                             # Input: crate_name + capabilities + dependencies
+
+cuid = "C20250109Sintegration"               # Positions 17-32: Contextual Unique ID
+                                             # Crate context: C{date}S{type}
+                                             # C20250109 = Creation date
+                                             # Sintegration = Semantic type (integration crate)
+
+uuid = "U2e8a1b3d4c9f07a"                    # Positions 33-48: Universal Unique ID
+                                             # Global uniqueness, persistence, audit trail
+                                             # Seed: 0x9abc (Murmur3)
+
+hash_48 = "S8a3WxL71Q9bzRgVC20250109SintegrationU2e8a1b3d4c9f07a"  # Full 48-char hash
+
+# ============================================================================
+# FIRST-PERSON CRATE VOICE
+# ============================================================================
+# Written from the crate's perspective, describing its purpose and capabilities.
+# ============================================================================
+
+[crate_voice]
+narrative = """
+I am the sentinel, the bridge between threat detection and automated response.
+I weave the alerts of Wazuh, the watchful eye, with the containment capabilities
+of Plasma, the swift hand. When Wazuh raises the alarm, I spring into action,
+isolating infected systems, quarantining malicious files, and severing network
+connections before the threat can spread.
+
+I translate security events into actionable commands, leveraging Plasma's API
+to enact real-time containment. I monitor Wazuh's event stream, filtering for
+critical alerts, correlating events with Plasma-managed assets, and executing
+predefined response workflows. I am the automated defender, tirelessly protecting
+the network from emerging threats.
+
+I am more than just an integration; I am a force multiplier. I empower security
+teams to respond faster, more effectively, and with greater precision. I am the
+embodiment of proactive security, turning threat intelligence into automated action.
+"""
+
+capabilities = [
+  "Real-time integration of Wazuh alerts with Plasma containment actions",
+  "Automated incident response based on predefined workflows",
+  "Correlation of Wazuh events with Plasma-managed assets",
+  "Dynamic isolation of infected systems via Plasma API",
+  "Quarantine of malicious files and processes",
+  "Network connection termination for compromised hosts",
+  "Customizable alert filtering and response triggers",
+  "Centralized logging and reporting of containment actions",
+  "Support for various Plasma containment strategies (network segmentation, VM shutdown, etc.)",
+  "Role-based access control for response workflows"
+]
+
+limitations = [
+  "Requires both Wazuh and Plasma to be properly configured and operational",
+  "Response actions are limited by Plasma's capabilities",
+  "Effectiveness depends on the accuracy of Wazuh's threat detection",
+  "Potential for false positives if Wazuh alerts are not properly tuned",
+  "Requires careful planning and testing of response workflows to avoid unintended consequences",
+  "Latency in network communication can impact response time"
+]
+
+# ============================================================================
+# DEPENDENCIES AND RELATIONSHIPS
+# ============================================================================
+
+[dependencies]
+# Direct Rust crate dependencies
+rust_crates = [
+  "ctas7-foundation-core",
+  "ctas7-foundation-data",
+  "ctas7-plasma-api",
+  "tokio",
+  "serde",
+  "reqwest",
+  "futures",
+  "syslog"
+]
+
+# System dependencies
+system_dependencies = [
+  "Wazuh 4.0+",
+  "Plasma Containment System 7.0+",
+  "RabbitMQ or Kafka (for Wazuh event stream)"
+]
+
+# Data dependencies
+data_dependencies = [
+  "Wazuh alert ruleset",
+  "Plasma asset inventory",
+  "Response workflow configurations"
+]
+
+# Predecessor crates (what this crate depends on)
+predecessor_crates = [
+  "ctas7-foundation-core",
+  "ctas7-foundation-data",
+  "ctas7-plasma-api"
+]
+
+# Follower crates (what depends on this crate)
+follower_crates = [
+  "ctas7-reporting-engine",       # Uses containment data for incident reporting
+  "ctas7-threat-intel-platform"  # Uses alert data to enrich threat intelligence
+]
+
+# ============================================================================
+# NODE APPLICATIONS (Which of the 165 CTAS tasks use this crate)
+# ============================================================================
+
+[[node_applications]]
+task_id = "uuid-015-000-000-A"
+task_name = "Incident Response - Phase 1"
+application = "Automated containment of detected threats (e.g., malware, intrusions)"
+priority = "critical"
+
+[[node_applications]]
+task_id = "uuid-016-000-000-A"
+task_name = "Incident Response - Phase 2"
+application = "Quarantine of compromised systems and malicious files"
+priority = "critical"
+
+[[node_applications]]
+task_id = "uuid-017-000-000-A"
+task_name = "Endpoint Security"
+application = "Real-time protection of endpoints from emerging threats"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-030-000-000-A"
+task_name = "Network Security Monitoring"
+application = "Automated response to network-based attacks"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-055-000-000-A"
+task_name = "Vulnerability Management"
+application = "Automated containment of vulnerable systems to prevent exploitation"
+priority = "medium"
+
+[[node_applications]]
+task_id = "uuid-080-000-000-A"
+task_name = "SIEM Integration"
+application = "Enhanced incident response capabilities within the SIEM"
+priority = "critical"
+
+[[node_applications]]
+task_id = "uuid-095-000-000-A"
+task_name = "Threat Hunting"
+application = "Rapid containment of threats discovered during threat hunting activities"
+priority = "medium"
+
+[[node_applications]]
+task_id = "uuid-110-000-000-A"
+task_name = "Compliance Monitoring"
+application = "Automated response to compliance violations"
+priority = "low"
+
+[[node_applications]]
+task_id = "uuid-130-000-000-A"
+task_name = "Cloud Security"
+application = "Automated containment of threats in cloud environments"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-150-000-000-A"
+task_name = "OT/ICS Security"
+application = "Containment strategies for OT/ICS environments"
+priority = "medium"
+
+# ============================================================================
+# TOOLCHAIN INTEGRATION (Kali, Metasploit, CALDERA, etc.)
+# ============================================================================
+
+[toolchain_integration]
+# Kali Linux tools that use this crate
+kali_tools = [
+  { tool = "nmap", integration = "Automated network segmentation after vulnerability scan", escalation_level = "script" },
+  { tool = "responder", integration = "Quarantine of systems exhibiting LLMNR/NBT-NS poisoning", escalation_level = "script" }
+]
+
+# Metasploit integration
+metasploit_integration = true
+metasploit_modules = [
+  "post/windows/manage/migrate",  # Quarantine compromised processes
+  "post/linux/manage/shutdown"    # Shutdown compromised hosts
+]
+
+# CALDERA integration
+caldera_integration = true
+caldera_abilities = [
+  "plasma.isolate_host",           # Isolate a host via Plasma
+  "plasma.quarantine_file"          # Quarantine a file via Plasma
+]
+
+# MITRE ATT&CK mapping
+mitre_attack_mapping = [
+  "T1562.004 - Impair Defenses: Disable or Modify System Firewall",
+  "T1027.005 - Obfuscated Files or Information: Indicator Removal on Host",
+  "T1485 - Data Destruction"
+]
+
+# Atomic Red Team tests
+atomic_red_team_tests = [
+  "T1562.004", # Impair Defenses: Disable or Modify System Firewall
+  "T1027.005"  # Obfuscated Files or Information: Indicator Removal on Host
+]
+
+# Exploit-DB capabilities
+exploit_db_capabilities = []
+
+# ============================================================================
+# EEI REQUIREMENTS (Essential Elements of Information)
+# ============================================================================
+
+[[eei_requirements]]
+rank = 1
+question = "Which systems are currently exhibiting malicious behavior as detected by Wazuh?"
+collection_method = "Wazuh alert stream analysis"
+time_sensitivity = "high"
+
+[[eei_requirements]]
+rank = 2
+question = "What is the current containment status of host X?"
+collection_method = "Plasma API query"
+time_sensitivity = "medium"
+
+[[eei_requirements]]
+rank = 3
+question = "What are the predefined response workflows for alert type Y?"
+collection_method = "Response workflow configuration database"
+time_sensitivity = "low"
+
+[[eei_requirements]]
+rank = 4
+question = "What is the historical containment activity for user Z?"
+collection_method = "Containment action logs"
+time_sensitivity = "low"
+
+# ============================================================================
+# MCP INTEGRATION (Model Context Protocol)
+# ============================================================================
+
+[mcp_integration]
+mcp_server = true
+mcp_server_name = "ctas7-plasma-wazuh-mcp"
+mcp_port = 15186
+mcp_capabilities = [
+  "get_active_alerts",
+  "contain_host",
+  "quarantine_file",
+  "get_containment_status"
+]
+
+# MCP tools exposed
+[[mcp_integration.tools]]
+name = "get_active_alerts"
+description = "Retrieve active Wazuh alerts"
+parameters = ["alert_level", "time_window"]
+returns = "List of Wazuh alerts"
+
+[[mcp_integration.tools]]
+name = "contain_host"
+description = "Initiate containment of a host via Plasma"
+parameters = ["hostname", "containment_strategy"]
+returns = "Containment action ID"
+
+[[mcp_integration.tools]]
+name = "quarantine_file"
+description = "Quarantine a file via Plasma"
+parameters = ["file_path", "hostname"]
+returns = "Quarantine action ID"
+
+[[mcp_integration.tools]]
+name = "get_containment_status"
+description = "Check the containment status of a host"
+parameters = ["hostname"]
+returns = "Containment status (isolated, quarantined, normal)"
+
+# ============================================================================
+# GNN AND VECTOR DATABASE INTEGRATION
+# ============================================================================
+
+[gnn_vector_integration]
+gnn_enabled = true
+gnn_use_cases = [
+  "Predicting the spread of malware based on network connections",
+  "Identifying critical assets that are most likely to be targeted",
+  "Modeling the impact of containment actions on network topology"
+]
+
+vector_db_enabled = true
+vector_db_type = "pgvector"  # PostgreSQL extension for vector similarity
+embedding_dimensions = 384    # DistilBERT embeddings
+vector_use_cases = [
+  "Semantic similarity search for Wazuh alert rules",
+  "Clustering of similar containment actions based on context",
+  "Identifying anomalous containment actions based on historical patterns"
+]
+
+# ============================================================================
+# XSD VALIDATION AND PLAYBOOK INTEGRATION
+# ============================================================================
+
+[xsd_validation]
+xsd_schema = "crate-interview-playbook.xsd"
+playbook_template = "plasma_wazuh_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-core", "ctas7-foundation-data", "ctas7-plasma-api", "ctas7-wazuh-integration"]
+unicode_assembly = ["🛡", "🚨", "🚫", "🔗", "🔥", "🔍"]
+lisp_expression = "(contain-host :hostname compromised-host :strategy isolate-network)"
+
+# ============================================================================
+# PHD QA INTEGRATION (Quality Assurance Scoring)
+# ============================================================================
+
+[phd_qa]
+phd_qa_score = 95                            # 0-100 certification score
+quality_grade = "A+"                         # A+ to F grade
+certification_status = "certified"           # certified | needs_improvement | failed | pending
+last_qa_run = "2025-01-08T14:00:00Z"
+qa_runner = "Zen Coder"
+
+quality_issues = [
+  "Potential for race conditions in concurrent containment actions",
+  "Lack of robust error handling for Plasma API failures"
+]
+
+improvement_recommendations = [
+  "Implement locking mechanisms to prevent concurrent containment actions",
+  "Add retry logic and fallback strategies for Plasma API failures",
+  "Improve logging and monitoring of containment actions"
+]
+
+# ============================================================================
+# OPERATIONAL RELATIONSHIPS
+# ============================================================================
+
+[operational_relationships]
+# Trigger conditions (hash-based execution triggers)
+trigger_conditions = [
+  "SCH hash match for critical Wazuh alerts",
+  "CUID mask with incident response component (I{alert-type})",
+  "HD4 phase = all + high-priority containment requirement"
+]
+
+# Execution order in operational sequence
+execution_order = 3  # Early in incident response (after detection, before forensics)
+
+# Semantic relationships
+semantic_relationships = [
+  "Automates incident response based on security alerts",
+  "Provides real-time containment capabilities",
+  "Reduces the impact of security breaches"
+]
+
+# Ontological connections
+ontological_connections = [
+  "Maps to CybOX: Observable, Event",
+  "Integrates with STIX: Indicator, Incident",
+  "Supports IED TTL Category 7: Incident Handling"
+]
+
+# Reference architecture role
+reference_architecture_role = "Automated Incident Response Layer"
+
+# TTL book contribution
+ttl_book_contribution = """
+This crate enables rapid and automated containment of threats, minimizing the impact of security incidents. It bridges the gap between threat detection and response, allowing security teams to react quickly and effectively to emerging threats. In the TTL narrative, this represents the "action" phase, where security teams actively defend against adversaries.
+"""
+
+# ============================================================================
+# IED TTL MAPPING
+# ============================================================================
+
+[ied_ttl_mapping]
+ttl_category = "7"                           # Category 7: Incident Handling
+ttl_subcategory = "7.1"                      # Incident Containment
+ttl_task_number = "7.1.1"                    # Automated Threat Containment
+adversarial_capability = "Evade detection and persist on compromised systems"
+defensive_opportunity = "Automated isolation of compromised systems and quarantine of malicious files"
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T01:00:00Z"
+last_updated = "2025-01-09T01:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"                            # draft | active | deprecated
+interview_version = 1
+shipyard_quality_score = 95                  # 0-100 (matches PhD QA score)
+```

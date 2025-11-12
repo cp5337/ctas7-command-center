@@ -1,0 +1,419 @@
+```toml
+[node_identity]
+task_id = "uuid-065-000-000-A"
+task_name = "Task 65 - Phase 2: Detailed Site Survey and Infrastructure Mapping"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+[sch]
+sch = "a2B7C9d1E3f5G8h0"
+
+[cuid]
+cuid = "T20250215G34S22Sk9a95e3"
+
+[uuid]
+uuid = "W1b2c3d4e5f6g7h8"
+
+hash_48 = "a2B7C9d1E3f5G8h0T20250215G34S22Sk9a95e3W1b2c3d4e5f6g7h8"
+
+[capabilities]
+narrative = """
+I delve deeper. I move beyond the easily observable. I'm after the blueprints, the wiring diagrams, the network maps.
+I recruit a janitor for floor plans, a disgruntled employee for access codes.
+I use thermal imaging to find server rooms, acoustic sensors to map internal layouts.
+
+I intercept deliveries to photograph equipment manifests. I probe HVAC systems for vulnerabilities.
+I map underground utilities: power lines, water mains, fiber optic cables.
+I use LiDAR to create 3D models of the building and surrounding terrain.
+I analyze radio frequencies for security system communication.
+
+I document emergency power sources and backup generators.
+I identify the specific makes and models of security systems, their default configurations.
+I am building a virtual twin of the target, a complete intelligence package, ready for exploitation.
+"""
+
+limitations = """
+My actions are higher risk, requiring greater resources and access.
+The more I probe, the more likely I am to be detected.
+Technical surveillance is expensive and requires specialized skills.
+My sources are unreliable and may be compromised.
+
+I am vulnerable to active defenses: honeypots, intrusion detection systems, and aggressive counter-intelligence.
+The target may plant false information to mislead me.
+My operations are time-sensitive, requiring constant updates to maintain accuracy.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months before", range = [3, 6], units = "months" }
+actionable_window = { words = "months", range = [1, 3], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Facility upgrades or renovations",
+  "Security system replacements",
+  "Employee turnover in key positions",
+  "Changes to utility infrastructure"
+]
+persistence_conditions = [
+  "Building structure and layout",
+  "Underground utility pathways",
+  "Geographic location and surrounding terrain"
+]
+
+[cuid_mask]
+temporal = "T-{90-180}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+semantic = "Sk"
+semantic_full = "recon:technical:survey"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactive search for patterns indicating advanced reconnaissance" }
+detect = { enabled = true, priority = "critical", description = "Identify advanced surveillance and mapping activities" }
+disrupt = { enabled = true, priority = "medium", description = "Employ active counter-surveillance and deception tactics" }
+disable = { enabled = false, priority = "low", description = "Not directly applicable to reconnaissance phase" }
+dominate = { enabled = false, priority = "low", description = "Not directly applicable to reconnaissance phase" }
+
+[[indicators]]
+observable = "Acquisition of building blueprints or floor plans"
+priority = "critical"
+detection_method = "Document control audits, insider threat monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Use of thermal imaging or acoustic sensors near target"
+priority = "high"
+detection_method = "Sensor network monitoring, suspicious equipment reports"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Interception of deliveries or waste manifests"
+priority = "high"
+detection_method = "Delivery tracking, waste disposal audits"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Requests for access to restricted areas under false pretenses"
+priority = "critical"
+detection_method = "Access control logs, employee interviews"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Scanning of radio frequencies near security systems"
+priority = "high"
+detection_method = "RF spectrum analysis, intrusion detection systems"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "LiDAR scanning of the facility and surrounding area"
+priority = "critical"
+detection_method = "Visual observation, LiDAR data analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Compromised employee accounts accessing sensitive documents"
+priority = "critical"
+detection_method = "SIEM alerts, user behavior analytics"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unusual interest in HVAC or utility systems"
+priority = "high"
+detection_method = "Facility maintenance logs, employee reports"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Detailed queries about emergency power systems"
+priority = "high"
+detection_method = "Employee training records, access control logs"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Attempts to social engineer sensitive information from staff"
+priority = "critical"
+detection_method = "Security awareness training, phishing simulations"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Nmap with NSE scripts"
+mode_1n = "Identify open ports and services, map network topology"
+mode_2n = "Detailed network mapping and vulnerability scanning"
+escalation_level = "microkernel"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Burp Suite Professional"
+mode_1n = "Web application vulnerability scanning and penetration testing"
+mode_2n = "Detailed web application mapping and exploitation"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Vulnerability assessment and penetration testing"
+mode_2n = "Exploitation and post-exploitation activities"
+escalation_level = "microkernel"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Network traffic analysis and packet capture"
+mode_2n = "Capture and analyze network traffic for sensitive information"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Password cracking and brute-force attacks"
+mode_2n = "Brute-force authentication attempts on critical systems"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Nikto"
+mode_1n = "Web server vulnerability scanning"
+mode_2n = "Identify web server misconfigurations and vulnerabilities"
+escalation_level = "script"
+kali_package = "nikto"
+resource_cost = "low"
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Infrastructure Information"
+sub_technique = "T1592.001 - DNS"
+description = "Gather DNS information to map network infrastructure"
+
+[[ttps]]
+mitre_attack_id = "T1590"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "T1590.002 - IP Addresses"
+description = "Identify and map public IP addresses"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Exploit vulnerabilities in public-facing applications"
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Defense Evasion"
+technique = "Valid Accounts"
+sub_technique = "T1078.001 - Default Accounts"
+description = "Use default credentials to gain access"
+
+[[ttps]]
+mitre_attack_id = "T1082"
+tactic = "Discovery"
+technique = "System Information Discovery"
+sub_technique = ""
+description = "Discover system information such as OS version"
+
+[[ttps]]
+mitre_attack_id = "T1016"
+tactic = "Discovery"
+technique = "System Network Configuration Discovery"
+sub_technique = ""
+description = "Discover network configuration information"
+
+[[eei_priority]]
+rank = 1
+question = "What are the critical network infrastructure components and their physical locations?"
+collection_method = "Physical observation, network scanning, insider information"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the specific models and configurations of security systems in place?"
+collection_method = "Physical observation, equipment manifests, vendor information"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the backup power systems and their capacity?"
+collection_method = "Physical observation, building plans, vendor information"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the locations of underground utilities and critical infrastructure connections?"
+collection_method = "Utility maps, physical observation, contractor information"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the wireless network configurations and security protocols?"
+collection_method = "Wireless network scanning, network sniffing"
+time_sensitivity = "low"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "cloud_cover"]
+operational_threshold = { visibility_km = 5.0, wind_speed_ms = 15.0 }
+impact_on_surveillance = "High visibility required for detailed visual reconnaissance"
+impact_on_comms = "Minimal"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 5000
+signal_strength_threshold_dbm = -90
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 500
+impact_assessment = "Reconnaissance near critical infrastructure triggers elevated alerts and heightened security measures"
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Suspicious Activity"
+incident_subcategory = "Detailed Site Survey"
+location_type = "Critical Infrastructure"
+subject_role = "Suspect"
+activity_type = "Advanced Pre-Operational Surveillance"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Detailed Site Survey"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 2332a (WMD), 18 USC 844 (Explosives)"
+
+[[relationships]]
+target_node = "uuid-066-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.98
+description = "Detailed site survey directly enables target vulnerability assessment"
+
+[[relationships]]
+target_node = "uuid-010-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.85
+description = "Detailed site survey informs logistics planning with precise infrastructure data"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.75
+description = "Detailed site survey is vulnerable to detection by advanced counter-surveillance measures"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Stuxnet Attack on Iranian Nuclear Program",
+    date = "2010-06-01",
+    description = "Detailed reconnaissance of the Natanz facility using insider knowledge and specialized equipment",
+    source = "https://en.wikipedia.org/wiki/Stuxnet"
+  },
+  {
+    name = "Target Data Breach",
+    date = "2013-11-27",
+    description = "Reconnaissance of HVAC systems and network infrastructure to gain access",
+    source = "https://krebsonsecurity.com/2014/01/target-hackers-broke-in-via-hvac-company/"
+  },
+  {
+    name = "Vault 7 Leaks",
+    date = "2017-03-07",
+    description = "Detailed documentation of CIA's cyber espionage tools and techniques",
+    source = "https://wikileaks.org/vault7/"
+  }
+]
+
+[xsd_integration]
+playbook_template = "detailed_site_survey_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-geolocation", "ctas7-technical-survey"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🛰"]
+lisp_expression = "(survey-task :target target-id :phase pre-operational :priority critical :method detailed)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-02-15T00:00:00Z"
+last_updated = "2025-02-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+
+distance_range = { min_km = 0.5, max_km = 50, optimal_km = 5 }
+time_to_target = { min_minutes = 15, max_minutes = 180, optimal_minutes = 45 }
+
+terrain_factors = ["urban_density", "line_of_sight", "elevation", "vegetation_cover"]
+```

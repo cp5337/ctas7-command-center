@@ -1,0 +1,452 @@
+[
+  {
+    "link_id": "ISL-000",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-01",
+    "target": "LASER-SAT-02",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-001",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-01",
+    "target": "LASER-SAT-03",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-002",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-01",
+    "target": "LASER-SAT-04",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-003",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-01",
+    "target": "LASER-SAT-05",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-004",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-01",
+    "target": "LASER-SAT-06",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-005",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-01",
+    "target": "LASER-SAT-07",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-006",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-01",
+    "target": "LASER-SAT-08",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-007",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-02",
+    "target": "LASER-SAT-03",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-008",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-02",
+    "target": "LASER-SAT-04",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-009",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-02",
+    "target": "LASER-SAT-05",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-010",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-02",
+    "target": "LASER-SAT-06",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-011",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-02",
+    "target": "LASER-SAT-07",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-012",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-02",
+    "target": "LASER-SAT-08",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-013",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-03",
+    "target": "LASER-SAT-04",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-014",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-03",
+    "target": "LASER-SAT-05",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-015",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-03",
+    "target": "LASER-SAT-06",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-016",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-03",
+    "target": "LASER-SAT-07",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-017",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-03",
+    "target": "LASER-SAT-08",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-018",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-04",
+    "target": "LASER-SAT-05",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-019",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-04",
+    "target": "LASER-SAT-06",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-020",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-04",
+    "target": "LASER-SAT-07",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-021",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-04",
+    "target": "LASER-SAT-08",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-022",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-05",
+    "target": "LASER-SAT-06",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-023",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-05",
+    "target": "LASER-SAT-07",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-024",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-05",
+    "target": "LASER-SAT-08",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-025",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-05",
+    "target": "LASER-SAT-09",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-026",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-05",
+    "target": "LASER-SAT-10",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-027",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-05",
+    "target": "LASER-SAT-11",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-028",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-05",
+    "target": "LASER-SAT-12",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-029",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-06",
+    "target": "LASER-SAT-07",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-030",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-06",
+    "target": "LASER-SAT-08",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-031",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-06",
+    "target": "LASER-SAT-09",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-032",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-06",
+    "target": "LASER-SAT-10",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-033",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-06",
+    "target": "LASER-SAT-11",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-034",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-06",
+    "target": "LASER-SAT-12",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-035",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-07",
+    "target": "LASER-SAT-08",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-036",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-07",
+    "target": "LASER-SAT-09",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-037",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-07",
+    "target": "LASER-SAT-10",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-038",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-07",
+    "target": "LASER-SAT-11",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-039",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-07",
+    "target": "LASER-SAT-12",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-040",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-08",
+    "target": "LASER-SAT-09",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-041",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-08",
+    "target": "LASER-SAT-10",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-042",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-08",
+    "target": "LASER-SAT-11",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-043",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-08",
+    "target": "LASER-SAT-12",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-044",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-09",
+    "target": "LASER-SAT-10",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-045",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-09",
+    "target": "LASER-SAT-11",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-046",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-09",
+    "target": "LASER-SAT-12",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-047",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-10",
+    "target": "LASER-SAT-11",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-048",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-10",
+    "target": "LASER-SAT-12",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  },
+  {
+    "link_id": "ISL-049",
+    "type": "inter_satellite",
+    "source": "LASER-SAT-11",
+    "target": "LASER-SAT-12",
+    "data_rate_gbps": 400,
+    "latency_ms": 26.7,
+    "status": "active"
+  }
+]

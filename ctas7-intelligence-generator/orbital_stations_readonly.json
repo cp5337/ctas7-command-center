@@ -1,0 +1,8 @@
+{
+  "timestamp": "2025-11-09T17:03:02.812256",
+  "source": "orbital_gis",
+  "readonly": true,
+  "database": "orbital_surrealdb",
+  "count": 0,
+  "stations": []
+}

@@ -1,0 +1,528 @@
+```toml
+[node_identity]
+task_id = "uuid-148-000-000-A"
+task_name = "Task 148 - Phase 4"
+classification = "unclassified"
+ttl_category = "optional"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# Full hash example: "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+# ============================================================================
+
+sch = "aB9cD3eF5gH7iJ1k"
+cuid = "T20241115G34S12SL"
+uuid = "V6f9511f3ab52e5b"
+
+hash_48 = "aB9cD3eF5gH7iJ1kT20241115G34S12SV6f9511f3ab52e5b"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+# This is the core intelligence requirement. Written from the adversary's
+# perspective, describing capabilities, methods, and intent.
+# ============================================================================
+
+[capabilities]
+narrative = """
+I am the architect of chaos. I engineer disruptions to overwhelm defenses. I stage
+accidents to clog roadways, diverting resources and creating exploitable openings. I
+sabotage infrastructure to cripple response capabilities, like power outages during
+critical operations or water contamination to sow confusion and panic.
+
+I deploy malware to disable security systems and communication networks, creating
+digital distractions while physical actions unfold. I manipulate information, planting
+false leads and rumors to misdirect law enforcement, delaying their arrival or diverting
+them to decoy locations. I am an illusionist—I create diversions so that the real
+operation remains unseen.
+
+I exploit system vulnerabilities: overflowing server rooms to cause meltdowns, tampering
+with fire suppression systems, using insider access to initiate localized emergencies.
+I amplify minor events to escalate them into major crises. I study vulnerabilities and
+then I design cascading failures—one point of failure leading to total systems collapse.
+"""
+
+limitations = """
+My success depends on meticulous planning and precise timing. Unforeseen events can
+easily unravel my carefully crafted distractions. My actions are visible, leaving
+traces—damaged infrastructure, suspicious activity around critical nodes, abnormal
+network traffic.
+
+I require significant resources to execute large-scale disruptions—manpower, equipment,
+insider access. I am vulnerable to detection by proactive monitoring and physical
+security measures. The more complex my operation, the more points of failure exist,
+increasing my risk of exposure and capture.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+# Defines the actionable window and decay curve for this intelligence type.
+# Uses "on the order of" language for human readability + numerical ranges.
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 48], units = "hours" }
+collection_phase = { words = "weeks to months", range = [4, 12], units = "weeks" }
+actionable_window = { words = "hours to days", range = [6, 72], units = "hours" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Emergency response protocols are updated",
+  "Infrastructure is repaired or reinforced",
+  "Vulnerabilities are patched",
+  "Security measures are heightened"
+]
+persistence_conditions = [
+  "Systemic weaknesses in infrastructure design",
+  "Legacy systems with known vulnerabilities",
+  "Lack of redundancy and failover mechanisms",
+  "Inadequate training and response capabilities"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+# The CUID (positions 17-32) encodes spatio-temporal + semantic + environmental
+# context using PREFIX and SUFFIX masks from CTAS 7.3 Ground Truth.
+# ============================================================================
+
+[cuid_mask]
+# Temporal context
+temporal = "T-{4-12}w"
+temporal_format = "YYYYMMDD"
+
+# Geographic context
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+
+# Semantic domain
+semantic = "Sl"
+semantic_full = "sabotage:infrastructure:localized_emergency"
+
+# PREFIX MASKS (Global Environmental Context) - Domain-Specific
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+# Domain-Specific Extensions (v7.3)
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+# SUFFIX MASKS (Local Operational Context)
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+# Priority
+priority = "high"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+# Maps this node to the 5 phases of the HD4 kill chain.
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Proactively search for patterns indicative of planned sabotage" }
+detect = { enabled = true, priority = "critical", description = "Real-time detection of anomalies and indicators of sabotage" }
+disrupt = { enabled = true, priority = "high", description = "Mitigate and contain ongoing sabotage attempts" }
+disable = { enabled = true, priority = "medium", description = "Neutralize sabotage efforts before they cause widespread damage" }
+dominate = { enabled = false, priority = "low", description = "Not applicable to immediate sabotage mitigation" }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+# Key indicators that this task is occurring. Used for detection and hunting.
+# ============================================================================
+
+[[indicators]]
+observable = "Unexplained equipment malfunctions"
+priority = "high"
+detection_method = "SCADA system logs, maintenance reports"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Abnormal network traffic patterns"
+priority = "critical"
+detection_method = "Network intrusion detection system (NIDS)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Tampering with security systems"
+priority = "high"
+detection_method = "Access control logs, CCTV review"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unexpected system outages"
+priority = "critical"
+detection_method = "System monitoring tools, outage reports"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Compromised credentials used for critical systems"
+priority = "critical"
+detection_method = "SIEM alerts, account activity monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Sudden surge in maintenance requests for critical equipment"
+priority = "medium"
+detection_method = "Help desk tickets, maintenance logs"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Anomalous sensor readings on infrastructure components"
+priority = "high"
+detection_method = "Sensor data analytics, threshold alerts"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unusual physical access attempts to restricted areas"
+priority = "high"
+detection_method = "Physical security logs, access control systems"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Exploitation of known vulnerabilities in infrastructure software"
+priority = "critical"
+detection_method = "Vulnerability scans, patch management system"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Insider threat activity: data exfiltration or suspicious communication"
+priority = "critical"
+detection_method = "User behavior analytics (UBA), data loss prevention (DLP)"
+false_positive_rate = "medium"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+# Dual-mode tool stacks: same tools, different semantic context.
+# ============================================================================
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan for vulnerabilities in systems to harden them"
+mode_2n = "Identify vulnerable systems for exploitation"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Verify patches and test intrusion detection systems"
+mode_2n = "Exploit identified vulnerabilities for system compromise"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for anomalies and potential intrusions"
+mode_2n = "Capture and analyze network traffic to gather credentials and information"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Test password strength and identify weak credentials"
+mode_2n = "Brute-force credentials for system access"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Audit wireless network security"
+mode_2n = "Crack WEP/WPA keys for wireless network access"
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Identify web application vulnerabilities"
+mode_2n = "Exploit web application vulnerabilities"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+# Location-dependent intelligence requirements and operational factors.
+# ============================================================================
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+# Distance and time constraints
+distance_range = { min_km = 0.5, max_km = 50, optimal_km = 5 }
+time_to_target = { min_minutes = 15, max_minutes = 180, optimal_minutes = 45 }
+
+# Terrain factors (affects approach, escape, line-of-sight)
+terrain_factors = ["urban_density", "line_of_sight", "elevation", "vegetation_cover"]
+
+# Weather impact (from existing weather_data table)
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "cloud_cover"]
+operational_threshold = { visibility_km = 5.0, wind_speed_ms = 15.0 }
+impact_on_surveillance = "Adverse weather conditions can hinder sabotage attempts"
+impact_on_comms = "Strong winds can interfere with wireless communications"
+
+# Traffic and routing (from pgRouting + PostGIS)
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+# COMINT (Communications Intelligence)
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 5000
+signal_strength_threshold_dbm = -90
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+# Critical infrastructure proximity
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 500
+impact_assessment = "Sabotage of infrastructure in close proximity to critical assets can have severe consequences"
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+# Maps CTAS ontology to NIEM IEPDs for law enforcement interoperability.
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+# N-DEx field mapping
+[niem_mapping.ndex_fields]
+incident_category = "Sabotage"
+incident_subcategory = "Infrastructure Disruption"
+location_type = "Critical Infrastructure"
+subject_role = "Suspect"
+activity_type = "Deliberate Damage"
+
+# NIEM core elements
+[niem_mapping.niem_core]
+"nc:Activity" = "Sabotage"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1361 (Destruction of Government Property), 18 USC 2332b (Terrorism)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+# Defines how this node connects to other nodes in the 165-task graph.
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-050-000-000-A"
+relationship_type = "precedes"
+unicode_op = "→"
+strength = 0.85
+description = "Sabotage operations often precede a larger attack"
+
+[[relationships]]
+target_node = "uuid-075-000-000-A"
+relationship_type = "complements"
+unicode_op = "⇢"
+strength = 0.70
+description = "Sabotage complements other attack vectors like cyberattacks or physical assaults"
+
+[[relationships]]
+target_node = "uuid-100-000-000-A"
+relationship_type = "requires"
+unicode_op = "⇚"
+strength = 0.65
+description = "Sabotage requires detailed knowledge of target infrastructure"
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+# Ranked intelligence requirements for this task.
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "What are the vulnerabilities of critical infrastructure?"
+collection_method = "Vulnerability scans, physical inspections, insider information"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the emergency response plans and capabilities?"
+collection_method = "Document analysis, exercises, interviews with personnel"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the failover mechanisms and redundancies in place?"
+collection_method = "Network diagrams, system documentation, physical inspection"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What is the layout of the facilities and control systems?"
+collection_method = "Building plans, schematics, physical reconnaissance"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "Who has access to critical systems and facilities?"
+collection_method = "Access control logs, employee records, social engineering"
+time_sensitivity = "low"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+# Links to actual incidents where this task was observed.
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "Maroochy Water Breach",
+    date = "2000-03-01",
+    description = "Disgruntled employee used radio transmitter to release sewage into public parks and rivers.",
+    source = "https://en.wikipedia.org/wiki/Maroochy_shire_sewage_spill"
+  },
+  {
+    name = "Operation Orchard",
+    date = "2007-09-06",
+    description = "Israel bombed a Syrian nuclear reactor to prevent the proliferation of nuclear weapons.",
+    source = "https://en.wikipedia.org/wiki/Operation_Orchard"
+  },
+  {
+    name = "North Korean Cyberattacks on South Korea",
+    date = "2009-07-07",
+    description = "A series of coordinated cyberattacks targeted websites in South Korea and the United States.",
+    source = "https://en.wikipedia.org/wiki/July_2009_cyberattacks"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+# MITRE ATT&CK mapping for cyber TTPs (where applicable).
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1485"
+tactic = "Defense Evasion"
+technique = "Data Destruction"
+sub_technique = "N/A"
+description = "Destroy or corrupt data to disrupt operations"
+
+[[ttps]]
+mitre_attack_id = "T1499"
+tactic = "Resource Hijacking"
+technique = "Resource Exhaustion"
+sub_technique = "N/A"
+description = "Overload systems to cause denial-of-service"
+
+[[ttps]]
+mitre_attack_id = "T1497"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = "N/A"
+description = "Exploit public-facing applications to gain initial access"
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "N/A"
+description = "Use phishing emails to deliver malicious payloads"
+
+[[ttps]]
+mitre_attack_id = "T1550"
+tactic = "Credential Access"
+technique = "Use Alternate Authentication Material"
+sub_technique = "T1550.004"
+description = "Use stolen or forged certificates for authentication"
+
+[[ttps]]
+mitre_attack_id = "T1537"
+tactic = "Persistence"
+technique = "Boot or Logon Autostart Execution"
+sub_technique = "T1547.001"
+description = "Establish persistence through boot or logon autostart mechanisms"
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+# Links this node to XSD playbooks for executable document generation.
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "sabotage_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-cyber"]
+unicode_assembly = ["→", "⇢", "⇚", "💣", "🔥", "⚠️"]
+lisp_expression = "(sabotage-task :target target-id :phase disruption :priority critical)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2024-11-15T00:00:00Z"
+last_updated = "2024-11-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

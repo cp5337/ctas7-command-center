@@ -1,0 +1,503 @@
+```toml
+[node_identity]
+task_id = "uuid-142-000-000-A"
+task_name = "Task 142 - Phase 4"
+classification = "unclassified"
+ttl_category = "optional"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# Full hash example: "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+# ============================================================================
+
+sch = "aBCdEfGhIjKlMnOp"
+cuid = "T20241215G34N85Sp"
+uuid = "Q7rS1W9uX5yZ0a2b"
+
+hash_48 = "aBCdEfGhIjKlMnOpT20241215G34N85SpQ7rS1W9uX5yZ0a2b"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+# This is the core intelligence requirement. Written from the adversary's
+# perspective, describing capabilities, methods, and intent.
+# ============================================================================
+
+[capabilities]
+narrative = """
+I am the shadow that walks unnoticed. My purpose is to identify vulnerabilities in the physical and cyber infrastructure surrounding the target, specifically focusing on network access. I begin by mapping the facility's exterior, noting all visible network drops, antenna locations, and potential points of entry for cabling. I then move to the interior, seeking out unsecured network closets, server rooms, and publicly accessible areas with network connectivity.
+
+My methods involve both covert observation and technical probing. I might pose as a maintenance worker or delivery driver to gain access to restricted areas, or I might use specialized tools to scan for open ports and wireless networks. I pay close attention to employee behavior, looking for lax security practices or careless handling of network credentials.
+
+My ultimate goal is to identify a weakness that can be exploited to gain unauthorized access to the target's network. This could be anything from an unlocked network port to a poorly secured wireless access point. Once I find that weakness, I will document it thoroughly and pass it on to my comrades for exploitation.
+"""
+
+limitations = """
+I am limited by my reliance on observation and readily available tools. Sophisticated security measures, such as multi-factor authentication and network segmentation, can significantly hinder my progress. I am also vulnerable to detection by security personnel and network monitoring systems.
+
+The more advanced the security posture, the greater the risk of detection. Deep packet inspection and intrusion detection systems can identify my scanning activities, while physical security measures can limit my access to critical areas. Insider threat programs and employee awareness training can also make it more difficult for me to blend in and gather information undetected. My time is also limited, the longer I am in the area the more likely I am to be detected.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+# Defines the actionable window and decay curve for this intelligence type.
+# Uses "on the order of" language for human readability + numerical ranges.
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months before", range = [30, 90], units = "days" }
+actionable_window = { words = "months", range = [30, 60], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Network upgrades and security patches",
+  "Physical security enhancements (e.g., locked network ports)",
+  "Employee security awareness training",
+  "Changes in network infrastructure (e.g., new wireless access points)"
+]
+persistence_conditions = [
+  "Underlying infrastructure (e.g., cable routes, building layout)",
+  "Legacy systems and outdated security protocols",
+  "Lack of security awareness among employees"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+# The CUID (positions 17-32) encodes spatio-temporal + semantic + environmental
+# context using PREFIX and SUFFIX masks from CTAS 7.3 Ground Truth.
+# ============================================================================
+
+[cuid_mask]
+# Temporal context
+temporal = "T-{30-90}d"
+temporal_format = "YYYYMMDD"
+
+# Geographic context
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+
+# Semantic domain
+semantic = "Sp"
+semantic_full = "recon:network:physical"
+
+# PREFIX MASKS (Global Environmental Context) - Domain-Specific
+[cuid_mask.prefix]
+# Universal masks (all domains)
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+# Domain-Specific Extensions (v7.3)
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+# SUFFIX MASKS (Local Operational Context)
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+# Priority
+priority = "medium"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+# Maps this node to the 5 phases of the HD4 kill chain.
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Search for patterns of physical reconnaissance related to network access" }
+detect = { enabled = true, priority = "high", description = "Identify unauthorized physical probing of network infrastructure" }
+disrupt = { enabled = true, priority = "medium", description = "Enhance physical security to deter network reconnaissance" }
+disable = { enabled = false, priority = "low", description = "Not directly applicable" }
+dominate = { enabled = false, priority = "low", description = "Not directly applicable" }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+# Key indicators that this task is occurring. Used for detection and hunting.
+# ============================================================================
+
+[[indicators]]
+observable = "Unexplained presence near network closets or server rooms"
+priority = "high"
+detection_method = "Security camera footage, access logs"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Scanning of network ports from unauthorized devices"
+priority = "critical"
+detection_method = "Intrusion Detection System (IDS), Security Information and Event Management (SIEM)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Attempts to access wireless networks without proper credentials"
+priority = "high"
+detection_method = "Wireless Intrusion Detection System (WIDS)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unusual interest in network cabling and infrastructure"
+priority = "medium"
+detection_method = "Security guard reports, employee observations"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Posing as a maintenance worker or vendor to gain access to restricted areas"
+priority = "high"
+detection_method = "Background checks, verification procedures"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Discovery of rogue network devices plugged into open ports"
+priority = "critical"
+detection_method = "Network scanning tools, physical inspection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Analysis of external network drop locations"
+priority = "medium"
+detection_method = "Review of security camera footage"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unauthorized wifi sniffing"
+priority = "high"
+detection_method = "Wireless Intrusion Detection System"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Repeated visits by unknown personnel to building telecom rooms"
+priority = "high"
+detection_method = "Security logs"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Bluetooth scanning in the building vicinity"
+priority = "medium"
+detection_method = "Logs and reports"
+false_positive_rate = "medium"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+# Dual-mode tool stacks: same tools, different semantic context.
+# ============================================================================
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan network for open ports and vulnerabilities"
+mode_2n = "Identify potential entry points for network exploitation"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Monitor network traffic for suspicious activity"
+mode_2n = "Capture network traffic to analyze for sensitive information"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Audit wireless network security"
+mode_2n = "Crack wireless network passwords for unauthorized access"
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Test for known vulnerabilities in network devices"
+mode_2n = "Exploit vulnerabilities to gain unauthorized access"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Recon-ng"
+mode_1n = "Identify externally facing infrastructure and vulnerabilities"
+mode_2n = "Map out potential network entry points"
+escalation_level = "script"
+kali_package = "recon-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Bluetoothctl"
+mode_1n = "Detect unauthorized bluetooth signals"
+mode_2n = "Identify connections with bluetooth"
+escalation_level = "script"
+kali_package = "bluetoothctl"
+resource_cost = "low"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+# Location-dependent intelligence requirements and operational factors.
+# ============================================================================
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+# Distance and time constraints
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+# Terrain factors (affects approach, escape, line-of-sight)
+terrain_factors = ["urban_density", "line_of_sight", "elevation", "building_density"]
+
+# Weather impact (from existing weather_data table)
+[geospatial.weather]
+critical_factors = ["precipitation", "wind_speed", "temperature"]
+operational_threshold = { visibility_km = 1.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Rain and high winds may hamper external observations"
+impact_on_comms = "May affect signal quality if wireless is involved"
+
+# Traffic and routing (from pgRouting + PostGIS)
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "medium"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+# COMINT (Communications Intelligence)
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -80
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+# Critical infrastructure proximity
+[geospatial.infrastructure]
+critical_assets = ["telecom_hub", "power_grid", "water_supply"]
+proximity_threshold_m = 200
+impact_assessment = "Proximity to telecom hubs can provide network vantage points"
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+# Maps CTAS ontology to NIEM IEPDs for law enforcement interoperability.
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+# N-DEx field mapping
+[niem_mapping.ndex_fields]
+incident_category = "Suspicious Activity"
+incident_subcategory = "Network Reconnaissance"
+location_type = "Commercial Facility"
+subject_role = "Suspect"
+activity_type = "Pre-Attack Planning"
+
+# NIEM core elements
+[niem_mapping.niem_core]
+"nc:Activity" = "Physical network probing"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+# Defines how this node connects to other nodes in the 165-task graph.
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-004-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.80
+description = "Physical network reconnaissance enables network penetration"
+
+[[relationships]]
+target_node = "uuid-015-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.60
+description = "Provides key knowledge about network access points"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.50
+description = "Vulnerable to physical security enhancements"
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+# Ranked intelligence requirements for this task.
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "What are the locations of accessible network ports and cable runs?"
+collection_method = "Physical observation, inspection of building plans"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the security protocols and configurations of wireless networks?"
+collection_method = "Wireless network scanning and analysis"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What types of devices are connected to the network?"
+collection_method = "Network scanning, device fingerprinting"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What is the layout of the server rooms and data centers?"
+collection_method = "Physical observation, insider information"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "Is there an intrusion detection or prevention system running?"
+collection_method = "Network scanning, observation"
+time_sensitivity = "low"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+# Links to actual incidents where this task was observed.
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "Target Data Breach",
+    date = "2013-11-27",
+    description = "Compromised network through HVAC vendor physical access",
+    source = "https://en.wikipedia.org/wiki/2013_Target_data_breach"
+  },
+  {
+    name = "Stuxnet Worm",
+    date = "2010-06-01",
+    description = "Physical access to air-gapped network for infection",
+    source = "https://en.wikipedia.org/wiki/Stuxnet"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+# MITRE ATT&CK mapping for cyber TTPs (where applicable).
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.002 - Vulnerability Scanning"
+description = "Scanning for known vulnerabilities on the network."
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.001 - Credentials"
+description = "Collecting employee usernames and passwords."
+
+[[ttps]]
+mitre_attack_id = "T1083"
+tactic = "Discovery"
+technique = "File and Directory Discovery"
+description = "Find sensitive files through discovery of file locations"
+
+[[ttps]]
+mitre_attack_id = "T1016"
+tactic = "Discovery"
+technique = "System Network Configuration Discovery"
+description = "Discover network configuration information"
+
+[[ttps]]
+mitre_attack_id = "T1018"
+tactic = "Discovery"
+technique = "Remote System Discovery"
+description = "Discover remote system and services"
+
+[[ttps]]
+mitre_attack_id = "T1591"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "T1590.007 Hardware"
+description = "Discover hardware types on the network"
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+# Links this node to XSD playbooks for executable document generation.
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "network_recon_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-geolocation"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "📡"]
+lisp_expression = "(network-recon :target target-id :phase pre-operational :priority high)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Bard"
+created_at = "2024-11-05T00:00:00Z"
+last_updated = "2024-11-05T00:00:00Z"
+reviewed_by = "Bard"
+status = "active"
+```

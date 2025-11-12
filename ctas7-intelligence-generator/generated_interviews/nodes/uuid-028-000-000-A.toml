@@ -1,0 +1,449 @@
+```toml
+[node_identity]
+task_id = "uuid-028-000-000-A"
+task_name = "IED Testing"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+[sch]
+sch = "Ve8L1n3a9yS2zW6T"
+
+[cuid]
+cuid = "T20241115G34S82SnWe8A1803"
+
+[uuid]
+uuid = "R7b931da82cf5049"
+
+hash_48 = "Ve8L1n3a9yS2zW6TT20241115G34S82SnWe8A1803R7b931da82cf5049"
+
+[capabilities]
+narrative = """
+I am the saboteur's apprentice, tasked with validating the IED's functionality.
+I select remote locations – abandoned warehouses, construction sites, isolated roads –
+where the risks of premature detonation or detection are minimized.
+
+I meticulously prepare the testing environment, ensuring proper ventilation and
+eliminating potential ignition sources. I rig the IED with inert components first,
+conducting dry runs to verify the triggering mechanism and timing.
+
+Once satisfied, I replace the inert elements with the actual explosive charge,
+handling it with extreme care. I remotely trigger the device, observing the
+explosion's size, pattern, and effects. I record everything, noting any
+deviations from expected behavior.
+
+I analyze the blast radius, fragmentation pattern, and structural damage. I
+check the IED's components for malfunctions or design flaws. My goal is to
+refine the device, making it deadlier and more reliable. I must ensure our IED
+is ready for operational deployment.
+"""
+
+limitations = """
+My biggest constraint is avoiding detection. Any explosion, no matter how
+small, attracts attention. Law enforcement, emergency services, and curious
+bystanders are all potential threats. I must choose locations far from prying
+eyes, and I must act quickly and decisively.
+
+I am also limited by the availability of explosive materials and triggering
+devices. These are tightly controlled, and acquiring them without raising
+suspicion is difficult. My expertise is limited; more complex IEDs require
+specialized knowledge I don't possess. I am at risk of accidental detonation.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 48], units = "hours" }
+collection_phase = { words = "days to weeks", range = [3, 14], units = "days" }
+actionable_window = { words = "hours to days", range = [6, 72], units = "hours" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Law enforcement patrols increase in area",
+  "Public reports of suspicious activity",
+  "Availability of specific explosives changes",
+  "Weather conditions change (affects test results)"
+]
+persistence_conditions = [
+  "Explosive material handling procedures",
+  "IED design flaws remain uncorrected",
+  "Availability of remote testing locations"
+]
+
+[cuid_mask]
+temporal = "T-{3-14}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "Sn"
+semantic_full = "IED:testing:validation"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = false, priority = "low", description = "N/A" }
+detect = { enabled = true, priority = "high", description = "Detecting explosive residue, blast effects" }
+disrupt = { enabled = true, priority = "medium", description = "Interdicting precursor chemicals, disrupting supply chains" }
+disable = { enabled = true, priority = "critical", description = "Rendering IED components inert" }
+dominate = { enabled = false, priority = "low", description = "N/A" }
+
+[[indicators]]
+observable = "Unexplained explosions or blasts in remote areas"
+priority = "critical"
+detection_method = "Seismic sensors, acoustic sensors, satellite imagery"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Acquisition of IED precursor chemicals"
+priority = "critical"
+detection_method = "Suspicious transaction reports, supply chain monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Increased online searches for explosive materials"
+priority = "medium"
+detection_method = "Internet traffic analysis, search engine keyword monitoring"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Theft of detonators or blasting caps"
+priority = "critical"
+detection_method = "Inventory discrepancies, security breach reports"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Purchase of large quantities of batteries or electronic components"
+priority = "medium"
+detection_method = "Retail monitoring, supply chain analysis"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Suspicious activity around construction sites or abandoned buildings"
+priority = "high"
+detection_method = "Community reporting, security guard patrols"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Storage of chemicals and electronic equipment in unusual locations"
+priority = "high"
+detection_method = "Physical surveillance, search warrants"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Requests for information on improvised explosive devices or bomb-making"
+priority = "high"
+detection_method = "Law enforcement investigations, security intelligence"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unusual patterns of travel or communications"
+priority = "medium"
+detection_method = "Surveillance, intelligence analysis"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Possession of bomb-making manuals or guides"
+priority = "high"
+detection_method = "Search warrants, security intelligence"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Kali Linux"
+mode_1n = "Analyzing network vulnerabilities to prevent remote triggering of IEDs."
+mode_2n = "Programming microcontrollers to control the IED detonation remotely."
+escalation_level = "microkernel"
+kali_package = "metasploit"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Conducting penetration testing to identify vulnerabilities in security systems designed to detect IEDs."
+mode_2n = "Exploiting vulnerabilities to remotely trigger IEDs or bypass security systems."
+escalation_level = "framework"
+kali_package = "metasploit"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Monitoring network traffic to detect unusual signals indicating remote triggering attempts."
+mode_2n = "Sniffing network traffic to capture sensitive data or control signals for IED activation."
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Volatility"
+mode_1n = "Analyzing system memory to identify malware or rogue processes involved in IED control."
+mode_2n = "Extracting encryption keys or other sensitive data from system memory for IED operation."
+escalation_level = "crate"
+kali_package = "volatility"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Autopsy"
+mode_1n = "Conducting digital forensics on suspected devices to uncover evidence of IED involvement."
+mode_2n = "Recovering deleted files or hidden data related to IED construction or deployment."
+escalation_level = "crate"
+kali_package = "autopsy"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Ghidra"
+mode_1n = "Reverse-engineering malware used in IED attacks to understand functionality and behavior."
+mode_2n = "Modifying firmware to bypass security features or add malicious functionality to IED components."
+escalation_level = "crate"
+kali_package = "ghidra"
+resource_cost = "high"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+terrain_factors = ["urban_density", "line_of_sight", "elevation", "vegetation_cover"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "temperature"]
+operational_threshold = { visibility_km = 2.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Adverse weather conditions impede test visibility"
+impact_on_comms = "Heavy rain can disrupt remote triggering signals"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -80
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = ["N/A"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 100
+impact_assessment = "Testing near critical infrastructure attracts immediate law enforcement response"
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:TerroristActivity"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Terrorism"
+incident_subcategory = "Explosives Offense"
+location_type = "Remote Area"
+subject_role = "Suspect"
+activity_type = "IED Testing"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "IED Testing"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ test_location }"
+"j:Charge" = "18 USC 2332a (WMD), 18 USC 844 (Explosives)"
+
+[[relationships]]
+target_node = "uuid-029-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.80
+description = "Successful IED testing enables operational deployment"
+
+[[relationships]]
+target_node = "uuid-030-000-000-A"
+relationship_type = "requires"
+unicode_op = "→"
+strength = 0.70
+description = "IED testing requires explosive material procurement"
+
+[[relationships]]
+target_node = "uuid-027-000-000-A"
+relationship_type = "precedes"
+unicode_op = "⇢"
+strength = 0.60
+description = "IED component fabrication precedes testing."
+
+[[relationships]]
+target_node = "uuid-031-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.50
+description = "Testing is vulnerable to law enforcement surveillance."
+
+[[eei_priority]]
+rank = 1
+question = "What is the blast radius of the IED design?"
+collection_method = "Physical measurement, video analysis, computer simulation"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "How reliable is the triggering mechanism?"
+collection_method = "Repeated testing, component stress testing"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What is the effective range of the remote trigger?"
+collection_method = "Signal strength measurement, field testing"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What type of explosives are best suited for this IED design?"
+collection_method = "Chemical analysis, explosive testing"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What is the impact on surrounding infrastructure?"
+collection_method = "Damage assessment, structural analysis"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 6
+question = "What are the best remote locations to test IED?"
+collection_method = "Scouting, geospatial analysis"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 7
+question = "What is the potential for collateral damage?"
+collection_method = "Risk assessment"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 8
+question = "What are the environmental effects?"
+collection_method = "Environmental testing"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 9
+question = "How can the IED be concealed?"
+collection_method = "Physical testing"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 10
+question = "How can the IED be deployed without detection?"
+collection_method = "Testing of deployment methods"
+time_sensitivity = "high"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Extensive testing of the ANFO bomb design prior to deployment",
+    source = "https://www.fbi.gov/history/famous-cases/oklahoma-city-bombing"
+  },
+  {
+    name = "Madrid Train Bombings",
+    date = "2004-03-11",
+    description = "Testing of explosive mixtures and detonator designs prior to the attacks",
+    source = "https://www.dni.gov/iwod/documents/408/425/spain_train_bombings.pdf"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1588"
+tactic = "Resource Development"
+technique = "Obtain Capabilities"
+sub_technique = "T1588.002 - Tool"
+description = "Acquire bomb making tools and components"
+
+[[ttps]]
+mitre_attack_id = "T1583"
+tactic = "Reconnaissance"
+technique = "Obtain Capabilities"
+sub_technique = "T1583.006 - Tool"
+description = "Acquire infrastructure (remote detonation triggers)"
+
+[[ttps]]
+mitre_attack_id = "T1550"
+tactic = "Persistence"
+technique = "Use Alternate Authentication Material"
+sub_technique = "N/A"
+description = "Store information on how the trigger mechanism can be used again"
+
+[[ttps]]
+mitre_attack_id = "T1068"
+tactic = "Privilege Escalation"
+technique = "Exploitation for Privilege Escalation"
+sub_technique = "N/A"
+description = "Use explosive materials and IEDs to inflict destruction, and get greater attention"
+
+[[ttps]]
+mitre_attack_id = "T1496"
+tactic = "Impact"
+technique = "Resource Hijacking"
+sub_technique = "N/A"
+description = "Deploying IED's at locations to disrupt infrastructure (power grid etc.)"
+
+[xsd_integration]
+playbook_template = "ied_testing_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-explosives", "ctas7-ied"]
+unicode_assembly = ["→", "⇢", "⚠", "💥", "🧪", "🚧"]
+lisp_expression = "(ied-test :ied-type ied-type :phase test-phase :location test-location)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2024-11-15T00:00:00Z"
+last_updated = "2024-11-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

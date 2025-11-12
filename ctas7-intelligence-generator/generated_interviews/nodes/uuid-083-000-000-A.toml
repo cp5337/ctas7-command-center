@@ -1,0 +1,537 @@
+```toml
+[node_identity]
+task_id = "uuid-083-000-000-A"
+task_name = "Task 83 - Phase 3"
+classification = "unclassified"
+ttl_category = "desirable"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# Full hash example: "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+# ============================================================================
+
+sch = "Zp7wR4t9s1X3vQ6a"
+cuid = "T20250315G34N85SAu4nL2F3"
+uuid = "G7j1K9p2Q5r6s3T8"
+hash_48 = "Zp7wR4t9s1X3vQ6aT20250315G34N85SAu4nL2F3G7j1K9p2Q5r6s3T8"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+# This is the core intelligence requirement. Written from the adversary's
+# perspective, describing capabilities, methods, and intent.
+# ============================================================================
+
+[capabilities]
+narrative = """
+I am the unseen architect of chaos. In Phase 3, I manipulate access control systems –
+bypassing biometric readers with forged fingerprints, cloning RFID badges, exploiting
+weaknesses in physical security. I observe delivery routes, insider access patterns,
+and vulnerabilities to enable undetected infiltration. I bribe disgruntled employees,
+cultivate relationships with unwitting accomplices, and strategically create blind spots.
+My aim is to compromise the system at its weakest point, creating a covert pathway
+for future operations.
+
+I employ advanced techniques for signal interception, extracting encryption keys
+from wireless communications, and disabling alarm systems remotely. I scrutinize
+access logs, identify anomalies, and camouflage my actions to avoid detection.
+I exploit zero-day vulnerabilities in security software, install backdoors, and
+maintain persistent access to critical infrastructure. I am the puppet master –
+pulling the strings from the shadows, orchestrating a symphony of destruction.
+"""
+
+limitations = """
+My success hinges on meticulous planning and precise execution. Countermeasures,
+such as enhanced surveillance, stringent access controls, and advanced threat
+detection systems, can expose my presence and disrupt my operations. I must
+avoid detection by security personnel, vigilant employees, and sophisticated
+monitoring systems. Moreover, my technical expertise and available resources
+must be sufficient to overcome the target's security architecture.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+# Defines the actionable window and decay curve for this intelligence type.
+# Uses "on the order of" language for human readability + numerical ranges.
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months to years", range = [6, 24], units = "months" }
+actionable_window = { words = "months to years", range = [3, 12], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Security upgrades or system patches",
+  "Employee turnover and access control changes",
+  "Implementation of advanced threat detection systems",
+  "Enhanced physical security measures"
+]
+persistence_conditions = [
+  "Core infrastructure vulnerabilities",
+  "Legacy systems with known weaknesses",
+  "Human factors (insider threat, social engineering susceptibility)"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+# The CUID (positions 17-32) encodes spatio-temporal + semantic + environmental
+# context using PREFIX and SUFFIX masks from CTAS 7.3 Ground Truth.
+# ============================================================================
+
+[cuid_mask]
+# Temporal context
+temporal = "T-{6-24}m"
+temporal_format = "YYYYMMDD"
+
+# Geographic context
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+
+# Semantic domain
+semantic = "Au"
+semantic_full = "access:control:manipulation"
+
+# PREFIX MASKS (Global Environmental Context) - Domain-Specific
+[cuid_mask.prefix]
+# Universal masks (all domains)
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+# Domain-Specific Extensions (v7.3)
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+# SUFFIX MASKS (Local Operational Context)
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+# Priority
+priority = "critical"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+# Maps this node to the 5 phases of the HD4 kill chain.
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Search for anomalies in access logs and system behavior" }
+detect = { enabled = true, priority = "critical", description = "Real-time detection of unauthorized access attempts" }
+disrupt = { enabled = true, priority = "high", description = "Countermeasures to prevent access control manipulation" }
+disable = { enabled = true, priority = "medium", description = "Disable compromised access systems" }
+dominate = { enabled = false, priority = "low", description = "Not applicable in this phase" }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+# Key indicators that this task is occurring. Used for detection and hunting.
+# ============================================================================
+
+[[indicators]]
+observable = "Cloned RFID badges"
+priority = "critical"
+detection_method = "Access control audits, anomaly detection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Compromised biometric readers"
+priority = "critical"
+detection_method = "Forensic analysis, system logs"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unauthorized physical access"
+priority = "high"
+detection_method = "Security camera footage, alarm triggers"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Anomalous access logs"
+priority = "high"
+detection_method = "SIEM alerts, log analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Suspicious network traffic"
+priority = "medium"
+detection_method = "IDS/IPS, network monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Signal interception"
+priority = "medium"
+detection_method = "RF spectrum analysis, signal monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Exploitation of software vulnerabilities"
+priority = "critical"
+detection_method = "Vulnerability scans, intrusion detection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Presence of backdoors"
+priority = "critical"
+detection_method = "File integrity monitoring, rootkit detection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Insider threat indicators"
+priority = "high"
+detection_method = "Behavioral analysis, HR reports"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Communication with known malicious IPs"
+priority = "critical"
+detection_method = "Firewall logs, threat intelligence feeds"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unusual system resource usage"
+priority = "medium"
+detection_method = "Performance monitoring, system logs"
+false_positive_rate = "medium"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+# Dual-mode tool stacks: same tools, different semantic context.
+# ============================================================================
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Identify and patch vulnerabilities in access control systems"
+mode_2n = "Exploit vulnerabilities to gain unauthorized access"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan for open ports and services on internal networks"
+mode_2n = "Map network infrastructure for exploitation"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Conduct password audits on network services"
+mode_2n = "Brute-force passwords to gain access"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "RFID Cloning Tools"
+mode_1n = "Test RFID badge security"
+mode_2n = "Clone RFID badges"
+escalation_level = "microkernel"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for suspicious patterns"
+mode_2n = "Capture and analyze network packets for sensitive information"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Audit wireless network security"
+mode_2n = "Crack WEP/WPA keys for unauthorized access"
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Mimikatz"
+mode_1n = "Identify and mitigate credential theft vulnerabilities"
+mode_2n = "Extract credentials from memory"
+escalation_level = "crate"
+kali_package = "N/A"
+resource_cost = "high"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+# Location-dependent intelligence requirements and operational factors.
+# ============================================================================
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+# Distance and time constraints
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+# Terrain factors (affects approach, escape, line-of-sight)
+terrain_factors = ["urban_density", "line_of_sight", "elevation", "vegetation_cover"]
+
+# Weather impact (from existing weather_data table)
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "cloud_cover"]
+operational_threshold = { visibility_km = 1.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Poor weather reduces visual surveillance effectiveness"
+impact_on_comms = "Heavy rain/snow can impact wireless signal strength"
+
+# Traffic and routing (from pgRouting + PostGIS)
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+# COMINT (Communications Intelligence)
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -80
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+# Critical infrastructure proximity
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 250
+impact_assessment = "Compromise of access controls near critical infrastructure has severe consequences"
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+# Maps CTAS ontology to NIEM IEPDs for law enforcement interoperability.
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+# N-DEx field mapping
+[niem_mapping.ndex_fields]
+incident_category = "Security Breach"
+incident_subcategory = "Unauthorized Access"
+location_type = "Critical Infrastructure"
+subject_role = "Suspect"
+activity_type = "Access Control Manipulation"
+
+# NIEM core elements
+[niem_mapping.niem_core]
+"nc:Activity" = "Unauthorized Access"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+# Defines how this node connects to other nodes in the 165-task graph.
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-084-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.90
+description = "Access control manipulation enables system compromise"
+
+[[relationships]]
+target_node = "uuid-085-000-000-A"
+relationship_type = "precedes"
+unicode_op = "⇢"
+strength = 0.70
+description = "Access control manipulation often precedes system exploitation"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.50
+description = "Access control manipulation is vulnerable to detection"
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+# Ranked intelligence requirements for this task.
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "What are the weaknesses in access control systems?"
+collection_method = "Vulnerability assessments, penetration testing"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "What are the existing access control mechanisms?"
+collection_method = "Physical inspection, system documentation"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the bypass methods?"
+collection_method = "Exploit research, social engineering"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What is the network topology?"
+collection_method = "Network scanning, documentation review"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the employee access patterns?"
+collection_method = "Monitoring, observation"
+time_sensitivity = "low"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+# Links to actual incidents where this task was observed.
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "Target Data Breach",
+    date = "2013-11-27",
+    description = "Compromised HVAC vendor access to infect point-of-sale systems",
+    source = "https://en.wikipedia.org/wiki/Target_data_breach"
+  },
+  {
+    name = "RSA Security Breach",
+    date = "2011-03-17",
+    description = "Compromised SecurID tokens to gain unauthorized access",
+    source = "https://en.wikipedia.org/wiki/RSA_Security_breach"
+  },
+  {
+    name = "Stuxnet Worm",
+    date = "2010-06-01",
+    description = "Exploited zero-day vulnerabilities to compromise Siemens PLCs",
+    source = "https://en.wikipedia.org/wiki/Stuxnet"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+# MITRE ATT&CK mapping for cyber TTPs (where applicable).
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1199"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = ""
+description = "Compromise systems through access control failures."
+
+[[ttps]]
+mitre_attack_id = "T1189"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = ""
+description = "Compromise trusted relationships"
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Defense Evasion"
+technique = "Valid Accounts"
+sub_technique = "T1078.001 - Default Accounts"
+description = "Exploit default accounts."
+
+[[ttps]]
+mitre_attack_id = "T1003"
+tactic = "Credential Access"
+technique = "OS Credential Dumping"
+sub_technique = "T1003.001 - LSASS Memory"
+description = "Dump credentials from LSASS memory."
+
+[[ttps]]
+mitre_attack_id = "T1021"
+tactic = "Lateral Movement"
+technique = "Remote Services"
+sub_technique = "T1021.002 - SMB/Windows Admin Shares"
+description = "Use SMB to move laterally across the network."
+
+[[ttps]]
+mitre_attack_id = "T1550"
+tactic = "Credential Access"
+technique = "Use Alternate Authentication Material"
+sub_technique = "T1550.003 - Pass the Ticket"
+description = "Pass the Ticket attack."
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+# Links this node to XSD playbooks for executable document generation.
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "access_control_manipulation_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-exploitation"]
+unicode_assembly = ["→", "⇢", "⚠", "🔑", "🔒", "🛡"]
+lisp_expression = "(access-task :target target-id :phase access :priority critical)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-03-15T00:00:00Z"
+last_updated = "2025-03-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

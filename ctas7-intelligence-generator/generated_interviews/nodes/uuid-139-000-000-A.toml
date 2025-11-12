@@ -1,0 +1,415 @@
+```toml
+[node_identity]
+task_id = "uuid-139-000-000-A"
+task_name = "Task 139 - Phase 4"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "g7U2m0O9n1Z4cL8a"
+cuid = "T20250315G34N84SaU2f9300a79e3d56c"
+uuid = "U91b249c87f60a1e"
+hash_48 = "g7U2m0O9n1Z4cL8aT20250315G34N84SaU2f9300a79e3d56cU91b249c87f60a1e"
+
+[capabilities]
+narrative = """
+I am the assembler, the one who breathes life into the plan. My task is to take the components – the fertilizer, the fuel oil, the shrapnel – and transform them into a functional IED. I am meticulous. I follow instructions to the letter, ensuring each connection is secure, each wire properly insulated. I test, re-test, and test again.
+
+I know chemistry, electricity, and mechanics. I understand the principles of explosives and the devastating power they can unleash. I am careful, deliberate, and precise. I calculate blast radii, fragmentation patterns, and collateral damage potential.
+
+I seek out secluded workshops, abandoned buildings, garages far from prying eyes. I work under the cloak of darkness, the hum of machinery my only companion. I am the craftsman of destruction. I am the one who makes the unthinkable possible.
+"""
+
+limitations = """
+I am reliant on the quality of my materials and the accuracy of my instructions. Impurities in the chemicals, faulty wiring, or flawed designs can lead to failure or premature detonation. I require specialized tools and equipment – blenders, grinders, pressure cookers, timers, detonators – which can be difficult to acquire and conceal.
+
+I am vulnerable to detection. The smell of chemicals, the sounds of construction, the presence of suspicious materials – all can raise red flags. I am constantly at risk of exposure, arrest, or worse. I must be vigilant, cautious, and discreet. My work is inherently dangerous, and a single mistake can cost me my life.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "days to weeks", range = [3, 21], units = "days" }
+actionable_window = { words = "days to weeks", range = [7, 30], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Law enforcement raid on the stash location",
+  "Change in chemical precursor availability",
+  "Compromise of recipe or schematics",
+  "Changes in targeting requirements"
+]
+persistence_conditions = [
+  "Basic chemical principles remain constant",
+  "Technical understanding of IED construction",
+  "Availability of substitute materials"
+]
+
+[cuid_mask]
+temporal = "T-{3-21}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+semantic = "Sa"
+semantic_full = "attack:ied:assembly"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactive search for precursor material purchases." }
+detect = { enabled = true, priority = "critical", description = "Identify locations being used for IED assembly." }
+disrupt = { enabled = true, priority = "high", description = "Interdict the flow of materials and equipment." }
+disable = { enabled = true, priority = "critical", description = "Neutralize the IED before it can be deployed." }
+dominate = { enabled = false, priority = "low", description = "Not applicable." }
+
+[[indicators]]
+observable = "Unusual purchases of fertilizer or fuel oil."
+priority = "critical"
+detection_method = "Transaction monitoring, suspicious activity reports."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Acquisition of pressure cookers or timers in bulk."
+priority = "high"
+detection_method = "Retail surveillance, online monitoring."
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Presence of chemical odors in residential areas."
+priority = "high"
+detection_method = "Community reporting, environmental sensors."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Sudden increase in electricity consumption in a vacant building."
+priority = "medium"
+detection_method = "Smart meter analysis, utility company monitoring."
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Purchase of multiple mobile phones or SIM cards."
+priority = "medium"
+detection_method = "Mobile carrier monitoring, KYC analysis."
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Acquisition of large quantities of ball bearings or nails."
+priority = "medium"
+detection_method = "Retail monitoring, supply chain analysis."
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Online searches for IED recipes or tutorials."
+priority = "high"
+detection_method = "Internet monitoring, threat intelligence."
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Disposal of unusual chemical waste or packaging."
+priority = "high"
+detection_method = "Waste management monitoring, environmental analysis."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Modification of electronic devices or components."
+priority = "medium"
+detection_method = "Electronics retail surveillance, pawn shop monitoring."
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Storage of suspicious materials in a rented storage unit."
+priority = "high"
+detection_method = "Storage facility surveillance, suspicious activity reporting."
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "Kali Linux"
+mode_1n = "Analyze network traffic for suspicious activity related to IED components."
+mode_2n = "Use network tools to research and acquire information about IED construction."
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Test systems for vulnerabilities that could be exploited to obtain IED construction information."
+mode_2n = "Develop exploits to gain access to systems containing IED construction manuals."
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Monitor network traffic for data exfiltration related to IED schematics."
+mode_2n = "Analyze network protocols for potential vulnerabilities related to remote detonation."
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan for open ports and services on local networks that could indicate the presence of IED-related devices."
+mode_2n = "Map network topology to identify potential targets for IED deployment."
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Volatility Framework"
+mode_1n = "Analyze memory dumps for artifacts related to IED planning or construction."
+mode_2n = "Extract encryption keys from memory for potential exploitation."
+escalation_level = "crate"
+kali_package = "volatility3"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Autopsy"
+mode_1n = "Perform digital forensics on seized devices to identify evidence of IED assembly."
+mode_2n = "Reconstruct deleted files or fragmented data related to IED construction."
+escalation_level = "crate"
+kali_package = "autopsy"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 15, max_minutes = 60, optimal_minutes = 30 }
+
+terrain_factors = ["urban_density", "line_of_sight", "elevation", "building_density"]
+
+[geospatial.weather]
+critical_factors = ["precipitation", "temperature", "wind_speed"]
+operational_threshold = { visibility_km = 10.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Weather can obscure surveillance of assembly sites."
+impact_on_comms = "Adverse weather can affect communication between cells."
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 18], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -85
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "government_building"]
+proximity_threshold_m = 250
+impact_assessment = "Proximity to critical infrastructure increases potential impact of IED."
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:Terrorism"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Terrorism"
+incident_subcategory = "IED Assembly"
+location_type = "Manufacturing Facility"
+subject_role = "Bomb Maker"
+activity_type = "IED Construction"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "IED Assembly"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ assembly_location }"
+"j:Charge" = "18 USC 2332a (WMD), 18 USC 844 (Explosives)"
+
+[[relationships]]
+target_node = "uuid-140-000-000-A"
+relationship_type = "depends_on"
+unicode_op = "→"
+strength = 0.9
+description = "IED assembly depends on component acquisition"
+
+[[relationships]]
+target_node = "uuid-141-000-000-A"
+relationship_type = "precedes"
+unicode_op = "→"
+strength = 0.9
+description = "IED assembly precedes IED deployment"
+
+[[relationships]]
+target_node = "uuid-015-000-000-A"
+relationship_type = "requires"
+unicode_op = "→"
+strength = 0.8
+description = "Requires secure communications"
+
+[[relationships]]
+target_node = "uuid-030-000-000-A"
+relationship_type = "located_at"
+unicode_op = "📍"
+strength = 0.6
+description = "IED Assembly location"
+
+[[relationships]]
+target_node = "uuid-155-000-000-A"
+relationship_type = "counterfeit_material"
+unicode_op = "⚠"
+strength = 0.3
+description = "Risk of counterfeit or unstable material use"
+
+[[eei_priority]]
+rank = 1
+question = "What are the types and quantities of materials being acquired?"
+collection_method = "Financial intelligence, supply chain analysis"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "What is the location of the IED assembly site?"
+collection_method = "Physical surveillance, signal intelligence"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 3
+question = "Who are the individuals involved in the IED assembly?"
+collection_method = "Human intelligence, biometrics"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What is the intended target of the IED?"
+collection_method = "Communications intelligence, pattern analysis"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 5
+question = "What is the planned detonation method?"
+collection_method = "Technical exploitation, human intelligence"
+time_sensitivity = "medium"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Use of ammonium nitrate fertilizer and fuel oil to construct a large vehicle bomb",
+    source = "https://www.fbi.gov/history/famous-cases/oklahoma-city-bombing"
+  },
+  {
+    name = "Madrid Train Bombings",
+    date = "2004-03-11",
+    description = "Use of pressure cookers filled with explosives and shrapnel to target commuter trains",
+    source = "https://www.britannica.com/event/Madrid-bombings-of-2004"
+  },
+  {
+    name = "Boston Marathon Bombing",
+    date = "2013-04-15",
+    description = "Use of pressure cookers filled with explosives and shrapnel to target a public event",
+    source = "https://www.fbi.gov/history/famous-cases/boston-marathon-bombing"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1565"
+tactic = "Resource Development"
+technique = "Acquire Infrastructure"
+sub_technique = "T1565.001 - Domains"
+description = "Acquire infrastructure such as domains"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Exploit public-facing applications"
+
+[[ttps]]
+mitre_attack_id = "T1555"
+tactic = "Credential Access"
+technique = "Credentials from Password Stores"
+sub_technique = ""
+description = "Obtain credentials from password stores."
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.001 - PowerShell"
+description = "Use PowerShell for execution"
+
+[[ttps]]
+mitre_attack_id = "T1574"
+tactic = "Privilege Escalation"
+technique = "Hijack Execution Flow"
+sub_technique = "T1574.001 - DLL Search Order Hijacking"
+description = "Hijack execution flow via DLL search order hijacking"
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - Web Protocols"
+description = "Use web protocols for command and control"
+
+[xsd_integration]
+playbook_template = "ied_assembly_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-forensics"]
+unicode_assembly = ["→", "📍", "⚠"]
+lisp_expression = "(ied-assembly :location assembly-location :materials materials-list :target target-id)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-03-15T00:00:00Z"
+last_updated = "2025-03-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

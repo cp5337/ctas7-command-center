@@ -1,0 +1,435 @@
+```toml
+[node_identity]
+task_id = "uuid-001-000-000-A"
+task_name = "Pre-Operational Planning"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "38W1d7P5v0e9X1q2"
+cuid = "T20241227G34N84PZ"
+uuid = "U9a1b2c3d4e5f607"
+hash_48 = "38W1d7P5v0e9X1q2T20241227G34N84PZU9a1b2c3d4e5f607"
+
+[capabilities]
+narrative = """
+I am the architect of chaos, the silent planner in the shadows. Before a single brick is disturbed, before a byte of data is breached, I meticulously construct the blueprint for success. My domain is not the execution, but the conception – the critical phase where victory is assured, or defeat becomes inevitable.
+
+I begin with broad strokes, gathering intelligence from every conceivable source: open-source databases, leaked credentials, dark web forums, and human assets. I sift through terabytes of data, seeking vulnerabilities, weaknesses, and opportunities. I build models of the target environment, simulating scenarios and stress-testing defenses.
+
+My plans are not linear but adaptive, branching into contingencies and fallback options. I factor in weather patterns, security protocols, political climates, and psychological profiles. I identify key dependencies, single points of failure, and exploitable trust relationships.
+
+I coordinate resources, allocate responsibilities, and establish communication channels. I conduct dry runs, tabletop exercises, and red team simulations to identify and mitigate risks. I refine and iterate, constantly optimizing the plan based on new information and emerging threats.
+
+My work is unseen, unheralded, but utterly indispensable. I am the pre-operational planner, the mastermind behind the curtain, and my plans will shape the battlefield.
+"""
+
+limitations = """
+My plans are only as good as the information I have available. Gaps in intelligence, inaccurate data, or unforeseen events can derail even the most meticulously crafted strategies. I am vulnerable to information warfare, deception campaigns, and counterintelligence operations designed to mislead or disrupt my planning process.
+
+My dependence on technology exposes me to cyberattacks and surveillance. My communications can be intercepted, my plans can be stolen, and my identity can be compromised. I must constantly adapt to evolving security threats and employ robust countermeasures to protect my operational security.
+
+The human element is also a critical vulnerability. A single disloyal agent, a compromised asset, or a careless mistake can expose my plans and jeopardize the entire operation. I must exercise extreme caution in vetting and managing human resources, and maintain strict control over access to sensitive information.
+
+Furthermore, I am bound by the constraints of time and resources. Planning requires extensive analysis, coordination, and simulation, which can be time-consuming and resource-intensive. I must prioritize tasks, allocate resources effectively, and adapt to changing deadlines and constraints.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months before", range = [3, 12], units = "months" }
+actionable_window = { words = "months", range = [1, 6], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in security protocols",
+  "Shifts in political climate",
+  "Evolving threat landscape",
+  "Compromise of key personnel"
+]
+persistence_conditions = [
+  "Strategic goals",
+  "Core infrastructure dependencies",
+  "Established communication channels",
+  "Legal and regulatory frameworks"
+]
+
+[cuid_mask]
+temporal = "T-{90-365}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 100.0
+semantic = "Pz"
+semantic_full = "planning:pre-operational:strategy"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactively seek indicators of pre-operational planning activities." }
+detect = { enabled = true, priority = "medium", description = "Detect anomalies and deviations from established baselines." }
+disrupt = { enabled = true, priority = "medium", description = "Disrupt planning activities by introducing chaos and uncertainty." }
+disable = { enabled = false, priority = "low", description = "Not directly applicable in this phase." }
+dominate = { enabled = false, priority = "low", description = "Not directly applicable in this phase." }
+
+[[indicators]]
+observable = "Increased network traffic to threat intelligence sources"
+priority = "high"
+detection_method = "Network Intrusion Detection System (NIDS)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unusual access patterns to sensitive data repositories"
+priority = "high"
+detection_method = "Security Information and Event Management (SIEM)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Creation of new user accounts with elevated privileges"
+priority = "critical"
+detection_method = "Privileged Access Management (PAM) system"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Increased use of encryption and anonymization tools"
+priority = "medium"
+detection_method = "Traffic analysis and deep packet inspection"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Frequent communication with known threat actors"
+priority = "high"
+detection_method = "Threat intelligence feeds and reputation services"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Procurement of specialized equipment or software"
+priority = "medium"
+detection_method = "Supply chain monitoring and vendor risk assessments"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Increased activity on dark web forums and marketplaces"
+priority = "medium"
+detection_method = "Dark web monitoring and intelligence gathering"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Changes in resource allocation and budget priorities"
+priority = "low"
+detection_method = "Financial audits and resource management systems"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Increased travel and physical surveillance activities"
+priority = "medium"
+detection_method = "Travel logs, surveillance reports, and physical security measures"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Formation of new teams or organizational structures"
+priority = "low"
+detection_method = "Organizational charts and personnel records"
+false_positive_rate = "high"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Identify system vulnerabilities and misconfigurations"
+mode_2n = "Develop and test exploits for identified vulnerabilities"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan network infrastructure for open ports and services"
+mode_2n = "Map the target network and identify potential attack vectors"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for suspicious patterns"
+mode_2n = "Capture and analyze sensitive data transmitted over the network"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Test web application security vulnerabilities"
+mode_2n = "Exploit web application vulnerabilities to gain access to sensitive data"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Detect brute-force attacks against network services"
+mode_2n = "Conduct brute-force attacks to crack passwords and gain access"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "John the Ripper"
+mode_1n = "Identify weak passwords in password databases"
+mode_2n = "Crack password hashes and gain access to user accounts"
+escalation_level = "script"
+kali_package = "john"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 10, max_km = 1000, optimal_km = 100 }
+time_to_target = { min_minutes = 60, max_minutes = 1440, optimal_minutes = 360 }
+
+terrain_factors = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = ""
+cost_factors = []
+escape_route_priority = "low"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+[niem_mapping]
+justice_domain = "j:Intelligence"
+intelligence_domain = "intel:StrategicAnalysis"
+iepd_type = "Intelligence-Exchange"
+iepd_version = "5.0"
+
+[niem_mapping.ndex_fields]
+incident_category = "Strategic Planning"
+incident_subcategory = "Pre-Operational Assessment"
+location_type = "Global"
+subject_role = "Planner"
+activity_type = "Strategic Coordination"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Strategic Planning"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ global }"
+"j:Charge" = "Conspiracy to Commit Offense"
+
+[[relationships]]
+target_node = "uuid-002-000-000-A"
+relationship_type = "requires"
+unicode_op = "→"
+strength = 0.9
+description = "Pre-Operational Planning requires Reconnaissance and Targeting."
+
+[[relationships]]
+target_node = "uuid-004-000-000-A"
+relationship_type = "coordinates"
+unicode_op = "⇢"
+strength = 0.8
+description = "Pre-Operational Planning coordinates with Resource Acquisition."
+
+[[relationships]]
+target_node = "uuid-165-000-000-A"
+relationship_type = "precedes"
+unicode_op = "→"
+strength = 0.95
+description = "Pre-Operational Planning precedes all Execution phases."
+
+[[eei_priority]]
+rank = 1
+question = "What are the target's strategic objectives and priorities?"
+collection_method = "Open-source intelligence, insider information, political analysis"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 2
+question = "What are the target's critical infrastructure dependencies?"
+collection_method = "Network mapping, infrastructure assessments, supply chain analysis"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 3
+question = "What are the legal and regulatory constraints on the target's activities?"
+collection_method = "Legal research, regulatory compliance assessments, policy analysis"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 4
+question = "What are the target's financial resources and capabilities?"
+collection_method = "Financial intelligence, market analysis, economic indicators"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 5
+question = "What are the political and social dynamics surrounding the target?"
+collection_method = "Political analysis, social media monitoring, public opinion surveys"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 6
+question = "What are the target's security posture and incident response capabilities?"
+collection_method = "Security assessments, penetration testing, incident response simulations"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 7
+question = "What are the available attack surfaces and potential vulnerabilities?"
+collection_method = "Vulnerability scanning, penetration testing, threat modeling"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 8
+question = "What are the risks and potential consequences of different attack scenarios?"
+collection_method = "Risk assessments, scenario planning, consequence modeling"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 9
+question = "What resources and capabilities are required to execute the plan successfully?"
+collection_method = "Resource planning, logistics assessments, capability gap analysis"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 10
+question = "What are the fallback options and contingency plans in case of unforeseen events?"
+collection_method = "Contingency planning, scenario analysis, risk mitigation strategies"
+time_sensitivity = "medium"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Operation Neptune Spear (Osama bin Laden Raid)",
+    date = "2011-05-02",
+    description = "Extensive pre-operational planning involving intelligence gathering, scenario simulations, and risk assessments.",
+    source = "Official reports and documentaries"
+  },
+  {
+    name = "Entebbe Raid (Operation Thunderbolt)",
+    date = "1976-07-04",
+    description = "Detailed planning involving gathering intelligence on the airport layout, hostage situation, and Ugandan military capabilities.",
+    source = "Historical accounts and documentaries"
+  },
+  {
+    name = "D-Day Landings (Operation Overlord)",
+    date = "1944-06-06",
+    description = "Massive pre-operational planning involving extensive intelligence gathering, logistical coordination, and deception campaigns.",
+    source = "Historical accounts and military archives"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Infrastructure Information"
+sub_technique = "T1592.001 - DNS"
+description = "Collect DNS information for target infrastructure planning"
+
+[[ttps]]
+mitre_attack_id = "T1583"
+tactic = "Reconnaissance"
+technique = "Obtain Capabilities"
+sub_technique = "T1583.001 - Malware"
+description = "Acquire malware to use in planned operations."
+
+[[ttps]]
+mitre_attack_id = "T1584"
+tactic = "Reconnaissance"
+technique = "Compromise Infrastructure"
+sub_technique = "T1584.001 - Domains"
+description = "Compromise domains for command and control and phishing."
+
+[[ttps]]
+mitre_attack_id = "T1588"
+tactic = "Resource Development"
+technique = "Obtain Capabilities"
+sub_technique = "T1588.002 - Tool"
+description = "Acquire tools needed for execution phase."
+
+[[ttps]]
+mitre_attack_id = "T1591"
+tactic = "Reconnaissance"
+technique = "Gather Victim Org Information"
+sub_technique = "T1591.004 - Country"
+description = "Gather country information for tailoring operations."
+
+[[ttps]]
+mitre_attack_id = "T1564"
+tactic = "Defense Evasion"
+technique = "Hide Artifacts"
+sub_technique = "T1564.001 - Hidden Files and Directories"
+description = "Hide files and directories used during planning phase."
+
+[xsd_integration]
+playbook_template = "pre_operational_planning_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-advanced-planning"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🛰"]
+lisp_expression = "(plan-task :target target-id :phase pre-operational :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Bard"
+created_at = "2024-12-27T00:00:00Z"
+last_updated = "2024-12-27T00:00:00Z"
+reviewed_by = "None"
+status = "draft"
+```

@@ -58,6 +58,7 @@ This is the **authoritative backend** that MUST be preserved. All frontends (6.6
 - **🎤 Voice Gateway** - Port **19015** (Voice-driven orchestration)
 
 **Foundation Crates Bridge Points:**
+
 - **Real Port Manager** (18103) ← Authoritative source for all port allocations
 - **Enhanced Geolocation** (18122) ← Spatial intelligence coordination
 - **Layer2 Mathematical Intelligence** (TBD) ← Advanced computation layer

@@ -1,0 +1,406 @@
+```toml
+[node_identity]
+task_id = "uuid-149-000-000-A"
+task_name = "Task 149 - Phase 4"
+classification = "unclassified"
+ttl_category = "optional"
+
+sch = "a1B9d3c5E7f2G4h6"
+cuid = "T20250215G37N12SE"
+uuid = "V9z8y7x6w5v4u3t2"
+hash_48 = "a1B9d3c5E7f2G4h6T20250215G37N12SEV9z8y7x6w5v4u3t2"
+
+[capabilities]
+narrative = """
+I am the shadow in the system, the persistent whisper. I exploit software vulnerabilities to maintain persistent access to compromised networks. I deploy keyloggers to capture credentials as they are typed. I craft custom malware to bypass antivirus and intrusion detection systems.
+
+I manipulate system logs to hide my activities and maintain plausible deniability. I create backdoors for future access. I exfiltrate sensitive data using steganography, embedding it within innocuous image or audio files. I establish command and control channels over encrypted protocols, blending in with legitimate network traffic.
+
+I am the silent operator—my work invisible to the casual observer. I maintain my presence, adapting to changes in the environment. I know that once I'm in, I'm very, very hard to get out. I secure our long term success.
+"""
+
+limitations = """
+I am vulnerable to zero-day exploits being patched, requiring me to adapt quickly. Sophisticated EDR systems can detect and remove my malware, even if it's custom-built. My activities generate network traffic and log entries, which can be detected by skilled security analysts. I depend on vulnerabilities to exist within the system. My access might be revoked if my activities are discovered.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 90], units = "days" }
+collection_phase = { words = "months", range = [1, 6], units = "months" }
+actionable_window = { words = "months to years", range = [6, 36], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Patching of vulnerabilities",
+  "Deployment of new security tools",
+  "Password changes",
+  "System hardening"
+]
+persistence_conditions = [
+  "Poor security practices",
+  "Unpatched systems",
+  "Complex network infrastructure",
+  "Legacy software"
+]
+
+[cuid_mask]
+temporal = "T-{30-180}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+semantic = "Se"
+semantic_full = "recon:cyber:persistence"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactive scanning for indicators of compromise" }
+detect = { enabled = true, priority = "critical", description = "Real-time detection of suspicious network traffic and system activity" }
+disrupt = { enabled = true, priority = "high", description = "Containment of compromised systems and networks" }
+disable = { enabled = true, priority = "medium", description = "Removal of malware and backdoors" }
+dominate = { enabled = false, priority = "low", description = "Regaining full control and trust of the compromised environment." }
+
+[[indicators]]
+observable = "Unusual network connections from internal systems"
+priority = "critical"
+detection_method = "Network Intrusion Detection System (NIDS)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Suspicious process execution on critical servers"
+priority = "critical"
+detection_method = "Endpoint Detection and Response (EDR)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unexpected file modifications in system directories"
+priority = "high"
+detection_method = "File Integrity Monitoring (FIM)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Failed login attempts from unusual locations"
+priority = "high"
+detection_method = "Security Information and Event Management (SIEM)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of credential dumping tools (e.g., Mimikatz)"
+priority = "critical"
+detection_method = "Endpoint Detection and Response (EDR)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Execution of PowerShell scripts with obfuscated code"
+priority = "high"
+detection_method = "Endpoint Detection and Response (EDR)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Detection of reverse shells or command and control traffic"
+priority = "critical"
+detection_method = "Network Intrusion Detection System (NIDS)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Changes to system registry keys related to persistence mechanisms"
+priority = "high"
+detection_method = "Host-Based Intrusion Detection System (HIDS)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Presence of web shells on web servers"
+priority = "critical"
+detection_method = "Web Application Firewall (WAF)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Lateral movement activity detected through SMB or other protocols"
+priority = "high"
+detection_method = "Network Intrusion Detection System (NIDS)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of steganography to exfiltrate data"
+priority = "medium"
+detection_method = "Deep Packet Inspection (DPI)"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Detection of password spraying attacks"
+priority = "high"
+detection_method = "Security Information and Event Management (SIEM)"
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Penetration testing to identify vulnerabilities"
+mode_2n = "Exploiting vulnerabilities and establishing persistence"
+escalation_level = "framework"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Network scanning for open ports and services"
+mode_2n = "Identifying potential targets for exploitation"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Mimikatz"
+mode_1n = "Detecting credential dumping activity"
+mode_2n = "Extracting credentials from memory"
+escalation_level = "binary"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "PowerShell Empire"
+mode_1n = "Detecting malicious PowerShell activity"
+mode_2n = "Post-exploitation framework for maintaining persistence and lateral movement"
+escalation_level = "framework"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Web application vulnerability scanning"
+mode_2n = "Exploiting web application vulnerabilities"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyzing network traffic for suspicious activity"
+mode_2n = "Sniffing network traffic for sensitive data"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 0.0, max_km = 0.0, optimal_km = 0.0 }
+time_to_target = { min_minutes = 0, max_minutes = 0, optimal_minutes = 0 }
+
+terrain_factors = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "N/A"
+cost_factors = []
+escape_route_priority = "N/A"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+[niem_mapping]
+justice_domain = "j:CyberCrime"
+intelligence_domain = "intel:CyberThreatIntelligence"
+iepd_type = "Cyber-Incident-Exchange"
+iepd_version = "5.3"
+
+[niem_mapping.ndex_fields]
+incident_category = "Cyber Attack"
+incident_subcategory = "Persistence Mechanism"
+location_type = "Network Infrastructure"
+subject_role = "Attacker"
+activity_type = "Establishing Persistent Access"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Persistence"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_network }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-150-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.9
+description = "Persistence enables long-term access and control"
+
+[[relationships]]
+target_node = "uuid-151-000-000-A"
+relationship_type = "supports"
+unicode_op = "⇢"
+strength = 0.7
+description = "Persistence supports further exploitation"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.5
+description = "Persistence is vulnerable to intrusion detection and incident response"
+
+[[eei_priority]]
+rank = 1
+question = "What are the most effective persistence mechanisms?"
+collection_method = "Vulnerability analysis, exploitation reports, malware analysis"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the detection signatures for the installed persistence mechanisms?"
+collection_method = "HIDS/NIDS rules, YARA rules, threat intelligence feeds"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the credentials available for reuse in other attacks?"
+collection_method = "Memory dumps, system logs, authentication servers"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What are the limitations and known vulnerabilities in our AV and EDR solutions?"
+collection_method = "Log analysis, testing"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the firewall rules allowing outbound connection to attacker controlled infrastructure?"
+collection_method = "Firewall configuration review, network traffic analysis"
+time_sensitivity = "medium"
+
+[historical_reference]
+incidents = [
+  {
+    name = "APT29 (Cozy Bear)",
+    date = "Various",
+    description = "Known for sophisticated persistence techniques, including bootkits and kernel-level rootkits",
+    source = "https://www.fireeye.com/blog/threat-research/2018/07/apt29-targets-gov-ngo-think-tank.html"
+  },
+  {
+    name = "Equation Group",
+    date = "Various",
+    description = "Used highly advanced persistence mechanisms, including firmware implants",
+    source = "https://securelist.com/equation-the-death-star-of-the-cyber-espionage-world/68733/"
+  },
+  {
+    name = "NotPetya",
+    date = "2017-06-27",
+    description = "Leveraged administrative privileges to install scheduled tasks for persistence",
+    source = "https://www.wired.com/story/notpetya-cyberattack-ukraine-russia-code-war/"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1053"
+tactic = "Persistence"
+technique = "Scheduled Task/Job"
+sub_technique = "T1053.005"
+description = "Create or modify scheduled tasks to execute malicious code"
+
+[[ttps]]
+mitre_attack_id = "T1547"
+tactic = "Persistence"
+technique = "Boot or Logon Autostart Execution"
+sub_technique = "T1547.001 - Registry Run Keys / Startup Folder"
+description = "Add registry keys to execute code upon system startup"
+
+[[ttps]]
+mitre_attack_id = "T1574"
+tactic = "Persistence"
+technique = "Hijack Execution Flow"
+sub_technique = "T1574.002 - DLL Side-Loading"
+description = "Place malicious DLLs in locations where they can be loaded by legitimate applications"
+
+[[ttps]]
+mitre_attack_id = "T1136"
+tactic = "Persistence"
+technique = "Create Account"
+sub_technique = "T1136.001 - Local Account"
+description = "Create local accounts with elevated privileges for persistent access"
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Defense Evasion"
+technique = "Valid Accounts"
+sub_technique = "T1078.002 - Domain Accounts"
+description = "Use valid domain accounts to blend in with legitimate activity"
+
+[[ttps]]
+mitre_attack_id = "T1083"
+tactic = "Discovery"
+technique = "File and Directory Discovery"
+description = "Discover files and directories of interest for further exploitation"
+
+[xsd_integration]
+playbook_template = "persistence_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-threatintel"]
+unicode_assembly = ["→", "⇢", "⚠", "🗝", "💾", "⚙"]
+lisp_expression = "(persistence-task :target target-id :mechanism registry-run :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-02-15T00:00:00Z"
+last_updated = "2025-02-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

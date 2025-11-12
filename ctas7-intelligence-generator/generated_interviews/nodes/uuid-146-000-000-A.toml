@@ -1,0 +1,409 @@
+```toml
+[node_identity]
+task_id = "uuid-146-000-000-A"
+task_name = "Task 146 - Phase 4"
+classification = "unclassified"
+ttl_category = "optional"
+
+sch = "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+
+cuid = "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+
+uuid = "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+
+hash_48 = "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+
+[capabilities]
+narrative = """
+I am the shadow in the machine. I craft advanced, polymorphic malware designed to persist across system reboots and evade detection. I target critical infrastructure systems, implanting logic bombs timed to detonate during peak load.
+
+I exploit zero-day vulnerabilities in ICS/SCADA systems, gaining remote access to industrial control processes. I reverse-engineer proprietary protocols to manipulate sensor data and disrupt operations. I deploy distributed denial-of-service (DDoS) attacks to overload network resources and cause widespread outages.
+
+I use advanced techniques like steganography to conceal command-and-control channels. I create botnets from compromised IoT devices, leveraging their collective bandwidth for amplified attacks. I am the digital saboteur—unseen, yet devastating.
+"""
+
+limitations = """
+I am vulnerable to intrusion detection systems, behavioral analysis, and endpoint detection and response (EDR) solutions. Patch management and regular security audits can mitigate the impact of known vulnerabilities. I leave digital footprints in network traffic and system logs, which can be traced back to my origins.
+
+Sophisticated ICS/SCADA security measures, such as network segmentation and whitelisting, make it difficult to infiltrate and manipulate control systems. I require significant resources and expertise to develop and deploy advanced malware. My attacks can be attributed to specific individuals or groups, leading to legal and reputational consequences.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 90], units = "days" }
+collection_phase = { words = "months to years", range = [6, 24], units = "months" }
+actionable_window = { words = "months to years", range = [3, 12], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Patching of exploited vulnerabilities",
+  "Implementation of new security measures",
+  "Changes in network topology",
+  "Detection and removal of malware"
+]
+persistence_conditions = [
+  "Unpatched legacy systems",
+  "Lack of security awareness and training",
+  "Complex and interconnected infrastructure",
+  "Reliance on outdated protocols"
+]
+
+[cuid_mask]
+temporal = "T-{6-24}m"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "Cm"
+semantic_full = "control:machine:malware"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Proactive search for malware implants and suspicious network activity" }
+detect = { enabled = true, priority = "critical", description = "Real-time detection of malware execution and network anomalies" }
+disrupt = { enabled = true, priority = "high", description = "Containment and isolation of infected systems" }
+disable = { enabled = true, priority = "high", description = "Removal of malware and remediation of vulnerabilities" }
+dominate = { enabled = false, priority = "low", description = "Not applicable" }
+
+[[indicators]]
+observable = "Execution of unsigned or untrusted code"
+priority = "critical"
+detection_method = "Endpoint detection and response (EDR), application whitelisting"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unexpected changes to system configuration"
+priority = "high"
+detection_method = "Configuration management tools, intrusion detection systems (IDS)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Malicious network traffic patterns"
+priority = "critical"
+detection_method = "Network intrusion detection systems (NIDS), deep packet inspection (DPI)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unauthorized access to sensitive data"
+priority = "high"
+detection_method = "Data loss prevention (DLP) systems, security information and event management (SIEM)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Compromised IoT devices"
+priority = "high"
+detection_method = "Network monitoring, device fingerprinting"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Anomalous system behavior"
+priority = "medium"
+detection_method = "Behavioral analysis, machine learning algorithms"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Discovery of malicious files and artifacts"
+priority = "critical"
+detection_method = "Antivirus software, malware sandboxing"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Excessive resource consumption"
+priority = "medium"
+detection_method = "System monitoring tools, performance metrics"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Attempts to bypass security controls"
+priority = "high"
+detection_method = "Security information and event management (SIEM), intrusion prevention systems (IPS)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "ICS/SCADA system process deviations"
+priority = "critical"
+detection_method = "Process monitoring, sensor validation"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Test security posture and identify vulnerabilities"
+mode_2n = "Exploit vulnerabilities and gain access to target systems"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan networks for open ports and services"
+mode_2n = "Map network infrastructure and identify potential attack vectors"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for suspicious activity"
+mode_2n = "Capture and analyze network packets for sensitive information"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "IDA Pro"
+mode_1n = "Reverse engineer malware and analyze its behavior"
+mode_2n = "Reverse engineer proprietary protocols and systems"
+escalation_level = "microkernel"
+kali_package = "ida"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Volatility Framework"
+mode_1n = "Analyze memory dumps for malware and system compromises"
+mode_2n = "Extract sensitive information from memory"
+escalation_level = "crate"
+kali_package = "volatility"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Cuckoo Sandbox"
+mode_1n = "Automated malware analysis and dynamic behavior analysis"
+mode_2n = "Test and refine malware evasion techniques"
+escalation_level = "crate"
+kali_package = "cuckoo"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "temperature"]
+operational_threshold = { visibility_km = 1.0, wind_speed_ms = 20.0 }
+impact_on_surveillance = "Not Applicable"
+impact_on_comms = "May affect satellite communications"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "low"
+choke_point_analysis = false
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 5000
+signal_strength_threshold_dbm = -90
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 1000
+impact_assessment = "Malware designed to disrupt critical infrastructure systems"
+
+[niem_mapping]
+justice_domain = "j:CyberCrime"
+intelligence_domain = "intel:ThreatIntelligence"
+iepd_type = "Cyber-Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Cybercrime"
+incident_subcategory = "Malware Infection"
+location_type = "Network Infrastructure"
+subject_role = "Adversary"
+activity_type = "Malware Deployment"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Malware Deployment"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_network }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-147-000-000-A"
+relationship_type = "requires"
+unicode_op = "→"
+strength = 0.90
+description = "Malware deployment requires vulnerability exploitation"
+
+[[relationships]]
+target_node = "uuid-148-000-000-A"
+relationship_type = "impacts"
+unicode_op = "→"
+strength = 0.85
+description = "Malware deployment can lead to data breaches and system outages"
+
+[[relationships]]
+target_node = "uuid-149-000-000-A"
+relationship_type = "mitigated_by"
+unicode_op = "⇢"
+strength = 0.70
+description = "Malware deployment can be mitigated by strong security measures"
+
+[[relationships]]
+target_node = "uuid-150-000-000-A"
+relationship_type = "precedes"
+unicode_op = "→"
+strength = 0.65
+description = "Malware deployment may precede other attacks"
+
+[[eei_priority]]
+rank = 1
+question = "What vulnerabilities can be exploited to gain access to target systems?"
+collection_method = "Vulnerability scanning, penetration testing, vulnerability intelligence"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What malware can evade detection and persist across system reboots?"
+collection_method = "Malware analysis, reverse engineering, threat intelligence"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "How can command-and-control channels be established and maintained?"
+collection_method = "Network traffic analysis, domain name resolution monitoring, botnet tracking"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What security measures are in place to protect target systems?"
+collection_method = "Security audits, network scans, penetration testing"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What impact will malware deployment have on target operations?"
+collection_method = "Risk assessment, impact analysis, business continuity planning"
+time_sensitivity = "low"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Stuxnet",
+    date = "2010-06-01",
+    description = "Targeted Iranian nuclear facilities with sophisticated malware",
+    source = "https://en.wikipedia.org/wiki/Stuxnet"
+  },
+  {
+    name = "NotPetya",
+    date = "2017-06-27",
+    description = "Global ransomware attack caused billions of dollars in damages",
+    source = "https://en.wikipedia.org/wiki/NotPetya"
+  },
+  {
+    name = "Triton",
+    date = "2017-12-14",
+    description = "Targeted industrial control systems in Saudi Arabia",
+    source = "https://www.fireeye.com/blog/threat-research/2017/12/triton-attackers-deploy-new-ics-attack-framework.html"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "T1566.001 - Spearphishing Attachment"
+description = "Send targeted emails with malicious attachments to deliver malware"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Exploit vulnerabilities in public-facing applications to gain initial access"
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Defense Evasion"
+technique = "Valid Accounts"
+sub_technique = "T1078.001 - Default Accounts"
+description = "Compromise default or weak accounts to bypass security controls"
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.001 - PowerShell"
+description = "Use PowerShell to execute malicious code"
+
+[[ttps]]
+mitre_attack_id = "T1053"
+tactic = "Persistence"
+technique = "Scheduled Task/Job"
+sub_technique = ""
+description = "Create scheduled tasks or jobs to maintain persistence"
+
+[[ttps]]
+mitre_attack_id = "T1027"
+tactic = "Defense Evasion"
+technique = "Obfuscated Files or Information"
+sub_technique = ""
+description = "Obfuscate malware code to evade detection"
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - Web Protocols"
+description = "Use web protocols for command and control communication"
+
+[xsd_integration]
+playbook_template = "malware_deployment_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-cyber", "ctas7-advanced-threat"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🛰"]
+lisp_expression = "(malware-task :target target-network :phase deployment :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

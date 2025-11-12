@@ -1,0 +1,452 @@
+```toml
+[node_identity]
+task_id = "uuid-136-000-000-A"
+task_name = "Task 136 - Phase 4"
+classification = "unclassified"
+ttl_category = "desirable"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+
+sch = "Zp12Q5bR9cX4wN8a"
+cuid = "T20250110G34S88Sx9c6b38d0"
+uuid = "U3f1a77e92c58e11"
+hash_48 = "Zp12Q5bR9cX4wN8aT20250110G34S88Sx9c6b38d0U3f1a77e92c58e11"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+
+[capabilities]
+narrative = """
+I specialize in covert human surveillance, the art of shadowing without a trace. I blend into crowds, mirroring body language and adapting my pace to remain unnoticed. I utilize a variety of disguises and personas, from construction worker to tourist, changing my appearance to suit the environment.
+
+I employ advanced optical and acoustic surveillance equipment: concealed cameras in everyday objects, directional microphones to capture distant conversations. I exploit public transportation and ride-sharing services, using them to track targets across urban landscapes.
+
+I create detailed logs of target movements, documenting routes, meeting places, and points of contact. I am meticulous in my observation, noting the smallest details that could reveal vulnerabilities. I operate in the shadows, a silent observer, unseen and unheard, gathering critical intelligence for future action.
+"""
+
+limitations = """
+I am vulnerable to skilled counter-surveillance teams who can identify and track my movements. High-traffic areas and confined spaces limit my maneuverability and increase the risk of detection. I am dependent on reliable transportation and communications infrastructure, which can be disrupted or monitored.
+
+My effectiveness is constrained by weather conditions: heavy rain, fog, or extreme temperatures reduce visibility and compromise my equipment. I am also susceptible to human error: fatigue, distraction, or misjudgment can expose my presence and compromise the mission. Maintaining a low profile requires constant vigilance and unwavering discipline.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "days", range = [1, 7], units = "days" }
+collection_phase = { words = "weeks", range = [2, 8], units = "weeks" }
+actionable_window = { words = "days to weeks", range = [3, 14], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Target alters daily routine",
+  "Security awareness increases",
+  "Counter-surveillance measures implemented",
+  "Relocation of target"
+]
+persistence_conditions = [
+  "Habitual behaviors of target",
+  "Fixed infrastructure used by target",
+  "Unchanging environmental factors"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+
+[cuid_mask]
+temporal = "T-{14-56}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+semantic = "Sx"
+semantic_full = "recon:human:surveillance"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+priority = "high"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Review historical data for patterns of human surveillance." }
+detect = { enabled = true, priority = "high", description = "Identify anomalies in human behavior around target." }
+disrupt = { enabled = true, priority = "medium", description = "Deploy counter-surveillance to deter human surveillance." }
+disable = { enabled = true, priority = "low", description = "Identify surveillance equipment and disable it." }
+dominate = { enabled = false, priority = "low", description = "Not applicable" }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+
+[[indicators]]
+observable = "Unusual pattern of loitering by individuals near target location"
+priority = "high"
+detection_method = "Security camera analysis, human observation"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of public transportation routes mirroring target's commute"
+priority = "medium"
+detection_method = "Transit authority data analysis, visual confirmation"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Repeated sightings of same individuals in target's vicinity"
+priority = "high"
+detection_method = "Security personnel reports, facial recognition technology"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Use of concealed recording devices near target"
+priority = "critical"
+detection_method = "Electronic surveillance detection, physical search"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Abnormal inquiries about target's schedule or habits"
+priority = "medium"
+detection_method = "Employee interviews, social engineering detection"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Individuals using disguises or altered appearances"
+priority = "medium"
+detection_method = "Security camera analysis, witness reports"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Attempts to establish close proximity to target"
+priority = "high"
+detection_method = "Security personnel observation, witness accounts"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Utilizing observation points with clear view of target"
+priority = "medium"
+detection_method = "Security camera analysis, physical security assessment"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Sudden changes in individual's behavior upon detecting observation"
+priority = "high"
+detection_method = "Counter-surveillance operations, security camera analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Collection of discarded target documents"
+priority = "medium"
+detection_method = "Trash audits, physical security measures"
+false_positive_rate = "low"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+
+[[toolchain]]
+tool = "OSINT Framework"
+mode_1n = "Identify exposed employee information that adversaries could exploit"
+mode_2n = "Gather target's digital footprint, social media, personal info"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Social Media Analysis Tools"
+mode_1n = "Analyze social media profiles for potential threats"
+mode_2n = "Create target profiles from social media activity"
+escalation_level = "crate"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Facial Recognition Software"
+mode_1n = "Identify individuals of interest on security camera footage"
+mode_2n = "Track target movements in public spaces"
+escalation_level = "microkernel"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Hidden Camera Detection Equipment"
+mode_1n = "Sweep area for hidden surveillance devices"
+mode_2n = "Conceal surveillance equipment within ordinary objects"
+escalation_level = "hardware"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Directional Microphone"
+mode_1n = "Monitor conversations for potential threats"
+mode_2n = "Capture target conversations from a distance"
+escalation_level = "hardware"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Counter-Surveillance Training"
+mode_1n = "Train personnel to recognize and avoid surveillance"
+mode_2n = "Develop counter-surveillance tactics to evade detection"
+escalation_level = "intel"
+kali_package = "N/A"
+resource_cost = "low"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+terrain_factors = ["urban_density", "line_of_sight", "building_height", "pedestrian_traffic"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "temperature"]
+operational_threshold = { visibility_km = 1.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Reduced visibility impairs surveillance effectiveness"
+impact_on_comms = "Temperature may reduce battery performance"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "pedestrian_density"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 500
+signal_strength_threshold_dbm = -90
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 100
+impact_assessment = "Surveillance near critical infrastructure increases threat level"
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Suspicious Activity"
+incident_subcategory = "Surveillance/Photography"
+location_type = "Public Space"
+subject_role = "Suspect"
+activity_type = "Human Surveillance"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Human Surveillance"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 2332b (Terrorist Acts)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-004-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.85
+description = "Human surveillance informs vulnerability assessment."
+
+[[relationships]]
+target_node = "uuid-015-000-000-A"
+relationship_type = "precedes"
+unicode_op = "→"
+strength = 0.70
+description = "Human surveillance typically precedes physical breaches."
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.65
+description = "Human surveillance is vulnerable to counter-surveillance"
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "What is the target's daily routine and schedule?"
+collection_method = "Human observation, social media analysis"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "Who are the target's key contacts and associates?"
+collection_method = "Human observation, social network analysis"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 3
+question = "What are the target's vulnerabilities and weaknesses?"
+collection_method = "Human observation, psychological profiling"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What security measures are in place around the target?"
+collection_method = "Human observation, physical security assessment"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 5
+question = "What are the potential escape routes for the target?"
+collection_method = "Human observation, geospatial analysis"
+time_sensitivity = "medium"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "London 7/7 Bombings",
+    date = "2005-07-07",
+    description = "Extensive human surveillance of potential target locations",
+    source = "https://en.wikipedia.org/wiki/7_July_2005_London_bombings"
+  },
+  {
+    name = "IRA surveillance of British Soldiers",
+    date = "1970-1990",
+    description = "Detailed human surveillance of British soldiers and facilities",
+    source = "Various sources on the Troubles in Northern Ireland"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Infrastructure Information"
+sub_technique = "T1592.002 - Website"
+description = "Collect public website information"
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.001 - Credentials"
+description = "Attempt to glean credentials through human interaction"
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "N/A"
+description = "Monitor WiFi networks"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = "N/A"
+description = "Find outdated, insecure software versions"
+
+[[ttps]]
+mitre_attack_id = "T1591"
+tactic = "Reconnaissance"
+technique = "Gather Victim Org Information"
+sub_technique = "T1591.002 - Business Relationships"
+description = "Gather contact info, hierarchy and org chart"
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.003 - Spearphishing Link"
+description = "Send targeted phishing to gather intelligence"
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "human_surveillance_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-humanintel"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🚶"]
+lisp_expression = "(human-surveillance-task :target target-id :phase pre-operational :priority high)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-10T00:00:00Z"
+last_updated = "2025-01-10T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

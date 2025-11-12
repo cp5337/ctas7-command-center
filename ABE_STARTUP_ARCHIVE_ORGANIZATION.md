@@ -1,4 +1,5 @@
 # ABE Startup & Archive Organization Plan
+
 ## Automated Business Environment + CTAS Archive Manager Integration
 
 **Date:** November 3, 2025  
@@ -10,6 +11,7 @@
 ## **ABE (Automated Business Environment) STARTUP**
 
 ### **1. Extract and Setup CTAS Archive Manager**
+
 ```bash
 # Extract the archive manager
 cd /Users/cp5337/Desktop/Organization\ and\ archive/
@@ -20,6 +22,7 @@ ls -la ctas_archive_manager/
 ```
 
 ### **2. ABE Infrastructure as Code**
+
 ```bash
 # ABE system startup sequence
 echo "🏢 Starting ABE (Automated Business Environment)"
@@ -34,12 +37,12 @@ cat > abe-config.yml << 'EOF'
 abe:
   version: "2.0"
   mode: "automated_business_environment"
-  
+
 archive_management:
   source: "/Users/cp5337/Desktop/Organization and archive/ctas_archive_manager.zip"
   target: "/Users/cp5337/Developer/ABE-organized-systems"
   organization_strategy: "by_system_type"
-  
+
 file_system_organization:
   backend_services: "01-backend-canonical"
   frontend_systems: "02-frontend-command-center"
@@ -49,7 +52,7 @@ file_system_organization:
   voice_integration: "06-voice-whisper-elevenlabs"
   workflows: "07-forge-workflows"
   documentation: "08-documentation-specs"
-  
+
 iac_deployment:
   terraform_modules: "terraform/"
   docker_compose: "docker/"
@@ -59,6 +62,7 @@ EOF
 ```
 
 ### **3. ABE-Driven File Organization**
+
 ```bash
 #!/bin/bash
 # abe-organize-systems.sh
@@ -127,6 +131,7 @@ echo "   Systems Organized: ${#DIRS[@]} directories"
 ## **ARCHIVE MANAGER INTEGRATION**
 
 ### **4. CTAS Archive Manager Processing**
+
 ```python
 #!/usr/bin/env python3
 # abe-archive-processor.py
@@ -143,7 +148,7 @@ class ABEArchiveManager:
         self.target_base = Path(target_base)
         self.organization_map = {
             'backend': '01-backend-canonical',
-            'frontend': '02-frontend-command-center', 
+            'frontend': '02-frontend-command-center',
             'intelligence': '03-intelligence-coordination',
             'space': '04-space-laserlight-orbital',
             'agents': '05-agent-ecosystem',
@@ -153,91 +158,91 @@ class ABEArchiveManager:
             'iac': '09-iac-infrastructure',
             'containers': '10-container-registry'
         }
-    
+
     def extract_and_organize(self):
         """Extract archive and organize by system type"""
         print("📦 Extracting CTAS Archive Manager...")
-        
+
         # Extract archive
         with zipfile.ZipFile(self.archive_path, 'r') as zip_ref:
             temp_dir = self.target_base / 'temp_extract'
             zip_ref.extractall(temp_dir)
-        
+
         # Analyze extracted content
         self.analyze_and_categorize(temp_dir)
-        
+
         # Clean up temp directory
         shutil.rmtree(temp_dir)
-        
+
         print("✅ Archive extraction and organization complete!")
-    
+
     def analyze_and_categorize(self, temp_dir):
         """Analyze files and categorize by system type"""
         for root, dirs, files in os.walk(temp_dir):
             for file in files:
                 file_path = Path(root) / file
                 category = self.categorize_file(file_path)
-                
+
                 if category:
                     target_dir = self.target_base / self.organization_map[category]
                     target_dir.mkdir(parents=True, exist_ok=True)
-                    
+
                     # Copy file to organized location
                     target_file = target_dir / file
                     shutil.copy2(file_path, target_file)
                     print(f"📁 {file} → {category}")
-    
+
     def categorize_file(self, file_path):
         """Categorize file based on content and name"""
         file_name = file_path.name.lower()
-        
+
         # Backend/Infrastructure
         if any(x in file_name for x in ['backend', 'canonical', 'port-manager', 'synaptix', 'neural-mux']):
             return 'backend'
-            
+
         # Frontend
         elif any(x in file_name for x in ['frontend', 'command-center', 'react', 'vite']):
             return 'frontend'
-            
+
         # Intelligence
         elif any(x in file_name for x in ['intelligence', 'nyx-trace', 'usim', 'osint', 'eei']):
             return 'intelligence'
-            
+
         # Space Systems
         elif any(x in file_name for x in ['laserlight', 'orbital', 'space', 'satellite', 'quantum']):
             return 'space'
-            
+
         # Agents
         elif any(x in file_name for x in ['agent', 'natasha', 'marcus', 'sophia', 'alex', 'orchestrator']):
             return 'agents'
-            
+
         # Voice
         elif any(x in file_name for x in ['voice', 'whisper', 'elevenlabs', 'speech']):
             return 'voice'
-            
+
         # Workflows
         elif any(x in file_name for x in ['forge', 'workflow', 'mcp', 'linear']):
             return 'workflows'
-            
+
         # Documentation
         elif any(x in file_name for x in ['readme', 'doc', 'spec', 'architecture', '.md']):
             return 'docs'
-            
+
         # Infrastructure as Code
         elif any(x in file_name for x in ['terraform', 'docker', 'kubernetes', 'ansible', 'compose']):
             return 'iac'
-            
+
         # Container Registry
         elif any(x in file_name for x in ['container', 'registry', 'dockerfile']):
             return 'containers'
-            
+
         return None
 
 # Run the archive manager
 if __name__ == "__main__":
     archive_path = "/Users/cp5337/Desktop/Organization and archive/ctas_archive_manager.zip"
     target_base = "/Users/cp5337/Developer/ABE-organized-systems"
-    
+
     abe_manager = ABEArchiveManager(archive_path, target_base)
     abe_manager.extract_and_organize()
 ```
@@ -247,6 +252,7 @@ if __name__ == "__main__":
 ## **ABE INFRASTRUCTURE AS CODE GENERATION**
 
 ### **5. Generate Terraform Modules**
+
 ```hcl
 # terraform/main.tf - ABE-generated infrastructure
 terraform {
@@ -266,7 +272,7 @@ provider "docker" {
 # CTAS-7 Backend Services Module
 module "ctas7_backend" {
   source = "./modules/backend-canonical"
-  
+
   backend_image = "localhost:5000/ctas7/backend-services:latest"
   ports = {
     real_port_manager = 15170
@@ -280,7 +286,7 @@ module "ctas7_backend" {
 # CTAS-7 Intelligence Coordination Module
 module "ctas7_intelligence" {
   source = "./modules/intelligence-coordination"
-  
+
   intelligence_image = "localhost:5000/ctas7/intelligence-coordination:latest"
   ports = {
     nyx_trace_eei      = 18200
@@ -294,7 +300,7 @@ module "ctas7_intelligence" {
 # CTAS-7 Agent Ecosystem Module
 module "ctas7_agents" {
   source = "./modules/agent-ecosystem"
-  
+
   agent_image = "localhost:5000/ctas7/agent-ecosystem:latest"
   ports = {
     agent_natasha     = 15180
@@ -309,32 +315,33 @@ module "ctas7_agents" {
 # CTAS-7 Space Systems Module
 module "ctas7_space" {
   source = "./modules/space-systems"
-  
+
   laserlight_image = "localhost:5000/ctas7/laserlight-system:latest"
   orbital_image    = "localhost:5000/ctas7/orbital-platform:latest"
-  
+
   laserlight_ports = {
     core_system              = 16000
     quantum_key_distribution = 16010
     optical_ground_station   = 16020
     beam_steering           = 16030
   }
-  
+
   orbital_ports = {
     core_system         = 17000
     orbital_dynamics    = 17010
     satellite_tracking  = 17020
     mission_planning    = 17040
   }
-  
+
   depends_on = [module.ctas7_backend]
 }
 ```
 
 ### **6. Generate Docker Compose Stack**
+
 ```yaml
 # docker/docker-compose.abe-full-stack.yml
-version: '3.8'
+version: "3.8"
 
 services:
   # ABE-managed Backend Services
@@ -393,9 +400,9 @@ services:
     image: localhost:5000/ctas7/space-ground-integration:latest
     container_name: abe-space-systems
     ports:
-      - "16000-16099:16000-16099"  # Laserlight
-      - "17000-17099:17000-17099"  # Orbital
-      - "19000-19099:19000-19099"  # Integration
+      - "16000-16099:16000-16099" # Laserlight
+      - "17000-17099:17000-17099" # Orbital
+      - "19000-19099:19000-19099" # Integration
     environment:
       - ABE_MANAGED=true
       - SPACE_INTEGRATION=automated
@@ -425,6 +432,7 @@ networks:
 ## **ABE STARTUP SCRIPT**
 
 ### **7. Complete ABE Startup**
+
 ```bash
 #!/bin/bash
 # start-abe-environment.sh
@@ -465,7 +473,7 @@ services=(
 for service in "${services[@]}"; do
     name=$(echo $service | cut -d: -f1)
     port=$(echo $service | cut -d: -f2)
-    
+
     if curl -f -s "http://localhost:$port/health" > /dev/null; then
         echo "✅ $name - HEALTHY"
     else

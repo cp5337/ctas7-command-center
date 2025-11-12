@@ -1,0 +1,405 @@
+```toml
+[node_identity]
+task_id = "uuid-157-000-000-A"
+task_name = "Task 157 - Phase 4"
+classification = "unclassified"
+ttl_category = "optional"
+
+sch = "abcD3fgH1jKlMnOp"
+cuid = "T20250215G34S12SmU9876543210Qwer"
+uuid = "asDf4gHi7jKlMnOp"
+hash_48 = "abcD3fgH1jKlMnOpT20250215G34S12SmU9876543210QwerasDf4gHi7jKlMnOp"
+
+[capabilities]
+narrative = """
+I am the manipulator, the influencer. My work is in the shadows,
+covertly shaping the environment to our advantage. I observe routines, identify
+weaknesses, and exploit human tendencies. I craft narratives, spread misinformation,
+and subtly guide individuals toward desired actions.
+
+I use social media to amplify messages, creating echo chambers
+where our viewpoints dominate. I identify key influencers and build relationships,
+gradually shifting their perspectives. I exploit cognitive biases, emotional triggers,
+and confirmation bias to make our suggestions seem logical and inevitable.
+
+I am patient, persistent, and adaptable. I monitor the impact of my influence operations,
+adjusting my tactics as needed to achieve optimal results. I am the whisper in the
+wind, the subtle nudge, the invisible hand that shapes the world.
+"""
+limitations = """
+My reach is limited by the target's awareness and resistance to manipulation.
+Individuals with strong beliefs, critical thinking skills, and well-defined values
+are difficult to influence. My operations can be exposed by counter-intelligence efforts,
+leading to public backlash and loss of credibility.
+
+I am vulnerable to detection by algorithms that identify coordinated inauthentic behavior
+and social media bots. My effectiveness degrades when my narratives are debunked or
+when my tactics become predictable. I am constrained by ethical considerations and legal
+restrictions that limit the scope of my influence operations.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [2, 8], units = "weeks" }
+collection_phase = { words = "weeks before", range = [2, 6], units = "weeks" }
+actionable_window = { words = "weeks to months", range = [4, 12], units = "weeks" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in social media algorithms",
+  "Exposure of influence operations",
+  "Increased public awareness of manipulation tactics",
+  "Shifting political or social climate"
+]
+persistence_conditions = [
+  "Underlying social divisions and polarization",
+  "Pre-existing biases and beliefs",
+  "Vulnerabilities in information infrastructure"
+]
+
+[cuid_mask]
+temporal = "T-{2-6}w"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "Sm"
+semantic_full = "influence:social_media:manipulation"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+priority = "medium"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Proactive search for coordinated inauthentic behavior" }
+detect = { enabled = true, priority = "high", description = "Identify manipulation campaigns in real-time" }
+disrupt = { enabled = true, priority = "high", description = "Counter-narrative operations to expose manipulation" }
+disable = { enabled = true, priority = "medium", description = "Remove inauthentic accounts and content" }
+dominate = { enabled = false, priority = "low", description = "Establish information dominance is typically not achievable in this phase" }
+
+[[indicators]]
+observable = "Coordinated amplification of specific narratives across multiple platforms"
+priority = "high"
+detection_method = "Social media analytics, bot detection algorithms"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Creation of fake social media profiles with consistent messaging"
+priority = "high"
+detection_method = "Account activity analysis, profile similarity analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Use of emotional language and inflammatory content to polarize opinions"
+priority = "medium"
+detection_method = "Sentiment analysis, natural language processing"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Targeting of vulnerable individuals with personalized misinformation"
+priority = "critical"
+detection_method = "Social media monitoring, targeted advertising analysis"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Rapid spread of unverified information and conspiracy theories"
+priority = "high"
+detection_method = "Fact-checking initiatives, news aggregation monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Sudden shifts in public sentiment on specific topics"
+priority = "medium"
+detection_method = "Poll analysis, sentiment tracking tools"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Increased engagement with divisive content by specific demographic groups"
+priority = "medium"
+detection_method = "Audience analysis, demographic profiling"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Deployment of social media bots to artificially inflate engagement metrics"
+priority = "high"
+detection_method = "Bot detection algorithms, account behavior analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Compromised social media accounts used to spread misinformation"
+priority = "critical"
+detection_method = "Account activity monitoring, password reset requests"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Infiltration of online communities and forums to promote specific viewpoints"
+priority = "medium"
+detection_method = "Community moderation, user activity analysis"
+false_positive_rate = "high"
+
+[[toolchain]]
+tool = "Hootsuite / Sprout Social"
+mode_1n = "Monitor social media for emerging threats and misinformation"
+mode_2n = "Schedule and automate the dissemination of influence content"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Social Bearing / Brandwatch"
+mode_1n = "Analyze social media trends and sentiment to identify manipulation attempts"
+mode_2n = "Track the reach and impact of influence campaigns"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Maltego"
+mode_1n = "Visualize connections between suspicious accounts and websites"
+mode_2n = "Map relationships and networks to amplify influence operations"
+escalation_level = "crate"
+kali_package = "maltego"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Selenium / PhantomJS"
+mode_1n = "Automate data collection from social media platforms"
+mode_2n = "Create fake social media accounts and automate content posting"
+escalation_level = "microkernel"
+kali_package = "python-selenium"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "GPT-3 / Other Large Language Models"
+mode_1n = "Analyze text for sentiment and misinformation"
+mode_2n = "Generate realistic and persuasive social media content"
+escalation_level = "service"
+kali_package = "N/A"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Social-Engineer Toolkit (SET)"
+mode_1n = "Simulate phishing attacks to educate users about manipulation tactics"
+mode_2n = "Execute phishing attacks to gather information and influence behavior"
+escalation_level = "crate"
+kali_package = "set"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+distance_range = { min_km = 1.0, max_km = 1000.0, optimal_km = 100.0 }
+time_to_target = { min_minutes = 1, max_minutes = 1440, optimal_minutes = 60 }
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "pgr_dijkstra"
+cost_factors = []
+escape_route_priority = "low"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+[niem_mapping]
+justice_domain = "j:Intelligence"
+intelligence_domain = "intel:InfluenceOperation"
+iepd_type = "InformationSharing"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Information Warfare"
+incident_subcategory = "Social Media Manipulation"
+location_type = "Virtual"
+subject_role = "Influencer"
+activity_type = "Influence Operations"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Influence Operation"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_audience }"
+"j:Charge" = "18 USC 371 (Conspiracy), 18 USC 1030 (Computer Fraud)"
+
+[[relationships]]
+target_node = "uuid-158-000-000-A"
+relationship_type = "precedes"
+unicode_op = "→"
+strength = 0.8
+description = "Influence operations can precede more direct attacks."
+
+[[relationships]]
+target_node = "uuid-160-000-000-A"
+relationship_type = "amplifies"
+unicode_op = "⇢"
+strength = 0.7
+description = "Influence operations amplify the effects of other attacks."
+
+[[relationships]]
+target_node = "uuid-026-000-000-A"
+relationship_type = "countered_by"
+unicode_op = "⚠"
+strength = 0.6
+description = "Influence operations are countered by public awareness campaigns."
+
+[[eei_priority]]
+rank = 1
+question = "What are the prevalent narratives and viewpoints within the target audience?"
+collection_method = "Social media monitoring, sentiment analysis, surveys"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "Who are the key influencers within the target audience?"
+collection_method = "Network analysis, influencer identification tools"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 3
+question = "What are the vulnerabilities and biases within the target audience?"
+collection_method = "Psychological profiling, social engineering"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What social media platforms and online communities are most frequented by the target audience?"
+collection_method = "Web traffic analysis, social media usage statistics"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 5
+question = "What are the most effective messaging strategies for influencing the target audience?"
+collection_method = "A/B testing, focus groups, behavioral experiments"
+time_sensitivity = "high"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "2016 US Presidential Election",
+    date = "2016-11-08",
+    description = "Russian influence operations targeting the US election",
+    source = "https://www.intelligence.senate.gov/sites/default/files/documents/report_volume5.pdf"
+  },
+  {
+    name = "Cambridge Analytica Scandal",
+    date = "2018-03-17",
+    description = "Data harvesting and targeted advertising for political manipulation",
+    source = "https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal"
+  },
+  {
+    name = "Operation Mockingbird",
+    date = "1950-1970",
+    description = "CIA's covert propaganda campaign using news media",
+    source = "https://spartacus-educational.com/JFKmockingbird.htm"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "T1566.001 - Spearphishing Attachment"
+description = "Targeted phishing emails with malicious attachments."
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.001 - Credentials"
+description = "Collect user credentials through phishing or social engineering."
+
+[[ttps]]
+mitre_attack_id = "T1195"
+tactic = "Initial Access"
+technique = "Supply Chain Compromise"
+sub_technique = "T1195.002 - Compromise Software Supply Chain"
+description = "Compromise software updates or distribution channels to spread malware."
+
+[[ttps]]
+mitre_attack_id = "T1571"
+tactic = "Command and Control"
+technique = "Non-Standard Port"
+sub_technique = "N/A"
+description = "Use non-standard ports for command and control communication."
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - Web Protocols"
+description = "Use web protocols (HTTP, HTTPS) for command and control communication."
+
+[[ttps]]
+mitre_attack_id = "T1189"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = "N/A"
+description = "Compromise websites to infect visitors with malware."
+
+[xsd_integration]
+playbook_template = "influence_operation_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-social-media", "ctas7-cognitive-warfare"]
+unicode_assembly = ["→", "⇢", "⚠", "🗣", "📢", "📣"]
+lisp_expression = "(influence-task :target target-audience :phase pre-attack :priority medium)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Bard"
+created_at = "2024-01-01T00:00:00Z"
+last_updated = "2024-01-01T00:00:00Z"
+reviewed_by = "None"
+status = "active"
+```

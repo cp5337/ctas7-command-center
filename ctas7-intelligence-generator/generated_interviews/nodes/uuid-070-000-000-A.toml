@@ -1,0 +1,421 @@
+```toml
+[node_identity]
+task_id = "uuid-070-000-000-A"
+task_name = "Task 70 - Phase 2"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "aB9cP3dL2rG4xN7j"
+cuid = "T20250315G37S12Sc3fa7b982c1d4e6"
+uuid = "V7g2h8i9j0k1l2m3n4o5p6q7r8s9t0u1"
+hash_48 = "aB9cP3dL2rG4xN7jT20250315G37S12Sc3fa7b982c1d4e6V7g2h8i9j0k1l2m3n4o5p6q7r8s9t0u1"
+
+[capabilities]
+narrative = """
+I am the shadow in the operational theater. I infiltrate restricted areas under the cover of darkness,
+exploiting known system vulnerabilities to gain unauthorized access. I observe command post activities,
+record radio frequencies, and capture secure communications. I utilize sophisticated surveillance
+equipment, including thermal imaging, night vision, and long-range microphones to extract sensitive
+information.
+
+I deploy covert listening devices in strategic locations, intercepting conversations, meetings, and briefings.
+I monitor data transmissions, identify patterns, and analyze the flow of information to anticipate
+decision-making processes. I leverage social engineering to bypass security protocols and gain access to
+restricted areas. I am relentless and resourceful, employing advanced techniques to penetrate even the
+most secure environments.
+
+I am the source of critical insights that shape the outcome of tactical operations. I provide real-time
+intelligence, enabling informed decisions, optimized resource allocation, and swift execution.
+My work ensures mission success by minimizing risks, maximizing effectiveness, and achieving desired objectives.
+"""
+
+limitations = """
+My access to restricted areas is constrained by physical security measures and technological defenses.
+Advanced intrusion detection systems, robust authentication protocols, and sophisticated monitoring
+capabilities can limit my ability to penetrate secured environments. I am vulnerable to detection by
+counter-surveillance teams employing advanced sensors, anomaly detection algorithms, and behavioral
+analysis techniques.
+
+I am reliant on specialized equipment and skilled personnel. Any disruption to my resources or capabilities
+can significantly impede my effectiveness. My operations are also susceptible to environmental conditions,
+such as inclement weather, which can degrade the performance of surveillance devices and hinder my
+movements. Furthermore, changes in security protocols or technology upgrades can render my techniques
+obsolete, requiring constant adaptation and innovation.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months before", range = [90, 270], units = "days" }
+actionable_window = { words = "months", range = [30, 120], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in security protocols or technology upgrades",
+  "Relocation of command posts or communication hubs",
+  "Deployment of counter-surveillance teams",
+  "Implementation of intrusion detection systems",
+  "Alterations to communication frequencies or encryption methods"
+]
+persistence_conditions = [
+  "Physical infrastructure of command posts and communication hubs",
+  "Geographic features influencing signal propagation",
+  "Operational routines and recurring activities",
+  "Static system vulnerabilities"
+]
+
+[cuid_mask]
+temporal = "T-{90-270}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "Sc"
+semantic_full = "recon:cyber:covert"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactive search for insider threats and compromised systems" }
+detect = { enabled = true, priority = "critical", description = "Identify unauthorized network access and data exfiltration" }
+disrupt = { enabled = true, priority = "medium", description = "Isolate compromised systems and revoke access privileges" }
+disable = { enabled = false, priority = "low", description = "Not applicable for covert reconnaissance" }
+dominate = { enabled = false, priority = "low", description = "Not applicable for covert reconnaissance" }
+
+[[indicators]]
+observable = "Unusual network activity from compromised systems"
+priority = "critical"
+detection_method = "IDS/IPS, SIEM"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Covert deployment of listening devices"
+priority = "critical"
+detection_method = "Technical Surveillance Countermeasures (TSCM)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Compromised employee credentials"
+priority = "critical"
+detection_method = "Account monitoring, credential stuffing alerts"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unauthorized access to restricted areas"
+priority = "high"
+detection_method = "Access control logs, security camera footage"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Data exfiltration attempts"
+priority = "critical"
+detection_method = "DLP, network traffic analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Monitoring of radio frequencies"
+priority = "medium"
+detection_method = "Spectrum analysis, signal interception"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Social engineering attempts"
+priority = "high"
+detection_method = "Employee training, phishing simulations"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Anomalous log-in times"
+priority = "medium"
+detection_method = "Log analysis tools, SIEM correlation"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Use of steganography or encryption to hide data"
+priority = "high"
+detection_method = "Traffic analysis, file system analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Changes to system configurations"
+priority = "critical"
+detection_method = "Configuration management tools, file integrity monitoring"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Penetration testing to identify system vulnerabilities"
+mode_2n = "Exploiting vulnerabilities for unauthorized access"
+escalation_level = "framework"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Network traffic analysis to identify malicious activity"
+mode_2n = "Packet sniffing to capture sensitive data"
+escalation_level = "application"
+kali_package = "wireshark"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Wireless network auditing to identify vulnerabilities"
+mode_2n = "Cracking wireless network passwords for unauthorized access"
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Brute-force password cracking to test system security"
+mode_2n = "Brute-forcing passwords to gain unauthorized access"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Network scanning to identify open ports and services"
+mode_2n = "Mapping network infrastructure for target selection"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Web application security testing"
+mode_2n = "Web application exploitation"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+terrain_factors = ["building_density", "line_of_sight", "elevation", "radio_shadowing"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "temperature"]
+operational_threshold = { visibility_km = 1.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Low visibility can hinder surveillance, high wind speeds can affect audio recording"
+impact_on_comms = "Temperature extremes may affect electronic equipment performance"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -80
+imsi_tracking = true
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["telecom_hub", "power_grid", "water_supply", "government_building"]
+proximity_threshold_m = 200
+impact_assessment = "Reconnaissance of critical infrastructure raises alert level significantly"
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Suspicious Activity"
+incident_subcategory = "Electronic Surveillance"
+location_type = "Critical Infrastructure"
+subject_role = "Suspect"
+activity_type = "Cyber Reconnaissance"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Electronic Surveillance"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-071-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.85
+description = "Phase 2 reconnaissance provides in-depth insight enabling subsequent phases"
+
+[[relationships]]
+target_node = "uuid-080-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.65
+description = "Phase 2 reconnaissance helps with planning activities"
+
+[[relationships]]
+target_node = "uuid-090-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.70
+description = "Phase 2 reconnaissance can be detected via network monitoring"
+
+[[eei_priority]]
+rank = 1
+question = "What are the network security protocols and configurations?"
+collection_method = "Network scanning, configuration analysis"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the communication frequencies and encryption methods used?"
+collection_method = "Spectrum analysis, signal interception"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the physical security measures and access control procedures?"
+collection_method = "Physical observation, social engineering"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the vulnerabilities in the system?"
+collection_method = "Vulnerability scans, penetration testing"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the emergency protocols and security staff response times?"
+collection_method = "Timed observation, insider information"
+time_sensitivity = "low"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Stuxnet Attack",
+    date = "2010-06-01",
+    description = "Extensive reconnaissance of industrial control systems and network configurations",
+    source = "https://en.wikipedia.org/wiki/Stuxnet"
+  },
+  {
+    name = "Operation Aurora",
+    date = "2009-12-01",
+    description = "Cyber espionage campaign targeting Google and other major corporations",
+    source = "https://en.wikipedia.org/wiki/Operation_Aurora"
+  },
+  {
+    name = "APT1",
+    date = "2013-02-19",
+    description = "Chinese military unit conducting cyber espionage against US companies",
+    source = "https://www.mandiant.com/resources/apt1-exposing-one-of-chinas-cyber-espionage-units"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.002 - Vulnerability Scanning"
+description = "Adversary uses vulnerability scanners to identify exploitable weaknesses"
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.004 - Security Questions"
+description = "Collect information to answer security questions for password resets"
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.001 - Spearphishing Attachment"
+description = "Deliver malicious attachments via targeted phishing emails"
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.003 - Windows Command Shell"
+description = "Use command-line interfaces to execute malicious scripts"
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - Web Protocols"
+description = "Use HTTP/HTTPS for command and control communications"
+
+[[ttps]]
+mitre_attack_id = "T1005"
+tactic = "Exfiltration"
+technique = "Data from Local System"
+sub_technique = ""
+description = "Exfiltrate sensitive data from compromised systems"
+
+[xsd_integration]
+playbook_template = "covert_recon_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-advanced-penetration"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "📡"]
+lisp_expression = "(recon-task :target target-id :phase operational :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-03-15T00:00:00Z"
+last_updated = "2025-03-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

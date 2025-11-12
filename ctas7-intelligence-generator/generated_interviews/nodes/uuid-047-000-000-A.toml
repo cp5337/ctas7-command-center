@@ -1,0 +1,404 @@
+```toml
+[node_identity]
+task_id = "uuid-047-000-000-A"
+task_name = "Task 47 - Phase 2"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "a3B8G6c1K9d4X0z2"
+cuid = "T20250315G34S11Sd68f720c"
+uuid = "V9a31b8274e56d91"
+hash_48 = "a3B8G6c1K9d4X0z2T20250315G34S11Sd68f720cV9a31b8274e56d91"
+
+[capabilities]
+narrative = """
+I am the facilitator of movement. I analyze traffic patterns around our target, identifying bottlenecks, alternative routes, and likely surveillance points. I use drone-based LIDAR to create 3D models of buildings and surrounding areas, marking potential ingress/egress points, cover, and concealment. I monitor construction projects and utility work that could impact access or security.
+
+I focus on transportation: public transit schedules, vehicle inventories, and parking vulnerabilities. I watch for delivery routes, emergency service response times, and transportation infrastructure weaknesses. I note temporary security adjustments and access control points. I am the planner of mobility—I map paths and provide real-time updates for any obstructions.
+
+I leverage social media and public data to gather details on vehicle registrations, parking permits, and fleet management. I identify blind spots in electronic surveillance systems and find hidden pathways using terrain analysis and local knowledge. I am the mobility node—I chart the course, clearing the path to our objective.
+"""
+
+limitations = """
+My effectiveness is limited by access to real-time data. Traffic patterns shift unexpectedly due to accidents or road closures. Construction projects and utility work can alter routes overnight. Surveillance is susceptible to detection by advanced sensor technologies and counter-mobility measures.
+
+I am constrained by environmental conditions: weather, visibility, and terrain impact drone operations and sensor performance. Insider knowledge is critical, and lack of it can lead to miscalculations. My data becomes obsolete quickly—routes, schedules, and security procedures change without notice. I am only as accurate as my sources.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [8, 48], units = "hours" }
+collection_phase = { words = "weeks to months", range = [3, 12], units = "weeks" }
+actionable_window = { words = "days to weeks", range = [3, 21], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Road closures and detours",
+  "Changes in construction schedules",
+  "Traffic accidents",
+  "Security checkpoint adjustments",
+  "Weather conditions affecting visibility"
+]
+persistence_conditions = [
+  "Underlying road network structure",
+  "Fixed infrastructure locations (bridges, tunnels)",
+  "Public transportation routes",
+  "Building layouts"
+]
+
+[cuid_mask]
+temporal = "T-{3-12}w"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "Sd"
+semantic_full = "recon:mobility:transportation"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactively search for transportation reconnaissance activities" }
+detect = { enabled = true, priority = "critical", description = "Identify indicators of mobility planning in real-time" }
+disrupt = { enabled = true, priority = "medium", description = "Employ counter-surveillance to disrupt mobility reconnaissance" }
+disable = { enabled = false, priority = "low", description = "Not applicable for transportation reconnaissance" }
+dominate = { enabled = false, priority = "low", description = "Not applicable for transportation reconnaissance" }
+
+[[indicators]]
+observable = "Monitoring traffic cameras near the target location"
+priority = "high"
+detection_method = "Network traffic analysis, IDS alerts"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Scraping public transit schedules"
+priority = "medium"
+detection_method = "Web server logs, API access patterns"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Creating 3D models using drone-based LIDAR"
+priority = "critical"
+detection_method = "FAA alerts, RF signal analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Analyzing parking vulnerabilities using social media data"
+priority = "medium"
+detection_method = "Social media monitoring, sentiment analysis"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Monitoring construction projects and utility work affecting access"
+priority = "high"
+detection_method = "OSINT, city permit records"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Checking for traffic accidents near the target location"
+priority = "high"
+detection_method = "Traffic API queries, news aggregation"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Mapping emergency service response times"
+priority = "high"
+detection_method = "Emergency service call logs, GIS analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Monitoring transportation infrastructure weaknesses"
+priority = "critical"
+detection_method = "Infrastructure vulnerability scans, pen testing"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Tracking vehicle registrations and parking permits"
+priority = "medium"
+detection_method = "DMV records, city parking databases"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Identifying temporary security adjustments"
+priority = "high"
+detection_method = "Security guard reports, CCTV footage"
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Identify vulnerabilities in vehicle communication systems"
+mode_2n = "Map vehicle communication networks for exploitation"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for transportation-related communications"
+mode_2n = "Capture and analyze transportation protocols for manipulation"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Assess the security of Wi-Fi networks used in transportation systems"
+mode_2n = "Crack Wi-Fi networks for access to transportation infrastructure"
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Identify and exploit vulnerabilities in transportation systems"
+mode_2n = "Compromise transportation systems for reconnaissance and control"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "DroneDeploy"
+mode_1n = "Detect unauthorized drone activity near critical infrastructure"
+mode_2n = "Map transportation infrastructure for reconnaissance"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Social-Engineer Toolkit (SET)"
+mode_1n = "Test employee awareness about social engineering tactics to gain route information"
+mode_2n = "Execute phishing attacks to harvest employee credentials for transportation system access"
+escalation_level = "crate"
+kali_package = "set"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater",
+  "NOAA/DMSP-OLS/NIGHTTIME_LIGHTS"
+]
+
+distance_range = { min_km = 0.5, max_km = 25, optimal_km = 3 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+terrain_factors = ["urban_density", "slope", "vegetation_cover", "road_density", "building_height"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "fog"]
+operational_threshold = { visibility_km = 3.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Low visibility hinders drone operations and visual assessment"
+impact_on_comms = "Minimal - relies on cellular and RF communications"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "critical"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2500
+signal_strength_threshold_dbm = -85
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["transportation_hubs", "bridges", "tunnels", "communication_towers", "power_grids"]
+proximity_threshold_m = 250
+impact_assessment = "Reconnaissance near transportation infrastructure triggers elevated alert"
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Suspicious Activity"
+incident_subcategory = "Transportation Reconnaissance"
+location_type = "Critical Infrastructure"
+subject_role = "Suspect"
+activity_type = "Pre-Operational Transportation Planning"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Transportation Reconnaissance"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 2332b (Terrorist Acts against Mass Transportation Systems), 49 USC 60123 (Damage to Pipeline Facility)"
+
+[[relationships]]
+target_node = "uuid-048-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.90
+description = "Mobility planning enables route preparation for attack execution"
+
+[[relationships]]
+target_node = "uuid-050-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.70
+description = "Mobility data informs attack planning and execution"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.55
+description = "Mobility reconnaissance is vulnerable to transportation security measures"
+
+[[eei_priority]]
+rank = 1
+question = "What are the primary and alternate routes to the target?"
+collection_method = "Traffic analysis, GIS, Google Maps"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the traffic patterns at different times of day?"
+collection_method = "Traffic sensors, historical data, real-time updates"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the locations of security checkpoints and surveillance cameras?"
+collection_method = "Physical observation, public records, insider information"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the emergency service response times to the target area?"
+collection_method = "Emergency service call logs, public records"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 5
+question = "What are the vulnerabilities in the transportation infrastructure?"
+collection_method = "Infrastructure assessments, vulnerability scans"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 6
+question = "What is the impact of weather conditions on transportation routes?"
+collection_method = "Weather data, traffic sensors, historical records"
+time_sensitivity = "medium"
+
+[historical_reference]
+incidents = [
+  {
+    name = "2004 Madrid Train Bombings",
+    date = "2004-03-11",
+    description = "Extensive transportation reconnaissance to plan train bombings",
+    source = "https://en.wikipedia.org/wiki/2004_Madrid_train_bombings"
+  },
+  {
+    name = "2016 Brussels Bombings",
+    date = "2016-03-22",
+    description = "Transportation reconnaissance to plan airport and metro bombings",
+    source = "https://en.wikipedia.org/wiki/2016_Brussels_bombings"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.002 - Vulnerability Scanning"
+description = "Scanning transportation systems for vulnerabilities"
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.004 - Credentials"
+description = "Collecting transportation employee credentials for access"
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.001 - Spearphishing Attachment"
+description = "Sending phishing attachments to gather transportation infrastructure details"
+
+[[ttps]]
+mitre_attack_id = "T1591"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "T1591.004 - Wireless Access Points"
+description = "Mapping wireless networks at transportation hubs"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Exploiting vulnerabilities in public transportation apps"
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Infrastructure Information"
+sub_technique = "T1592.004 - Digital Certificates"
+description = "Collecting information on digital certificates used in transport systems."
+
+[xsd_integration]
+playbook_template = "transportation_reconnaissance_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-mobility-analysis"]
+unicode_assembly = ["→", "⇢", "⚠", "🚗", "🗺", "🚧"]
+lisp_expression = "(mobility-recon :target target-id :phase pre-operational :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-03-15T00:00:00Z"
+last_updated = "2025-03-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

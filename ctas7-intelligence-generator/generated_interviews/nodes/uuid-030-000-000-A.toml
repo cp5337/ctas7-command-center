@@ -1,0 +1,535 @@
+```toml
+[node_identity]
+task_id = "uuid-030-000-000-A"
+task_name = "IED Transport Preparation"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# Full hash example: "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+# ============================================================================
+
+sch = "aB8cD4eFg6HiJ2kL"
+cuid = "T20241115G34S12Tx"
+uuid = "yZ0xW9vUt8SrQ5pOn4ml"
+
+hash_48 = "aB8cD4eFg6HiJ2kLT20241115G34S12TxyZ0xW9vUt8SrQ5pOn4ml"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+# This is the core intelligence requirement. Written from the adversary's
+# perspective, describing capabilities, methods, and intent.
+# ============================================================================
+
+[capabilities]
+narrative = """
+I secure the means of transport. I select vehicles—cars, trucks, vans—depending on the payload and distance.
+I modify them to conceal the device: false compartments, reinforced frames, altered appearances.
+I study traffic patterns, road conditions, and potential checkpoints.
+I plan routes that minimize risk and maximize speed, avoiding known security patrols.
+
+I procure necessary documents: licenses, registration, insurance—forgeries if necessary.
+I maintain the vehicle, ensuring it's mechanically sound and ready for the mission.
+I equip it with tools: GPS, communication devices, emergency repair kits.
+I practice driving the route, anticipating obstacles and planning contingencies.
+
+I monitor the vehicle's security, preventing theft or tampering.
+I use secure storage locations, minimizing exposure.
+I coordinate with other team members, synchronizing movements and sharing information.
+I am the logistical arm—ensuring the IED arrives at its destination safely and on time.
+"""
+
+limitations = """
+I am vulnerable to law enforcement scrutiny. Traffic stops, vehicle inspections, and surveillance can expose my operations.
+I am reliant on the vehicle's reliability. Mechanical failures, accidents, or theft can disrupt my plans.
+I am limited by road conditions and traffic patterns. Congestion, closures, or detours can delay or reroute me.
+I am constrained by the device's fragility. Rough handling, extreme temperatures, or vibrations can damage the IED.
+I am susceptible to tracking and interception. GPS devices, cell phone signals, and license plate readers can reveal my location.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+# Defines the actionable window and decay curve for this intelligence type.
+# Uses "on the order of" language for human readability + numerical ranges.
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 72], units = "hours" }
+collection_phase = { words = "days to weeks before", range = [3, 21], units = "days" }
+actionable_window = { words = "hours to days", range = [6, 48], units = "hours" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in security checkpoints or patrol routes",
+  "Traffic incidents or road closures",
+  "Vehicle breakdowns or maintenance issues",
+  "Law enforcement activity or surveillance"
+]
+persistence_conditions = [
+  "The chosen vehicle's type and modifications",
+  "The planned route's geographical constraints",
+  "The IED's physical characteristics and concealment methods"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+# The CUID (positions 17-32) encodes spatio-temporal + semantic + environmental
+# context using PREFIX and SUFFIX masks from CTAS 7.3 Ground Truth.
+# ============================================================================
+
+[cuid_mask]
+# Temporal context
+temporal = "T-{3-21}d"
+temporal_format = "YYYYMMDD"
+
+# Geographic context
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+
+# Semantic domain
+semantic = "Tx"
+semantic_full = "transport:ied:movement"
+
+# PREFIX MASKS (Global Environmental Context) - Domain-Specific
+[cuid_mask.prefix]
+# Universal masks (all domains)
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+# Domain-Specific Extensions (v7.3)
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+# SUFFIX MASKS (Local Operational Context)
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+# Priority
+priority = "high"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+# Maps this node to the 5 phases of the HD4 kill chain.
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Search for anomalies in vehicle movement patterns" }
+detect = { enabled = true, priority = "critical", description = "Identify suspicious vehicle activity en route" }
+disrupt = { enabled = true, priority = "high", description = "Interfere with IED transport to delay or reroute" }
+disable = { enabled = true, priority = "medium", description = "Prevent IED from reaching its intended target" }
+dominate = { enabled = false, priority = "low", description = "Not applicable for IED transport phase" }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+# Key indicators that this task is occurring. Used for detection and hunting.
+# ============================================================================
+
+[[indicators]]
+observable = "Unusual vehicle modifications or alterations"
+priority = "critical"
+detection_method = "Vehicle inspections, customs searches"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Suspicious route planning or deviations from normal routes"
+priority = "high"
+detection_method = "Traffic monitoring, GPS tracking analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Purchase of large quantities of fertilizer or other precursors"
+priority = "medium"
+detection_method = "Transaction monitoring, suspicious activity reports"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Increased vehicle maintenance or repair activities"
+priority = "medium"
+detection_method = "Garage records, mechanic reports"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Frequent stops at unusual locations"
+priority = "high"
+detection_method = "GPS tracking, surveillance"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of burner phones or encrypted communication"
+priority = "high"
+detection_method = "Signal intelligence, communication analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Evasive driving techniques"
+priority = "medium"
+detection_method = "Traffic cameras, patrol officer observation"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unexplained heavy loads"
+priority = "high"
+detection_method = "Weigh stations, visual inspection"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Out-of-state or temporary license plates"
+priority = "medium"
+detection_method = "License plate readers, law enforcement databases"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Travel during off-peak hours to avoid detection"
+priority = "medium"
+detection_method = "Traffic analysis, route monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Large cash withdrawals before transport"
+priority = "medium"
+detection_method = "Bank security, surveillance"
+false_positive_rate = "low"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+# Dual-mode tool stacks: same tools, different semantic context.
+# ============================================================================
+
+[[toolchain]]
+tool = "Wireshark/tcpdump"
+mode_1n = "Monitor network traffic for unusual patterns or encrypted communications"
+mode_2n = "Encrypt communications and mask network activity"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan networks for vulnerabilities that could be used for communication"
+mode_2n = "Identify open ports for command and control channels"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Tor/VPN"
+mode_1n = "Monitor for connections to anonymization networks"
+mode_2n = "Conceal IP address and location"
+escalation_level = "user"
+kali_package = "tor"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "OpenStreetMap/Google Maps"
+mode_1n = "Analyze planned routes for potential vulnerabilities and choke points"
+mode_2n = "Plan the optimal route, identifying alternate escape paths"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "gpg/openssl"
+mode_1n = "Monitor for encrypted communications"
+mode_2n = "Encrypt sensitive communications regarding transport"
+escalation_level = "crate"
+kali_package = "gpg"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Autopsy/Sleuthkit"
+mode_1n = "Analyze GPS data for unauthorized route deviations"
+mode_2n = "Wipe GPS logs to avoid detection"
+escalation_level = "crate"
+kali_package = "sleuthkit"
+resource_cost = "medium"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+# Location-dependent intelligence requirements and operational factors.
+# ============================================================================
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+# Distance and time constraints
+distance_range = { min_km = 1, max_km = 500, optimal_km = 100 }
+time_to_target = { min_minutes = 30, max_minutes = 720, optimal_minutes = 180 }
+
+# Terrain factors (affects approach, escape, line-of-sight)
+terrain_factors = ["road_density", "urban_density", "elevation", "vegetation_cover"]
+
+# Weather impact (from existing weather_data table)
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed"]
+operational_threshold = { visibility_km = 2.0, wind_speed_ms = 18.0 }
+impact_on_surveillance = "Low visibility hinders route observation and law enforcement presence."
+impact_on_comms = "Heavy rain may affect cell signal strength."
+
+# Traffic and routing (from pgRouting + PostGIS)
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "congestion_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+# COMINT (Communications Intelligence)
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2500
+signal_strength_threshold_dbm = -95
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+# Critical infrastructure proximity
+[geospatial.infrastructure]
+critical_assets = ["bridge", "tunnel", "government_building", "military_base"]
+proximity_threshold_m = 250
+impact_assessment = "Proximity to critical infrastructure increases alert levels and security."
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+# Maps CTAS ontology to NIEM IEPDs for law enforcement interoperability.
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:TransportationViolation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Enforcement-Exchange"
+iepd_version = "5.2"
+
+# N-DEx field mapping
+[niem_mapping.ndex_fields]
+incident_category = "Terrorism"
+incident_subcategory = "IED Transport"
+location_type = "Highway"
+subject_role = "Suspect"
+activity_type = "Transportation of Explosives"
+
+# NIEM core elements
+[niem_mapping.niem_core]
+"nc:Activity" = "IED Transport"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ route_location }"
+"j:Charge" = "18 USC 2332a (WMD), 18 USC 844 (Explosives)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+# Defines how this node connects to other nodes in the 165-task graph.
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-040-000-000-A"
+relationship_type = "precedes"
+unicode_op = "→"
+strength = 0.9
+description = "IED transport must precede final placement."
+
+[[relationships]]
+target_node = "uuid-020-000-000-A"
+relationship_type = "requires"
+unicode_op = "⇢"
+strength = 0.8
+description = "Requires access to a prepared IED."
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.7
+description = "Vulnerable to interdiction efforts."
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+# Ranked intelligence requirements for this task.
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "What are the planned transport routes and timelines?"
+collection_method = "Signal intelligence, human intelligence, traffic analysis"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "What type of vehicle is being used for transport?"
+collection_method = "Surveillance, vehicle registration databases"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 3
+question = "What are the security measures in place for the vehicle and route?"
+collection_method = "Human intelligence, law enforcement databases"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What is the composition and quantity of the IED being transported?"
+collection_method = "Forensic analysis, trace evidence"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 5
+question = "What is the chain of custody for the IED during transport?"
+collection_method = "Surveillance, human intelligence"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 6
+question = "What are the contingency plans if transport is disrupted?"
+collection_method = "Human intelligence, signal intelligence"
+time_sensitivity = "medium"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+# Links to actual incidents where this task was observed.
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "The fertilizer bomb was transported in a rental truck.",
+    source = "https://en.wikipedia.org/wiki/Oklahoma_City_bombing"
+  },
+  {
+    name = "Madrid Train Bombings",
+    date = "2004-03-11",
+    description = "IEDs were transported on commuter trains.",
+    source = "https://en.wikipedia.org/wiki/2004_Madrid_train_bombings"
+  },
+  {
+    name = "London 7/7 Bombings",
+    date = "2005-07-07",
+    description = "IEDs were transported in backpacks on public transportation.",
+    source = "https://en.wikipedia.org/wiki/7_July_2005_London_bombings"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+# MITRE ATT&CK mapping for cyber TTPs (where applicable).
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1608"
+tactic = "Preparation"
+technique = "Stage Capabilities"
+sub_technique = "T1608.001 - Obtain Access"
+description = "Adversary obtains access to the vehicle."
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "T1566.001 - Spearphishing Attachment"
+description = "Spearphishing used to obtain credentials for vehicle rentals"
+
+[[ttps]]
+mitre_attack_id = "T1568"
+tactic = "Defense Evasion"
+technique = "Dynamic Resolution"
+sub_technique = "T1568.002 - Fast Flux DNS"
+description = "Using fast flux DNS to route communications to a command and control server dynamically during transport."
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - Web Protocols"
+description = "Using web protocols (HTTP/S) to communicate with C2 server during transport."
+
+[[ttps]]
+mitre_attack_id = "T1105"
+tactic = "Command and Control"
+technique = "Ingress Tool Transfer"
+sub_technique = ""
+description = "Transferring tools to maintain network access for communication."
+
+[[ttps]]
+mitre_attack_id = "T1573"
+tactic = "Command and Control"
+technique = "Encrypted Channel"
+sub_technique = "T1573.001 - Symmetric Cryptography"
+description = "Using Symmetric Cryptography to encrypt command and control communications."
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+# Links this node to XSD playbooks for executable document generation.
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "ied_transport_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-geolocation"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🚚"]
+lisp_expression = "(transport-task :ied ied-id :vehicle vehicle-id :route route-id)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

@@ -1,0 +1,413 @@
+```toml
+[node_identity]
+task_id = "uuid-129-000-000-A"
+task_name = "Task 129 - Phase 4"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "aP9fS2mQ7Lx8jV3y"
+cuid = "T20250704G37N12DAu30c92560"
+uuid = "U7b184a9c3d2e5f0"
+hash_48 = "aP9fS2mQ7Lx8jV3yT20250704G37N12DAu30c92560U7b184a9c3d2e5f0"
+
+[capabilities]
+narrative = """
+I specialize in close target reconnaissance. I use advanced thermal imaging to detect heat signatures and identify vulnerable infrastructure components, like server rooms and electrical panels. I exfiltrate floor plans and building schematics using custom-built miniature drones that can navigate tight spaces.
+
+I deploy low-profile acoustic sensors to map interior layouts and identify high-value target locations based on sound profiles. I use sophisticated signal analysis techniques to intercept wireless communications and gain access to security system control panels. I can bypass biometric access controls using cloned credentials.
+
+I create realistic 3D models of the target environment, combining LiDAR scans with high-resolution imagery. I identify weak points in structural security—unreinforced walls, compromised locks, and poorly guarded ventilation systems. I focus on enabling physical penetration with minimal risk.
+"""
+
+limitations = """
+My effectiveness is limited by physical barriers and advanced detection systems. Concrete walls block thermal imaging, and Faraday cages prevent wireless signal interception. Advanced biometric scanners can detect cloned credentials. My miniature drones have limited range and payload capacity.
+
+I am vulnerable to detection by active security patrols and advanced sensor systems. Counter-surveillance measures, like signal jamming and thermal screening, can significantly degrade my capabilities. My activities generate detectable electromagnetic signatures.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months to years before", range = [6, 24], units = "months" }
+actionable_window = { words = "months to years", range = [3, 12], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Security system upgrades or changes",
+  "Building renovations or structural modifications",
+  "Implementation of advanced detection technologies",
+  "Changes in operational security procedures"
+]
+persistence_conditions = [
+  "Building construction materials",
+  "Physical location and layout of infrastructure",
+  "Hard-wired security systems",
+  "Environmental conditions affecting sensor performance"
+]
+
+[cuid_mask]
+temporal = "T-{180-720}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "Au"
+semantic_full = "recon:advanced:acoustic:thermal:penetration"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactive search for acoustic and thermal reconnaissance activities." }
+detect = { enabled = true, priority = "critical", description = "Real-time identification of advanced reconnaissance indicators, like drone activity." }
+disrupt = { enabled = true, priority = "medium", description = "Interference with advanced sensors and surveillance technologies." }
+disable = { enabled = true, priority = "high", description = "Neutralize adversary sensors and surveillance platforms." }
+dominate = { enabled = false, priority = "low", description = "Not applicable during this phase." }
+
+[[indicators]]
+observable = "Detection of miniature drone activity near target facility"
+priority = "critical"
+detection_method = "Radar detection, acoustic sensors, RF monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unusual thermal signatures detected inside secure areas"
+priority = "high"
+detection_method = "Thermal camera monitoring, AI-driven anomaly detection"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Interception of wireless communication signals indicating access control compromise"
+priority = "critical"
+detection_method = "RF spectrum analysis, signal pattern matching"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Acoustic anomalies suggesting internal layout mapping"
+priority = "medium"
+detection_method = "Acoustic sensor arrays, machine learning analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Cloned biometric credentials detected at entry points"
+priority = "critical"
+detection_method = "Biometric authentication logs, anomaly detection systems"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unauthorized access to building schematics or floor plans"
+priority = "high"
+detection_method = "Network intrusion detection systems, access control logs"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Electromagnetic interference patterns indicating sensor deployment"
+priority = "medium"
+detection_method = "EMF detection, signal analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Detection of LiDAR scans around perimeter"
+priority = "high"
+detection_method = "Optical detection, lidar monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unusual equipment entering restricted areas"
+priority = "medium"
+detection_method = "Physical inspection, access control review"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Compromised locks and vulnerable access points identified"
+priority = "high"
+detection_method = "Physical security audits, penetration testing"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Thermal Imaging Camera"
+mode_1n = "Identify heat signatures indicating infrastructure vulnerabilities"
+mode_2n = "Locate server rooms and electrical panels"
+escalation_level = "microkernel"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Miniature Drone with Camera"
+mode_1n = "Monitor drone activity near sensitive areas to identify intrusion attempts"
+mode_2n = "Exfiltrate floor plans and building schematics"
+escalation_level = "microkernel"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Acoustic Sensors"
+mode_1n = "Detect unusual sound profiles that might indicate internal mapping"
+mode_2n = "Map interior layouts and identify high-value target locations"
+escalation_level = "microkernel"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "RF Signal Analyzer"
+mode_1n = "Monitor wireless communication signals for anomalous patterns"
+mode_2n = "Intercept wireless communications to compromise security systems"
+escalation_level = "microkernel"
+kali_package = "gnuradio"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Biometric Cloner"
+mode_1n = "Monitor biometric authentication logs for unusual activity"
+mode_2n = "Bypass biometric access controls"
+escalation_level = "microkernel"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "LiDAR Scanner"
+mode_1n = "Detect LiDAR scanning activity around perimeters"
+mode_2n = "Create 3D models of the target environment"
+escalation_level = "microkernel"
+kali_package = "N/A"
+resource_cost = "high"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+distance_range = { min_km = 0.2, max_km = 20, optimal_km = 2 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 20 }
+terrain_factors = ["building_density", "line_of_sight", "elevation", "material_composition"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "temperature", "humidity", "wind_speed"]
+operational_threshold = { visibility_km = 2.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Limited by low visibility; thermal signatures enhanced in stable weather"
+impact_on_comms = "Minimal—primarily wired/internal systems"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "material_cost", "evasion_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 100
+impact_assessment = "Reconnaissance near critical infrastructure triggers elevated alerts and increased security protocols"
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:TerroristActivity"
+iepd_type = "Threat-Assessment"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Surveillance"
+incident_subcategory = "Advanced Reconnaissance"
+location_type = "Restricted Area"
+subject_role = "Intruder"
+activity_type = "Technical Espionage"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Covert Surveillance"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_facility }"
+"j:Charge" = "18 USC 793 (Gathering, transmitting or losing defense information), 18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-130-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.95
+description = "This directly enables advanced penetration planning"
+
+[[relationships]]
+target_node = "uuid-132-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.85
+description = "This informs advanced methods"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.8
+description = "This is vulnerable to targeted counter-surveillance and electronic detection."
+
+[[relationships]]
+target_node = "uuid-018-000-000-A"
+relationship_type = "precedes"
+unicode_op = "⇢"
+strength = 0.90
+description = "This must precede any attempt"
+
+[[relationships]]
+target_node = "uuid-010-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.65
+description = "Provides operational information to help logistics planning"
+
+[[eei_priority]]
+rank = 1
+question = "What are the internal security sensor placements?"
+collection_method = "Acoustic Analysis, Thermal Imaging"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "Which communication systems are wired versus wireless?"
+collection_method = "RF analysis"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 3
+question = "How is access control enforced (biometric, physical, etc.)?"
+collection_method = "Physical surveillance, insider"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What are the construction materials used for each section of the facility?"
+collection_method = "LiDAR scanning, Building plans"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 5
+question = "What structural weaknesses can be exploited?"
+collection_method = "Structural analysis of plans and imagery"
+time_sensitivity = "medium"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Stuxnet Attack on Natanz",
+    date = "2010-06-01",
+    description = "Extensive thermal and electronic to compromise facility integrity",
+    source = "https://www.wired.com/2014/11/countdown-to-zero-day-stuxnet/"
+  },
+  {
+    name = "Iranian Cyber Attack on Bowman Dam",
+    date = "2013-08-28",
+    description = "Reconnaissance techniques employed to ascertain vulnerabilities",
+    source = "https://www.cfr.org/cyber-operations/iranian-cyber-attack-bowman-dam"
+  },
+  {
+    name = "NSA Tailored Access Operations",
+    date = "Ongoing",
+    description = "Physical to compromise systems.",
+    source = "https://theintercept.com/2014/03/12/nsa-plans-infect-millions-computers-malware/"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.002 - Vulnerability Scanning"
+description = "Adversary scans for system vulnerabilities"
+
+[[ttps]]
+mitre_attack_id = "T1602"
+tactic = "Reconnaissance"
+technique = "Data from Configuration Repository"
+sub_technique = ""
+description = "Adversary gains access to system configurations"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Adversary exploits application vulnerabilities to gain access"
+
+[[ttps]]
+mitre_attack_id = "T1588"
+tactic = "Resource Development"
+technique = "Obtain Capabilities"
+sub_technique = "T1588.002 - Tool"
+description = "Adversary acquires tools"
+
+[[ttps]]
+mitre_attack_id = "T1591"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "T1591.002 - DNS"
+description = "Gathering DNS information"
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.004 - Credentials"
+description = "Collecting credentials for access"
+
+[xsd_integration]
+playbook_template = "advanced_recon_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-geolocation"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🛰"]
+lisp_expression = "(advanced-recon-task :target target-id :phase pre-attack :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-07-04T00:00:00Z"
+last_updated = "2025-07-04T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

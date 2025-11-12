@@ -1,9 +1,9 @@
-version: '3.8'
+version: "3.8"
 
 services:
   # Main Operations Platform (7.0 → 7.1)
   main-ops-frontend:
-    build: 
+    build:
       context: ../ctas-7-shipyard-staging/ctas-7.0-main-ops-platform
       dockerfile: Dockerfile
     ports:
@@ -18,7 +18,15 @@ services:
       - ctas-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000"]
+      test:
+        [
+          "CMD",
+          "wget",
+          "--quiet",
+          "--tries=1",
+          "--spider",
+          "http://localhost:3000",
+        ]
       interval: 30s
       timeout: 10s
       retries: 3

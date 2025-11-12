@@ -1,0 +1,396 @@
+```toml
+[node_identity]
+task_id = "uuid-022-000-000-A"
+task_name = "Precursor Chemical Synthesis"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "Wm3hP2vL8qR4wN7j"
+cuid = "T20240401G34N11SC"
+uuid = "V6f9511f3ac74d5b"
+hash_48 = "Wm3hP2vL8qR4wN7jT20240401G34N11SV6f9511f3ac74d5b"
+
+[capabilities]
+narrative = """
+I orchestrate the clandestine creation of precursor chemicals, the building blocks of our explosive brethren. My laboratory is a ghost, a phantom footprint in the annals of legitimate industry. I scour the web for synthesis pathways, published but forgotten, tweaking yields with forbidden knowledge. I source raw materials from the shadows – industrial surplus, mislabeled shipments, the careless waste of legitimate enterprise. Each compound is a secret whispered in glass, a potential whispered in a future terror. I am the alchemist of annihilation, transmuting mundane chemicals into instruments of fear. I prioritize ease of acquisition and concealability. My lab is designed to be quickly disassembled and relocated, leaving no trace but lingering odors and vanished supplies.
+"""
+
+limitations = """
+My domain is fraught with peril. The synthesis of these compounds is inherently unstable, prone to catastrophic mishaps. Even a slight miscalculation can result in toxic releases or explosions that draw unwanted attention. The acquisition of precursors is increasingly scrutinized, requiring deception, elaborate schemes, and the assumption of significant risk. My knowledge is limited by the available literature and the constraints of my equipment. Novel compounds are beyond my reach, and even established syntheses can present insurmountable challenges. My vulnerability lies in the traceability of precursors, the detection of chemical signatures, and the possibility of betrayal.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [4, 12], units = "weeks" }
+collection_phase = { words = "months before", range = [3, 9], units = "months" }
+actionable_window = { words = "months", range = [1, 6], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in chemical regulations or availability",
+  "Discovery of synthesis routes or techniques by law enforcement",
+  "Confiscation of precursor materials or equipment",
+  "Exposure of the laboratory location"
+]
+persistence_conditions = [
+  "Established chemical synthesis pathways",
+  "Availability of dual-use chemicals",
+  "Demand for explosive materials"
+]
+
+[cuid_mask]
+temporal = "T-{90-270}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 25.0
+semantic = "Sc"
+semantic_full = "chemical:synthesis:clandestine"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactive search for chemical precursor purchases." }
+detect = { enabled = true, priority = "critical", description = "Chemical signature detection and analysis." }
+disrupt = { enabled = true, priority = "high", description = "Raids on chemical supply companies." }
+disable = { enabled = true, priority = "critical", description = "Confiscation of materials and equipment." }
+dominate = { enabled = false, priority = "low", description = "Control of chemical distribution and acquisition." }
+
+[[indicators]]
+observable = "Unusual orders of specific chemical precursors from suppliers"
+priority = "critical"
+detection_method = "Transaction monitoring, Suspicious Activity Reporting (SAR)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Evasive or unconventional payment methods for chemical supplies"
+priority = "high"
+detection_method = "Financial intelligence, AML monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Storage or transport of chemicals in unmarked or suspicious containers"
+priority = "high"
+detection_method = "Physical surveillance, traffic stops, customs inspections"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Elevated utility usage in remote locations"
+priority = "medium"
+detection_method = "Utility data analysis, smart meter monitoring"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Presence of chemical odors or unusual fumes near residential or industrial areas"
+priority = "medium"
+detection_method = "Community reporting, environmental sensors"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Recruitment of individuals with chemical or scientific expertise"
+priority = "medium"
+detection_method = "Human intelligence, social media monitoring"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Purchase of laboratory equipment such as glassware, heating mantles, or distillation apparatus"
+priority = "high"
+detection_method = "Sales records monitoring, supplier alerts"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Disposal of chemical waste in inappropriate or clandestine ways"
+priority = "high"
+detection_method = "Waste management monitoring, environmental testing"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Requests for information about chemical synthesis pathways or explosive formulations"
+priority = "medium"
+detection_method = "Internet monitoring, academic outreach"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Evidence of experimentation with chemical reactions or explosive precursors"
+priority = "critical"
+detection_method = "Laboratory analysis, forensic investigation"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Attempts to circumvent regulatory controls on precursor chemicals"
+priority = "critical"
+detection_method = "Regulatory compliance monitoring, import/export controls"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "SciFinder"
+mode_1n = "Track emerging chemical synthesis techniques and precursor regulations."
+mode_2n = "Research and optimize synthesis pathways for targeted compounds."
+escalation_level = "crate"
+kali_package = "N/A"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Chemical Abstracts Service (CAS)"
+mode_1n = "Identify and monitor suspicious chemical substances and formulations."
+mode_2n = "Identify and evaluate potential chemical feedstocks."
+escalation_level = "crate"
+kali_package = "N/A"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Open Babel"
+mode_1n = "Analyze chemical structures and properties to identify potential threats."
+mode_2n = "Convert chemical files to suitable formats for processing/simulation."
+escalation_level = "script"
+kali_package = "openbabel"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "RDKit"
+mode_1n = "Develop predictive models for identifying hazardous chemicals based on structure."
+mode_2n = "Perform cheminformatics tasks, such as calculating molecular properties and generating fingerprints."
+escalation_level = "script"
+kali_package = "python3-rdkit"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Gaussian"
+mode_1n = "Simulate chemical reactions to predict stability and potential hazards."
+mode_2n = "Calculate electronic structures of molecules and perform advanced chemical simulations."
+escalation_level = "microkernel"
+kali_package = "N/A"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Custom Python Scripts"
+mode_1n = "Automate monitoring of chemical databases and regulatory websites."
+mode_2n = "Automate the calculation of molecular properties and simulate reaction conditions."
+escalation_level = "script"
+kali_package = "python3"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 1, max_km = 100, optimal_km = 25 }
+time_to_target = { min_minutes = 60, max_minutes = 720, optimal_minutes = 180 }
+
+terrain_factors = ["industrial_density", "isolation", "accessibility", "waste_disposal_sites"]
+
+[geospatial.weather]
+critical_factors = ["wind_direction", "temperature", "precipitation"]
+operational_threshold = { visibility_km = 10.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Weather impacts the covertness of transportation and potential for chemical plume dispersion."
+impact_on_comms = "Unlikely, but potential for signal interference from intense storms."
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "concealment_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = -90
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = ["water_treatment", "chemical_plants", "industrial_zones"]
+proximity_threshold_m = 2000
+impact_assessment = "Proximity to chemical plants might facilitate acquisition of raw materials or provide cover for synthesis activities."
+
+[niem_mapping]
+justice_domain = "j:DrugCrime"
+intelligence_domain = "intel:ThreatAnalysis"
+iepd_type = "Intelligence-Exchange"
+iepd_version = "5.0"
+
+[niem_mapping.ndex_fields]
+incident_category = "Chemical Threat"
+incident_subcategory = "Precursor Synthesis"
+location_type = "Laboratory"
+subject_role = "Chemist"
+activity_type = "Chemical Synthesis"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Synthesis"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ lab_location }"
+"j:Charge" = "18 USC 842 (Illegal Explosives), 21 USC 841 (Drug Manufacture)"
+
+[[relationships]]
+target_node = "uuid-023-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.9
+description = "Precursor chemical synthesis directly enables IED construction."
+
+[[relationships]]
+target_node = "uuid-024-000-000-A"
+relationship_type = "requires"
+unicode_op = "⇢"
+strength = 0.8
+description = "Precursor chemical synthesis requires chemical expertise and equipment."
+
+[[relationships]]
+target_node = "uuid-050-000-000-A"
+relationship_type = "precedes"
+unicode_op = "→"
+strength = 0.7
+description = "Precursor chemical synthesis typically precedes IED manufacture."
+
+[[relationships]]
+target_node = "uuid-100-000-000-A"
+relationship_type = "adjacent_to"
+unicode_op = "☍"
+strength = 0.4
+description = "Chemical synthesis is related to illicit drug manufacture."
+
+[[eei_priority]]
+rank = 1
+question = "What specific chemicals are being synthesized?"
+collection_method = "Lab analysis, precursor tracking, informant reporting"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "What is the scale of the operation?"
+collection_method = "Precursor purchase analysis, production estimates, resource tracking"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the synthesis methods being employed?"
+collection_method = "Technical intelligence, open-source research, lab simulation"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "Where is the synthesis taking place?"
+collection_method = "Geospatial analysis, human intelligence, SIGINT"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 5
+question = "Who are the individuals involved?"
+collection_method = "Human intelligence, social network analysis, financial investigations"
+time_sensitivity = "high"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Synthesis of ammonium nitrate fertilizer-based explosive.",
+    source = "https://www.fbi.gov/history/famous-cases/oklahoma-city-bombing"
+  },
+  {
+    name = "London Bombings",
+    date = "2005-07-07",
+    description = "Synthesis of TATP explosives.",
+    source = "https://en.wikipedia.org/wiki/7_July_2005_London_bombings"
+  },
+  {
+    name = "Madrid Train Bombings",
+    date = "2004-03-11",
+    description = "Synthesis of dynamite-based explosives.",
+    source = "https://en.wikipedia.org/wiki/2004_Madrid_train_bombings"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1583"
+tactic = "Reconnaissance"
+technique = "Obtain Capabilities"
+sub_technique = "T1583.001 - Chemical Expertise"
+description = "Seeking individuals with a chemistry background to aid in synthesizing compounds."
+
+[[ttps]]
+mitre_attack_id = "T1588"
+tactic = "Resource Development"
+technique = "Obtain Capabilities"
+sub_technique = "T1588.004 - Chemical Substances"
+description = "Acquisition of necessary chemicals and compounds for synthesis."
+
+[[ttps]]
+mitre_attack_id = "T1588"
+tactic = "Resource Development"
+technique = "Obtain Capabilities"
+sub_technique = "T1588.003 - Laboratory Environment"
+description = "Procuring laboratory space and equipment needed for the synthesis."
+
+[[ttps]]
+mitre_attack_id = "T1608"
+tactic = "Resource Development"
+technique = "Stage Capabilities"
+sub_technique = "T1608.005 - Chemical Storage"
+description = "Storage of synthesized chemicals within the lab."
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Victim Org Info"
+sub_technique = "T1592.004 - Technical Data"
+description = "Researching synthesis pathways."
+
+[xsd_integration]
+playbook_template = "chemical_synthesis_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-chemical"]
+unicode_assembly = ["→", "⇢", "☍", "🧪", "☣", "⚠"]
+lisp_expression = "(synthesis-task :target target-id :phase pre-operational :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2024-04-01T00:00:00Z"
+last_updated = "2024-04-01T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

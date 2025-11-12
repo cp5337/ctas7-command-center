@@ -1,0 +1,6173 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.5972432846129,
+          18.414781849275833
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-000",
+        "name": "Tortola, Virgin Islands (U.K.)",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.84319037600663,
+          18.322472111215845
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-001",
+        "name": "Great Bay, Virgin Islands (U.S.)",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.97531918865539,
+          18.342402587783717
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-002",
+        "name": "Brewer's Bay, Virgin Islands (U.S.)",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.88152042697823,
+          17.71242997088509
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-003",
+        "name": "Frederiksted, Virgin Islands (U.S.)",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.70315141271153,
+          17.746660579229843
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-004",
+        "name": "Christiansted, Virgin Islands, Virgin Islands (U.S.)",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.808173603216411,
+          54.71367039332284
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-005",
+        "name": "Carrickfergus, United Kingdom",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.783516125969337,
+          55.63758019678909
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-006",
+        "name": "Saltcoats, United Kingdom",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.480879621608963,
+          54.15027516173659
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-007",
+        "name": "Douglas, Isle of Man",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.35714994891956,
+          54.21062739961812
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-008",
+        "name": "Silecroft Beach, United Kingdom",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.423897240100775,
+          54.16697942720116
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-009",
+        "name": "Groudle Bay, Isle of Man",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.691426347455632,
+          54.22244748636314
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-010",
+        "name": "Peel, Isle of Man",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.484394535704497,
+          54.542741580201856
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-011",
+        "name": "Ballywater, United Kingdom",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.566670576458828,
+          54.09999306170466
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-012",
+        "name": "Port Grenaugh, Isle of Man",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.54015885755544,
+          4.211942635751779
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-013",
+        "name": "Hulhumale, Maldives",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.07140918962199,
+          6.622441345756148
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-014",
+        "name": "Kulhudhufushi, Maldives",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.07082325253708,
+          5.10323036500878
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-015",
+        "name": "Eydhafushi, Maldives",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.95558895917019,
+          3.608093477293043
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-016",
+        "name": "Dhangethi, Maldives",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.54465104187312,
+          1.918411782935871
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-017",
+        "name": "Gan, Maldives",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.45549094878496,
+          0.288802003782011
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-018",
+        "name": "Gahdhoo, Maldives",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.416672,
+          -7.333330000000503
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-019",
+        "name": "Diego Garcia, British Indian Ocean Territory",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.62379919907835,
+          -40.95086828582336
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-020",
+        "name": "Boat Harbour, TAS, Australia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.805098798216,
+          -45.45830050296172
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-021",
+        "name": "Puerto Chacabuco, Chile",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.09706372041353,
+          -8.615634129813643
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-022",
+        "name": "Beculuk, Indonesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.38836856575348,
+          -1.142467701149998
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-023",
+        "name": "Toweli, Indonesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          117.55096752363566,
+          0.326887363868111
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-024",
+        "name": "Sangata, Indonesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          111.75292475602346,
+          -2.849667399839222
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-025",
+        "name": "Pankalan, Indonesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.97187133023849,
+          -1.859123326919139
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-026",
+        "name": "Ketapang, Indonesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.60399695504718,
+          -3.327961488455888
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-027",
+        "name": "Banjarmasin, Indonesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.33564131219983,
+          -0.02740748572126
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-028",
+        "name": "Pontianak, Indonesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.916666647556017,
+          55.53329310071712
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-029",
+        "name": "Klagshamn, Sweden",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.41490919050584,
+          55.64724561414846
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-030",
+        "name": "Brondby, Denmark",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.799480647390464,
+          55.324102015186114
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-031",
+        "name": "Nybor, Denmark",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.149382743266532,
+          55.32575488731598
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-032",
+        "name": "Korsor, Denmark",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.13238985939624,
+          54.078893478280825
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-033",
+        "name": "Rostock, Germany",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.149479691038506,
+          54.19140540038316
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-034",
+        "name": "Markgrafenheide, Germany",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.199285051665399,
+          57.31345558303452
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-035",
+        "name": "Osterby, Denmark",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.588639536183623,
+          56.134734209506526
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-036",
+        "name": "Kristinelund, Sweden",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.63747106439294,
+          15.011127130087093
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-037",
+        "name": "Tinian, Northern Mariana Islands",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.7509475465053,
+          15.1777319139343
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-038",
+        "name": "Saipan, Northern Mariana Islands",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.21247136546685,
+          14.151844706294286
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-039",
+        "name": "Rota, Northern Mariana Islands",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.94802428611733,
+          18.335728451477152
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-040",
+        "name": "Vila Olga, Virgin Islands (U.S.)",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.94377624225066,
+          18.328219740149585
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-041",
+        "name": "Banana Bay, Virgin Islands (U.S.)",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.95778990419826,
+          18.312830498451948
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-042",
+        "name": "Flamingo Bay, Virgin Islands (U.S.)",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.56667848090554,
+          8.950027090049982
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-043",
+        "name": "Balboa, Panama",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.71618938533148,
+          -0.950019548909037
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-044",
+        "name": "Manta, Ecuador",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.04997379684741,
+          12.616634445885316
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-045",
+        "name": "Hudishibana, Aruba",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.748508371456093,
+          55.71560692113311
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-046",
+        "name": "Tyra, Denmark",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.564328814430503,
+          55.80407237566748
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-047",
+        "name": "Valdemar, Denmark",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.228391552411684,
+          56.07828845791397
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-048",
+        "name": "South Arne, Denmark",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.738642263557752,
+          41.91932911005837
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-049",
+        "name": "Ajaccio, France",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.878097414994473,
+          43.1029080448373
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-050",
+        "name": "La Seyne, France",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.937079622982862,
+          42.6365095071255
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-051",
+        "name": "L\u2019\u00cele-Rousse, France",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.01735442043418,
+          43.552927166028965
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-052",
+        "name": "Cannes, France",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.536881760350429,
+          56.074882184341305
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-053",
+        "name": "Alsgarde, Denmark",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.996259976968266,
+          58.15095596477219
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-054",
+        "name": "Kristiansand, Norway",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.42721741133341,
+          43.73973086446908
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-055",
+        "name": "Monte Carlo, Monaco",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.48570567114653,
+          40.14805341338409
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-056",
+        "name": "Otranto, Italy",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.520181845020224,
+          45.43310919075176
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-057",
+        "name": "Umag, Croatia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.244108530252593,
+          45.49587287439114
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-058",
+        "name": "Mestre, Italy",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6163675158564,
+          63.09519496029314
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-059",
+        "name": "Vaasa, Finland",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.262950505879612,
+          63.82586986108827
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-060",
+        "name": "Ume\u00e5, Sweden",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          17.94654589684356,
+          58.902924681852696
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-061",
+        "name": "Nynashamn, Sweden",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.276619537558968,
+          59.40084650364711
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-062",
+        "name": "Merem\u00f6isa, Estonia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.5951000000003,
+          7.198819999999446
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-063",
+        "name": "Songkhla, Thailand",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.08918261453131,
+          -0.606021265123826
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-064",
+        "name": "Hithadhoo, Maldives",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.42687768780485,
+          -0.298304384685104
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-065",
+        "name": "Fuvahmulah, Maldives",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.781610983118252,
+          -0.721040306475029
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-066",
+        "name": "Port Gentil, Gabon",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.165888193558025,
+          53.52625445974578
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-067",
+        "name": "Lusk, Ireland",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.960311167883617,
+          32.079604155442446
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-068",
+        "name": "Tobruk, Libya",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.74166039584776,
+          32.88172722141822
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-069",
+        "name": "Al Bayda, Libya",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.949961737944495,
+          32.71673198238239
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-070",
+        "name": "Tolmeta, Libya",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.066759238613432,
+          32.11658375707056
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-071",
+        "name": "Benghazi, Libya",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.576525210899817,
+          30.378108493012235
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-072",
+        "name": "Brega, Libya",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.41187759844718,
+          30.586737502695293
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-073",
+        "name": "Ras Lanuf, Libya",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.588343734005548,
+          31.205251640496304
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-074",
+        "name": "Sirte, Libya",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.094790104552972,
+          32.37427884369104
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-075",
+        "name": "Misuratah, Libya",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.26441959904531,
+          32.64966152384897
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-076",
+        "name": "Al Khums, Libya",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.529752859149395,
+          32.774720416295295
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-077",
+        "name": "Zawia, Libya",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.083366456623823,
+          32.93337907602355
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-078",
+        "name": "Zuwara, Libya",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.39954892055475,
+          33.862232632157735
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-079",
+        "name": "Hermosa Beach, CA, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.11969728527944,
+          -38.82018266620627
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-080",
+        "name": "Sandy Point, VIC, Australia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.85016551780996,
+          -41.03327707528322
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-081",
+        "name": "Four Mile Bluff, TAS, Australia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.07125911118302,
+          -38.44361560267599
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-082",
+        "name": "McGaurans Beach, VIC, Australia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.29411193263084,
+          -40.760375144220674
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-083",
+        "name": "Stanley, TAS, Australia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.72946318672496,
+          -38.63345276915476
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-084",
+        "name": "Inverloch, VIC, Australia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.47946355486467,
+          -43.117473610870405
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-085",
+        "name": "Quellon, Chile",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.001342348824283,
+          41.304002941820244
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-086",
+        "name": "Gav\u00e1, Spain",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.73959403105522,
+          -12.288236282174532
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-087",
+        "name": "Fomboni Moheli, Comoros",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.400042781936996,
+          -12.16665664973713
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-088",
+        "name": "Mutsamudu, Comoros",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.48910592725337,
+          -11.923498177297583
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-089",
+        "name": "Chindini, Comoros",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          166.48901879296093,
+          -20.70593760646555
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-090",
+        "name": "Mouly, New Caledonia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          167.1513230112785,
+          -20.7809160007802
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-091",
+        "name": "Xepenehe, New Caledonia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          165.34155866833254,
+          -20.945878679076127
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-092",
+        "name": "Poindimie, New Caledonia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -27.215824453460687,
+          38.65852273411055
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-093",
+        "name": "Angra do Heroismo, Portugal",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -25.14126537622283,
+          36.95676381760329
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-094",
+        "name": "Vila do Porto, Portugal",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -28.46123372745104,
+          38.43229047782683
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-095",
+        "name": "Sao Mateus, Portugal",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -28.2131870281707,
+          38.683845455403926
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-096",
+        "name": "Velas, Portugal",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -16.347668090064676,
+          33.047316301636776
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-097",
+        "name": "Porto Santo, Portugal",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -16.908946989325337,
+          32.64686582848514
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-098",
+        "name": "Funchal, Portugal",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -60.94968727482579,
+          10.831137615524929
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-099",
+        "name": "Toco, Trinidad and Tobago",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -60.84031235230797,
+          11.16540972374498
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-100",
+        "name": "Pigeon Point, Trinidad and Tobago",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.60871221858814,
+          18.86458746066303
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-101",
+        "name": "Kaliko, Haiti",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -151.0000690389311,
+          -16.730055979033075
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-102",
+        "name": "Huahine, French Polynesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -149.82956205562922,
+          -17.538774974102118
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-103",
+        "name": "Moorea, French Polynesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -151.4430374751281,
+          -16.73090937041819
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-104",
+        "name": "Uturoa, French Polynesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -151.7495313986299,
+          -16.506324613958466
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-105",
+        "name": "Vaitape, French Polynesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.08221700000053,
+          -8.84115000000092
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-106",
+        "name": "Sumbawa Besar, Indonesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -149.3081207746325,
+          -17.723318964508866
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-107",
+        "name": "Hitia'a, French Polynesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.477392144417024,
+          45.35698172208115
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-108",
+        "name": "Kerch, Ukraine",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.496165508627551,
+          51.56395317878603
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-109",
+        "name": "Domburg, Netherlands",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.590600452297692,
+          52.1578426448517
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-110",
+        "name": "Aldeburgh, United Kingdom",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.57723632786723,
+          -20.31345781610387
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-111",
+        "name": "Port Hedland, WA, Australia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.8431456073319,
+          -12.467490679762426
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-112",
+        "name": "Darwin, NT, Australia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -155.8947433058731,
+          59.327800128586105
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-113",
+        "name": "Igiugig, AK, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -154.3369319094411,
+          60.200371500530665
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-114",
+        "name": "Port Alsworth, AK, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -154.85885536783067,
+          59.94919988638963
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-115",
+        "name": "Fish Camp, AK, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -154.84772256321745,
+          59.972649771731774
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-116",
+        "name": "Nondalton, AK, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -154.899773307594,
+          59.7181450195821
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-117",
+        "name": "Newhalen, AK, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -154.75275192737027,
+          59.44215809995201
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-118",
+        "name": "Kokhanok, AK, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -153.88048692029113,
+          59.776054476860836
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-119",
+        "name": "Pile Bay, AK, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -154.90612095934728,
+          59.754765229743505
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-120",
+        "name": "Illiamna, AK, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -154.10612152607442,
+          59.7872115404838
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-121",
+        "name": "Pedro Bay, AK, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -153.63214725246726,
+          59.682402835634406
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-122",
+        "name": "Williamsport, AK, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -149.73219884335225,
+          61.01571463051166
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-123",
+        "name": "McHugh Point, AK, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -148.98981655676278,
+          60.82828925189919
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-124",
+        "name": "Portage, AK, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.53986093015084,
+          5.940833037393244
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-125",
+        "name": "Matara, Sri Lanka",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.11661195839058,
+          21.816735551700102
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-126",
+        "name": "Kuakata, Bangladesh",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          94.39121830521923,
+          16.858028367792194
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-127",
+        "name": "Ngwe Saung, Myanmar",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.10698083375123,
+          24.070555564820936
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-128",
+        "name": "Yanbu, Saudi Arabia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.930343471732967,
+          43.12529261338072
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-129",
+        "name": "Toulon, France",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0403008760841,
+          3.883674880769303
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-130",
+        "name": "Buenaventura, Colombia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.74490299999954,
+          -8.464266
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-131",
+        "name": "Bima, Indonesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.71180654503641,
+          -8.796931179918277
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-132",
+        "name": "Saraemee, Indonesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.25301639072892,
+          -9.64615484323023
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-133",
+        "name": "Waingapu, Indonesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.5833851252144,
+          -10.183308656195656
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-134",
+        "name": "Kupang, Indonesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.50038020515338,
+          10.819603438863586
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-135",
+        "name": "Taytay, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.05008613857723,
+          12.362623239786029
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-136",
+        "name": "San Jose, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.20067267780973,
+          12.004960160699559
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-137",
+        "name": "Coron, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.08736115072189,
+          31.760813307797136
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-138",
+        "name": "El-Quawef, Libya",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -28.647561720454593,
+          38.525099690783364
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-139",
+        "name": "Faial, Portugal",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -27.963480173814336,
+          39.01102990331266
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-140",
+        "name": "Graciosa, Portugal",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -31.110548256901776,
+          39.67193532519225
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-141",
+        "name": "Corvo, Portugal",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -31.128516994172585,
+          39.462211754202585
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-142",
+        "name": "Flores, Portugal",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -15.408801567666467,
+          28.04062233001219
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-143",
+        "name": "Piedra Santa, Spain",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -16.36236534527797,
+          28.37727858251394
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-144",
+        "name": "Las Caletillas, Spain",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.5066415352679,
+          10.630005631197276
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-145",
+        "name": "Sihanoukville, Cambodia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.27668403743753,
+          12.150684714118114
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-146",
+        "name": "Kralendijk, Bonaire, Netherlands",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.28414900000034,
+          12.1638160000004
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-147",
+        "name": "North Salina, Bonaire, Sint Eustatius and Saba",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.88927545353178,
+          6.820387603783256
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-148",
+        "name": "Ratmalana, Sri Lanka",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.08153497084551,
+          -8.586389151919366
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-149",
+        "name": "Mataram, Indonesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.62301068928154,
+          14.088187386038742
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-150",
+        "name": "Nasugbu, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.46453896997501,
+          13.045778897500922
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-151",
+        "name": "Pinamalayan, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.74998727810134,
+          11.583305826411662
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-152",
+        "name": "Roxas City, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.61668588287377,
+          12.36672505260177
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-153",
+        "name": "Masbate City, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.74373657411985,
+          13.139089344982024
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-154",
+        "name": "Legazpi City, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.60027893608729,
+          12.069906190827878
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-155",
+        "name": "Calbayog, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.61277892723209,
+          11.006888634178475
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-156",
+        "name": "Ormoc, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.89461537348717,
+          10.310033388932034
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-157",
+        "name": "Cebu, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.29998688847635,
+          10.950026359206582
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-158",
+        "name": "Cadiz City, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.28143221412073,
+          9.295611105669924
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-159",
+        "name": "Dumaguete, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.84998649885156,
+          8.15002871017614
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-160",
+        "name": "Ozamiz City, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.6319195386728,
+          8.454228346754538
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-161",
+        "name": "Cagayan de Oro, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.54061030119786,
+          8.947615403087521
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-162",
+        "name": "Butuan City, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.94129644473541,
+          10.748806024464415
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-163",
+        "name": "San Jose de Buenavista, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.82897360919968,
+          20.028793830551784
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-164",
+        "name": "Santiago de Cuba, Cuba",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.23219461510775,
+          54.20682940735113
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-165",
+        "name": "Killala, Ireland",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.472771324965343,
+          51.89833468681305
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-166",
+        "name": "Cork, Ireland",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -53.96023910121645,
+          48.20761257904667
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-167",
+        "name": "Milton, NL, Canada",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.9626309171155,
+          45.201924825052444
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-168",
+        "name": "Pacific City, OR, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.610909534778925,
+          50.31882973101125
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-169",
+        "name": "Blackpool Sands, United Kingdom",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.90756399999964,
+          -8.475551000000419
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-170",
+        "name": "Labuan Bajo, Indonesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.97619999999958,
+          -8.505600000000262
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-171",
+        "name": "Sape, Indonesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.64273999999965,
+          -8.845699000000248
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-172",
+        "name": "Ende, Indonesia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.94833335702553,
+          22.271491582355683
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-173",
+        "name": "Lantau Island, China",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.6206784517453,
+          35.14403408076397
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-174",
+        "name": "Miura, Japan",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.6559282736054,
+          40.60030327678829
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-175",
+        "name": "Island Park, NY, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.21474366875417,
+          16.051559827539638
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-176",
+        "name": "Danang, Vietnam",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.84990301084824,
+          2.295511672819276
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-177",
+        "name": "Mersing, Malaysia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.64707112328632,
+          1.338192522185158
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-178",
+        "name": "Tuas, Singapore",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.33791021235805,
+          39.60388495499803
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-179",
+        "name": "Tuckerton, NJ, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.76950878757832,
+          32.31223462116531
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-180",
+        "name": "St. David\u2019s, Bermuda",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.08894373592818,
+          26.350323169523403
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-181",
+        "name": "Boca Raton, FL, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          127.68055019149426,
+          26.21241384638718
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-182",
+        "name": "Naha, Japan",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.80145279380189,
+          24.863592858849902
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-183",
+        "name": "Toucheng, Taiwan",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          67.02854237669561,
+          24.88937409747322
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-184",
+        "name": "Karachi, Pakistan",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.16166943911836,
+          11.57367892559012
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-185",
+        "name": "Haramous, Djibouti",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.59723848982233,
+          15.727143540875408
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-186",
+        "name": "Puerto Barrios, Guatemala",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.05334805801945,
+          26.715357789296696
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-187",
+        "name": "West Palm Beach, FL, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.95017980618316,
+          -34.900379504866834
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-188",
+        "name": "Maldonado, Uruguay",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.695491069788275,
+          -36.47252952471871
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-189",
+        "name": "Las Toninas, Argentina",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.54673220597367,
+          8.934109660849998
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-190",
+        "name": "Fort Amador, Panama",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.97546699999984,
+          35.005432999999265
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-191",
+        "name": "Maruyama, Japan",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -158.2206478576183,
+          21.463431186887963
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-192",
+        "name": "Makaha, HI, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.84720343661348,
+          35.3666813511006
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-193",
+        "name": "Morro Bay, CA, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.654511602696961,
+          50.043048657721435
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-194",
+        "name": "Porthcurno, United Kingdom",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.145869384899948,
+          36.42710220192439
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-195",
+        "name": "Estepona, Spain",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.358365553402518,
+          38.12150089552133
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-196",
+        "name": "Palermo, Italy",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.889799154879793,
+          31.191886381300385
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-197",
+        "name": "Alexandria, Egypt",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.53012931569517,
+          29.9722883988634
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-198",
+        "name": "Suez, Egypt",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          56.33372573425405,
+          25.12169311729696
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-199",
+        "name": "Fujairah, United Arab Emirates",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.40982400223058,
+          5.368393581488473
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-200",
+        "name": "Penang, Malaysia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.98980067645105,
+          45.522898824562965
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-201",
+        "name": "Hillsboro, OR, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -158.1305815657343,
+          21.35398165191293
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-202",
+        "name": "Kahe Point, HI, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          178.43744782858172,
+          -18.123812280017187
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-203",
+        "name": "Suva, Fiji",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.483759631619103,
+          44.305540140669045
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-204",
+        "name": "Savona, Italy",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.87868485568913,
+          12.414141621401608
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-205",
+        "name": "Baby Beach, Aruba",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -63.573952993896306,
+          44.64579771640326
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-206",
+        "name": "Halifax, NS, Canada",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.95026612782192,
+          42.46366906639672
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-207",
+        "name": "Lynn, MA, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.248261182079236,
+          53.348045408252375
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-208",
+        "name": "Dublin, Ireland",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.006368947416131,
+          53.64793071295795
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-209",
+        "name": "Southport, United Kingdom",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.544404967232005,
+          50.82811048000128
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-210",
+        "name": "Bude, United Kingdom",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.10666604344867,
+          18.465839112933374
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-211",
+        "name": "San Juan, PR, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.209563123346165,
+          -22.90339400756494
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-212",
+        "name": "Rio de Janeiro, Brazil",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -46.32806677354495,
+          -23.961845467703107
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-213",
+        "name": "Santos, Brazil",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.62048049678572,
+          -33.045765558769304
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-214",
+        "name": "Valpara\u00edso, Chile",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.30671189622174,
+          -18.473810108334412
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-215",
+        "name": "Arica, Chile",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.46655514198169,
+          34.76641137968897
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-216",
+        "name": "Yeroskipos, Cyprus",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.25366750143074,
+          36.85524944302755
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-217",
+        "name": "Marmaris, Turkey",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.591276253065702,
+          37.650130188288585
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-218",
+        "name": "Mazara del Vallo, Italy",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.1027513474316,
+          38.44269349871853
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-219",
+        "name": "Sesimbra, Portugal",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.174531473969396,
+          50.0248026869269
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-220",
+        "name": "Goonhilly Downs, United Kingdom",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.383369077736644,
+          54.89850565849031
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-221",
+        "name": "Sylt, Germany",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -17.451915354680473,
+          14.686597713745336
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-222",
+        "name": "Dakar, Senegal",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.087226139907921,
+          36.2765632358394
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-223",
+        "name": "Conil de la Frontera, Spain",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.34025183547105,
+          25.067038149721757
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-224",
+        "name": "Nassau, Bahamas",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.19499039172877,
+          22.629711836470232
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-225",
+        "name": "Crooked Island, Bahamas",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.12023600213026,
+          21.851092241181057
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-226",
+        "name": "Providenciales, Turks and Caicos Islands",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.43825618860332,
+          18.621279512611874
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-227",
+        "name": "Punta Cana, Dominican Republic",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.6912331081983,
+          19.79934388457018
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-228",
+        "name": "Puerto Plata, Dominican Republic",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.95270611552462,
+          11.482908943707109
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-229",
+        "name": "Riohacha, Colombia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.77146065844866,
+          11.991778023043153
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-230",
+        "name": "Bluefields, Nicaragua",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.77675850625805,
+          15.261220674450207
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-231",
+        "name": "Puerto Lempira, Honduras",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.95475989302918,
+          15.915150827636316
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-232",
+        "name": "Trujillo, Honduras",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.94606707611828,
+          15.844797765849421
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-233",
+        "name": "Puerto Cortes, Honduras",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.93708679386458,
+          18.372989080105853
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-234",
+        "name": "Magen\u2019s Bay, VI, United States",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.99926748312506,
+          36.08233778303261
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-235",
+        "name": "Samandag, Turkey",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.23628115920059,
+          35.2991225036909
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-236",
+        "name": "Girne, Cyprus",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.966701999999856,
+          36.09999800000024
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-237",
+        "name": "Bozyazi, Turkey",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.94988948023871,
+          14.116616393710665
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-238",
+        "name": "Daet, Philippines",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.578390026566051,
+          50.351741733083685
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-239",
+        "name": "Dartmouth, United Kingdom",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.225900750307065,
+          49.215711233966566
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-240",
+        "name": "St. Ouens Bay, Jersey",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.021311051490342,
+          49.22527885088672
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-241",
+        "name": "Archirondel, Jersey",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.650022252014811,
+          49.28329065675959
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-242",
+        "name": "Surville, France",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.201437877011841,
+          49.24794670647614
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-243",
+        "name": "Greve de Lecq, Jersey",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.529513816474767,
+          49.4509894968767
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-244",
+        "name": "Havelet Bay, Guernsey",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -60.12957066830409,
+          46.25290729969465
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-245",
+        "name": "New Victoria, NS, Canada",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.68660294051598,
+          47.61768929491325
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-246",
+        "name": "Rose Blanche, NL, Canada",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.533468891797979,
+          49.503393052866365
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-247",
+        "name": "L'Ancresse Bay, Guernsey",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.55802942127399,
+          49.42332555697762
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-248",
+        "name": "Saints Bay, Guernsey",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.537619279482766,
+          49.50954423335227
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-249",
+        "name": "Pembroke, Guernsey",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.783368794372972,
+          3.749792920040749
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-250",
+        "name": "Malabo, Equatorial Guinea",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          136.87439133474103,
+          34.33683057441225
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-251",
+        "name": "Shima, Japan",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.106409064843877,
+          42.64186152795143
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-252",
+        "name": "Dubrovnik, Croatia",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.01544924229398,
+          39.683615198996556
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-253",
+        "name": "Aethos, Greece",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9194937179377,
+          39.61929827180403
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-254",
+        "name": "Corfu, Greece",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.45006045673864,
+          41.316693174085714
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-255",
+        "name": "Durres, Albania",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -59.61336009649245,
+          13.098954014787664
+        ]
+      },
+      "properties": {
+        "station_id": "LASER-256",
+        "name": "Bridgetown, Barbados",
+        "country": "Unknown",
+        "cable_count": 0,
+        "type": "laserlight_fso_station",
+        "capabilities": [
+          "fso_optical_terminal",
+          "400gbps_capacity",
+          "satellite_tracking",
+          "atmospheric_monitoring",
+          "hft_slot_allocation"
+        ]
+      }
+    }
+  ]
+}

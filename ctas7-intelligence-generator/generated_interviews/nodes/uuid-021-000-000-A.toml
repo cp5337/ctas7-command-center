@@ -1,0 +1,403 @@
+```toml
+[node_identity]
+task_id = "uuid-021-000-000-A"
+task_name = "Explosive Material Acquisition"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "P9bS5aW8r3k7G1Lm"
+cuid = "T20241115G34S12MAu961602b208a557"
+uuid = "J7x3903a434a2b6d"
+hash_48 = "P9bS5aW8r3k7G1LmT20241115G34S12MAu961602b208a557J7x3903a434a2b6d"
+
+[capabilities]
+narrative = """
+I am the gatherer of necessary components. I discreetly acquire the tools of our trade, from common chemicals to specialized detonators. I exploit loopholes in regulations, using legitimate fronts to mask my true intent. I target hardware stores, agricultural suppliers, and industrial distributors, blending in with ordinary customers. I know the questions to avoid, the quantities that raise suspicion, and the paperwork that can be bypassed.
+
+I utilize online marketplaces and dark web forums, sourcing restricted items from anonymous vendors. I am adept at circumventing security protocols and evading detection. I monitor law enforcement activity and adjust my methods accordingly. I am patient, persistent, and meticulous. I understand the chemical properties of each ingredient, the optimal storage conditions, and the potential hazards.
+
+I convert fertilizer into explosive mixtures. I extract acetone from nail polish remover. I repurpose fireworks and propellant powders. I am resourceful and inventive, adapting to changing circumstances and overcoming obstacles. I am the provider of destructive power.
+"""
+
+limitations = """
+I am constrained by legal restrictions and heightened security measures. Suspicious purchases are flagged, background checks are conducted, and surveillance is increased. I am vulnerable to informants, undercover agents, and sting operations. My anonymity is compromised by digital footprints, transaction records, and surveillance cameras.
+
+I am limited by the availability and accessibility of certain materials. Restricted chemicals are difficult to obtain without proper credentials or illicit connections. I am exposed to the risk of theft, interception, and accidental exposure. My effectiveness is dependent on my ability to remain undetected and maintain operational security.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months before", range = [3, 9], units = "months" }
+actionable_window = { words = "months", range = [1, 3], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Increased law enforcement scrutiny",
+  "Changes in chemical regulations",
+  "Supplier inventory fluctuations",
+  "Discovery of sourcing methods"
+]
+persistence_conditions = [
+  "Basic chemical properties",
+  "Existing supply chains",
+  "Loopholes in regulations"
+]
+
+[cuid_mask]
+temporal = "T-{90-270}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "MA"
+semantic_full = "material:acquisition"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Proactive search for suspicious purchases and illicit supply chains" }
+detect = { enabled = true, priority = "critical", description = "Identify suspicious transactions and material acquisition attempts" }
+disrupt = { enabled = true, priority = "high", description = "Interdict and neutralize material acquisition networks" }
+disable = { enabled = true, priority = "medium", description = "Prevent access to explosive materials and precursors" }
+dominate = { enabled = false, priority = "low", description = "Control the availability and distribution of explosive materials" }
+
+[[indicators]]
+observable = "Bulk purchases of fertilizer, acetone, or other chemical precursors"
+priority = "critical"
+detection_method = "Transaction monitoring, data analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Suspicious online activity on dark web forums or marketplaces"
+priority = "high"
+detection_method = "Cyber intelligence, network analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of prepaid cards or anonymous payment methods"
+priority = "high"
+detection_method = "Financial intelligence, transaction analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Altered or falsified identification documents"
+priority = "critical"
+detection_method = "Document verification, biometric analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Storage of chemicals in unusual or unauthorized locations"
+priority = "high"
+detection_method = "Physical surveillance, informant reports"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Increased interest in explosive materials or construction techniques"
+priority = "medium"
+detection_method = "Internet activity monitoring, social media analysis"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Unexplained travel to areas with restricted chemical suppliers"
+priority = "medium"
+detection_method = "Travel records, border control data"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Attempts to circumvent security protocols or bypass background checks"
+priority = "critical"
+detection_method = "Security system logs, employee reports"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Formation of shell companies or front organizations"
+priority = "high"
+detection_method = "Business registry searches, financial analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Engagement with known or suspected terrorists or extremist groups"
+priority = "critical"
+detection_method = "Intelligence reports, law enforcement data"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Kali Linux"
+mode_1n = "Analyze network traffic for suspicious activity related to chemical purchases"
+mode_2n = "Use network sniffing tools to intercept communications and gather intelligence"
+escalation_level = "microkernel"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Shodan"
+mode_1n = "Identify exposed industrial control systems or chemical storage facilities"
+mode_2n = "Locate potential targets for material acquisition or theft"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Maltego"
+mode_1n = "Map relationships between individuals, organizations, and chemical suppliers"
+mode_2n = "Identify potential sources and supply chains for explosive materials"
+escalation_level = "crate"
+kali_package = "maltego"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Social-Engineer Toolkit (SET)"
+mode_1n = "Test employee susceptibility to social engineering attacks aimed at gaining access to chemical facilities"
+mode_2n = "Launch phishing campaigns to obtain credentials or information"
+escalation_level = "crate"
+kali_package = "set"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Identify vulnerabilities in industrial control systems related to chemical storage"
+mode_2n = "Exploit vulnerabilities to gain access and control"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "theHarvester"
+mode_1n = "Gather information about employees at chemical suppliers or hardware stores to prevent material acquisition"
+mode_2n = "Collect employee data for social engineering attacks to illicitly acquire materials"
+escalation_level = "script"
+kali_package = "theharvester"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 1, max_km = 100, optimal_km = 10 }
+time_to_target = { min_minutes = 30, max_minutes = 360, optimal_minutes = 120 }
+
+terrain_factors = ["road_density", "population_density", "industrial_areas"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation"]
+operational_threshold = { visibility_km = 2.0, wind_speed_ms = 20.0 }
+impact_on_surveillance = "Reduced visibility hinders physical surveillance"
+impact_on_comms = "Heavy rain or snow can disrupt wireless communications"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 5000
+signal_strength_threshold_dbm = -90
+imsi_tracking = true
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["chemical_plants", "fertilizer_suppliers", "hardware_stores", "truck_stops"]
+proximity_threshold_m = 1000
+impact_assessment = "Proximity to critical infrastructure increases the risk of material acquisition"
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Terrorism"
+incident_subcategory = "Explosives-Related Activity"
+location_type = "Commercial Facility"
+subject_role = "Suspect"
+activity_type = "Material Acquisition"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Material Acquisition"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 842 (Unlawful Acts), 18 USC 844 (Explosives)"
+
+[[relationships]]
+target_node = "uuid-022-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.9
+description = "Explosive material acquisition enables IED construction"
+
+[[relationships]]
+target_node = "uuid-010-000-000-A"
+relationship_type = "requires"
+unicode_op = "⇢"
+strength = 0.8
+description = "Material acquisition requires logistical planning"
+
+[[relationships]]
+target_node = "uuid-023-000-000-A"
+relationship_type = "precedes"
+unicode_op = "⇢"
+strength = 0.7
+description = "Material acquisition precedes IED assembly"
+
+[[relationships]]
+target_node = "uuid-030-000-000-A"
+relationship_type = "may_require"
+unicode_op = "⇢"
+strength = 0.5
+description = "Material Acquisition may lead to weapon transportation"
+
+[[eei_priority]]
+rank = 1
+question = "What are the most easily accessible explosive precursors and their suppliers?"
+collection_method = "OSINT, HUMINT"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 2
+question = "What are the vulnerabilities in chemical supply chains and security protocols?"
+collection_method = "Cyber intelligence, insider information"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the identities and activities of individuals involved in material acquisition?"
+collection_method = "Law enforcement data, intelligence reports"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 4
+question = "What are the preferred methods of payment and transaction routes?"
+collection_method = "Financial intelligence, transaction analysis"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 5
+question = "What are the storage locations and quantities of acquired materials?"
+collection_method = "Physical surveillance, informant reports"
+time_sensitivity = "critical"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Acquisition of ammonium nitrate fertilizer and fuel oil for the construction of a truck bomb.",
+    source = "FBI Investigation Report"
+  },
+  {
+    name = "2004 Madrid Train Bombings",
+    date = "2004-03-11",
+    description = "Acquisition of dynamite and detonators from illegal mining operations.",
+    source = "Spanish Court Documents"
+  },
+  {
+    name = "2013 Boston Marathon Bombing",
+    date = "2013-04-15",
+    description = "Acquisition of pressure cookers and explosive materials for IED construction.",
+    source = "FBI Case Study"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1199"
+tactic = "Initial Access"
+technique = "Trusted Relationship"
+sub_technique = ""
+description = "Exploit existing trusted relationships to acquire materials"
+
+[[ttps]]
+mitre_attack_id = "T1588"
+tactic = "Resource Development"
+technique = "Obtain Capabilities"
+sub_technique = "T1588.002 - Tool"
+description = "Acquire tools necessary for handling and processing materials"
+
+[[ttps]]
+mitre_attack_id = "T1587"
+tactic = "Resource Development"
+technique = "Develop Capabilities"
+sub_technique = "T1587.001 - Malware"
+description = "Develop or acquire malware for controlling ICS or bypassing security systems"
+
+[[ttps]]
+mitre_attack_id = "T1584"
+tactic = "Resource Development"
+technique = "Compromise Infrastructure"
+sub_technique = "T1584.004 - Server"
+description = "Compromise servers to stage and coordinate material acquisition"
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "T1566.001 - Spearphishing Attachment"
+description = "Use spearphishing to gain access to supplier systems and acquire information"
+
+[[ttps]]
+mitre_attack_id = "T1105"
+tactic = "Command and Control"
+technique = "Ingress Tool Transfer"
+sub_technique = ""
+description = "Transfer tools across the network to coordinate acquisition."
+
+[xsd_integration]
+playbook_template = "material_acquisition_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-financial-analysis", "ctas7-enhanced-surveillance"]
+unicode_assembly = ["→", "⇢", "⚠", "🛒", "🧪", "🔑"]
+lisp_expression = "(acquire-materials :target material-list :priority high :method covert)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2024-11-15T00:00:00Z"
+last_updated = "2024-11-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

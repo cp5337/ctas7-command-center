@@ -1,0 +1,14 @@
+{
+  "timestamp": "2025-11-09T17:10:50.879979",
+  "source": "TeleGeography 2025",
+  "cable_statistics": {
+    "total_cables": 696,
+    "total_length_km": 0,
+    "average_length_km": 0.0
+  },
+  "landing_point_statistics": {
+    "total_landing_points": 1888,
+    "countries": 1,
+    "major_hubs": []
+  }
+}

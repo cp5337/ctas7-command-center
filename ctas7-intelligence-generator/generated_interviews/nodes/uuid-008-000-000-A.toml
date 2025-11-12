@@ -1,0 +1,398 @@
+```toml
+[node_identity]
+task_id = "uuid-008-000-000-A"
+task_name = "Safe House Establishment"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "YG75e3d8W29xN1hJ"
+cuid = "T20241115G34S22So61a3b4c5"
+uuid = "V7f9a2b1c4d7e0f3"
+hash_48 = "YG75e3d8W29xN1hJT20241115G34S22So61a3b4c5V7f9a2b1c4d7e0f3"
+
+[capabilities]
+narrative = """
+I am the architect of shadows, the master of concealment. My task is to find and prepare safe houses, places where we can operate without detection. I seek out locations that blend seamlessly into their surroundings, offering both anonymity and strategic advantage.
+
+I prioritize properties with multiple access points, defensible layouts, and minimal visibility from the outside world. I examine the local infrastructure, mapping power grids, water lines, and communication networks. I ensure reliable utilities and redundant systems.
+
+I use cash transactions and shell companies to acquire properties, maintaining a low profile and avoiding scrutiny. I equip these havens with surveillance technology, secure communication channels, and supplies for extended stays. I consider the local community, seeking areas with limited law enforcement presence and a high tolerance for unusual activity.
+
+I establish layers of security, including alarms, reinforced doors, and hidden compartments. I create contingency plans for evacuation, ensuring a swift and discreet exit if compromised. My goal is to create sanctuaries where we are safe, secure, and ready to act.
+"""
+limitations = """
+My reach is limited by resources and time. Acquiring suitable properties in high-security areas is challenging and costly. Maintaining operational security requires constant vigilance and careful planning.
+
+I am vulnerable to detection through financial tracking, surveillance, and informant networks. My activities can be exposed by real estate transactions, utility usage patterns, and suspicious deliveries. I am also susceptible to local law enforcement investigations and community watch programs.
+
+The safe houses I establish are only as secure as the weakest link in their security. A single breach of operational security can compromise the entire network, leading to our exposure and capture. I must balance security with accessibility, ensuring the safe house remains functional and accessible to our team.
+"""
+
+[time_of_value]
+half_life = { words = "months", range = [1, 3], units = "months" }
+collection_phase = { words = "weeks", range = [2, 8], units = "weeks" }
+actionable_window = { words = "months to years", range = [6, 24], units = "months" }
+decay_curve = "linear"
+ephemeral_conditions = [
+  "Increased law enforcement activity in the area",
+  "Changes in property ownership or management",
+  "Construction or development projects altering the surrounding environment",
+  "Discovery of the safe house by authorities or hostile actors"
+]
+persistence_conditions = [
+  "Structural integrity of the building",
+  "Availability of utilities and resources",
+  "Strategic location relative to operational targets",
+  "Effectiveness of security measures"
+]
+
+[cuid_mask]
+temporal = "T-{14-56}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "So"
+semantic_full = "support:operations:safe_house"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Identify suspicious real estate transactions or property acquisitions." }
+detect = { enabled = true, priority = "high", description = "Monitor unusual activity or deliveries at potential safe houses." }
+disrupt = { enabled = true, priority = "medium", description = "Conduct surveillance of suspected safe houses to gather intelligence." }
+disable = { enabled = true, priority = "high", description = "Seize or neutralize the safe house to prevent its use." }
+dominate = { enabled = false, priority = "low", description = "Establish long-term control of the area to prevent future safe house establishment." }
+
+[[indicators]]
+observable = "Frequent cash transactions for property-related expenses"
+priority = "high"
+detection_method = "Financial analysis, AML monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of shell companies for real estate acquisitions"
+priority = "high"
+detection_method = "Corporate registry searches, beneficial ownership analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unusual utility usage patterns at residential properties"
+priority = "medium"
+detection_method = "Utility company data analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Suspicious deliveries of equipment or supplies to residential addresses"
+priority = "high"
+detection_method = "Delivery service tracking, surveillance"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Installation of advanced security systems at seemingly ordinary residences"
+priority = "high"
+detection_method = "Physical observation, alarm company records"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Increased foot traffic or vehicle activity at odd hours"
+priority = "medium"
+detection_method = "Surveillance, community reporting"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Attempts to conceal property ownership or occupancy"
+priority = "high"
+detection_method = "Title searches, property tax records"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Acquisition of properties near critical infrastructure or potential targets"
+priority = "high"
+detection_method = "Geospatial analysis, proximity alerts"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Purchase of surveillance equipment or communication devices"
+priority = "medium"
+detection_method = "Financial records, customs data"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Storage of weapons or explosives at residential locations"
+priority = "critical"
+detection_method = "Law enforcement raids, informant reports"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan network for unauthorized devices or open ports."
+mode_2n = "Identify vulnerabilities in safe house network infrastructure."
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Test network defenses and patch vulnerabilities."
+mode_2n = "Exploit vulnerabilities to gain access to the network."
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for suspicious activity."
+mode_2n = "Capture and analyze network traffic to intercept communications."
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Audit wireless network security."
+mode_2n = "Crack WEP/WPA keys to gain unauthorized access."
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "John the Ripper"
+mode_1n = "Test password strength and enforce strong password policies."
+mode_2n = "Crack passwords to gain access to systems and accounts."
+escalation_level = "script"
+kali_package = "john"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Brute-force login attempts to detect weak passwords."
+mode_2n = "Brute-force login credentials to gain unauthorized access."
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "low"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+distance_range = { min_km = 1.0, max_km = 20.0, optimal_km = 5.0 }
+time_to_target = { min_minutes = 30, max_minutes = 120, optimal_minutes = 60 }
+
+terrain_factors = ["urban_density", "line_of_sight", "elevation", "road_access"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation"]
+operational_threshold = { visibility_km = 1.0, wind_speed_ms = 20.0 }
+impact_on_surveillance = "Poor visibility hinders external surveillance capabilities"
+impact_on_comms = "Heavy rain can disrupt satellite communications"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "congestion_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -80
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "water_supply"]
+proximity_threshold_m = 200
+impact_assessment = "Proximity to critical infrastructure allows for potential disruptions or exploitation"
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:Intelligence"
+iepd_type = "Facility-Exchange"
+iepd_version = "5.0"
+
+[niem_mapping.ndex_fields]
+incident_category = "Conspiracy"
+incident_subcategory = "Safe House"
+location_type = "Residence"
+subject_role = "Conspirator"
+activity_type = "Logistics"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Safe House Establishment"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ safe_house_location }"
+"j:Charge" = "18 USC 371 (Conspiracy)"
+
+[[relationships]]
+target_node = "uuid-010-000-000-A"
+relationship_type = "requires"
+unicode_op = "→"
+strength = 0.9
+description = "Safe house establishment requires funding and resources"
+
+[[relationships]]
+target_node = "uuid-012-000-000-A"
+relationship_type = "supports"
+unicode_op = "⇢"
+strength = 0.8
+description = "Safe house provides logistical support for operations"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.7
+description = "Safe houses are vulnerable to surveillance and raids"
+
+[[eei_priority]]
+rank = 1
+question = "What is the optimal location for a safe house based on operational requirements?"
+collection_method = "Geospatial analysis, risk assessment"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the security vulnerabilities of potential safe house locations?"
+collection_method = "Physical observation, security audits"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the local law enforcement capabilities and response times?"
+collection_method = "OSINT, liaison with local sources"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the communication capabilities at the safe house?"
+collection_method = "Signal strength testing, network analysis"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the emergency evacuation plans for the safe house?"
+collection_method = "Contingency planning, route analysis"
+time_sensitivity = "low"
+
+[historical_reference]
+incidents = [
+  {
+    name = "IRA Safe Houses",
+    date = "1970-1990",
+    description = "Extensive use of safe houses for planning and staging attacks",
+    source = "Historical records"
+  },
+  {
+    name = "Al-Qaeda Guest Houses",
+    date = "1990-2001",
+    description = "Use of guest houses for recruitment and training",
+    source = "9/11 Commission Report"
+  },
+  {
+    name = "Hamas Safe Houses",
+    date = "2000-present",
+    description = "Use of safe houses for weapons storage and planning",
+    source = "Various news reports"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1583"
+tactic = "Reconnaissance"
+technique = "Obtain Capabilities"
+sub_technique = "T1583.006 - Buy Infrastructure"
+description = "Adversaries may buy infrastructure that can be used during targeting."
+
+[[ttps]]
+mitre_attack_id = "T1587"
+tactic = "Resource Development"
+technique = "Obtain Capabilities"
+sub_technique = "T1587.001 - Code signing certificates"
+description = "Adversaries may obtain code signing certificates that can be used during targeting."
+
+[[ttps]]
+mitre_attack_id = "T1588"
+tactic = "Resource Development"
+technique = "Obtain Capabilities"
+sub_technique = "T1588.002 - Tool"
+description = "Adversaries may obtain capabilities that can be used during a targeting."
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Victim Infrastructure"
+sub_technique = "T1592.004 - Web Servers"
+description = "Adversaries may gather infrastructure that can be used during targeting."
+
+[[ttps]]
+mitre_attack_id = "T1594"
+tactic = "Reconnaissance"
+technique = "Search Closed Sources"
+sub_technique = ""
+description = "Adversaries may search closed sources that can be used during targeting."
+
+[xsd_integration]
+playbook_template = "safe_house_establishment_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-geolocation"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🏠"]
+lisp_expression = "(safe-house-task :target target-id :phase pre-operational :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

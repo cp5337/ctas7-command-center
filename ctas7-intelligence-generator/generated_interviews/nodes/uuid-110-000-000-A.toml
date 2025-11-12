@@ -1,0 +1,405 @@
+```toml
+[node_identity]
+task_id = "uuid-110-000-000-A"
+task_name = "Task 110 - Phase 3"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "U9zL3s1Xo7yP8w4a"
+cuid = "T20250415G34N84SUp9a0cb3d65e34ff7"
+uuid = "V4f2d0a1b8c9e25a"
+hash_48 = "U9zL3s1Xo7yP8w4aT20250415G34N84SUp9a0cb3d65e34ff7V4f2d0a1b8c9e25a"
+
+[capabilities]
+narrative = """
+I am the whisper in the wind, the shadow on the wall. I exploit vulnerabilities,
+not with force, but with finesse. I observe supply chains, track inventory,
+and anticipate delivery schedules. I analyze network traffic, seeking unsecured
+protocols and exposed endpoints. I'm interested in the flow of goods, information,
+and personnel.
+
+I probe for weaknesses: unpatched systems, default credentials, and human error.
+I map out physical security measures, identifying chokepoints and potential bypasses.
+I exploit trust, leveraging social engineering to gain access and gather intelligence.
+I blend in, becoming indistinguishable from authorized users. I listen, I watch,
+I learn.
+
+I am the information broker, the silent partner. My value lies in the
+intelligence I gather. I transform raw data into actionable insights.
+I create the blueprint for success. I am the key to the castle.
+"""
+
+limitations = """
+I am dependent on accessible data. Encrypted communications, secure networks,
+and well-trained personnel limit my capabilities. I am vulnerable to detection.
+Anomaly detection systems, intrusion detection systems, and vigilant security teams
+can expose my activities.
+
+I am also susceptible to misinformation. Deliberate deception, false flags, and
+red herrings can lead me astray. My effectiveness decreases with security improvements.
+Patching vulnerabilities, strengthening access controls, and enhancing monitoring
+capabilities degrade the value of my intelligence. My operations are slow and methodical,
+requiring patience and persistence. Impatience leads to mistakes, and mistakes
+lead to exposure.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months to years before", range = [3, 12], units = "months" }
+actionable_window = { words = "months", range = [1, 6], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Implementation of new security protocols",
+  "Software updates and patching",
+  "Employee training on security awareness",
+  "Changes in network topology",
+  "Introduction of new security tools"
+]
+persistence_conditions = [
+  "Fundamental business processes",
+  "Underlying network infrastructure",
+  "Physical location of critical assets",
+  "Key personnel responsibilities",
+  "Supply chain relationships"
+]
+
+[cuid_mask]
+temporal = "T-{3-12}m"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "Su"
+semantic_full = "surveillance:supply_chain"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+priority = "medium"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Search for indicators of supply chain reconnaissance" }
+detect = { enabled = true, priority = "high", description = "Identify anomalous network traffic and data access patterns" }
+disrupt = { enabled = true, priority = "medium", description = "Implement countermeasures to disrupt supply chain reconnaissance" }
+disable = { enabled = false, priority = "low", description = "Not directly applicable" }
+dominate = { enabled = false, priority = "low", description = "Not directly applicable" }
+
+[[indicators]]
+observable = "Unusual network traffic patterns to/from supply chain partners"
+priority = "high"
+detection_method = "Network intrusion detection systems (NIDS)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unauthorized access to supply chain management systems"
+priority = "critical"
+detection_method = "SIEM alerts, access control logs"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Data exfiltration to suspicious destinations"
+priority = "critical"
+detection_method = "Data loss prevention (DLP) systems"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Social engineering attempts targeting supply chain personnel"
+priority = "high"
+detection_method = "Email security gateways, user awareness training"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Scanning for vulnerabilities in supply chain partner infrastructure"
+priority = "medium"
+detection_method = "Vulnerability scanners, penetration testing"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Monitoring of communications (email, phone) with supply chain vendors (2n)"
+priority = "high"
+detection_method = "Communications interception, surveillance"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Tracking of physical shipments and delivery routes (2n)"
+priority = "high"
+detection_method = "GPS tracking, visual surveillance"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Analysis of supplier contracts and legal documents (2n)"
+priority = "medium"
+detection_method = "Document exfiltration, legal discovery"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Compromise of supplier credentials and accounts (2n)"
+priority = "critical"
+detection_method = "Credential harvesting, account takeover"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Insertion of malicious code or hardware into the supply chain (2n)"
+priority = "critical"
+detection_method = "Supply chain security audits, component inspection"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for malicious activity"
+mode_2n = "Capture and analyze network traffic to identify vulnerabilities and gather intelligence"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan network for vulnerabilities"
+mode_2n = "Identify open ports and services for potential exploitation"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Test web application security"
+mode_2n = "Intercept and manipulate web traffic to identify vulnerabilities and gain access"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Verify vulnerabilities"
+mode_2n = "Exploit vulnerabilities to gain access and control"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Social-Engineer Toolkit (SET)"
+mode_1n = "Test employee susceptibility to social engineering"
+mode_2n = "Launch phishing attacks to harvest credentials and gather information"
+escalation_level = "crate"
+kali_package = "set"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Responder"
+mode_1n = "Detect LLMNR/NBT-NS poisoning attempts"
+mode_2n = "Poison LLMNR/NBT-NS to capture credentials"
+escalation_level = "script"
+kali_package = "responder"
+resource_cost = "low"
+
+[[geospatial]]
+gee_required = false
+gee_layers = []
+
+[geospatial.weather]
+critical_factors = ["temperature", "humidity", "precipitation"]
+operational_threshold = { temperature_celsius = 35.0, humidity_percent = 80.0 }
+impact_on_surveillance = "Adverse weather can hinder physical surveillance and affect network equipment"
+impact_on_comms = "Extreme weather conditions may impact communication infrastructure"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "congestion_cost"]
+escape_route_priority = "medium"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [8, 10, 17, 19], off_peak_hours = [1, 5] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 10000
+signal_strength_threshold_dbm = -100
+imsi_tracking = true
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["manufacturing_plant", "distribution_center", "transportation_hub", "data_center"]
+proximity_threshold_m = 1000
+impact_assessment = "Reconnaissance near critical infrastructure raises alert levels."
+
+[niem_mapping]
+justice_domain = "j:CommercialExploitation"
+intelligence_domain = "intel:ThreatAssessment"
+iepd_type = "Intel-SAR-Exchange"
+iepd_version = "5.3"
+
+[niem_mapping.ndex_fields]
+incident_category = "Supply Chain Disruption"
+incident_subcategory = "Vulnerability Assessment"
+location_type = "Manufacturing Plant"
+subject_role = "Adversary"
+activity_type = "Network Reconnaissance"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Supply Chain Reconnaissance"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-111-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.85
+description = "Supply chain reconnaissance enables vulnerability exploitation."
+
+[[relationships]]
+target_node = "uuid-112-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.70
+description = "Informs access control and authentication bypass techniques."
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.55
+description = "Vulnerable to supply chain security audits."
+
+[[eei_priority]]
+rank = 1
+question = "What are the vulnerabilities in the supply chain network infrastructure?"
+collection_method = "Network scanning, vulnerability assessment"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the authentication and access control mechanisms used by supply chain partners?"
+collection_method = "Credential harvesting, social engineering"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 3
+question = "What are the data flows and communication channels between supply chain partners?"
+collection_method = "Network traffic analysis, protocol dissection"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "Who are the key personnel and their roles in the supply chain organization?"
+collection_method = "OSINT, social engineering"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 5
+question = "What are the security policies and procedures of the supply chain partners?"
+collection_method = "Document analysis, social engineering"
+time_sensitivity = "low"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "NotPetya Attack",
+    date = "2017-06-27",
+    description = "Compromised a Ukrainian software company to distribute malware through supply chain.",
+    source = "https://www.wired.com/story/notpetya-cyberattack-ukraine-russia-code-war/"
+  },
+  {
+    name = "SolarWinds Supply Chain Attack",
+    date = "2020-12-13",
+    description = "Inserted malicious code into SolarWinds Orion software to compromise downstream customers.",
+    source = "https://www.cisa.gov/news-events/news/joint-statement-federal-law-enforcement-intelligence-community-and-international"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1195"
+tactic = "Initial Access"
+technique = "Supply Chain Compromise"
+sub_technique = "T1195.001 - Compromise Software Supply Chain"
+description = "Compromise software supply chain by injecting malicious code"
+
+[[ttps]]
+mitre_attack_id = "T1590"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "T1590.001 - Gather IP Addresses"
+description = "Gather victim IP addresses to map network infrastructure"
+
+[[ttps]]
+mitre_attack_id = "T1189"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = ""
+description = "Compromise web server to deliver malware to users"
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.003 - Spearphishing Link"
+description = "Send spearphishing emails to gather intelligence"
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - Web Protocols"
+description = "Use web protocols (HTTP, HTTPS) for command and control"
+
+[[ttps]]
+mitre_attack_id = "T1105"
+tactic = "Command and Control"
+technique = "Remote File Copy"
+sub_technique = ""
+description = "Copy files to and from remote systems"
+
+[xsd_integration]
+playbook_template = "supply_chain_recon_v7.3.1.xsd"
+crate_orchestration = ["ctas7-threat-intel", "ctas7-forensics"]
+unicode_assembly = ["→", "⇢", "⚠", "🌐", "📦", "🔍"]
+lisp_expression = "(supply-chain-recon :target target-vendor :phase planning :priority medium)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-04-15T00:00:00Z"
+last_updated = "2025-04-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

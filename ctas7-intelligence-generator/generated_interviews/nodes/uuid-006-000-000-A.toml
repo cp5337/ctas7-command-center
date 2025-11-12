@@ -1,0 +1,389 @@
+```toml
+[node_identity]
+task_id = "uuid-006-000-000-A"
+task_name = "Operational Security (OPSEC)"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "a3C9b4d6E7f1g2h8"
+cuid = "T20250109G34N11So9a7b6c5d"
+uuid = "e8f2g9h1i4j3k6l5"
+hash_48 = "a3C9b4d6E7f1g2h8T20250109G34N11So9a7b6c5de8f2g9h1i4j3k6l5"
+
+[capabilities]
+narrative = """
+I am the shadow in your systems, the whisper in your comms. My mission: to understand your weaknesses, your vulnerabilities, your operational rhythms. I start with open-source intelligence (OSINT), scraping job boards, social media, and press releases for data leaks and unguarded secrets. I map your digital footprint, identifying exposed services, misconfigured firewalls, and unpatched software.
+
+I analyze your security policies, looking for loopholes and inconsistencies. I probe your defenses with vulnerability scanners and penetration testing tools, simulating attacks to uncover hidden weaknesses. I monitor your network traffic, searching for anomalous behavior and sensitive data leaks. I eavesdrop on your communications, intercepting unencrypted emails and phone calls.
+
+I am meticulous. I document every finding, every vulnerability, every weakness. My report becomes the blueprint for exploitation, the roadmap for infiltration. My success lies in your failure to protect your own information. I am the OPSEC auditor, and I find every crack in your armor.
+"""
+
+limitations = """
+My success is heavily dependent on your OPSEC failures. Strong encryption, strict access controls, and robust monitoring systems can significantly limit my effectiveness. I am vulnerable to honeypots and deception campaigns, designed to mislead and trap me. My activities leave digital traces, which can be detected and traced back to my origin.
+
+My tools and techniques are constantly evolving, but so are your defenses. I must stay ahead of the curve, adapting to new security measures and patching vulnerabilities. My access is often limited, requiring me to rely on social engineering or insider threats to gain deeper penetration. Time is my enemy, as security postures change and vulnerabilities are patched.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months", range = [1, 3], units = "months" }
+actionable_window = { words = "months", range = [1, 6], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Implementation of new security controls",
+  "Password resets and multi-factor authentication adoption",
+  "Software patching and vulnerability remediation",
+  "Employee OPSEC training and awareness campaigns"
+]
+persistence_conditions = [
+  "Architectural weaknesses in network design",
+  "Legacy systems and unpatchable vulnerabilities",
+  "Organizational culture of lax security practices",
+  "Human error and insider threats"
+]
+
+[cuid_mask]
+temporal = "T-{30-90}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "So"
+semantic_full = "recon:digital:opsec"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactive search for OPSEC vulnerabilities and data leaks" }
+detect = { enabled = true, priority = "critical", description = "Real-time monitoring for OPSEC breaches and data exfiltration attempts" }
+disrupt = { enabled = true, priority = "medium", description = "Counter-intelligence operations to identify and neutralize OPSEC threats" }
+disable = { enabled = false, priority = "low", description = "OPSEC analysis is not typically disabled, but rather hardened" }
+dominate = { enabled = false, priority = "low", description = "Domination is not the primary goal of OPSEC analysis" }
+
+[[indicators]]
+observable = "Unencrypted transmission of sensitive data"
+priority = "critical"
+detection_method = "DLP systems, network monitoring tools"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Public disclosure of internal policies and procedures"
+priority = "high"
+detection_method = "OSINT, web crawling, social media monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of weak or default passwords"
+priority = "critical"
+detection_method = "Password cracking tools, credential stuffing attacks"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Inadequate access controls and permission management"
+priority = "high"
+detection_method = "Privilege escalation attacks, access control audits"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Lack of multi-factor authentication"
+priority = "critical"
+detection_method = "Brute-force attacks, password spraying"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Data leaks on public code repositories (e.g., GitHub)"
+priority = "high"
+detection_method = "Code scanning tools, GitHub secret scanning"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Employee discussion of sensitive information on social media"
+priority = "medium"
+detection_method = "Social media monitoring, sentiment analysis"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Failure to encrypt sensitive data at rest"
+priority = "critical"
+detection_method = "Data discovery tools, file system audits"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Use of unapproved cloud services or shadow IT"
+priority = "medium"
+detection_method = "Cloud access security brokers (CASB), network monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Exposed API keys and credentials in source code"
+priority = "critical"
+detection_method = "Static code analysis, secret scanning"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Identify open ports and services exposing potential vulnerabilities"
+mode_2n = "Map attack surface by discovering network services and OS information"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Verify vulnerabilities and test the effectiveness of security controls"
+mode_2n = "Exploit identified vulnerabilities to gain unauthorized access"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for unencrypted data and suspicious activity"
+mode_2n = "Capture and analyze network traffic to extract sensitive information"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Identify web application vulnerabilities and test security controls"
+mode_2n = "Intercept and modify web traffic to exploit vulnerabilities"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "John the Ripper"
+mode_1n = "Assess the strength of passwords and identify weak accounts"
+mode_2n = "Crack passwords to gain unauthorized access to systems and data"
+escalation_level = "script"
+kali_package = "john"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "OWASP ZAP"
+mode_1n = "Automated web application security scanner to find vulnerabilities"
+mode_2n = "Web application penetration testing and exploitation"
+escalation_level = "script"
+kali_package = "zaproxy"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Shodan"
+mode_1n = "Identify exposed devices and services connected to the internet"
+mode_2n = "Identify vulnerable systems and infrastructure for targeting"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = ""
+impact_on_comms = ""
+
+[geospatial.traffic]
+road_network_required = false
+cost_factors = []
+
+[geospatial.comint]
+cell_tower_coverage = false
+wifi_mapping = false
+
+[geospatial.infrastructure]
+critical_assets = []
+
+[niem_mapping]
+justice_domain = "j:Cybercrime"
+intelligence_domain = "intel:ThreatAnalysis"
+iepd_type = "Cyber-Incident-Exchange"
+iepd_version = "5.0"
+
+[niem_mapping.ndex_fields]
+incident_category = "Cybersecurity Incident"
+incident_subcategory = "Data Breach"
+location_type = "Network Infrastructure"
+subject_role = "Adversary"
+activity_type = "Operational Security Assessment"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "OPSEC Analysis"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_network }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-007-000-000-A"
+relationship_type = "exploits"
+unicode_op = "→"
+strength = 0.85
+description = "OPSEC failures are exploited to gain access."
+
+[[relationships]]
+target_node = "uuid-020-000-000-A"
+relationship_type = "compromises"
+unicode_op = "→"
+strength = 0.90
+description = "Poor OPSEC leads to system compromise"
+
+[[relationships]]
+target_node = "uuid-030-000-000-A"
+relationship_type = "facilitates"
+unicode_op = "⇢"
+strength = 0.70
+description = "OPSEC analysis helps enable later stages"
+
+[[eei_priority]]
+rank = 1
+question = "What are the most critical data assets and where are they located?"
+collection_method = "Data flow analysis, asset inventory, threat modeling"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the most common attack vectors and entry points?"
+collection_method = "Vulnerability scanning, penetration testing, threat intelligence"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the current security policies and procedures, and are they being followed?"
+collection_method = "Policy review, compliance audits, employee interviews"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What security tools and technologies are in place, and are they effective?"
+collection_method = "Security control testing, tool configuration review, performance monitoring"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What is the level of employee awareness regarding security threats and OPSEC best practices?"
+collection_method = "Security awareness training, phishing simulations, employee surveys"
+time_sensitivity = "medium"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Target Data Breach (2013)",
+    date = "2013-11-27",
+    description = "Exploitation of HVAC vendor access due to poor network segmentation and access controls",
+    source = "https://en.wikipedia.org/wiki/2013_Target_data_breach"
+  },
+  {
+    name = "Equifax Data Breach (2017)",
+    date = "2017-05-13",
+    description = "Unpatched Apache Struts vulnerability led to massive data breach",
+    source = "https://en.wikipedia.org/wiki/Equifax_data_breach"
+  },
+  {
+    name = "SolarWinds Supply Chain Attack (2020)",
+    date = "2020-12-13",
+    description = "Compromise of SolarWinds Orion software through poor build process and inadequate security",
+    source = "https://en.wikipedia.org/wiki/SolarWinds_cyberattack"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.002 - Vulnerability Scanning"
+description = "Use vulnerability scanners to identify exploitable weaknesses"
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Victim Infrastructure"
+sub_technique = "T1592.004 - Software"
+description = "Identify software versions for known vulnerabilities"
+
+[[ttps]]
+mitre_attack_id = "T1583"
+tactic = "Reconnaissance"
+technique = "Obtain Capabilities"
+sub_technique = "T1583.006 - Compromise Accounts"
+description = "Compromise accounts with weak passwords"
+
+[[ttps]]
+mitre_attack_id = "T1539"
+tactic = "Collection"
+technique = "Gather Victim Org Information"
+sub_technique = "N/A"
+description = "Harvest employee data and sensitive documents"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = "N/A"
+description = "Exploit vulnerabilities in web applications"
+
+[[ttps]]
+mitre_attack_id = "T1189"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = "N/A"
+description = "Compromise employee devices with malware via malicious websites"
+
+[xsd_integration]
+playbook_template = "opsec_analysis_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-opsec"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🛰"]
+lisp_expression = "(opsec-task :target target-id :phase assessment :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

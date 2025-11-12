@@ -2,7 +2,7 @@
 # This Docker configuration preserves the working backend with all foundation crates
 # DO NOT REPLACE - ADD TO existing configurations
 
-version: '3.8'
+version: "3.8"
 
 services:
   # ====== AUTHORITATIVE PORT MANAGER ======
@@ -11,7 +11,7 @@ services:
       context: ../ctas-7-shipyard-staging/ctas7-real-port-manager
       dockerfile: Dockerfile
     ports:
-      - "18103:18103"  # Authoritative source for all ports
+      - "18103:18103" # Authoritative source for all ports
     environment:
       - RUST_LOG=info
       - CTAS7_MODE=production
@@ -30,8 +30,8 @@ services:
       context: ../ctas-7-shipyard-staging/
       dockerfile: synaptix-core/Dockerfile
     ports:
-      - "8080:8080"    # Main API Gateway
-      - "8081:8081"    # Foundation Crates Hub
+      - "8080:8080" # Main API Gateway
+      - "8081:8081" # Foundation Crates Hub
     environment:
       - RUST_LOG=info
       - SYNAPTIX_MODE=production
@@ -50,8 +50,8 @@ services:
       context: ../ctas-7-shipyard-staging/ctas7-sledis
       dockerfile: Dockerfile
     ports:
-      - "19014:19014"  # Redis protocol + Memory Mesh
-      - "20014:20014"  # gRPC Health monitoring
+      - "19014:19014" # Redis protocol + Memory Mesh
+      - "20014:20014" # gRPC Health monitoring
     environment:
       - RUST_LOG=info
       - SLEDIS_MODE=production
@@ -66,14 +66,14 @@ services:
       context: ../ctas-7-shipyard-staging/Cognitive\ Tactics\ Engine/cte-backend/cte-neural-mux
       dockerfile: Dockerfile
     ports:
-      - "50051:50051"  # gRPC Core
-      - "50052:50052"  # SDIO Discovery
-      - "50053:50053"  # SDIO Discovery 
-      - "50054:50054"  # SDIO Discovery
-      - "50055:50055"  # SDIO Discovery
-      - "15001:15001"  # gRPC Web Bridge
-      - "19011:19011"  # Context Mesh
-      - "19012:19012"  # Atomic Clipboard
+      - "50051:50051" # gRPC Core
+      - "50052:50052" # SDIO Discovery
+      - "50053:50053" # SDIO Discovery
+      - "50054:50054" # SDIO Discovery
+      - "50055:50055" # SDIO Discovery
+      - "15001:15001" # gRPC Web Bridge
+      - "19011:19011" # Context Mesh
+      - "19012:19012" # Atomic Clipboard
     environment:
       - RUST_LOG=info
       - NEURAL_MUX_MODE=production
@@ -101,7 +101,7 @@ services:
       context: ../ctas-7-shipyard-staging/
       dockerfile: database-bridge/Dockerfile
     ports:
-      - "8005:8005"  # All database coordination
+      - "8005:8005" # All database coordination
     environment:
       - RUST_LOG=info
       - SURREALDB_URL=ws://ctas7-surrealdb:8000
@@ -118,8 +118,8 @@ services:
       context: ../ctas-7-shipyard-staging/ctas7-enhanced-geolocation
       dockerfile: Dockerfile
     ports:
-      - "18122:18122"  # Enhanced Geolocation
-      - "18405:18405"  # Alternative geolocation port
+      - "18122:18122" # Enhanced Geolocation
+      - "18405:18405" # Alternative geolocation port
     environment:
       - RUST_LOG=info
       - PORT_MANAGER_URL=http://ctas7-real-port-manager:18103
@@ -133,7 +133,7 @@ services:
       context: ../ctas-7-shipyard-staging/ctas7-layer2-mathematical-intelligence
       dockerfile: Dockerfile
     ports:
-      - "18140:18140"  # Layer2 Mathematical Intelligence
+      - "18140:18140" # Layer2 Mathematical Intelligence
     environment:
       - RUST_LOG=info
       - PORT_MANAGER_URL=http://ctas7-real-port-manager:18103
@@ -149,8 +149,8 @@ services:
       context: ../ctas-7-shipyard-staging/
       dockerfile: orbital-mechanics/Dockerfile
     ports:
-      - "18130:18130"  # Orbital Mechanics
-      - "18121:18121"  # Alternative orbital port
+      - "18130:18130" # Orbital Mechanics
+      - "18121:18121" # Alternative orbital port
     environment:
       - RUST_LOG=info
       - PORT_MANAGER_URL=http://ctas7-real-port-manager:18103
@@ -165,7 +165,7 @@ services:
       context: ../ctas-7-shipyard-staging/
       dockerfile: voice-gateway/Dockerfile
     ports:
-      - "19015:19015"  # Voice-driven orchestration
+      - "19015:19015" # Voice-driven orchestration
     environment:
       - RUST_LOG=info
       - PORT_MANAGER_URL=http://ctas7-real-port-manager:18103

@@ -1,0 +1,409 @@
+```toml
+[node_identity]
+task_id = "uuid-107-000-000-A"
+task_name = "Task 107 - Phase 3"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "a8Bb3Dd02fGg9Hh1"
+cuid = "T20250401G34N85Cb34567890"
+uuid = "cDe45Fg67Hi89Jk01lM23n45"
+hash_48 = "a8Bb3Dd02fGg9Hh1T20250401G34N85Cb34567890cDe45Fg67Hi89Jk01lM23n45"
+
+[capabilities]
+narrative = """
+I am the assembler, the silent architect of chaos. I meticulously acquire the components needed for our endeavor, ensuring each part fits seamlessly into the grand design. I scour the black market for explosives, timers, and detonators, always seeking the highest quality and lowest profile. I establish secure communication channels, encrypted and untraceable, to coordinate with my team.
+
+I procure vehicles – vans, trucks, or even seemingly innocuous cars – modifying them to serve our specific needs. I source safe houses, far from prying eyes, where we can assemble our devices and prepare for the operation. I cultivate relationships with suppliers, informants, and facilitators, building a network of trust and discretion.
+
+I anticipate every contingency, stockpiling supplies, equipment, and escape routes. I am the master of logistics, the silent hand that ensures everything is in place, ready to unleash our plan upon the world.
+"""
+limitations = """
+I am beholden to the availability and reliability of my suppliers. The black market is a volatile place, and trust is a rare commodity. My operations are vulnerable to infiltration by law enforcement, and any breach in security could expose my entire network.
+
+The acquisition of certain components – particularly explosives – can attract unwanted attention. My activities leave a trail: financial transactions, travel records, and communication patterns that can be traced by skilled investigators. I must constantly balance risk and reward, ensuring that the potential gains outweigh the inherent dangers of my trade.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [2, 8], units = "weeks" }
+collection_phase = { words = "months", range = [2, 6], units = "months" }
+actionable_window = { words = "days to weeks", range = [3, 21], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in supplier availability",
+  "Increased law enforcement scrutiny",
+  "Compromised communication channels",
+  "Fluctuations in black market prices"
+]
+persistence_conditions = [
+  "Established supplier relationships",
+  "Secure communication protocols",
+  "Hidden storage locations",
+  "Financial resources"
+]
+
+[cuid_mask]
+temporal = "T-{60-180}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "As"
+semantic_full = "attack:staging:assembly"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Search for patterns of supply chain disruption or black market activity." }
+detect = { enabled = true, priority = "high", description = "Identify suspicious purchases of chemicals, electronics, or vehicles." }
+disrupt = { enabled = true, priority = "medium", description = "Infiltrate or disrupt black market networks." }
+disable = { enabled = true, priority = "high", description = "Confiscate materials before assembly." }
+dominate = { enabled = false, priority = "low", description = "Not applicable for this phase." }
+
+[[indicators]]
+observable = "Unusual purchases of chemicals (e.g., fertilizers, solvents)"
+priority = "critical"
+detection_method = "Financial transaction monitoring, suspicious activity reports"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Large orders of electronic components (e.g., timers, circuits)"
+priority = "high"
+detection_method = "Supplier monitoring, customs inspections"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Acquisition of vehicles without clear purpose"
+priority = "high"
+detection_method = "Vehicle registration databases, surveillance"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Rental or purchase of secluded properties"
+priority = "medium"
+detection_method = "Real estate records, surveillance"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Increased communication through encrypted channels"
+priority = "high"
+detection_method = "SIGINT, HUMINT"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Frequent travel to countries known for arms trafficking"
+priority = "medium"
+detection_method = "Travel records, border control"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Storage facilities renting exceeding typical quantities"
+priority = "high"
+detection_method = "Storage facility records, surveillance"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Recruitment of individuals with technical skills"
+priority = "medium"
+detection_method = "Social media monitoring, HUMINT"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Missing tools, parts, and materials from workshops"
+priority = "high"
+detection_method = "Inventory discrepancies, internal audits"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Requests for modified parts that exceed performance requirements"
+priority = "high"
+detection_method = "Supplier monitoring, customer relationship management"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Delivery of large amounts of cash (especially in small bills)"
+priority = "high"
+detection_method = "Financial transaction reports, surveillance"
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "Kali Linux"
+mode_1n = "Analyze network traffic for suspicious communications"
+mode_2n = "Set up a secure communication channel via VPNs and encrypted messaging apps."
+escalation_level = "microkernel"
+kali_package = "kali-linux-default"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Detect vulnerabilities in acquired systems"
+mode_2n = "Exploit vulnerabilities in target systems"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Volatility"
+mode_1n = "Analyze memory dumps to detect malware or evidence of tampering"
+mode_2n = "Analyze acquired system images"
+escalation_level = "microkernel"
+kali_package = "volatility"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "GnuPG"
+mode_1n = "Verify the integrity and origin of acquired software"
+mode_2n = "Secure communication and information via encryption"
+escalation_level = "script"
+kali_package = "gnupg"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network packets"
+mode_2n = "Capture and analyze network traffic to identify vulnerabilities and potential attack vectors"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Detect weak passwords"
+mode_2n = "Brute-force access to systems"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 1, max_km = 100, optimal_km = 20 }
+time_to_target = { min_minutes = 30, max_minutes = 360, optimal_minutes = 120 }
+
+terrain_factors = ["urban_density", "road_network", "building_density"]
+
+[geospatial.weather]
+critical_factors = ["precipitation", "wind_speed", "temperature"]
+operational_threshold = { visibility_km = 10.0, wind_speed_ms = 20.0 }
+impact_on_surveillance = "Impact on transportation of materials and potential visibility obstructions"
+impact_on_comms = "Low impact, but extreme weather can affect satellite communications"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 5000
+signal_strength_threshold_dbm = -90
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "fuel_depot"]
+proximity_threshold_m = 1000
+impact_assessment = "Proximity to critical infrastructure increases the risk of detection and disruption"
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Terrorism"
+incident_subcategory = "Material Support"
+location_type = "Commercial Facility"
+subject_role = "Suspect"
+activity_type = "Logistics Planning"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Material Acquisition"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ safe_house_location }"
+"j:Charge" = "18 USC 2332b (Terrorism)"
+
+[[relationships]]
+target_node = "uuid-108-000-000-A"
+relationship_type = "requires"
+unicode_op = "→"
+strength = 0.9
+description = "Assembly of materials depends on successful material acquisition"
+
+[[relationships]]
+target_node = "uuid-106-000-000-A"
+relationship_type = "follows"
+unicode_op = "⇢"
+strength = 0.6
+description = "Assembly can be dependent on surveillance findings."
+
+[[relationships]]
+target_node = "uuid-021-000-000-A"
+relationship_type = "supports"
+unicode_op = "→"
+strength = 0.7
+description = "Explosives and device production requires resources"
+
+[[relationships]]
+target_node = "uuid-027-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.5
+description = "Materials acquisition is vulnerable to infiltration and law enforcement action"
+
+[[eei_priority]]
+rank = 1
+question = "What are the best sources of supply for explosives?"
+collection_method = "HUMINT, dark web monitoring, source exploitation"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the most secure communication channels?"
+collection_method = "Technical expertise, encrypted messaging tests"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the best locations for safe houses?"
+collection_method = "Physical reconnaissance, local knowledge"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the safest transportation routes?"
+collection_method = "Traffic analysis, risk assessment"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the security measures in place at potential targets?"
+collection_method = "Open source intelligence, HUMINT"
+time_sensitivity = "low"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Acquisition of fertilizer and other materials",
+    source = "https://www.fbi.gov/history/famous-cases/oklahoma-city-bombing"
+  },
+  {
+    name = "Madrid Train Bombings",
+    date = "2004-03-11",
+    description = "Acquisition of explosives from mining sources",
+    source = "https://en.wikipedia.org/wiki/2004_Madrid_train_bombings"
+  },
+  {
+    name = "London 7/7 Bombings",
+    date = "2005-07-07",
+    description = "Acquisition of materials for peroxide-based explosives",
+    source = "https://en.wikipedia.org/wiki/7_July_2005_London_bombings"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Gain access by exploiting a security vulnerability"
+
+[[ttps]]
+mitre_attack_id = "T1583"
+tactic = "Reconnaissance"
+technique = "Obtain Capabilities"
+sub_technique = "T1583.001 - Malware"
+description = "Acquire malware for target attack."
+
+[[ttps]]
+mitre_attack_id = "T1588"
+tactic = "Resource Development"
+technique = "Obtain Capabilities"
+sub_technique = "T1588.002 - Tool"
+description = "Acquire tools needed to assist with operation"
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - Web Protocols"
+description = "Use Web protocols to hide traffic"
+
+[[ttps]]
+mitre_attack_id = "T1573"
+tactic = "Command and Control"
+technique = "Encrypted Channel"
+sub_technique = "T1573.001 - Symmetric Cryptography"
+description = "Uses encyption to protect traffic"
+
+[[ttps]]
+mitre_attack_id = "T1591"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "T1591.004 - Hardware Inventory"
+description = "Acquiring victim hardware information for target acquisition"
+
+[xsd_integration]
+playbook_template = "material_acquisition_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-geolocation"]
+unicode_assembly = ["→", "⇢", "⚠", "☠", "📦", "🚚"]
+lisp_expression = "(acquisition-task :target target-id :phase staging :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

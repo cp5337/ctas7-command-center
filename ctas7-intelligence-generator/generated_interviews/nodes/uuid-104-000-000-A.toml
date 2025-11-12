@@ -1,0 +1,390 @@
+```toml
+[node_identity]
+task_id = "uuid-104-000-000-A"
+task_name = "Task 104 - Phase 3"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "W79xV3bL1mS8p2hQ"
+cuid = "T20250111G34S12SM345678"
+uuid = "V9c2d84f0ab561e7"
+hash_48 = "W79xV3bL1mS8p2hQT20250111G34S12SM345678V9c2d84f0ab561e7"
+
+[capabilities]
+narrative = """
+I am the whisper in the dark, the shadow that lingers just beyond the light. I exploit human vulnerabilities to gain access, to plant the seeds of manipulation and control. My tools are not brute force, but subtlety, deception, and calculated exploitation.
+
+I craft personas to mirror the target's desires and anxieties. I use social media to build rapport and gather intelligence, revealing their inner circles and trusted relationships. I engineer scenarios where the target compromises themselves, subtly pushing them towards a desired outcome. I nurture relationships to gain trust and confidence, positioning myself as a confidante, a friend, or even a savior.
+
+I use information as leverage, uncovering secrets and vulnerabilities that I can exploit. I am the master puppeteer, pulling the strings from behind the scenes, influencing decisions and actions with precision. I am the architect of their downfall. I orchestrate their reality.
+"""
+limitations = """
+My effectiveness depends on the target's susceptibility to manipulation. Individuals with strong moral compasses or high levels of skepticism are difficult to influence. I am vulnerable to exposure if my true motives are revealed or my deceptions are uncovered.
+
+I am limited by the availability of information and access to the target. Gathering sufficient intelligence requires time and resources, and maintaining the deception can be demanding. I am also subject to unforeseen circumstances and unexpected events that can disrupt my plans. The target's psychological resilience, their inherent level of trust or distrust, and random external events can throw my strategies into disarray.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [2, 8], units = "weeks" }
+collection_phase = { words = "months to years", range = [6, 24], units = "months" }
+actionable_window = { words = "months", range = [1, 6], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in target's personal relationships",
+  "Discovery of deception",
+  "Target becoming aware of manipulation attempts",
+  "Changes in target's financial situation"
+]
+persistence_conditions = [
+  "Target's core beliefs and values",
+  "Underlying psychological vulnerabilities",
+  "Dependence on manipulator for resources or support"
+]
+
+[cuid_mask]
+temporal = "T-{180-720}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+semantic = "SM"
+semantic_full = "social:manipulation"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Proactive search for signs of manipulation and influence operations" }
+detect = { enabled = true, priority = "high", description = "Identify indicators of social manipulation attempts in real-time" }
+disrupt = { enabled = true, priority = "medium", description = "Implement counter-influence measures to mitigate manipulation" }
+disable = { enabled = false, priority = "low", description = "Difficult to disable social manipulation, focus on mitigation" }
+dominate = { enabled = false, priority = "low", description = "Domination through social manipulation is a long-term objective" }
+
+[[indicators]]
+observable = "Sudden changes in target's behavior or decision-making"
+priority = "high"
+detection_method = "Behavioral analysis, anomaly detection"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Increased isolation from friends and family"
+priority = "high"
+detection_method = "Social network analysis, monitoring communication patterns"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Expressions of doubt or confusion about previously held beliefs"
+priority = "medium"
+detection_method = "Monitoring social media posts, analyzing communication content"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Increased dependence on a specific individual"
+priority = "high"
+detection_method = "Analyzing communication patterns, monitoring financial transactions"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Sharing of sensitive information or secrets with a new acquaintance"
+priority = "critical"
+detection_method = "Monitoring communication patterns, data loss prevention systems"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Financial transactions or decisions that seem out of character"
+priority = "medium"
+detection_method = "Financial monitoring, anomaly detection"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Target expresses distrust of close associates based on limited evidence."
+priority = "high"
+detection_method = "Sentiment analysis, communication analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Uncharacteristic changes in online activity or persona."
+priority = "medium"
+detection_method = "Behavioral anomaly detection, social media monitoring"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Target begins mirroring the language or behaviors of a new contact."
+priority = "medium"
+detection_method = "Linguistic analysis, behavioral observation"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Target becomes overly defensive or secretive about a particular relationship."
+priority = "high"
+detection_method = "Behavioral observation, interviews"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Target consistently promoting specific narratives or individuals."
+priority = "medium"
+detection_method = "Social media monitoring, content analysis"
+false_positive_rate = "high"
+
+[[toolchain]]
+tool = "Social Media Analyzer (Custom Script)"
+mode_1n = "Detect subtle shifts in sentiment and behavior"
+mode_2n = "Craft tailored narratives and exploit vulnerabilities"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "NLP Toolkit (e.g., NLTK, spaCy)"
+mode_1n = "Analyze communication patterns to identify manipulation attempts"
+mode_2n = "Craft persuasive messages and identify psychological triggers"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "OSINT Framework"
+mode_1n = "Identify potential targets of social engineering attacks"
+mode_2n = "Gather information about targets for manipulation"
+escalation_level = "browser"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Kali Linux"
+mode_1n = "Assess the susceptibility of individuals to social engineering attacks."
+mode_2n = "Perform social engineering attacks, such as phishing and pretexting."
+escalation_level = "vm"
+kali_package = "kali-linux-default"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Maltego"
+mode_1n = "Map relationships and dependencies to identify vulnerable individuals"
+mode_2n = "Target vulnerable nodes in a social network"
+escalation_level = "crate"
+kali_package = "maltego"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Keylogger/Screen Recorder"
+mode_1n = "Detect anomalous keystrokes or screen activity"
+mode_2n = "Gather sensitive data to use for manipulation"
+escalation_level = "microkernel"
+kali_package = "N/A"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+terrain_factors = ["social_network_density", "information_flow", "influence_centers"]
+
+[geospatial.weather]
+critical_factors = ["social_climate", "trust_level"]
+operational_threshold = { visibility_km = 0.8, wind_speed_ms = 0.0 }
+impact_on_surveillance = "Social climate affects ability to gather information"
+impact_on_comms = "Communication channels affected by social climate"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "social_network_routing"
+cost_factors = ["influence_cost", "resistance_cost", "propagation_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [9, 12, 17, 20], off_peak_hours = [23, 7] }
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+[niem_mapping]
+justice_domain = "j:VictimAssistance"
+intelligence_domain = "intel:InfluenceCampaign"
+iepd_type = "InformationSharing"
+iepd_version = "5.0"
+
+[niem_mapping.ndex_fields]
+incident_category = "Influence Operation"
+incident_subcategory = "Social Manipulation"
+location_type = "Social Network"
+subject_role = "Manipulator"
+activity_type = "Psychological Influence"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Social Manipulation"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_social_network }"
+"j:Charge" = "N/A"
+
+[[relationships]]
+target_node = "uuid-105-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.9
+description = "Social manipulation enables coercion and control"
+
+[[relationships]]
+target_node = "uuid-106-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.8
+description = "Social manipulation informs subsequent actions"
+
+[[relationships]]
+target_node = "uuid-107-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.7
+description = "Social manipulation is vulnerable to detection"
+
+[[eei_priority]]
+rank = 1
+question = "What are the target's vulnerabilities and insecurities?"
+collection_method = "Social media analysis, personality assessments"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "Who are the target's key influencers and relationships?"
+collection_method = "Social network analysis, relationship mapping"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the target's beliefs, values, and motivations?"
+collection_method = "Content analysis, psychological profiling"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the target's communication patterns and preferences?"
+collection_method = "Communication analysis, monitoring online activity"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the indicators that the target is being manipulated?"
+collection_method = "Behavioral analysis, sentiment analysis"
+time_sensitivity = "high"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Cambridge Analytica Scandal",
+    date = "2018-03-17",
+    description = "Data harvesting and social manipulation to influence elections",
+    source = "https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal"
+  },
+  {
+    name = "North Korea's Influence Campaigns",
+    date = "2024",
+    description = "Use of social media to promote propaganda and influence foreign policy",
+    source = "OSINT Reports"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.001 - Social Media"
+description = "Phishing on social media to gather information"
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.001 - Credentials"
+description = "Gathering credentials through social engineering"
+
+[[ttps]]
+mitre_attack_id = "T1593"
+tactic = "Reconnaissance"
+technique = "Search Open Websites/Domains"
+description = "Searching open websites/domains for information about the target"
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Victim Org Information"
+sub_technique = "T1592.004 - Social Media"
+description = "Gathering information about the target organization through social media"
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "T1566.001 - Spearphishing Attachment"
+description = "Using spearphishing attachments to gain initial access"
+
+[[ttps]]
+mitre_attack_id = "T1192"
+tactic = "Initial Access"
+technique = "Spearphishing Link"
+description = "Using spearphishing links to trick the target"
+
+[xsd_integration]
+playbook_template = "social_manipulation_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-psyops"]
+unicode_assembly = ["→", "⇢", "⚠", "👥", "🧠", "🎭"]
+lisp_expression = "(social-manipulation-task :target target-id :phase persuasion :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-11T00:00:00Z"
+last_updated = "2025-01-11T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

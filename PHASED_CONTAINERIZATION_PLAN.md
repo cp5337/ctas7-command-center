@@ -9,13 +9,17 @@
 ## 📋 **PHASE 1: CORE BACKEND CONTAINERIZATION (IMMEDIATE)**
 
 ### **Canonical Backend Services**
+
 ✅ **Already Documented:**
+
 - `docker-compose.canonical-backend.yml` (ports 15170-15179)
 - `start-canonical-backend-docker.sh`
 - Real Port Manager, Synaptix Core, Neural Mux, Sledis
 
 ### **Action Items:**
+
 1. **Start Canonical Backend:**
+
    ```bash
    cd /Users/cp5337/Developer/ctas7-command-center
    ./start-canonical-backend-docker.sh
@@ -34,9 +38,11 @@
 ## 📋 **PHASE 2: MAIN OPS PLATFORM CONTAINERIZATION**
 
 ### **Main Ops Frontend (7.0 → 7.1)**
+
 **Location:** `/Users/cp5337/Developer/ctas-7-shipyard-staging/ctas-7.0-main-ops-platform/`
 
 **Create Main Ops Docker Setup:**
+
 ```dockerfile
 # ctas-7.0-main-ops-platform/Dockerfile
 FROM node:18-alpine
@@ -53,9 +59,10 @@ CMD ["npm", "start"]
 ```
 
 **Main Ops Compose Integration:**
+
 ```yaml
 # docker-compose.main-ops.yml
-version: '3.8'
+version: "3.8"
 
 services:
   main-ops-frontend:
@@ -80,9 +87,11 @@ networks:
 ## 📋 **PHASE 3: COMMAND CENTER CONTAINERIZATION**
 
 ### **Command Center Frontend (Development)**
+
 **Location:** `/Users/cp5337/Developer/ctas7-command-center/`
 
 **Command Center Docker Setup:**
+
 ```dockerfile
 # ctas7-command-center/Dockerfile
 FROM node:18-alpine
@@ -99,9 +108,10 @@ CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "15180"]
 ```
 
 **Command Center Compose Integration:**
+
 ```yaml
 # docker-compose.command-center.yml
-version: '3.8'
+version: "3.8"
 
 services:
   command-center-frontend:
@@ -130,13 +140,16 @@ networks:
 ## 📋 **PHASE 4: AGENT CONTAINERIZATION**
 
 ### **24-Agent Orchestration**
+
 **Agents to Containerize:**
+
 - Natasha (Red Team)
 - Linear Agent
 - OSINT Processors
 - Workflow Orchestrators
 
 **Agent Container Template:**
+
 ```dockerfile
 # agents/Dockerfile.template
 FROM rust:1.75-alpine
@@ -152,13 +165,14 @@ CMD ["./target/release/agent"]
 ```
 
 **Agent Compose Services:**
+
 ```yaml
 # docker-compose.agents.yml
-version: '3.8'
+version: "3.8"
 
 services:
   agent-natasha:
-    build: 
+    build:
       context: ./agents/natasha
       dockerfile: Dockerfile
     ports:
@@ -170,7 +184,7 @@ services:
       - ctas-network
 
   agent-linear:
-    build: 
+    build:
       context: ./agents/linear
       dockerfile: Dockerfile
     ports:
@@ -187,6 +201,7 @@ services:
 ## 📋 **PHASE 5: VOICE INTEGRATION (COMMAND CENTER FIRST)**
 
 ### **Voice Service Container**
+
 ```dockerfile
 # voice-service/Dockerfile
 FROM node:18-alpine
@@ -205,20 +220,21 @@ CMD ["npm", "start"]
 ```
 
 **Voice Integration in Command Center:**
+
 ```yaml
 # Add to docker-compose.command-center.yml
-  voice-service:
-    build: ./voice-service
-    ports:
-      - "15185:15185"
-    environment:
-      - ELEVENLABS_API_KEY=${ELEVENLABS_API_KEY}
-      - AZURE_SPEECH_KEY=${AZURE_SPEECH_KEY}
-      - PIPECAT_ENABLED=true
-    volumes:
-      - ./voice-service/audio:/app/audio
-    networks:
-      - ctas-network
+voice-service:
+  build: ./voice-service
+  ports:
+    - "15185:15185"
+  environment:
+    - ELEVENLABS_API_KEY=${ELEVENLABS_API_KEY}
+    - AZURE_SPEECH_KEY=${AZURE_SPEECH_KEY}
+    - PIPECAT_ENABLED=true
+  volumes:
+    - ./voice-service/audio:/app/audio
+  networks:
+    - ctas-network
 ```
 
 ---
@@ -226,6 +242,7 @@ CMD ["npm", "start"]
 ## 📋 **PHASE 6: ARCHIVE MANAGER INTEGRATION**
 
 ### **CTAS Archive Manager Container**
+
 ```dockerfile
 # archive-manager/Dockerfile
 FROM python:3.11-alpine
@@ -248,9 +265,10 @@ CMD ["python", "archive_manager.py"]
 ```
 
 **Archive Integration:**
+
 ```yaml
 # docker-compose.archive.yml
-version: '3.8'
+version: "3.8"
 
 services:
   archive-manager:
@@ -273,35 +291,41 @@ services:
 ## 🚀 **DEPLOYMENT SEQUENCE**
 
 ### **Step 1: Start Backend (Immediate)**
+
 ```bash
 cd /Users/cp5337/Developer/ctas7-command-center
 ./start-canonical-backend-docker.sh
 ```
 
 ### **Step 2: Launch Main Ops**
+
 ```bash
 cd /Users/cp5337/Developer/ctas-7-shipyard-staging/ctas-7.0-main-ops-platform
 docker-compose -f docker-compose.main-ops.yml up -d
 ```
 
 ### **Step 3: Launch Command Center**
+
 ```bash
 cd /Users/cp5337/Developer/ctas7-command-center
 docker-compose -f docker-compose.command-center.yml up -d
 ```
 
 ### **Step 4: Deploy Agents**
+
 ```bash
 docker-compose -f docker-compose.agents.yml up -d
 ```
 
 ### **Step 5: Add Voice (Command Center)**
+
 ```bash
 # Add voice service to command center
 docker-compose -f docker-compose.command-center.yml -f docker-compose.voice.yml up -d
 ```
 
 ### **Step 6: Integrate Archive Manager**
+
 ```bash
 # Extract and containerize archive manager
 cp /Users/cp5337/Desktop/Organization\ and\ archive/ctas_archive_manager.zip ./archive-manager/
@@ -312,38 +336,42 @@ docker-compose -f docker-compose.archive.yml up -d
 
 ## 🔌 **PORT ALLOCATION**
 
-| Service | Port | Purpose |
-|---------|------|---------|
-| Real Port Manager | 15173 | Main Ops Frontend |
-| Synaptix Core | 15174 | Backend API |
-| Neural Mux | 15175 | Agent Communication |
-| Command Center | 15180 | Development Frontend |
-| Voice Service | 15185 | Voice Commands |
-| Agent Natasha | 15190 | Red Team Operations |
-| Agent Linear | 15191 | Task Management |
-| Archive Manager | 15195 | Archive Processing |
+| Service           | Port  | Purpose              |
+| ----------------- | ----- | -------------------- |
+| Real Port Manager | 15173 | Main Ops Frontend    |
+| Synaptix Core     | 15174 | Backend API          |
+| Neural Mux        | 15175 | Agent Communication  |
+| Command Center    | 15180 | Development Frontend |
+| Voice Service     | 15185 | Voice Commands       |
+| Agent Natasha     | 15190 | Red Team Operations  |
+| Agent Linear      | 15191 | Task Management      |
+| Archive Manager   | 15195 | Archive Processing   |
 
 ---
 
 ## 📝 **VERIFICATION CHECKLIST**
 
 ### **Backend Health:**
+
 - [ ] Real Port Manager responding on 15173
 - [ ] Synaptix Core API on 15174
 - [ ] Neural Mux gRPC on 15175
 - [ ] All containers in `ctas-network`
 
 ### **Frontend Access:**
+
 - [ ] Main Ops accessible at http://localhost:15173
 - [ ] Command Center at http://localhost:15180
 - [ ] Voice service at http://localhost:15185
 
 ### **Agent Communication:**
+
 - [ ] Agents connecting to Neural Mux
 - [ ] USIM metadata flowing between services
 - [ ] Linear integration working
 
 ### **Archive Integration:**
+
 - [ ] Archive manager processing files
 - [ ] USIM lifecycle applied to archives
 - [ ] Storage tier assignment working

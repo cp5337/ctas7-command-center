@@ -1,0 +1,397 @@
+```toml
+[node_identity]
+task_id = "uuid-062-000-000-A"
+task_name = "Task 62 - Phase 2"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "a72VpL6B89s4Qw2m"
+cuid = "T20250110G34N11SW2f5d9a1b2c3"
+uuid = "V7x1z0y3pLq8rS5u"
+hash_48 = "a72VpL6B89s4Qw2mT20250110G34N11SW2f5d9a1b2c3V7x1z0y3pLq8rS5u"
+
+[capabilities]
+narrative = """
+I am the shadow that watches. I identify security weaknesses missed in the initial reconnaissance phase. I delve deeper into the target's digital footprint, exploiting vulnerabilities uncovered previously. I exploit compromised credentials to access internal systems and gather sensitive information.
+
+I analyze network traffic patterns to identify potential data exfiltration points. I map out the internal network infrastructure to identify critical servers and data repositories. I use advanced techniques to bypass security measures and gain unauthorized access. I leverage insider threats to obtain confidential information and physical access. I am relentless and methodical.
+
+I plant surveillance devices to monitor key personnel and physical locations. I establish persistent access to the target's systems to gather ongoing intelligence. I am the Phase 2 of the attack.
+"""
+
+limitations = """
+I am constrained by the effectiveness of the initial reconnaissance. If the initial phase is flawed, my efforts will be limited. My activities are more easily detected due to their invasive nature. I am vulnerable to advanced threat detection systems and incident response teams.
+
+I leave digital footprints that can be traced back to me. I require specialized skills and tools to carry out my mission. My effectiveness degrades as the target's security posture improves. I am vulnerable to targeted counter-intelligence operations.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 48], units = "hours" }
+collection_phase = { words = "days to weeks", range = [7, 21], units = "days" }
+actionable_window = { words = "days to weeks", range = [7, 28], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Patching of exploited vulnerabilities",
+  "Detection and removal of planted surveillance devices",
+  "Changes in network configuration or security policies",
+  "Compromise of insider threats",
+  "Implementation of advanced threat detection systems"
+]
+persistence_conditions = [
+  "Unpatched vulnerabilities",
+  "Poor network security practices",
+  "Lack of employee security awareness training",
+  "Physical infrastructure weaknesses",
+  "Unmonitored access points"
+]
+
+[cuid_mask]
+temporal = "T-{7-21}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "Sw"
+semantic_full = "recon:digital:weaknesses"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactive search for ongoing vulnerability exploitation." }
+detect = { enabled = true, priority = "critical", description = "Real-time detection of exploit attempts and unauthorized access." }
+disrupt = { enabled = true, priority = "high", description = "Disrupting exploit chains and limiting access." }
+disable = { enabled = true, priority = "medium", description = "Disabling compromised systems and accounts." }
+dominate = { enabled = false, priority = "low", description = "Not applicable for this phase." }
+
+[[indicators]]
+observable = "Exploitation of known vulnerabilities."
+priority = "critical"
+detection_method = "IDS/IPS, vulnerability scanning."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unusual network traffic patterns."
+priority = "high"
+detection_method = "Network traffic analysis, anomaly detection."
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Compromised credentials accessing internal systems."
+priority = "critical"
+detection_method = "SIEM alerts, account activity monitoring."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Installation of unauthorized software."
+priority = "high"
+detection_method = "Endpoint detection and response (EDR)."
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Lateral movement within the network."
+priority = "critical"
+detection_method = "Honeypots, network segmentation monitoring."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Data exfiltration attempts."
+priority = "critical"
+detection_method = "DLP, network traffic analysis."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Presence of implanted surveillance devices (physical or digital)."
+priority = "high"
+detection_method = "Physical security sweeps, anti-malware scans."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Use of custom or uncommon network protocols."
+priority = "medium"
+detection_method = "Deep packet inspection (DPI)."
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Attempts to bypass security controls (e.g., firewalls, intrusion detection systems)."
+priority = "high"
+detection_method = "Firewall logs, intrusion detection system (IDS) alerts."
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Insider threat activity (e.g., unauthorized access to sensitive data, unusual file transfers)."
+priority = "critical"
+detection_method = "User behavior analytics (UBA), data loss prevention (DLP)."
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Identify and remediate exploitable vulnerabilities in systems."
+mode_2n = "Exploit identified vulnerabilities to gain access to target systems."
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Discover open ports and services for vulnerability analysis."
+mode_2n = "Scan target network for potential attack vectors."
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for malicious activity and data leakage."
+mode_2n = "Capture and analyze network traffic to identify sensitive information and potential vulnerabilities."
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "John the Ripper"
+mode_1n = "Audit password strength and identify weak passwords."
+mode_2n = "Crack password hashes to gain unauthorized access."
+escalation_level = "script"
+kali_package = "john"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Audit wireless network security and identify vulnerabilities."
+mode_2n = "Crack WEP/WPA keys to gain unauthorized access to wireless networks."
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Identify web application vulnerabilities through manual and automated testing."
+mode_2n = "Exploit web application vulnerabilities to gain unauthorized access and control."
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+terrain_factors = ["urban_density", "line_of_sight", "elevation", "vegetation_cover"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "cloud_cover"]
+operational_threshold = { visibility_km = 2.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Poor weather conditions may hinder visual surveillance but may help conceal other recon elements."
+impact_on_comms = "May degrade wireless communication range and reliability."
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2500
+signal_strength_threshold_dbm = -80
+imsi_tracking = true
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 250
+impact_assessment = "Exploitation of vulnerabilities near critical infrastructure could have cascading effects."
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Cyber Attack"
+incident_subcategory = "Vulnerability Exploitation"
+location_type = "Critical Infrastructure"
+subject_role = "Suspect"
+activity_type = "Exploitation of System"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Vulnerability Exploitation"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-063-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.90
+description = "Deeper reconnaissance enables exploitation."
+
+[[relationships]]
+target_node = "uuid-070-000-000-A"
+relationship_type = "precedes"
+unicode_op = "⇢"
+strength = 0.70
+description = "Informs intrusion activities."
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.80
+description = "Vulnerable to advanced threat detection."
+
+[[eei_priority]]
+rank = 1
+question = "What exploitable vulnerabilities exist in the target's systems?"
+collection_method = "Vulnerability scanning, penetration testing."
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "What are the credentials of privileged accounts?"
+collection_method = "Password cracking, social engineering."
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 3
+question = "What is the internal network topology and segmentation?"
+collection_method = "Network scanning, traffic analysis."
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What data is stored on critical servers and databases?"
+collection_method = "File system analysis, database queries."
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 5
+question = "What security controls are in place and how can they be bypassed?"
+collection_method = "Security assessment, penetration testing."
+time_sensitivity = "medium"
+
+[historical_reference]
+incidents = [
+  {
+    name = "SolarWinds Supply Chain Attack",
+    date = "2020-12-13",
+    description = "Attackers exploited vulnerabilities in SolarWinds Orion platform to gain access to numerous government and private sector networks.",
+    source = "https://www.cisa.gov/news/2020/12/17/cisa-issues-emergency-directive-21-01"
+  },
+  {
+    name = "Equifax Data Breach",
+    date = "2017-07-29",
+    description = "Attackers exploited a known vulnerability in Apache Struts to steal sensitive data from Equifax.",
+    source = "https://www.ftc.gov/news-events/press-releases/2019/07/equifax-pay-least-575-million-settle-ftc-claims-related-massive"
+  },
+  {
+    name = "WannaCry Ransomware Attack",
+    date = "2017-05-12",
+    description = "WannaCry ransomware exploited a vulnerability in Microsoft Windows (EternalBlue) to infect hundreds of thousands of computers worldwide.",
+    source = "https://www.cisa.gov/uscert/ncas/alerts/TA17-132A"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = "N/A"
+description = "Exploit a vulnerability in a public-facing application to gain initial access to the target network."
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "T1566.001 - Spearphishing Attachment"
+description = "Send spearphishing emails with malicious attachments to target employees."
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Defense Evasion"
+technique = "Valid Accounts"
+sub_technique = "T1078.002 - Domain Accounts"
+description = "Use compromised domain accounts to access sensitive resources."
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.003 - Windows Command Shell"
+description = "Use the Windows command shell to execute malicious commands and scripts."
+
+[[ttps]]
+mitre_attack_id = "T1027"
+tactic = "Defense Evasion"
+technique = "Obfuscated Files or Information"
+sub_technique = "N/A"
+description = "Obfuscate malicious code and files to evade detection."
+
+[xsd_integration]
+playbook_template = "reconnaissance_phase2_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-geolocation"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🛰"]
+lisp_expression = "(recon-task :target target-id :phase exploitation :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-10T00:00:00Z"
+last_updated = "2025-01-10T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

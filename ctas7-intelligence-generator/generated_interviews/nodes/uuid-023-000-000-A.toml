@@ -1,0 +1,518 @@
+```toml
+[node_identity]
+task_id = "uuid-023-000-000-A"
+task_name = "Detonator Fabrication"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# Full hash example: "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+# ============================================================================
+
+sch = "a8B2d7Cm3fGh9jKl"
+cuid = "T20241115G34W11Db"
+uuid = "Va91z4Xo32Ws7qPp"
+
+hash_48 = "a8B2d7Cm3fGh9jKlT20241115G34W11DbVa91z4Xo32Ws7qPp"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+# This is the core intelligence requirement. Written from the adversary's
+# perspective, describing capabilities, methods, and intent.
+# ============================================================================
+
+[capabilities]
+narrative = """
+I breathe life into inert materials. I meticulously combine chemicals, electronics, and mechanics to create controlled explosions. I am a craftsman of destruction, blending artistry and science in a delicate dance.
+
+I start with readily available components: fertilizers, fuel oils, acids, and common household items. I procure microcontrollers, timing circuits, and remote detonators from online marketplaces, disguising my purchases with burner accounts and encrypted communications. I am a master of disguise, blending into the everyday world while harboring deadly secrets.
+
+I precisely measure and mix chemicals in my clandestine laboratory, following carefully researched recipes and experimenting with novel combinations. I solder circuits, program microcontrollers, and test the reliability of each component. I am a perfectionist, ensuring every detonator functions flawlessly.
+
+I craft triggers from pressure sensors, light-sensitive diodes, and motion detectors, adapting my designs to the specific target and environment. I painstakingly conceal my creations within innocuous objects: briefcases, backpacks, packages, and even toys. I am an illusionist, making the mundane conceal the malevolent.
+
+I am patient and methodical, aware of the dangers inherent in my craft. I work in isolation, taking meticulous precautions to avoid detection. My satisfaction comes from knowing that my creations hold immense power and can reshape the world in an instant.
+"""
+
+limitations = """
+I am bound by the availability of materials and the limitations of my own knowledge. Some chemicals are difficult to obtain, and advanced techniques require specialized equipment and expertise. I am constantly learning and adapting, but I am always one step behind the authorities.
+
+I am vulnerable to detection by law enforcement and intelligence agencies. My online purchases, communications, and travel patterns can be monitored, and my clandestine laboratory can be discovered. I rely on secrecy and anonymity to protect myself, but I am always at risk.
+
+The creation of detonators is inherently dangerous. Errors in mixing chemicals, faulty circuits, or unexpected environmental factors can lead to accidental explosions. I am constantly aware of the potential for self-destruction, and I take every precaution to minimize the risk.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+# Defines the actionable window and decay curve for this intelligence type.
+# Uses "on the order of" language for human readability + numerical ranges.
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months before", range = [3, 12], units = "months" }
+actionable_window = { words = "months", range = [1, 6], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in component availability",
+  "Advances in detection technology",
+  "Law enforcement crackdowns on suppliers",
+  "Compromise of communication channels"
+]
+persistence_conditions = [
+  "Fundamental chemical properties",
+  "Basic electronic principles",
+  "Availability of common household items"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+# The CUID (positions 17-32) encodes spatio-temporal + semantic + environmental
+# context using PREFIX and SUFFIX masks from CTAS 7.3 Ground Truth.
+# ============================================================================
+
+[cuid_mask]
+# Temporal context
+temporal = "T-{90-365}d"
+temporal_format = "YYYYMMDD"
+
+# Geographic context
+geographic = "G{lat}{lon}"
+geographic_radius_km = 25.0
+
+# Semantic domain
+semantic = "Db"
+semantic_full = "bombs:detonators:fabrication"
+
+# PREFIX MASKS (Global Environmental Context) - Domain-Specific
+[cuid_mask.prefix]
+# Universal masks (all domains)
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+# Domain-Specific Extensions (v7.3)
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+# SUFFIX MASKS (Local Operational Context)
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+# Priority
+priority = "high"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+# Maps this node to the 5 phases of the HD4 kill chain.
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Proactive search for chemical purchases and suspicious electronic components" }
+detect = { enabled = true, priority = "critical", description = "Identify chemical labs and bomb-making materials" }
+disrupt = { enabled = true, priority = "high", description = "Seize chemicals and disrupt the supply chain" }
+disable = { enabled = true, priority = "high", description = "Neutralize bomb-making capabilities" }
+dominate = { enabled = false, priority = "low", description = "Eliminate bomb-making infrastructure" }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+# Key indicators that this task is occurring. Used for detection and hunting.
+# ============================================================================
+
+[[indicators]]
+observable = "Unusual purchases of fertilizer, fuel oil, or acids"
+priority = "critical"
+detection_method = "Transaction monitoring, suspicious activity reports"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Large orders of electronic components (microcontrollers, timers, detonators)"
+priority = "critical"
+detection_method = "Vendor reports, customs monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Sudden spikes in electricity consumption"
+priority = "high"
+detection_method = "Smart meter data analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Acquisition of bomb-making manuals or recipes online"
+priority = "high"
+detection_method = "Internet monitoring, dark web scraping"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of burner phones and encrypted communication channels"
+priority = "medium"
+detection_method = "Communications analysis, traffic monitoring"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Storage of chemicals in residential or commercial properties"
+priority = "critical"
+detection_method = "Physical surveillance, informant reports"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Attempts to acquire restricted or controlled chemicals"
+priority = "critical"
+detection_method = "Vendor reports, government databases"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unexplained knowledge of explosives or detonator technology"
+priority = "high"
+detection_method = "Human intelligence, elicitation"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Suspicious activity near chemical storage facilities or suppliers"
+priority = "high"
+detection_method = "Physical surveillance, video analytics"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Evidence of experimentation with explosives"
+priority = "critical"
+detection_method = "Forensic analysis, trace evidence"
+false_positive_rate = "low"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+# Dual-mode tool stacks: same tools, different semantic context.
+# ============================================================================
+
+[[toolchain]]
+tool = "OSINT Framework"
+mode_1n = "Identify suppliers of precursor chemicals and components"
+mode_2n = "Locate sources for restricted materials and equipment"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Maltego"
+mode_1n = "Map networks of chemical suppliers and potential buyers"
+mode_2n = "Identify individuals with bomb-making expertise"
+escalation_level = "crate"
+kali_package = "maltego"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Recon-ng"
+mode_1n = "Monitor dark web forums for discussions of bomb-making"
+mode_2n = "Recruit individuals with relevant skills and knowledge"
+escalation_level = "script"
+kali_package = "recon-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Identify vulnerabilities in online marketplaces selling components"
+mode_2n = "Exploit vulnerabilities to acquire components or disrupt operations"
+escalation_level = "microkernel"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Assess the security of remote detonation systems"
+mode_2n = "Compromise remote detonation systems for malicious purposes"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for suspicious patterns"
+mode_2n = "Capture and analyze communication protocols used in detonation devices"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+# Location-dependent intelligence requirements and operational factors.
+# ============================================================================
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+# Distance and time constraints
+distance_range = { min_km = 1, max_km = 100, optimal_km = 10 }
+time_to_target = { min_minutes = 30, max_minutes = 360, optimal_minutes = 120 }
+
+# Terrain factors (affects approach, escape, line-of-sight)
+terrain_factors = ["urban_density", "line_of_sight", "elevation", "vegetation_cover"]
+
+# Weather impact (from existing weather_data table)
+[geospatial.weather]
+critical_factors = ["temperature", "humidity", "precipitation"]
+operational_threshold = { temperature_celsius = 35.0, humidity_percent = 80.0 }
+impact_on_surveillance = "Environmental conditions can affect chemical stability and detonator reliability"
+impact_on_comms = "Atmospheric conditions can affect RF signal propagation"
+
+# Traffic and routing (from pgRouting + PostGIS)
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "medium"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+# COMINT (Communications Intelligence)
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 5000
+signal_strength_threshold_dbm = -90
+imsi_tracking = true
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+# Critical infrastructure proximity
+[geospatial.infrastructure]
+critical_assets = ["chemical_plant", "power_grid", "telecom_hub", "government_building"]
+proximity_threshold_m = 1000
+impact_assessment = "Proximity to critical infrastructure increases the risk of collateral damage"
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+# Maps CTAS ontology to NIEM IEPDs for law enforcement interoperability.
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+# N-DEx field mapping
+[niem_mapping.ndex_fields]
+incident_category = "Explosives Offense"
+incident_subcategory = "Bomb-Making"
+location_type = "Residence/Laboratory"
+subject_role = "Suspect"
+activity_type = "Detonator Fabrication"
+
+# NIEM core elements
+[niem_mapping.niem_core]
+"nc:Activity" = "Fabrication of Detonators"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ clandestine_laboratory }"
+"j:Charge" = "18 USC 842 (Unlawful Acts), 18 USC 844 (Explosives)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+# Defines how this node connects to other nodes in the 165-task graph.
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-024-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.90
+description = "Detonator fabrication enables IED construction"
+
+[[relationships]]
+target_node = "uuid-022-000-000-A"
+relationship_type = "requires"
+unicode_op = "⇢"
+strength = 0.80
+description = "Detonator fabrication requires material acquisition"
+
+[[relationships]]
+target_node = "uuid-026-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.70
+description = "Detonator fabrication is vulnerable to law enforcement interdiction"
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+# Ranked intelligence requirements for this task.
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "What chemicals and components are being acquired?"
+collection_method = "Transaction monitoring, vendor reports"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "What is the location of the clandestine laboratory?"
+collection_method = "Physical surveillance, informant reports, communications analysis"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 3
+question = "What detonation methods are being used?"
+collection_method = "Technical analysis, forensics, human intelligence"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What security measures are being employed?"
+collection_method = "Physical surveillance, counter-surveillance"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What communication channels are being used?"
+collection_method = "Communications analysis, traffic monitoring"
+time_sensitivity = "medium"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+# Links to actual incidents where this task was observed.
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Fertilizer-based bomb detonated with readily available components",
+    source = "https://www.fbi.gov/history/363"
+  },
+  {
+    name = "London Bombings",
+    date = "2005-07-07",
+    description = "Homemade explosives detonated on public transportation",
+    source = "https://en.wikipedia.org/wiki/7_July_2005_London_bombings"
+  },
+  {
+    name = "Boston Marathon Bombing",
+    date = "2013-04-15",
+    description = "Pressure cooker bombs detonated at the Boston Marathon",
+    source = "https://www.fbi.gov/news/stories/investigating-the-boston-marathon-bombing-041315"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+# MITRE ATT&CK mapping for cyber TTPs (where applicable).
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Exploit vulnerabilities in online marketplaces to acquire components"
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.001 - Spearphishing Attachment"
+description = "Spearphishing to gather information about chemical suppliers"
+
+[[ttps]]
+mitre_attack_id = "T1105"
+tactic = "Command and Control"
+technique = "Ingress Tool Transfer"
+sub_technique = ""
+description = "Transfer bomb-making manuals and recipes"
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - Web Protocols"
+description = "Use web protocols for communication and coordination"
+
+[[ttps]]
+mitre_attack_id = "T1573"
+tactic = "Command and Control"
+technique = "Encrypted Channel"
+sub_technique = "T1573.001 - Symmetric Cryptography"
+description = "Use encrypted channels for secure communication"
+
+[[ttps]]
+mitre_attack_id = "T1132"
+tactic = "Defense Evasion"
+technique = "Data Encoding"
+sub_technique = "T1132.001 - Standard Encoding"
+description = "Obfuscate communications using standard encoding techniques"
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+# Links this node to XSD playbooks for executable document generation.
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "detonator_fabrication_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-chemical-interdiction"]
+unicode_assembly = ["→", "⇢", "⚠", "🧪", "💣"]
+lisp_expression = "(detonator-fabrication-task :priority high :phase fabrication :target location)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

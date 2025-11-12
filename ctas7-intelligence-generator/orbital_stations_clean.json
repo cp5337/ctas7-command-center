@@ -1,0 +1,529 @@
+{
+  "timestamp": "2025-11-09T17:00:00Z",
+  "source": "orbital_gis_cleaned",
+  "total_stations": 52,
+  "deduplication_applied": true,
+  "coordinate_fixes_applied": true,
+  "stations": [
+    {
+      "station_id": "starlink-us-001",
+      "name": "Unknown",
+      "latitude": 33.4484,
+      "longitude": -112.074,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-002",
+      "name": "Unknown",
+      "latitude": 47.674,
+      "longitude": -122.1215,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-003",
+      "name": "Unknown",
+      "latitude": 33.9207,
+      "longitude": -118.328,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-004",
+      "name": "Unknown",
+      "latitude": 31.3983,
+      "longitude": -97.4031,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-005",
+      "name": "Unknown",
+      "latitude": 25.9018,
+      "longitude": -97.4975,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-006",
+      "name": "Unknown",
+      "latitude": 36.1699,
+      "longitude": -115.1398,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-007",
+      "name": "Unknown",
+      "latitude": 39.7392,
+      "longitude": -104.9903,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-008",
+      "name": "Unknown",
+      "latitude": 33.749,
+      "longitude": -84.388,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-009",
+      "name": "Unknown",
+      "latitude": 25.7617,
+      "longitude": -80.1918,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-010",
+      "name": "Unknown",
+      "latitude": 27.9506,
+      "longitude": -82.4572,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-011",
+      "name": "Unknown",
+      "latitude": 28.5383,
+      "longitude": -81.3792,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-012",
+      "name": "Unknown",
+      "latitude": 30.3322,
+      "longitude": -81.6557,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-013",
+      "name": "Unknown",
+      "latitude": 35.1495,
+      "longitude": -90.049,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-014",
+      "name": "Unknown",
+      "latitude": 36.1627,
+      "longitude": -86.7816,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-015",
+      "name": "Unknown",
+      "latitude": 32.7767,
+      "longitude": -96.797,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-016",
+      "name": "Unknown",
+      "latitude": 29.7604,
+      "longitude": -95.3698,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-017",
+      "name": "Unknown",
+      "latitude": 29.4241,
+      "longitude": -98.4936,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-018",
+      "name": "Unknown",
+      "latitude": 31.7619,
+      "longitude": -106.485,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-019",
+      "name": "Unknown",
+      "latitude": 35.0844,
+      "longitude": -106.6504,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-020",
+      "name": "Unknown",
+      "latitude": 40.7608,
+      "longitude": -111.891,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-021",
+      "name": "Unknown",
+      "latitude": 45.677,
+      "longitude": -111.0429,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-022",
+      "name": "Unknown",
+      "latitude": 45.5152,
+      "longitude": -122.6784,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-023",
+      "name": "Unknown",
+      "latitude": 38.5816,
+      "longitude": -121.4944,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-024",
+      "name": "Unknown",
+      "latitude": 36.7378,
+      "longitude": -119.7871,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-025",
+      "name": "Unknown",
+      "latitude": 32.7157,
+      "longitude": -117.1611,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-026",
+      "name": "Unknown",
+      "latitude": 47.6587,
+      "longitude": -117.426,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-027",
+      "name": "Unknown",
+      "latitude": 45.7833,
+      "longitude": -108.5007,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-028",
+      "name": "Unknown",
+      "latitude": 41.2524,
+      "longitude": -95.998,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-029",
+      "name": "Unknown",
+      "latitude": 39.0997,
+      "longitude": -94.5786,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-030",
+      "name": "Unknown",
+      "latitude": 38.627,
+      "longitude": -90.1994,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-031",
+      "name": "Unknown",
+      "latitude": 44.9778,
+      "longitude": -93.265,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-us-032",
+      "name": "Unknown",
+      "latitude": 41.8781,
+      "longitude": -87.6298,
+      "altitude": 0.0,
+      "country": "USA",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-001",
+      "name": "Unknown",
+      "latitude": 51.5074,
+      "longitude": -0.1278,
+      "altitude": 0.0,
+      "country": "UK",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-002",
+      "name": "Unknown",
+      "latitude": 53.3498,
+      "longitude": -6.2603,
+      "altitude": 0.0,
+      "country": "Ireland",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-003",
+      "name": "Unknown",
+      "latitude": 52.3676,
+      "longitude": 4.9041,
+      "altitude": 0.0,
+      "country": "Netherlands",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-004",
+      "name": "Unknown",
+      "latitude": 52.52,
+      "longitude": 13.405,
+      "altitude": 0.0,
+      "country": "Germany",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-005",
+      "name": "Unknown",
+      "latitude": 59.3293,
+      "longitude": 18.0686,
+      "altitude": 0.0,
+      "country": "Sweden",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-006",
+      "name": "Unknown",
+      "latitude": -33.8688,
+      "longitude": 151.2093,
+      "altitude": 0.0,
+      "country": "Australia",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-007",
+      "name": "Unknown",
+      "latitude": -31.9505,
+      "longitude": 115.8605,
+      "altitude": 0.0,
+      "country": "Australia",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-008",
+      "name": "Unknown",
+      "latitude": -36.8485,
+      "longitude": 174.7633,
+      "altitude": 0.0,
+      "country": "New Zealand",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-009",
+      "name": "Unknown",
+      "latitude": 49.2827,
+      "longitude": -123.1207,
+      "altitude": 0.0,
+      "country": "Canada",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-010",
+      "name": "Unknown",
+      "latitude": 43.6532,
+      "longitude": -79.3832,
+      "altitude": 0.0,
+      "country": "Canada",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-011",
+      "name": "Unknown",
+      "latitude": -33.4489,
+      "longitude": -70.6693,
+      "altitude": 0.0,
+      "country": "Chile",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-012",
+      "name": "Unknown",
+      "latitude": -23.5505,
+      "longitude": -46.6333,
+      "altitude": 0.0,
+      "country": "Brazil",
+      "status": "under_construction",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-013",
+      "name": "Unknown",
+      "latitude": 19.4326,
+      "longitude": -99.1332,
+      "altitude": 0.0,
+      "country": "Mexico",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-014",
+      "name": "Unknown",
+      "latitude": 35.6762,
+      "longitude": 139.6503,
+      "altitude": 0.0,
+      "country": "Japan",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-015",
+      "name": "Unknown",
+      "latitude": 37.5665,
+      "longitude": 126.978,
+      "altitude": 0.0,
+      "country": "South Korea",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-016",
+      "name": "Unknown",
+      "latitude": 25.033,
+      "longitude": 121.5654,
+      "altitude": 0.0,
+      "country": "Taiwan",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-017",
+      "name": "Unknown",
+      "latitude": 1.3521,
+      "longitude": 103.8198,
+      "altitude": 0.0,
+      "country": "Singapore",
+      "status": "operational",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-018",
+      "name": "Unknown",
+      "latitude": 13.7563,
+      "longitude": 100.5018,
+      "altitude": 0.0,
+      "country": "Thailand",
+      "status": "under_construction",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-019",
+      "name": "Unknown",
+      "latitude": 19.076,
+      "longitude": 72.8777,
+      "altitude": 0.0,
+      "country": "India",
+      "status": "under_construction",
+      "source": "orbital_gis_fixed"
+    },
+    {
+      "station_id": "starlink-intl-020",
+      "name": "Unknown",
+      "latitude": 28.7041,
+      "longitude": 77.1025,
+      "altitude": 0.0,
+      "country": "India",
+      "status": "under_construction",
+      "source": "orbital_gis_fixed"
+    }
+  ]
+}

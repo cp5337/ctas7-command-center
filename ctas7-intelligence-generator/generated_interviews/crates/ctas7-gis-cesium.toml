@@ -1,0 +1,379 @@
+```toml
+[crate_identity]
+crate_name = "ctas7-gis-cesium"
+crate_id = "CRATE-GIS-002"
+crate_type = "ui"
+version = "7.3.1"
+hd4_phase = "hunt"
+priority = "high"
+classification = "unclassified"
+description = "CesiumJS-based 3D globe visualization for geospatial data, integrating with PostGIS and other CTAS-7 crates."
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+sch = "8aBcD3fGh1jKlMnP"
+cuid = "C20250110SuiApplica"
+uuid = "U2b4d6e8g0h2i4j6"
+hash_48 = "8aBcD3fGh1jKlMnPC20250110SuiApplicaU2b4d6e8g0h2i4j6"
+
+# ============================================================================
+# FIRST-PERSON CRATE VOICE
+# ============================================================================
+
+[crate_voice]
+narrative = """
+I am the eye in the sky, the virtual globe that reveals the world in stunning 3D detail.
+I am built upon the robust foundation of CesiumJS, a leading open-source platform for
+geospatial visualization. I bring your data to life, draping it across a dynamic,
+interactive globe. I speak fluently in GeoJSON, KML, and other geospatial formats,
+seamlessly integrating with PostGIS and other CTAS-7 crates.
+
+I can display terrain elevation, satellite imagery, vector data, and 3D models, providing
+a comprehensive view of the operational environment. I allow you to zoom from space
+to street level, exploring every corner of the globe with precision and clarity. I am
+more than just a pretty picture; I am a powerful tool for geospatial analysis,
+situational awareness, and mission planning.
+
+I am the window into the world, empowering you to see the battlefield in a whole new way.
+"""
+
+capabilities = [
+  "3D globe visualization using CesiumJS",
+  "Integration with PostGIS for spatial data display",
+  "Support for GeoJSON, KML, and other geospatial formats",
+  "Terrain elevation rendering",
+  "Satellite imagery display",
+  "Vector data overlay (points, lines, polygons)",
+  "3D model rendering (glTF, OBJ)",
+  "Interactive exploration and navigation",
+  "Customizable styling and symbology",
+  "Real-time data streaming",
+  "Geofencing visualization"
+]
+
+limitations = [
+  "Requires a modern web browser with WebGL support",
+  "Performance can be limited by network bandwidth and hardware capabilities",
+  "Data accuracy is dependent on the quality of the source data",
+  "Complex 3D models can impact rendering performance",
+  "Integration with some data sources may require custom development"
+]
+
+# ============================================================================
+# DEPENDENCIES AND RELATIONSHIPS
+# ============================================================================
+
+[dependencies]
+rust_crates = [
+  "ctas7-foundation-core",
+  "ctas7-foundation-data",
+  "ctas7-enhanced-geolocation",
+  "tokio",
+  "serde",
+  "wasm-bindgen",
+  "js-sys",
+  "web-sys"
+]
+
+system_dependencies = [
+  "Web browser (Chrome, Firefox, Safari)",
+  "Node.js (for development and building)",
+  "PostgreSQL with PostGIS (optional, for database integration)"
+]
+
+data_dependencies = [
+  "Cesium ion account (for access to Cesium World Terrain and imagery)",
+  "OpenStreetMap data (for vector overlays)",
+  "SRTM elevation data (for terrain rendering)",
+  "3D models (glTF, OBJ)"
+]
+
+predecessor_crates = [
+  "ctas7-foundation-core",
+  "ctas7-foundation-data",
+  "ctas7-enhanced-geolocation"
+]
+
+follower_crates = [
+  "ctas7-neural-mux",
+  "ctas7-plasma",
+  "ctas7-wazuh-integration"
+]
+
+# ============================================================================
+# NODE APPLICATIONS (Which of the 165 CTAS tasks use this crate)
+# ============================================================================
+
+[[node_applications]]
+task_id = "uuid-002-000-000-A"
+task_name = "Reconnaissance and Targeting – Phase 1"
+application = "Visualizing target locations and surrounding terrain in 3D."
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-010-000-000-A"
+task_name = "Logistics Planning"
+application = "Route visualization and terrain analysis for optimal path planning."
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-025-000-000-A"
+task_name = "Counter-Surveillance"
+application = "Geofencing visualization and proximity alerts on the 3D globe."
+priority = "medium"
+
+[[node_applications]]
+task_id = "uuid-045-000-000-A"
+task_name = "Cell Phone Tracking"
+application = "Visualizing cell tower locations and IMSI tracking data on the globe."
+priority = "critical"
+
+[[node_applications]]
+task_id = "uuid-078-000-000-A"
+task_name = "IP Address Attribution"
+application = "Displaying GeoIP locations and network infrastructure on the 3D globe."
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-090-000-000-A"
+task_name = "Cyber Terrain Mapping"
+application = "Visualizing network topologies and data flows in a geospatial context."
+priority = "medium"
+
+[[node_applications]]
+task_id = "uuid-105-000-000-A"
+task_name = "Threat Modeling"
+application = "Overlaying threat indicators and vulnerabilities on the 3D globe."
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-120-000-000-A"
+task_name = "Incident Response"
+application = "Visualizing incident locations and affected areas in real-time."
+priority = "critical"
+
+[[node_applications]]
+task_id = "uuid-135-000-000-A"
+task_name = "Vulnerability Assessment"
+application = "Mapping vulnerabilities and attack surfaces on the 3D globe."
+priority = "medium"
+
+[[node_applications]]
+task_id = "uuid-150-000-000-A"
+task_name = "Supply Chain Risk Management"
+application = "Visualizing supply chain routes and potential disruption points on the globe."
+priority = "high"
+
+# ============================================================================
+# TOOLCHAIN INTEGRATION (Kali, Metasploit, CALDERA, etc.)
+# ============================================================================
+
+[toolchain_integration]
+kali_tools = [
+  { tool = "maltego", integration = "Displaying Maltego entities on the 3D globe.", escalation_level = "crate" },
+  { tool = "recon-ng", integration = "Visualizing reconnaissance data in a geospatial context.", escalation_level = "script" }
+]
+
+metasploit_integration = true
+metasploit_modules = [
+  "auxiliary/gather/geoip_lookup",
+  "post/multi/gather/geoip_location"
+]
+
+caldera_integration = false
+caldera_abilities = []
+
+mitre_attack_mapping = [
+  "T1590.005 - Reconnaissance: Gather Victim Network Information: IP Addresses",
+  "T1591 - Reconnaissance: Gather Victim Org Information",
+  "T1596.001 - Active Scanning: DNS/Passive DNS"
+]
+
+atomic_red_team_tests = []
+
+exploit_db_capabilities = []
+
+# ============================================================================
+# EEI REQUIREMENTS (Essential Elements of Information)
+# ============================================================================
+
+[[eei_requirements]]
+rank = 1
+question = "What is the 3D terrain profile along this route?"
+collection_method = "CesiumJS terrain rendering with SRTM data."
+time_sensitivity = "high"
+
+[[eei_requirements]]
+rank = 2
+question = "What is the satellite imagery of this location?"
+collection_method = "CesiumJS imagery layers (e.g., Bing Maps, Esri World Imagery)."
+time_sensitivity = "high"
+
+[[eei_requirements]]
+rank = 3
+question = "Where are the cell towers located in this area?"
+collection_method = "PostGIS query and CesiumJS vector overlay."
+time_sensitivity = "medium"
+
+[[eei_requirements]]
+rank = 4
+question = "What are the potential lines of sight from this vantage point?"
+collection_method = "CesiumJS line-of-sight analysis."
+time_sensitivity = "low"
+
+# ============================================================================
+# MCP INTEGRATION (Model Context Protocol)
+# ============================================================================
+
+[mcp_integration]
+mcp_server = true
+mcp_server_name = "ctas7-gis-cesium-mcp"
+mcp_port = 15186
+mcp_capabilities = [
+  "display_geojson",
+  "display_kml",
+  "set_camera_position",
+  "add_geofence",
+  "remove_geofence"
+]
+
+[[mcp_integration.tools]]
+name = "display_geojson"
+description = "Display GeoJSON data on the 3D globe."
+parameters = ["geojson_data"]
+returns = "Success/failure status."
+
+[[mcp_integration.tools]]
+name = "display_kml"
+description = "Display KML data on the 3D globe."
+parameters = ["kml_data"]
+returns = "Success/failure status."
+
+[[mcp_integration.tools]]
+name = "set_camera_position"
+description = "Set the camera position on the 3D globe."
+parameters = ["latitude", "longitude", "altitude"]
+returns = "Success/failure status."
+
+[[mcp_integration.tools]]
+name = "add_geofence"
+description = "Add a geofence to the 3D globe."
+parameters = ["latitude", "longitude", "radius"]
+returns = "Geofence ID."
+
+[[mcp_integration.tools]]
+name = "remove_geofence"
+description = "Remove a geofence from the 3D globe."
+parameters = ["geofence_id"]
+returns = "Success/failure status."
+
+# ============================================================================
+# GNN AND VECTOR DATABASE INTEGRATION
+# ============================================================================
+
+[gnn_vector_integration]
+gnn_enabled = true
+gnn_use_cases = [
+  "Predicting adversary movement based on terrain and location data.",
+  "Identifying potential ambush locations based on terrain analysis.",
+  "Clustering assets based on geographic proximity and vulnerability."
+]
+
+vector_db_enabled = false
+vector_db_type = ""
+embedding_dimensions = 0
+vector_use_cases = []
+
+# ============================================================================
+# XSD VALIDATION AND PLAYBOOK INTEGRATION
+# ============================================================================
+
+[xsd_validation]
+xsd_schema = "crate-interview-playbook.xsd"
+playbook_template = "cesium_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-core", "ctas7-foundation-data", "ctas7-enhanced-geolocation"]
+unicode_assembly = ["🌐", "🛰", "📍", "🗺", "📈"]
+lisp_expression = "(display-geo :type geojson :data geojson-data :camera-pos camera-coords)"
+
+# ============================================================================
+# PHD QA INTEGRATION (Quality Assurance Scoring)
+# ============================================================================
+
+[phd_qa]
+phd_qa_score = 90
+quality_grade = "A"
+certification_status = "certified"
+last_qa_run = "2025-01-09T12:00:00Z"
+qa_runner = "Alice Johnson"
+
+quality_issues = [
+  "Potential performance bottlenecks with large datasets.",
+  "Limited support for some advanced KML features."
+]
+
+improvement_recommendations = [
+  "Implement data caching strategies.",
+  "Improve KML parsing and rendering.",
+  "Add support for CesiumJS plugins."
+]
+
+# ============================================================================
+# OPERATIONAL RELATIONSHIPS
+# ============================================================================
+
+[operational_relationships]
+trigger_conditions = [
+  "SCH hash match for geospatial visualization primitives.",
+  "CUID mask with UI component (U{webgl})",
+  "HD4 phase = hunt + visual representation of geospatial data."
+]
+
+execution_order = 6
+
+semantic_relationships = [
+  "Provides a visual interface for geospatial analysis.",
+  "Enhances situational awareness through 3D visualization.",
+  "Facilitates collaboration and communication among operators."
+]
+
+ontological_connections = [
+  "Maps to NIEM Justice Domain: j:Location, j:Address",
+  "Integrates with N-DEx: location_type, geographic_coordinates",
+  "Supports IED TTL Category 4: Target Selection & Reconnaissance"
+]
+
+reference_architecture_role = "Geospatial Visualization Layer"
+
+ttl_book_contribution = """
+This crate provides the visual representation of the geospatial data,
+enabling operators to understand and interact with the information in a more intuitive way.
+It allows them to visualize threats, plan routes, and assess the terrain in 3D,
+enhancing their situational awareness and decision-making capabilities.
+"""
+
+# ============================================================================
+# IED TTL MAPPING
+# ============================================================================
+
+[ied_ttl_mapping]
+ttl_category = "4"
+ttl_subcategory = "4.2"
+ttl_task_number = "4.2.2"
+adversarial_capability = "Visualize reconnaissance data in 3D to identify potential targets and vulnerabilities."
+defensive_opportunity = "Monitor and analyze geospatial data to detect suspicious activities and patterns."
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-10T01:00:00Z"
+last_updated = "2025-01-10T01:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+interview_version = 1
+shipyard_quality_score = 90
+```

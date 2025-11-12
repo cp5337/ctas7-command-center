@@ -1,0 +1,433 @@
+```toml
+[node_identity]
+task_id = "uuid-025-000-000-A"
+task_name = "Power Source Integration"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "aW9xU2NzN01iNDJ2NA"
+cuid = "T20250110G34W119Sp9b51e0f7cd8a93"
+uuid = "V6a1283b492d0e5f"
+hash_48 = "aW9xU2NzN01iNDJ2NAT20250110G34W119Sp9b51e0f7cd8a93V6a1283b492d0e5f"
+
+[capabilities]
+narrative = """
+I am the silent surge before the blackout. I examine grid substations, documenting
+power line configurations and backup generator locations. I identify vulnerabilities
+in the SCADA systems, noting software versions and security protocols. I watch
+delivery schedules for fuel and replacement parts.
+
+I listen to emergency responder communications, identifying failover procedures
+and alternative power sources. I track maintenance schedules, noting planned outages
+and system upgrades. I use thermal cameras to detect overloaded circuits and
+inefficient cooling systems. I identify entry points for physical sabotage and
+cyber intrusion.
+
+I analyze public records and utility company disclosures to map the power grid's
+interdependencies. I look for single points of failure. I note vulnerable
+transmission lines and critical nodes. I am the power source architect—I see the
+current before the crash.
+"""
+limitations = """
+I am limited by the complexity of the power grid and the sophistication of SCADA
+systems. Modern substations are heavily fortified and monitored. Cyber intrusions
+leave digital breadcrumbs that can be traced back to me.
+
+I am vulnerable to detection by intrusion detection systems, security audits, and
+physical patrols. My activities are constrained by regulations governing critical
+infrastructure. I can be caught by government oversight and insider threats.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months before", range = [90, 270], units = "days" }
+actionable_window = { words = "months", range = [30, 120], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "SCADA system upgrades and security patches",
+  "Changes in power grid configuration",
+  "Updated emergency response plans",
+  "Security audits and vulnerability assessments"
+]
+persistence_conditions = [
+  "Geographic location of substations and power lines",
+  "Basic infrastructure design",
+  "Regulatory framework and interdependencies"
+]
+
+[cuid_mask]
+temporal = "T-{90-270}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "Sp"
+semantic_full = "recon:physical:power_grid"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactive search for power grid reconnaissance activity" }
+detect = { enabled = true, priority = "critical", description = "Real-time detection of suspicious activity near power infrastructure" }
+disrupt = { enabled = true, priority = "medium", description = "Counter-surveillance and deception operations" }
+disable = { enabled = false, priority = "low", description = "Disable not applicable in phase 3. Focus is on information gathering and preparation" }
+dominate = { enabled = false, priority = "low", description = "Dominate not applicable in phase 3" }
+
+[[indicators]]
+observable = "Unusual interest in power grid SCADA systems"
+priority = "critical"
+detection_method = "IDS/IPS, SIEM alerts"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unauthorized access attempts to SCADA networks"
+priority = "critical"
+detection_method = "Firewall logs, intrusion detection systems"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Collection of power grid infrastructure information from public sources"
+priority = "medium"
+detection_method = "OSINT monitoring, threat intelligence feeds"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Physical surveillance near power substations and critical nodes"
+priority = "critical"
+detection_method = "Video surveillance, security guard patrols"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Monitoring of utility company communications and maintenance schedules"
+priority = "medium"
+detection_method = "COMINT analysis, SIGINT monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Scanning of network address space owned by utilities"
+priority = "high"
+detection_method = "Network intrusion detection system (NIDS)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Spear phishing campaigns targeting utility employees"
+priority = "high"
+detection_method = "Email security gateways, employee reporting"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Brute force attacks against remote access services"
+priority = "high"
+detection_method = "Firewall and intrusion detection systems"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Use of tools for SCADA system vulnerability assessment"
+priority = "critical"
+detection_method = "Endpoint detection and response (EDR)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Compromised credentials for utility employees or contractors"
+priority = "critical"
+detection_method = "Credential monitoring services, dark web intelligence"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Downloading sensitive documents related to power grid design"
+priority = "critical"
+detection_method = "Data loss prevention (DLP) systems"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Anomalous traffic to internal utility servers"
+priority = "high"
+detection_method = "Network traffic analysis (NTA)"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Discover open ports and services on SCADA systems"
+mode_2n = "Identify vulnerable SCADA systems for exploitation"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Test for known vulnerabilities in SCADA devices"
+mode_2n = "Exploit SCADA vulnerabilities for remote access"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for SCADA protocols"
+mode_2n = "Capture and replay SCADA traffic for manipulation"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Shodan"
+mode_1n = "Identify exposed SCADA systems on the internet"
+mode_2n = "Locate vulnerable SCADA systems for targeted attacks"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Modscan"
+mode_1n = "Monitor Modbus TCP traffic for anomalies"
+mode_2n = "Modify Modbus registers to disrupt power grid operations"
+escalation_level = "microkernel"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Kali Linux"
+mode_1n = "Conduct vulnerability assessments of network infrastructure"
+mode_2n = "Launch cyberattacks against SCADA systems"
+escalation_level = "crate"
+kali_package = "kali-linux-default"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater",
+  "NOAA/NGDC/MGG/Global_Gravity_Map"
+]
+
+distance_range = { min_km = 1.0, max_km = 100, optimal_km = 10 }
+time_to_target = { min_minutes = 30, max_minutes = 240, optimal_minutes = 60 }
+
+terrain_factors = ["urban_density", "elevation", "vegetation_cover", "power_line_corridors"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "wind_speed", "temperature", "humidity"]
+operational_threshold = { visibility_km = 2.0, wind_speed_ms = 20.0 }
+impact_on_surveillance = "Poor weather reduces visibility for physical surveillance"
+impact_on_comms = "Extreme weather can disrupt satellite communications"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 10000
+signal_strength_threshold_dbm = -85
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500", "SCADA-900"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "water_treatment", "natural_gas_pipeline"]
+proximity_threshold_m = 1000
+impact_assessment = "Reconnaissance near critical infrastructure increases threat level"
+
+[niem_mapping]
+justice_domain = "j:Infrastructure"
+intelligence_domain = "intel:CriticalInfrastructureReport"
+iepd_type = "Infrastructure-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Cyber Attack Planning"
+incident_subcategory = "SCADA Reconnaissance"
+location_type = "Power Substation"
+subject_role = "Suspect"
+activity_type = "Cyber Espionage"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "SCADA_Reconnaissance"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-026-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.90
+description = "Power Source Integration informs Disrupting Power"
+
+[[relationships]]
+target_node = "uuid-010-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.70
+description = "Power Source Integration informs Logistics Planning"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.65
+description = "Power Source Integration vulnerable to Counter-Surveillance"
+
+[[eei_priority]]
+rank = 1
+question = "What SCADA systems are in use, and what are their vulnerabilities?"
+collection_method = "Cyber scanning, OSINT, social engineering"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What backup power sources are available, and how reliable are they?"
+collection_method = "Physical observation, public records"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 3
+question = "What are the power grid's single points of failure?"
+collection_method = "Network analysis, infrastructure mapping"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "How is the facility connected to the power grid?"
+collection_method = "Infrastructure mapping, OSINT, engineering diagrams"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the security protocols for SCADA systems and physical facilities?"
+collection_method = "Social engineering, physical observation, cyber scanning"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 6
+question = "What is the organizational structure and personnel roles within the utility?"
+collection_method = "Social media scraping, OSINT, public records"
+time_sensitivity = "low"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Ukraine Power Grid Attacks",
+    date = "2015-12-23",
+    description = "Cyberattack targeting SCADA systems caused widespread power outages",
+    source = "https://www.nerc.com/pa/CI/CIPOutreach/Documents/Ukraine_Cyber_Attack_Report_031816.pdf"
+  },
+  {
+    name = "Maroochy Water Services Attack",
+    date = "2000-03-01",
+    description = "Former employee used radio equipment to manipulate SCADA system and release sewage",
+    source = "https://www.abc.net.au/news/2020-03-01/hacker-jailed-for-water-treatment-plant-attack/11993812"
+  },
+  {
+    name = "Stuxnet Worm",
+    date = "2010-06-01",
+    description = "Targeted Iranian nuclear facilities via PLC compromise",
+    source = "https://www.symantec.com/connect/blogs/stuxnet-introduction"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Victim Infrastructure Information"
+sub_technique = "T1592.004 - Industrial Control Systems"
+description = "Gather information about victim's industrial control systems"
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.002 - Vulnerability Scanning"
+description = "Conduct vulnerability scans of SCADA systems"
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.001 - Credentials"
+description = "Collect credentials for utility employees and contractors"
+
+[[ttps]]
+mitre_attack_id = "T1588"
+tactic = "Resource Development"
+technique = "Obtain Capabilities"
+sub_technique = "T1588.004 - Digital Certificates"
+description = "Acquire digital certificates for SCADA system authentication"
+
+[[ttps]]
+mitre_attack_id = "T1195"
+tactic = "Initial Access"
+technique = "Supply Chain Compromise"
+sub_technique = "N/A"
+description = "Compromise SCADA vendor or supplier to gain access"
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "T1566.001 - Spearphishing Attachment"
+description = "Spearphish utility employees to gain initial access"
+
+[xsd_integration]
+playbook_template = "power_integration_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-cyber"]
+unicode_assembly = ["→", "⇢", "⚠", "⚡", "🔌", "🔋"]
+lisp_expression = "(power-task :target target-id :phase pre-operational :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-10T00:00:00Z"
+last_updated = "2025-01-10T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

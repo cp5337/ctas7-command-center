@@ -1,0 +1,500 @@
+```toml
+[node_identity]
+task_id = "uuid-009-000-000-A"
+task_name = "Document Forgery and Identity"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# Full hash example: "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+# ============================================================================
+
+sch = "P9zB54kX7c0qYs2a"
+cuid = "T20241115G34S11If"
+uuid = "V7b3d91a2cf80e56"
+
+hash_48 = "P9zB54kX7c0qYs2aT20241115G34S11IfV7b3d91a2cf80e56"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+# This is the core intelligence requirement. Written from the adversary's
+# perspective, describing capabilities, methods, and intent.
+# ============================================================================
+
+[capabilities]
+narrative = """
+I am the ghost in the machine, the phantom in the file. I craft identities out of thin air, weaving together fragments of stolen data and fabricated details. I hunt for vulnerabilities in document verification processes, exploiting weaknesses in authentication protocols and security measures.
+
+I specialize in creating convincing forgeries: passports, driver's licenses, birth certificates, and more. I manipulate digital images, mastering the art of subtle alterations that evade detection. I research security features and printing techniques, replicating holograms, watermarks, and microtext with painstaking accuracy.
+
+I understand the psychology of trust, crafting backstories that resonate with authorities. I anticipate questions, preparing plausible answers and supporting documentation. My success depends on my ability to blend seamlessly into the background, to become the person I've created.
+"""
+
+limitations = """
+My work is constrained by access to resources and the quality of my materials. Advanced security features require specialized equipment and expertise, which can be difficult to obtain. I am vulnerable to forensic analysis: inconsistencies in paper quality, printing techniques, and digital signatures can expose my forgeries.
+
+I rely on the naiveté or carelessness of those who review my documents. Savvy officials, trained in document verification, pose a significant threat. My identities are only as good as the data I steal or fabricate—a single error can unravel my entire creation. Furthermore, biometric verification poses an increasing challenge to my methods.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+# Defines the actionable window and decay curve for this intelligence type.
+# Uses "on the order of" language for human readability + numerical ranges.
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months before", range = [3, 12], units = "months" }
+actionable_window = { words = "months", range = [1, 6], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in document security features",
+  "Updates to verification protocols",
+  "Increased law enforcement scrutiny",
+  "Compromise of source data"
+]
+persistence_conditions = [
+  "Availability of stolen data",
+  "Continued vulnerabilities in legacy systems",
+  "Demand for fraudulent documents",
+  "Lack of robust verification mechanisms"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+# The CUID (positions 17-32) encodes spatio-temporal + semantic + environmental
+# context using PREFIX and SUFFIX masks from CTAS 7.3 Ground Truth.
+# ============================================================================
+
+[cuid_mask]
+# Temporal context
+temporal = "T-{3-12}m"
+temporal_format = "YYYYMMDD"
+
+# Geographic context
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+
+# Semantic domain
+semantic = "If"
+semantic_full = "identity:fraud:forgery"
+
+# PREFIX MASKS (Global Environmental Context) - Domain-Specific
+[cuid_mask.prefix]
+# Universal masks (all domains)
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+# SUFFIX MASKS (Local Operational Context)
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+# Priority
+priority = "high"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+# Maps this node to the 5 phases of the HD4 kill chain.
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Proactive search for indicators of document forgery networks" }
+detect = { enabled = true, priority = "critical", description = "Identify fraudulent documents at border crossings and government agencies" }
+disrupt = { enabled = true, priority = "medium", description = "Target online marketplaces and communication channels used for document forgery" }
+disable = { enabled = true, priority = "high", description = "Seize equipment and arrest key personnel involved in document forgery" }
+dominate = { enabled = false, priority = "low", description = "Difficult to achieve complete domination given the distributed nature of the activity" }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+# Key indicators that this task is occurring. Used for detection and hunting.
+# ============================================================================
+
+[[indicators]]
+observable = "Use of Tor or VPN services to access document templates"
+priority = "high"
+detection_method = "Network traffic analysis, VPN/Tor exit node monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Purchase of high-quality printing equipment and supplies"
+priority = "medium"
+detection_method = "Suspicious activity reports from vendors, financial transaction monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Accessing compromised databases containing personal information"
+priority = "critical"
+detection_method = "Dark web monitoring, honeypots"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unusual online activity related to document security features (holograms, watermarks)"
+priority = "high"
+detection_method = "Web monitoring, forum analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Requests for bulk printing or lamination services"
+priority = "medium"
+detection_method = "Suspicious activity reports from printing shops"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of cryptocurrency for transactions related to document forgery"
+priority = "high"
+detection_method = "Blockchain analysis, cryptocurrency exchange monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Creation of fake social media profiles with stolen identities"
+priority = "medium"
+detection_method = "Social media monitoring, identity verification systems"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Attempts to bypass biometric authentication systems"
+priority = "critical"
+detection_method = "Biometric sensor logs, access control system monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Possession of counterfeit identification documents"
+priority = "critical"
+detection_method = "Law enforcement investigations, border security screenings"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Anomalous database queries for personal information"
+priority = "high"
+detection_method = "Database audit logs, intrusion detection systems"
+false_positive_rate = "medium"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+# Dual-mode tool stacks: same tools, different semantic context.
+# ============================================================================
+
+[[toolchain]]
+tool = "GIMP / Photoshop"
+mode_1n = "Analyze document images for signs of tampering"
+mode_2n = "Manipulate document images to create forgeries"
+escalation_level = "script"
+kali_package = "gimp"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "OCR software (Tesseract)"
+mode_1n = "Extract text from document images for comparison and analysis"
+mode_2n = "Convert scanned documents into editable text"
+escalation_level = "script"
+kali_package = "tesseract-ocr"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "John the Ripper / Hashcat"
+mode_1n = "Attempt to crack password-protected documents"
+mode_2n = "Crack password protection to modify documents"
+escalation_level = "microkernel"
+kali_package = "john"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "PDF editing tools"
+mode_1n = "Inspect PDF metadata and security settings"
+mode_2n = "Modify PDF documents, add/remove signatures"
+escalation_level = "script"
+kali_package = "pdfedit"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Data mining tools (SpiderFoot)"
+mode_1n = "Identify leaked or stolen personal data online"
+mode_2n = "Gather personal information for identity fabrication"
+escalation_level = "crate"
+kali_package = "spiderfoot"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Virtual machine (VMware/VirtualBox)"
+mode_1n = "Create a safe environment to analyze suspicious documents"
+mode_2n = "Create a secure environment to generate fraudulent documents"
+escalation_level = "hypervisor"
+kali_package = "virtualbox"
+resource_cost = "low"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+# Location-dependent intelligence requirements and operational factors.
+# ============================================================================
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+# Distance and time constraints
+distance_range = { min_km = 1, max_km = 1000, optimal_km = 100 }
+time_to_target = { min_minutes = 60, max_minutes = 1440, optimal_minutes = 360 }
+
+# Terrain factors (affects approach, escape, line-of-sight)
+terrain_factors = []
+
+# Weather impact (from existing weather_data table)
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+# Traffic and routing (from pgRouting + PostGIS)
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "N/A"
+cost_factors = []
+escape_route_priority = "N/A"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+# COMINT (Communications Intelligence)
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+# Critical infrastructure proximity
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+# Maps CTAS ontology to NIEM IEPDs for law enforcement interoperability.
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:Fraud"
+intelligence_domain = "intel:FinancialCrimesReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+# N-DEx field mapping
+[niem_mapping.ndex_fields]
+incident_category = "Fraud"
+incident_subcategory = "Identity Theft"
+location_type = "Online Marketplace"
+subject_role = "Perpetrator"
+activity_type = "Document Forgery"
+
+# NIEM core elements
+[niem_mapping.niem_core]
+"nc:Activity" = "Document Forgery"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ source_location }"
+"j:Charge" = "18 USC 1028 (Identity Theft), 18 USC 1546 (Fraud and misuse of visas, permits, and other documents)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+# Defines how this node connects to other nodes in the 165-task graph.
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-042-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.85
+description = "Document forgery enables identity theft"
+
+[[relationships]]
+target_node = "uuid-055-000-000-A"
+relationship_type = "supports"
+unicode_op = "⇢"
+strength = 0.70
+description = "Document forgery supports illicit financial activities"
+
+[[relationships]]
+target_node = "uuid-018-000-000-A"
+relationship_type = "requires"
+unicode_op = "👁"
+strength = 0.65
+description = "Document forgery requires OSINT gathering"
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+# Ranked intelligence requirements for this task.
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "What databases contain vulnerable personal information?"
+collection_method = "Dark web monitoring, human intelligence"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the latest security features implemented on identification documents?"
+collection_method = "OSINT, technical analysis"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "Which vendors sell high-quality printing equipment and supplies without verification?"
+collection_method = "Open source intelligence, human intelligence"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the best methods to bypass biometric authentication systems?"
+collection_method = "Technical research, exploitation of vulnerabilities"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "Which online marketplaces facilitate the sale of forged documents?"
+collection_method = "Dark web monitoring, human intelligence"
+time_sensitivity = "low"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+# Links to actual incidents where this task was observed.
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "Operation Paperclip",
+    date = "2019-06-12",
+    description = "Europol operation targeting document forgery networks across Europe.",
+    source = "Europol press release"
+  },
+  {
+    name = "Shadow Brokers Data Breach",
+    date = "2016-08-13",
+    description = "Stolen NSA tools used to forge credentials and documents.",
+    source = "Various news reports"
+  },
+  {
+    name = "DarkMarket Takedown",
+    date = "2021-01-11",
+    description = "Global law enforcement action against a dark web marketplace specializing in forged documents.",
+    source = "DOJ press release"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+# MITRE ATT&CK mapping for cyber TTPs (where applicable).
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1195"
+tactic = "Initial Access"
+technique = "Supply Chain Compromise"
+sub_technique = "T1195.001 - Hardware Supply Chain"
+description = "Compromise hardware supply chain to introduce malicious components."
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Credential Access"
+technique = "Valid Accounts"
+sub_technique = "T1078.001 - Default Accounts"
+description = "Use default account credentials for initial access."
+
+[[ttps]]
+mitre_attack_id = "T1586"
+tactic = "Reconnaissance"
+technique = "Compromise Accounts"
+sub_technique = "T1586.002 - Email Accounts"
+description = "Compromise Email Accounts to create forgeries"
+
+[[ttps]]
+mitre_attack_id = "T1588"
+tactic = "Resource Development"
+technique = "Obtain Capabilities"
+sub_technique = "T1588.002 - Tool"
+description = "Obtain tools to create forgeries."
+
+[[ttps]]
+mitre_attack_id = "T1082"
+tactic = "Defense Evasion"
+technique = "Data Obfuscation"
+sub_technique = "N/A"
+description = "Obfuscate stolen data to prevent detection."
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+# Links this node to XSD playbooks for executable document generation.
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "document_forgery_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-financial-tactical", "ctas7-identity-fabrication"]
+unicode_assembly = ["→", "⇢", "👁", "📍", "⚠", "🪪"]
+lisp_expression = "(forgery-task :target target-identity :phase pre-operational :priority high)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

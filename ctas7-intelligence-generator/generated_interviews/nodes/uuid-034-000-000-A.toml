@@ -1,0 +1,503 @@
+```toml
+[node_identity]
+task_id = "uuid-034-000-000-A"
+task_name = "IED Emplacement"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# Full hash example: "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+# ============================================================================
+
+sch = "a7b2D9zX1pK4yG8L"
+cuid = "T20241027G34S12SeV1s67"
+uuid = "8a1b9c2d3e4f5067"
+
+hash_48 = "a7b2D9zX1pK4yG8LT20241027G34S12SeV1s678a1b9c2d3e4f5067"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+# This is the core intelligence requirement. Written from the adversary's
+# perspective, describing capabilities, methods, and intent.
+# ============================================================================
+
+[capabilities]
+narrative = """
+I am the architect of destruction. My task is to select the perfect location for maximum impact.
+I start with open-source intelligence, pouring over maps, traffic analyses, and security protocols.
+I drive the routes, observing traffic patterns, police presence, and pedestrian density. I note
+construction zones, utility access points, and potential obstacles.
+
+I analyze the terrain, seeking chokepoints that will amplify the blast. I look for high-value
+targets: crowded intersections, government buildings, transportation hubs. I assess structural
+weaknesses in bridges, tunnels, and overpasses.
+
+I measure distances, calculate blast radiuses, and simulate potential damage. I evaluate the
+logistics of emplacement: cover, concealment, access routes, and escape plans. I consider the
+time of day, day of the week, and weather conditions. I am methodical. I am precise. I ensure
+the device is placed for maximum casualties and chaos.
+"""
+
+limitations = """
+My vulnerability lies in visibility. Extended surveillance attracts unwanted attention.
+Counter-surveillance is my greatest threat: cameras, informants, or plainclothes officers can
+compromise my operation. GPS tracking on my vehicle, cell tower triangulation, or license
+plate readers can expose my movements.
+
+I am also limited by access. Heavily guarded locations require elaborate planning and
+coordination. My effectiveness degrades with each passing day as security measures tighten.
+My work is time-sensitive. The element of surprise is critical.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+# Defines the actionable window and decay curve for this intelligence type.
+# Uses "on the order of" language for human readability + numerical ranges.
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "days to a week", range = [3, 7], units = "days" }
+collection_phase = { words = "weeks to months", range = [2, 8], units = "weeks" }
+actionable_window = { words = "days to weeks", range = [5, 21], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Increased security patrols",
+  "Road closures or construction",
+  "Changes in traffic patterns",
+  "Heightened alert status"
+]
+persistence_conditions = [
+  "Physical infrastructure",
+  "Terrain features",
+  "Building structures",
+  "Underground utilities"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+# The CUID (positions 17-32) encodes spatio-temporal + semantic + environmental
+# context using PREFIX and SUFFIX masks from CTAS 7.3 Ground Truth.
+# ============================================================================
+
+[cuid_mask]
+temporal = "T-{2-8}w"
+temporal_format = "YYYYMMDD"
+
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+
+semantic = "Se"
+semantic_full = "site:selection:emplacement:vulnerability"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+# Maps this node to the 5 phases of the HD4 kill chain.
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Search for patterns indicative of site selection activities" }
+detect = { enabled = true, priority = "critical", description = "Identify suspicious surveillance or reconnaissance of potential target locations" }
+disrupt = { enabled = true, priority = "high", description = "Interfere with surveillance activities; increase security presence at potential targets" }
+disable = { enabled = true, priority = "high", description = "Secure potential IED emplacement locations" }
+dominate = { enabled = false, priority = "low", description = "Dominate not relevant to the activity." }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+# Key indicators that this task is occurring. Used for detection and hunting.
+# ============================================================================
+
+[[indicators]]
+observable = "Extended loitering near critical infrastructure"
+priority = "critical"
+detection_method = "Security patrols, CCTV analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Repeated driving of the same routes around target areas"
+priority = "high"
+detection_method = "Traffic camera analysis, license plate recognition"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unusual interest in structural details of buildings or bridges"
+priority = "high"
+detection_method = "Security personnel reports, witness accounts"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Analysis of traffic patterns at specific locations and times"
+priority = "high"
+detection_method = "Data analysis, intelligence reports"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Photographing or videotaping of security measures"
+priority = "critical"
+detection_method = "CCTV analysis, security personnel reports"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Inquiries about utility access points or underground infrastructure"
+priority = "medium"
+detection_method = "Utility company records, witness accounts"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Purchase of surveying equipment or mapping software"
+priority = "medium"
+detection_method = "Financial intelligence, law enforcement investigations"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Rental of vehicles or equipment suitable for transporting heavy objects"
+priority = "high"
+detection_method = "Rental company records, law enforcement investigations"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Acquisition of detailed maps or blueprints of target areas"
+priority = "critical"
+detection_method = "Intelligence gathering, open-source intelligence"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Online searches related to explosives or bomb-making materials"
+priority = "critical"
+detection_method = "Network monitoring, law enforcement investigations"
+false_positive_rate = "low"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+# Dual-mode tool stacks: same tools, different semantic context.
+# ============================================================================
+
+[[toolchain]]
+tool = "Google Earth Pro"
+mode_1n = "Identify potential vulnerabilities in infrastructure from publicly available imagery."
+mode_2n = "Plan emplacement location and escape routes."
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "pgRouting/PostGIS"
+mode_1n = "Analyze traffic patterns to optimize security patrols and response times."
+mode_2n = "Identify choke points and optimal times for emplacement based on traffic congestion."
+escalation_level = "crate"
+kali_package = "postgresql postgis"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "OSINT Framework"
+mode_1n = "Monitor for mentions of critical infrastructure to detect pre-attack planning"
+mode_2n = "Gather information on security protocols and vulnerabilities"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Simulate attacks against network systems to identify exploitable vulnerabilities."
+mode_2n = "Exploit network vulnerabilities to gain access to surveillance systems and disable alarms."
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan networks for open ports and running services"
+mode_2n = "Identify vulnerable network devices that can be used for intelligence gathering"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for suspicious activity"
+mode_2n = "Capture credentials and sensitive data transmitted over the network"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+# Location-dependent intelligence requirements and operational factors.
+# ============================================================================
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+terrain_factors = ["urban_density", "line_of_sight", "elevation", "vegetation_cover"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed"]
+operational_threshold = { visibility_km = 2.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Reduced visibility can hinder surveillance efforts."
+impact_on_comms = "High winds can disrupt wireless communications."
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -85
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 250
+impact_assessment = "Site selection near critical infrastructure increases the potential for collateral damage."
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+# Maps CTAS ontology to NIEM IEPDs for law enforcement interoperability.
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:TerroristActivity"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Terrorism"
+incident_subcategory = "Explosives Offense"
+location_type = "Critical Infrastructure"
+subject_role = "Suspect"
+activity_type = "Pre-Incident Planning"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Site Selection"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 2332a (WMD), 18 USC 844 (Explosives)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+# Defines how this node connects to other nodes in the 165-task graph.
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-035-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.95
+description = "IED emplacement site selection directly enables device construction."
+
+[[relationships]]
+target_node = "uuid-040-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.85
+description = "Site selection informs timing and tactics of IED deployment."
+
+[[relationships]]
+target_node = "uuid-050-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.70
+description = "Site selection is vulnerable to counter-surveillance and increased security."
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+# Ranked intelligence requirements for this task.
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "What locations offer the greatest potential for casualties or damage?"
+collection_method = "Intelligence analysis, vulnerability assessments"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the primary access and escape routes for potential targets?"
+collection_method = "Traffic analysis, surveillance"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the security measures in place at potential target locations?"
+collection_method = "Physical surveillance, open-source intelligence"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What are the optimal times for maximizing the impact of an attack?"
+collection_method = "Traffic analysis, event schedules"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the potential vulnerabilities in the structural integrity of potential targets?"
+collection_method = "Building plans, structural analysis"
+time_sensitivity = "medium"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+# Links to actual incidents where this task was observed.
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Extensive reconnaissance of the Alfred P. Murrah Federal Building."
+    source = "FBI Investigation Reports"
+  },
+  {
+    name = "Madrid Train Bombings",
+    date = "2004-03-11",
+    description = "Detailed planning and target selection on the Cercanías commuter train system."
+    source = "Spanish Court Documents"
+  },
+  {
+    name = "2013 Boston Marathon bombing",
+    date = "2013-04-15",
+    description = "Target selected based on location and crowd size.",
+    source = "https://en.wikipedia.org/wiki/Boston_Marathon_bombing"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+# MITRE ATT&CK mapping for cyber TTPs (where applicable).
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.001 - Scanning IP Blocks"
+description = "Adversary scans target network infrastructure"
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.002 - Email Addresses"
+description = "Collect employee email addresses for social engineering"
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.003 - Spearphishing Link"
+description = "Send targeted phishing to gather intelligence"
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Infrastructure Information"
+sub_technique = "T1592.002 - Hardware"
+description = "Collect information about target's hardware infrastructure."
+
+[[ttps]]
+mitre_attack_id = "T1590"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "T1590.002 - DNS"
+description = "Gather DNS information about a victim network."
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+# Links this node to XSD playbooks for executable document generation.
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "ied_emplacement_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-threat"]
+unicode_assembly = ["→", "⇢", "⚠", "💥", "📍", "🛠"]
+lisp_expression = "(ied-emplacement-task :target target-id :phase planning :priority critical)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

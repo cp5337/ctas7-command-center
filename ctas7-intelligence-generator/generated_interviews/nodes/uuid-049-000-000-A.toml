@@ -1,0 +1,390 @@
+```toml
+[node_identity]
+task_id = "uuid-049-000-000-A"
+task_name = "Task 49 - Phase 2"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "Wm3yK16n9qR2vP0z"
+cuid = "T20241115G37N12SpR7f18a5b239c"
+uuid = "V9d3c40a12b6e578"
+hash_48 = "Wm3yK16n9qR2vP0zT20241115G37N12SpR7f18a5b239cV9d3c40a12b6e578"
+
+[capabilities]
+narrative = """
+I am the shadow in the machine. I exploit vulnerabilities in online forums to gather information on employee sentiments and grievances. I use advanced scraping techniques to harvest data from public employee directories and leaked databases. I create fake social media profiles to infiltrate target organizations and gather intel from the inside.
+
+I analyze network traffic patterns to identify key servers and data flows. I use custom scripts to probe for open ports and known vulnerabilities. I monitor pastebins and dark web forums for leaked credentials and sensitive information. I am persistent - I will scan for months, adapting my techniques to evade detection. I document everything: network diagrams, software versions, user accounts, security policies.
+
+I use Shodan and Censys to identify exposed devices and services. I reverse engineer software to uncover hidden functionalities and backdoors. I am the digital reconnaissance node - what I find, changes the game.
+"""
+
+limitations = """
+I am limited by digital defenses and network security. Well-protected networks with robust intrusion detection systems are difficult to penetrate without sophisticated exploits. I leave digital footprints: scraping activity can be detected, fake profiles can be identified, network probes can trigger alarms.
+
+I am vulnerable to honeypots and counter-intelligence operations: fake data planted to mislead me, reverse social engineering to expose my identity, traffic analysis to track my movements. My effectiveness decreases as systems are patched and vulnerabilities are addressed, my intelligence becomes obsolete.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 48], units = "hours" }
+collection_phase = { words = "weeks before", range = [14, 42], units = "days" }
+actionable_window = { words = "days to weeks", range = [3, 21], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Software updates and patches",
+  "Password resets",
+  "Changes to network configurations",
+  "Implementation of new security controls"
+]
+persistence_conditions = [
+  "Core infrastructure vulnerabilities",
+  "Legacy systems with known exploits",
+  "Human error and weak security practices"
+]
+
+[cuid_mask]
+temporal = "T-{14-42}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "SpR"
+semantic_full = "recon:cyber:passive_reconnaissance"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactively hunt for signs of passive digital reconnaissance" }
+detect = { enabled = true, priority = "critical", description = "Detect anomalous network activity indicative of scanning and probing" }
+disrupt = { enabled = true, priority = "medium", description = "Block or redirect reconnaissance attempts to honeypots" }
+disable = { enabled = false, priority = "low", description = "Not applicable for passive reconnaissance phase" }
+dominate = { enabled = false, priority = "low", description = "Not applicable for passive reconnaissance phase" }
+
+[[indicators]]
+observable = "Scraping of employee profiles on LinkedIn or other professional networking sites"
+priority = "high"
+detection_method = "SIEM alerts, unusual access patterns"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Monitoring of pastebins and dark web forums for leaked credentials related to target organization"
+priority = "critical"
+detection_method = "Dark web monitoring tools, threat intelligence feeds"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Reconnaissance of target's domain name system (DNS) records"
+priority = "high"
+detection_method = "DNS logs, zone transfer attempts"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Use of search engines or specialized tools like Shodan to identify exposed devices"
+priority = "medium"
+detection_method = "Network traffic analysis, firewall logs"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Enumeration of available subdomains or virtual hosts"
+priority = "high"
+detection_method = "Web server logs, intrusion detection systems"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Analysis of SSL/TLS certificates to discover server details"
+priority = "medium"
+detection_method = "Network scanners, certificate monitoring tools"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Port scanning of publicly accessible servers and network devices"
+priority = "critical"
+detection_method = "Intrusion detection systems, firewall logs"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Banner grabbing to identify operating system and application versions"
+priority = "medium"
+detection_method = "Network scanners, intrusion detection systems"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Spidering websites to map directory structure and identify hidden content"
+priority = "high"
+detection_method = "Web server logs, intrusion detection systems"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Footprinting of network infrastructure using traceroute or ping"
+priority = "medium"
+detection_method = "Network monitoring tools, firewall logs"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Detect open ports and services, identify OS and application versions"
+mode_2n = "Map network topology, discover vulnerabilities for exploitation"
+escalation_level = "microkernel"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Shodan"
+mode_1n = "Identify publicly exposed devices with known vulnerabilities"
+mode_2n = "Locate vulnerable targets for remote exploitation"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "theHarvester"
+mode_1n = "Identify exposed employee information and email addresses"
+mode_2n = "Gather intelligence for social engineering attacks"
+escalation_level = "script"
+kali_package = "theharvester"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Recon-ng"
+mode_1n = "Map organization's digital footprint, identify vulnerabilities"
+mode_2n = "Build target profiles for attack planning"
+escalation_level = "script"
+kali_package = "recon-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "SpiderFoot"
+mode_1n = "Automate open source intelligence gathering for vulnerability assessment"
+mode_2n = "Gather comprehensive target intelligence for attack planning"
+escalation_level = "crate"
+kali_package = "spiderfoot"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Masscan"
+mode_1n = "Rapidly identify live hosts on a network for initial triage"
+mode_2n = "Quickly scan for open ports on a large number of targets"
+escalation_level = "microkernel"
+kali_package = "masscan"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 1.0, max_km = 100, optimal_km = 10 }
+time_to_target = { min_minutes = 30, max_minutes = 360, optimal_minutes = 90 }
+
+terrain_factors = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "N/A"
+cost_factors = []
+escape_route_priority = "N/A"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+[niem_mapping]
+justice_domain = "j:Cybercrime"
+intelligence_domain = "intel:CyberIntelligence"
+iepd_type = "Cyber-Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Cyber Attack"
+incident_subcategory = "Reconnaissance"
+location_type = "Network Infrastructure"
+subject_role = "Attacker"
+activity_type = "Digital Reconnaissance"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Network Reconnaissance"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_network }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-050-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.90
+description = "Passive reconnaissance directly enables active scanning"
+
+[[relationships]]
+target_node = "uuid-051-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.80
+description = "Passive reconnaissance informs vulnerability assessment"
+
+[[relationships]]
+target_node = "uuid-060-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.70
+description = "Passive reconnaissance is vulnerable to honeypots and deception techniques"
+
+[[eei_priority]]
+rank = 1
+question = "What are the publicly exposed services and applications?"
+collection_method = "Shodan, Censys, port scanning"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the known vulnerabilities in target systems?"
+collection_method = "Vulnerability databases, exploit repositories"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the employee email addresses and social media profiles?"
+collection_method = "theHarvester, LinkedIn scraping"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What is the network topology and infrastructure layout?"
+collection_method = "Traceroute, DNS enumeration"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What is the security posture of the target organization?"
+collection_method = "OSINT, security reports"
+time_sensitivity = "low"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Operation Aurora",
+    date = "2009-12-01",
+    description = "Extensive passive reconnaissance used to identify vulnerable targets",
+    source = "https://www.mandiant.com/resources/blog/operation-aurora"
+  },
+  {
+    name = "SolarWinds Supply Chain Attack",
+    date = "2020-12-01",
+    description = "Passive reconnaissance of SolarWinds network before implanting malware",
+    source = "https://www.fireeye.com/blog/threat-research/2020/12/solarwinds-supply-chain-attack-overview.html"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.002 - Vulnerability Scanning"
+description = "Adversary scans for known vulnerabilities in target systems"
+
+[[ttps]]
+mitre_attack_id = "T1590"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "T1590.001 - Domain Properties"
+description = "Collect domain registration information"
+
+[[ttps]]
+mitre_attack_id = "T1590"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "T1590.007 - Network Topology"
+description = "Identify network topology"
+
+[[ttps]]
+mitre_attack_id = "T1591"
+tactic = "Reconnaissance"
+technique = "Gather Victim Org Information"
+sub_technique = "T1591.001 - Business Relationships"
+description = "Research business relationships to find trusted third party connections"
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Victim Infrastructure"
+sub_technique = "T1592.004 - Server Configurations"
+description = "Discover server configurations."
+
+[[ttps]]
+mitre_attack_id = "T1593"
+tactic = "Reconnaissance"
+technique = "Gather Victim Host Information"
+sub_technique = "T1593.001 - Hardware"
+description = "Discover host hardware information."
+
+[xsd_integration]
+playbook_template = "passive_reconnaissance_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-digital", "ctas7-enhanced-osint"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "📡"]
+lisp_expression = "(recon-task :target target-network :phase pre-attack :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2024-11-15T00:00:00Z"
+last_updated = "2024-11-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

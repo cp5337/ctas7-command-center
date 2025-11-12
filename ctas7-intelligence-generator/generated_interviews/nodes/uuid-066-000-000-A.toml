@@ -1,0 +1,521 @@
+```toml
+[node_identity]
+task_id = "uuid-066-000-000-A"
+task_name = "Task 66 - Phase 2"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# Full hash example: "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+# ============================================================================
+
+sch = "a9b7F2pX1Qm5R8sJ"
+cuid = "T20250215G34N84Sr3k6c92a1"
+uuid = "b76a8de3c510f24d"
+hash_48 = "a9b7F2pX1Qm5R8sJT20250215G34N84Sr3k6c92a1b76a8de3c510f24d"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+# This is the core intelligence requirement. Written from the adversary's
+# perspective, describing capabilities, methods, and intent.
+# ============================================================================
+
+[capabilities]
+narrative = """
+I am the architect of infiltration. My work is not about brute force, but subtle entry.
+I analyze vulnerabilities found during Phase 1 to identify the weakest points.
+I use social engineering to create rapport with insiders who can provide access
+or bypass security protocols. I leverage compromised credentials to move laterally
+within the network. I escalate privileges stealthily, covering my tracks at every step.
+
+I craft custom payloads designed to exploit specific vulnerabilities.
+I bypass two-factor authentication using SIM swapping and MFA fatigue.
+I use steganography to hide malicious code in seemingly benign images or documents.
+I blend into the background, appearing as legitimate user activity.
+
+I catalog network infrastructure, documenting file shares, databases, and critical systems.
+I establish persistent backdoors for long-term access. I am the master of quiet intrusion—
+the ghost in the machine, unseen, unheard, yet utterly in control.
+"""
+
+limitations = """
+My effectiveness is limited by the accuracy of Phase 1 reconnaissance.
+Strong two-factor authentication and proactive threat hunting can expose my activity.
+Sophisticated endpoint detection and response (EDR) solutions can detect malicious payloads.
+Insider threat programs and security awareness training can prevent social engineering attacks.
+
+I am vulnerable to honeypots and deception technology. Security information and event management (SIEM)
+systems can correlate anomalous activity and raise alerts. My presence becomes detectable if
+I make mistakes, trigger alarms, or deviate from established network baselines.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+# Defines the actionable window and decay curve for this intelligence type.
+# Uses "on the order of" language for human readability + numerical ranges.
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "weeks to months", range = [4, 12], units = "weeks" }
+actionable_window = { words = "months", range = [1, 6], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Patching of exploited vulnerabilities",
+  "Implementation of new security controls",
+  "Rotation of privileged account credentials",
+  "Detection of initial intrusion vector"
+]
+persistence_conditions = [
+  "Unpatched legacy systems",
+  "Weak security configurations",
+  "Lack of continuous monitoring",
+  "Compromised supply chain"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+# The CUID (positions 17-32) encodes spatio-temporal + semantic + environmental
+# context using PREFIX and SUFFIX masks from CTAS 7.3 Ground Truth.
+# ============================================================================
+
+[cuid_mask]
+# Temporal context
+temporal = "T-{28-84}d"
+temporal_format = "YYYYMMDD"
+
+# Geographic context
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+
+# Semantic domain
+semantic = "Sr"
+semantic_full = "recon:cyber:infiltration"
+
+# PREFIX MASKS (Global Environmental Context) - Domain-Specific
+[cuid_mask.prefix]
+# Universal masks (all domains)
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+# Domain-Specific Extensions (v7.3)
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+# SUFFIX MASKS (Local Operational Context)
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+# Priority
+priority = "high"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+# Maps this node to the 5 phases of the HD4 kill chain.
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactive search for lateral movement and privilege escalation activity." }
+detect = { enabled = true, priority = "critical", description = "Identify anomalous login attempts, privilege escalations, and data exfiltration." }
+disrupt = { enabled = true, priority = "medium", description = "Implement network segmentation and access controls to limit lateral movement." }
+disable = { enabled = false, priority = "low", description = "Disable compromised accounts and revoke unauthorized access." }
+dominate = { enabled = false, priority = "low", description = "Not applicable at this phase." }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+# Key indicators that this task is occurring. Used for detection and hunting.
+# ============================================================================
+
+[[indicators]]
+observable = "Anomalous login attempts from unusual locations or devices"
+priority = "critical"
+detection_method = "SIEM alerts, behavioral analytics"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Privilege escalation attempts (e.g., using sudo or runas)"
+priority = "critical"
+detection_method = "Audit logs, endpoint detection and response (EDR)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Lateral movement to sensitive systems (e.g., using RDP or SSH)"
+priority = "high"
+detection_method = "Network traffic analysis, host-based intrusion detection"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of credential dumping tools (e.g., Mimikatz)"
+priority = "critical"
+detection_method = "Endpoint detection and response (EDR), antivirus"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Creation of new user accounts with elevated privileges"
+priority = "high"
+detection_method = "Account monitoring, security information and event management (SIEM)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unusual file access patterns (e.g., accessing sensitive documents)"
+priority = "high"
+detection_method = "Data loss prevention (DLP), file integrity monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of obfuscated or encrypted communication channels"
+priority = "medium"
+detection_method = "Network traffic analysis, deep packet inspection"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Changes to system configurations or security settings"
+priority = "medium"
+detection_method = "Configuration management, file integrity monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Execution of unauthorized or malicious code"
+priority = "critical"
+detection_method = "Endpoint detection and response (EDR), antivirus"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Attempts to bypass security controls (e.g., disabling antivirus)"
+priority = "critical"
+detection_method = "Endpoint detection and response (EDR), security logs"
+false_positive_rate = "low"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+# Dual-mode tool stacks: same tools, different semantic context.
+# ============================================================================
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Penetration testing to identify and validate vulnerabilities"
+mode_2n = "Exploit vulnerabilities to gain unauthorized access and control"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Mimikatz"
+mode_1n = "Detect and prevent credential dumping attacks"
+mode_2n = "Extract credentials from memory for lateral movement"
+escalation_level = "microkernel"
+kali_package = "N/A (requires manual installation)"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "PowerShell Empire"
+mode_1n = "Detect and block malicious PowerShell scripts"
+mode_2n = "Maintain persistent access and execute commands remotely"
+escalation_level = "crate"
+kali_package = "N/A (requires manual installation)"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "BloodHound"
+mode_1n = "Identify Active Directory security weaknesses and attack paths"
+mode_2n = "Map Active Directory attack paths to identify privileged accounts and resources"
+escalation_level = "crate"
+kali_package = "bloodhound"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Responder"
+mode_1n = "Detect and prevent LLMNR/NBT-NS poisoning attacks"
+mode_2n = "Poison LLMNR/NBT-NS to capture credentials and gain access"
+escalation_level = "script"
+kali_package = "responder"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "CrackMapExec"
+mode_1n = "Audit network services and identify misconfigurations"
+mode_2n = "Automate exploitation of network services and lateral movement"
+escalation_level = "script"
+kali_package = "crackmapexec"
+resource_cost = "low"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+# Location-dependent intelligence requirements and operational factors.
+# ============================================================================
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+# Distance and time constraints
+distance_range = { min_km = 0.0, max_km = 0.0, optimal_km = 0 }
+time_to_target = { min_minutes = 0, max_minutes = 0, optimal_minutes = 0 }
+
+# Terrain factors (affects approach, escape, line-of-sight)
+terrain_factors = []
+
+# Weather impact (from existing weather_data table)
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+# Traffic and routing (from pgRouting + PostGIS)
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "N/A"
+cost_factors = []
+escape_route_priority = "N/A"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+# COMINT (Communications Intelligence)
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+# Critical infrastructure proximity
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+# Maps CTAS ontology to NIEM IEPDs for law enforcement interoperability.
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:Cybercrime"
+intelligence_domain = "intel:CyberThreatReport"
+iepd_type = "Cyber-Incident-Exchange"
+iepd_version = "5.2"
+
+# N-DEx field mapping
+[niem_mapping.ndex_fields]
+incident_category = "Computer Intrusion"
+incident_subcategory = "Unauthorized Access"
+location_type = "Network Infrastructure"
+subject_role = "Perpetrator"
+activity_type = "Lateral Movement"
+
+# NIEM core elements
+[niem_mapping.niem_core]
+"nc:Activity" = "Lateral Movement"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_network }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+# Defines how this node connects to other nodes in the 165-task graph.
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-067-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.9
+description = "Phase 2 enables persistence within the network."
+
+[[relationships]]
+target_node = "uuid-070-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.8
+description = "Phase 2 informs data exfiltration strategies."
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.7
+description = "Phase 2 is vulnerable to intrusion detection systems."
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+# Ranked intelligence requirements for this task.
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "What are the privileged account credentials and access rights?"
+collection_method = "Credential dumping, password cracking, keylogging"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "What are the network segmentation and access control policies?"
+collection_method = "Network scanning, configuration analysis, policy review"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the installed software and patch levels?"
+collection_method = "Software inventory, vulnerability scanning, patch management logs"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the endpoint detection and response (EDR) capabilities?"
+collection_method = "Evasion testing, security tool analysis, vendor documentation"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the security information and event management (SIEM) rules and alerts?"
+collection_method = "Log analysis, alert correlation, rule review"
+time_sensitivity = "low"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+# Links to actual incidents where this task was observed.
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "SolarWinds Supply Chain Attack",
+    date = "2020-12-13",
+    description = "Compromised SolarWinds Orion software to gain access to thousands of organizations.",
+    source = "https://www.crowdstrike.com/blog/solarwinds-supply-chain-attack-analysis/"
+  },
+  {
+    name = "NotPetya Ransomware Attack",
+    date = "2017-06-27",
+    description = "Used compromised Ukrainian accounting software to spread ransomware globally.",
+    source = "https://www.wired.com/story/notpetya-cyberattack-ukraine-russia/"
+  },
+  {
+    name = "Equifax Data Breach",
+    date = "2017-09-07",
+    description = "Exploited a vulnerability in Apache Struts to gain access to sensitive customer data.",
+    source = "https://www.ftc.gov/news-events/news/press-releases/2019/07/equifax-agree-global-settlement-ftc-state-agencies-related-data-breach"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+# MITRE ATT&CK mapping for cyber TTPs (where applicable).
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Credential Access"
+technique = "Valid Accounts"
+sub_technique = "T1078.002 - Domain Accounts"
+description = "Use legitimate domain accounts to move laterally."
+
+[[ttps]]
+mitre_attack_id = "T1555"
+tactic = "Credential Access"
+technique = "Credentials from Password Stores"
+sub_technique = "T1555.003 - Credentials from Web Browsers"
+description = "Obtain credentials stored in web browsers."
+
+[[ttps]]
+mitre_attack_id = "T1003"
+tactic = "Credential Access"
+technique = "OS Credential Dumping"
+sub_technique = "T1003.001 - LSASS Memory"
+description = "Dump credentials from LSASS memory using Mimikatz."
+
+[[ttps]]
+mitre_attack_id = "T1021"
+tactic = "Lateral Movement"
+technique = "Remote Services"
+sub_technique = "T1021.001 - RDP"
+description = "Use Remote Desktop Protocol (RDP) for lateral movement."
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.001 - PowerShell"
+description = "Execute malicious PowerShell scripts."
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = "N/A"
+description = "Exploit vulnerabilities in public-facing applications."
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+# Links this node to XSD playbooks for executable document generation.
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "lateral_movement_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-persistence"]
+unicode_assembly = ["→", "⇢", "⚠", "🔑", "🛡", "👾"]
+lisp_expression = "(lateral-movement-task :target target-id :phase post-compromise :priority critical)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-02-15T00:00:00Z"
+last_updated = "2025-02-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

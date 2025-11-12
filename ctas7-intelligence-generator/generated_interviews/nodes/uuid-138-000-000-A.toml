@@ -1,0 +1,395 @@
+```toml
+[node_identity]
+task_id = "uuid-138-000-000-A"
+task_name = "Task 138 - Phase 4"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "Wp5nQ7kX2zB9r6Ly"
+cuid = "T20250109G34S11SPU98229a"
+uuid = "T9d7332b1c8745fa"
+hash_48 = "Wp5nQ7kX2zB9r6LyT20250109G34S11SPU98229aT9d7332b1c8745fa"
+
+[capabilities]
+narrative = """
+I am the orchestrator of the final act. My role is to ensure the operation proceeds flawlessly, leveraging the intelligence gathered in previous phases. I secure staging areas, ensuring they remain undetected and accessible. I coordinate the movement of personnel and equipment, minimizing exposure and maximizing efficiency.
+
+I monitor communication channels, ensuring secure and reliable connectivity. I establish fallback plans in case of unforeseen circumstances or disruptions. I confirm the readiness of all participants, addressing any last-minute concerns or adjustments. I initiate the operation, synchronizing actions and maintaining situational awareness.
+
+I manage the execution, adapting to evolving conditions and mitigating risks. I oversee the extraction, ensuring a safe and secure departure. I assess the impact, evaluating the success of the operation and identifying lessons learned. I am the conductor of chaos, ensuring harmony amidst the storm.
+"""
+
+limitations = """
+I am dependent on the accuracy and timeliness of the intelligence gathered in prior phases. Any inaccuracies or delays can compromise the entire operation. I am vulnerable to detection and disruption during staging and coordination. Communication failures can lead to missteps and compromise security.
+
+I am constrained by the capabilities and limitations of the team. Unexpected setbacks or failures can derail the plan. I am susceptible to human error and unforeseen circumstances. My effectiveness diminishes with increased complexity and prolonged exposure. I can only control what I can see.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 48], units = "hours" }
+collection_phase = { words = "days to weeks", range = [7, 21], units = "days" }
+actionable_window = { words = "hours to days", range = [6, 24], units = "hours" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Law enforcement presence or increased security measures",
+  "Compromised communication channels",
+  "Unexpected target movements or activity",
+  "Weather conditions affecting operational capabilities"
+]
+persistence_conditions = [
+  "Pre-determined staging areas",
+  "Secured communication protocols",
+  "Contingency plans and fallback routes",
+  "Availability of equipment and personnel"
+]
+
+[cuid_mask]
+temporal = "T-{7-21}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+semantic = "Sp"
+semantic_full = "staging:operations:planning"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = false, priority = "low", description = "Proactive search is not applicable at this stage." }
+detect = { enabled = true, priority = "critical", description = "Real-time monitoring for deviations from the plan." }
+disrupt = { enabled = true, priority = "high", description = "Countermeasures against potential disruptions." }
+disable = { enabled = true, priority = "medium", description = "Neutralizing threats as they arise." }
+dominate = { enabled = true, priority = "high", description = "Maintaining control of the operational environment." }
+
+[[indicators]]
+observable = "Unusual activity around known staging areas"
+priority = "critical"
+detection_method = "Physical surveillance, drone surveillance, sensor alerts"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Increased communication traffic on secure channels"
+priority = "high"
+detection_method = "Network monitoring, signal analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unexplained movement of personnel and equipment"
+priority = "critical"
+detection_method = "Tracking devices, video surveillance, informant reports"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Detection of counter-surveillance efforts"
+priority = "medium"
+detection_method = "RF detection, physical observation"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Anomalous behavior in network traffic patterns"
+priority = "medium"
+detection_method = "Network Intrusion Detection Systems (NIDS)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Compromised communication channels detected"
+priority = "critical"
+detection_method = "Cryptographic analysis, signal jamming detection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "GPS spoofing or jamming attempts"
+priority = "medium"
+detection_method = "GPS signal monitoring, anomaly detection algorithms"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Sudden changes in environmental conditions"
+priority = "low"
+detection_method = "Weather monitoring, sensor data"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Unplanned deviations from established routes"
+priority = "medium"
+detection_method = "GPS tracking, route analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Last-minute changes to operational plans"
+priority = "high"
+detection_method = "Communication intercepts, insider information"
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "Signal / Telegram"
+mode_1n = "Detect and analyze anomalous communication patterns"
+mode_2n = "Secure communication for command and control"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Kali NetHunter"
+mode_1n = "Identify rogue access points and network intrusions"
+mode_2n = "Penetration testing of target network infrastructure"
+escalation_level = "microkernel"
+kali_package = "Nethunter"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Identify system vulnerabilities and potential exploitation attempts"
+mode_2n = "Exploit system vulnerabilities and gain unauthorized access"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Map network topography and identify open ports/services"
+mode_2n = "Conduct reconnaissance on target network infrastructure"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic and identify suspicious activity"
+mode_2n = "Capture and analyze network packets for sensitive information"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Detect and analyze wireless network vulnerabilities"
+mode_2n = "Crack WEP/WPA keys and gain unauthorized access to WiFi networks"
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+terrain_factors = ["urban_density", "line_of_sight", "elevation", "vegetation_cover"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "temperature"]
+operational_threshold = { visibility_km = 2.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Poor visibility hinders reconnaissance efforts"
+impact_on_comms = "Heavy precipitation can disrupt communication signals"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -80
+imsi_tracking = true
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 200
+impact_assessment = "Staging near critical infrastructure increases risk of detection"
+
+[niem_mapping]
+justice_domain = "j:CriminalJustice"
+intelligence_domain = "intel:TacticalIntelligence"
+iepd_type = "Operation-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Terrorism"
+incident_subcategory = "Operational Staging"
+location_type = "Staging Area"
+subject_role = "Operator"
+activity_type = "Final Preparation"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Operational Preparation"
+"nc:ActivityDate" = "{ actionable_window }"
+"nc:Location" = "{ staging_area }"
+"j:Charge" = "18 USC 2332b (Terrorism), 18 USC 2339 (Material Support)"
+
+[[relationships]]
+target_node = "uuid-050-000-000-A"
+relationship_type = "precedes"
+unicode_op = "→"
+strength = 0.95
+description = "Final prep precedes execution."
+
+[[relationships]]
+target_node = "uuid-051-000-000-A"
+relationship_type = "supports"
+unicode_op = "⇢"
+strength = 0.85
+description = "Supports overall goals"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.50
+description = "Vulnerable to disruption"
+
+[[eei_priority]]
+rank = 1
+question = "Are staging areas secure and undetected?"
+collection_method = "Physical security checks, surveillance"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "Is communication infrastructure reliable and secure?"
+collection_method = "Signal analysis, cryptographic checks"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 3
+question = "Is all equipment and personnel ready and available?"
+collection_method = "Logistics checks, readiness assessments"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "Are contingency plans in place and understood?"
+collection_method = "Review of fallback procedures, communication drills"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "Are there any last-minute changes to the environment?"
+collection_method = "Ongoing surveillance, informant reports"
+time_sensitivity = "high"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Pre-attack staging involved securing rental trucks and gathering materials in remote locations.",
+    source = "https://en.wikipedia.org/wiki/Oklahoma_City_bombing"
+  },
+  {
+    name = "9/11 Attacks",
+    date = "2001-09-11",
+    description = "Final preparations included securing flight training and establishing safe houses near airports.",
+    source = "https://www.9-11commission.gov/"
+  },
+  {
+    name = "Madrid Train Bombings",
+    date = "2004-03-11",
+    description = "Final staging involved assembling explosives and coordinating bomb placement on commuter trains.",
+    source = "https://en.wikipedia.org/wiki/2004_Madrid_train_bombings"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1572"
+tactic = "Command and Control"
+technique = "Protocol Tunneling"
+sub_technique = "T1572.001 - SSH"
+description = "Establish secure communication channels"
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - Web Protocols"
+description = "Use web protocols for covert communication"
+
+[[ttps]]
+mitre_attack_id = "T1027"
+tactic = "Defense Evasion"
+technique = "Obfuscated Files or Information"
+sub_technique = "T1027.001 - Steganography"
+description = "Hide communication within images or audio files"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Compromise public-facing applications for access"
+
+[[ttps]]
+mitre_attack_id = "T1550"
+tactic = "Privilege Escalation"
+technique = "Use Alternate Authentication Material"
+sub_technique = "T1550.003 - Password Spraying"
+description = "Gain access to systems through compromised credentials"
+
+[xsd_integration]
+playbook_template = "staging_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-geolocation"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🛰"]
+lisp_expression = "(prep-task :target target-id :phase pre-attack :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

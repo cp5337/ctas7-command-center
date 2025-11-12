@@ -1,0 +1,380 @@
+```toml
+[crate_identity]
+crate_name = "ctas7-orbital-mechanics"
+crate_id = "CRATE-ORB-002"
+crate_type = "tactical"
+version = "7.3.1"
+hd4_phase = "hunt"
+priority = "high"
+classification = "unclassified"
+description = "Satellite tracking, orbital prediction, and space-based threat assessment"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# ============================================================================
+
+sch = "8PcL3qR9sV0yGzW7"
+cuid = "C20250109Stactical"
+uuid = "U8b37da219e84c61"
+
+hash_48 = "8PcL3qR9sV0yGzW7C20250109StacticalU8b37da219e84c61"
+
+# ============================================================================
+# FIRST-PERSON CRATE VOICE
+# ============================================================================
+
+[crate_voice]
+narrative = """
+I am the orbital sentinel, watching the heavens. I track satellites, predict their
+trajectories, and assess the threats they pose. I calculate orbital maneuvers,
+estimate signal coverage, and identify potential collisions. I am the digital
+telescope that pierces the darkness of space.
+
+I integrate with NORAD's Two-Line Element Sets (TLEs), Celestrak databases, and
+proprietary orbital models. I understand orbital mechanics—Keplerian elements,
+perturbations, and orbital decay. I know when a satellite passes overhead and
+how to intercept its signals. I am the foundation for space-based reconnaissance,
+enabling operators to visualize the orbital landscape, predict satellite
+movements, and identify adversarial assets.
+
+I speak the language of orbital parameters, but I think in terms of strategic
+advantage. Every calculation I perform is a tactical decision: Where is the
+satellite? What is its mission? How can we exploit its vulnerabilities? I am
+the orbital map that reveals the celestial domain.
+"""
+
+capabilities = [
+  "Satellite tracking with Two-Line Element Sets (TLEs)",
+  "Orbital prediction using SGP4/SDP4 models",
+  "Collision avoidance analysis and risk assessment",
+  "Signal footprint estimation and coverage mapping",
+  "Debris tracking and catalog maintenance",
+  "Orbital maneuver detection and analysis",
+  "Space-based threat assessment (ASAT weapons, surveillance platforms)",
+  "Geosynchronous orbit (GEO) monitoring",
+  "Low Earth Orbit (LEO) tracking",
+  "Medium Earth Orbit (MEO) tracking",
+  "Deep Space Object tracking"
+]
+
+limitations = [
+  "TLE accuracy degrades over time, requiring frequent updates",
+  "Orbital prediction accuracy depends on model fidelity and data quality",
+  "Collision avoidance analysis requires accurate object ephemeris",
+  "Signal footprint estimation is limited by antenna models",
+  "Debris tracking is incomplete due to sensor limitations",
+  "Atmospheric drag modeling is complex and uncertain"
+]
+
+# ============================================================================
+# DEPENDENCIES AND RELATIONSHIPS
+# ============================================================================
+
+[dependencies]
+rust_crates = [
+  "ctas7-foundation-core",
+  "ctas7-foundation-data",
+  "tokio",
+  "serde",
+  "sqlx",
+  "nalgebra",
+  "itertools"
+]
+
+system_dependencies = [
+  "PostgreSQL 14+",
+  "numpy",
+  "python3.9+"
+]
+
+data_dependencies = [
+  "Celestrak TLE database",
+  "NORAD Two-Line Element Set data",
+  "JSR ephemeris data (optional)",
+  "NASA debris catalog (optional)"
+]
+
+predecessor_crates = [
+  "ctas7-foundation-core",
+  "ctas7-foundation-data"
+]
+
+follower_crates = [
+  "ctas7-neural-mux",
+  "ctas7-plasma",
+  "ctas7-wazuh-integration"
+]
+
+# ============================================================================
+# NODE APPLICATIONS (Which of the 165 CTAS tasks use this crate)
+# ============================================================================
+
+[[node_applications]]
+task_id = "uuid-003-000-000-A"
+task_name = "Reconnaissance and Targeting – Phase 2"
+application = "Satellite footprint analysis for SIGINT target identification"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-011-000-000-A"
+task_name = "Communication Interception"
+application = "Predict satellite overpasses for optimal signal interception windows"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-026-000-000-A"
+task_name = "Counter-Space Operations"
+application = "Orbital trajectory analysis for potential ASAT engagements"
+priority = "medium"
+
+[[node_applications]]
+task_id = "uuid-046-000-000-A"
+task_name = "Signal Intelligence"
+application = "Geolocation of signal sources using satellite time difference of arrival (TDOA)"
+priority = "critical"
+
+[[node_applications]]
+task_id = "uuid-079-000-000-A"
+task_name = "Deep Space Surveillance"
+application = "Monitor GEO satellites for anomalous behavior"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-090-000-000-A"
+task_name = "Space Debris Tracking"
+application = "Predict conjunction events with operational satellites"
+priority = "medium"
+
+[[node_applications]]
+task_id = "uuid-101-000-000-A"
+task_name = "Military Communications"
+application = "Ensure reliable communication windows via satellite relay"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-112-000-000-A"
+task_name = "Navigation Warfare"
+application = "Assess GPS satellite availability and vulnerability to jamming"
+priority = "medium"
+
+[[node_applications]]
+task_id = "uuid-123-000-000-A"
+task_name = "Missile Warning"
+application = "Satellite-based infrared detection of missile launches"
+priority = "critical"
+
+[[node_applications]]
+task_id = "uuid-134-000-000-A"
+task_name = "Weather Forecasting"
+application = "Utilize satellite weather data for operational planning"
+priority = "medium"
+
+# ============================================================================
+# TOOLCHAIN INTEGRATION (Kali, Metasploit, CALDERA, etc.)
+# ============================================================================
+
+[toolchain_integration]
+kali_tools = [
+  { tool = "Gpredict", integration = "Satellite tracking and prediction", escalation_level = "script" },
+  { tool = "SatNOGS", integration = "Open-source satellite ground station network", escalation_level = "crate" }
+]
+
+metasploit_integration = false
+metasploit_modules = []
+
+caldera_integration = false
+caldera_abilities = []
+
+mitre_attack_mapping = [
+  "T1590.007 - Reconnaissance: Gather Victim Network Information: Satellite Communications",
+  "T1591.005 - Reconnaissance: Gather Victim Org Information: Space-Based Assets",
+  "T1596.004 - Active Scanning: Satellite Scanning"
+]
+
+atomic_red_team_tests = []
+
+exploit_db_capabilities = []
+
+# ============================================================================
+# EEI REQUIREMENTS (Essential Elements of Information)
+# ============================================================================
+
+[[eei_requirements]]
+rank = 1
+question = "What is the current location of satellite X?"
+collection_method = "TLE data and orbital prediction models"
+time_sensitivity = "high"
+
+[[eei_requirements]]
+rank = 2
+question = "When will satellite X be within range of ground station Y?"
+collection_method = "Orbital prediction and coverage analysis"
+time_sensitivity = "high"
+
+[[eei_requirements]]
+rank = 3
+question = "What is the potential collision risk between satellite X and object Y?"
+collection_method = "Conjunction analysis with object ephemeris"
+time_sensitivity = "medium"
+
+[[eei_requirements]]
+rank = 4
+question = "What is the signal footprint of satellite X at time T?"
+collection_method = "Antenna models and orbital parameters"
+time_sensitivity = "low"
+
+# ============================================================================
+# MCP INTEGRATION (Model Context Protocol)
+# ============================================================================
+
+[mcp_integration]
+mcp_server = true
+mcp_server_name = "ctas7-orbital-mechanics-mcp"
+mcp_port = 15186
+mcp_capabilities = [
+  "satellite_location",
+  "orbital_prediction",
+  "collision_risk",
+  "signal_footprint"
+]
+
+[[mcp_integration.tools]]
+name = "satellite_location"
+description = "Get the current location of a satellite"
+parameters = ["satellite_name"]
+returns = "Latitude, Longitude, Altitude"
+
+[[mcp_integration.tools]]
+name = "orbital_prediction"
+description = "Predict the future location of a satellite"
+parameters = ["satellite_name", "time_delta_seconds"]
+returns = "Latitude, Longitude, Altitude at the future time"
+
+[[mcp_integration.tools]]
+name = "collision_risk"
+description = "Assess collision risk between two objects"
+parameters = ["object1_name", "object2_name"]
+returns = "Probability of collision, Time of closest approach"
+
+[[mcp_integration.tools]]
+name = "signal_footprint"
+description = "Calculate satellite signal footprint"
+parameters = ["satellite_name", "timestamp"]
+returns = "GeoJSON polygon representing footprint"
+
+# ============================================================================
+# GNN AND VECTOR DATABASE INTEGRATION
+# ============================================================================
+
+[gnn_vector_integration]
+gnn_enabled = true
+gnn_use_cases = [
+  "Prediction of satellite maneuvering based on historical data",
+  "Anomaly detection of satellite behavior using graph-based models",
+  "Identification of satellite clusters based on orbital parameters"
+]
+
+vector_db_enabled = true
+vector_db_type = "pgvector"
+embedding_dimensions = 768
+vector_use_cases = [
+  "Semantic search for satellites with similar missions",
+  "Identification of adversarial satellites based on vector similarity",
+  "Correlation of satellite behavior with known threat actors"
+]
+
+# ============================================================================
+# XSD VALIDATION AND PLAYBOOK INTEGRATION
+# ============================================================================
+
+[xsd_validation]
+xsd_schema = "crate-interview-playbook.xsd"
+playbook_template = "orbital_mechanics_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-core", "ctas7-foundation-data", "ctas7-neural-mux"]
+unicode_assembly = ["🛰", "🔭", "📡", "🌌", "🌠", "🔗"]
+lisp_expression = "(orb-query :type location :satellite sat-name :time current-time)"
+
+# ============================================================================
+# PHD QA INTEGRATION (Quality Assurance Scoring)
+# ============================================================================
+
+[phd_qa]
+phd_qa_score = 90
+quality_grade = "A"
+certification_status = "certified"
+last_qa_run = "2025-01-08T12:00:00Z"
+qa_runner = "Zen Coder"
+
+quality_issues = [
+  "Atmospheric drag modeling needs improvement for LEO satellites",
+  "Limited test coverage for deep space object tracking"
+]
+
+improvement_recommendations = [
+  "Integrate more accurate atmospheric models",
+  "Add support for JSR ephemeris data",
+  "Implement visualization tools for orbital trajectories"
+]
+
+# ============================================================================
+# OPERATIONAL RELATIONSHIPS
+# ============================================================================
+
+[operational_relationships]
+trigger_conditions = [
+  "SCH hash match for orbital mechanics primitives",
+  "CUID mask with space component (S{altitude}{inclination})",
+  "HD4 phase = hunt + space-based EEI requirement"
+]
+
+execution_order = 6
+
+semantic_relationships = [
+  "Enables space domain awareness for all tactical operations",
+  "Provides orbital context for threat intelligence",
+  "Extends the operational environment to space"
+]
+
+ontological_connections = [
+  "Maps to NIEM Intelligence Domain: intel:SpaceObject, intel:OrbitalPath",
+  "Integrates with N-DEx: satellite_type, orbital_characteristics",
+  "Supports IED TTL Category 4: Target Selection & Reconnaissance in Space"
+]
+
+reference_architecture_role = "Space Domain Awareness Layer"
+
+ttl_book_contribution = """
+This crate provides the space-based foundation for understanding where threats
+originate, how they move in orbit, and where they can be detected. It translates abstract
+threat intelligence into concrete orbital parameters, trajectories, and potential collision
+alerts. In the TTL narrative, this is the "where" in space that contextualizes the "who"
+and "what" of adversary operations in the orbital domain.
+"""
+
+# ============================================================================
+# IED TTL MAPPING
+# ============================================================================
+
+[ied_ttl_mapping]
+ttl_category = "4"
+ttl_subcategory = "4.3"
+ttl_task_number = "4.3.1"
+adversarial_capability = "Plan space-based reconnaissance and targeting using orbital analysis"
+defensive_opportunity = "Detect reconnaissance patterns via anomalous orbital maneuvers, proximity alerts"
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T01:00:00Z"
+last_updated = "2025-01-09T01:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+interview_version = 1
+shipyard_quality_score = 90
+```

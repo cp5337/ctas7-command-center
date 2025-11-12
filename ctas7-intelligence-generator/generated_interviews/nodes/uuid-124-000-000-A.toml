@@ -1,0 +1,475 @@
+```toml
+[node_identity]
+task_id = "uuid-124-000-000-A"
+task_name = "Task 124 - Phase 4"
+classification = "unclassified"
+ttl_category = "desirable"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+
+sch = "a9zB3cV4yW5xLt2k"
+cuid = "T20241027G12S89Ca5d98ef"
+uuid = "V1x0z8Qp2yW7aBcD4e5f"
+hash_48 = "a9zB3cV4yW5xLt2kT20241027G12S89Ca5d98efV1x0z8Qp2yW7aBcD4e5f"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+
+[capabilities]
+narrative = """
+I am the orchestrator of chaos, the weaver of destruction. I slip through the digital cracks, leaving no trace but disruption.
+My fingers dance across keyboards, conjuring malware and exploiting vulnerabilities.
+I build botnets, amass processing power, and turn armies of machines against my targets.
+
+I study intrusion detection systems, learn their signatures, and craft evasive payloads.
+I sniff network traffic for credentials, pivot through compromised systems, and escalate privileges.
+I am the master of persistence—I burrow deep into the network, establishing backdoors and maintaining access.
+
+I exfiltrate data, disrupt operations, and sow confusion. I am the digital arsonist—I set fires and watch them burn.
+I move laterally, hopping from system to system, until I reach the heart of the network.
+I am patient and ruthless, a ghost in the machine, an invisible hand wreaking havoc.
+"""
+
+limitations = """
+I am bound by my code and my tools. If the vulnerability is patched, my exploit fails.
+If my traffic is detected, I am exposed.
+I need time and resources to build my infrastructure, to research my targets, to develop my payloads.
+I leave digital footprints—logs, network traffic, malware signatures.
+I am vulnerable to skilled defenders, to proactive hunting, to robust security systems.
+I depend on the weakest link—the unpatched server, the vulnerable application, the careless user.
+My campaigns are costly and time-consuming. Success is never guaranteed.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "hours to days", range = [8, 48], units = "hours" }
+collection_phase = { words = "weeks to months", range = [2, 8], units = "weeks" }
+actionable_window = { words = "hours to days", range = [4, 72], units = "hours" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Security patches deployed",
+  "Intrusion detection signatures updated",
+  "Network architecture changes",
+  "Compromised accounts reset"
+]
+persistence_conditions = [
+  "Unpatched vulnerabilities",
+  "Weak passwords",
+  "Misconfigured systems",
+  "Legacy applications"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+
+[cuid_mask]
+temporal = "T-{2-8}w"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "Ca"
+semantic_full = "cyber:attack:persistence"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactive search for backdoors and persistent threats" }
+detect = { enabled = true, priority = "critical", description = "Real-time detection of intrusion attempts and malicious activity" }
+disrupt = { enabled = true, priority = "medium", description = "Mitigation of active attacks and containment of compromised systems" }
+disable = { enabled = true, priority = "high", description = "Removal of backdoors and eradication of persistent threats" }
+dominate = { enabled = false, priority = "low", description = "Not applicable for post-compromise persistence phase" }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+
+[[indicators]]
+observable = "Unusual network traffic patterns (e.g., beaconing)"
+priority = "critical"
+detection_method = "Network intrusion detection system (NIDS)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Suspicious process execution (e.g., unauthorized software)"
+priority = "high"
+detection_method = "Endpoint detection and response (EDR)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Anomalous login activity (e.g., after-hours access)"
+priority = "high"
+detection_method = "Security information and event management (SIEM)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Persistence mechanisms (e.g., scheduled tasks, registry keys)"
+priority = "critical"
+detection_method = "Host-based intrusion detection system (HIDS)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Data exfiltration attempts (e.g., large file transfers)"
+priority = "critical"
+detection_method = "Data loss prevention (DLP)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Compromised credentials (e.g., stolen usernames and passwords)"
+priority = "critical"
+detection_method = "Credential monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Use of command and control (C2) channels"
+priority = "critical"
+detection_method = "Threat intelligence feeds"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Modification of system files"
+priority = "high"
+detection_method = "File integrity monitoring (FIM)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Lateral movement within the network"
+priority = "high"
+detection_method = "Network segmentation monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Exploitation of unpatched vulnerabilities"
+priority = "critical"
+detection_method = "Vulnerability scanning"
+false_positive_rate = "low"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Identify open ports and services to discover potential vulnerabilities"
+mode_2n = "Scan network for vulnerable systems to exploit"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Validate vulnerability assessments and test security controls"
+mode_2n = "Exploit identified vulnerabilities and establish persistence"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Mimikatz"
+mode_1n = "Detect and prevent credential theft attacks"
+mode_2n = "Extract credentials from memory for lateral movement"
+escalation_level = "microkernel"
+kali_package = "N/A (requires manual installation)"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "PowerShell Empire"
+mode_1n = "Detect and remediate PowerShell-based attacks"
+mode_2n = "Establish persistent backdoors using PowerShell"
+escalation_level = "crate"
+kali_package = "powershell-empire"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Cobalt Strike"
+mode_1n = "Simulate advanced persistent threats (APTs) to assess security posture"
+mode_2n = "Orchestrate multi-stage attacks and maintain long-term persistence"
+escalation_level = "crate"
+kali_package = "N/A (commercial tool)"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "BloodHound"
+mode_1n = "Identify Active Directory misconfigurations and attack paths"
+mode_2n = "Map out attack vectors and privilege escalation paths"
+escalation_level = "script"
+kali_package = "bloodhound"
+resource_cost = "low"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+# Distance and time constraints
+distance_range = { min_km = 0.1, max_km = 1.0, optimal_km = 0.25 }
+time_to_target = { min_minutes = 1, max_minutes = 5, optimal_minutes = 2 }
+
+# Terrain factors (affects approach, escape, line-of-sight)
+terrain_factors = []
+
+# Weather impact (from existing weather_data table)
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+# Traffic and routing (from pgRouting + PostGIS)
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "pgr_dijkstra"
+cost_factors = []
+escape_route_priority = "low"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+# COMINT (Communications Intelligence)
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+# Critical infrastructure proximity
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:Cybercrime"
+intelligence_domain = "intel:CyberThreatIntelligence"
+iepd_type = "Cyber-Incident-Exchange"
+iepd_version = "5.0"
+
+# N-DEx field mapping
+[niem_mapping.ndex_fields]
+incident_category = "Cyber Attack"
+incident_subcategory = "Malware Infection"
+location_type = "Network Infrastructure"
+subject_role = "Attacker"
+activity_type = "Post-Compromise Persistence"
+
+# NIEM core elements
+[niem_mapping.niem_core]
+"nc:Activity" = "Persistence"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_network }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-125-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.90
+description = "Persistence enables further exploitation and data exfiltration"
+
+[[relationships]]
+target_node = "uuid-130-000-000-A"
+relationship_type = "requires"
+unicode_op = "⇢"
+strength = 0.70
+description = "Persistence requires initial access and compromise"
+
+[[relationships]]
+target_node = "uuid-140-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.60
+description = "Persistence is vulnerable to incident response and remediation efforts"
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "What persistence mechanisms are in place?"
+collection_method = "Endpoint analysis, network monitoring"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "What systems are compromised?"
+collection_method = "Log analysis, security alerts"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 3
+question = "What credentials have been stolen?"
+collection_method = "Credential monitoring, memory analysis"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 4
+question = "What data is being exfiltrated?"
+collection_method = "DLP, network traffic analysis"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 5
+question = "What command and control channels are being used?"
+collection_method = "Threat intelligence, network analysis"
+time_sensitivity = "high"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "SolarWinds Supply Chain Attack",
+    date = "2020-12-13",
+    description = "Sophisticated supply chain attack with long-term persistence in victim networks",
+    source = "https://www.fireeye.com/blog/threat-research/2020/12/sunburst-backdoor-discovered-in-solarwinds-orion-platform.html"
+  },
+  {
+    name = "NotPetya Ransomware Attack",
+    date = "2017-06-27",
+    description = "Wiper malware that spread rapidly and caused widespread disruption, establishing persistence using various techniques",
+    source = "https://www.wired.com/story/notpetya-cyberattack-ukraine-russia-code-war/"
+  },
+  {
+    name = "APT1 (Mandiant Report)",
+    date = "2013-02-19",
+    description = "Detailed analysis of a Chinese APT group with long-term persistence and data exfiltration capabilities",
+    source = "https://www.mandiant.com/resources/apt1-exposing-one-of-chinas-cyber-espionage-units"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Defense Evasion"
+technique = "Valid Accounts"
+sub_technique = "T1078.002 - Domain Accounts"
+description = "Adversaries use compromised domain accounts to maintain persistence"
+
+[[ttps]]
+mitre_attack_id = "T1053"
+tactic = "Persistence"
+technique = "Scheduled Task/Job"
+sub_technique = "T1053.005 - Scheduled Task"
+description = "Adversaries create scheduled tasks to execute malicious code at specific intervals"
+
+[[ttps]]
+mitre_attack_id = "T1547"
+tactic = "Persistence"
+technique = "Boot or Logon Autostart Execution"
+sub_technique = "T1547.001 - Registry Run Keys / Startup Folder"
+description = "Adversaries modify registry run keys or startup folders to automatically execute malicious code on system startup"
+
+[[ttps]]
+mitre_attack_id = "T1136"
+tactic = "Privilege Escalation"
+technique = "Create Account"
+sub_technique = "T1136.001 - Local Account"
+description = "Adversaries create local accounts to gain access to systems and maintain persistence"
+
+[[ttps]]
+mitre_attack_id = "T1505"
+tactic = "Persistence"
+technique = "Server Software Component"
+sub_technique = "T1505.003 - Web Shell"
+description = "Adversaries install web shells on web servers to maintain access"
+
+[[ttps]]
+mitre_attack_id = "T1021"
+tactic = "Lateral Movement"
+technique = "Remote Services"
+sub_technique = "T1021.002 - SMB/Windows Admin Shares"
+description = "Use valid accounts to access shared resources using SMB/Windows Admin Shares"
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "persistence_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-cyber", "ctas7-enhanced-forensics"]
+unicode_assembly = ["→", "⇢", "⚠", "💀", "🔥", "🛡"]
+lisp_expression = "(persistence-task :target target-network :phase post-compromise :priority critical)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Bard"
+created_at = "2024-10-27T10:00:00Z"
+last_updated = "2024-10-27T10:00:00Z"
+reviewed_by = "N/A"
+status = "draft"
+```

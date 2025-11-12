@@ -1,0 +1,397 @@
+```toml
+[node_identity]
+task_id = "uuid-037-000-000-A"
+task_name = "IED Activation"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "aB9cD4eF6gH1iJ3k"
+cuid = "T20250621G34S12Sb3c4dEf5g"
+uuid = "h6i7j8k9l0m1n2o3"
+hash_48 = "aB9cD4eF6gH1iJ3kT20250621G34S12Sb3c4dEf5gh6i7j8k9l0m1n2o3"
+
+[capabilities]
+narrative = """
+I am the spark. I wait for the signal, the opportune moment to unleash chaos.
+I ensure the device is armed and ready. I confirm the target area is clear of our own.
+I monitor the trigger mechanism, be it a timer, remote control, or victim-activated.
+I verify all connections, batteries, and detonators are functioning correctly.
+
+I will rehearse the arming sequence multiple times, accounting for unexpected delays or interference.
+I communicate with the team to confirm readiness and final positioning.
+I monitor the environment for law enforcement presence or any disruptions to the plan.
+I know the risks. I am the last link in the chain. I am the activation node.
+
+I check the location for communication dead zones that might prevent remote detonation.
+I confirm the power source is sufficient to guarantee the desired effect.
+I account for weather conditions that might affect the blast radius or dispersal pattern.
+I am the IED Activation node--I bring the thunder.
+"""
+
+limitations = """
+I am vulnerable to interception and preemption. Law enforcement surveillance, electronic countermeasures,
+and faulty components can all prevent successful activation. I rely on the precision and reliability
+of the device, as well as the accuracy of the target intelligence.
+
+My position is exposed during the activation phase, making me susceptible to immediate apprehension.
+Communication jamming can prevent remote detonation, and physical barriers can limit device placement.
+I am dependent on others for safe device construction, placement, and timing. I am the weak link.
+"""
+
+[time_of_value]
+half_life = { words = "minutes to hours", range = [30, 120], units = "minutes" }
+collection_phase = { words = "days before", range = [1, 7], units = "days" }
+actionable_window = { words = "minutes to hours", range = [15, 60], units = "minutes" }
+decay_curve = "step_function"
+ephemeral_conditions = [
+  "Law enforcement activity",
+  "Changes in target posture or security protocols",
+  "Communication jamming",
+  "Weather conditions",
+  "Component failure"
+]
+persistence_conditions = [
+  "Device location (pre-placement)",
+  "Trigger mechanism functionality",
+  "Team communications network"
+]
+
+[cuid_mask]
+temporal = "T+0d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 0.1
+semantic = "Ib"
+semantic_full = "Improvised Bomb: Activation"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = false, priority = "low", description = "N/A" }
+detect = { enabled = true, priority = "critical", description = "Real-time monitoring for IED activation signals" }
+disrupt = { enabled = true, priority = "high", description = "Electronic countermeasures, jamming, and preemptive strike" }
+disable = { enabled = true, priority = "critical", description = "Defuse or render the device safe" }
+dominate = { enabled = true, priority = "critical", description = "Secure the area, apprehend perpetrators, and conduct forensics" }
+
+[[indicators]]
+observable = "Remote detonator signal detected"
+priority = "critical"
+detection_method = "RF spectrum analysis, electronic surveillance"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Timer activation sequence initiated"
+priority = "critical"
+detection_method = "Device monitoring, internal sensor alerts"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Spike in communications activity near target location"
+priority = "high"
+detection_method = "SIGINT analysis, cell tower triangulation"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Confirmation signal received from placement team"
+priority = "high"
+detection_method = "Communications intercept, code word analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unusual power draw or electrical activity"
+priority = "medium"
+detection_method = "Smart meter analysis, energy grid monitoring"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Sudden drop in communication from placement team"
+priority = "high"
+detection_method = "Communication monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Changes in environmental sensors"
+priority = "medium"
+detection_method = "Temperature and pressure readings"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Heartbeat message failure"
+priority = "critical"
+detection_method = "Monitoring of team communications"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Tampering alert on triggering device"
+priority = "critical"
+detection_method = "Device tampering detection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Victim activated trigger"
+priority = "critical"
+detection_method = "Sensor feedback, observation"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "RTL-SDR"
+mode_1n = "Detect and analyze RF signals for remote detonators"
+mode_2n = "Transmit remote detonation signals"
+escalation_level = "microkernel"
+kali_package = "rtl-sdr"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "GNU Radio"
+mode_1n = "Decode and analyze intercepted communication signals"
+mode_2n = "Emulate communication signals for remote detonation"
+escalation_level = "core"
+kali_package = "gnuradio"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for suspicious communications"
+mode_2n = "Capture and replay network packets for IED activation"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Custom Crate - detonator_control"
+mode_1n = "Monitor device status and identify activation signals"
+mode_2n = "Remotely arm, disarm, and detonate the device"
+escalation_level = "crate"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Custom Crate - sensor_data_stream"
+mode_1n = "Analyze environment for signs of activation trigger"
+mode_2n = "Forward sensor data for advanced activation analysis"
+escalation_level = "crate"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Jammer (RF)"
+mode_1n = "Block communication and prevent activation signals"
+mode_2n = "Disrupt communications during activation, preventing detection"
+escalation_level = "microkernel"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 0.01, max_km = 0.1, optimal_km = 0.05 }
+time_to_target = { min_minutes = 1, max_minutes = 5, optimal_minutes = 2 }
+
+terrain_factors = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "Affected by heavy precipitation and atmospheric conditions."
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "N/A"
+cost_factors = []
+escape_route_priority = "N/A"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 1000
+signal_strength_threshold_dbm = -80
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 50
+impact_assessment = "Device placement at critical infrastructure maximizes impact."
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:ThreatAssessment"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Explosives Incident"
+incident_subcategory = "IED Activation"
+location_type = "Public Gathering"
+subject_role = "Perpetrator"
+activity_type = "IED Activation"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "IED Activation"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 2332a (WMD), 18 USC 844 (Explosives)"
+
+[[relationships]]
+target_node = "uuid-036-000-000-A"
+relationship_type = "depends_on"
+unicode_op = "→"
+strength = 0.95
+description = "IED Activation is directly dependent on IED Placement"
+
+[[relationships]]
+target_node = "uuid-038-000-000-A"
+relationship_type = "leads_to"
+unicode_op = "→"
+strength = 0.95
+description = "IED activation leads to attack outcome"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.7
+description = "IED Activation is vulnerable to countermeasures."
+
+[[eei_priority]]
+rank = 1
+question = "Is the device armed and ready for activation?"
+collection_method = "Device monitoring, sensor feedback"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "Is the target area clear of our own personnel?"
+collection_method = "Visual confirmation, team communication"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 3
+question = "Is the activation signal clear and unobstructed?"
+collection_method = "RF spectrum analysis, communication checks"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 4
+question = "Are there any unexpected law enforcement or security presence?"
+collection_method = "Visual observation, communication interception"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 5
+question = "Is the timing synchronized with the overall attack plan?"
+collection_method = "Communication with team, clock verification"
+time_sensitivity = "high"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Madrid Train Bombings",
+    date = "2004-03-11",
+    description = "IEDs were activated via cell phone signals on commuter trains.",
+    source = "https://en.wikipedia.org/wiki/2004_Madrid_train_bombings"
+  },
+  {
+    name = "London 7/7 Bombings",
+    date = "2005-07-07",
+    description = "Bombs detonated via timers on underground trains and a bus.",
+    source = "https://en.wikipedia.org/wiki/7_July_2005_London_bombings"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1498"
+tactic = "Impact"
+technique = "Network Denial of Service"
+sub_technique = "T1498.001 - Endpoint Denial of Service"
+description = "The IED attack causes disruption to the immediate surrounding and to first response."
+
+[[ttps]]
+mitre_attack_id = "T1499"
+tactic = "Impact"
+technique = "Multi-Stage Deployment"
+sub_technique = "N/A"
+description = "The IED attack causes a multi-stage event due to the secondary effect of the explosive."
+
+[[ttps]]
+mitre_attack_id = "T1565"
+tactic = "Defense Evasion"
+technique = "Data Obfuscation"
+sub_technique = "T1565.001 - Protocol Impersonation"
+description = "IED detonation signal disguised as legitimate communication."
+
+[[ttps]]
+mitre_attack_id = "T1588"
+tactic = "Resource Development"
+technique = "Obtain Capabilities"
+sub_technique = "T1588.002 - Tool"
+description = "Using commercially available radio hardware for IED detonation."
+
+[[ttps]]
+mitre_attack_id = "T1567"
+tactic = "Exfiltration"
+technique = "Egress Tool Transfer"
+sub_technique = "T1567.002 - Exfiltration Over Web Service"
+description = "Exfiltration of information via communication through Tor hidden service."
+
+[xsd_integration]
+playbook_template = "ied_activation_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-explosives"]
+unicode_assembly = ["→", "⚠", "💣", "⚡", "☢"]
+lisp_expression = "(ied-activation :target target-id :phase detonation :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

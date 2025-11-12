@@ -1,4 +1,5 @@
 # CTAS-7 Container Registry & Archive Strategy
+
 ## Preserve & Organize Excellent Operational Systems
 
 **Date:** November 3, 2025  
@@ -10,8 +11,9 @@
 ## **PROBLEM STATEMENT**
 
 We have **incredible operational systems** scattered across repos:
+
 - Intelligence Coordination Container Architecture
-- Neural Mux CDN Engineering  
+- Neural Mux CDN Engineering
 - MCP Schema Telemetry Integration
 - Voice-Driven Partial Deployment
 - USIM Document Lifecycle Management
@@ -26,6 +28,7 @@ We have **incredible operational systems** scattered across repos:
 ## **CONTAINER REGISTRY STRATEGY**
 
 ### **1. CTAS-7 Private Registry Setup**
+
 ```bash
 # Setup private Docker registry
 docker run -d \
@@ -41,6 +44,7 @@ sudo systemctl restart docker
 ```
 
 ### **2. Clean Repository Organization**
+
 ```
 CTAS-7 Container Registry (localhost:5000)
 ├── ctas7/backend-services:latest           # Canonical backend
@@ -64,6 +68,7 @@ CTAS-7 Container Registry (localhost:5000)
 ```
 
 ### **3. Agent Container Architecture**
+
 ```
 Agent Ecosystem (Ports 15180-15199)
 ├── agent-natasha (15180)           # Red team operations
@@ -83,6 +88,7 @@ Agent Ecosystem (Ports 15180-15199)
 ## **ARCHIVE & CONTAINERIZATION PLAN**
 
 ### **Phase 1: Preserve Current State (Week 1)**
+
 ```bash
 # 1. Archive current working directories
 tar -czf ctas7-command-center-$(date +%Y%m%d).tar.gz /Users/cp5337/Developer/ctas7-command-center/
@@ -92,7 +98,7 @@ tar -czf ctas7-shipyard-staging-$(date +%Y%m%d).tar.gz /Users/cp5337/Developer/c
 cd /Users/cp5337/Developer/ctas7-command-center
 git tag -a v6.6-stable -m "Stable 6.6 version before 7.1 integration"
 
-cd /Users/cp5337/Developer/ctas-7-shipyard-staging  
+cd /Users/cp5337/Developer/ctas-7-shipyard-staging
 git tag -a v7.0-archive -m "7.0 systems archive before containerization"
 
 # 3. Create container manifests for each system
@@ -101,6 +107,7 @@ git tag -a v7.0-archive -m "7.0 systems archive before containerization"
 ### **Phase 2: Containerize by System (Week 2-3)**
 
 #### **2.1 Backend Services Container**
+
 ```dockerfile
 # Dockerfile.backend-services
 FROM rust:1.75-slim as builder
@@ -116,6 +123,7 @@ CMD ["./start-canonical-backend.sh"]
 ```
 
 #### **2.2 Intelligence Coordination Container**
+
 ```dockerfile
 # Dockerfile.intelligence-coordination
 FROM rust:1.75-slim as builder
@@ -123,7 +131,7 @@ FROM rust:1.75-slim as builder
 # Build all intelligence services
 COPY intelligence/ .
 RUN cargo build --release --bin nyx-trace-eei
-RUN cargo build --release --bin document-manager  
+RUN cargo build --release --bin document-manager
 RUN cargo build --release --bin osint-media-manager
 RUN cargo build --release --bin intel-coordination
 
@@ -134,12 +142,13 @@ CMD ["./start-intelligence-services.sh"]
 ```
 
 #### **2.3 Voice Integration Container**
+
 ```dockerfile
 # Dockerfile.voice-integration
 FROM python:3.11-slim as whisper-builder
 RUN pip install openai-whisper
 
-FROM node:18-alpine as elevenlabs-builder  
+FROM node:18-alpine as elevenlabs-builder
 RUN npm install elevenlabs
 
 FROM rust:1.75-slim as voice-coordinator
@@ -155,6 +164,7 @@ CMD ["./voice-coordinator"]
 ```
 
 #### **2.4 Agent Ecosystem Container**
+
 ```dockerfile
 # Dockerfile.agent-ecosystem
 FROM rust:1.75-slim as agent-builder
@@ -164,7 +174,7 @@ COPY agents/ .
 
 # Build all agents
 RUN cargo build --release --bin agent-natasha      # Red team
-RUN cargo build --release --bin agent-marcus       # Blue team  
+RUN cargo build --release --bin agent-marcus       # Blue team
 RUN cargo build --release --bin agent-sophia       # OSINT
 RUN cargo build --release --bin agent-alex         # DevSecOps
 RUN cargo build --release --bin agent-jordan       # Voice
@@ -178,6 +188,7 @@ CMD ["./start-agent-ecosystem.sh"]
 ```
 
 #### **2.5 Linear Integration Container**
+
 ```dockerfile
 # Dockerfile.linear-integration
 FROM node:18-alpine as linear-builder
@@ -197,6 +208,7 @@ CMD ["./start-linear-integration.sh"]
 ```
 
 #### **2.6 24-Agent Swarm Container**
+
 ```dockerfile
 # Dockerfile.24-agent-swarm
 FROM rust:1.75-slim as swarm-builder
@@ -219,6 +231,7 @@ CMD ["./tactical-intelligence-swarm"]
 ```
 
 #### **2.7 Laserlight System Container**
+
 ```dockerfile
 # Dockerfile.laserlight-system
 FROM rust:1.75-slim as laserlight-builder
@@ -246,6 +259,7 @@ CMD ["./start-laserlight-system.sh"]
 ```
 
 #### **2.8 Orbital Platform Container**
+
 ```dockerfile
 # Dockerfile.orbital-platform
 FROM rust:1.75-slim as orbital-builder
@@ -277,6 +291,7 @@ CMD ["./start-orbital-platform.sh"]
 ```
 
 #### **2.9 Space-Ground Integration Container**
+
 ```dockerfile
 # Dockerfile.space-ground-integration
 FROM rust:1.75-slim as integration-builder
@@ -307,6 +322,7 @@ CMD ["./start-space-ground-integration.sh"]
 ### **Phase 3: Registry & Versioning (Week 4)**
 
 #### **3.1 Build & Push All Containers**
+
 ```bash
 #!/bin/bash
 # build-and-push-all.sh
@@ -316,7 +332,7 @@ VERSION=$(date +%Y%m%d)
 
 containers=(
     "backend-services"
-    "command-center"  
+    "command-center"
     "intelligence-coordination"
     "neural-mux-cdn"
     "voice-integration"
@@ -335,16 +351,17 @@ for container in "${containers[@]}"; do
     echo "Building ctas7/${container}:${VERSION}"
     docker build -f Dockerfile.${container} -t ctas7/${container}:${VERSION} .
     docker tag ctas7/${container}:${VERSION} ctas7/${container}:latest
-    
+
     echo "Pushing to registry..."
     docker push ${REGISTRY}/ctas7/${container}:${VERSION}
     docker push ${REGISTRY}/ctas7/${container}:latest
-    
+
     echo "✅ ctas7/${container} published"
 done
 ```
 
 #### **3.2 Container Orchestration**
+
 ```yaml
 # docker-compose.ctas7-full-stack.yml
 version: '3.8'
@@ -356,15 +373,15 @@ services:
     ports:
       - "15170-15174:15170-15174"
     restart: unless-stopped
-    
-  # Command Center (6.6 Stable)  
+
+  # Command Center (6.6 Stable)
   command-center-stable:
     image: localhost:5000/ctas7/command-center:6.6
     ports:
       - "5173:5173"
     depends_on:
       - backend-services
-      
+
   # Intelligence Coordination
   intelligence-coordination:
     image: localhost:5000/ctas7/intelligence-coordination:latest
@@ -372,7 +389,7 @@ services:
       - "18200-18207:18200-18207"
     depends_on:
       - backend-services
-      
+
   # Voice Integration
   voice-integration:
     image: localhost:5000/ctas7/voice-integration:latest
@@ -381,7 +398,7 @@ services:
     depends_on:
       - backend-services
       - command-center-stable
-      
+
   # Neural Mux CDN
   neural-mux-cdn:
     image: localhost:5000/ctas7/neural-mux-cdn:latest
@@ -402,7 +419,7 @@ services:
     depends_on:
       - backend-services
       - neural-mux-cdn
-      
+
   # Linear Integration
   linear-integration:
     image: localhost:5000/ctas7/linear-integration:latest
@@ -415,7 +432,7 @@ services:
       - AGENT_INTEGRATION_ENABLED=true
     depends_on:
       - backend-services
-      
+
   # 24-Agent Tactical Swarm
   agent-swarm:
     image: localhost:5000/ctas7/24-agent-swarm:latest
@@ -528,6 +545,7 @@ volumes:
 ## **DEPLOYMENT STRATEGY**
 
 ### **Development Environment**
+
 ```bash
 # Start everything in development mode
 docker-compose -f docker-compose.ctas7-full-stack.yml up -d
@@ -537,7 +555,8 @@ docker-compose up backend-services intelligence-coordination
 docker-compose up command-center-stable voice-integration
 ```
 
-### **Production Environment** 
+### **Production Environment**
+
 ```bash
 # Production deployment with health checks
 docker-compose -f docker-compose.ctas7-production.yml up -d
@@ -547,6 +566,7 @@ docker service update --image localhost:5000/ctas7/command-center:7.1 ctas7_comm
 ```
 
 ### **Archive Environment**
+
 ```bash
 # Archive deployment for reference/research
 docker-compose -f docker-compose.ctas7-archive.yml up -d
@@ -559,12 +579,14 @@ docker-compose -f docker-compose.ctas7-archive.yml up -d
 ## **CONTAINER GOVERNANCE**
 
 ### **Versioning Strategy**
+
 - **Semantic Versioning:** `major.minor.patch` (e.g., 7.1.0)
 - **Date Versioning:** `YYYYMMDD` for daily builds
 - **Feature Branches:** `feature-voice-integration`, `feature-mcp-telemetry`
 - **Stable Releases:** `v6.6-stable`, `v7.1-stable`
 
 ### **Container Lifecycle**
+
 ```
 Development → Testing → Staging → Production → Archive
      ↓           ↓         ↓          ↓          ↓
@@ -572,11 +594,12 @@ Development → Testing → Staging → Production → Archive
 ```
 
 ### **Registry Management**
+
 ```bash
 # List all containers
 curl -X GET http://localhost:5000/v2/_catalog
 
-# Get container tags  
+# Get container tags
 curl -X GET http://localhost:5000/v2/ctas7/command-center/tags/list
 
 # Delete old versions (keep last 5)
@@ -588,21 +611,25 @@ curl -X GET http://localhost:5000/v2/ctas7/command-center/tags/list
 ## **BENEFITS OF THIS APPROACH**
 
 ### **1. Preservation**
+
 - ✅ **All excellent systems preserved** in versioned containers
 - ✅ **No work gets lost** or mixed up
 - ✅ **Historical versions available** for reference
 
 ### **2. Organization**
+
 - ✅ **Clean separation** of systems by function
 - ✅ **Proper versioning** for each component
 - ✅ **Orchestrated deployment** via Docker Compose
 
 ### **3. Development Velocity**
+
 - ✅ **Test new integrations** without breaking stable systems
 - ✅ **Roll back quickly** if something breaks
 - ✅ **Deploy incrementally** (6.6 → 7.1 promotion)
 
 ### **4. Operational Excellence**
+
 - ✅ **Production-ready** containerized services
 - ✅ **Health checks** and monitoring
 - ✅ **Scalable architecture** for future growth
@@ -612,24 +639,28 @@ curl -X GET http://localhost:5000/v2/ctas7/command-center/tags/list
 ## **IMPLEMENTATION TIMELINE**
 
 ### **Week 1: Archive & Preserve**
+
 - [ ] Archive current repositories with date stamps
 - [ ] Tag stable versions (6.6, 7.0-archive)
 - [ ] Setup private Docker registry
 - [ ] Create container manifests
 
 ### **Week 2: Containerize Core Systems**
+
 - [ ] Backend services container
 - [ ] Command center container (6.6 stable)
 - [ ] Intelligence coordination container
 - [ ] Voice integration container
 
 ### **Week 3: Containerize Specialized Systems**
+
 - [ ] Neural Mux CDN container
 - [ ] MCP telemetry container
-- [ ] Forge workflows container  
+- [ ] Forge workflows container
 - [ ] Pure Rust intelligence container
 
 ### **Week 4: Registry & Orchestration**
+
 - [ ] Build and push all containers
 - [ ] Create orchestration manifests
 - [ ] Test full-stack deployment
@@ -640,6 +671,7 @@ curl -X GET http://localhost:5000/v2/ctas7/command-center/tags/list
 ## **AGENT & LINEAR WORKFLOW INTEGRATION**
 
 ### **Agent Ecosystem Features**
+
 ```rust
 // Agent coordination with Linear integration
 pub struct AgentEcosystem {
@@ -652,7 +684,7 @@ pub struct AgentEcosystem {
 // Agent specializations
 pub enum AgentRole {
     RedTeam(NatashaAgent),      // Port 15180
-    BlueTeam(MarcusAgent),      // Port 15181  
+    BlueTeam(MarcusAgent),      // Port 15181
     OSINT(SophiaAgent),         // Port 15182
     DevSecOps(AlexAgent),       // Port 15183
     Voice(JordanAgent),         // Port 15184
@@ -663,6 +695,7 @@ pub enum AgentRole {
 ```
 
 ### **Linear Issue Automation**
+
 ```typescript
 // Automatic Linear issue creation from agent activities
 interface LinearAgentIntegration {
@@ -676,7 +709,7 @@ interface LinearAgentIntegration {
       assignee: "agent-alex@ctas.local";
     };
   };
-  
+
   // Agent activities tracked in Linear
   agent_tracking: {
     natasha_red_team: "Security assessment issues";
@@ -684,7 +717,7 @@ interface LinearAgentIntegration {
     alex_devsecops: "Deployment and validation issues";
     taylor_linear: "Workflow coordination tickets";
   };
-  
+
   // Cross-agent collaboration
   multi_agent_issues: {
     type: "Epic or Project";
@@ -695,6 +728,7 @@ interface LinearAgentIntegration {
 ```
 
 ### **Voice + Agent + Linear Flow**
+
 ```
 Voice Command → Agent Orchestrator → Linear Issue → Workflow Execution
       ↓               ↓                    ↓              ↓
@@ -708,6 +742,7 @@ Voice Command → Agent Orchestrator → Linear Issue → Workflow Execution
 ## **LASERLIGHT & ORBITAL SYSTEM INTEGRATION**
 
 ### **Space Platform Architecture**
+
 ```rust
 // Space-Ground coordination architecture
 pub struct SpaceGroundCoordinator {
@@ -737,6 +772,7 @@ pub struct OrbitalPlatform {
 ```
 
 ### **Space-Ground Integration Flow**
+
 ```
 Mission Planning → Orbital Dynamics → Laserlight Targeting → Agent Coordination
        ↓                 ↓                    ↓                     ↓
@@ -746,6 +782,7 @@ Mission Planning → Orbital Dynamics → Laserlight Targeting → Agent Coordin
 ```
 
 ### **Container Port Allocation**
+
 ```
 Space Systems Port Ranges:
 ├── Laserlight System (16000-16099)
@@ -771,6 +808,7 @@ Space Systems Port Ranges:
 ```
 
 ### **Agent Integration with Space Systems**
+
 ```typescript
 interface SpaceAgentIntegration {
   // Agent Sophia (OSINT) coordinates with satellite tracking
@@ -779,14 +817,14 @@ interface SpaceAgentIntegration {
     orbital_endpoint: "http://orbital-platform:17020";
     mission: "Track target satellites for intelligence collection";
   };
-  
+
   // Agent Natasha (Red Team) uses Laserlight for operations
   laserlight_operations: {
     agent: "natasha@ctas.local:15180";
     laserlight_endpoint: "http://laserlight-system:16020";
     mission: "Optical ground station targeting for red team ops";
   };
-  
+
   // Agent Taylor (Linear) creates space mission tickets
   space_mission_tickets: {
     agent: "taylor@ctas.local:15185";
@@ -801,6 +839,7 @@ interface SpaceAgentIntegration {
 ## **AGENT-DRIVEN CODE REFACTORING & DOCUMENTATION**
 
 ### **Agent Refactoring Endpoints**
+
 ```rust
 // Agent endpoints for code improvement
 pub struct AgentRefactoringSystem {
@@ -818,21 +857,21 @@ pub enum RefactoringAgentType {
         specializes_in: vec!["rust_optimization", "docker_improvement", "security_hardening"],
         capabilities: vec!["dead_code_removal", "performance_optimization", "vulnerability_fixes"],
     },
-    
+
     // Agent Riley - Documentation improvement
     DocumentationAgent {
-        endpoint: "http://agent-riley:15187/documentation", 
+        endpoint: "http://agent-riley:15187/documentation",
         specializes_in: vec!["api_docs", "architecture_docs", "user_guides"],
         capabilities: vec!["markdown_generation", "openapi_specs", "diagram_creation"],
     },
-    
+
     // Agent Casey - Neural Mux integration refactoring
     IntegrationAgent {
         endpoint: "http://agent-casey:15186/integration",
         specializes_in: vec!["service_coordination", "api_standardization", "event_flow_optimization"],
         capabilities: vec!["endpoint_consolidation", "message_format_standardization", "error_handling"],
     },
-    
+
     // Agent Taylor - Linear workflow optimization
     WorkflowAgent {
         endpoint: "http://agent-taylor:15185/workflow",
@@ -843,6 +882,7 @@ pub enum RefactoringAgentType {
 ```
 
 ### **Code Refactoring API Endpoints**
+
 ```typescript
 // Agent Alex - Code Quality Refactoring
 interface CodeQualityRefactoringAPI {
@@ -862,13 +902,18 @@ interface CodeQualityRefactoringAPI {
     };
   };
 
-  // POST /refactor/container-optimization  
+  // POST /refactor/container-optimization
   container_optimization: {
     endpoint: "http://agent-alex:15183/refactor/container-optimization";
     input: {
       dockerfile_path: string;
       compose_file_path: string;
-      optimization_goals: ["size_reduction", "build_time", "security", "multi_stage"];
+      optimization_goals: [
+        "size_reduction",
+        "build_time",
+        "security",
+        "multi_stage"
+      ];
     };
     output: {
       optimized_dockerfile: string;
@@ -945,6 +990,7 @@ interface DocumentationAPI {
 ```
 
 ### **Voice-Driven Refactoring Commands**
+
 ```typescript
 // Voice commands for agent-driven refactoring
 interface VoiceRefactoringCommands {
@@ -983,6 +1029,7 @@ interface VoiceRefactoringCommands {
 ```
 
 ### **CTAS-7 Coding Standards Compliance**
+
 ```rust
 // Automated compliance checking against CTAS-7 specs
 pub struct CTAS7ComplianceChecker {
@@ -1001,7 +1048,7 @@ pub struct CTAS7CodingStandards {
         documentation: "rustdoc comments for all public APIs",
         security: "no unsafe code without justification",
     },
-    
+
     // Container standards
     container_standards: ContainerStandards {
         base_images: "debian:bookworm-slim or rust:1.75-slim",
@@ -1010,7 +1057,7 @@ pub struct CTAS7CodingStandards {
         health_checks: "required for all services",
         resource_limits: "memory and CPU limits defined",
     },
-    
+
     // API standards
     api_standards: APIStandards {
         rest_endpoints: "RESTful design with proper HTTP status codes",
@@ -1023,6 +1070,7 @@ pub struct CTAS7CodingStandards {
 ```
 
 ### **Automated Refactoring Workflows**
+
 ```yaml
 # Agent-driven refactoring workflow
 name: CTAS7 Code Quality Improvement
@@ -1036,32 +1084,32 @@ workflow:
      agent: agent-alex
      action: analyze_codebase
      output: quality_report.json
-     
+
   2. Documentation Review:
-     agent: agent-riley  
+     agent: agent-riley
      action: analyze_documentation
      output: doc_coverage_report.json
-     
+
   3. Integration Assessment:
      agent: agent-casey
      action: analyze_integrations
      output: integration_report.json
-     
+
   4. Workflow Optimization:
      agent: agent-taylor
      action: analyze_workflows
      output: workflow_report.json
-     
+
   5. Consolidate Improvements:
      agent: agent-orchestrator
      action: create_improvement_plan
      output: improvement_plan.json
-     
+
   6. Create Linear Issues:
      agent: agent-taylor
      action: create_refactoring_tickets
      output: linear_issues_created.json
-     
+
   7. Voice Confirmation:
      system: voice-integration
      action: confirm_improvements
@@ -1069,22 +1117,23 @@ workflow:
 ```
 
 ### **Integration with Existing Systems**
+
 ```rust
 // Hook into existing container system for refactoring
 impl AgentRefactoringSystem {
     // Automatically triggered when containers are built
     pub async fn on_container_build(&self, container_name: &str) -> Result<RefactoringReport> {
         let analysis = self.code_analyzer.analyze_container(container_name).await?;
-        
+
         if analysis.quality_score < 0.8 {
             // Trigger Agent Alex for code optimization
             let optimization = self.agents["alex"]
                 .optimize_code(analysis.issues).await?;
-            
+
             // Trigger Agent Riley for documentation
             let documentation = self.agents["riley"]
                 .improve_documentation(analysis.doc_issues).await?;
-            
+
             Ok(RefactoringReport {
                 original_quality: analysis.quality_score,
                 improvements_applied: optimization.improvements,
@@ -1099,21 +1148,22 @@ impl AgentRefactoringSystem {
 ```
 
 ### **Agent Coordination for Large Refactoring**
+
 ```typescript
 // Multi-agent coordination for major refactoring projects
 interface LargeRefactoringCoordination {
   project_analysis: {
     coordinator: "agent-orchestrator@ctas.local:15199";
     participants: [
-      "agent-alex@ctas.local:15183",    // Code quality
-      "agent-riley@ctas.local:15187",   // Documentation  
-      "agent-casey@ctas.local:15186",   // Integration
-      "agent-taylor@ctas.local:15185"   // Workflow
+      "agent-alex@ctas.local:15183", // Code quality
+      "agent-riley@ctas.local:15187", // Documentation
+      "agent-casey@ctas.local:15186", // Integration
+      "agent-taylor@ctas.local:15185" // Workflow
     ];
-    
+
     coordination_flow: [
       "1. Orchestrator assigns work packages to agents",
-      "2. Agents work in parallel on assigned areas", 
+      "2. Agents work in parallel on assigned areas",
       "3. Regular sync meetings via Neural Mux",
       "4. Taylor creates Linear issues for tracking",
       "5. Riley documents all changes",
@@ -1121,7 +1171,7 @@ interface LargeRefactoringCoordination {
       "7. Alex validates final code quality"
     ];
   };
-  
+
   voice_coordination: {
     trigger: "start major refactoring of {system_name}";
     confirmation: "Major refactoring initiated. 4 agents assigned. Estimated completion: 2-3 hours. Linear epic created.";

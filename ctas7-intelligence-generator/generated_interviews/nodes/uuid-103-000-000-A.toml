@@ -1,0 +1,412 @@
+```toml
+[node_identity]
+task_id = "uuid-103-000-000-A"
+task_name = "Task 103 - Phase 3"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "W2BmQ7yL9pZ4aK1x"
+cuid = "T20250715G34S12Sa8e1101f2d0b4c5c"
+uuid = "V7g92h5i6j7k8l9m"
+hash_48 = "W2BmQ7yL9pZ4aK1xT20250715G34S12Sa8e1101f2d0b4c5cV7g92h5i6j7k8l9m"
+
+[capabilities]
+narrative = """
+I am the sculptor of chaos, the architect of disruption. I delve into the forgotten corners, the digital back alleys, the physical voids between structures.
+My task is to unearth vulnerabilities in the target's supply chain, exploiting dependencies and exposing weaknesses.
+
+I map the flow of goods, tracing origins and destinations. I identify single points of failure, chokepoints where leverage can be applied.
+I examine contracts and vendor relationships, seeking leverage and potential compromise.
+I infiltrate online forums, gleaning insider information from disgruntled employees or careless contractors.
+
+I exploit lax security protocols to penetrate networks, establishing persistent backdoors for future exploitation.
+I compromise vendor accounts, injecting malware into software updates and hardware shipments.
+I blend into the background, a phantom in the machine, patiently crafting my masterpiece of systemic collapse.
+"""
+
+limitations = """
+I am constrained by complexity and interconnectedness. Supply chains are vast and intricate, and penetrating them undetected requires skill and patience.
+I leave digital fingerprints, and my activities can be detected by vigilant monitoring systems and robust cybersecurity protocols.
+I am vulnerable to counter-intelligence and supply chain risk management programs.
+My effectiveness degrades with time as vulnerabilities are patched and security measures are strengthened.
+The reliance on specific vendors or transport routes may shift, invalidating gathered information.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months to years before", range = [90, 365], units = "days" }
+actionable_window = { words = "months", range = [30, 180], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in vendor contracts or relationships",
+  "Implementation of new security protocols",
+  "Updates to software or hardware systems",
+  "Alterations to supply chain logistics"
+]
+persistence_conditions = [
+  "Physical infrastructure of supply chain nodes",
+  "Long-term vendor dependencies",
+  "Regulatory constraints on sourcing and distribution"
+]
+
+[cuid_mask]
+temporal = "T-{90-365}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 100.0
+semantic = "Sa"
+semantic_full = "supply_chain:analysis"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactively identify vulnerabilities in the supply chain" }
+detect = { enabled = true, priority = "critical", description = "Real-time monitoring for suspicious activity in the supply chain" }
+disrupt = { enabled = true, priority = "medium", description = "Intervene in the supply chain to prevent or mitigate attacks" }
+disable = { enabled = true, priority = "medium", description = "Eliminate key vulnerabilities to prevent future attacks" }
+dominate = { enabled = false, priority = "low", description = "Not applicable for reconnaissance phase" }
+
+[[indicators]]
+observable = "Unusual access patterns to vendor portals or systems"
+priority = "critical"
+detection_method = "SIEM alerts, anomaly detection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Compromised vendor accounts or systems"
+priority = "critical"
+detection_method = "Breach monitoring, threat intelligence feeds"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Anomalous network traffic to or from vendor networks"
+priority = "high"
+detection_method = "Network intrusion detection systems (NIDS)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Detection of malware in software updates or hardware shipments"
+priority = "critical"
+detection_method = "Endpoint detection and response (EDR), supply chain integrity checks"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Identification of single points of failure in the supply chain"
+priority = "high"
+detection_method = "Supply chain mapping, risk assessments"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Presence of counterfeit or substandard components in the supply chain"
+priority = "medium"
+detection_method = "Quality control checks, vendor audits"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Disclosure of sensitive information on vendor websites or forums"
+priority = "high"
+detection_method = "OSINT, web scraping"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Exploitation of zero-day vulnerabilities in vendor software or hardware"
+priority = "critical"
+detection_method = "Vulnerability assessments, penetration testing"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Disgruntled employees or contractors leaking information about vulnerabilities"
+priority = "medium"
+detection_method = "Social media monitoring, insider threat programs"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Changes in vendor security protocols or policies"
+priority = "medium"
+detection_method = "Policy monitoring, compliance audits"
+false_positive_rate = "high"
+
+[[toolchain]]
+tool = "Shodan"
+mode_1n = "Identify vulnerable devices and systems in the supply chain"
+mode_2n = "Locate and exploit publicly accessible devices for reconnaissance and access"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan vendor networks for open ports and services"
+mode_2n = "Enumerate vendor network topology and identify potential attack vectors"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Test vendor systems for known vulnerabilities"
+mode_2n = "Exploit vendor systems to gain unauthorized access and control"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Intercept and analyze vendor web traffic for security vulnerabilities"
+mode_2n = "Manipulate vendor web traffic to bypass security controls and inject malicious code"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze vendor network traffic for suspicious activity"
+mode_2n = "Capture and analyze vendor network traffic to extract sensitive information"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Supply chain mapping tools"
+mode_1n = "Visualize and analyze supply chain dependencies and vulnerabilities"
+mode_2n = "Identify critical nodes and chokepoints to target for disruption or exploitation"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Kali Linux"
+mode_1n = "Perform comprehensive security audits of vendor systems and networks"
+mode_2n = "Conduct penetration testing and exploit vulnerabilities to gain unauthorized access"
+escalation_level = "crate"
+kali_package = "kali-linux-default"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Social Media Recon Tools"
+mode_1n = "Monitor vendor social media presence for security breaches"
+mode_2n = "Gather sensitive information to enable social engineering"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = ""
+impact_on_comms = ""
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = ""
+cost_factors = []
+escape_route_priority = ""
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = ""
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:ThreatAssessment"
+iepd_type = "Intelligence-Exchange"
+iepd_version = "5.3"
+
+[niem_mapping.ndex_fields]
+incident_category = "Supply Chain Disruption"
+incident_subcategory = "Vulnerability Analysis"
+location_type = "Vendor Facility"
+subject_role = "Adversary"
+activity_type = "Supply Chain Reconnaissance"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Supply Chain Analysis"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ vendor_location }"
+"j:Charge" = "18 USC 1030 (Computer Fraud), 18 USC 2332b (Terrorism)"
+
+[[relationships]]
+target_node = "uuid-104-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.9
+description = "Supply chain reconnaissance enables disruption activities"
+
+[[relationships]]
+target_node = "uuid-105-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.8
+description = "Supply chain analysis informs resource procurement"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.5
+description = "Supply chain analysis is vulnerable to detection efforts."
+
+[[eei_priority]]
+rank = 1
+question = "Which vendors are most critical to the target's operations?"
+collection_method = "Supply chain mapping, contract analysis"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the security protocols and vulnerabilities of these critical vendors?"
+collection_method = "Vulnerability assessments, penetration testing"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the physical and digital access points to these vendors' facilities and systems?"
+collection_method = "Open source intelligence, physical reconnaissance, network scanning"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the transportation routes and methods used to deliver goods from these vendors?"
+collection_method = "Traffic analysis, logistics mapping"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "Who are the key personnel and stakeholders involved in the target's supply chain?"
+collection_method = "Social media reconnaissance, background checks"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 6
+question = "What are the emergency response plans for supply chain disruption?"
+collection_method = "OSINT"
+time_sensitivity = "low"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "NotPetya Attack",
+    date = "2017-06-27",
+    description = "Used a compromised software update from a Ukrainian accounting software company (MeDoc) to spread ransomware globally.",
+    source = "https://www.wired.com/story/notpetya-cyberattack-ukraine-russia-code-war/"
+  },
+  {
+    name = "SolarWinds Supply Chain Attack",
+    date = "2020-12-13",
+    description = "Compromised SolarWinds Orion software to inject malware into thousands of organizations' networks.",
+    source = "https://www.fireeye.com/blog/threat-research/2020/12/solarwinds-supply-chain-attack-overview.html"
+  },
+  {
+    name = "Target Data Breach",
+    date = "2013-12-19",
+    description = "Compromised a HVAC vendor to gain access to Target's internal network and steal customer data.",
+    source = "https://krebsonsecurity.com/2014/02/target-hackers-broke-in-via-hvac-company/"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1195"
+tactic = "Initial Access"
+technique = "Supply Chain Compromise"
+sub_technique = "N/A"
+description = "Compromise legitimate software or hardware updates for distribution"
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Infrastructure Information"
+sub_technique = "T1592.001 - Gather Victim Network Information"
+description = "Gather information about the target organization's network infrastructure"
+
+[[ttps]]
+mitre_attack_id = "T1199"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = "N/A"
+description = "Compromise legitimate websites or servers"
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Privilege Escalation"
+technique = "Valid Accounts"
+sub_technique = "N/A"
+description = "Use compromised vendor accounts"
+
+[[ttps]]
+mitre_attack_id = "T1583"
+tactic = "Reconnaissance"
+technique = "Obtain Capabilities"
+sub_technique = "T1583.001 - Acquire Infrastructure"
+description = "Acquire C2 Infrastructure."
+
+[xsd_integration]
+playbook_template = "supply_chain_reconnaissance_playbook.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-network"]
+unicode_assembly = ["→", "⇢", "⚠", "⚙", "🏭", "🔗"]
+lisp_expression = "(supply-chain-recon :target target-id :phase pre-operational :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Bard"
+created_at = "2025-07-15T00:00:00Z"
+last_updated = "2025-07-15T00:00:00Z"
+reviewed_by = "None"
+status = "active"
+```

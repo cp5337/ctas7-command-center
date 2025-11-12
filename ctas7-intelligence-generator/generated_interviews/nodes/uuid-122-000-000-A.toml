@@ -1,0 +1,414 @@
+```toml
+[node_identity]
+task_id = "uuid-122-000-000-A"
+task_name = "Task 122 - Phase 4"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "Xk9mP2vL8qR4wN7ja20250109G40N74SsU5e8400e29b41d4a"
+cuid = "T20250109G40N74SsU5e8400e29b41d4a"
+uuid = "U5e8400e29b41d4a"
+hash_48 = "Xk9mP2vL8qR4wN7ja20250109G40N74SsU5e8400e29b41d4a"
+
+[capabilities]
+narrative = """
+I am the shadow in the machine. I exploit zero-day vulnerabilities in SCADA systems,
+injecting malicious code to alter critical infrastructure settings. I map network
+topologies to pinpoint the weakest links in industrial control systems. I use
+specialized hardware to eavesdrop on Modbus and DNP3 communications.
+
+I create phantom alarms to mask intrusions, triggering cascading failures. I understand
+the physics of failure—overpressure in gas pipelines, runaway reactions in chemical
+plants, grid instability in power networks. I analyze vendor documentation to
+uncover default passwords and backdoors.
+
+I use Shodan to identify exposed control panels and engineering workstations. I craft
+custom exploits that bypass intrusion detection systems. I am the digital saboteur—
+my code rewrites reality, turning systems against themselves.
+"""
+
+limitations = """
+I am constrained by access and expertise. Exploiting SCADA systems requires in-depth
+knowledge of industrial protocols and control logic. I leave digital fingerprints:
+malware signatures, anomalous network traffic, unauthorized access attempts.
+
+I am vulnerable to hardened systems with segmented networks and multi-factor
+authentication. My effectiveness degrades with patched vulnerabilities and updated
+security policies. My actions risk immediate physical consequences: explosions,
+blackouts, environmental disasters that expose my operations.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months to years before", range = [90, 365], units = "days" }
+actionable_window = { words = "months", range = [30, 180], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Patching of exploited vulnerabilities",
+  "Changes in network topology or security policies",
+  "Upgrades to SCADA systems or control logic",
+  "Implementation of intrusion detection/prevention measures"
+]
+persistence_conditions = [
+  "Underlying system architecture and protocols",
+  "Legacy systems without adequate security controls",
+  "Vendor-supplied backdoors or default credentials",
+  "Lack of security awareness among operators"
+]
+
+[cuid_mask]
+temporal = "T-{90-365}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "Sc"
+semantic_full = "recon:cyber:scada"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactively hunt for SCADA system vulnerabilities." }
+detect = { enabled = true, priority = "critical", description = "Real-time identification of SCADA intrusion attempts." }
+disrupt = { enabled = true, priority = "high", description = "Counter-measures to prevent SCADA system infiltration." }
+disable = { enabled = true, priority = "medium", description = "Remotely disable SCADA system if under attack." }
+dominate = { enabled = false, priority = "low", description = "Dominate is not applicable." }
+
+[[indicators]]
+observable = "Anomalous network traffic to SCADA systems"
+priority = "critical"
+detection_method = "Network intrusion detection systems"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unauthorized access to control panels"
+priority = "critical"
+detection_method = "Access control logs, SIEM alerts"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Execution of unsigned code on SCADA systems"
+priority = "critical"
+detection_method = "Endpoint detection and response"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Modification of critical system settings"
+priority = "critical"
+detection_method = "SCADA alarm systems, process monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Discovery of default passwords or backdoors"
+priority = "high"
+detection_method = "Vulnerability scanning, configuration audits"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Exploitation of zero-day vulnerabilities"
+priority = "critical"
+detection_method = "Honeypots, signature-less detection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Eavesdropping on Modbus/DNP3 communications"
+priority = "high"
+detection_method = "Network traffic analysis, protocol decoding"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Injection of malicious code into SCADA systems"
+priority = "critical"
+detection_method = "Integrity monitoring, code analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Creation of phantom alarms"
+priority = "high"
+detection_method = "Alarm system monitoring, anomaly detection"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Scanning for exposed control panels via Shodan"
+priority = "medium"
+detection_method = "Network traffic analysis, firewall logs"
+false_positive_rate = "high"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Penetration testing to identify vulnerabilities in SCADA systems"
+mode_2n = "Exploiting identified vulnerabilities to gain access"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Port scanning to identify open ports and services"
+mode_2n = "Mapping network topology for attack planning"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Network traffic analysis to detect anomalies"
+mode_2n = "Analyzing Modbus/DNP3 traffic to reverse engineer protocols"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Shodan"
+mode_1n = "Identify exposed control panels and engineering workstations"
+mode_2n = "Gather information on vulnerable SCADA systems"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Kali Linux"
+mode_1n = "Used for various penetration testing and ethical hacking tasks"
+mode_2n = "Platform for launching SCADA attacks"
+escalation_level = "crate"
+kali_package = "kali-linux-full"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Custom Exploit Development"
+mode_1n = "Developing signatures for custom exploits to prevent"
+mode_2n = "Crafting custom exploits that bypass intrusion detection systems"
+escalation_level = "microkernel"
+kali_package = "N/A"
+resource_cost = "high"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+distance_range = { min_km = 1.0, max_km = 10, optimal_km = 2 }
+time_to_target = { min_minutes = 30, max_minutes = 120, optimal_minutes = 60 }
+
+terrain_factors = ["urban_density", "industrial_areas", "restricted_zones"]
+
+[geospatial.weather]
+critical_factors = ["temperature", "humidity", "wind_speed"]
+operational_threshold = { temperature_c = 40.0, humidity_percent = 80.0, wind_speed_ms = 20.0 }
+impact_on_surveillance = "High temperatures and humidity can affect equipment performance."
+impact_on_comms = "Extreme weather can disrupt wireless communications."
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost"]
+escape_route_priority = "high"
+choke_point_analysis = false
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 5000
+signal_strength_threshold_dbm = -90
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "water_treatment", "gas_pipeline"]
+proximity_threshold_m = 500
+impact_assessment = "Attacks near critical infrastructure can cause widespread disruption."
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:CyberIntelligence"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Cyber Attack"
+incident_subcategory = "SCADA Intrusion"
+location_type = "Critical Infrastructure"
+subject_role = "Suspect"
+activity_type = "Cyber Sabotage"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Cyber Attack"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-015-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.95
+description = "SCADA reconnaissance enables further intrusion"
+
+[[relationships]]
+target_node = "uuid-020-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.75
+description = "SCADA reconnaissance informs attack planning"
+
+[[relationships]]
+target_node = "uuid-030-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.60
+description = "SCADA reconnaissance is vulnerable to detection"
+
+[[eei_priority]]
+rank = 1
+question = "What are the vulnerabilities in the SCADA systems?"
+collection_method = "Vulnerability scanning, penetration testing, OSINT"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What is the network topology of the ICS environment?"
+collection_method = "Network mapping, traffic analysis, system documentation"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the default passwords and backdoors?"
+collection_method = "Vendor documentation, exploit databases, OSINT"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the communication protocols used (Modbus, DNP3, etc.)?"
+collection_method = "Network traffic analysis, protocol reverse engineering"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the security policies and access controls in place?"
+collection_method = "Configuration audits, social engineering"
+time_sensitivity = "low"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Stuxnet",
+    date = "2010-06-01",
+    description = "Advanced worm targeting Iranian nuclear facilities",
+    source = "https://en.wikipedia.org/wiki/Stuxnet"
+  },
+  {
+    name = "Ukraine Power Grid Attacks",
+    date = "2015-12-23",
+    description = "Coordinated cyber attacks on Ukrainian power grid",
+    source = "https://www.nerc.com/pa/CI/CIPOutreach/Documents/E-ISAC_SANS_Ukraine_DUC_Final.pdf"
+  },
+  {
+    name = "Triton Malware",
+    date = "2017-12-01",
+    description = "Malware targeting Triconex safety instrumented systems",
+    source = "https://www.fireeye.com/blog/threat-research/2017/12/triton-attackers-deploy-new-ics-attack-framework.html"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T0862"
+tactic = "Reconnaissance"
+technique = "Remote System Discovery"
+sub_technique = "N/A"
+description = "Remote system discovery to find SCADA system and devices."
+
+[[ttps]]
+mitre_attack_id = "T0841"
+tactic = "Reconnaissance"
+technique = "Technical Information Gathering"
+sub_technique = "N/A"
+description = "Technical information gathering on SCADA systems."
+
+[[ttps]]
+mitre_attack_id = "T0847"
+tactic = "Resource Development"
+technique = "Compromise Accounts"
+sub_technique = "N/A"
+description = "Compromise accounts to control SCADA systems."
+
+[[ttps]]
+mitre_attack_id = "T0818"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = "N/A"
+description = "Using exploits in public-facing application for access."
+
+[[ttps]]
+mitre_attack_id = "T0808"
+tactic = "Persistence"
+technique = "Rootkit"
+sub_technique = "N/A"
+description = "Using rootkits for long-term persistence."
+
+[[ttps]]
+mitre_attack_id = "T0800"
+tactic = "Defense Evasion"
+technique = "Obfuscated Files or Information"
+sub_technique = "N/A"
+description = "Use obfuscated files or information to avoid detection."
+
+[xsd_integration]
+playbook_template = "scada_reconnaissance_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-industrial-control"]
+unicode_assembly = ["→", "⇢", "⚠", "⚙", "🛡", "🔥"]
+lisp_expression = "(scada-recon :target target-id :phase pre-attack :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

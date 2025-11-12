@@ -1,0 +1,26 @@
+{
+  "execution_timestamp": "2025-11-09T15:50:04.044842",
+  "model": "gemini-2.0-flash-exp",
+  "node_interviews": {
+    "total": 165,
+    "generated": 130,
+    "time_seconds": 3673.1957561969757
+  },
+  "crate_interviews": {
+    "total": 20,
+    "generated": 0,
+    "time_seconds": 12.330263137817383
+  },
+  "infrastructure": {
+    "submarine_cables": {
+      "file": "kml_infrastructure/submarine_cables.geojson",
+      "size_bytes": 720203,
+      "status": "processed"
+    },
+    "cable_landing_stations": {
+      "file": "kml_infrastructure/cable_landing_stations.geojson",
+      "size_bytes": 353726,
+      "status": "processed"
+    }
+  }
+}

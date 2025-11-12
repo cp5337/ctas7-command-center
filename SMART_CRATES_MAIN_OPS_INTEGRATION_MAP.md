@@ -1,6 +1,7 @@
 # 🏗️ Smart Crates ↔️ CTAS (Main Ops) Integration Architecture Map
 
 ## Executive Summary
+
 Smart Crates are the **foundational infrastructure** that powers all CTAS-7 operations. They provide containerized, orchestrated services that directly support LaserLight satellite operations, data processing, and mission-critical workflows.
 
 **IMPORTANT**: "Main ops" refers to **CTAS (Convergent Threat Analysis System)** - the primary operational world.
@@ -38,6 +39,7 @@ Smart Crates are the **foundational infrastructure** that powers all CTAS-7 oper
 ## 🔗 **Direct Integration Points**
 
 ### **1. LaserLight Satellite Operations ↔️ Crates**
+
 ```
 🛰️ SATELLITE CONTROL SYSTEM
 ├── Real-time Telemetry → Universal Telemetry Crate (Port 18101)
@@ -52,6 +54,7 @@ Real-time Processing → Statistical Analysis → Dashboard Updates
 ```
 
 ### **2. GIS/Cesium Operations ↔️ Crates**
+
 ```
 🗺️ GIS & MAPPING SYSTEM
 ├── Cesium World View → Foundation Core Crate (3D rendering engine)
@@ -65,6 +68,7 @@ Orbital Calculations → Statistical Analysis → Live Map Updates
 ```
 
 ### **3. Financial/EDGAR Intelligence ↔️ Crates**
+
 ```
 📊 FINANCIAL DATA SYSTEM
 ├── EDGAR API Calls → Universal Telemetry Crate (data ingestion)
@@ -78,6 +82,7 @@ Processing Pipeline → Statistical Analysis → Financial Dashboard
 ```
 
 ### **4. AI Agents ↔️ Crates**
+
 ```
 🤖 AGENT DEPLOYMENT SYSTEM
 ├── Agent Deployment → Foundation Core Crate (execution environment)
@@ -95,6 +100,7 @@ Runtime Deployment → MCP Registry → Live Agent Operations
 ## 🏗️ **Smart Crate Architecture Deep Dive**
 
 ### **Core Crate Services (Always Running)**
+
 ```
 PORT MAP & RESPONSIBILITIES:
 
@@ -130,6 +136,7 @@ PORT MAP & RESPONSIBILITIES:
 ```
 
 ### **Cannon Plug API (Port 18100) - Master Controller**
+
 ```
 🔌 CANNON PLUG ENDPOINTS:
 ├── GET  /status        → Overall system health
@@ -151,6 +158,7 @@ INTEGRATION WITH MAIN OPS:
 ## 🔄 **Operational Workflows**
 
 ### **Workflow 1: LaserLight Mission Operations**
+
 ```
 1. 🛰️ Satellite sends telemetry data
 2. 📡 Universal Telemetry Crate ingests and validates data
@@ -162,6 +170,7 @@ INTEGRATION WITH MAIN OPS:
 ```
 
 ### **Workflow 2: Financial Intelligence Gathering**
+
 ```
 1. 📊 EDGAR API calls triggered by schedule/events
 2. 📡 Universal Telemetry Crate captures financial filings
@@ -173,6 +182,7 @@ INTEGRATION WITH MAIN OPS:
 ```
 
 ### **Workflow 3: Agent Development & Deployment**
+
 ```
 1. 🤖 Agent Studio designs new intelligent agent
 2. 🔬 XSD Environment validates agent capabilities/requirements
@@ -188,6 +198,7 @@ INTEGRATION WITH MAIN OPS:
 ## 📊 **Data Flow Architecture**
 
 ### **Multi-Database Integration via Crates**
+
 ```
 DATABASE LAYER:
 ├── Supabase (ACID) ← Universal Telemetry ← Real-time ops data
@@ -203,6 +214,7 @@ CRATE → DATABASE MAPPING:
 ```
 
 ### **Real-time Communication Patterns**
+
 ```
 PUBLISH/SUBSCRIBE THROUGH CRATES:
 ├── Satellite Events → Universal Telemetry → All Subscribers
@@ -222,6 +234,7 @@ POINT-TO-POINT THROUGH CANNON PLUG:
 ## ⚙️ **Crate Management Interface Requirements**
 
 ### **Create/Retrofit Crate Workflow**
+
 ```
 CRATE CREATION:
 1. Select crate template (telemetry, analysis, foundation, etc.)
@@ -241,6 +254,7 @@ CRATE RETROFITTING:
 ```
 
 ### **Main Ops Integration Monitoring**
+
 ```
 REAL-TIME MONITORING DASHBOARD:
 ├── 🛰️ LaserLight Ops Status (which crates supporting)
@@ -263,6 +277,7 @@ OPERATIONAL INTELLIGENCE:
 ## 🎯 **Crate UI Integration Points**
 
 ### **Smart Crates Tab Features**
+
 ```
 🏗️ CRATE MANAGEMENT INTERFACE:
 ├── Live Crate Registry (from Cannon Plug API)
@@ -286,18 +301,21 @@ DIRECT LINKS TO MAIN OPS:
 ## 🚀 **Implementation Priority for Morning Review**
 
 ### **Phase 1: Core Integration (Week 1)**
+
 1. **Cannon Plug API Integration** - Connect existing crate controls
 2. **Service Health Monitoring** - Real-time crate status in main ops
 3. **Data Flow Visualization** - Show crate→ops data pipelines
 4. **Basic Crate CRUD** - Create, read, update, delete crates
 
 ### **Phase 2: Operational Integration (Week 2)**
+
 1. **LaserLight Dependency Mapping** - Which crates support satellite ops
 2. **Agent Deployment Pipeline** - Agent Studio → Crate deployment
 3. **Financial Data Flow** - EDGAR → Crates → Dashboard pipeline
 4. **GIS Rendering Integration** - Cesium → Foundation Crate coordination
 
 ### **Phase 3: Advanced Management (Week 3)**
+
 1. **Zero-Downtime Retrofitting** - Update crates without ops disruption
 2. **Auto-Scaling & Load Balancing** - Dynamic crate provisioning
 3. **Cross-Crate Workflows** - Complex multi-crate operations

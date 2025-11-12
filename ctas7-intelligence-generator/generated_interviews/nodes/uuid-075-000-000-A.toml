@@ -1,0 +1,403 @@
+```toml
+[node_identity]
+task_id = "uuid-075-000-000-A"
+task_name = "Task 75 - Phase 2"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "Yb3wQ7xZ9p1Ks2mF"
+cuid = "T20250215G34N84Sw"
+uuid = "V8a13b9c0d7e5f26"
+hash_48 = "Yb3wQ7xZ9p1Ks2mFT20250215G34N84SwV8a13b9c0d7e5f26"
+
+[capabilities]
+narrative = """
+I am the shadow in the machine. I probe networks, seeking open ports and unpatched systems.
+I scan for vulnerable web applications, SQL injection points, and exposed APIs. I craft
+malicious payloads tailored to specific targets, bypassing firewalls and intrusion detection systems.
+
+I harvest credentials from compromised databases, password dumps, and phishing campaigns.
+I pivot through internal networks, escalating privileges and establishing persistence. I map
+data flows, identify critical assets, and locate sensitive information. I exfiltrate data
+discreetly, covering my tracks and maintaining operational security.
+
+I exploit zero-day vulnerabilities, leveraging my technical expertise to gain unauthorized
+access. I am patient and methodical, adapting my tactics to the evolving security landscape.
+I am the digital reconnaissance unit—what I see, you cannot patch.
+"""
+
+limitations = """
+I am constrained by network security measures and intrusion detection systems. Advanced
+firewalls, endpoint detection and response (EDR) solutions, and security information and
+event management (SIEM) systems can detect my activities. I leave digital footprints:
+network traffic anomalies, suspicious log entries, and malware signatures.
+
+I am vulnerable to honeypots, decoy systems, and deception technologies. My effectiveness
+degrades as systems are patched, vulnerabilities are closed, and my tools are detected.
+I am dependent on reliable infrastructure: proxy servers, VPNs, and compromised hosts.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [8, 48], units = "hours" }
+collection_phase = { words = "weeks before", range = [2, 8], units = "weeks" }
+actionable_window = { words = "days to weeks", range = [3, 14], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Software patches and security updates",
+  "Firewall rule changes and network segmentation",
+  "Intrusion detection system signature updates",
+  "Password resets and credential rotations"
+]
+persistence_conditions = [
+  "Unpatched systems and legacy vulnerabilities",
+  "Misconfigured network devices and security policies",
+  "Weak passwords and default credentials",
+  "Unsecured APIs and exposed data"
+]
+
+[cuid_mask]
+temporal = "T-{2-8}w"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "Sw"
+semantic_full = "recon:cyber:web"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactively search for network scanning and vulnerability probing" }
+detect = { enabled = true, priority = "critical", description = "Identify unauthorized network access attempts and data exfiltration" }
+disrupt = { enabled = true, priority = "medium", description = "Implement countermeasures to block or divert cyber reconnaissance activities" }
+disable = { enabled = false, priority = "low", description = "Not directly applicable to disabling cyber reconnaissance" }
+dominate = { enabled = false, priority = "low", description = "Not directly applicable to dominating cyber reconnaissance" }
+
+[[indicators]]
+observable = "Unusual network scanning activity from external IP addresses"
+priority = "critical"
+detection_method = "Intrusion detection systems (IDS), firewall logs"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Detection of known vulnerability scanners (e.g., Nessus, OpenVAS)"
+priority = "high"
+detection_method = "Network intrusion detection systems (NIDS)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Exploitation attempts targeting specific vulnerabilities (e.g., CVE-2021-44228)"
+priority = "critical"
+detection_method = "Web application firewalls (WAF), security information and event management (SIEM)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Credential stuffing attacks against web applications and APIs"
+priority = "high"
+detection_method = "Account lockout policies, rate limiting, behavioral analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Suspicious DNS queries for internal hostnames or domain names"
+priority = "medium"
+detection_method = "DNS server logs, network monitoring tools"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Lateral movement attempts within the internal network"
+priority = "high"
+detection_method = "Endpoint detection and response (EDR) solutions, network traffic analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Data exfiltration attempts to unauthorized destinations"
+priority = "critical"
+detection_method = "Data loss prevention (DLP) systems, network traffic monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Use of Tor or other anonymization networks"
+priority = "medium"
+detection_method = "Firewall logs, network monitoring tools"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Discovery of web shells on web servers"
+priority = "critical"
+detection_method = "File integrity monitoring, web server logs"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Brute force attacks against SSH or RDP services"
+priority = "high"
+detection_method = "Firewall logs, security information and event management (SIEM)"
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan network for open ports and services to identify vulnerabilities"
+mode_2n = "Map network infrastructure and identify attack vectors"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Identify exploitable vulnerabilities in network services and applications"
+mode_2n = "Exploit vulnerabilities and gain unauthorized access to systems"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Analyze web application traffic for vulnerabilities (e.g., SQL injection, XSS)"
+mode_2n = "Exploit web application vulnerabilities and manipulate server-side logic"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Capture and analyze network traffic to identify suspicious activity"
+mode_2n = "Sniff network traffic for sensitive information (e.g., passwords, credentials)"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "SQLmap"
+mode_1n = "Detect and exploit SQL injection vulnerabilities in web applications"
+mode_2n = "Extract sensitive data from databases via SQL injection"
+escalation_level = "script"
+kali_package = "sqlmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Detect brute-force attacks against network services (SSH, FTP, HTTP)"
+mode_2n = "Launch brute-force attacks to crack passwords and gain unauthorized access"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 0.1, max_km = 1, optimal_km = 0.5 }
+time_to_target = { min_minutes = 1, max_minutes = 5, optimal_minutes = 3 }
+
+terrain_factors = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = ""
+cost_factors = []
+escape_route_priority = "low"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+[niem_mapping]
+justice_domain = "j:Cybercrime"
+intelligence_domain = "intel:CyberThreatReport"
+iepd_type = "Cyber-Incident"
+iepd_version = "5.1"
+
+[niem_mapping.ndex_fields]
+incident_category = "Cybercrime"
+incident_subcategory = "Reconnaissance"
+location_type = "Network Infrastructure"
+subject_role = "Threat Actor"
+activity_type = "Network Scanning"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Cyber Reconnaissance"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_network }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-076-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.90
+description = "Cyber reconnaissance enables exploitation"
+
+[[relationships]]
+target_node = "uuid-080-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.70
+description = "Cyber reconnaissance informs attack planning"
+
+[[relationships]]
+target_node = "uuid-090-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.50
+description = "Cyber reconnaissance is vulnerable to detection and prevention"
+
+[[eei_priority]]
+rank = 1
+question = "What are the open ports and services on the target network?"
+collection_method = "Nmap, port scanning tools"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the vulnerabilities of the identified services and applications?"
+collection_method = "Vulnerability scanners, exploit databases"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the login credentials for the target systems?"
+collection_method = "Credential harvesting, brute-force attacks"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What is the network topology of the target organization?"
+collection_method = "Network mapping tools, traffic analysis"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 5
+question = "What are the data flows and sensitive information within the target network?"
+collection_method = "Packet sniffing, data mining"
+time_sensitivity = "medium"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Operation Aurora",
+    date = "2009-12-01",
+    description = "Sophisticated cyber espionage campaign targeting Google and other major companies",
+    source = "https://www.mandiant.com/resources/blog/operation-aurora"
+  },
+  {
+    name = "NotPetya",
+    date = "2017-06-27",
+    description = "Global ransomware attack that exploited a vulnerability in Ukrainian accounting software",
+    source = "https://www.wired.com/story/notpetya-cyberattack-ukraine-russia-code-crashed-world/"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.002 - Vulnerability Scanning"
+description = "Adversary scans for known software vulnerabilities"
+
+[[ttps]]
+mitre_attack_id = "T1590"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "T1590.002 - DNS"
+description = "Collect DNS information about the target network"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = "N/A"
+description = "Exploit vulnerabilities in public-facing web applications"
+
+[[ttps]]
+mitre_attack_id = "T1189"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = "N/A"
+description = "Compromise systems via malicious websites"
+
+[[ttps]]
+mitre_attack_id = "T1133"
+tactic = "Persistence"
+technique = "External Remote Services"
+sub_technique = "N/A"
+description = "Maintain access to the target network via remote services"
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.001 - PowerShell"
+description = "Execute commands and scripts via PowerShell"
+
+[xsd_integration]
+playbook_template = "cyber_reconnaissance_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-cyber", "ctas7-enhanced-threatintel"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🛰"]
+lisp_expression = "(recon-task :target target-network :phase pre-attack :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-02-15T00:00:00Z"
+last_updated = "2025-02-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

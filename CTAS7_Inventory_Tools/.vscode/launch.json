@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "CTAS-7 Inventory Runner",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/tools/main.py",
+      "console": "integratedTerminal"
+    }
+  ]
+}

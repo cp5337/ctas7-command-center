@@ -1,0 +1,414 @@
+```toml
+[node_identity]
+task_id = "uuid-020-000-000-A"
+task_name = "Traffic Pattern Analysis"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "Wp859s3zKq9xR2b7"
+cuid = "T20250110G34N11ST"
+uuid = "V7f12a3b4c5d6e7f"
+hash_48 = "Wp859s3zKq9xR2b7T20250110G34N11STV7f12a3b4c5d6e7f"
+
+[capabilities]
+narrative = """
+I watch the ebb and flow. I count the trucks entering the loading docks, the
+cars parked in visitor lots. I observe shift changes and note patterns in
+employee commutes. I track delivery schedules and garbage pickup times.
+
+I pay attention to traffic signals, construction zones, and detours. I use
+publicly available traffic cameras and social media reports to identify
+accident hotspots and congestion points. I document the routes used by emergency
+vehicles: police, fire, ambulance.
+
+I analyze patterns in public transportation: bus routes, train schedules, taxi
+activity. I identify peak hours and slow periods. I look for anomalies: unexpected
+delays, unusual traffic volume, suspicious vehicles loitering nearby.
+
+I use open-source tools to analyze traffic data from sensors and GPS devices.
+I create heatmaps to visualize traffic density and flow. I note the times when
+security patrols are most and least active. My knowledge becomes their blind spot.
+"""
+
+limitations = """
+Traffic patterns are dynamic and unpredictable. Accidents, construction, and
+special events can disrupt established routines. My analysis is limited by the
+availability and accuracy of data. Publicly available traffic cameras and sensors
+may have limited coverage or resolution.
+
+My observations can be detected by counter-surveillance measures: decoy vehicles,
+randomized patrol routes, traffic management systems that detect and report
+anomalous behavior. My analysis becomes less reliable over time as traffic
+patterns change and security measures are updated.
+"""
+
+[time_of_value]
+half_life = { words = "weeks", range = [7, 14], units = "days" }
+collection_phase = { words = "weeks to months", range = [4, 12], units = "weeks" }
+actionable_window = { words = "days to weeks", range = [3, 21], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Road construction or closures",
+  "Changes in traffic signal timing",
+  "Special events or public gatherings",
+  "Changes in delivery schedules"
+]
+persistence_conditions = [
+  "Geographic layout of streets and intersections",
+  "Fixed transit routes and schedules",
+  "Established commuting patterns",
+  "Permanent infrastructure (bridges, tunnels)"
+]
+
+[cuid_mask]
+temporal = "T-{4-12}w"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "Tr"
+semantic_full = "recon:physical:traffic"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Search for anomalies in traffic patterns that may indicate pre-attack activity" }
+detect = { enabled = true, priority = "high", description = "Real-time monitoring of traffic patterns to identify suspicious deviations" }
+disrupt = { enabled = true, priority = "medium", description = "Implement traffic management strategies to disrupt adversary surveillance" }
+disable = { enabled = false, priority = "low", description = "Not directly applicable" }
+dominate = { enabled = false, priority = "low", description = "Not directly applicable" }
+
+[[indicators]]
+observable = "Unusual traffic congestion near target location"
+priority = "high"
+detection_method = "Traffic monitoring systems, Waze API, Google Maps API"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Repeated vehicle passes during off-peak hours"
+priority = "medium"
+detection_method = "License plate readers, traffic cameras, security patrols"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of less-traveled roads and alleys for access"
+priority = "high"
+detection_method = "GPS tracking data, law enforcement reports, citizen reports"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Anomalous dwell times at critical intersections"
+priority = "medium"
+detection_method = "Traffic camera analysis, GPS tracking data"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Sudden changes in traffic patterns following security incidents"
+priority = "high"
+detection_method = "Traffic monitoring systems, news reports"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Correlation of traffic patterns with personnel schedules"
+priority = "medium"
+detection_method = "Data analytics, security intelligence"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Suspicious vehicles parked near critical infrastructure"
+priority = "high"
+detection_method = "Security patrols, parking enforcement"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of navigation apps to avoid specific locations"
+priority = "medium"
+detection_method = "Analysis of app usage data (with warrants)"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Unexplained increases in taxi or ride-sharing activity"
+priority = "low"
+detection_method = "Taxi and ride-sharing company data analysis"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Consistent use of public transport during irregular hours"
+priority = "medium"
+detection_method = "Public transportation surveillance, schedule analysis"
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "OSMnx"
+mode_1n = "Analyze road networks to identify potential vulnerabilities and chokepoints"
+mode_2n = "Identify optimal approach and escape routes based on traffic and infrastructure"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "pgRouting"
+mode_1n = "Optimize emergency vehicle routes and response times based on real-time traffic data"
+mode_2n = "Plan routes that minimize exposure and maximize speed to target"
+escalation_level = "crate"
+kali_package = "postgresql-pgrouting"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "SUMO (Simulation of Urban Mobility)"
+mode_1n = "Simulate traffic flow to identify bottlenecks and predict congestion"
+mode_2n = "Model traffic patterns to plan attacks that exploit vulnerabilities in the transportation network"
+escalation_level = "microkernel"
+kali_package = "sumo"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Google Maps API"
+mode_1n = "Monitor real-time traffic conditions and identify potential disruptions"
+mode_2n = "Plan routes based on current traffic, construction, and road closures"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Waze API"
+mode_1n = "Monitor traffic incidents and road closures reported by users"
+mode_2n = "Leverage real-time traffic data to avoid detection and maximize efficiency"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for anomalies and potential security threats"
+mode_2n = "Monitor communications of traffic management systems to identify vulnerabilities"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater",
+  "NOAA/GFS0P25",
+  "NASA/GPM_L3/IMERG_V06"
+]
+
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+terrain_factors = ["urban_density", "elevation", "vegetation_cover", "road_network"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed"]
+operational_threshold = { visibility_km = 1.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Limited visibility impairs visual surveillance, impacts escape routes"
+impact_on_comms = "Increased precipitation may affect wireless signal strength and range"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [0, 6, 22] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 3000
+signal_strength_threshold_dbm = -80
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 500
+impact_assessment = "Close proximity to critical infrastructure increases risk and complexity of operations."
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Suspicious Activity"
+incident_subcategory = "Traffic Pattern Analysis"
+location_type = "Transportation Infrastructure"
+subject_role = "Suspect"
+activity_type = "Pre-Operational Surveillance"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Traffic Pattern Analysis"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 2332a (WMD), 18 USC 844 (Explosives)"
+
+[[relationships]]
+target_node = "uuid-011-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.85
+description = "Traffic pattern analysis informs route planning and logistics"
+
+[[relationships]]
+target_node = "uuid-021-000-000-A"
+relationship_type = "supports"
+unicode_op = "→"
+strength = 0.70
+description = "Traffic pattern analysis supports timing of operations"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.50
+description = "Traffic pattern analysis can be detected by counter-surveillance"
+
+[[eei_priority]]
+rank = 1
+question = "What are the peak traffic hours and congestion points?"
+collection_method = "Traffic analysis, real-time traffic data"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the typical routes used by emergency vehicles?"
+collection_method = "Observation, emergency response data"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the security patrol routes and schedules?"
+collection_method = "Observation, insider information"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What alternative routes exist in case of road closures?"
+collection_method = "Mapping, traffic analysis"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the locations of traffic cameras and sensors?"
+collection_method = "Physical observation, open-source intelligence"
+time_sensitivity = "low"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Madrid Train Bombings",
+    date = "2004-03-11",
+    description = "Analysis of train schedules and commuting patterns to select target locations.",
+    source = "https://en.wikipedia.org/wiki/2004_Madrid_train_bombings"
+  },
+  {
+    name = "London 7/7 Bombings",
+    date = "2005-07-07",
+    description = "Targeting of London Underground during rush hour based on commuting patterns.",
+    source = "https://en.wikipedia.org/wiki/7_July_2005_London_bombings"
+  },
+  {
+    name = "Nice Truck Attack",
+    date = "2016-07-14",
+    description = "Use of a truck during a Bastille Day celebration to exploit traffic congestion.",
+    source = "https://en.wikipedia.org/wiki/2016_Nice_attack"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.004 - Route Discovery"
+description = "Map network routes to identify vulnerabilities."
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.004 - Social Media"
+description = "Collect employee information from social media platforms."
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.001 - Spearphishing Attachment"
+description = "Send targeted phishing emails to gather traffic analysis information."
+
+[[ttps]]
+mitre_attack_id = "T1591"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "T1591.002 - DNS"
+description = "Collect DNS information to map network infrastructure."
+
+[[ttps]]
+mitre_attack_id = "T1590"
+tactic = "Reconnaissance"
+technique = "Gather Victim Host Information"
+sub_technique = "T1590.007 - Hardware"
+description = "Gather information on hardware assets for attack planning"
+
+[[xsd_integration]]
+playbook_template = "traffic_analysis_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-geolocation"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🛰"]
+lisp_expression = "(traffic-analysis :target target-id :phase pre-operational :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Bard"
+created_at = "2025-01-10T00:00:00Z"
+last_updated = "2025-01-10T00:00:00Z"
+reviewed_by = "AI Assistant"
+status = "active"
+```

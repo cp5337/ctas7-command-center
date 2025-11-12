@@ -1,6 +1,7 @@
 # CTAS 6.6 FRONTEND ADAPTER CONFIGURATION
 
 # Configuration to connect any 6.6 frontend to the canonical backend
+
 # PRIMARY WORLD: CTAS (Convergent Threat Analysis System) - "main ops"
 
 ## Backend Service Endpoints (DO NOT CHANGE)

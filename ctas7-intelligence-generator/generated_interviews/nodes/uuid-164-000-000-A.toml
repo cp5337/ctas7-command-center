@@ -1,0 +1,390 @@
+```toml
+[node_identity]
+task_id = "uuid-164-000-000-A"
+task_name = "Task 164 - Phase 5"
+classification = "unclassified"
+ttl_category = "optional"
+
+sch = "Y1BwG7jL9xQ3rK8s"
+cuid = "T20250315G34S15SCU810e6"
+uuid = "V9f1a2d3c4b5e6a7"
+hash_48 = "Y1BwG7jL9xQ3rK8sT20250315G34S15SCU810e6V9f1a2d3c4b5e6a7"
+
+[capabilities]
+narrative = """
+I am the architect of chaos, the sculptor of destruction. My canvas is the target's digital and physical landscape. I observe the flow of information, the movement of people, the rhythm of the facility. I probe for weaknesses, seeking seams in the armor.
+
+I manipulate system clocks to observe the effects on time-based access control. I introduce controlled errors into databases to observe error-handling procedures. I initiate network floods to assess resilience. I analyze the recovery process to identify single points of failure. I examine logs for any anomaly.
+
+I seek to understand their assumptions and their defenses. I am not content with surface observations; I strive to comprehend the underlying mechanics of the system. I am the instigator, the catalyst, the author of the impending storm. I reveal your cracks to myself, so that when the time is ripe, i can tear you down.
+"""
+
+limitations = """
+My experiments leave traces, timestamps, and anomalies that can be detected by diligent defenders. The more invasive my probes, the greater the risk of exposure. My analysis is time-sensitive; a system upgrade can invalidate weeks of meticulous study. I am limited by my access and my knowledge of the system's internal workings. Furthermore, I am restrained by the inherent risks involved in tampering with critical infrastructure. If I cause an unexpected system failure, I could alert the target to my presence.
+
+I rely on accurate data, and misleading or corrupted information can derail my analysis. The target might anticipate my probes and introduce decoys or false vulnerabilities. My time is limited.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months before", range = [3, 9], units = "months" }
+actionable_window = { words = "weeks to months", range = [4, 26], units = "weeks" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "System upgrades or patches",
+  "Network configuration changes",
+  "Database schema modifications",
+  "Security policy updates"
+]
+persistence_conditions = [
+  "Core system architecture",
+  "Fundamental security protocols",
+  "Underlying software vulnerabilities",
+  "Hardware limitations"
+]
+
+[cuid_mask]
+temporal = "T-{90-270}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+semantic = "SC"
+semantic_full = "recon:cyber:system_characterization"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Search for patterns of system characterization activity" }
+detect = { enabled = true, priority = "high", description = "Detect anomalies indicative of active system characterization" }
+disrupt = { enabled = true, priority = "medium", description = "Implement countermeasures to disrupt system characterization" }
+disable = { enabled = false, priority = "low", description = "Not applicable" }
+dominate = { enabled = false, priority = "low", description = "Not applicable" }
+
+[[indicators]]
+observable = "System clock manipulation"
+priority = "high"
+detection_method = "SIEM alerts, time synchronization monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Controlled error injection"
+priority = "medium"
+detection_method = "Database anomaly detection, error log analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Network flood attempts"
+priority = "high"
+detection_method = "IDS/IPS alerts, traffic analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Log file analysis"
+priority = "medium"
+detection_method = "SIEM alerts, log aggregation"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Protocol fuzzing"
+priority = "high"
+detection_method = "IDS/IPS alerts, network traffic analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Port scanning and service enumeration"
+priority = "high"
+detection_method = "IDS/IPS alerts, firewall logs"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Banner grabbing"
+priority = "medium"
+detection_method = "Network traffic analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Vulnerability scanning"
+priority = "critical"
+detection_method = "Vulnerability management system alerts"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Brute force login attempts"
+priority = "high"
+detection_method = "Account lockout monitoring, SIEM alerts"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Code injection attempts"
+priority = "critical"
+detection_method = "WAF alerts, application security monitoring"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Network discovery and service enumeration"
+mode_2n = "System fingerprinting, vulnerability scanning"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Vulnerability assessment and penetration testing"
+mode_2n = "Exploitation, payload delivery"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Web application security testing"
+mode_2n = "Intercepting and manipulating web traffic"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Network traffic analysis and protocol dissection"
+mode_2n = "Packet capture and analysis for vulnerabilities"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Brute-force login attempts"
+mode_2n = "Credential harvesting"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "SQLmap"
+mode_1n = "SQL injection vulnerability assessment"
+mode_2n = "Database compromise"
+escalation_level = "script"
+kali_package = "sqlmap"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+terrain_factors = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "N/A"
+cost_factors = []
+escape_route_priority = "N/A"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+[niem_mapping]
+justice_domain = "j:CyberCrime"
+intelligence_domain = "intel:CyberThreatReport"
+iepd_type = "Cyber-Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Cyber Attack"
+incident_subcategory = "System Reconnaissance"
+location_type = "Network Infrastructure"
+subject_role = "Threat Actor"
+activity_type = "System Characterization"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "System Characterization"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_network }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-165-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.9
+description = "Informs vulnerability exploitation"
+
+[[relationships]]
+target_node = "uuid-166-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.8
+description = "Feeds data exfiltration"
+
+[[relationships]]
+target_node = "uuid-167-000-000-A"
+relationship_type = "mitigates"
+unicode_op = "🛡"
+strength = 0.5
+description = "Reduces exposure to detection"
+
+[[eei_priority]]
+rank = 1
+question = "What are the operating systems and versions in use?"
+collection_method = "Nmap, banner grabbing"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 2
+question = "What applications and services are running on the network?"
+collection_method = "Service enumeration, port scanning"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 3
+question = "What are the known vulnerabilities of the target system?"
+collection_method = "Vulnerability scanning, Metasploit"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What are the network topology and firewall configurations?"
+collection_method = "Traceroute, Nmap"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 5
+question = "What are the security policies and procedures in place?"
+collection_method = "Social engineering, OSINT"
+time_sensitivity = "low"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Target Data Breach",
+    date = "2013-12-01",
+    description = "Adversaries performed extensive system characterization",
+    source = "https://en.wikipedia.org/wiki/Target_data_breach"
+  },
+  {
+    name = "Equifax Data Breach",
+    date = "2017-05-13",
+    description = "Vulnerability scanning and system characterization",
+    source = "https://en.wikipedia.org/wiki/Equifax_data_breach"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1068"
+tactic = "Privilege Escalation"
+technique = "Exploitation for Privilege Escalation"
+sub_technique = ""
+description = "Exploit system vulnerabilities to gain elevated permissions."
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.002 - Vulnerability Scanning"
+description = "Use vulnerability scanning tools to identify weaknesses."
+
+[[ttps]]
+mitre_attack_id = "T1016"
+tactic = "Discovery"
+technique = "System Network Configuration Discovery"
+sub_technique = ""
+description = "Discover network configuration information."
+
+[[ttps]]
+mitre_attack_id = "T1082"
+tactic = "Discovery"
+technique = "System Information Discovery"
+sub_technique = ""
+description = "Gather detailed information about the system."
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.001 - PowerShell"
+description = "Execute commands through PowerShell to gather information."
+
+[[ttps]]
+mitre_attack_id = "T1046"
+tactic = "Discovery"
+technique = "Network Service Scanning"
+sub_technique = ""
+description = "Scan the network to identify running services."
+
+[xsd_integration]
+playbook_template = "system_characterization_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-cyber", "ctas7-enhanced-network"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🛰"]
+lisp_expression = "(system-characterization-task :target target-system :phase pre-attack :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-03-15T00:00:00Z"
+last_updated = "2025-03-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

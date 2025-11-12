@@ -1,0 +1,379 @@
+```toml
+[node_identity]
+task_id = "uuid-045-000-000-A"
+task_name = "Task 45 - Phase 2"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "j9W4sL7pY2X0b5q8"
+cuid = "T20250215G12N34SAm67bc89de01"
+uuid = "V7f1a2b3c4d5e67890123456789abcde"
+hash_48 = "j9W4sL7pY2X0b5q8T20250215G12N34SAm67bc89de01V7f1a2b3c4d5e67890123456789abcde"
+
+[capabilities]
+narrative = """
+I am the whisper in the wind, the shadow in the alley. My work builds on initial reconnaissance, diving deeper into specific vulnerabilities. I now focus on bypassing initial security measures. I observe security personnel, identifying weaknesses in their routines and habits. I will watch them on breaks, note where they dispose of sensitive documents, observe their interactions with each other and with visitors.
+
+I probe physical access control systems, searching for vulnerabilities in keycard systems, biometrics, and turnstiles. I look for open ports, unlocked doors, and unattended workstations. I'll test the pressure sensitivity of floor sensors. I analyze security footage, searching for patterns and anomalies. I document blind spots and areas where security coverage is inadequate.
+
+I examine delivery routes in detail, focusing on timing and procedures. I note the presence of cameras and other surveillance devices. I am meticulous and relentless, driven to exploit every weakness. I am the key that unlocks the door to opportunity.
+"""
+
+limitations = """
+My activities risk detection. Increased surveillance can expose my operation, as can any intrusion into security systems. I am limited by my technical capabilities. I can be foiled by sophisticated security systems and well-trained personnel. I am vulnerable to active countermeasures, such as sting operations or decoy vulnerabilities. My reconnaissance can raise suspicion even if I don't trigger alarms. My usefulness decays rapidly if security is significantly upgraded.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 48], units = "hours" }
+collection_phase = { words = "weeks before", range = [2, 8], units = "weeks" }
+actionable_window = { words = "days to weeks", range = [3, 14], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Security system upgrades or patches",
+  "Changes in security personnel or procedures",
+  "Increased security awareness or training",
+  "Implementation of active countermeasures",
+  "Discovery of my presence by security"
+]
+persistence_conditions = [
+  "Underlying vulnerabilities in physical infrastructure",
+  "Habitual weaknesses in security personnel behavior",
+  "Design flaws in security systems",
+  "Lack of resources for comprehensive security"
+]
+
+[cuid_mask]
+temporal = "T-{2-8}w"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "Sa"
+semantic_full = "recon:physical:access"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Actively hunt for patterns of advanced reconnaissance" }
+detect = { enabled = true, priority = "critical", description = "Identify active probing of security systems" }
+disrupt = { enabled = true, priority = "medium", description = "Disrupt probing by counter-surveillance and deception" }
+disable = { enabled = false, priority = "low", description = "Not directly applicable to this phase" }
+dominate = { enabled = false, priority = "low", description = "Not directly applicable to this phase" }
+
+[[indicators]]
+observable = "Anomalous keycard access attempts outside normal hours"
+priority = "critical"
+detection_method = "Access control system logs, SIEM alerts"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Repeated probing of physical access control systems"
+priority = "high"
+detection_method = "Security system logs, intrusion detection systems"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Detailed observation of security personnel on breaks"
+priority = "high"
+detection_method = "Surveillance camera review, security guard reports"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unauthorized scanning of RFID or NFC systems"
+priority = "critical"
+detection_method = "RF monitoring, intrusion detection systems"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Analysis of security footage for vulnerabilities"
+priority = "medium"
+detection_method = "AI-powered video analytics"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Detailed mapping of internal facility layouts"
+priority = "high"
+detection_method = "Document control audits, insider threat detection"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Collection of discarded security documents"
+priority = "high"
+detection_method = "Trash audits, document shredding protocols"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unusual interest in delivery schedules and routes"
+priority = "medium"
+detection_method = "Logistics monitoring, security personnel awareness"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Compromised vendor credentials being used for access"
+priority = "critical"
+detection_method = "Vendor access monitoring, anomaly detection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Tailgating or piggybacking on legitimate access"
+priority = "high"
+detection_method = "Security camera review, access control alerts"
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "RFID Audit Tools (e.g., Proxmark3)"
+mode_1n = "Audit RFID security to identify vulnerabilities and cloning risks"
+mode_2n = "Clone RFID badges for unauthorized physical access"
+escalation_level = "microkernel"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "NFC Tools"
+mode_1n = "Identify and document potential NFC vulnerabilities in access systems"
+mode_2n = "Attempt to exploit NFC vulnerabilities for unauthorized access"
+escalation_level = "script"
+kali_package = "nfc-tools"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Security Camera Exploitation Tools (e.g., FFMPEG, Shodan)"
+mode_1n = "Analyze publicly accessible camera feeds for weaknesses"
+mode_2n = "Remotely access security cameras via default passwords or vulnerabilities"
+escalation_level = "script"
+kali_package = "ffmpeg"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Red Team Tools: Responder, Impacket"
+mode_1n = "Detect and respond to lateral movement attempts"
+mode_2n = "Capture credentials and move laterally through the network"
+escalation_level = "crate"
+kali_package = "responder"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Test and patch vulnerabilities discovered in internal systems"
+mode_2n = "Exploit vulnerabilities to gain unauthorized access"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Hydra/Medusa"
+mode_1n = "Identify weak credentials by brute-forcing network services"
+mode_2n = "Brute-force security system login pages, SSH, etc."
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater",
+]
+
+distance_range = { min_km = 0.1, max_km = 2, optimal_km = 0.5 }
+time_to_target = { min_minutes = 5, max_minutes = 30, optimal_minutes = 15 }
+
+terrain_factors = ["building_density", "line_of_sight", "indoor_navigation"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "humidity", "temperature"]
+operational_threshold = { visibility_km = 1.0, humidity_percent = 80.0 }
+impact_on_surveillance = "High humidity can affect surveillance camera performance"
+impact_on_comms = "May affect WiFi range"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "accessibility_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [8, 10, 17, 19], off_peak_hours = [1, 5] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -80
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["data_center", "network_switch", "security_console"]
+proximity_threshold_m = 100
+impact_assessment = "Compromising network switch gives total access to the internal system."
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Suspicious Activity"
+incident_subcategory = "Access Attempt"
+location_type = "Secured Area"
+subject_role = "Intruder"
+activity_type = "Access Violation"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "UnauthorizedAccess"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-046-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.90
+description = "Enhanced access reconnaissance enables active penetration"
+
+[[relationships]]
+target_node = "uuid-012-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.80
+description = "Informs vulnerability assessment phase"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.70
+description = "Vulnerable to sophisticated counter-surveillance and active defense"
+
+[[eei_priority]]
+rank = 1
+question = "What are the keycard system vulnerabilities?"
+collection_method = "RFID audits, penetration testing, system documentation"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the weak points in security guard routines?"
+collection_method = "Physical observation, social engineering, insider information"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "Can I bypass the biometric system?"
+collection_method = "Biometric spoofing, vulnerability exploitation"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 4
+question = "How easily can I spoof my location via WiFi?"
+collection_method = "Wifi hacking, network analysis, geolocation mapping"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What default passwords are in use?"
+collection_method = "Brute force, default password lists, OSINT"
+time_sensitivity = "medium"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Exploit vulnerabilities in public-facing applications"
+
+[[ttps]]
+mitre_attack_id = "T1199"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = ""
+description = "Compromise a system through a drive-by download"
+
+[[ttps]]
+mitre_attack_id = "T1189"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = ""
+description = "Compromise a system through a drive-by download"
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Credential Access"
+technique = "Valid Accounts"
+sub_technique = "T1078.001 - Default Accounts"
+description = "Use default accounts for access"
+
+[[ttps]]
+mitre_attack_id = "T1110"
+tactic = "Credential Access"
+technique = "Brute Force"
+sub_technique = ""
+description = "Brute force credentials"
+
+[[ttps]]
+mitre_attack_id = "T1550"
+tactic = "Lateral Movement"
+technique = "Use Alternate Authentication Material"
+sub_technique = ""
+description = "Abuse valid credentials to login to another server."
+
+[xsd_integration]
+playbook_template = "access_probing_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-enhanced-penetration", "ctas7-active-defense"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🛰"]
+lisp_expression = "(access-probe :target target-id :phase pre-attack :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-02-15T00:00:00Z"
+last_updated = "2025-02-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

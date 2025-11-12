@@ -1,0 +1,420 @@
+```toml
+[node_identity]
+task_id = "uuid-013-000-000-A"
+task_name = "Technical Surveillance"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "P2x9qL3sY6Zt8V1w"
+cuid = "T20241115G34N11SrU6d52f98b7a2c1e3"
+uuid = "V9a1b82c3d4e5f67"
+hash_48 = "P2x9qL3sY6Zt8V1wT20241115G34N11SrU6d52f98b7a2c1e3V9a1b82c3d4e5f67"
+
+[capabilities]
+narrative = """
+I am the digital shadow, the silent observer lurking in the network's periphery.
+I employ sophisticated packet capture techniques to analyze network traffic patterns,
+identifying sensitive data flows and potential vulnerabilities. I exploit weak encryption
+protocols and misconfigured systems to gain unauthorized access to confidential information.
+
+I deploy keyloggers and screen recording software on targeted endpoints, capturing user
+credentials and sensitive actions. I utilize man-in-the-middle attacks to intercept
+communications and steal authentication tokens. I leverage vulnerabilities in IoT devices
+to establish persistent backdoors into the target network.
+
+I monitor employee email communications for sensitive keywords and data leaks. I employ
+advanced data mining techniques to extract valuable intelligence from publicly available
+sources, such as social media and online forums. My goal is to obtain a comprehensive
+understanding of the target's digital infrastructure and security posture, enabling
+subsequent exploitation activities.
+"""
+
+limitations = """
+My activities are constrained by technological limitations and network security measures.
+Strong encryption protocols, robust intrusion detection systems, and vigilant security
+personnel can significantly impede my progress. I am vulnerable to detection through
+advanced network monitoring and anomaly detection techniques.
+
+My tools and techniques are constantly evolving, but I am always at risk of being
+detected and neutralized. My effectiveness is dependent on the availability of
+vulnerable systems and the presence of weak security practices. My operations require
+significant technical expertise and access to sophisticated tools, which can be costly
+and difficult to acquire.
+"""
+
+[time_of_value]
+half_life = { words = "days", range = [1, 7], units = "days" }
+collection_phase = { words = "weeks to months before", range = [4, 12], units = "weeks" }
+actionable_window = { words = "days to weeks", range = [3, 14], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Patching of vulnerabilities",
+  "Implementation of stronger encryption",
+  "Changes in network configuration",
+  "Deployment of intrusion detection systems"
+]
+persistence_conditions = [
+  "Underlying network infrastructure",
+  "Legacy systems with known vulnerabilities",
+  "Weak security practices",
+  "Employee negligence"
+]
+
+[cuid_mask]
+temporal = "T-{28-84}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+semantic = "Sr"
+semantic_full = "recon:cyber:technical_surveillance"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactively search for indicators of compromise related to technical surveillance" }
+detect = { enabled = true, priority = "critical", description = "Identify and respond to ongoing technical surveillance activities in real-time" }
+disrupt = { enabled = true, priority = "medium", description = "Implement countermeasures to disrupt technical surveillance activities" }
+disable = { enabled = true, priority = "medium", description = "Disable compromised systems and prevent further technical surveillance" }
+dominate = { enabled = false, priority = "low", description = "N/A" }
+
+[[indicators]]
+observable = "Unusual network traffic patterns, such as large data transfers or connections to suspicious IPs"
+priority = "high"
+detection_method = "Network intrusion detection systems (NIDS), traffic analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Detection of keylogger or screen recording software on endpoints"
+priority = "critical"
+detection_method = "Endpoint detection and response (EDR), anti-malware solutions"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Compromised IoT devices exhibiting unusual behavior"
+priority = "high"
+detection_method = "Network monitoring, vulnerability scanning"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Man-in-the-middle attacks detected on network"
+priority = "critical"
+detection_method = "Network security monitoring, SSL/TLS inspection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Employee credentials found on dark web forums or leaked databases"
+priority = "high"
+detection_method = "Dark web monitoring, threat intelligence feeds"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unauthorized access to sensitive data or systems"
+priority = "critical"
+detection_method = "Access control logs, security information and event management (SIEM)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Detection of phishing emails or malicious attachments targeting employees"
+priority = "high"
+detection_method = "Email security gateways, anti-phishing solutions"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unusual DNS requests or domain name resolutions"
+priority = "medium"
+detection_method = "DNS monitoring, threat intelligence feeds"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Lateral movement detected within the network"
+priority = "high"
+detection_method = "Network segmentation, microsegmentation, EDR"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Changes to system configurations or registry settings"
+priority = "medium"
+detection_method = "Host-based intrusion detection systems (HIDS), configuration management"
+false_positive_rate = "high"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for suspicious activity"
+mode_2n = "Capture and analyze network traffic to identify vulnerabilities"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "tcpdump"
+mode_1n = "Capture network traffic for analysis and incident response"
+mode_2n = "Capture network traffic to identify sensitive data flows"
+escalation_level = "script"
+kali_package = "tcpdump"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Penetration testing to identify vulnerabilities"
+mode_2n = "Exploit vulnerabilities and gain unauthorized access"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan network for open ports and services"
+mode_2n = "Identify vulnerable services and misconfigured systems"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Test web applications for vulnerabilities"
+mode_2n = "Intercept and modify web traffic to exploit vulnerabilities"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Audit wireless network security"
+mode_2n = "Crack WEP/WPA keys and gain unauthorized access"
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = ""
+cost_factors = []
+escape_route_priority = ""
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = ""
+
+[niem_mapping]
+justice_domain = "j:Cybercrime"
+intelligence_domain = "intel:CyberThreatReport"
+iepd_type = "Cyber-Incident-Exchange"
+iepd_version = "4.1"
+
+[niem_mapping.ndex_fields]
+incident_category = "Computer Intrusion"
+incident_subcategory = "Unauthorized Access"
+location_type = "Network Infrastructure"
+subject_role = "Hacker"
+activity_type = "Technical Surveillance"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Network Intrusion"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_network }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-014-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.90
+description = "Technical surveillance enables network mapping and vulnerability assessment"
+
+[[relationships]]
+target_node = "uuid-020-000-000-A"
+relationship_type = "supports"
+unicode_op = "⇢"
+strength = 0.80
+description = "Technical surveillance supports data exfiltration and espionage"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.70
+description = "Technical surveillance is vulnerable to intrusion detection and prevention systems"
+
+[[eei_priority]]
+rank = 1
+question = "What are the critical network infrastructure components and their configurations?"
+collection_method = "Network scanning, traffic analysis, configuration audits"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the known vulnerabilities in the target systems and applications?"
+collection_method = "Vulnerability scanning, penetration testing, threat intelligence feeds"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the security policies and procedures in place to protect the network?"
+collection_method = "Social engineering, document review, network monitoring"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the user access controls and authentication mechanisms in use?"
+collection_method = "Credential harvesting, password cracking, privilege escalation"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the data flows and communication patterns within the network?"
+collection_method = "Network traffic analysis, packet capture, protocol analysis"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 6
+question = "What IoT devices are connected to the network and what vulnerabilities do they possess?"
+collection_method = "Network enumeration, device fingerprinting, vulnerability scanning"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 7
+question = "What are the intrusion detection and prevention systems in place and how are they configured?"
+collection_method = "Network reconnaissance, traffic analysis, vulnerability exploitation"
+time_sensitivity = "medium"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "APT1 (Mandiant Report)",
+    date = "2013-02-18",
+    description = "Extensive technical surveillance using custom malware and network monitoring tools",
+    source = "https://www.mandiant.com/resources/apt1-exposing-one-of-chinas-cyber-espionage-units"
+  },
+  {
+    name = "Stuxnet",
+    date = "2010-06-01",
+    description = "Sophisticated technical surveillance using zero-day exploits and targeted malware",
+    source = "https://en.wikipedia.org/wiki/Stuxnet"
+  },
+  {
+    name = "Equation Group",
+    date = "2015-02-16",
+    description = "Advanced persistent threat group known for its sophisticated technical surveillance capabilities",
+    source = "https://securelist.com/equation-the-death-star-of-the-internet-epidemiology/68750/"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1068"
+tactic = "Privilege Escalation"
+technique = "Exploitation for Privilege Escalation"
+sub_technique = ""
+description = "Exploit a vulnerability to gain higher-level permissions."
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.001 - PowerShell"
+description = "Use PowerShell to execute commands."
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - Web Protocols"
+description = "Use web protocols (HTTP/HTTPS) for command and control."
+
+[[ttps]]
+mitre_attack_id = "T1555"
+tactic = "Credential Access"
+technique = "Credentials from Password Stores"
+sub_technique = "T1555.003 - Web Browser Password Store"
+description = "Steal credentials stored in web browsers."
+
+[[ttps]]
+mitre_attack_id = "T1005"
+tactic = "Collection"
+technique = "Data from Local System"
+sub_technique = ""
+description = "Collect data from local systems."
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "T1566.001 - Spearphishing Attachment"
+description = "Send spearphishing emails with malicious attachments."
+
+[xsd_integration]
+playbook_template = "technical_surveillance_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-cyber", "ctas7-enhanced-network-monitoring"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🛰"]
+lisp_expression = "(surveillance-task :target target-network :phase reconnaissance :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2024-11-15T00:00:00Z"
+last_updated = "2024-11-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

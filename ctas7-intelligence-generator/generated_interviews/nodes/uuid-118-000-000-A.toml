@@ -1,0 +1,415 @@
+```toml
+[node_identity]
+task_id = "uuid-118-000-000-A"
+task_name = "Task 118 - Phase 3"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "72ZmY3bL9aK2wN7j"
+cuid = "T20250109G40N74SU5e8400e"
+uuid = "29b41d4aU5e8400e"
+hash_48 = "72ZmY3bL9aK2wN7jT20250109G40N74SU5e8400e29b41d4a"
+
+[capabilities]
+narrative = """
+I specialize in manipulating human trust and exploiting vulnerabilities within their digital ecosystems.
+I craft highly personalized phishing emails, leveraging leaked credentials and social media intelligence to trick employees into divulging sensitive information.
+I target C-suite executives and system administrators with sophisticated spearphishing campaigns designed to bypass standard security protocols.
+
+I deploy rogue wireless access points to intercept network traffic and harvest credentials.
+I compromise vulnerable web applications to gain foothold within the network.
+I leverage social engineering to gain physical access to restricted areas, planting malicious devices and escalating privileges.
+I exfiltrate data through covert channels, masking my activities within legitimate network traffic.
+
+I am a master of deception, blending seamlessly into the digital landscape to achieve my objectives.
+My persistence is unwavering, and I adapt my tactics to overcome any obstacle.
+I thrive on the chaos I create, leaving a trail of compromised systems and shattered trust.
+"""
+
+limitations = """
+My reliance on human error makes me susceptible to well-trained and vigilant employees.
+Strong multi-factor authentication and robust security protocols can thwart my attempts to gain unauthorized access.
+My digital footprint, though carefully masked, can be traced through advanced network monitoring and anomaly detection.
+I am vulnerable to proactive threat hunting and incident response teams that can identify and contain my activities.
+
+My physical infiltration attempts are hindered by stringent access controls and security personnel.
+Sophisticated endpoint detection and response (EDR) systems can identify and block my malicious tools.
+My effectiveness degrades as security awareness increases and defenses are strengthened.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 48], units = "hours" }
+collection_phase = { words = "days to weeks", range = [7, 21], units = "days" }
+actionable_window = { words = "days to weeks", range = [7, 28], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Password resets and credential changes",
+  "Patching of vulnerable web applications",
+  "Implementation of stronger authentication protocols",
+  "Increased security awareness training"
+]
+persistence_conditions = [
+  "Unpatched vulnerabilities in legacy systems",
+  "Poorly configured network devices",
+  "Weak employee security habits",
+  "Compromised credentials"
+]
+
+[cuid_mask]
+temporal = "T-{7-21}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "Se"
+semantic_full = "recon:digital:social_engineering"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactive search for social engineering campaigns targeting employees" }
+detect = { enabled = true, priority = "critical", description = "Identify phishing emails and unauthorized access attempts in real-time" }
+disrupt = { enabled = true, priority = "medium", description = "Disable compromised accounts and block malicious traffic" }
+disable = { enabled = false, priority = "low", description = "N/A" }
+dominate = { enabled = false, priority = "low", description = "N/A" }
+
+[[indicators]]
+observable = "Phishing emails with personalized content targeting high-value employees"
+priority = "critical"
+detection_method = "Email gateway analysis, employee reporting"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Use of leaked credentials to access sensitive systems"
+priority = "critical"
+detection_method = "SIEM alerts, account lockout events"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Deployment of rogue wireless access points near target facility"
+priority = "high"
+detection_method = "RF monitoring, network intrusion detection systems"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Exploitation of vulnerable web applications to gain unauthorized access"
+priority = "critical"
+detection_method = "Web application firewalls, vulnerability scanning"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Social engineering attempts to gain physical access to restricted areas"
+priority = "high"
+detection_method = "Security personnel observation, access control logs"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Covert data exfiltration through legitimate network traffic"
+priority = "high"
+detection_method = "Network traffic analysis, data loss prevention systems"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unusual login patterns or times for privileged accounts."
+priority = "high"
+detection_method = "SIEM, UEBA"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Installation of unauthorized software on company devices."
+priority = "medium"
+detection_method = "Endpoint detection and response (EDR)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Attempts to bypass multi-factor authentication."
+priority = "critical"
+detection_method = "Authentication logs, anomaly detection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unusual network scanning activity originating from internal hosts."
+priority = "high"
+detection_method = "Network intrusion detection system (NIDS)"
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Simulate phishing attacks to assess employee vulnerability"
+mode_2n = "Execute phishing campaigns and exploit compromised systems"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Social-Engineer Toolkit (SET)"
+mode_1n = "Develop and deploy security awareness training modules"
+mode_2n = "Craft and deploy sophisticated phishing attacks"
+escalation_level = "crate"
+kali_package = "set"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for suspicious activity"
+mode_2n = "Capture and analyze network traffic to steal credentials"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Audit wireless network security"
+mode_2n = "Compromise wireless networks"
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Scan web applications for vulnerabilities"
+mode_2n = "Exploit web application vulnerabilities"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Test password strength"
+mode_2n = "Brute-force credentials"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+[geospatial.weather]
+critical_factors = ["temperature", "precipitation", "wind_speed"]
+operational_threshold = {}
+impact_on_surveillance = "Minimal impact"
+impact_on_comms = "May affect satellite communications"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "N/A"
+cost_factors = []
+escape_route_priority = "N/A"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 10000
+signal_strength_threshold_dbm = -80
+imsi_tracking = true
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600"]
+
+[geospatial.infrastructure]
+critical_assets = ["telecom_hub", "data_center"]
+proximity_threshold_m = 1000
+impact_assessment = "Compromise of critical infrastructure amplifies impact"
+
+[niem_mapping]
+justice_domain = "j:Cybercrime"
+intelligence_domain = "intel:CyberThreatIntelligence"
+iepd_type = "Cyber-Incident-Exchange"
+iepd_version = "6.0"
+
+[niem_mapping.ndex_fields]
+incident_category = "Cybercrime"
+incident_subcategory = "Phishing/Social Engineering"
+location_type = "Virtual"
+subject_role = "Perpetrator"
+activity_type = "Social Engineering Campaign"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Phishing Campaign"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-120-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.85
+description = "Social engineering enables network intrusion"
+
+[[relationships]]
+target_node = "uuid-135-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.70
+description = "Social engineering informs malware deployment strategies"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.50
+description = "Social engineering is vulnerable to security awareness training"
+
+[[eei_priority]]
+rank = 1
+question = "What are the email addresses and contact information of high-value employees?"
+collection_method = "OSINT, social media scraping"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "What are the login credentials and passwords of privileged accounts?"
+collection_method = "Phishing, keylogging"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 3
+question = "What are the vulnerabilities of web applications and network devices?"
+collection_method = "Vulnerability scanning, penetration testing"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What is the security posture of remote employees and branch offices?"
+collection_method = "Wireless network analysis, physical surveillance"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What is the level of security awareness and training among employees?"
+collection_method = "Phishing simulations, social engineering assessments"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 6
+question = "What multi-factor authentication methods are in use and can they be bypassed?"
+collection_method = "Technical Analysis"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 7
+question = "Which vendors and partners have access to the network, and what are their security practices?"
+collection_method = "Supply chain analysis, OSINT"
+time_sensitivity = "medium"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "2016 US Presidential Election Interference",
+    date = "2016-11-08",
+    description = "Spearphishing attacks against the DNC and Clinton campaign",
+    source = "https://www.dni.gov/files/documents/ICA_2017_01.pdf"
+  },
+  {
+    name = "Target Data Breach",
+    date = "2013-12-15",
+    description = "Compromised HVAC vendor credentials led to network access",
+    source = "https://krebsonsecurity.com/2014/02/target-hackers-broke-in-via-hvac-company/"
+  },
+  {
+    name = "Ubiquiti Networks Hack",
+    date = "2021-03-30",
+    description = "Social engineering attack to steal credentials"
+    source = "https://krebsonsecurity.com/2021/03/ubiquiti-breach-exposed-customer-credentials-company-tried-to-cover-it-up/"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Phishing"
+technique = "Phishing"
+sub_technique = "T1566.001 - Spearphishing Attachment"
+description = "Adversary sends spearphishing emails with malicious attachments"
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.003 - Spearphishing Link"
+description = "Adversary sends spearphishing emails with malicious links"
+
+[[ttps]]
+mitre_attack_id = "T1199"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = "N/A"
+description = "Adversary compromises a website to deliver malware"
+
+[[ttps]]
+mitre_attack_id = "T1189"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = "N/A"
+description = "Adversary gains access through trust relationships."
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = "N/A"
+description = "Exploiting public facing application."
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Defense Evasion, Persistence, Initial Access"
+technique = "Valid Accounts"
+sub_technique = "N/A"
+description = "Use compromised accounts to maintain access."
+
+[xsd_integration]
+playbook_template = "social_engineering_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-social-eng"]
+unicode_assembly = ["→", "⇢", "⚠", "🎭", "📧", "🔑"]
+lisp_expression = "(social-eng-task :target target-id :phase pre-attack :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

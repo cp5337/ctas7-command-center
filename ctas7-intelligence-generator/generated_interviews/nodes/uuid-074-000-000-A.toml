@@ -1,0 +1,421 @@
+```toml
+[node_identity]
+task_id = "uuid-074-000-000-A"
+task_name = "Task 74 - Phase 2"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+[sch]
+sch = "Yz0tB6wM8pP4vX9F"
+
+[cuid]
+cuid = "T20250215G12E56Srj5V77a84d21b01a"
+
+[uuid]
+uuid = "V5h298fe3c6a1083"
+
+hash_48 = "Yz0tB6wM8pP4vX9FT20250215G12E56Srj5V77a84d21b01aV5h298fe3c6a1083"
+
+[capabilities]
+narrative = """
+I am the architect of access. I probe networks for overlooked entry points,
+mapping firewall rules like a blueprint. I escalate privileges, navigating
+systems as if I own them. I sniff credentials, logging keystrokes to crack
+passwords. I plant backdoors, ensuring persistent access.
+
+I exploit known vulnerabilities, weaponizing outdated software. I bypass
+multi-factor authentication with session hijacking. I spoof MAC addresses
+to blend into trusted networks. I manipulate DNS records, redirecting traffic
+to my servers. I am silent—my presence, a ghost in the machine.
+
+I create user accounts with elevated permissions. I disable logging to cover
+my tracks. I move laterally, compromising neighboring systems. I encrypt data
+in transit, hiding my payload from prying eyes. I am the digital key—what I
+unlock, you cannot relock.
+"""
+
+limitations = """
+I am vulnerable to intrusion detection systems and honeypots. Zero-day exploits
+are rare, and my attack surface shrinks as systems patch. My activity generates
+logs, creating forensic trails. I am limited by my own code—bugs and errors
+expose me.
+
+I am susceptible to endpoint detection and response (EDR) solutions.
+Behavioral analysis flags anomalies. I am restricted by the target's security
+posture: strong passwords, network segmentation, and updated software impede me.
+My effectiveness is tied to my skill and persistence—the more noise I make,
+the higher my risk of detection.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 48], units = "hours" }
+collection_phase = { words = "days to weeks", range = [7, 21], units = "days" }
+actionable_window = { words = "days to weeks", range = [3, 14], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Patching of exploited vulnerabilities",
+  "Password resets and account lockouts",
+  "Firewall rule changes",
+  "Deployment of new security measures"
+]
+persistence_conditions = [
+  "Legacy systems with known vulnerabilities",
+  "Poor network segmentation",
+  "Weak password policies",
+  "Unpatched software"
+]
+
+[cuid_mask]
+temporal = "T-{7-21}d"
+temporal_format = "YYYYMMDD"
+
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+
+semantic = "Sr"
+semantic_full = "recon:cyber:access"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Proactive search for anomalous network activity" }
+detect = { enabled = true, priority = "critical", description = "Real-time detection of unauthorized access attempts" }
+disrupt = { enabled = true, priority = "high", description = "Block or mitigate intrusion attempts" }
+disable = { enabled = true, priority = "medium", description = "Remove backdoors and compromised accounts" }
+dominate = { enabled = false, priority = "low", description = "Not applicable in this phase" }
+
+[[indicators]]
+observable = "Unusual network traffic patterns (e.g., port scanning, data exfiltration)"
+priority = "critical"
+detection_method = "Network intrusion detection system (NIDS), firewall logs"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Failed login attempts from unusual IP addresses"
+priority = "high"
+detection_method = "Security Information and Event Management (SIEM) alerts"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Installation of unauthorized software or services"
+priority = "critical"
+detection_method = "Endpoint detection and response (EDR) tools"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Creation of new user accounts with elevated privileges"
+priority = "critical"
+detection_method = "Account monitoring, privileged access management (PAM) systems"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Modification of system files or registry keys"
+priority = "high"
+detection_method = "File integrity monitoring (FIM) tools"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Execution of suspicious scripts or commands"
+priority = "high"
+detection_method = "Endpoint detection and response (EDR) tools, sysmon"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Detection of backdoor programs or rootkits"
+priority = "critical"
+detection_method = "Antivirus software, rootkit detectors"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Lateral movement within the network"
+priority = "high"
+detection_method = "Network traffic analysis, SIEM correlation"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of credential dumping tools (e.g., Mimikatz)"
+priority = "critical"
+detection_method = "Endpoint detection and response (EDR) tools, memory analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "DNS poisoning or redirection attempts"
+priority = "high"
+detection_method = "DNS server monitoring, intrusion detection systems"
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Identify open ports and services to assess attack surface"
+mode_2n = "Scan network for vulnerabilities and potential entry points"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Test network security by simulating attacks"
+mode_2n = "Exploit vulnerabilities to gain unauthorized access"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Mimikatz"
+mode_1n = "Detect credential dumping attempts"
+mode_2n = "Dump credentials from memory to gain unauthorized access"
+escalation_level = "microkernel"
+kali_package = "N/A (requires manual installation)"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for malicious activity"
+mode_2n = "Sniff network traffic to capture credentials and sensitive data"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Test password strength"
+mode_2n = "Brute-force passwords to gain unauthorized access"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Identify web application vulnerabilities"
+mode_2n = "Exploit web application vulnerabilities"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 0.1, max_km = 1, optimal_km = 0.5 }
+time_to_target = { min_minutes = 1, max_minutes = 5, optimal_minutes = 2 }
+
+terrain_factors = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = ""
+cost_factors = []
+escape_route_priority = ""
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+[niem_mapping]
+justice_domain = "j:Cybercrime"
+intelligence_domain = "intel:CyberThreatReport"
+iepd_type = "Cyber-Incident-Exchange"
+iepd_version = "5.0"
+
+[niem_mapping.ndex_fields]
+incident_category = "Cyber Incident"
+incident_subcategory = "Unauthorized Access"
+location_type = "Network"
+subject_role = "Attacker"
+activity_type = "Network Intrusion"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Unauthorized Access"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_network }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-075-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.95
+description = "Gaining access is required to escalate privileges"
+
+[[relationships]]
+target_node = "uuid-080-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.75
+description = "Knowing access points informs credential gathering"
+
+[[relationships]]
+target_node = "uuid-090-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.60
+description = "Gaining access is vulnerable to intrusion detection"
+
+[[eei_priority]]
+rank = 1
+question = "What are the firewall rules and network segmentation policies?"
+collection_method = "Network scanning, configuration analysis"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the password policies and account lockout thresholds?"
+collection_method = "Password cracking, account enumeration"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the operating system and software versions in use?"
+collection_method = "Banner grabbing, vulnerability scanning"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the installed antivirus and endpoint detection and response (EDR) solutions?"
+collection_method = "Process enumeration, registry analysis"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the common user behaviors and network traffic patterns?"
+collection_method = "Network traffic analysis, user behavior analytics"
+time_sensitivity = "low"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Target Data Breach (2013)",
+    date = "2013-11-27",
+    description = "Compromised HVAC vendor credentials for initial access",
+    source = "https://en.wikipedia.org/wiki/Target_data_breach"
+  },
+  {
+    name = "Equifax Data Breach (2017)",
+    date = "2017-05-13",
+    description = "Exploited unpatched Apache Struts vulnerability for initial access",
+    source = "https://en.wikipedia.org/wiki/Equifax_data_breach"
+  },
+  {
+    name = "SolarWinds Supply Chain Attack (2020)",
+    date = "2020-12-13",
+    description = "Compromised SolarWinds Orion software build process for supply chain attack",
+    source = "https://www.microsoft.com/security/blog/2020/12/13/microsoft-identifies-and-is-tracking-multiple-malicious-actors-targeting-solarwinds-orion/"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Exploit a vulnerability in a public-facing application to gain initial access"
+
+[[ttps]]
+mitre_attack_id = "T1133"
+tactic = "Persistence"
+technique = "External Remote Services"
+sub_technique = ""
+description = "Use external remote services for persistence"
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Defense Evasion"
+technique = "Valid Accounts"
+sub_technique = ""
+description = "Use valid accounts for privilege escalation and defense evasion"
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.001 - PowerShell"
+description = "Use PowerShell for command execution"
+
+[[ttps]]
+mitre_attack_id = "T1003"
+tactic = "Credential Access"
+technique = "OS Credential Dumping"
+sub_technique = "T1003.001 - LSASS Memory"
+description = "Dump credentials from LSASS memory"
+
+[[ttps]]
+mitre_attack_id = "T1021"
+tactic = "Lateral Movement"
+technique = "Remote Services"
+sub_technique = "T1021.001 - RDP"
+description = "Use RDP for lateral movement"
+
+[xsd_integration]
+playbook_template = "network_access_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-network"]
+unicode_assembly = ["→", "⇢", "⚠", "🔑", "💻", "🌐"]
+lisp_expression = "(access-task :target target-network :phase exploitation :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-02-15T00:00:00Z"
+last_updated = "2025-02-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

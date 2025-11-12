@@ -1,0 +1,266 @@
+[
+  {
+    "satellite_id": "LASER-SAT-01",
+    "name": "LaserLight-1",
+    "plane": 1,
+    "position_in_plane": 1,
+    "orbital_elements": {
+      "altitude_km": 8000,
+      "inclination_deg": 55.0,
+      "eccentricity": 0.0001,
+      "raan_deg": 0.0,
+      "argument_of_perigee_deg": 0.0,
+      "mean_anomaly_deg": 0.0
+    },
+    "fso_capabilities": {
+      "inter_satellite_links": 4,
+      "ground_links": 2,
+      "data_rate_gbps": 400,
+      "wavelength_nm": 1550,
+      "beam_divergence_urad": 10
+    },
+    "status": "operational"
+  },
+  {
+    "satellite_id": "LASER-SAT-02",
+    "name": "LaserLight-2",
+    "plane": 1,
+    "position_in_plane": 2,
+    "orbital_elements": {
+      "altitude_km": 8000,
+      "inclination_deg": 55.0,
+      "eccentricity": 0.0001,
+      "raan_deg": 0.0,
+      "argument_of_perigee_deg": 0.0,
+      "mean_anomaly_deg": 90.0
+    },
+    "fso_capabilities": {
+      "inter_satellite_links": 4,
+      "ground_links": 2,
+      "data_rate_gbps": 400,
+      "wavelength_nm": 1550,
+      "beam_divergence_urad": 10
+    },
+    "status": "operational"
+  },
+  {
+    "satellite_id": "LASER-SAT-03",
+    "name": "LaserLight-3",
+    "plane": 1,
+    "position_in_plane": 3,
+    "orbital_elements": {
+      "altitude_km": 8000,
+      "inclination_deg": 55.0,
+      "eccentricity": 0.0001,
+      "raan_deg": 0.0,
+      "argument_of_perigee_deg": 0.0,
+      "mean_anomaly_deg": 180.0
+    },
+    "fso_capabilities": {
+      "inter_satellite_links": 4,
+      "ground_links": 2,
+      "data_rate_gbps": 400,
+      "wavelength_nm": 1550,
+      "beam_divergence_urad": 10
+    },
+    "status": "operational"
+  },
+  {
+    "satellite_id": "LASER-SAT-04",
+    "name": "LaserLight-4",
+    "plane": 1,
+    "position_in_plane": 4,
+    "orbital_elements": {
+      "altitude_km": 8000,
+      "inclination_deg": 55.0,
+      "eccentricity": 0.0001,
+      "raan_deg": 0.0,
+      "argument_of_perigee_deg": 0.0,
+      "mean_anomaly_deg": 270.0
+    },
+    "fso_capabilities": {
+      "inter_satellite_links": 4,
+      "ground_links": 2,
+      "data_rate_gbps": 400,
+      "wavelength_nm": 1550,
+      "beam_divergence_urad": 10
+    },
+    "status": "operational"
+  },
+  {
+    "satellite_id": "LASER-SAT-05",
+    "name": "LaserLight-5",
+    "plane": 2,
+    "position_in_plane": 1,
+    "orbital_elements": {
+      "altitude_km": 8000,
+      "inclination_deg": 55.0,
+      "eccentricity": 0.0001,
+      "raan_deg": 120.0,
+      "argument_of_perigee_deg": 0.0,
+      "mean_anomaly_deg": 0.0
+    },
+    "fso_capabilities": {
+      "inter_satellite_links": 4,
+      "ground_links": 2,
+      "data_rate_gbps": 400,
+      "wavelength_nm": 1550,
+      "beam_divergence_urad": 10
+    },
+    "status": "operational"
+  },
+  {
+    "satellite_id": "LASER-SAT-06",
+    "name": "LaserLight-6",
+    "plane": 2,
+    "position_in_plane": 2,
+    "orbital_elements": {
+      "altitude_km": 8000,
+      "inclination_deg": 55.0,
+      "eccentricity": 0.0001,
+      "raan_deg": 120.0,
+      "argument_of_perigee_deg": 0.0,
+      "mean_anomaly_deg": 90.0
+    },
+    "fso_capabilities": {
+      "inter_satellite_links": 4,
+      "ground_links": 2,
+      "data_rate_gbps": 400,
+      "wavelength_nm": 1550,
+      "beam_divergence_urad": 10
+    },
+    "status": "operational"
+  },
+  {
+    "satellite_id": "LASER-SAT-07",
+    "name": "LaserLight-7",
+    "plane": 2,
+    "position_in_plane": 3,
+    "orbital_elements": {
+      "altitude_km": 8000,
+      "inclination_deg": 55.0,
+      "eccentricity": 0.0001,
+      "raan_deg": 120.0,
+      "argument_of_perigee_deg": 0.0,
+      "mean_anomaly_deg": 180.0
+    },
+    "fso_capabilities": {
+      "inter_satellite_links": 4,
+      "ground_links": 2,
+      "data_rate_gbps": 400,
+      "wavelength_nm": 1550,
+      "beam_divergence_urad": 10
+    },
+    "status": "operational"
+  },
+  {
+    "satellite_id": "LASER-SAT-08",
+    "name": "LaserLight-8",
+    "plane": 2,
+    "position_in_plane": 4,
+    "orbital_elements": {
+      "altitude_km": 8000,
+      "inclination_deg": 55.0,
+      "eccentricity": 0.0001,
+      "raan_deg": 120.0,
+      "argument_of_perigee_deg": 0.0,
+      "mean_anomaly_deg": 270.0
+    },
+    "fso_capabilities": {
+      "inter_satellite_links": 4,
+      "ground_links": 2,
+      "data_rate_gbps": 400,
+      "wavelength_nm": 1550,
+      "beam_divergence_urad": 10
+    },
+    "status": "operational"
+  },
+  {
+    "satellite_id": "LASER-SAT-09",
+    "name": "LaserLight-9",
+    "plane": 3,
+    "position_in_plane": 1,
+    "orbital_elements": {
+      "altitude_km": 8000,
+      "inclination_deg": 55.0,
+      "eccentricity": 0.0001,
+      "raan_deg": 240.0,
+      "argument_of_perigee_deg": 0.0,
+      "mean_anomaly_deg": 0.0
+    },
+    "fso_capabilities": {
+      "inter_satellite_links": 4,
+      "ground_links": 2,
+      "data_rate_gbps": 400,
+      "wavelength_nm": 1550,
+      "beam_divergence_urad": 10
+    },
+    "status": "operational"
+  },
+  {
+    "satellite_id": "LASER-SAT-10",
+    "name": "LaserLight-10",
+    "plane": 3,
+    "position_in_plane": 2,
+    "orbital_elements": {
+      "altitude_km": 8000,
+      "inclination_deg": 55.0,
+      "eccentricity": 0.0001,
+      "raan_deg": 240.0,
+      "argument_of_perigee_deg": 0.0,
+      "mean_anomaly_deg": 90.0
+    },
+    "fso_capabilities": {
+      "inter_satellite_links": 4,
+      "ground_links": 2,
+      "data_rate_gbps": 400,
+      "wavelength_nm": 1550,
+      "beam_divergence_urad": 10
+    },
+    "status": "operational"
+  },
+  {
+    "satellite_id": "LASER-SAT-11",
+    "name": "LaserLight-11",
+    "plane": 3,
+    "position_in_plane": 3,
+    "orbital_elements": {
+      "altitude_km": 8000,
+      "inclination_deg": 55.0,
+      "eccentricity": 0.0001,
+      "raan_deg": 240.0,
+      "argument_of_perigee_deg": 0.0,
+      "mean_anomaly_deg": 180.0
+    },
+    "fso_capabilities": {
+      "inter_satellite_links": 4,
+      "ground_links": 2,
+      "data_rate_gbps": 400,
+      "wavelength_nm": 1550,
+      "beam_divergence_urad": 10
+    },
+    "status": "operational"
+  },
+  {
+    "satellite_id": "LASER-SAT-12",
+    "name": "LaserLight-12",
+    "plane": 3,
+    "position_in_plane": 4,
+    "orbital_elements": {
+      "altitude_km": 8000,
+      "inclination_deg": 55.0,
+      "eccentricity": 0.0001,
+      "raan_deg": 240.0,
+      "argument_of_perigee_deg": 0.0,
+      "mean_anomaly_deg": 270.0
+    },
+    "fso_capabilities": {
+      "inter_satellite_links": 4,
+      "ground_links": 2,
+      "data_rate_gbps": 400,
+      "wavelength_nm": 1550,
+      "beam_divergence_urad": 10
+    },
+    "status": "operational"
+  }
+]

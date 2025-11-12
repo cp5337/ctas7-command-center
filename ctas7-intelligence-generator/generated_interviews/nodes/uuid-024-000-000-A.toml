@@ -1,0 +1,461 @@
+```toml
+[node_identity]
+task_id = "uuid-024-000-000-A"
+task_name = "Switch Mechanism Construction"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# Full hash example: "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+# ============================================================================
+
+sch = "aQ7bX3WzK1pL9yV6"
+cuid = "T20241115G34S11SmU6w9m05nQ"
+uuid = "N2j89a3b2c7d6e1f"
+hash_48 = "aQ7bX3WzK1pL9yV6T20241115G34S11SmU6w9m05nQN2j89a3b2c7d6e1f"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+
+[capabilities]
+narrative = """
+My purpose is to build the mechanism that will initiate the switch. I locate the optimal trigger point, identifying the control panel or system necessary to activate the pre-installed logic bomb. I study the internal schematics of the target system, mapping its vulnerabilities and failsafe measures. My skill lies in seamlessly integrating the switch, disguising it within the existing infrastructure, ensuring that no alarms are raised until the moment of activation.
+
+I analyze the access control systems, identifying methods to bypass or override them. I might exploit weak passwords, use stolen credentials, or even install a physical bypass. My work is methodical, precise, and discreet, ensuring the switch operates flawlessly when the time comes. I create redundancy where possible, so if one trigger point is compromised, another is ready.
+
+I test the switch in simulated environments, ensuring its compatibility with the target system. I document every step, creating a comprehensive guide for its eventual activation. I am the architect of the trigger, the builder of the switch—I ensure the machine is ready to be turned on.
+"""
+
+limitations = """
+I am constrained by my access to the system. Without physical or remote access, my task is impossible. Strong security measures, such as multi-factor authentication and intrusion detection systems, can severely hinder my progress. I am also limited by my knowledge of the target system; incomplete or inaccurate schematics can lead to critical errors.
+
+My actions are inherently risky. Any mistake can alert security personnel, exposing the entire operation. I am vulnerable to system audits, code reviews, and physical inspections. My effectiveness depends on the target system remaining unchanged; updates or patches can render my switch useless.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months before", range = [3, 9], units = "months" }
+actionable_window = { words = "weeks to months", range = [4, 24], units = "weeks" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "System updates or patches",
+  "Security audits or code reviews",
+  "Password changes or credential invalidation",
+  "Hardware replacement or upgrades",
+  "Changes in access control policies"
+]
+persistence_conditions = [
+  "Fundamental system architecture",
+  "Physical infrastructure layout",
+  "Legacy system components",
+  "Poor security practices"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+
+[cuid_mask]
+temporal = "T-{90-270}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+semantic = "Sm"
+semantic_full = "exploitation:system_manipulation"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Search for unusual system modifications or hidden backdoors" }
+detect = { enabled = true, priority = "critical", description = "Identify unauthorized access attempts or system vulnerabilities" }
+disrupt = { enabled = true, priority = "high", description = "Implement countermeasures to prevent switch activation" }
+disable = { enabled = true, priority = "medium", description = "Remove or neutralize the switch mechanism" }
+dominate = { enabled = false, priority = "low", description = "Not directly applicable" }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+
+[[indicators]]
+observable = "Unusual system modifications or changes"
+priority = "critical"
+detection_method = "File integrity monitoring, intrusion detection systems"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unexpected network traffic patterns"
+priority = "high"
+detection_method = "Network traffic analysis, flow monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unauthorized access attempts to critical systems"
+priority = "critical"
+detection_method = "Access control logs, security information and event management (SIEM)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Detection of backdoor accounts or processes"
+priority = "critical"
+detection_method = "System scans, rootkit detection tools"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Exploitation of known vulnerabilities"
+priority = "high"
+detection_method = "Vulnerability scanners, penetration testing"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of privileged credentials for unauthorized tasks"
+priority = "high"
+detection_method = "Account monitoring, privilege access management systems"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Installation of unauthorized software or scripts"
+priority = "high"
+detection_method = "Application whitelisting, endpoint detection and response (EDR)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Changes to system configuration files"
+priority = "high"
+detection_method = "Configuration management tools, file integrity monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Presence of logic bombs or time-delayed malware"
+priority = "critical"
+detection_method = "Antivirus scans, reverse engineering"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unexplained system crashes or instability"
+priority = "medium"
+detection_method = "System logs, error reporting"
+false_positive_rate = "high"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Identify open ports and running services to detect potential vulnerabilities"
+mode_2n = "Scan for vulnerable systems and identify potential attack vectors"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Test system security by attempting to exploit known vulnerabilities"
+mode_2n = "Exploit vulnerabilities to gain unauthorized access and install the switch mechanism"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic to detect suspicious activity and identify potential intrusions"
+mode_2n = "Capture and analyze network packets to understand system communication protocols and identify potential weaknesses"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Mimikatz"
+mode_1n = "Detect and prevent credential theft by identifying vulnerable systems"
+mode_2n = "Extract credentials from memory to gain unauthorized access to systems"
+escalation_level = "crate"
+kali_package = "mimikatz"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "IDA Pro"
+mode_1n = "Reverse engineer malware to understand its functionality and develop countermeasures"
+mode_2n = "Reverse engineer system binaries to identify vulnerabilities and bypass security controls"
+escalation_level = "hypervisor"
+kali_package = "ida"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Test web application security by identifying vulnerabilities"
+mode_2n = "Exploit web application vulnerabilities to gain unauthorized access and manipulate data"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 0.0, max_km = 0.1, optimal_km = 0.01 }
+time_to_target = { min_minutes = 1, max_minutes = 5, optimal_minutes = 1 }
+
+terrain_factors = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "Not applicable"
+impact_on_comms = "Not applicable"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = ""
+cost_factors = []
+escape_route_priority = "low"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "Not applicable"
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:CyberCrime"
+intelligence_domain = "intel:CyberEventReport"
+iepd_type = "Cyber-Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Computer Intrusion"
+incident_subcategory = "Unauthorized Access"
+location_type = "Cyber Infrastructure"
+subject_role = "Perpetrator"
+activity_type = "System Manipulation"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Switch Mechanism Construction"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_system }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "precedes"
+unicode_op = "→"
+strength = 0.90
+description = "Switch construction follows system compromise"
+
+[[relationships]]
+target_node = "uuid-026-000-000-A"
+relationship_type = "triggers"
+unicode_op = "→"
+strength = 0.95
+description = "Switch construction triggers system activation"
+
+[[relationships]]
+target_node = "uuid-030-000-000-A"
+relationship_type = "circumvents"
+unicode_op = "→"
+strength = 0.70
+description = "Switch construction is designed to circumvent system defenses"
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "What are the access control mechanisms and how can they be bypassed?"
+collection_method = "Reverse engineering, vulnerability scanning, social engineering"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "What are the system vulnerabilities that can be exploited to install the switch?"
+collection_method = "Vulnerability assessments, penetration testing"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 3
+question = "What are the system monitoring and detection capabilities?"
+collection_method = "Network analysis, system logs review"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What are the system recovery and incident response procedures?"
+collection_method = "Documentation review, interviews"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the interdependencies between the target system and other systems?"
+collection_method = "System architecture diagrams, network topology maps"
+time_sensitivity = "low"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "Stuxnet Worm",
+    date = "2010",
+    description = "Used a sophisticated switch mechanism to target specific industrial control systems.",
+    source = "https://en.wikipedia.org/wiki/Stuxnet"
+  },
+  {
+    name = "NotPetya Ransomware",
+    date = "2017",
+    description = "Employed a switch mechanism to spread rapidly across networks, causing widespread disruption.",
+    source = "https://www.wired.com/story/notpetya-cyberattack-ukraine-russia-code-crashed-world/"
+  },
+  {
+    name = "Vault 7 CIA Tools",
+    date = "2017",
+    description = "Revealed switch mechanisms used to remotely control and monitor targeted systems.",
+    source = "https://wikileaks.org/vault7/"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1562"
+tactic = "Defense Evasion"
+technique = "Impair Defenses"
+sub_technique = "T1562.001 - Disable or Modify Tools"
+description = "Disabling security tools to avoid detection during switch installation."
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Credential Access"
+technique = "Valid Accounts"
+sub_technique = "T1078.002 - Domain Accounts"
+description = "Using compromised domain accounts to gain access to critical systems for switch installation."
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Exploiting a public-facing application to gain initial access to the system and install the switch mechanism."
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.003 - Windows Command Shell"
+description = "Using command-line scripting to install and configure the switch mechanism."
+
+[[ttps]]
+mitre_attack_id = "T1053"
+tactic = "Persistence"
+technique = "Scheduled Task/Job"
+sub_technique = ""
+description = "Creating a scheduled task to activate the switch at a specific time."
+
+[[ttps]]
+mitre_attack_id = "T1547"
+tactic = "Persistence"
+technique = "Boot or Logon Autostart Execution"
+sub_technique = "T1547.001 - Registry Run Keys / Startup Folder"
+description = "Configuring the switch to execute at system startup."
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "switch_mechanism_construction_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-exploitation", "ctas7-enhanced-system-manipulation"]
+unicode_assembly = ["→", "⚠", "⚙", "💣"]
+lisp_expression = "(install-switch :target target-system :type logic-bomb :activation-time activation-timestamp)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

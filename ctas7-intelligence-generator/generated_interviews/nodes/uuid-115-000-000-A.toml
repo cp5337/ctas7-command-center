@@ -1,0 +1,465 @@
+```toml
+[node_identity]
+task_id = "uuid-115-000-000-A"
+task_name = "Task 115 - Phase 3"
+classification = "unclassified"
+ttl_category = "desirable"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+
+sch = "aBcD4eFgH1iJkLmN"
+cuid = "T20241225G37S12Sd432890abc"
+uuid = "c5d6e7f8a9b0c1d2"
+hash_48 = "aBcD4eFgH1iJkLmNT20241225G37S12Sd432890abcc5d6e7f8a9b0c1d2"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+
+[capabilities]
+narrative = """
+I am the whisper in the wind, the shadow in the corner of their eye. I specialize in infiltrating systems to find, exfiltrate, and corrupt specific data.
+I spend weeks or months studying the network architecture, learning its quirks and vulnerabilities. I use every means possible; from social engineering to network penetration.
+
+I probe firewalls, scan ports, and exploit known vulnerabilities. I craft customized malware designed to bypass antivirus software and intrusion detection systems.
+I use stolen credentials or backdoors to gain persistent access to critical systems.
+Once inside, I move laterally, escalating privileges until I find the data I seek.
+
+I am a master of disguise. I know how to blend in, to make my actions seem innocuous.
+I cover my tracks, erase logs, and leave no trace of my presence.
+When necessary I plant backdoors or trojans to guarantee my ability to repeat the operation.
+"""
+
+limitations = """
+I am vulnerable to sophisticated intrusion detection systems and well-configured firewalls.
+I am limited by my knowledge of the target's network and security measures. Zero-day exploits are expensive and hard to come by.
+I can be detected by vigilant system administrators who monitor network traffic and user activity.
+I must constantly adapt my techniques to stay ahead of evolving security threats.
+Insider threat can provide an early detection of my presence.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "hours to days", range = [8, 48], units = "hours" }
+collection_phase = { words = "weeks to months", range = [4, 12], units = "weeks" }
+actionable_window = { words = "hours to days", range = [12, 72], units = "hours" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Patching of vulnerabilities",
+  "Changes in network configuration",
+  "Password resets",
+  "Implementation of new security measures"
+]
+persistence_conditions = [
+  "Unpatched legacy systems",
+  "Weak passwords",
+  "Misconfigured firewalls",
+  "Lack of security awareness training"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+
+[cuid_mask]
+temporal = "T-{4-12}w"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+semantic = "Sd"
+semantic_full = "data:exfiltration"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Proactively seek data exfiltration attempts by using network traffic analysis and user behavior analytics." }
+detect = { enabled = true, priority = "critical", description = "Real-time detection of data exfiltration attempts by using intrusion detection systems." }
+disrupt = { enabled = true, priority = "high", description = "Disrupt ongoing exfiltration attempts by isolating compromised systems." }
+disable = { enabled = true, priority = "medium", description = "Disable compromised systems and accounts to prevent further exfiltration." }
+dominate = { enabled = false, priority = "low", description = "Not applicable for data exfiltration phase." }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+
+[[indicators]]
+observable = "Unusual network traffic patterns"
+priority = "high"
+detection_method = "Network monitoring, intrusion detection systems"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Large data transfers to external IPs"
+priority = "critical"
+detection_method = "Firewall logs, network traffic analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Multiple failed login attempts"
+priority = "medium"
+detection_method = "SIEM alerts, account lockout policies"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Use of unauthorized software or tools"
+priority = "high"
+detection_method = "Endpoint detection and response (EDR)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Abnormal file access patterns"
+priority = "high"
+detection_method = "File integrity monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "System log tampering or deletion"
+priority = "critical"
+detection_method = "SIEM alerts, log integrity checks"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Privilege escalation attempts"
+priority = "high"
+detection_method = "Host-based intrusion detection systems (HIDS)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Creation of new user accounts"
+priority = "medium"
+detection_method = "Identity and access management (IAM) system"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Tunneling protocols usage"
+priority = "high"
+detection_method = "Network traffic analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "DNS requests for unusual domains"
+priority = "high"
+detection_method = "DNS monitoring"
+false_positive_rate = "medium"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Network discovery, vulnerability scanning"
+mode_2n = "Network mapping, vulnerability exploitation"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Vulnerability assessment, penetration testing"
+mode_2n = "Exploitation, payload delivery"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Packet capture and analysis, network monitoring"
+mode_2n = "Traffic interception, credential harvesting"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "John the Ripper"
+mode_1n = "Password auditing"
+mode_2n = "Password cracking"
+escalation_level = "script"
+kali_package = "john"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Brute-force testing"
+mode_2n = "Brute-force attacks"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Web application security testing"
+mode_2n = "Web application exploitation"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+# Distance and time constraints
+distance_range = { min_km = 0.1, max_km = 100, optimal_km = 10 }
+time_to_target = { min_minutes = 1, max_minutes = 1440, optimal_minutes = 60 }
+
+# Terrain factors (affects approach, escape, line-of-sight)
+terrain_factors = []
+
+# Weather impact (from existing weather_data table)
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+# Traffic and routing (from pgRouting + PostGIS)
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "pgr_dijkstra"
+cost_factors = []
+escape_route_priority = "medium"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+# COMINT (Communications Intelligence)
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+# Critical infrastructure proximity
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:Cybercrime"
+intelligence_domain = "intel:CyberThreatReport"
+iepd_type = "Cyber-Incident"
+iepd_version = "4.0"
+
+# N-DEx field mapping
+[niem_mapping.ndex_fields]
+incident_category = "Computer Crime"
+incident_subcategory = "Data Theft"
+location_type = "Network"
+subject_role = "Hacker"
+activity_type = "Data Exfiltration"
+
+# NIEM core elements
+[niem_mapping.niem_core]
+"nc:Activity" = "Data Exfiltration"
+"nc:ActivityDate" = "{collection_phase}"
+"nc:Location" = "{target_network}"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-116-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.9
+description = "Successful data exfiltration enables further exploitation."
+
+[[relationships]]
+target_node = "uuid-114-000-000-A"
+relationship_type = "requires"
+unicode_op = "⇢"
+strength = 0.7
+description = "Data exfiltration requires prior network reconnaissance and access."
+
+[[relationships]]
+target_node = "uuid-117-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.6
+description = "Data exfiltration is vulnerable to network monitoring and intrusion detection."
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "What critical data is stored and where is it located?"
+collection_method = "Network mapping, data discovery tools, system reconnaissance"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the network security measures in place?"
+collection_method = "Vulnerability scanning, penetration testing, social engineering"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the user access control policies and procedures?"
+collection_method = "Social engineering, credential harvesting, password cracking"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the data transfer protocols and encryption methods?"
+collection_method = "Packet capture, network traffic analysis, protocol analysis"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the security incident response procedures?"
+collection_method = "Open source intelligence (OSINT), social engineering"
+time_sensitivity = "low"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "Target Data Breach",
+    date = "2013-11-27",
+    description = "Data exfiltration of customer credit card and personal information.",
+    source = "https://en.wikipedia.org/wiki/Target_data_breach"
+  },
+  {
+    name = "Equifax Data Breach",
+    date = "2017-05-13",
+    description = "Data exfiltration of sensitive personal information.",
+    source = "https://en.wikipedia.org/wiki/Equifax_data_breach"
+  },
+  {
+    name = "Marriott Data Breach",
+    date = "2018-11-30",
+    description = "Data exfiltration of customer information.",
+    source = "https://en.wikipedia.org/wiki/Marriott_International_data_breach"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1005"
+tactic = "Exfiltration"
+technique = "Data from Local System"
+sub_technique = ""
+description = "Copy data from local system prior to exfiltration."
+
+[[ttps]]
+mitre_attack_id = "T1020"
+tactic = "Exfiltration"
+technique = "Automated Exfiltration"
+sub_technique = ""
+description = "Automate data exfiltration process."
+
+[[ttps]]
+mitre_attack_id = "T1041"
+tactic = "Exfiltration"
+technique = "Exfiltration Over C2 Channel"
+sub_technique = ""
+description = "Exfiltrate data over command and control channel."
+
+[[ttps]]
+mitre_attack_id = "T1567"
+tactic = "Exfiltration"
+technique = "Exfiltration Over Web Service"
+sub_technique = "T1567.002 - Exfiltration to Cloud Storage"
+description = "Exfiltrate data to cloud storage services."
+
+[[ttps]]
+mitre_attack_id = "T1573"
+tactic = "Command and Control"
+technique = "Encrypted Channel"
+sub_technique = "T1573.001 - Symmetric Cryptography"
+description = "Use symmetric cryptography for command and control."
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "data_exfiltration_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-cyber-intrusion", "ctas7-data-security"]
+unicode_assembly = ["→", "⇢", "⚠", "🔒", "📡"]
+lisp_expression = "(data-exfiltration :target target-network :phase post-compromise :priority critical)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "AI Assistant"
+created_at = "2024-01-10T00:00:00Z"
+last_updated = "2024-01-10T00:00:00Z"
+reviewed_by = "None"
+status = "draft"
+```

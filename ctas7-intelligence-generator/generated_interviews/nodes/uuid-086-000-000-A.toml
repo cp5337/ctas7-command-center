@@ -1,0 +1,385 @@
+```toml
+[node_identity]
+task_id = "uuid-086-000-000-A"
+task_name = "Task 86 - Phase 3"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "Yr2B8m6dCj9wX1p7"
+cuid = "T20250215G34S11SSe6890abc12defg"
+uuid = "V9hi23kl45mn6opq78rstuvwx1yzab"
+hash_48 = "Yr2B8m6dCj9wX1p7T20250215G34S11SSe6890abc12defgV9hi23kl45mn6opq78rstuvwx1yzab"
+
+[capabilities]
+narrative = """
+I am the architect of chaos. I observe the target's operational patterns, identifying vulnerabilities in their security protocols and communication infrastructure. I infiltrate their supply chains, mapping dependencies and potential disruption points.
+
+I exploit open-source intelligence, including social media, financial records, and industry reports, to build a detailed profile of key personnel and assets. I probe for weaknesses in their cyber defenses, seeking entry points for future exploitation.
+
+I establish covert communication channels, using encrypted messaging apps and anonymous networks to coordinate with other members of the team. I am adaptable, resourceful, and relentless in my pursuit of information.
+"""
+
+limitations = """
+My operations are vulnerable to detection by advanced threat intelligence platforms and proactive security measures. My activities leave digital traces, including network traffic anomalies and unusual data access patterns.
+
+I am constrained by the availability of open-source intelligence and the accuracy of public records. I am susceptible to misinformation and deception, which can lead to costly errors and wasted resources.
+
+My effectiveness depends on maintaining anonymity and avoiding detection. Any compromise of my identity or communication channels can expose my operations and jeopardize my mission.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months to years before", range = [90, 365], units = "days" }
+actionable_window = { words = "months", range = [30, 120], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in security protocols and procedures",
+  "Personnel turnover and access control updates",
+  "System upgrades and patch deployments",
+  "New threat intelligence reports"
+]
+persistence_conditions = [
+  "Organizational structure and key personnel",
+  "Critical infrastructure and dependencies",
+  "Business processes and operational patterns"
+]
+
+[cuid_mask]
+temporal = "T-{90-365}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "Se"
+semantic_full = "recon:systems:enumeration"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactively search for system reconnaissance activity patterns" }
+detect = { enabled = true, priority = "critical", description = "Identify system enumeration indicators in real-time" }
+disrupt = { enabled = true, priority = "medium", description = "Counter-reconnaissance operations to deter reconnaissance" }
+disable = { enabled = false, priority = "low", description = "Not applicable for reconnaissance phase" }
+dominate = { enabled = false, priority = "low", description = "Not applicable for reconnaissance phase" }
+
+[[indicators]]
+observable = "Unusual network scanning activity"
+priority = "critical"
+detection_method = "Intrusion detection systems (IDS)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Data exfiltration attempts"
+priority = "critical"
+detection_method = "Data loss prevention (DLP) systems"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Brute-force attacks on critical systems"
+priority = "high"
+detection_method = "Security information and event management (SIEM) systems"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Privilege escalation attempts"
+priority = "high"
+detection_method = "Host-based intrusion detection systems (HIDS)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Detection of malware or rootkits"
+priority = "critical"
+detection_method = "Antivirus software and endpoint detection and response (EDR) solutions"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unusual account activity"
+priority = "high"
+detection_method = "SIEM systems and user and entity behavior analytics (UEBA) tools"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Configuration changes to security devices"
+priority = "medium"
+detection_method = "Configuration management databases (CMDBs)"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Detection of unauthorized software"
+priority = "medium"
+detection_method = "Software asset management (SAM) tools"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Detection of vulnerable systems"
+priority = "medium"
+detection_method = "Vulnerability scanners"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Changes to system logs and audit trails"
+priority = "high"
+detection_method = "SIEM systems and log monitoring tools"
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Identify open ports and services on target systems"
+mode_2n = "Map network infrastructure and identify vulnerable systems"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Test system defenses and identify vulnerabilities"
+mode_2n = "Exploit vulnerabilities and gain access to target systems"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Identify web application vulnerabilities and weaknesses"
+mode_2n = "Exploit web application vulnerabilities and gain access to sensitive data"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic and identify suspicious activity"
+mode_2n = "Capture and analyze network traffic to extract sensitive information"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Detect weak passwords"
+mode_2n = "Brute-force account credentials"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Nikto"
+mode_1n = "Scan web servers for vulnerabilities"
+mode_2n = "Discover hidden files and directories"
+escalation_level = "script"
+kali_package = "nikto"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 1, max_km = 100, optimal_km = 10 }
+time_to_target = { min_minutes = 30, max_minutes = 360, optimal_minutes = 120 }
+
+terrain_factors = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = ""
+impact_on_comms = ""
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = ""
+cost_factors = []
+escape_route_priority = ""
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = ""
+
+[niem_mapping]
+justice_domain = "j:CyberCrime"
+intelligence_domain = "intel:CyberThreatAnalysis"
+iepd_type = "Cyber-Incident-Exchange"
+iepd_version = "6.0"
+
+[niem_mapping.ndex_fields]
+incident_category = "Cyber Attack"
+incident_subcategory = "System Reconnaissance"
+location_type = "Network Infrastructure"
+subject_role = "Attacker"
+activity_type = "Pre-Attack Enumeration"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "System Reconnaissance"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_network }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-087-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.85
+description = "System reconnaissance enables vulnerability assessment"
+
+[[relationships]]
+target_node = "uuid-088-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.70
+description = "System reconnaissance informs attack planning"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.50
+description = "System reconnaissance is vulnerable to intrusion detection"
+
+[[eei_priority]]
+rank = 1
+question = "What operating systems are running on the target network?"
+collection_method = "Network scanning"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What applications and services are running on the target systems?"
+collection_method = "Port scanning and banner grabbing"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the patch levels of the target systems?"
+collection_method = "Vulnerability scanning"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What is the network topology of the target network?"
+collection_method = "Network mapping"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the account credentials of the target systems?"
+collection_method = "Brute-force attacks"
+time_sensitivity = "medium"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Operation Aurora",
+    date = "2009-01-01",
+    description = "Sophisticated system reconnaissance by Chinese APT group",
+    source = "https://www.mandiant.com/resources/reports/operation-aurora"
+  },
+  {
+    name = "NotPetya",
+    date = "2017-06-27",
+    description = "System reconnaissance was used to spread the NotPetya ransomware",
+    source = "https://www.wired.com/story/notpetya-cyberattack-ukraine-russia-code-war/"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1046"
+tactic = "Reconnaissance"
+technique = "Indicator Removal on Host"
+sub_technique = ""
+description = "Remove indicators of system enumeration on the compromised host"
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = ""
+description = "Perform active scans to identify vulnerabilities"
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Victim Infrastructure"
+sub_technique = ".004 - Gather System Information"
+description = "Gather details about the system using enumeration"
+
+[[ttps]]
+mitre_attack_id = "T1082"
+tactic = "Discovery"
+technique = "System Information Discovery"
+sub_technique = ""
+description = "Use systeminfo to gather OS and patch information"
+
+[[ttps]]
+mitre_attack_id = "T1016"
+tactic = "Discovery"
+technique = "System Network Configuration Discovery"
+sub_technique = ""
+description = "Use ipconfig or ifconfig to discover network information."
+
+[xsd_integration]
+playbook_template = "system_reconnaissance_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-cyber", "ctas7-enhanced-network"]
+unicode_assembly = ["→", "⇢", "⚠", "🌐", "🔑", "🛡"]
+lisp_expression = "(recon-task :target target-network :phase pre-attack :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-02-15T00:00:00Z"
+last_updated = "2025-02-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

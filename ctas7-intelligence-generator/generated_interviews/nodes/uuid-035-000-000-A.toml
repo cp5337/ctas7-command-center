@@ -1,0 +1,389 @@
+```toml
+[node_identity]
+task_id = "uuid-035-000-000-A"
+task_name = "Triggering Mechanism Setup"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "Y92bW0a1p6Ks7L9m"
+cuid = "T20250421G34N84SSc"
+uuid = "V7x3b94y1zA6k2oL"
+hash_48 = "Y92bW0a1p6Ks7L9mT20250421G34N84SScV7x3b94y1zA6k2oL"
+
+[capabilities]
+narrative = """
+I ensure the device detonates when, where, and how we need it to. I test each trigger mechanism meticulously – radio frequency, pressure plate, timed delay, victim-operated. I camouflage the trigger components to look like innocuous debris.
+
+I study target vulnerabilities: foot traffic patterns, vehicle choke points, structural weak spots. I correlate this with trigger sensitivity for maximum effect. I build redundant triggering mechanisms to ensure detonation even if the primary fails.
+
+I consider environmental factors – weatherproofing, temperature stability, radio interference. I run end-to-end tests in conditions mirroring the operational deployment. I want reliability. I calibrate detonation timing with split-second precision. I am the architect of the bang.
+"""
+
+limitations = """
+I am constrained by component reliability, environmental factors, and detection risk. RF jamming, EMP bursts, or physical tampering can disable my triggering systems. Battery life limits the operational duration of timed devices.
+
+Pressure plates are vulnerable to false positives - animals, wind, falling debris. Victim-operated triggers expose me to significant risk if the target is aware or law enforcement intervenes. My work requires isolation. Discovery of triggering mechanisms compromises the entire operation.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 48], units = "hours" }
+collection_phase = { words = "days before", range = [1, 7], units = "days" }
+actionable_window = { words = "hours to days", range = [6, 24], units = "hours" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Component failure (battery drain, corrosion)",
+  "Environmental interference (RF jamming, EMP)",
+  "Tampering or discovery by law enforcement",
+  "Changes in target vulnerability or exposure"
+]
+persistence_conditions = [
+  "Device concealment and camouflage",
+  "Redundant triggering mechanisms",
+  "Physical location stability",
+  "Weatherproofing and temperature stabilization"
+]
+
+[cuid_mask]
+temporal = "T-{1-7}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 0.2
+semantic = "Sc"
+semantic_full = "attack:triggering:control"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = false, priority = "low", description = "Not applicable for triggering mechanism setup" }
+detect = { enabled = true, priority = "critical", description = "Identify trigger mechanisms before detonation" }
+disrupt = { enabled = true, priority = "high", description = "Disable or neutralize trigger mechanisms" }
+disable = { enabled = true, priority = "critical", description = "Prevent detonation" }
+dominate = { enabled = false, priority = "low", description = "Not applicable for triggering mechanism setup" }
+
+[[indicators]]
+observable = "Presence of electronic components in unusual locations"
+priority = "high"
+detection_method = "EOD sweeps, canine units"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unexplained RF signals or transmissions"
+priority = "critical"
+detection_method = "Spectrum analysis, RF direction finding"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Pressure plate or tripwire detection"
+priority = "critical"
+detection_method = "Physical inspection, ground-penetrating radar"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Tampering with security infrastructure (e.g., CCTV cameras)"
+priority = "high"
+detection_method = "Security system alerts, physical inspection"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Discovery of improvised wiring or circuitry"
+priority = "critical"
+detection_method = "EOD inspection, forensic analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Presence of unusual debris or camouflage materials"
+priority = "medium"
+detection_method = "Visual inspection, pattern recognition"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Detection of timed explosive components (timers, batteries)"
+priority = "critical"
+detection_method = "X-ray scanning, chemical analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Sudden changes in pressure or vibration readings"
+priority = "medium"
+detection_method = "Seismic sensors, acoustic monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Evidence of explosive precursors or residue"
+priority = "critical"
+detection_method = "Chemical trace detection, forensic analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Suspicious packages or containers in target areas"
+priority = "high"
+detection_method = "Visual inspection, X-ray scanning, EOD sweeps"
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "Multimeter"
+mode_1n = "Detect abnormal electrical circuits and tampering."
+mode_2n = "Verify circuit continuity and trigger mechanism function."
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "RF Spectrum Analyzer"
+mode_1n = "Identify unauthorized radio frequency transmissions."
+mode_2n = "Configure remote detonation triggers."
+escalation_level = "microkernel"
+kali_package = "gnuradio"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Logic Analyzer"
+mode_1n = "Reverse engineer custom electronic circuits and software"
+mode_2n = "Reprogram detonation timers"
+escalation_level = "microkernel"
+kali_package = "sigrok"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Hak5 LAN Turtle"
+mode_1n = "Detect rogue network devices."
+mode_2n = "Bypass security systems via rogue network access."
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Software Defined Radio (SDR)"
+mode_1n = "Intercept and analyze radio signals."
+mode_2n = "Manipulate RF detonation signals."
+escalation_level = "microkernel"
+kali_package = "gqrx"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Test IoT device vulnerability"
+mode_2n = "Compromise IoT device for remote triggering"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 0.01, max_km = 0.1, optimal_km = 0.05 }
+time_to_target = { min_minutes = 1, max_minutes = 5, optimal_minutes = 2 }
+
+terrain_factors = ["urban_density", "line_of_sight", "building_materials"]
+
+[geospatial.weather]
+critical_factors = ["temperature", "humidity", "precipitation"]
+operational_threshold = { temperature_c = 40.0, humidity_percent = 90.0 }
+impact_on_surveillance = "Adverse weather can affect sensor functionality."
+impact_on_comms = "High humidity/precipitation can degrade RF signal strength."
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "medium"
+choke_point_analysis = false
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 100
+impact_assessment = "Triggering mechanisms near critical infrastructure can cause cascading failures."
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:ThreatAssessment"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Explosives Incident"
+incident_subcategory = "IED Placement"
+location_type = "Public Place"
+subject_role = "Perpetrator"
+activity_type = "IED Preparation"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "IED Deployment"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 2332b (Terrorism)"
+
+[[relationships]]
+target_node = "uuid-040-000-000-A"
+relationship_type = "precedes"
+unicode_op = "→"
+strength = 0.95
+description = "Triggering mechanism setup immediately precedes detonation."
+
+[[relationships]]
+target_node = "uuid-003-000-000-A"
+relationship_type = "depends_on"
+unicode_op = "⇢"
+strength = 0.6
+description = "Trigger setup depends on target selection."
+
+[[relationships]]
+target_node = "uuid-036-000-000-A"
+relationship_type = "requires"
+unicode_op = "→"
+strength = 0.8
+description = "Needs explosive placement."
+
+[[eei_priority]]
+rank = 1
+question = "What is the optimal detonation trigger based on target vulnerabilities?"
+collection_method = "Vulnerability assessment, explosive effects analysis"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "What are the potential points of failure in the trigger mechanism?"
+collection_method = "Component testing, system simulation"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the environmental factors that could affect trigger reliability?"
+collection_method = "Weather data analysis, environmental simulations"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What is the likelihood of detection by security or law enforcement?"
+collection_method = "Risk assessment, counter-surveillance analysis"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 5
+question = "What are the backup or redundant trigger mechanisms?"
+collection_method = "System documentation, component inventory"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 6
+question = "Are there countermeasures available against my triggering device?"
+collection_method = "EOD and technical intelligence analysis"
+time_sensitivity = "high"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Timed fuse detonation of truck bomb.",
+    source = "FBI Report"
+  },
+  {
+    name = "Madrid Train Bombings",
+    date = "2004-03-11",
+    description = "Cell phone triggered explosives on commuter trains.",
+    source = "Spanish Court Documents"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1499"
+tactic = "Impact"
+technique = "Endpoint Denial of Service"
+sub_technique = "T1499.004 - Triggered Processes"
+description = "Trigger a process for impact"
+
+[[ttps]]
+mitre_attack_id = "T1565"
+tactic = "Defense Evasion"
+technique = "Data Obfuscation"
+sub_technique = "T1565.002 - Standard Cryptographic Algorithm"
+description = "Obfuscate detonation signal."
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.004 - Unix Shell"
+description = "Use a shell script to initiate detonation."
+
+[[ttps]]
+mitre_attack_id = "T1529"
+tactic = "Impact"
+technique = "System Shutdown/Reboot"
+description = "Detonation causes shutdown."
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - Web Protocols"
+description = "Detonate via command sent over HTTP."
+
+[xsd_integration]
+playbook_template = "triggering_mechanism_setup_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-explosives"]
+unicode_assembly = ["→", "⇢", "⚠", "💥", "💣"]
+lisp_expression = "(trigger-task :target target-id :phase post-placement :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-04-21T00:00:00Z"
+last_updated = "2025-04-21T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

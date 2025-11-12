@@ -1,0 +1,404 @@
+```toml
+[node_identity]
+task_id = "uuid-133-000-000-A"
+task_name = "Task 133 - Phase 4"
+classification = "unclassified"
+ttl_category = "desirable"
+
+[capabilities]
+narrative = """
+I am the implementer. My task is to set the stage for maximum disruption. I’ve identified the target, now I must find the most effective point of attack.
+
+I use small, readily-available devices to test the facility's reactions, noting the time and type of response. I’m looking for vulnerabilities.
+
+I explore local suppliers of potential components, I need to know I can obtain what I need. I probe the digital defenses to exploit any weaknesses, mapping systems and protocols. I locate vulnerable access points, looking for the easiest way inside. I analyze the facility layout, determining the optimal placement of devices.
+
+I look at local emergency services and calculate their response times. I observe local security forces, noting their patterns. I determine the best time to deploy to minimize detection and maximize impact. I'm calculating the most efficient method of delivery. I note the movement of all personnel for operational timing.
+
+I establish backup plans and secure fallbacks in case of unexpected interference. I am the implementer, and all the planning comes to fruition here.
+"""
+
+limitations = """
+I am constrained by the availability of supplies and the predictability of security responses. Any unusual procurement activities risk raising suspicion. Discovering vulnerabilities in complex systems can be time-consuming and may require specialized knowledge.
+
+I am vulnerable to sophisticated intrusion detection systems and supply chain monitoring. Changes in security posture or increased surveillance can compromise my operational timeline. I have to work within the constraints of available funds and resources. My work is compromised by security reviews.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months before", range = [3, 9], units = "months" }
+actionable_window = { words = "weeks to months", range = [4, 12], units = "weeks" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in facility security protocols",
+  "Discovery of procurement activities by authorities",
+  "Updates to intrusion detection systems",
+  "Interruption of supply chains"
+]
+persistence_conditions = [
+  "Fundamental flaws in physical and digital infrastructure",
+  "Reliance on local suppliers with limited monitoring",
+  "Ineffective or infrequent security audits",
+  "Predictable security response patterns"
+]
+
+[cuid_mask]
+temporal = "T-{90-270}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "Im"
+semantic_full = "execution:implementation:deployment"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = false, priority = "low", description = "Not applicable to the phase." }
+detect = { enabled = true, priority = "medium", description = "Detecting abnormal system behavior after deployment." }
+disrupt = { enabled = true, priority = "high", description = "Countermeasures to the impact of deployment." }
+disable = { enabled = true, priority = "critical", description = "Removing deployed tools." }
+dominate = { enabled = false, priority = "low", description = "Not applicable to the phase." }
+
+[[indicators]]
+observable = "Purchase of suspicious quantities of chemicals"
+priority = "high"
+detection_method = "Transaction monitoring at chemical suppliers"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Repeated visits to hardware stores"
+priority = "medium"
+detection_method = "Surveillance of hardware stores, facial recognition"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of disposable communication channels (burner phones, temporary email)"
+priority = "high"
+detection_method = "Analysis of communication metadata, signal intelligence"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unusual network activity from compromised systems"
+priority = "critical"
+detection_method = "Intrusion detection systems, network traffic analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Elevated privileges on systems"
+priority = "high"
+detection_method = "System logs, SIEM alerts, host-based intrusion detection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Installation of unauthorized software"
+priority = "high"
+detection_method = "Endpoint detection and response, application whitelisting"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Attempts to bypass security controls"
+priority = "critical"
+detection_method = "Firewall logs, intrusion prevention systems"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Access to restricted areas within the facility"
+priority = "high"
+detection_method = "Access control systems, surveillance cameras"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Anomalous power consumption patterns"
+priority = "medium"
+detection_method = "Power grid monitoring, sensor data analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Physical indicators of tampering"
+priority = "critical"
+detection_method = "Regular physical security checks, sensor-based monitoring"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Penetration testing to identify vulnerabilities"
+mode_2n = "Exploit identified vulnerabilities for system compromise"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Network mapping and vulnerability scanning"
+mode_2n = "Locate and fingerprint vulnerable systems"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Network protocol analysis for suspicious traffic"
+mode_2n = "Capture and analyze network traffic to exfiltrate data"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Brute-force login attempts on network services"
+mode_2n = "Crack passwords and gain access to systems"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Wireless network auditing and security assessment"
+mode_2n = "Crack WEP/WPA keys and gain access to wireless networks"
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "SQLMap"
+mode_1n = "Automated SQL injection detection and exploitation"
+mode_2n = "Extract data from databases and gain control of servers"
+escalation_level = "script"
+kali_package = "sqlmap"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+distance_range = { min_km = 0.1, max_km = 1, optimal_km = 0.25 }
+time_to_target = { min_minutes = 5, max_minutes = 20, optimal_minutes = 10 }
+terrain_factors = ["urban_density", "elevation", "access_points", "line_of_sight"]
+
+[geospatial.weather]
+critical_factors = ["temperature", "precipitation", "humidity", "wind_speed"]
+operational_threshold = { temperature_celsius = 35.0, precipitation_mm = 2.0, humidity_percent = 80.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "High humidity reduces equipment efficacy"
+impact_on_comms = "High precipitation can disrupt comms"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 5000
+signal_strength_threshold_dbm = -90
+imsi_tracking = true
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 100
+impact_assessment = "Proximity to power lines means possible disruptions"
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Suspicious Activity"
+incident_subcategory = "Implementation"
+location_type = "Critical Infrastructure"
+subject_role = "Suspect"
+activity_type = "Implementation"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Implementation"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 2332a (WMD), 18 USC 844 (Explosives)"
+
+[[relationships]]
+target_node = "uuid-134-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.80
+description = "Implementation enables the initiation phase"
+
+[[relationships]]
+target_node = "uuid-004-000-000-A"
+relationship_type = "requires"
+unicode_op = "⇢"
+strength = 0.90
+description = "Implementation depends heavily on previous stages"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.70
+description = "Implementation is vulnerable to detection"
+
+[[eei_priority]]
+rank = 1
+question = "What is the security response?"
+collection_method = "Triggering systems"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "Where are all emergency access points?"
+collection_method = "Facility blueprints"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "Who are the critical personnel?"
+collection_method = "Hacking and social engineering"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What are potential vulnerabilities?"
+collection_method = "Active scanning, penetration testing"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What is the layout of the environment?"
+collection_method = "Observation and blueprints"
+time_sensitivity = "medium"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Procurement of chemicals, assembly and implementation of a weapon",
+    source = "https://en.wikipedia.org/wiki/Oklahoma_City_bombing"
+  },
+  {
+    name = "Unabomber",
+    date = "1978-1995",
+    description = "Procurement of materials for homemade bombs, evasion of detection",
+    source = "https://en.wikipedia.org/wiki/Unabomber"
+  },
+  {
+    name = "Atlanta Olympic Park Bombing",
+    date = "1996-07-27",
+    description = "Assembling an explosive device, deploying during a large public event",
+    source = "https://en.wikipedia.org/wiki/Centennial_Olympic_Park_bombing"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1588"
+tactic = "Resource Development"
+technique = "Obtain Capabilities"
+sub_technique = "T1588.002 - Tool"
+description = "Acquire tools for use during implementation"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Exploit a vulnerability in a public-facing application to gain initial access."
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Defense Evasion"
+technique = "Valid Accounts"
+sub_technique = "T1078.001 - Default Accounts"
+description = "Utilize default or known credentials to bypass security measures"
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.001 - PowerShell"
+description = "Execute commands and scripts via PowerShell"
+
+[[ttps]]
+mitre_attack_id = "T1053"
+tactic = "Persistence"
+technique = "Scheduled Task/Job"
+sub_technique = ""
+description = "Create scheduled tasks or jobs to maintain persistence."
+
+[[ttps]]
+mitre_attack_id = "T1005"
+tactic = "Exfiltration"
+technique = "Data from Local System"
+sub_technique = ""
+description = "Collect data from the compromised system and exfiltrate it."
+
+[xsd_integration]
+playbook_template = "implementation_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-geolocation"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "💣"]
+lisp_expression = "(implementation-task :target target-id :phase deployment :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+
+sch = "q4x7L8pV2B9Ks5Zy"
+cuid = "T20250509G40N74SIm6L448e0"
+uuid = "7z8a3b1c5d2e6f70"
+hash_48 = "q4x7L8pV2B9Ks5ZyT20250509G40N74SIm6L448e07z8a3b1c5d2e6f70"
+```

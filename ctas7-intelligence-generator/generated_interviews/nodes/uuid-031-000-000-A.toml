@@ -1,0 +1,585 @@
+```toml
+# ============================================================================
+# CTAS-7 Node Interview Schema v7.3.1
+# Complete Intelligence Integration Architecture
+# ============================================================================
+# This is the canonical schema for generating 165 node interviews from the
+# IED TTL (Terrorist IED Task List). Each node represents an adversary task
+# with first-person narrative, intelligence requirements, and operational context.
+#
+# Integration Points:
+# - Computational: Trivariate hashing (SCH+CUID+UUID), Unicode ops, XSD
+# - Semantic: First-person narrative, EEIs, TTPs, relationships
+# - Tactical: HD4 phase mapping (Hunt/Detect/Disrupt/Disable/Dominate)
+# - Ontological: NIEM IEPD alignment, N-DEx field mapping
+# - Toolchain: 1n (defensive) + 2n (offensive) tool stacks
+# - Geospatial: GEE layers, weather, traffic, COMINT, terrain
+# ============================================================================
+
+[node_identity]
+task_id = "uuid-031-000-000-A"              # TTL task identifier
+task_name = "Route Reconnaissance"
+classification = "unclassified"              # or "cui", "secret", etc.
+ttl_category = "mandatory"                   # mandatory | desirable | optional
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# Full hash example: "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+# ============================================================================
+
+sch = "m8X9n3K2p0QsRtVa"                    # Positions 1-16: Semantic Content Hash
+                                             # Deterministic, content-based
+                                             # Seed: 0x1234 (Murmur3)
+                                             # Input: task_name + ttl_category + indicators
+
+cuid = "T20241115G34W11SrD"                    # Positions 17-32: Contextual Unique ID
+                                             # Spatio-temporal + semantic context
+                                             # Seed: 0x5678 (Murmur3)
+                                             # Format breakdown:
+                                             #   T20250109 = Temporal (8 chars): YYYYMMDD or T-{offset}d
+                                             #   G40N74    = Geographic (6 chars): Compressed lat/lon
+                                             #   S         = Semantic domain (2 chars): "Sr" = Surveillance/Recon
+                                             # Full encoding: T{time}G{geo}S{semantic}
+
+uuid = "U8a2bf19c7d36e54"                    # Positions 33-48: Universal Unique ID
+                                             # Global uniqueness, persistence, audit trail
+                                             # Seed: 0x9abc (Murmur3)
+                                             # Input: UUID v4 + content + timestamp
+
+hash_48 = "m8X9n3K2p0QsRtVaT20241115G34W11SrU8a2bf19c7d36e54"  # Full 48-char hash
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+# This is the core intelligence requirement. Written from the adversary's
+# perspective, describing capabilities, methods, and intent.
+# ============================================================================
+
+[capabilities]
+narrative = """
+I am the navigator, charting the unseen paths. My objective: identify the best routes
+for infiltration, exfiltration, and resupply. I meticulously document every road, alley,
+and hidden trail leading to and from the target area.
+
+I analyze traffic patterns at different times of day, noting congestion points and optimal
+travel speeds. I identify potential roadblocks, construction zones, and police checkpoints.
+I seek out alternate routes, including back roads, footpaths, and waterways.
+
+I assess the suitability of each route for various transportation methods: vehicles,
+bicycles, and foot travel. I calculate travel times, fuel consumption, and potential risks
+associated with each option. I look for unguarded access points and vulnerabilities
+along the route. I am the silent guide, ensuring safe passage.
+"""
+
+limitations = """
+My knowledge is limited by available information. I rely on maps, satellite imagery, and
+local intelligence, all of which can be outdated or incomplete. My reconnaissance is
+constrained by physical access. Some areas are restricted or too dangerous to explore.
+
+I am susceptible to detection. My presence may arouse suspicion, especially in areas
+with high security. I am vulnerable to surveillance by authorities or rival groups.
+My effectiveness diminishes as conditions change: new construction, road closures, or
+increased security measures can render my intelligence obsolete.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+# Defines the actionable window and decay curve for this intelligence type.
+# Uses "on the order of" language for human readability + numerical ranges.
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months to a year before", range = [90, 365], units = "days" }
+actionable_window = { words = "months", range = [30, 120], units = "days" }
+decay_curve = "exponential"  # exponential | linear | step_function
+ephemeral_conditions = [
+  "Road construction or closures",
+  "Changes in traffic patterns due to seasonal events",
+  "Increased police presence or security checkpoints",
+  "Changes in public transportation schedules",
+  "Natural disasters (floods, landslides) affecting routes"
+]
+persistence_conditions = [
+  "Underlying road network infrastructure",
+  "Geographic features (mountains, rivers)",
+  "Established transportation hubs (ports, airports)",
+  "Major highways and arterial roads"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+# The CUID (positions 17-32) encodes spatio-temporal + semantic + environmental
+# context using PREFIX and SUFFIX masks from CTAS 7.3 Ground Truth.
+# ============================================================================
+
+[cuid_mask]
+# Temporal context
+temporal = "T-{90-365}d"                     # Collection window: 60-180 days before attack
+temporal_format = "YYYYMMDD"                 # Or "T-{offset}d" for relative time
+
+# Geographic context
+geographic = "G{lat}{lon}"                   # Compressed: G40N74 = 40.7°N, 74.0°W
+geographic_radius_km = 10.0                   # Operational radius from target
+
+# Semantic domain
+semantic = "Sr"                              # Two-char code: Sr = Surveillance/Recon
+semantic_full = "recon:physical:route"  # Full ontology path
+
+# PREFIX MASKS (Global Environmental Context) - Domain-Specific
+[cuid_mask.prefix]
+# Universal masks (all domains)
+WX = "weather_mask"                          # Physical: Visibility, precip, wind, temp
+                                             # Cyber: Network weather (latency, jitter)
+                                             # Space: Solar radiation, space weather
+                                             # Maritime: Sea state, visibility, wind
+
+TF = "traffic_mask"                          # Physical: Road speed, congestion
+                                             # Cyber: Network traffic, bandwidth utilization
+                                             # Space: Orbital congestion, debris density
+                                             # Maritime: Shipping lane traffic
+
+OB = "order_of_battle_mask"                  # Friendly/enemy posture (all domains)
+JU = "jurisdiction_mask"                     # Legal/authority overlay (all domains)
+TH = "threat_posture_mask"                   # Threat level indicators (all domains)
+
+# Domain-Specific Extensions (v7.3)
+[cuid_mask.prefix.space]
+SR = "solar_radiation"                       # Solar radiation impact (0-1)
+GM = "geomagnetic_disturbance"               # Geomagnetic storm activity (0-1)
+DE = "debris_density"                        # Orbital debris field density (0-1)
+JS = "jurisdictional_shell"                  # LEO/MEO/GEO orbital layer
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"                       # Latency, jitter, packet loss
+DT = "data_traffic"                          # Bandwidth utilization, flow rate
+AS = "attack_surface"                        # Exposed services, vulnerabilities
+FW = "firewall_posture"                      # Security boundary status
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"                             # Wave height, sea conditions (Beaufort scale)
+CT = "current_tide"                          # Ocean currents, tidal state
+SL = "shipping_lanes"                        # Proximity to commercial traffic
+TW = "territorial_waters"                    # Jurisdictional boundaries (12nm, 200nm EEZ)
+SC = "submarine_cables"                      # Proximity to undersea infrastructure
+PT = "port_traffic"                          # Harbor/port congestion
+
+[cuid_mask.prefix.network]
+TP = "topology"                              # Network topology complexity
+RT = "routing"                               # Routing table stability, BGP health
+LT = "latency"                               # End-to-end latency metrics
+PL = "packet_loss"                           # Packet loss percentage
+BU = "bandwidth_utilization"                 # Link utilization percentage
+AS = "autonomous_system"                     # AS-level routing context
+
+# SUFFIX MASKS (Local Operational Context)
+[cuid_mask.suffix]
+RP = "personnel_availability"                # Staffing levels (or automated systems)
+RE = "equipment_readiness"                   # Operational status
+RS = "supplies_availability"                 # Resource/fuel availability
+BW = "bandwidth_comms"                       # Connectivity status
+RO = "rules_of_engagement"                   # Legal constraints
+
+# Priority
+priority = "high"                            # low | medium | high | critical
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+# Maps this node to the 5 phases of the HD4 kill chain.
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactive search for anomalous route reconnaissance patterns" }
+detect = { enabled = true, priority = "critical", description = "Identify route reconnaissance activity in real-time" }
+disrupt = { enabled = true, priority = "medium", description = "Alter routes or increase security to deter reconnaissance" }
+disable = { enabled = false, priority = "low", description = "Not applicable for reconnaissance phase" }
+dominate = { enabled = false, priority = "low", description = "Not applicable for reconnaissance phase" }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+# Key indicators that this task is occurring. Used for detection and hunting.
+# ============================================================================
+
+[[indicators]]
+observable = "Unusual interest in road maps and public transportation schedules"
+priority = "medium"
+detection_method = "Monitoring online searches and library activity"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Repeated driving or walking along specific routes"
+priority = "high"
+detection_method = "Traffic cameras, security guard observation"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Photography or video recording of roads, bridges, and tunnels"
+priority = "high"
+detection_method = "Security personnel observation, CCTV review"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of GPS tracking devices or route planning apps"
+priority = "medium"
+detection_method = "Monitoring app usage and data traffic"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Inquiries about road closures, construction projects, or alternative routes"
+priority = "medium"
+detection_method = "Monitoring online forums and social media"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Purchase of detailed topographic maps or navigational equipment"
+priority = "low"
+detection_method = "Monitoring retail transactions"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Requests for information about emergency response routes"
+priority = "high"
+detection_method = "Monitoring official communication channels"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Accessing restricted areas along potential routes"
+priority = "critical"
+detection_method = "Alarm systems, motion sensors, perimeter security"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Loitering near transportation hubs or critical infrastructure"
+priority = "high"
+detection_method = "Security guard observation, CCTV review"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Analysis of traffic patterns using open-source intelligence"
+priority = "medium"
+detection_method = "Monitoring network traffic and OSINT sources"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Deployment of temporary traffic counters or sensors"
+priority = "critical"
+detection_method = "Physical inspections, surveillance"
+false_positive_rate = "low"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+# Dual-mode tool stacks: same tools, different semantic context.
+# ============================================================================
+
+[[toolchain]]
+tool = "Google Maps / OpenStreetMap"
+mode_1n = "Identify alternative evacuation routes and potential bottlenecks"
+mode_2n = "Plan optimal routes for attack and escape, exploiting traffic patterns"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "pgRouting / PostGIS"
+mode_1n = "Analyze traffic patterns and identify potential disruptions"
+mode_2n = "Optimize attack routes based on real-time traffic conditions and risk factors"
+escalation_level = "crate"
+kali_package = "postgresql-plrouting"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Traffic cameras / CCTV footage"
+mode_1n = "Monitor traffic flow and identify suspicious activity"
+mode_2n = "Gather intelligence on security measures and potential vulnerabilities"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "GPS tracking devices"
+mode_1n = "Track the movement of vehicles and personnel for security purposes"
+mode_2n = "Track target movements, identify safe houses, and coordinate attacks"
+escalation_level = "microkernel"
+kali_package = "gpsd"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "RF spectrum analyzer"
+mode_1n = "Detect unauthorized wireless communications and GPS spoofing"
+mode_2n = "Jam communications and disrupt GPS signals along target routes"
+escalation_level = "microkernel"
+kali_package = "gnuradio"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "OSINT frameworks (SpiderFoot, Maltego)"
+mode_1n = "Gather information on potential threats and vulnerabilities"
+mode_2n = "Collect intelligence on security measures and potential vulnerabilities along routes"
+escalation_level = "crate"
+kali_package = "spiderfoot"
+resource_cost = "medium"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+# Location-dependent intelligence requirements and operational factors.
+# ============================================================================
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",                        # Elevation (30m resolution)
+  "MODIS/006/MCD12Q1",                       # Land cover classification
+  "COPERNICUS/S2",                           # Sentinel-2 optical imagery
+  "JRC/GSW1_3/GlobalSurfaceWater"            # Water bodies
+]
+
+# Distance and time constraints
+distance_range = { min_km = 1.0, max_km = 100, optimal_km = 10 }
+time_to_target = { min_minutes = 30, max_minutes = 360, optimal_minutes = 90 }
+
+# Terrain factors (affects approach, escape, line-of-sight)
+terrain_factors = ["urban_density", "road_density", "elevation", "vegetation_cover"]
+
+# Weather impact (from existing weather_data table)
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "fog"]
+operational_threshold = { visibility_km = 2.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Low visibility and heavy precipitation hinder route reconnaissance"
+impact_on_comms = "Heavy precipitation can degrade wireless communication signals"
+
+# Traffic and routing (from pgRouting + PostGIS)
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"           # or pgr_astar, pgr_trsp
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+# COMINT (Communications Intelligence)
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 5000
+signal_strength_threshold_dbm = -90
+imsi_tracking = false                        # 1n: detect adversary, 2n: track target
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+# Critical infrastructure proximity
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 500
+impact_assessment = "Route reconnaissance near critical infrastructure triggers elevated alerts"
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+# Maps CTAS ontology to NIEM IEPDs for law enforcement interoperability.
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+# N-DEx field mapping
+[niem_mapping.ndex_fields]
+incident_category = "Suspicious Activity"
+incident_subcategory = "Surveillance/Route Planning"
+location_type = "Transportation Infrastructure"
+subject_role = "Suspect"
+activity_type = "Route Reconnaissance"
+
+# NIEM core elements
+[niem_mapping.niem_core]
+"nc:Activity" = "Route Reconnaissance"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_route }"
+"j:Charge" = "18 USC 2332b (Terrorism), 18 USC 1361 (Destruction of Property)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+# Defines how this node connects to other nodes in the 165-task graph.
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-010-000-000-A"           # Logistics Planning
+relationship_type = "enables"
+unicode_op = "→"                             # Directional flow
+strength = 0.90                              # 0.0-1.0 (how critical is this link)
+description = "Route reconnaissance directly enables logistics planning"
+
+[[relationships]]
+target_node = "uuid-040-000-000-A"           # Staging Area Selection
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.70
+description = "Route reconnaissance informs staging area selection"
+
+[[relationships]]
+target_node = "uuid-080-000-000-A"           # Transportation of Personnel
+relationship_type = "requires"
+unicode_op = "⇁"
+strength = 0.80
+description = "Route reconnaissance is required for transporting personnel"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"           # Counter-Surveillance
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.50
+description = "Route reconnaissance is vulnerable to counter-surveillance"
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+# Ranked intelligence requirements for this task.
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "What are the primary and alternate routes to the target?"
+collection_method = "Physical reconnaissance, traffic analysis, OSINT"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the traffic patterns and congestion points along each route?"
+collection_method = "Traffic cameras, GPS data, historical traffic records"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 3
+question = "What are the security measures in place along each route (police checkpoints, CCTV cameras)?"
+collection_method = "Physical reconnaissance, OSINT, security assessments"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What are the potential roadblocks, construction zones, or natural hazards along each route?"
+collection_method = "Local intelligence, news reports, weather forecasts"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What is the suitability of each route for various transportation methods (vehicles, bicycles, foot travel)?"
+collection_method = "Physical reconnaissance, terrain analysis, route simulations"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 6
+question = "What are the best routes for escape?"
+collection_method = "Traffic analysis, physical observation, covert GPS tracking"
+time_sensitivity = "critical"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+# Links to actual incidents where this task was observed.
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "Madrid Train Bombings",
+    date = "2004-03-11",
+    description = "Extensive route reconnaissance of commuter train lines",
+    source = "https://en.wikipedia.org/wiki/2004_Madrid_train_bombings"
+  },
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Route reconnaissance of the Murrah Federal Building",
+    source = "FBI Investigation Report"
+  },
+  {
+    name = "London 7/7 Bombings",
+    date = "2005-07-07",
+    description = "Route reconnaissance of London's public transport system",
+    source = "https://en.wikipedia.org/wiki/7_July_2005_London_bombings"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+# MITRE ATT&CK mapping for cyber TTPs (where applicable).
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.004 - Vulnerability Scanning"
+description = "Scanning for vulnerabilities along routes (e.g., weak wireless networks)"
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.004 - Social Media"
+description = "Gathering information on transportation personnel through social media"
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.001 - Spearphishing Attachment"
+description = "Phishing transportation employees for route information"
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Infrastructure Information"
+sub_technique = "T1592.002 - Hardware"
+description = "Identifying hardware along the route (e.g., security cameras, traffic sensors)"
+
+[[ttps]]
+mitre_attack_id = "T1591"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "T1591.002 - Domain Properties"
+description = "Gathering information on transportation network infrastructure"
+
+[[ttps]]
+mitre_attack_id = "T1602"
+tactic = "Reconnaissance"
+technique = "Acquire Infrastructure"
+sub_technique = "T1602.001 - Domains"
+description = "Registering domains that mimic legitimate transportation entities to gather information."
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+# Links this node to XSD playbooks for executable document generation.
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "route_reconnaissance_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-navigation"]
+unicode_assembly = ["→", "⇢", "⚠", "⇁", "👁", "📍"]
+lisp_expression = "(route-recon-task :target target-id :phase pre-operational :priority high)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2024-11-15T00:00:00Z"
+last_updated = "2024-11-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"                            # draft | active | deprecated
+```

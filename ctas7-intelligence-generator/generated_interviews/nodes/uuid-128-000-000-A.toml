@@ -1,0 +1,408 @@
+```toml
+[node_identity]
+task_id = "uuid-128-000-000-A"
+task_name = "Task 128 - Phase 4"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "Va7vJ3W1pL2y0q8h"
+cuid = "T20250215G34N84Si9e00d3749a045e"
+uuid = "U8b2f16c5d3011bf"
+hash_48 = "Va7vJ3W1pL2y0q8hT20250215G34N84Si9e00d3749a045eU8b2f16c5d3011bf"
+
+[capabilities]
+narrative = """
+I infiltrate the system like a shadow, moving through back channels and forgotten doorways.
+I'm after their secrets, the intellectual property that fuels their advantage.
+I start with the low-hanging fruit: unsecured file shares, default passwords,
+the recycle bins of departed employees.
+
+I probe for weaknesses in their web applications, SQL injection points,
+cross-site scripting opportunities. I exploit vulnerabilities in their outdated software,
+the holes they haven't patched, the doors they left unlocked.
+I move laterally, jumping from machine to machine, escalating my privileges,
+gaining access to sensitive databases.
+
+I exfiltrate data slowly, blending into the network traffic, covering my tracks.
+I use steganography to hide information in images and audio files.
+I drop keyloggers to capture credentials, persistence mechanisms to maintain access.
+I am the silent thief, the digital pickpocket, the master of espionage. I extract the crown jewels and vanish.
+"""
+
+limitations = """
+My access is limited by their security posture. Layered defenses, intrusion detection systems,
+and vigilant IT staff can expose my presence.
+My tools leave traces: network logs, event logs, altered timestamps.
+I am vulnerable to honeypots, decoy files, and endpoint detection and response systems.
+My effectiveness degrades with time: passwords change, vulnerabilities are patched,
+my stolen data becomes stale. I am dependent on their mistakes, their oversights,
+their human weaknesses. If they lock the doors, I cannot get in.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months to years", range = [6, 24], units = "months" }
+actionable_window = { words = "months", range = [3, 6], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Patching of exploited vulnerabilities",
+  "Password resets and account lockouts",
+  "Detection by intrusion detection systems",
+  "Data encryption or access control changes"
+]
+persistence_conditions = [
+  "Unpatched legacy systems",
+  "Weak authentication protocols",
+  "Poorly configured network security",
+  "Lack of employee security awareness"
+]
+
+[cuid_mask]
+temporal = "T-{180-720}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "Si"
+semantic_full = "exfiltration:intellectual_property:industrial_espionage"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Proactive search for data exfiltration anomalies" }
+detect = { enabled = true, priority = "critical", description = "Real-time detection of data exfiltration attempts" }
+disrupt = { enabled = true, priority = "high", description = "Interruption of data exfiltration channels" }
+disable = { enabled = true, priority = "medium", description = "Neutralization of adversary access" }
+dominate = { enabled = false, priority = "low", description = "Not directly applicable" }
+
+[[indicators]]
+observable = "Anomalous network traffic to external IP addresses"
+priority = "critical"
+detection_method = "Network Intrusion Detection System (NIDS)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Large data transfers during off-peak hours"
+priority = "high"
+detection_method = "Network traffic analysis, SIEM alerts"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of uncommon or encrypted communication protocols"
+priority = "medium"
+detection_method = "Deep packet inspection, protocol analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Access to sensitive files or databases by unauthorized users"
+priority = "critical"
+detection_method = "File integrity monitoring, database auditing"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Privilege escalation attempts"
+priority = "critical"
+detection_method = "Security event logs, SIEM alerts"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Multiple failed login attempts followed by successful login"
+priority = "high"
+detection_method = "Authentication logs, SIEM alerts"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Detection of keylogger software"
+priority = "critical"
+detection_method = "Endpoint Detection and Response (EDR)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Changes to system files or configurations"
+priority = "high"
+detection_method = "File integrity monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Presence of persistence mechanisms (e.g., scheduled tasks, startup scripts)"
+priority = "high"
+detection_method = "System auditing, registry analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Steganography attempts (data hidden in images or audio files)"
+priority = "medium"
+detection_method = "Steganalysis tools, anomaly detection"
+false_positive_rate = "high"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Network discovery and vulnerability scanning"
+mode_2n = "Identify open ports and services for exploitation"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Vulnerability assessment and penetration testing"
+mode_2n = "Exploit vulnerabilities and gain access to systems"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Network traffic analysis and protocol dissection"
+mode_2n = "Capture and analyze network traffic to extract credentials"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "John the Ripper"
+mode_1n = "Password cracking and recovery"
+mode_2n = "Crack passwords to gain access to accounts"
+escalation_level = "script"
+kali_package = "john"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Brute-force login attacks"
+mode_2n = "Brute-force login credentials to gain unauthorized access"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "sqlmap"
+mode_1n = "Detect and exploit SQL injection vulnerabilities"
+mode_2n = "Automate SQL injection attacks to extract data"
+escalation_level = "script"
+kali_package = "sqlmap"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 1, max_minutes = 60, optimal_minutes = 5 }
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = ""
+cost_factors = []
+escape_route_priority = "low"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = ""
+
+[niem_mapping]
+justice_domain = "j:CriminalJustice"
+intelligence_domain = "intel:IntellectualPropertyTheft"
+iepd_type = "IncidentReport"
+iepd_version = "6.0"
+
+[niem_mapping.ndex_fields]
+incident_category = "Theft"
+incident_subcategory = "Intellectual Property Theft"
+location_type = "Business"
+subject_role = "Offender"
+activity_type = "Data Exfiltration"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Data Exfiltration"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1832 (Theft of Trade Secrets)"
+
+[[relationships]]
+target_node = "uuid-129-000-000-A"
+relationship_type = "precedes"
+unicode_op = "→"
+strength = 0.85
+description = "Data exfiltration typically follows network intrusion"
+
+[[relationships]]
+target_node = "uuid-042-000-000-A"
+relationship_type = "requires"
+unicode_op = "⇢"
+strength = 0.70
+description = "Data exfiltration requires established network access"
+
+[[relationships]]
+target_node = "uuid-088-000-000-A"
+relationship_type = "hampers"
+unicode_op = "⚠"
+strength = 0.50
+description = "Strong data encryption hampers data exfiltration"
+
+[[eei_priority]]
+rank = 1
+question = "What are the most valuable intellectual property assets?"
+collection_method = "Network analysis, file access auditing, insider information"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "Which accounts have access to sensitive data?"
+collection_method = "Access control lists, database auditing"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What vulnerabilities can be exploited to gain access?"
+collection_method = "Vulnerability scans, penetration testing"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 4
+question = "How is data being transmitted internally and externally?"
+collection_method = "Network traffic analysis, data loss prevention (DLP) systems"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What security measures are in place to prevent data exfiltration?"
+collection_method = "Security policy reviews, network architecture analysis"
+time_sensitivity = "low"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Operation Aurora (Google)",
+    date = "2009-12-01",
+    description = "Targeted attacks against Google and other companies to steal intellectual property",
+    source = "https://en.wikipedia.org/wiki/Operation_Aurora"
+  },
+  {
+    name = "RSA Security Breach",
+    date = "2011-03-17",
+    description = "Compromise of RSA Security leading to the theft of SecurID authentication data",
+    source = "https://en.wikipedia.org/wiki/RSA_security_breach"
+  },
+  {
+    name = "Sony Pictures Entertainment Hack",
+    date = "2014-11-24",
+    description = "Massive data breach at Sony Pictures, resulting in the release of sensitive information",
+    source = "https://en.wikipedia.org/wiki/Sony_Pictures_Entertainment_hack"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1003"
+tactic = "Credential Access"
+technique = "OS Credential Dumping"
+sub_technique = "T1003.001 - LSASS Memory"
+description = "Dump credentials from LSASS memory"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Exploit vulnerabilities in public-facing web applications"
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.001 - PowerShell"
+description = "Use PowerShell to execute malicious commands"
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - Web Protocols"
+description = "Use web protocols (HTTP, HTTPS) for command and control"
+
+[[ttps]]
+mitre_attack_id = "T1020"
+tactic = "Exfiltration"
+technique = "Automated Exfiltration"
+sub_technique = ""
+description = "Automate the exfiltration of data"
+
+[[ttps]]
+mitre_attack_id = "T1041"
+tactic = "Exfiltration"
+technique = "Exfiltration Over C2 Channel"
+sub_technique = ""
+description = "Exfiltrate data over command and control channel"
+
+[xsd_integration]
+playbook_template = "data_exfiltration_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-forensics-network", "ctas7-advanced-persistence"]
+unicode_assembly = ["→", "⇢", "⚠", "🔑", "💾", "🛡"]
+lisp_expression = "(exfil-task :target target-id :phase data-theft :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-02-15T00:00:00Z"
+last_updated = "2025-02-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

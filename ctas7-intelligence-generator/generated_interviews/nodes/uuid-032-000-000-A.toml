@@ -1,0 +1,458 @@
+```toml
+[node_identity]
+task_id = "uuid-032-000-000-A"
+task_name = "Emplacement Site Selection"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "7D35n9K1W8a2pV5J"
+cuid = "T20240620G34S11Se9a7410d0613008"
+uuid = "Vb1c952f8d74e65a"
+hash_48 = "7D35n9K1W8a2pV5JT20240620G34S11Se9a7410d0613008Vb1c952f8d74e65a"
+
+[capabilities]
+narrative = """
+I am the architect of destruction, meticulously choosing the canvas upon which chaos will unfold.
+My mission: to identify the perfect location for our deadly masterpiece.
+I scrutinize maps and satellite imagery, seeking vulnerabilities and strategic advantages.
+I conduct covert site surveys, observing foot traffic, security measures, and potential escape routes.
+I analyze soil composition, assessing its suitability for concealing our devices.
+I evaluate proximity to critical infrastructure, maximizing the impact of our act.
+I consider wind patterns and environmental factors, optimizing the dispersal of our agents.
+I seek out locations with minimal surveillance and maximum public exposure.
+I weigh accessibility for our team against the difficulty of detection.
+I document every detail: GPS coordinates, photographs, diagrams, and contingency plans.
+My selection will determine the success or failure of our mission.
+"""
+
+limitations = """
+My choices are constrained by practical considerations:
+availability of resources, logistical challenges, and the ever-present threat of discovery.
+I must balance the desire for maximum impact with the need to minimize risk.
+My judgments are subject to human error, and my analyses can be flawed.
+I can be deceived by misinformation or misled by incomplete data.
+My activities can be detected by surveillance technologies, law enforcement, or vigilant citizens.
+The passage of time can render my choices obsolete, as security measures evolve and environmental conditions change.
+I am ultimately a pawn in a larger game, and my actions are only one piece of the puzzle.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months to years", range = [3, 12], units = "months" }
+actionable_window = { words = "months", range = [1, 3], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in security posture",
+  "Construction or demolition activities",
+  "Increased law enforcement presence",
+  "Shifting political landscape"
+]
+persistence_conditions = [
+  "Geographic features",
+  "Critical infrastructure location",
+  "Building layouts",
+  "Underground utilities"
+]
+
+[cuid_mask]
+temporal = "T-{90-365}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "Se"
+semantic_full = "attack:emplacement:selection"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "critical"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactively search for patterns of site reconnaissance activity" }
+detect = { enabled = true, priority = "critical", description = "Identify potential emplacement sites based on known criteria" }
+disrupt = { enabled = true, priority = "medium", description = "Hinder site reconnaissance efforts through counter-surveillance and deception" }
+disable = { enabled = false, priority = "low", description = "Not applicable in emplacement site selection phase" }
+dominate = { enabled = false, priority = "low", description = "Not applicable in emplacement site selection phase" }
+
+[[indicators]]
+observable = "Unexplained presence near critical infrastructure"
+priority = "critical"
+detection_method = "Security personnel reports, video surveillance"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Detailed photography of potential target locations"
+priority = "high"
+detection_method = "Security personnel reports, public social media analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Acquisition of maps or building plans of target sites"
+priority = "high"
+detection_method = "Document control audits, insider threat programs"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Soil samples or environmental analysis near target location"
+priority = "medium"
+detection_method = "Environmental monitoring, laboratory analysis"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Purchases of specialized equipment for site analysis"
+priority = "medium"
+detection_method = "Financial transaction monitoring, supply chain analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "GPS location data showing patterns of site reconnaissance"
+priority = "high"
+detection_method = "Mobile device analysis, network forensics"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of encrypted communication channels to discuss potential target sites"
+priority = "high"
+detection_method = "Network traffic analysis, decryption techniques"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Recruitment of individuals with knowledge of target site"
+priority = "critical"
+detection_method = "Human intelligence, informant networks"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Increased online searches for target site information"
+priority = "medium"
+detection_method = "Search engine monitoring, web traffic analysis"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Anomalous patterns of vehicular or pedestrian traffic near target site"
+priority = "high"
+detection_method = "Traffic camera analysis, pattern recognition algorithms"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Increased chatter about target site on dark web forums"
+priority = "high"
+detection_method = "Dark web monitoring, human intelligence"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Google Earth Pro"
+mode_1n = "Identify vulnerabilities in facility perimeters, model potential attack vectors"
+mode_2n = "Evaluate site suitability for emplacement, plan approach and escape routes"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "QGIS"
+mode_1n = "Overlay threat data on geospatial information to assess risk"
+mode_2n = "Create detailed maps for operational planning, simulate impact zones"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Simulate network attacks to identify security vulnerabilities"
+mode_2n = "Remotely assess infrastructure, gather intelligence on potential target"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan networks for open ports and services to assess attack surface"
+mode_2n = "Map out network infrastructure, identify potential entry points"
+escalation_level = "microkernel"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for suspicious patterns or data exfiltration"
+mode_2n = "Capture network traffic to gain insights into target communication protocols"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Social Engineering Toolkit (SET)"
+mode_1n = "Educate personnel about social engineering threats and test awareness"
+mode_2n = "Gather information about personnel through phishing attacks"
+escalation_level = "crate"
+kali_package = "set"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "theHarvester"
+mode_1n = "Identify exposed information about a target online"
+mode_2n = "Gather intelligence about the target's online presence, potential vulnerabilities"
+escalation_level = "script"
+kali_package = "theharvester"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Recon-ng"
+mode_1n = "Automate the process of gathering information about a target"
+mode_2n = "Create comprehensive reports on potential targets"
+escalation_level = "script"
+kali_package = "recon-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Maltego"
+mode_1n = "Visually map relationships between entities"
+mode_2n = "Discover connections and relationships related to the target and infrastructure"
+escalation_level = "crate"
+kali_package = "maltego"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "DirBuster"
+mode_1n = "Discover hidden directories and files on a web server"
+mode_2n = "Identify potential attack vectors through web server vulnerabilities"
+escalation_level = "script"
+kali_package = "dirbuster"
+resource_cost = "low"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater",
+  "NOAA/DMSP-OLS/NIGHTTIME_LIGHTS"
+]
+
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+terrain_factors = ["urban_density", "vegetation_cover", "elevation", "accessibility", "line_of_sight"]
+
+[geospatial.weather]
+critical_factors = ["wind_speed", "precipitation", "temperature", "visibility"]
+operational_threshold = { visibility_km = 1.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Weather impacts site assessment"
+impact_on_comms = "Adverse weather could disrupt comms during assessment"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "noise_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -85
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services", "water_supply"]
+proximity_threshold_m = 200
+impact_assessment = "Proximity to critical infrastructure informs site selection criteria"
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:TerroristActivity"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Terrorism"
+incident_subcategory = "Pre-Incident Planning"
+location_type = "Critical Infrastructure"
+subject_role = "Suspect"
+activity_type = "Site Reconnaissance"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Site Selection"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 2332b (Terrorist Acts Abroad)"
+
+[[relationships]]
+target_node = "uuid-035-000-000-A"
+relationship_type = "precedes"
+unicode_op = "→"
+strength = 0.9
+description = "Site selection comes before device emplacement"
+
+[[relationships]]
+target_node = "uuid-040-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.8
+description = "Site selection enables the planning of deployment"
+
+[[relationships]]
+target_node = "uuid-002-000-000-A"
+relationship_type = "depends_on"
+unicode_op = "⇢"
+strength = 0.7
+description = "Site Selection needs input from Reconnaissance"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.5
+description = "Site Selection activities are vulnerable to counter surveillance"
+
+[[eei_priority]]
+rank = 1
+question = "What is the optimal location to maximize casualties and damage?"
+collection_method = "Geospatial analysis, vulnerability assessments"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the security vulnerabilities of the chosen site?"
+collection_method = "Site surveys, penetration testing"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "How accessible is the site to our operatives?"
+collection_method = "Traffic analysis, reconnaissance"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What is the level of surveillance at the site?"
+collection_method = "Counter-surveillance, open-source intelligence"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 5
+question = "What are the environmental conditions at the site?"
+collection_method = "Weather data, environmental analysis"
+time_sensitivity = "low"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Alfred P. Murrah Federal Building was selected for its perceived symbolic value and accessibility.",
+    source = "https://en.wikipedia.org/wiki/Oklahoma_City_bombing"
+  },
+  {
+    name = "2004 Madrid Train Bombings",
+    date = "2004-03-11",
+    description = "Train stations were selected for their high passenger volume during rush hour.",
+    source = "https://en.wikipedia.org/wiki/2004_Madrid_train_bombings"
+  },
+  {
+    name = "9/11 Attacks",
+    date = "2001-09-11",
+    description = "World Trade Center and Pentagon selected due to symbolic and economic importance",
+    source = "https://www.9-11commission.gov/report/"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.002 - Vulnerability Scanning"
+description = "Adversary scans target site for vulnerabilities"
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.004 - Security Camera Footage"
+description = "Collect information about security camera placements, coverage, and recording schedules."
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.001 - Spearphishing Attachment"
+description = "Send targeted phishing emails with malicious attachments to gather information about target locations."
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Infrastructure Information"
+sub_technique = "T1592.004 - Physical Locations"
+description = "Obtain the physical location of target"
+
+[[ttps]]
+mitre_attack_id = "T1594"
+tactic = "Reconnaissance"
+technique = "Search Closed Sources"
+description = "Access closed or private sources for information about the target environment."
+
+[[ttps]]
+mitre_attack_id = "T1591"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "T1591.001 - Domain Properties"
+description = "Obtain domain-related information to understand victim's online presence"
+
+[xsd_integration]
+playbook_template = "emplacement_site_selection_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-geolocation", "ctas7-wmd-targeting"]
+unicode_assembly = ["→", "⇢", "⚠", "📍", "🗺", "☣"]
+lisp_expression = "(emplacement-site-selection :target target-id :phase pre-operational :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2024-06-20T00:00:00Z"
+last_updated = "2024-06-20T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

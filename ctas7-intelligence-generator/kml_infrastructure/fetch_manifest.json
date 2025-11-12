@@ -1,0 +1,57 @@
+{
+  "fetch_timestamp": "2025-11-09T14:23:42.622580",
+  "elapsed_seconds": 5.4903857707977295,
+  "sources": {
+    "submarine_cables": {
+      "status": "success",
+      "file": "kml_infrastructure/submarine_cables.geojson",
+      "size_bytes": 720216,
+      "type": "geojson"
+    },
+    "cable_landing_stations": {
+      "status": "success",
+      "file": "kml_infrastructure/cable_landing_stations.geojson",
+      "size_bytes": 353844,
+      "type": "geojson"
+    },
+    "internet_exchanges": {
+      "status": "success",
+      "file": "kml_infrastructure/internet_exchanges.json",
+      "size_bytes": 1334333,
+      "type": "json"
+    },
+    "data_centers": {
+      "status": "success",
+      "file": "kml_infrastructure/data_centers.json",
+      "size_bytes": 5499448,
+      "type": "json"
+    },
+    "starlink_gateways": {
+      "status": "failed",
+      "file": null,
+      "size_bytes": 0
+    },
+    "cell_towers_sample": {
+      "status": "success",
+      "file": "kml_infrastructure/cell_towers_sample.csv",
+      "size_bytes": 58637,
+      "type": "csv"
+    },
+    "power_grid": {
+      "status": "failed",
+      "file": null,
+      "size_bytes": 0
+    },
+    "airports": {
+      "status": "success",
+      "file": "kml_infrastructure/airports.csv",
+      "size_bytes": 12397085,
+      "type": "csv"
+    },
+    "seaports": {
+      "status": "failed",
+      "file": null,
+      "size_bytes": 0
+    }
+  }
+}

@@ -1,0 +1,414 @@
+```toml
+[node_identity]
+task_id = "uuid-069-000-000-A"
+task_name = "Task 69 - Phase 2"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "Yt2bQ3kL9xR0wN7j"
+cuid = "T20250110G40N74Sa4e8400e2"
+uuid = "b41d4abb6341d4a"
+hash_48 = "Yt2bQ3kL9xR0wN7jT20250110G40N74Sa4e8400e2b41d4abb6341d4a"
+
+[capabilities]
+narrative = """
+I refine the initial intelligence. I penetrate security checkpoints with counterfeit credentials, 
+observe internal layouts firsthand, and plant covert listening devices near key personnel. 
+I map internal network infrastructure, identify server locations, and record employee login procedures.
+
+I exploit social engineering tactics to gain access to restricted areas, impersonating maintenance 
+workers or IT support staff. I analyze waste disposal habits to identify sensitive documents and shredding 
+practices. I install keyloggers on employee workstations and intercept sensitive email communications.
+
+I seek out vulnerabilities in physical security systems, such as alarm response times, 
+access control weaknesses, and emergency evacuation plans. I document critical infrastructure dependencies 
+(power, water, communications), noting backup systems and potential failure points. 
+My intel will lay the groundwork for successful infiltration.
+"""
+
+limitations = """
+My activities are high-risk and require meticulous planning and execution. I am vulnerable to detection 
+by internal security personnel, surveillance cameras, and network intrusion detection systems. Insider 
+threats and counter-intelligence operations pose a significant risk.
+
+My reliance on social engineering tactics can be thwarted by well-trained and vigilant employees. 
+Physical security measures, such as biometric access controls and security audits, limit my access. 
+I must maintain a low profile and avoid drawing attention to my activities, as prolonged exposure increases 
+the likelihood of discovery.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 48], units = "hours" }
+collection_phase = { words = "weeks to months", range = [2, 8], units = "weeks" }
+actionable_window = { words = "days to weeks", range = [3, 21], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Security drills or emergency exercises",
+  "Changes in physical security configuration (cameras, locks)",
+  "Software updates and security patches",
+  "Employee security awareness training"
+]
+persistence_conditions = [
+  "Internal infrastructure (network layout, server locations)",
+  "Employee habits and routines",
+  "Physical building layout and access points"
+]
+
+[cuid_mask]
+temporal = "T-{14-56}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+semantic = "Sa"
+semantic_full = "recon:physical:access"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Look for anomalies indicating internal reconnaissance" }
+detect = { enabled = true, priority = "critical", description = "Real-time detection of unauthorized access attempts" }
+disrupt = { enabled = true, priority = "high", description = "Implement countermeasures to block internal reconnaissance" }
+disable = { enabled = false, priority = "low", description = "Not applicable for reconnaissance phase" }
+dominate = { enabled = false, priority = "low", description = "Not applicable for reconnaissance phase" }
+
+[[indicators]]
+observable = "Unauthorized personnel entering restricted areas"
+priority = "critical"
+detection_method = "Access control logs, security camera alerts"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Covert audio recording devices discovered"
+priority = "critical"
+detection_method = "Physical security sweeps, bug detection equipment"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unusual network traffic from internal sources"
+priority = "high"
+detection_method = "Network intrusion detection system, SIEM alerts"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Keyloggers detected on employee workstations"
+priority = "critical"
+detection_method = "Endpoint detection and response (EDR) tools"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Phishing attempts targeting sensitive information"
+priority = "high"
+detection_method = "Email security filters, employee reporting"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Elevated privileges used without authorization"
+priority = "critical"
+detection_method = "Privileged access management (PAM) logs"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Insider access to sensitive document repositories"
+priority = "high"
+detection_method = "Data loss prevention (DLP) systems"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Anomalous badge swipes outside work hours"
+priority = "medium"
+detection_method = "Physical security logs, anomaly detection systems"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Unexplained interest in critical infrastructure blueprints"
+priority = "high"
+detection_method = "Document tracking systems, file access audits"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Requests for network diagrams or security protocols"
+priority = "medium"
+detection_method = "IT support ticket monitoring, user behavior analytics"
+false_positive_rate = "high"
+
+[[toolchain]]
+tool = "mimikatz"
+mode_1n = "Detect and remove credential harvesting tools"
+mode_2n = "Extract credentials from memory and lsass.exe"
+escalation_level = "microkernel"
+kali_package = "N/A (Windows tool)"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Scan for vulnerabilities and penetration test defenses"
+mode_2n = "Exploit vulnerabilities for system access and lateral movement"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan network for unauthorized devices and open ports"
+mode_2n = "Map internal network infrastructure and identify vulnerable services"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for suspicious activity and data leakage"
+mode_2n = "Capture and analyze network packets for sensitive information"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Social-Engineer Toolkit (SET)"
+mode_1n = "Conduct phishing simulations to test employee awareness"
+mode_2n = "Launch targeted phishing attacks to gain access or credentials"
+escalation_level = "crate"
+kali_package = "set"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Powershell"
+mode_1n = "Monitor system activity and identify malicious scripts"
+mode_2n = "Automate tasks, execute commands, and bypass security controls"
+escalation_level = "microkernel"
+kali_package = "N/A (Windows tool)"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = ""
+impact_on_comms = ""
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = ""
+cost_factors = []
+escape_route_priority = ""
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = ""
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Suspicious Activity"
+incident_subcategory = "Internal Surveillance"
+location_type = "Critical Infrastructure"
+subject_role = "Insider"
+activity_type = "Internal Reconnaissance"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Internal Reconnaissance"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-070-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.90
+description = "Internal reconnaissance directly enables system infiltration"
+
+[[relationships]]
+target_node = "uuid-085-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.70
+description = "Internal reconnaissance informs lateral movement planning"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.80
+description = "Internal reconnaissance is vulnerable to counter-intelligence measures"
+
+[[eei_priority]]
+rank = 1
+question = "What are the network segmentation and firewall rules?"
+collection_method = "Network scanning, configuration audits, social engineering"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the administrator usernames and passwords?"
+collection_method = "Keylogging, memory scraping, password cracking"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 3
+question = "What are the patch levels of critical systems?"
+collection_method = "Network scanning, system enumeration, configuration audits"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What are the intrusion detection system rules and configurations?"
+collection_method = "Network traffic analysis, reverse engineering"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the employee security awareness training levels?"
+collection_method = "Social engineering, phishing simulations"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 6
+question = "What are the data loss prevention rules and configurations?"
+collection_method = "Data exfiltration attempts, reverse engineering"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 7
+question = "What are the backup and disaster recovery procedures?"
+collection_method = "Document review, social engineering"
+time_sensitivity = "low"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Edward Snowden NSA Leaks",
+    date = "2013-06-05",
+    description = "Internal reconnaissance and data exfiltration by a system administrator",
+    source = "https://en.wikipedia.org/wiki/Edward_Snowden"
+  },
+  {
+    name = "Marriott Data Breach",
+    date = "2018-11-30",
+    description = "Long-term access to internal systems led to large-scale data theft",
+    source = "https://news.marriott.com/news/2018/11/30/marriott-international-provides-update-on-starwood-guest-reservation-database-security-incident"
+  },
+  {
+    name = "Target Data Breach",
+    date = "2013-12-19",
+    description = "Compromised HVAC vendor credentials enabled internal network access",
+    source = "https://corporate.target.com/article/2013/12/target-confirms-data-breach"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.001 - PowerShell"
+description = "Use PowerShell to execute commands and scripts"
+
+[[ttps]]
+mitre_attack_id = "T1003"
+tactic = "Credential Access"
+technique = "OS Credential Dumping"
+sub_technique = "T1003.001 - LSASS Memory"
+description = "Dump credentials from LSASS process memory"
+
+[[ttps]]
+mitre_attack_id = "T1213"
+tactic = "Collection"
+technique = "Data from Information Repositories"
+sub_technique = "T1213.002 - Sharepoint"
+description = "Collect data from Sharepoint repositories"
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Defense Evasion"
+technique = "Valid Accounts"
+sub_technique = "T1078.002 - Domain Accounts"
+description = "Use compromised domain accounts for lateral movement"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Exploit vulnerabilities in public-facing applications"
+
+[[ttps]]
+mitre_attack_id = "T1133"
+tactic = "Persistence"
+technique = "External Remote Services"
+sub_technique = ""
+description = "Use external remote services for persistence"
+
+[xsd_integration]
+playbook_template = "internal_reconnaissance_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-insider-threat"]
+unicode_assembly = ["→", "⇢", "⚠", "🔑", "🔒", "🛡"]
+lisp_expression = "(internal-recon-task :target target-id :phase pre-operational :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-10T00:00:00Z"
+last_updated = "2025-01-10T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

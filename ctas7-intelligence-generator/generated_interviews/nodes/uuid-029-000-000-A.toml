@@ -1,0 +1,439 @@
+```toml
+[node_identity]
+task_id = "uuid-029-000-000-A"
+task_name = "IED Concealment Design"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+sch = "a92bC7d3Ef4gH1iJ"
+cuid = "T20241115G34S12IzU9876543"
+uuid = "V0a1b2c3d4e5f6g7h8i9j0k1"
+hash_48 = "a92bC7d3Ef4gH1iJT20241115G34S12IzU9876543V0a1b2c3d4e5f6g7h8i9j0k1"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+[capabilities]
+narrative = """
+I am the architect of deception. My canvas is the urban landscape; my tools are common objects, repurposed to conceal deadly intent. I scout locations, meticulously assessing their accessibility, pedestrian traffic, and visibility.
+
+I analyze the environment, noting the presence of street furniture, construction debris, and natural foliage. I consider the flow of movement, seeking locations where an IED can blend seamlessly into the background, unnoticed by casual observers. I visualize the device, integrating its form and function into the chosen setting. I choose the concealments with an eye toward ease of access for placement and arming, but resistance to accidental discovery.
+
+I select materials that are readily available, innocuous in appearance, and durable enough to withstand the elements. I favor locations near potential targets, minimizing the need for transport and reducing the risk of detection. My designs are simple, robust, and effective – maximizing the potential for harm while minimizing the risk of exposure. I ensure it is easy to blend into surrounding structures and materials to decrease chances of detection from casual observers.
+"""
+
+limitations = """
+My designs are limited by the availability of suitable concealment locations and materials. Highly secure areas with intensive surveillance or frequent patrols pose a significant challenge. Extreme weather conditions can compromise the effectiveness of my concealment methods.
+
+My work is vulnerable to detection by trained observers or advanced scanning technologies. IEDs concealed in plain sight may be easily discovered if they appear out of place or attract unwanted attention. My efforts are time-consuming and require a thorough understanding of the target environment.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+[time_of_value]
+half_life = { words = "days to a week", range = [1, 7], units = "days" }
+collection_phase = { words = "weeks to months", range = [2, 8], units = "weeks" }
+actionable_window = { words = "days to weeks", range = [3, 21], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Removal or modification of concealment location",
+  "Increased security measures or patrols",
+  "Significant weather events",
+  "Public awareness campaigns",
+]
+persistence_conditions = [
+  "Structural features of the environment",
+  "Common placement of certain object types in the area",
+  "Lack of security around the area of concealment"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+[cuid_mask]
+temporal = "T-{2-8}w"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "Iz"
+semantic_full = "Improvised Explosive Device: Concealment"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Proactive search for anomalies in urban landscape indicative of IED concealment activities." }
+detect = { enabled = true, priority = "high", description = "Identify suspicious objects or modifications to environment through visual inspection and sensor technology." }
+disrupt = { enabled = true, priority = "medium", description = "Implement countermeasures to deter IED concealment activities." }
+disable = { enabled = true, priority = "high", description = "Neutralize IEDs and render concealment efforts ineffective." }
+dominate = { enabled = false, priority = "low", description = "Not applicable for this phase." }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+[[indicators]]
+observable = "Unexplained modifications to street furniture"
+priority = "high"
+detection_method = "Routine inspections, community reporting"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Anomalous placement of ordinary objects"
+priority = "medium"
+detection_method = "Pattern analysis, behavioral analysis"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Presence of tampering residue"
+priority = "high"
+detection_method = "Chemical analysis, forensic examination"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unusual activity patterns"
+priority = "medium"
+detection_method = "Surveillance, intelligence analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Acquisition of large quantities of common items"
+priority = "low"
+detection_method = "Transaction monitoring, intelligence collection"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Modified or reinforced containers"
+priority = "high"
+detection_method = "Visual inspection, X-ray scanning"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of unusual tools or equipment"
+priority = "medium"
+detection_method = "Surveillance, forensic analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Construction or repair activities in unusual locations"
+priority = "high"
+detection_method = "Community reporting, patrols"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Photographs or sketches of potential IED locations"
+priority = "critical"
+detection_method = "Surveillance, intelligence collection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Purchase of materials inconsistent with legitimate activities"
+priority = "medium"
+detection_method = "Financial intelligence, informant reporting"
+false_positive_rate = "medium"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+[[toolchain]]
+tool = "OSINT Framework"
+mode_1n = "Identify publicly available information about common IED concealment methods."
+mode_2n = "Research potential concealment locations and materials."
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Simulate IED detonation to assess potential impact."
+mode_2n = "Test remote detonation vulnerabilities"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for unusual communication patterns related to IED components."
+mode_2n = "Capture and analyze network packets for IED-related communications."
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan networks for vulnerable devices that could be used to trigger an IED."
+mode_2n = "Map network infrastructure for potential IED triggering points."
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Autopsy"
+mode_1n = "Analyze digital media for evidence of IED concealment planning."
+mode_2n = "Recover deleted data related to IED concealment activities."
+escalation_level = "crate"
+kali_package = "autopsy"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Analyze web applications for vulnerabilities that could be exploited to remotely trigger an IED."
+mode_2n = "Exploit web application vulnerabilities to remotely trigger an IED."
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+terrain_factors = ["urban_density", "line_of_sight", "elevation", "vegetation_cover"]
+
+[geospatial.weather]
+critical_factors = ["precipitation", "visibility", "temperature"]
+operational_threshold = { visibility_km = 1.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Heavy precipitation or fog can hinder surveillance efforts."
+impact_on_comms = "Temperature can affect battery life of wireless devices."
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -80
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 250
+impact_assessment = "Concealment near critical infrastructure poses a significant threat."
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Terrorism"
+incident_subcategory = "IED Placement"
+location_type = "Public Place"
+subject_role = "Suspect"
+activity_type = "IED Concealment"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Concealing an IED"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 2332a (WMD), 18 USC 844 (Explosives)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+[[relationships]]
+target_node = "uuid-030-000-000-A"
+relationship_type = "precedes"
+unicode_op = "→"
+strength = 0.9
+description = "IED Concealment Design precedes IED Placement"
+
+[[relationships]]
+target_node = "uuid-028-000-000-A"
+relationship_type = "depends_on"
+unicode_op = "⇢"
+strength = 0.7
+description = "IED Concealment Design depends on Target Selection"
+
+[[relationships]]
+target_node = "uuid-031-000-000-A"
+relationship_type = "mitigated_by"
+unicode_op = "⚠"
+strength = 0.6
+description = "IED Concealment Design can be mitigated by enhanced surveillance"
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+[[eei_priority]]
+rank = 1
+question = "What are the most vulnerable points for IED placement?"
+collection_method = "Risk assessment, vulnerability analysis"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "What are the common concealment methods used in this area?"
+collection_method = "Intelligence gathering, OSINT"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the traffic patterns and pedestrian flows in the target area?"
+collection_method = "Surveillance, traffic analysis"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What materials are easily accessible and commonly found in the target environment?"
+collection_method = "Physical observation, market research"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the security measures in place at the target location?"
+collection_method = "Surveillance, intelligence collection"
+time_sensitivity = "high"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+[historical_reference]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "IED concealed within a rental truck.",
+    source = "https://en.wikipedia.org/wiki/Oklahoma_City_bombing"
+  },
+  {
+    name = "Madrid Train Bombings",
+    date = "2004-03-11",
+    description = "IEDs concealed in backpacks on commuter trains.",
+    source = "https://en.wikipedia.org/wiki/2004_Madrid_train_bombings"
+  },
+  {
+    name = "Boston Marathon Bombing",
+    date = "2013-04-15",
+    description = "IEDs concealed in backpacks near the finish line.",
+    source = "https://en.wikipedia.org/wiki/Boston_Marathon_bombing"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "T1566.001 - Spearphishing Attachment"
+description = "Adversaries use phishing emails with malicious attachments to gain initial access to a system."
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Adversaries exploit vulnerabilities in public-facing applications to gain initial access to a system."
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Persistence"
+technique = "Valid Accounts"
+sub_technique = "T1078.002 - Domain Accounts"
+description = "Adversaries use valid domain accounts to maintain persistence on a system."
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.005 - Visual Basic"
+description = "Adversaries use Visual Basic scripts to execute malicious code."
+
+[[ttps]]
+mitre_attack_id = "T1053"
+tactic = "Persistence"
+technique = "Scheduled Task/Job"
+sub_technique = "T1053.005 - Scheduled Task"
+description = "Adversaries use scheduled tasks to maintain persistence on a system."
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+[xsd_integration]
+playbook_template = "ied_concealment_design_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-ied-lifecycle"]
+unicode_assembly = ["→", "⇢", "⚠", "💣", "📍"]
+lisp_expression = "(ied-concealment :target target-id :phase preparation :priority critical)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+[metadata]
+schema_version = "7.3.1"
+created_by = "AI Assistant"
+created_at = "2024-10-27T00:00:00Z"
+last_updated = "2024-10-27T00:00:00Z"
+reviewed_by = "Human Analyst"
+status = "active"
+```

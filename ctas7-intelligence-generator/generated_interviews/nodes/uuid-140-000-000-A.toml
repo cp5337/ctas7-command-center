@@ -1,0 +1,402 @@
+```toml
+[node_identity]
+task_id = "uuid-140-000-000-A"
+task_name = "Task 140 - Phase 4"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "2q9bL3kZ06pXm54d"
+cuid = "T20250216G34S12SaU9e351f7c3a82b6"
+uuid = "V4d12a0b95e26c7d"
+hash_48 = "2q9bL3kZ06pXm54dT20250216G34S12SaU9e351f7c3a82b6V4d12a0b95e26c7d"
+
+[capabilities]
+narrative = """
+I am the assembler. I orchestrate the final preparations, ensuring every component meshes perfectly. I verify the functionality of triggering mechanisms, checking for any faults or vulnerabilities. I am the liaison, coordinating transportation, assembly points, and fallback plans. I ensure that all personnel are fully briefed and aware of their roles and responsibilities.
+
+I acquire and secure the final components—explosives, detonators, timers—handling them with extreme caution and expertise. I camouflage the device, making it seem innocuous. I synchronize timing, ensuring optimal impact. I am meticulous, rehearsing contingencies in my mind.
+
+I confirm secure communications channels for real-time updates and adjustments. I am the calm before the explosion, confident in the mission's success.
+"""
+limitations = """
+My effectiveness is heavily reliant on the quality and reliability of components. Substandard materials can lead to premature detonation or failure to ignite. I am constrained by time, often racing against the clock to meet deadlines. I am vulnerable to detection during assembly or transportation of components.
+
+My security protocols must be impeccable to avoid detection. Any errors in communication or logistical planning can jeopardize the mission. I am limited by my own knowledge—if I am unaware of a critical vulnerability, I cannot exploit it. I am dependent on the previous phases' success; if flawed intelligence is passed to me, the operation can be compromised.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 48], units = "hours" }
+collection_phase = { words = "days before", range = [2, 7], units = "days" }
+actionable_window = { words = "hours to days", range = [24, 72], units = "hours" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Law enforcement detection of components",
+  "Discovery of assembly locations",
+  "Compromised communications",
+  "Disruption of logistics chains"
+]
+persistence_conditions = [
+  "Adherence to strict operational protocols",
+  "Redundant communication channels",
+  "Pre-positioned caches",
+  "Insider support"
+]
+
+[cuid_mask]
+temporal = "T-{2-7}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+semantic = "Sa"
+semantic_full = "attack:assembly"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = false, priority = "low", description = "N/A: Assembly is typically covert and rapid" }
+detect = { enabled = true, priority = "critical", description = "Identify the assembly process through monitoring supply chains and communications" }
+disrupt = { enabled = true, priority = "high", description = "Disrupt assembly by interdicting components or personnel" }
+disable = { enabled = true, priority = "critical", description = "Seize or neutralize the assembled device" }
+dominate = { enabled = false, priority = "low", description = "N/A: Post-assembly is not the domain of this phase" }
+
+[[indicators]]
+observable = "Unusual increase in purchases of electronic components"
+priority = "high"
+detection_method = "Financial transaction monitoring, supply chain analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Heightened communications activity with coded messages"
+priority = "critical"
+detection_method = "SIGINT, traffic analysis, steganography detection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Sudden disappearance of individuals with technical skills"
+priority = "high"
+detection_method = "Human intelligence, open-source intelligence"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Renting of remote or secluded properties"
+priority = "medium"
+detection_method = "Real estate records, surveillance"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Increased surveillance around storage facilities or transportation hubs"
+priority = "high"
+detection_method = "Physical security, CCTV review"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Acquisition of specific chemicals or materials"
+priority = "critical"
+detection_method = "Chemical tracking databases, suspicious activity reports"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unexplained power surges or usage patterns"
+priority = "medium"
+detection_method = "Smart meter data analysis, utility monitoring"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Changes in shipping manifests or delivery routes"
+priority = "high"
+detection_method = "Logistics analysis, customs records"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of anonymized communication channels (Tor, VPNs)"
+priority = "medium"
+detection_method = "Network traffic analysis, dark web monitoring"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Precursor chemicals stored in unusual combinations"
+priority = "critical"
+detection_method = "Laboratory analysis, forensic investigation"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Volatility"
+mode_1n = "Analyze memory dumps for malware residue or active assembly scripts"
+mode_2n = "Conceal assembly scripts within memory-resident processes"
+escalation_level = "microkernel"
+kali_package = "volatility3"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Monitor network traffic for anomalies indicative of component transfer"
+mode_2n = "Encrypt and obfuscate communications to evade detection"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Autopsy"
+mode_1n = "Perform forensic analysis on storage devices to identify assembly plans"
+mode_2n = "Wipe hard drives and securely delete files containing assembly data"
+escalation_level = "crate"
+kali_package = "autopsy"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "VeraCrypt"
+mode_1n = "Detect encrypted containers used to store assembly information"
+mode_2n = "Create encrypted volumes to safeguard sensitive assembly data"
+escalation_level = "script"
+kali_package = "veracrypt"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Identify vulnerabilities in communication systems used for assembly coordination"
+mode_2n = "Exploit vulnerabilities to secure communication channels"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Audit wireless network security to prevent unauthorized access"
+mode_2n = "Compromise WiFi networks to establish covert communication channels"
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 0.1, max_km = 1, optimal_km = 0.25 }
+time_to_target = { min_minutes = 5, max_minutes = 30, optimal_minutes = 10 }
+
+terrain_factors = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "N/A"
+cost_factors = []
+escape_route_priority = "N/A"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:ThreatAssessment"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Terrorism"
+incident_subcategory = "Bomb Making"
+location_type = "Private Residence"
+subject_role = "Suspect"
+activity_type = "Bomb Assembly"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Bomb Assembly"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ assembly_location }"
+"j:Charge" = "18 USC 2332a (WMD), 18 USC 844 (Explosives)"
+
+[[relationships]]
+target_node = "uuid-141-000-000-A"
+relationship_type = "leads_to"
+unicode_op = "→"
+strength = 0.9
+description = "Assembly leads directly to deployment."
+
+[[relationships]]
+target_node = "uuid-139-000-000-A"
+relationship_type = "requires"
+unicode_op = "→"
+strength = 0.8
+description = "Requires successful logistics and component acquisition."
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.7
+description = "Assembly is vulnerable to counter-surveillance and interdiction."
+
+[[eei_priority]]
+rank = 1
+question = "What are the confirmed component delivery locations?"
+collection_method = "HUMINT, SIGINT, IMINT"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "What is the exact assembly location?"
+collection_method = "HUMINT, SIGINT, GEOINT"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 3
+question = "Which individuals are involved in the assembly process?"
+collection_method = "HUMINT, OSINT, SIGINT"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "What is the planned timing of the assembly?"
+collection_method = "SIGINT, HUMINT"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 5
+question = "What are the vulnerabilities in the communications plan?"
+collection_method = "SIGINT, COMINT"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 6
+question = "What are the alternative assembly locations?"
+collection_method = "HUMINT, GEOINT"
+time_sensitivity = "medium"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Assembly of the ANFO bomb within a rental truck",
+    source = "https://www.fbi.gov/history/famous-cases/oklahoma-city-bombing"
+  },
+  {
+    name = "Unabomber",
+    date = "1978-1995",
+    description = "Assembly of mail bombs in a remote cabin",
+    source = "https://www.fbi.gov/history/famous-cases/unabomber"
+  },
+  {
+    name = "London 7/7 Bombings",
+    date = "2005-07-07",
+    description = "Assembly of peroxide-based explosives in a residential flat",
+    source = "https://www.mi5.gov.uk/case-studies/july-7-2005-london-bombings"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "T1566.001 - Spearphishing Attachment"
+description = "Use phishing to deliver malicious payload and gain access to target network"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Exploit vulnerabilities in public-facing applications to gain initial access"
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.001 - PowerShell"
+description = "Use PowerShell to execute malicious commands and scripts"
+
+[[ttps]]
+mitre_attack_id = "T1053"
+tactic = "Persistence"
+technique = "Scheduled Task/Job"
+sub_technique = ""
+description = "Create scheduled tasks to maintain persistence on the system"
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - Web Protocols"
+description = "Use web protocols (HTTP/HTTPS) for command and control communication"
+
+[[ttps]]
+mitre_attack_id = "T1573"
+tactic = "Command and Control"
+technique = "Encrypted Channel"
+sub_technique = "T1573.001 - Symmetric Cryptography"
+description = "Use symmetric encryption to protect command and control traffic"
+
+[xsd_integration]
+playbook_template = "assembly_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-forensics"]
+unicode_assembly = ["→", "⚠", "💣", "⚙", "🔒"]
+lisp_expression = "(assembly-task :target target-id :phase pre-operational :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-02-16T00:00:00Z"
+last_updated = "2025-02-16T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

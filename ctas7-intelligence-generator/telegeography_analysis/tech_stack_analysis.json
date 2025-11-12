@@ -1,0 +1,42 @@
+{
+  "source": "TeleGeography Submarine Cable Map 2025",
+  "url": "https://submarine-cable-map-2025.telegeography.com/",
+  "analysis_date": "2025-11-09",
+  "visualization_stack": {
+    "likely_globe_library": "Three.js or Deck.gl",
+    "data_format": "GeoJSON",
+    "rendering": "WebGL",
+    "detected_libraries": [
+      "https://api.mapbox.com/mapbox.js/v3.3.0/mapbox.js"
+    ]
+  },
+  "data_architecture": {
+    "api_base": "https://www.submarinecablemap.com/api/v3",
+    "endpoints": {
+      "cables": "/cable/cable-geo.json",
+      "landing_points": "/landing-point/landing-point-geo.json"
+    },
+    "format": "GeoJSON FeatureCollection",
+    "coordinate_system": "WGS84 (lat/lon)"
+  },
+  "ctas7_implementation": {
+    "our_globe": "Cesium.js (superior for satellite tracking)",
+    "our_data": "Same GeoJSON + SlotGraph + Legion ECS",
+    "our_advantage": [
+      "Real-time satellite tracking (SGP4)",
+      "FSO link budget analysis",
+      "HFT slot allocation",
+      "Multi-domain integration (space + network + cyber)",
+      "Intelligence layer (OSINT nodes)",
+      "Trivariate hash addressing"
+    ]
+  },
+  "recommended_approach": {
+    "step1": "Use their API data (already extracted)",
+    "step2": "Render in Cesium.js (our existing globe)",
+    "step3": "Add LaserLight satellites (12 MEO)",
+    "step4": "Show FSO links with atmospheric conditions",
+    "step5": "Integrate with SlotGraph for real-time routing",
+    "step6": "Add intelligence layer (OSINT nodes)"
+  }
+}

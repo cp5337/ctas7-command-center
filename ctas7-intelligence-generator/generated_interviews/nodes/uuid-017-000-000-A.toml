@@ -1,0 +1,513 @@
+```toml
+[node_identity]
+task_id = "uuid-017-000-000-A"
+task_name = "Timing Analysis (Shift Changes, Patterns)"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# Full hash example: "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+# ============================================================================
+
+sch = "j82nL3w9s0Qp7R6k"
+cuid = "T20241115G34N84STa7L941a12W06"
+uuid = "V6b3c2d7e8f9a0b1"
+hash_48 = "j82nL3w9s0Qp7R6kT20241115G34N84STa7L941a12W06V6b3c2d7e8f9a0b1"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+# This is the core intelligence requirement. Written from the adversary's
+# perspective, describing capabilities, methods, and intent.
+# ============================================================================
+
+[capabilities]
+narrative = """
+I am the clock watcher. I meticulously observe patterns, focusing on the precise timing of events. My primary goal is to identify vulnerabilities created by predictable routines.
+
+I stake out locations at different times of day and night, noting when security personnel change shifts. I use stopwatches and concealed cameras to record these transitions down to the second. I look for overlaps and gaps in coverage, identifying moments of reduced vigilance.
+
+I analyze delivery schedules to determine when gates are opened and for how long. I track employee arrival and departure times, looking for predictable patterns that can be exploited. I pay special attention to weekends and holidays, when staffing levels may be reduced.
+
+I use publicly available information, such as transit schedules and weather forecasts, to anticipate disruptions that could impact security operations. I create detailed timelines of events, noting any deviations from the norm. My analysis reveals the rhythm of the target, the beat I can exploit.
+"""
+
+limitations = """
+My observations are limited by environmental conditions, such as weather and lighting. Covert recording can be challenging in high-traffic areas or when security personnel are actively monitoring the surroundings.
+
+My analysis relies on predictable patterns, which can be disrupted by unexpected events or changes in security protocols. I am vulnerable to detection if my observations become too obvious or if I am identified as a potential threat. My effectiveness is diminished if the target is aware of my surveillance and takes steps to counter it.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+# Defines the actionable window and decay curve for this intelligence type.
+# Uses "on the order of" language for human readability + numerical ranges.
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "weeks to months", range = [14, 90], units = "days" }
+actionable_window = { words = "days to weeks", range = [3, 21], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in security personnel staffing or schedules",
+  "Implementation of new security protocols or technologies",
+  "Relocation of key personnel or assets",
+  "Increased security awareness or training"
+]
+persistence_conditions = [
+  "Fixed physical infrastructure (location of cameras, gates, fences)",
+  "Established delivery schedules or routines",
+  "Consistent staffing levels during specific times of day",
+  "Predictable transit patterns"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+# The CUID (positions 17-32) encodes spatio-temporal + semantic + environmental
+# context using PREFIX and SUFFIX masks from CTAS 7.3 Ground Truth.
+# ============================================================================
+
+[cuid_mask]
+# Temporal context
+temporal = "T-{14-90}d"
+temporal_format = "YYYYMMDD"
+
+# Geographic context
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+
+# Semantic domain
+semantic = "Ta"
+semantic_full = "timing:analysis:schedule"
+
+# PREFIX MASKS (Global Environmental Context) - Domain-Specific
+[cuid_mask.prefix]
+# Universal masks (all domains)
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+# Domain-Specific Extensions (v7.3)
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+# SUFFIX MASKS (Local Operational Context)
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+# Priority
+priority = "high"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+# Maps this node to the 5 phases of the HD4 kill chain.
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactively search for anomalies in timing and patterns." }
+detect = { enabled = true, priority = "critical", description = "Detect deviations from established patterns in real-time." }
+disrupt = { enabled = true, priority = "medium", description = "Introduce artificial disruptions to throw off timing analysis." }
+disable = { enabled = false, priority = "low", description = "Not applicable for timing analysis phase." }
+dominate = { enabled = false, priority = "low", description = "Not applicable for timing analysis phase." }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+# Key indicators that this task is occurring. Used for detection and hunting.
+# ============================================================================
+
+[[indicators]]
+observable = "Repeated observations of security personnel during shift changes"
+priority = "high"
+detection_method = "Video analytics, security guard reports"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Detailed notes or recordings of employee arrival and departure times"
+priority = "high"
+detection_method = "Physical security review, surveillance logs"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unusual interest in delivery schedules or loading dock activity"
+priority = "medium"
+detection_method = "Security personnel observation, delivery logs"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Analysis of traffic patterns around the target facility"
+priority = "medium"
+detection_method = "Traffic camera data, GPS tracking analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Inquiries about security protocols or staffing levels"
+priority = "medium"
+detection_method = "Security awareness training reports, HR records"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Use of sophisticated timing devices or recording equipment"
+priority = "high"
+detection_method = "Physical search, electronics surveillance"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Attempts to correlate data from multiple sources (e.g., social media, public records)"
+priority = "medium"
+detection_method = "SIEM alerts, data analytics"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Increased network traffic during specific times of day"
+priority = "medium"
+detection_method = "Network monitoring, intrusion detection systems"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Anomalous WiFi activity corresponding with shift changes"
+priority = "medium"
+detection_method = "Wireless intrusion detection systems, network logs"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Identification of patterns in system administrator activity"
+priority = "low"
+detection_method = "Audit logs, behavioral analytics"
+false_positive_rate = "high"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+# Dual-mode tool stacks: same tools, different semantic context.
+# ============================================================================
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic patterns to identify anomalous behavior"
+mode_2n = "Capture network traffic to identify authentication windows and system idle times"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan network infrastructure for open ports and running services"
+mode_2n = "Identify optimal times to exploit network vulnerabilities"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "tcpdump"
+mode_1n = "Monitor network traffic for suspicious activity"
+mode_2n = "Capture network packets to analyze timing relationships"
+escalation_level = "microkernel"
+kali_package = "tcpdump"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "John the Ripper"
+mode_1n = "Audit password security practices"
+mode_2n = "Crack passwords during off-peak hours for easier access"
+escalation_level = "script"
+kali_package = "john"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Simulate attack scenarios to test security defenses"
+mode_2n = "Exploit vulnerabilities during predictable system maintenance windows"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Custom Python scripts"
+mode_1n = "Automate analysis of security logs to identify suspicious patterns"
+mode_2n = "Automate reconnaissance activities to identify optimal times for attack"
+escalation_level = "script"
+kali_package = "python3"
+resource_cost = "low"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+# Location-dependent intelligence requirements and operational factors.
+# ============================================================================
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+# Distance and time constraints
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+# Terrain factors (affects approach, escape, line-of-sight)
+terrain_factors = ["urban_density", "line_of_sight", "elevation", "vegetation_cover"]
+
+# Weather impact (from existing weather_data table)
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "cloud_cover"]
+operational_threshold = { visibility_km = 2.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Reduced visibility impacts observation capabilities"
+impact_on_comms = "Weather has minimal impact on observation"
+
+# Traffic and routing (from pgRouting + PostGIS)
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+# COMINT (Communications Intelligence)
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -80
+imsi_tracking = false
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+# Critical infrastructure proximity
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 250
+impact_assessment = "Reconnaissance near critical infrastructure heightens concern"
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+# Maps CTAS ontology to NIEM IEPDs for law enforcement interoperability.
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+# N-DEx field mapping
+[niem_mapping.ndex_fields]
+incident_category = "Suspicious Activity"
+incident_subcategory = "Surveillance/Pattern Analysis"
+location_type = "Critical Infrastructure"
+subject_role = "Suspect"
+activity_type = "Pre-Operational Surveillance"
+
+# NIEM core elements
+[niem_mapping.niem_core]
+"nc:Activity" = "Timing Analysis"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 2332b (Acts of Terrorism Transcending National Boundaries), 18 USC 1030 (Computer Fraud and Abuse Act)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+# Defines how this node connects to other nodes in the 165-task graph.
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-004-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.90
+description = "Timing analysis directly enables vulnerability assessment"
+
+[[relationships]]
+target_node = "uuid-011-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.80
+description = "Timing analysis informs attack planning and execution"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.70
+description = "Timing analysis is vulnerable to changes in routines or patterns"
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+# Ranked intelligence requirements for this task.
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "What are the exact times of shift changes for security personnel?"
+collection_method = "Timed observation, video surveillance"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "What are the arrival and departure times for key personnel?"
+collection_method = "Physical observation, badge reader logs"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the delivery schedules and loading dock access times?"
+collection_method = "Delivery logs, physical observation"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the maintenance windows for critical systems?"
+collection_method = "System logs, IT personnel interviews"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the optimal times for exploiting network vulnerabilities?"
+collection_method = "Network scans, traffic analysis"
+time_sensitivity = "medium"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+# Links to actual incidents where this task was observed.
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "Operation Olympic Games (Stuxnet)",
+    date = "2009-06-01",
+    description = "Analysis of system timing and operation to disrupt Iranian nuclear program",
+    source = "https://en.wikipedia.org/wiki/Stuxnet"
+  },
+  {
+    name = "Target Data Breach",
+    date = "2013-11-27",
+    description = "Exploitation of vendor access windows to gain entry to Target's network",
+    source = "https://krebsonsecurity.com/2014/03/target-hackers-broke-in-via-hvac-company/"
+  },
+  {
+    name = "TJX Companies Hack",
+    date = "2007-01-01",
+    description = "War driving to find weak WiFi during off hours.",
+    source = "https://www.justice.gov/archive/usao/ma/news/2007/aug/gonzalezindictmentpr.html"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+# MITRE ATT&CK mapping for cyber TTPs (where applicable).
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.001 - Scanning IP Blocks"
+description = "Adversary scans target network infrastructure to identify vulnerable times."
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.004 - Credentials"
+description = "Collect employee credentials for access during off-peak hours."
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.003 - Spearphishing Link"
+description = "Send targeted phishing to gather intelligence about network maintenance windows."
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+description = "Exploit public-facing applications during off-peak hours to avoid detection."
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Defense Evasion"
+technique = "Valid Accounts"
+sub_technique = "T1078.001 - Default Accounts"
+description = "Use default accounts to gain access during predictable system resets or maintenance."
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.001 - PowerShell"
+description = "Use Powershell scripts to run undetected operations during automated events."
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+# Links this node to XSD playbooks for executable document generation.
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "timing_analysis_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-geolocation"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "⏱"]
+lisp_expression = "(timing-task :target target-id :phase pre-operational :priority high)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2024-11-15T00:00:00Z"
+last_updated = "2024-11-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

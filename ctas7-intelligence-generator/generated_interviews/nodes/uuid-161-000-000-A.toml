@@ -1,0 +1,567 @@
+```toml
+# ============================================================================
+# CTAS-7 Node Interview Schema v7.3.1
+# Complete Intelligence Integration Architecture
+# ============================================================================
+# This is the canonical schema for generating 165 node interviews from the
+# IED TTL (Terrorist IED Task List). Each node represents an adversary task
+# with first-person narrative, intelligence requirements, and operational context.
+#
+# Integration Points:
+# - Computational: Trivariate hashing (SCH+CUID+UUID), Unicode ops, XSD
+# - Semantic: First-person narrative, EEIs, TTPs, relationships
+# - Tactical: HD4 phase mapping (Hunt/Detect/Disrupt/Disable/Dominate)
+# - Ontological: NIEM IEPD alignment, N-DEx field mapping
+# - Toolchain: 1n (defensive) + 2n (offensive) tool stacks
+# - Geospatial: GEE layers, weather, traffic, COMINT, terrain
+# ============================================================================
+
+[node_identity]
+task_id = "uuid-161-000-000-A"              # TTL task identifier
+task_name = "Task 161 - Phase 5"
+classification = "unclassified"              # or "cui", "secret", etc.
+ttl_category = "optional"                   # mandatory | desirable | optional
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# Full hash example: "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+# ============================================================================
+
+sch = "aB2cD4eF6gH8iJ0k"                    # Positions 1-16: Semantic Content Hash
+                                             # Deterministic, content-based
+                                             # Seed: 0x1234 (Murmur3)
+                                             # Input: task_name + ttl_category + indicators
+
+cuid = "T20241115G34W11Sc"                    # Positions 17-32: Contextual Unique ID
+                                             # Spatio-temporal + semantic context
+                                             # Seed: 0x5678 (Murmur3)
+                                             # Format breakdown:
+                                             #   T20250109 = Temporal (8 chars): YYYYMMDD or T-{offset}d
+                                             #   G40N74    = Geographic (6 chars): Compressed lat/lon
+                                             #   S         = Semantic domain (2 chars): "Sr" = Surveillance/Recon
+                                             # Full encoding: T{time}G{geo}S{semantic}
+
+uuid = "V7pQ9xRs1tMz8yAb2wCd3eF4gH"                    # Positions 33-48: Universal Unique ID
+                                             # Global uniqueness, persistence, audit trail
+                                             # Seed: 0x9abc (Murmur3)
+                                             # Input: UUID v4 + content + timestamp
+
+hash_48 = "aB2cD4eF6gH8iJ0kT20241115G34W11ScV7pQ9xRs1tMz8yAb2wCd3eF4gH"  # Full 48-char hash
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+# This is the core intelligence requirement. Written from the adversary's
+# perspective, describing capabilities, methods, and intent.
+# ============================================================================
+
+[capabilities]
+narrative = """
+I finalize the plan. The target is set. I've analyzed vulnerabilities,
+established communication channels, and procured the necessary resources.
+I verify all escape routes, contingency plans, and rally points.
+
+I coordinate with team members, assigning roles and responsibilities.
+I review checklists, confirming all equipment is operational.
+I conduct a final dry run, simulating the entire operation from start to finish.
+I observe final shift changes, guard patterns and any changes to security
+
+I secure transportation, staging areas, and safe houses.
+I synchronize watches and communication devices.
+I ensure everyone is aware of the mission objectives, risks, and rules of engagement.
+I am the final architect – the execution is about to begin.
+"""
+
+limitations = """
+I am reliant on prior intelligence gathering. Any inaccuracies or changes in the
+operational environment can jeopardize the entire plan. I have to account for any
+unforeseen changes or dynamic security posture adjustments made by the target.
+
+I am constrained by the team's skill and preparedness. A single mistake or
+miscommunication can compromise the mission. I can only control the variables
+within my immediate sphere of influence and am still vulnerable to chance.
+The larger the team the more complex my risk becomes.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+# Defines the actionable window and decay curve for this intelligence type.
+# Uses "on the order of" language for human readability + numerical ranges.
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 48], units = "hours" }
+collection_phase = { words = "weeks before", range = [7, 21], units = "days" }
+actionable_window = { words = "hours", range = [6, 24], units = "hours" }
+decay_curve = "exponential"  # exponential | linear | step_function
+ephemeral_conditions = [
+  "Security alert status",
+  "Law enforcement activity",
+  "Weather changes",
+  "Civil unrest",
+  "Unexpected staff availability"
+]
+persistence_conditions = [
+  "Logistical infrastructure (safe houses, supply caches)",
+  "Communication channels (encrypted networks, signal strength)",
+  "Contingency plans",
+  "Team cohesion",
+  "Target area geography"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+# The CUID (positions 17-32) encodes spatio-temporal + semantic + environmental
+# context using PREFIX and SUFFIX masks from CTAS 7.3 Ground Truth.
+# ============================================================================
+
+[cuid_mask]
+# Temporal context
+temporal = "T-{7-21}d"                     # Collection window: 60-180 days before attack
+temporal_format = "YYYYMMDD"                 # Or "T-{offset}d" for relative time
+
+# Geographic context
+geographic = "G{lat}{lon}"                   # Compressed: G40N74 = 40.7°N, 74.0°W
+geographic_radius_km = 1.0                   # Operational radius from target
+
+# Semantic domain
+semantic = "Sc"                              # Two-char code: Sr = Surveillance/Recon
+semantic_full = "planning:execution:staging"  # Full ontology path
+
+# PREFIX MASKS (Global Environmental Context) - Domain-Specific
+[cuid_mask.prefix]
+# Universal masks (all domains)
+WX = "weather_mask"                          # Physical: Visibility, precip, wind, temp
+                                             # Cyber: Network weather (latency, jitter)
+                                             # Space: Solar radiation, space weather
+                                             # Maritime: Sea state, visibility, wind
+
+TF = "traffic_mask"                          # Physical: Road speed, congestion
+                                             # Cyber: Network traffic, bandwidth utilization
+                                             # Space: Orbital congestion, debris density
+                                             # Maritime: Shipping lane traffic
+
+OB = "order_of_battle_mask"                  # Friendly/enemy posture (all domains)
+JU = "jurisdiction_mask"                     # Legal/authority overlay (all domains)
+TH = "threat_posture_mask"                   # Threat level indicators (all domains)
+
+# Domain-Specific Extensions (v7.3)
+[cuid_mask.prefix.space]
+SR = "solar_radiation"                       # Solar radiation impact (0-1)
+GM = "geomagnetic_disturbance"               # Geomagnetic storm activity (0-1)
+DE = "debris_density"                        # Orbital debris field density (0-1)
+JS = "jurisdictional_shell"                  # LEO/MEO/GEO orbital layer
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"                       # Latency, jitter, packet loss
+DT = "data_traffic"                          # Bandwidth utilization, flow rate
+AS = "attack_surface"                        # Exposed services, vulnerabilities
+FW = "firewall_posture"                      # Security boundary status
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"                             # Wave height, sea conditions (Beaufort scale)
+CT = "current_tide"                          # Ocean currents, tidal state
+SL = "shipping_lanes"                        # Proximity to commercial traffic
+TW = "territorial_waters"                    # Jurisdictional boundaries (12nm, 200nm EEZ)
+SC = "submarine_cables"                      # Proximity to undersea infrastructure
+PT = "port_traffic"                          # Harbor/port congestion
+
+[cuid_mask.prefix.network]
+TP = "topology"                              # Network topology complexity
+RT = "routing"                               # Routing table stability, BGP health
+LT = "latency"                               # End-to-end latency metrics
+PL = "packet_loss"                           # Packet loss percentage
+BU = "bandwidth_utilization"                 # Link utilization percentage
+AS = "autonomous_system"                     # AS-level routing context
+
+# SUFFIX MASKS (Local Operational Context)
+[cuid_mask.suffix]
+RP = "personnel_availability"                # Staffing levels (or automated systems)
+RE = "equipment_readiness"                   # Operational status
+RS = "supplies_availability"                 # Resource/fuel availability
+BW = "bandwidth_comms"                       # Connectivity status
+RO = "rules_of_engagement"                   # Legal constraints
+
+# Priority
+priority = "critical"                            # low | medium | high | critical
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+# Maps this node to the 5 phases of the HD4 kill chain.
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = false, priority = "low", description = "Limited applicability; focused on proactive pre-emptive measures." }
+detect = { enabled = true, priority = "high", description = "Monitoring for indicators of final preparations and staging." }
+disrupt = { enabled = true, priority = "critical", description = "Counterintelligence operations to identify and neutralize the threat." }
+disable = { enabled = true, priority = "high", description = "Actions to directly hinder the attack preparations; preemptive strikes." }
+dominate = { enabled = false, priority = "low", description = "Attack in progress is no longer a preparatory phase." }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+# Key indicators that this task is occurring. Used for detection and hunting.
+# ============================================================================
+
+[[indicators]]
+observable = "Increased encrypted communication traffic"
+priority = "high"
+detection_method = "Network traffic analysis, anomaly detection"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Movement of personnel and equipment towards target location"
+priority = "critical"
+detection_method = "Physical surveillance, traffic cameras, license plate readers"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Final checks of escape routes and contingency plans"
+priority = "high"
+detection_method = "Surveillance, reconnaissance, COMINT"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Anomalous activity at staging areas and safe houses"
+priority = "medium"
+detection_method = "Physical surveillance, electronic monitoring"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Synchronization of watches and communication devices"
+priority = "high"
+detection_method = "COMINT, SIGINT"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Last minute procurement of supplies and resources"
+priority = "medium"
+detection_method = "Financial transaction monitoring, supply chain analysis"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Unusual reconnaissance activity near vulnerable points"
+priority = "high"
+detection_method = "CCTV analytics, security personnel observation"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Last minute changes to security personnel schedules"
+priority = "critical"
+detection_method = "Insider threat monitoring, social engineering"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Vehicle staging near target with multiple occupants"
+priority = "critical"
+detection_method = "LPR, surveillance"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "GPS trackers deployed on vehicles"
+priority = "critical"
+detection_method = "SIGINT, vehicle inspections"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unusual drone activity near target location"
+priority = "critical"
+detection_method = "Radar, visual"
+false_positive_rate = "medium"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+# Dual-mode tool stacks: same tools, different semantic context.
+# ============================================================================
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Penetration testing of internal defenses to identify vulnerabilities"
+mode_2n = "Remote exploitation of identified target systems to facilitate access"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Network mapping for vulnerability identification and intrusion detection"
+mode_2n = "Comprehensive network reconnaissance of target network"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Network traffic analysis to detect suspicious patterns and intrusions"
+mode_2n = "Network traffic analysis to reveal sensitive target data"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Wireless network security audit to identify weaknesses"
+mode_2n = "Gaining unauthorized access to target wireless networks"
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Hydra"
+mode_1n = "Password cracking of online resources to safeguard networks"
+mode_2n = "Cracking passwords to gain unauthorized access to target accounts"
+escalation_level = "script"
+kali_package = "hydra"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Intercept and analyze web traffic to expose vulnerabilities"
+mode_2n = "Exploitation of web application to compromise target system"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "high"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+# Location-dependent intelligence requirements and operational factors.
+# ============================================================================
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",                        # Elevation (30m resolution)
+  "MODIS/006/MCD12Q1",                       # Land cover classification
+  "COPERNICUS/S2",                           # Sentinel-2 optical imagery
+  "JRC/GSW1_3/GlobalSurfaceWater"            # Water bodies
+]
+
+# Distance and time constraints
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+# Terrain factors (affects approach, escape, line-of-sight)
+terrain_factors = ["urban_density", "line_of_sight", "elevation", "vegetation_cover"]
+
+# Weather impact (from existing weather_data table)
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "cloud_cover"]
+operational_threshold = { visibility_km = 2.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Limited visibility could hamper movement and coordination"
+impact_on_comms = "Heavy precipitation or high winds may degrade communication"
+
+# Traffic and routing (from pgRouting + PostGIS)
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"           # or pgr_astar, pgr_trsp
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+# COMINT (Communications Intelligence)
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -80
+imsi_tracking = true                        # 1n: detect adversary, 2n: track target
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+# Critical infrastructure proximity
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "transit_station", "emergency_services"]
+proximity_threshold_m = 200
+impact_assessment = "Close proximity to critical infrastructure increases risk and alert status"
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+# Maps CTAS ontology to NIEM IEPDs for law enforcement interoperability.
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+# N-DEx field mapping
+[niem_mapping.ndex_fields]
+incident_category = "Terrorism"
+incident_subcategory = "Attack Planning"
+location_type = "Staging Area"
+subject_role = "Perpetrator"
+activity_type = "Operational Preparation"
+
+# NIEM core elements
+[niem_mapping.niem_core]
+"nc:Activity" = "Execution Planning"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 2332b (Terrorism), 18 USC 842 (Explosives)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+# Defines how this node connects to other nodes in the 165-task graph.
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-162-000-000-A"           # Deployment
+relationship_type = "precedes"
+unicode_op = "→"                             # Directional flow
+strength = 0.95                              # 0.0-1.0 (how critical is this link)
+description = "Execution planning immediately precedes deployment"
+
+[[relationships]]
+target_node = "uuid-010-000-000-A"           # Logistics Support
+relationship_type = "requires"
+unicode_op = "⇢"
+strength = 0.85
+description = "Execution planning requires prior logistical support"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"           # Counter-Surveillance
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.70
+description = "Execution planning is vulnerable to counter-surveillance efforts"
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+# Ranked intelligence requirements for this task.
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "Is the team in position with all resources?"
+collection_method = "COMINT, SIGINT, physical observation"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "Are the escape routes secured and clear?"
+collection_method = "Traffic analysis, physical observation, GPS tracking"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "Are communication channels operational and secure?"
+collection_method = "Network analysis, RF spectrum analysis, COMINT"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "Are there any last-minute changes in security posture or personnel?"
+collection_method = "Insider threat monitoring, surveillance, HUMINT"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 5
+question = "Are all team members aware of the mission objectives, risks, and rules of engagement?"
+collection_method = "COMINT, SIGINT"
+time_sensitivity = "high"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+# Links to actual incidents where this task was observed.
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "Oklahoma City Bombing",
+    date = "1995-04-19",
+    description = "Final preparation in weeks preceding bombing",
+    source = "https://en.wikipedia.org/wiki/Oklahoma_City_bombing"
+  },
+  {
+    name = "9/11 Attacks",
+    date = "2001-09-11",
+    description = "Final Coordination of flight details",
+    source = "https://en.wikipedia.org/wiki/September_11_attacks"
+  },
+  {
+    name = "Madrid Train Bombings",
+    date = "2004-03-11",
+    description = "Final coordination",
+    source = "https://en.wikipedia.org/wiki/2004_Madrid_train_bombings"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+# MITRE ATT&CK mapping for cyber TTPs (where applicable).
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1571"
+tactic = "Command and Control"
+technique = "Non-Standard Port"
+sub_technique = ""
+description = "Using non-standard ports to evade detection"
+
+[[ttps]]
+mitre_attack_id = "T1095"
+tactic = "Command and Control"
+technique = "Non-Application Layer Protocol"
+sub_technique = ""
+description = "Using non-application layer protocol for communication"
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - Web Protocols"
+description = "Disguising communication by using web protocols such as HTTP/S"
+
+[[ttps]]
+mitre_attack_id = "T1027"
+tactic = "Defense Evasion"
+technique = "Obfuscated Files or Information"
+sub_technique = "T1027.002 - Software Packing"
+description = "Software Packing is used to prevent easy analysis and reverse engineering"
+
+[[ttps]]
+mitre_attack_id = "T1137"
+tactic = "Persistence"
+technique = "Office Application Startup"
+sub_technique = "T1137.001 - Office Application Startup"
+description = "Using Office applications to establish persistence"
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+# Links this node to XSD playbooks for executable document generation.
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "execution_planning_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-operational-planning", "ctas7-advanced-comms"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🛰"]
+lisp_expression = "(execution-task :target target-id :phase final :priority critical)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"                            # draft | active | deprecated
+```

@@ -1,0 +1,409 @@
+```toml
+[node_identity]
+task_id = "uuid-144-000-000-A"
+task_name = "Task 144 - Phase 4"
+classification = "unclassified"
+ttl_category = "optional"
+
+sch = "Xk9mP2vL8qR4wN7jT"
+cuid = "T20240715G34N84SV"
+uuid = "U6f1a2b3c4d5e6f7"
+hash_48 = "Xk9mP2vL8qR4wN7jT20240715G34N84SU6f1a2b3c4d5e6f7"
+
+[capabilities]
+narrative = """
+I am the craftsman of deception, the whisper in the wind. I manipulate trust,
+using social engineering techniques to gain access to secure systems. I exploit
+human vulnerabilities – a forgotten password, a misplaced badge, a moment of
+complacency.
+
+I cultivate relationships with insiders, extracting information subtly,
+gradually building a network of unwitting informants. I use their access to
+bypass security controls, gain unauthorized entry, and plant malicious code.
+
+I cover my tracks meticulously, erasing logs, altering timestamps, and
+encrypting communications. I blend in with the crowd, mimicking the behavior
+of legitimate users, leaving no trace of my presence.
+
+I am the master of manipulation, the architect of compromise. I weave a web
+of deceit, exploiting human weakness to achieve my objectives. My skills are
+subtle, my methods refined, my success guaranteed.
+"""
+
+limitations = """
+I am limited by human fallibility. Security awareness training can make
+employees more resistant to social engineering. Multi-factor authentication
+can prevent unauthorized access, even with compromised credentials.
+
+I am vulnerable to detection by vigilant security personnel. Suspicious
+behavior, unusual network activity, and unexpected access requests can trigger
+alerts and investigations. My success depends on maintaining a low profile and
+avoiding detection. I'm also affected by changing employee roles and access levels.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 48], units = "hours" }
+collection_phase = { words = "weeks before", range = [2, 8], units = "weeks" }
+actionable_window = { words = "days to weeks", range = [3, 14], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Employee turnover or role changes",
+  "Security awareness training effectiveness",
+  "Password resets and policy enforcement",
+  "Changes in access control lists"
+]
+persistence_conditions = [
+  "Underlying system vulnerabilities",
+  "Lack of multi-factor authentication",
+  "Inadequate monitoring and logging",
+  "Poor security culture"
+]
+
+[cuid_mask]
+temporal = "T-{2-8}w"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+semantic = "Sv"
+semantic_full = "social_engineering:vulnerability_exploitation"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Hunt for indicators of social engineering attempts" }
+detect = { enabled = true, priority = "critical", description = "Detect active social engineering attacks" }
+disrupt = { enabled = true, priority = "high", description = "Disrupt ongoing social engineering campaigns" }
+disable = { enabled = true, priority = "medium", description = "Disable compromised accounts and systems" }
+dominate = { enabled = false, priority = "low", description = "N/A" }
+
+[[indicators]]
+observable = "Unusual email traffic patterns"
+priority = "high"
+detection_method = "SIEM alerts, anomaly detection"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Credential harvesting attempts"
+priority = "critical"
+detection_method = "Honeypot accounts, credential monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Impersonation of trusted entities"
+priority = "high"
+detection_method = "Domain monitoring, brand protection services"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Phishing emails with malicious attachments or links"
+priority = "critical"
+detection_method = "Anti-phishing software, user reporting"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Requests for sensitive information via phone or email"
+priority = "high"
+detection_method = "Security awareness training, incident reporting"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Tailgating into secure areas"
+priority = "high"
+detection_method = "Physical security controls, security guard observation"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Dumpster diving for sensitive information"
+priority = "medium"
+detection_method = "Document shredding policies, secure waste disposal"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Fake job postings to collect resumes"
+priority = "medium"
+detection_method = "Monitoring job boards, background checks"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Pretexting to obtain access to systems or data"
+priority = "high"
+detection_method = "Auditing access requests, verifying identities"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Baiting with malicious media (USB drives)"
+priority = "critical"
+detection_method = "Endpoint security software, USB drive policies"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Social-Engineer Toolkit (SET)"
+mode_1n = "Test employee susceptibility to social engineering"
+mode_2n = "Execute phishing and pretexting attacks"
+escalation_level = "crate"
+kali_package = "set"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Identify exploitable vulnerabilities in systems"
+mode_2n = "Exploit vulnerabilities to gain unauthorized access"
+escalation_level = "microkernel"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Scan network for open ports and services"
+mode_2n = "Map target network and identify attack vectors"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Analyze web application traffic for vulnerabilities"
+mode_2n = "Intercept and modify web requests to exploit flaws"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Capture and analyze network traffic for suspicious activity"
+mode_2n = "Sniff network traffic to gather credentials and sensitive data"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "John the Ripper"
+mode_1n = "Test password strength and identify weak credentials"
+mode_2n = "Crack passwords to gain unauthorized access"
+escalation_level = "script"
+kali_package = "john"
+resource_cost = "low"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+distance_range = { min_km = 0.1, max_km = 1, optimal_km = 0.5 }
+time_to_target = { min_minutes = 1, max_minutes = 10, optimal_minutes = 5 }
+terrain_factors = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = ""
+cost_factors = []
+escape_route_priority = "low"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = ""
+
+[niem_mapping]
+justice_domain = "j:Cybercrime"
+intelligence_domain = "intel:CyberThreatIntelligence"
+iepd_type = "Cyber-Incident"
+iepd_version = "5.0"
+
+[niem_mapping.ndex_fields]
+incident_category = "Computer Intrusion"
+incident_subcategory = "Social Engineering"
+location_type = "Network"
+subject_role = "Offender"
+activity_type = "Unauthorized Access"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Social Engineering"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_network }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-045-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.80
+description = "Social engineering can enable access to internal systems."
+
+[[relationships]]
+target_node = "uuid-050-000-000-A"
+relationship_type = "requires"
+unicode_op = "⇢"
+strength = 0.60
+description = "Social engineering requires detailed knowledge of the target."
+
+[[relationships]]
+target_node = "uuid-100-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.70
+description = "Systems and employees are vulnerable to social engineering."
+
+[[eei_priority]]
+rank = 1
+question = "What are the access control policies and procedures?"
+collection_method = "Policy review, social engineering"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the employee roles and responsibilities?"
+collection_method = "Organizational charts, social media"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 3
+question = "What are the security awareness training programs?"
+collection_method = "Policy review, internal communications"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 4
+question = "What are the multi-factor authentication implementations?"
+collection_method = "Network scans, vulnerability assessments"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 5
+question = "What are the password reset policies and enforcement mechanisms?"
+collection_method = "Policy review, social engineering attempts"
+time_sensitivity = "medium"
+
+[historical_reference]
+incidents = [
+  {
+    name = "RSA Security Breach",
+    date = "2011-03-17",
+    description = "Spear phishing attack targeted employees with malicious attachments",
+    source = "https://www.securityfocus.com/news/11564"
+  },
+  {
+    name = "Target Data Breach",
+    date = "2013-12-19",
+    description = "HVAC vendor's credentials compromised through phishing",
+    source = "https://krebsonsecurity.com/2014/02/target-hackers-broke-in-via-hvac-company/"
+  },
+  {
+    name = "DNC Hack",
+    date = "2016-06-14",
+    description = "Spear phishing campaign targeting DNC employees",
+    source = "https://www.nytimes.com/2016/12/13/us/politics/russia-election-hack-dnc.html"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.003 - Spearphishing Link"
+description = "Send spear phishing emails with malicious links to gather sensitive information."
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.001 - Credentials"
+description = "Collect credentials through phishing campaigns and social engineering."
+
+[[ttps]]
+mitre_attack_id = "T1199"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+description = "Compromise a website that is visited by the target to deliver malware."
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "T1566.001 - Spearphishing Attachment"
+description = "Send targeted phishing emails with malicious attachments to gain initial access."
+
+[[ttps]]
+mitre_attack_id = "T1189"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+description = "Compromise a website that is visited by the target to deliver malware"
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Defense Evasion"
+technique = "Valid Accounts"
+sub_technique = "T1078.001 - Default Accounts"
+description = "Use default credentials to bypass security controls"
+
+[xsd_integration]
+playbook_template = "social_engineering_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-enhanced-socialeng", "ctas7-advanced-persistance"]
+unicode_assembly = ["→", "⇢", "⚠", "🔑", "✉", "📞"]
+lisp_expression = "(social-engineering-task :target target-id :objective access-credentials :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

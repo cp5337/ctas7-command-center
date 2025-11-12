@@ -1,0 +1,411 @@
+```toml
+[node_identity]
+task_id = "uuid-125-000-000-A"
+task_name = "Task 125 - Phase 4: Execute Targeted Social Engineering Attacks"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "Wk4mP8vL9pR4wN7j"
+cuid = "T20250110G41N75SSe8400e29b41d4a"
+uuid = "V5e8400f30c52e5b"
+hash_48 = "Wk4mP8vL9pR4wN7jT20250110G41N75SSe8400f30c52e5b"
+
+[capabilities]
+narrative = """
+I am the voice in the wire, the friendly face on the screen. I craft personalized emails,
+mimicking trusted sources to extract credentials. I build rapport, playing on emotions
+to bypass security protocols. I target specific individuals, leveraging OSINT to craft
+irresistible pretexts.
+
+I impersonate IT support, claiming urgent system updates to gain remote access. I pose
+as recruiters, dangling enticing job offers to harvest resumes laden with sensitive data.
+I monitor social media for triggers: birthdays, promotions, project deadlines—perfect
+opportunities to exploit vulnerabilities.
+
+I am patient, persistent, and adaptable. I pivot tactics based on responses, exploiting
+human trust and error. My payload is information—usernames, passwords, system access—
+paving the way for deeper penetration.
+"""
+
+limitations = """
+I am vulnerable to awareness and skepticism. Well-trained employees who verify requests
+and report suspicious activity are my kryptonite. Multi-factor authentication adds a
+significant hurdle. Technical defenses like spam filters and endpoint detection tools
+can block my initial entry.
+
+I am constrained by my persona—any inconsistency or slip-up can raise red flags.
+Aggressive tactics risk detection and exposure. I must remain believable and
+unassuming to succeed. I leave digital footprints: email headers, IP addresses,
+behavioral patterns that can be traced back to me.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 48], units = "hours" }
+collection_phase = { words = "weeks before", range = [1, 4], units = "weeks" }
+actionable_window = { words = "hours to days", range = [6, 72], units = "hours" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Targeted individual changes roles or departments",
+  "Security awareness training updates",
+  "Compromised credentials are reset",
+  "New security patches or system updates"
+]
+persistence_conditions = [
+  "Employee turnover (new targets become available)",
+  "Existing vulnerabilities in legacy systems",
+  "Human error and trust remain constant",
+  "Predictable social engineering patterns"
+]
+
+[cuid_mask]
+temporal = "T-{1-4}w"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "Se"
+semantic_full = "attack:social_engineering:targeted"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = false, priority = "low", description = "Hunt: Proactive monitoring for social engineering campaigns is covered in other nodes." }
+detect = { enabled = true, priority = "critical", description = "Detect: Real-time detection of phishing attempts and suspicious login activity." }
+disrupt = { enabled = true, priority = "high", description = "Disrupt: Block malicious emails, disable compromised accounts, alert targeted individuals." }
+disable = { enabled = true, priority = "medium", description = "Disable: Prevent further lateral movement after initial compromise." }
+dominate = { enabled = false, priority = "low", description = "Dominate: Not applicable." }
+
+[[indicators]]
+observable = "Phishing emails with personalized content targeting specific employees"
+priority = "critical"
+detection_method = "Email security gateway, SIEM, user reporting"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Requests for credentials or sensitive information via email or phone"
+priority = "critical"
+detection_method = "User reporting, security awareness training"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Suspicious login attempts from unusual locations or devices"
+priority = "high"
+detection_method = "SIEM, MFA alerts"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Employees visiting fake login pages"
+priority = "high"
+detection_method = "Web filtering, endpoint detection"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unusual file downloads or application installations after email click"
+priority = "medium"
+detection_method = "Endpoint detection and response (EDR)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Increase in help desk tickets related to password resets"
+priority = "medium"
+detection_method = "Help desk monitoring"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Use of lookalike domains in phishing emails"
+priority = "critical"
+detection_method = "DNS monitoring, threat intelligence feeds"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Spear phishing attacks targeting executive or privileged accounts"
+priority = "critical"
+detection_method = "Email security gateway, SIEM"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Social media profiles used to gather information for targeting"
+priority = "medium"
+detection_method = "OSINT monitoring, security awareness training"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Impersonation of IT staff or other trusted personnel"
+priority = "critical"
+detection_method = "User reporting, incident response"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "Social-Engineer Toolkit (SET)"
+mode_1n = "Simulate phishing attacks to test employee vulnerability"
+mode_2n = "Execute phishing and credential harvesting campaigns"
+escalation_level = "crate"
+kali_package = "set"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Analyze web application traffic for vulnerabilities"
+mode_2n = "Intercept and modify web requests for exploitation"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Metasploit Framework"
+mode_1n = "Exploit vulnerabilities to test security posture"
+mode_2n = "Deploy payloads for remote access and control"
+escalation_level = "framework"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Email Spoofing Tools (e.g., swaks)"
+mode_1n = "Validate email security configurations"
+mode_2n = "Send spoofed emails for phishing campaigns"
+escalation_level = "script"
+kali_package = "swaks"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Credential Harvesters (e.g., CredSniper)"
+mode_1n = "Identify exposed credentials"
+mode_2n = "Harvest credentials from phishing victims"
+escalation_level = "script"
+kali_package = "credsniper"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Phishing Frenzy"
+mode_1n = "Conduct phishing simulations and track results"
+mode_2n = "Manage and automate phishing campaigns"
+escalation_level = "script"
+kali_package = "phishing-frenzy"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 0.1, max_km = 1, optimal_km = 0.5 }
+time_to_target = { min_minutes = 1, max_minutes = 5, optimal_minutes = 2 }
+
+terrain_factors = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "pgr_dijkstra"
+cost_factors = []
+escape_route_priority = "low"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+[niem_mapping]
+justice_domain = "j:CyberCrime"
+intelligence_domain = "intel:ThreatAssessment"
+iepd_type = "Cyber-Incident-Exchange"
+iepd_version = "5.1"
+
+[niem_mapping.ndex_fields]
+incident_category = "Cybercrime"
+incident_subcategory = "Phishing"
+location_type = "Virtual"
+subject_role = "Victim"
+activity_type = "Social Engineering"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Phishing Attack"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_email_address }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+[[relationships]]
+target_node = "uuid-030-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.8
+description = "Successful social engineering enables initial access"
+
+[[relationships]]
+target_node = "uuid-050-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.6
+description = "Intelligence gathered informs the social engineering approach"
+
+[[relationships]]
+target_node = "uuid-100-000-000-A"
+relationship_type = "precedes"
+unicode_op = "≻"
+strength = 0.7
+description = "Social engineering precedes credential exploitation"
+
+[[eei_priority]]
+rank = 1
+question = "What are the email addresses and credentials of target individuals?"
+collection_method = "OSINT, previous breaches"
+time_sensitivity = "critical"
+
+[[eei_priority]]
+rank = 2
+question = "What are the social media profiles and interests of target individuals?"
+collection_method = "OSINT"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What is the internal organizational structure and employee roles?"
+collection_method = "OSINT, LinkedIn"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the commonly used internal applications and services?"
+collection_method = "OSINT, reconnaissance"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the security policies and procedures related to data access?"
+collection_method = "OSINT"
+time_sensitivity = "low"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Operation Aurora",
+    date = "2009-12-01",
+    description = "Targeted social engineering attacks against Google and other major companies",
+    source = "https://en.wikipedia.org/wiki/Operation_Aurora"
+  },
+  {
+    name = "RSA Security Breach",
+    date = "2011-03-17",
+    description = "Phishing attack that compromised RSA's SecurID authentication system",
+    source = "https://en.wikipedia.org/wiki/RSA_Security_breach"
+  },
+  {
+    name = "DNC Hack",
+    date = "2016-03-01",
+    description = "Spear phishing campaign targeting individuals within the Democratic National Committee",
+    source = "https://en.wikipedia.org/wiki/2016_Democratic_National_Committee_email_leak"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "T1566.001 - Spearphishing Attachment"
+description = "Send targeted phishing emails with malicious attachments"
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "T1566.002 - Spearphishing Link"
+description = "Send targeted phishing emails with malicious links"
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.003 - Spearphishing Link"
+description = "Gather information through phishing campaigns"
+
+[[ttps]]
+mitre_attack_id = "T1199"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = "N/A"
+description = "Compromise systems through malicious websites"
+
+[[ttps]]
+mitre_attack_id = "T1189"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = "N/A"
+description = "Exploit vulnerabilities on publicly facing web servers"
+
+[[ttps]]
+mitre_attack_id = "T1192"
+tactic = "Initial Access"
+technique = "Spearphishing Link"
+sub_technique = "N/A"
+description = "Spearphishing with malicious links"
+
+[xsd_integration]
+playbook_template = "social_engineering_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-cyber"]
+unicode_assembly = ["→", "⇢", "⚠", "📧", "👤", "🔑"]
+lisp_expression = "(social-engineering-task :target target-id :phase attack :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-10T00:00:00Z"
+last_updated = "2025-01-10T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

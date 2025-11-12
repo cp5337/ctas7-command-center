@@ -1,0 +1,370 @@
+```toml
+[node_identity]
+task_id = "uuid-043-000-000-A"
+task_name = "Task 43 - Phase 2"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "a2B9d4Zg1h7Lp5qS"
+cuid = "T20250112G34S89Srw74bcdefgh"
+uuid = "V9i2j5l8k1n0o3p7q4r6s9t2u5"
+hash_48 = "a2B9d4Zg1h7Lp5qST20250112G34S89Srw74bcdefghV9i2j5l8k1n0o3p7q4r6s9t2u5"
+
+[capabilities]
+narrative = """
+I am the infiltrator of secure communications. I exploit weak encryption protocols and outdated software to intercept sensitive data. I listen to unencrypted radio frequencies, capturing voice and data transmissions. I compromise mobile devices to track movements and access contacts.
+
+I monitor network traffic for unencrypted credentials. I crack WEP and WPA passwords using brute-force attacks. I analyze intercepted communications for key words and patterns. I target vulnerable IoT devices to gain access to internal networks.
+
+I use direction-finding techniques to locate the sources of radio transmissions. I spoof cell towers to intercept mobile communications. I am patient and persistent. I gather intelligence from every available source. I will be in the middle of their conversations and they will never know I am there.
+"""
+
+limitations = """
+I am vulnerable to strong encryption and modern security protocols. My effectiveness is limited by the availability of vulnerable targets and the strength of their security measures. My activities can be detected by intrusion detection systems and network monitoring tools.
+
+I am constrained by legal restrictions on surveillance and interception. I am vulnerable to counter-surveillance measures and law enforcement investigations. My tools and techniques are constantly evolving, requiring continuous adaptation and learning. I leave a digital footprint, which can be traced back to me.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 48], units = "hours" }
+collection_phase = { words = "days to weeks", range = [7, 21], units = "days" }
+actionable_window = { words = "hours to days", range = [6, 36], units = "hours" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Encryption protocol updates",
+  "Software patches and security updates",
+  "Changes in network infrastructure",
+  "Implementation of intrusion detection systems"
+]
+persistence_conditions = [
+  "Use of legacy systems and outdated technology",
+  "Weak encryption protocols",
+  "Lack of network segmentation",
+  "Poor security practices"
+]
+
+[cuid_mask]
+temporal = "T-{7-21}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+semantic = "Sr"
+semantic_full = "recon:cyber:communications"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactive search for communications interception patterns" }
+detect = { enabled = true, priority = "critical", description = "Identify suspicious network traffic in real-time" }
+disrupt = { enabled = true, priority = "medium", description = "Counter communications operations to deter interception" }
+disable = { enabled = false, priority = "low", description = "Not applicable for reconnaissance phase" }
+dominate = { enabled = false, priority = "low", description = "Not applicable for reconnaissance phase" }
+
+[[indicators]]
+observable = "Unencrypted network traffic containing sensitive data"
+priority = "critical"
+detection_method = "Network monitoring, packet analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Use of weak encryption protocols"
+priority = "high"
+detection_method = "Protocol analysis, vulnerability scanning"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Compromised mobile devices on the network"
+priority = "critical"
+detection_method = "Mobile device management, endpoint detection and response"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Unauthorized access to radio frequencies"
+priority = "medium"
+detection_method = "Spectrum analysis, RF monitoring"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Spoofed cell towers"
+priority = "critical"
+detection_method = "Cell tower monitoring, IMSI catchers"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Increased network latency"
+priority = "medium"
+detection_method = "Network performance monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Unusual DNS requests"
+priority = "medium"
+detection_method = "DNS monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Anomalous traffic patterns"
+priority = "medium"
+detection_method = "Network flow analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of known communication interception tools"
+priority = "high"
+detection_method = "Endpoint detection and response, network monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Exploitation of vulnerable IoT devices"
+priority = "high"
+detection_method = "Vulnerability scanning, network monitoring"
+false_positive_rate = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for sensitive data"
+mode_2n = "Capture network traffic to obtain credentials and data"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Aircrack-ng"
+mode_1n = "Audit wireless network security"
+mode_2n = "Crack WEP and WPA passwords"
+escalation_level = "microkernel"
+kali_package = "aircrack-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "GNURadio"
+mode_1n = "Analyze radio frequency spectrum"
+mode_2n = "Intercept and decode radio communications"
+escalation_level = "crate"
+kali_package = "gnuradio"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "tcpdump"
+mode_1n = "Capture network traffic for analysis"
+mode_2n = "Collect sensitive data from network traffic"
+escalation_level = "script"
+kali_package = "tcpdump"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "KillerBee"
+mode_1n = "Test ZigBee network security"
+mode_2n = "Exploit ZigBee vulnerabilities"
+escalation_level = "microkernel"
+kali_package = "killerbee"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "SDRSharp"
+mode_1n = "Monitor radio frequencies"
+mode_2n = "Intercept radio communication"
+escalation_level = "crate"
+kali_package = "sdrsharp"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+distance_range = { min_km = 0.1, max_km = 10, optimal_km = 1 }
+time_to_target = { min_minutes = 5, max_minutes = 60, optimal_minutes = 15 }
+
+terrain_factors = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = ""
+cost_factors = []
+escape_route_priority = "none"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -80
+imsi_tracking = true
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+[niem_mapping]
+justice_domain = "j:CyberCrime"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Cyber Activity"
+incident_subcategory = "Communication Interception"
+location_type = "Network Infrastructure"
+subject_role = "Suspect"
+activity_type = "Communications Reconnaissance"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Communication Interception"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_network }"
+"j:Charge" = "18 USC 2511 (Wiretap Act)"
+
+[[relationships]]
+target_node = "uuid-044-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.90
+description = "Communications reconnaissance enables data exfiltration"
+
+[[relationships]]
+target_node = "uuid-045-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.80
+description = "Communications reconnaissance informs attack planning"
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.70
+description = "Communications reconnaissance is vulnerable to counter-surveillance"
+
+[[eei_priority]]
+rank = 1
+question = "What encryption protocols are used?"
+collection_method = "Network analysis, protocol analysis"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the network vulnerabilities?"
+collection_method = "Vulnerability scanning, penetration testing"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the mobile device configurations?"
+collection_method = "Mobile device management, endpoint analysis"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What radio frequencies are used?"
+collection_method = "Spectrum analysis, RF monitoring"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What IoT devices are connected to the network?"
+collection_method = "Network discovery, device analysis"
+time_sensitivity = "low"
+
+[historical_reference]
+incidents = []
+
+[[ttps]]
+mitre_attack_id = "T1565"
+tactic = "Covert Communications"
+technique = "Application Layer Protocol"
+sub_technique = "T1565.001 - Web Protocols"
+description = "Use web protocols to exfiltrate intercepted information"
+
+[[ttps]]
+mitre_attack_id = "T1040"
+tactic = "Exfiltration"
+technique = "Exfiltration Over C2 Channel"
+description = "Exfiltrate intercepted communications via C2 channel"
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.001 - Credentials"
+description = "Collect user credentials from intercepted communications"
+
+[[ttps]]
+mitre_attack_id = "T1071"
+tactic = "Command and Control"
+technique = "Application Layer Protocol"
+sub_technique = "T1071.001 - Web Protocols"
+description = "Utilize web protocols for command and control"
+
+[[ttps]]
+mitre_attack_id = "T1021"
+tactic = "Lateral Movement"
+technique = "Remote Services"
+sub_technique = "T1021.004 - SSH"
+description = "Use SSH to move laterally within the network"
+
+[xsd_integration]
+playbook_template = "communications_reconnaissance_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-cyber", "ctas7-enhanced-comms"]
+unicode_assembly = ["→", "⇢", "⚠", "📡", "🔒", "🔑"]
+lisp_expression = "(comms-recon :target target-network :phase pre-operational :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-12T00:00:00Z"
+last_updated = "2025-01-12T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

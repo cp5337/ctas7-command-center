@@ -1,0 +1,516 @@
+```toml
+[node_identity]
+task_id = "uuid-098-000-000-A"
+task_name = "Task 98 - Phase 3"
+classification = "unclassified"
+ttl_category = "desirable"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# Full hash example: "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+# ============================================================================
+
+sch = "aB2cD4EfGh6iJ8kL"                    # Positions 1-16: Semantic Content Hash
+                                             # Deterministic, content-based
+                                             # Seed: 0x1234 (Murmur3)
+                                             # Input: task_name + ttl_category + indicators
+
+cuid = "T20250315G34S89SS"                    # Positions 17-32: Contextual Unique ID
+                                             # Spatio-temporal + semantic context
+                                             # Seed: 0x5678 (Murmur3)
+                                             # Format breakdown:
+                                             #   T20250109 = Temporal (8 chars): YYYYMMDD or T-{offset}d
+                                             #   G40N74    = Geographic (6 chars): Compressed lat/lon
+                                             #   S         = Semantic domain (2 chars): "Sr" = Surveillance/Recon
+                                             # Full encoding: T{time}G{geo}S{semantic}
+
+uuid = "V1xY3zAbCd5EfGhI"                    # Positions 33-48: Universal Unique ID
+                                             # Global uniqueness, persistence, audit trail
+                                             # Seed: 0x9abc (Murmur3)
+                                             # Input: UUID v4 + content + timestamp
+
+hash_48 = "aB2cD4EfGh6iJ8kLT20250315G34S89SSV1xY3zAbCd5EfGhI"  # Full 48-char hash
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+# This is the core intelligence requirement. Written from the adversary's
+# perspective, describing capabilities, methods, and intent.
+# ============================================================================
+
+[capabilities]
+narrative = """
+I am the weaver of threads, the collector of whispers. My focus is on vulnerabilities in third-party relationships. I target vendors, contractors, and service providers with access to the primary target. I map their networks, assess their security postures, and identify potential pivot points.
+
+I analyze contracts, invoices, and communications to understand data flow and access privileges. I use social engineering to gain information from employees about their relationships with the primary target. I seek the weakest link in the chain – a small business with lax security, a disgruntled employee, or a shared cloud environment.
+
+I monitor vendor networks for breaches and vulnerabilities. I look for opportunities to compromise credentials or inject malware. I am patient, methodical, and discreet. My goal is to gain indirect access to the primary target through a trusted third party.
+"""
+
+limitations = """
+I am limited by the complexity of supply chains and the security practices of third-party organizations. Discovering and exploiting vulnerabilities in vendor networks can be time-consuming and resource-intensive. I am vulnerable to detection by sophisticated security monitoring systems and incident response teams.
+
+My success depends on the cooperation of unwitting participants or the negligence of third-party employees. I am exposed to legal risks if I directly compromise vendor systems or steal confidential information. My effectiveness diminishes as vendors improve their security postures and implement stronger access controls.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+# Defines the actionable window and decay curve for this intelligence type.
+# Uses "on the order of" language for human readability + numerical ranges.
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months to years before", range = [180, 730], units = "days" }
+actionable_window = { words = "months to quarters", range = [90, 180], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Vendor security posture improvements",
+  "Contract changes affecting access privileges",
+  "Personnel turnover at vendor organizations",
+  "Software updates and patch deployments"
+]
+persistence_conditions = [
+  "Established vendor relationships",
+  "Complex supply chain dependencies",
+  "Legacy systems with known vulnerabilities"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+# The CUID (positions 17-32) encodes spatio-temporal + semantic + environmental
+# context using PREFIX and SUFFIX masks from CTAS 7.3 Ground Truth.
+# ============================================================================
+
+[cuid_mask]
+# Temporal context
+temporal = "T-{180-730}d"
+temporal_format = "YYYYMMDD"
+
+# Geographic context
+geographic = "G{lat}{lon}"
+geographic_radius_km = 25.0
+
+# Semantic domain
+semantic = "Ss"
+semantic_full = "recon:vendor:supply_chain"
+
+# PREFIX MASKS (Global Environmental Context) - Domain-Specific
+[cuid_mask.prefix]
+# Universal masks (all domains)
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+# Domain-Specific Extensions (v7.3)
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+# SUFFIX MASKS (Local Operational Context)
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+# Priority
+priority = "medium"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+# Maps this node to the 5 phases of the HD4 kill chain.
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Proactive search for vendor network reconnaissance activity." }
+detect = { enabled = true, priority = "medium", description = "Identify anomalous network traffic originating from vendor networks." }
+disrupt = { enabled = true, priority = "low", description = "Isolate compromised vendor systems." }
+disable = { enabled = false, priority = "low", description = "Not applicable in this phase." }
+dominate = { enabled = false, priority = "low", description = "Not applicable in this phase." }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+# Key indicators that this task is occurring. Used for detection and hunting.
+# ============================================================================
+
+[[indicators]]
+observable = "Unusual network traffic between target and vendor networks"
+priority = "high"
+detection_method = "Network intrusion detection system (NIDS)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Scanning of vendor network infrastructure"
+priority = "critical"
+detection_method = "Intrusion detection system (IDS)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Compromised credentials used to access vendor systems"
+priority = "high"
+detection_method = "Security information and event management (SIEM)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Employee social media activity mentioning target or vendor"
+priority = "medium"
+detection_method = "Social media monitoring tools"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Attempts to access target network through vendor VPN"
+priority = "high"
+detection_method = "VPN log analysis"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Data exfiltration from vendor systems to unknown destinations"
+priority = "critical"
+detection_method = "Data loss prevention (DLP) systems"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Phishing emails targeting vendor employees"
+priority = "high"
+detection_method = "Email security gateway"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of stolen vendor credentials on target network"
+priority = "critical"
+detection_method = "SIEM, account monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Changes to vendor system configurations without authorization"
+priority = "medium"
+detection_method = "Configuration management tools"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Installation of unauthorized software on vendor systems"
+priority = "high"
+detection_method = "Endpoint detection and response (EDR) systems"
+false_positive_rate = "medium"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+# Dual-mode tool stacks: same tools, different semantic context.
+# ============================================================================
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Identify open ports and services on vendor networks"
+mode_2n = "Map vendor network topology and identify potential vulnerabilities"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Analyze web application traffic between target and vendors"
+mode_2n = "Exploit vulnerabilities in vendor web applications"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Test vendor systems for known vulnerabilities"
+mode_2n = "Exploit vulnerabilities to gain access to vendor networks"
+escalation_level = "microkernel"
+kali_package = "metasploit-framework"
+resource_cost = "high"
+
+[[toolchain]]
+tool = "Social-Engineer Toolkit (SET)"
+mode_1n = "Test vendor employee susceptibility to social engineering"
+mode_2n = "Execute phishing and pretexting attacks against vendor employees"
+escalation_level = "crate"
+kali_package = "set"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic between target and vendors for anomalies"
+mode_2n = "Capture and analyze credentials transmitted in clear text"
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "theHarvester"
+mode_1n = "Monitor exposed vendor employee information to prevent social engineering"
+mode_2n = "Collect vendor employee data for social engineering and targeting"
+escalation_level = "script"
+kali_package = "theharvester"
+resource_cost = "low"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+# Location-dependent intelligence requirements and operational factors.
+# ============================================================================
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+# Distance and time constraints
+distance_range = { min_km = 1.0, max_km = 100, optimal_km = 25 }
+time_to_target = { min_minutes = 30, max_minutes = 360, optimal_minutes = 120 }
+
+# Terrain factors (affects approach, escape, line-of-sight)
+terrain_factors = []
+
+# Weather impact (from existing weather_data table)
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "Minimal"
+
+# Traffic and routing (from pgRouting + PostGIS)
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "pgr_dijkstra"
+cost_factors = []
+escape_route_priority = "low"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+# COMINT (Communications Intelligence)
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+# Critical infrastructure proximity
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+# Maps CTAS ontology to NIEM IEPDs for law enforcement interoperability.
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+# N-DEx field mapping
+[niem_mapping.ndex_fields]
+incident_category = "Cybercrime"
+incident_subcategory = "Vendor Compromise"
+location_type = "Business"
+subject_role = "Suspect"
+activity_type = "Supply Chain Attack"
+
+# NIEM core elements
+[niem_mapping.niem_core]
+"nc:Activity" = "Vendor Reconnaissance"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ vendor_location }"
+"j:Charge" = "18 USC 1030 (Computer Fraud and Abuse Act)"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+# Defines how this node connects to other nodes in the 165-task graph.
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-011-000-000-A"           # Network Mapping
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.85
+description = "Vendor reconnaissance enables network mapping of third-party networks"
+
+[[relationships]]
+target_node = "uuid-012-000-000-A"           # Vulnerability Scanning
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.70
+description = "Vendor reconnaissance informs vulnerability scanning efforts"
+
+[[relationships]]
+target_node = "uuid-026-000-000-A"           # Third-Party Risk Management
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.65
+description = "Vendor reconnaissance is vulnerable to third-party risk management practices"
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+# Ranked intelligence requirements for this task.
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "Which vendors have access to the target network or data?"
+collection_method = "Contract analysis, network diagrams, data flow mapping"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 2
+question = "What are the security postures of key vendors?"
+collection_method = "Security assessments, vulnerability scans, penetration testing"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 3
+question = "What are the network connections between the target and its vendors?"
+collection_method = "Network traffic analysis, firewall logs, VPN logs"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What data is shared between the target and its vendors?"
+collection_method = "Data flow mapping, data classification, data loss prevention (DLP) systems"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 5
+question = "Are there any known vulnerabilities in vendor systems?"
+collection_method = "Vulnerability databases, security advisories, exploit repositories"
+time_sensitivity = "high"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+# Links to actual incidents where this task was observed.
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "Target Data Breach (2013)",
+    date = "2013-11-27",
+    description = "Attackers gained access to Target's network through a third-party HVAC vendor.",
+    source = "https://en.wikipedia.org/wiki/2013_Target_data_breach"
+  },
+  {
+    name = "SolarWinds Supply Chain Attack (2020)",
+    date = "2020-12-13",
+    description = "Attackers compromised SolarWinds' Orion platform to distribute malware to thousands of customers.",
+    source = "https://www.cisa.gov/news-events/news/joint-statement-federal-law-enforcement-and-intelligence-community-investigating-recent"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+# MITRE ATT&CK mapping for cyber TTPs (where applicable).
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1195"
+tactic = "Initial Access"
+technique = "Supply Chain Compromise"
+sub_technique = "T1195.001 - Compromise Software Supply Chain"
+description = "Compromise a third-party vendor to gain access to the target."
+
+[[ttps]]
+mitre_attack_id = "T1584"
+tactic = "Reconnaissance"
+technique = "Compromise Accounts"
+sub_technique = "T1584.001 - Gather Victim Host Information"
+description = "Gather information about vendor accounts for potential compromise."
+
+[[ttps]]
+mitre_attack_id = "T1199"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = "N/A"
+description = "Compromise a vendor's website to deliver malware."
+
+[[ttps]]
+mitre_attack_id = "T1189"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = "N/A"
+description = "Drive-by Compromise targeting vendor systems"
+
+[[ttps]]
+mitre_attack_id = "T1195"
+tactic = "Initial Access"
+technique = "Supply Chain Compromise"
+sub_technique = "T1195.002 - Compromise Hardware Supply Chain"
+description = "Compromise vendor hardware supply chain."
+
+[[ttps]]
+mitre_attack_id = "T1195"
+tactic = "Initial Access"
+technique = "Supply Chain Compromise"
+sub_technique = "T1195.003 - Compromise Software Package"
+description = "Compromise vendor software package."
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+# Links this node to XSD playbooks for executable document generation.
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "vendor_recon_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-threatintel"]
+unicode_assembly = ["→", "⇢", "⚠", "🌐", "🔗", "🔍"]
+lisp_expression = "(vendor-recon-task :target target-id :phase pre-operational :priority medium)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Bard"
+created_at = "2024-10-27T00:00:00Z"
+last_updated = "2024-10-27T00:00:00Z"
+reviewed_by = "N/A"
+status = "draft"
+```

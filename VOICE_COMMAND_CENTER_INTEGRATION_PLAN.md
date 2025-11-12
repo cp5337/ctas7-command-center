@@ -1,4 +1,5 @@
 # Voice Command Center Integration Plan
+
 ## DevSecOps-First Voice Operations
 
 **Date:** November 3, 2025  
@@ -10,6 +11,7 @@
 ## **PHASE 1: CONTAINERIZE CORE SYSTEMS** 🐳
 
 ### **1.1 Backend Services (PRIORITY 1)**
+
 ```bash
 # Start canonical backend first
 cd /Users/cp5337/Developer/ctas7-command-center
@@ -17,13 +19,14 @@ cd /Users/cp5337/Developer/ctas7-command-center
 
 # Verify all services running:
 # - Real Port Manager (15170)
-# - Synaptix Core (15171) 
+# - Synaptix Core (15171)
 # - Neural Mux (15172)
 # - Sledis (15173)
 # - Foundation Data (15174)
 ```
 
 ### **1.2 Main Ops Platform (PRIORITY 2)**
+
 ```bash
 # Get main ops running
 cd /Users/cp5337/Developer/ctas-7-shipyard-staging/ctas-7.0-main-ops-platform
@@ -32,6 +35,7 @@ npm install && npm run dev
 ```
 
 ### **1.3 Command Center Container (PRIORITY 3)**
+
 ```dockerfile
 # /Users/cp5337/Developer/ctas7-command-center/Dockerfile.command-center
 FROM node:18-alpine
@@ -47,9 +51,10 @@ CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
 ```
 
 ### **1.4 Agent Containerization (PRIORITY 4)**
+
 ```yaml
 # docker-compose.agents.yml
-version: '3.8'
+version: "3.8"
 
 services:
   agent-natasha:
@@ -59,7 +64,7 @@ services:
     environment:
       - AGENT_TYPE=red_team
       - NEURAL_MUX_URL=http://neural-mux:15172
-    
+
   agent-forge:
     build: ./agents/forge
     ports:
@@ -74,6 +79,7 @@ services:
 ## **PHASE 2: VOICE INTEGRATION (COMMAND CENTER)** 🎤
 
 ### **2.1 Voice System Architecture**
+
 ```
 Voice Command → Command Center → Forge Workflows → Backend Services
     ↓              ↓                ↓                    ↓
@@ -81,48 +87,49 @@ ElevenLabs → React Frontend → Rust Orchestrator → Canonical Backend
 ```
 
 ### **2.2 Command Center Voice Routes**
+
 ```typescript
 // src/voice/CommandCenterVoiceRouter.ts
 export class CommandCenterVoiceRouter {
   async handleDevOpsCommand(command: string): Promise<VoiceResponse> {
     switch (command.toLowerCase()) {
-      case 'start development environment':
+      case "start development environment":
         return this.startDevEnvironment();
-      
-      case 'run full validation suite':
+
+      case "run full validation suite":
         return this.runValidationSuite();
-      
-      case 'bootstrap validation':
+
+      case "bootstrap validation":
         return this.runBootstrapValidation();
-      
-      case 'check inventory':
+
+      case "check inventory":
         return this.runInventoryCheck();
-      
-      case 'merge reports':
+
+      case "merge reports":
         return this.mergeReports();
-      
+
       default:
-        return { status: 'unknown', message: 'Command not recognized' };
+        return { status: "unknown", message: "Command not recognized" };
     }
   }
 
   private async startDevEnvironment(): Promise<VoiceResponse> {
     try {
       // Start backend services
-      await this.executeTask('shell: CTAS7: Bootstrap Validation');
-      
+      await this.executeTask("shell: CTAS7: Bootstrap Validation");
+
       // Verify services
       const services = await this.checkServices();
-      
+
       return {
-        status: 'success',
+        status: "success",
         message: `Development environment started. ${services.length} services running.`,
-        data: services
+        data: services,
       };
     } catch (error) {
       return {
-        status: 'error',
-        message: `Failed to start environment: ${error.message}`
+        status: "error",
+        message: `Failed to start environment: ${error.message}`,
       };
     }
   }
@@ -130,6 +137,7 @@ export class CommandCenterVoiceRouter {
 ```
 
 ### **2.3 Voice-Enabled VS Code Tasks**
+
 ```json
 // .vscode/tasks.json (enhanced)
 {
@@ -149,7 +157,7 @@ export class CommandCenterVoiceRouter {
       "problemMatcher": []
     },
     {
-      "label": "CTAS7: Voice Inventory", 
+      "label": "CTAS7: Voice Inventory",
       "type": "shell",
       "command": "npm run inventory && echo 'Inventory complete - Ready for voice feedback'",
       "group": "test"
@@ -163,6 +171,7 @@ export class CommandCenterVoiceRouter {
 ## **PHASE 3: FORGE WORKFLOW INTEGRATION** ⚡
 
 ### **3.1 DevSecOps Workflow Nodes**
+
 ```rust
 // Command Center specific workflows
 pub enum DevSecOpsWorkflowType {
@@ -192,6 +201,7 @@ pub enum ValidationLevel {
 ```
 
 ### **3.2 Voice → Task Integration**
+
 ```rust
 impl DevSecOpsOrchestrator {
     pub async fn handle_voice_devsecops(&self, command: VoiceCommand) -> Result<WorkflowInstance> {
@@ -210,7 +220,7 @@ impl DevSecOpsOrchestrator {
             },
             _ => return Err(WorkflowError::UnknownDevSecOpsIntent),
         };
-        
+
         self.create_devsecops_workflow(workflow_type, command.metadata).await
     }
 }
@@ -221,22 +231,24 @@ impl DevSecOpsOrchestrator {
 ## **PHASE 4: ABE ARCHIVE OPERATIONS** 📚
 
 ### **4.1 Let ABE Run Archive Before Python Changes**
+
 ```bash
 # ABE archive operations (current state, no changes)
 # Let ABE complete current archival tasks:
 # - Document processing
-# - Entity extraction 
+# - Entity extraction
 # - USIM lifecycle management
 # - Storage tier assignments
 
 # DO NOT MODIFY:
 # - Python intelligence systems
-# - Nyx-Trace rebuild  
+# - Nyx-Trace rebuild
 # - Anaconda environment
 # - Jupyter notebooks
 ```
 
 ### **4.2 ABE → Command Center Integration Points**
+
 ```typescript
 // Future integration (after ABE archive complete)
 interface ABEArchiveStatus {
@@ -257,25 +269,29 @@ export async function getABEArchiveStatus(): Promise<ABEArchiveStatus> {
 
 ## **IMPLEMENTATION PRIORITY ORDER**
 
-### **Week 1: Foundation** 
+### **Week 1: Foundation**
+
 1. ✅ Verify canonical backend running (`docker-compose.canonical-backend.yml`)
 2. ✅ Get main ops platform stable (port 15173)
 3. 🔄 Containerize command center
 4. 🔄 Basic agent containerization
 
 ### **Week 2: Voice Core**
+
 1. Implement `CommandCenterVoiceRouter`
 2. Add voice triggers to existing VS Code tasks
 3. Test voice → task execution flow
 4. Integrate with Forge workflow system
 
 ### **Week 3: DevSecOps Voice Workflows**
+
 1. Build DevSecOps workflow nodes in Forge
 2. Voice commands for bootstrap, inventory, layer2 tests
 3. Real-time voice feedback during task execution
 4. Linear issue creation from voice commands
 
 ### **Week 4: ABE Integration**
+
 1. Let ABE complete current archive operations
 2. Add ABE status queries to voice system
 3. Plan Nyx-Trace Anaconda rebuild (future phase)
@@ -289,7 +305,7 @@ export async function getABEArchiveStatus(): Promise<ABEArchiveStatus> {
 Developer: "Start development environment"
 System: "Starting canonical backend services... Bootstrap validation running... Development environment ready. 5 services online."
 
-Developer: "Run inventory check"  
+Developer: "Run inventory check"
 System: "Scanning project structure... Found 247 TypeScript files, 89 Rust crates, 15 Docker services. Inventory complete."
 
 Developer: "Check layer2 fabric tests"
@@ -305,7 +321,7 @@ System: "Compiling validation data... Report generated: validation-2025-11-03.js
 
 ```yaml
 # docker-compose.full-stack.yml
-version: '3.8'
+version: "3.8"
 
 services:
   # Phase 1: Backend (Already working)
@@ -314,7 +330,7 @@ services:
       file: docker-compose.canonical-backend.yml
       service: canonical-backend
 
-  # Phase 1: Main Ops (Already working) 
+  # Phase 1: Main Ops (Already working)
   main-ops:
     build: ../ctas-7-shipyard-staging/ctas-7.0-main-ops-platform
     ports:
@@ -324,7 +340,7 @@ services:
 
   # Phase 1: Command Center (New)
   command-center:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.command-center
     ports:

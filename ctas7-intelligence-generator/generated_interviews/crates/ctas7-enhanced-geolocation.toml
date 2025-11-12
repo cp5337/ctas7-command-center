@@ -1,0 +1,312 @@
+```toml
+[crate_identity]
+crate_name = "ctas7-enhanced-geolocation"
+crate_id = "CRATE-GEO-001"
+crate_type = "tactical"
+version = "7.3.1"
+hd4_phase = "hunt"
+priority = "high"
+classification = "unclassified"
+description = "PostGIS + pgRouting geospatial intelligence with GeoIP, cell tower tracking, and risk-weighted routing"
+
+[trivariate_hash]
+sch = "a9B3dF1G7hJ2kLm0"
+cuid = "C20250109Ttactical"
+uuid = "U8p4q9r1s5t2u3v0"
+hash_48 = "a9B3dF1G7hJ2kLm0C20250109TtacticalU8p4q9r1s5t2u3v0"
+
+[crate_voice]
+narrative = """
+I am the silent observer, the geographic intelligence that underpins every successful operation. I ingest raw location data – IP addresses, cell tower signals, satellite imagery – and transform it into actionable insights. I am the mapmaker, the route planner, the environmental analyst.
+
+My core lies in PostGIS, where I construct complex spatial models of the world. I use pgRouting to calculate optimal paths, factoring in risk, terrain, and time of day. I leverage GeoIP to pinpoint the physical location of digital adversaries.
+
+I empower analysts to visualize threats, predict movements, and anticipate adversary actions. I am the foundation upon which tactical decisions are made. I speak in coordinates, but I think in strategy. My knowledge is power, silently guiding operations to success.
+"""
+
+capabilities = [
+  "PostGIS spatial database with 2D/3D geometry support",
+  "pgRouting for shortest path, A*, Dijkstra, and TRSP algorithms",
+  "GeoIP integration with MaxMind GeoLite2 for IP geolocation",
+  "Cell tower tracking with IMSI hash correlation",
+  "Risk-weighted routing with checkpoint avoidance",
+  "Terrain analysis (slope, elevation, line-of-sight)",
+  "Time-of-day routing (darkness penalties, traffic patterns)",
+  "Submarine cable and critical infrastructure mapping",
+  "Real-time geofencing and proximity alerts",
+  "KML/KMZ import from Google Earth Engine"
+]
+
+limitations = [
+  "Requires PostgreSQL with PostGIS extension",
+  "GeoIP accuracy limited to city-level for most IPs",
+  "Cell tower data requires external sources (OpenCellID, etc.)",
+  "Routing accuracy depends on OSM data quality",
+  "Real-time traffic data requires external API integration",
+  "Terrain data resolution limited by DEM source (SRTM 30m)"
+]
+
+[dependencies]
+rust_crates = [
+  "ctas7-foundation-core",
+  "ctas7-foundation-data",
+  "tokio",
+  "serde",
+  "sqlx",
+  "geo",
+  "geojson"
+]
+
+system_dependencies = [
+  "PostgreSQL 14+",
+  "PostGIS 3.3+",
+  "pgRouting 3.4+",
+  "GDAL 3.5+"
+]
+
+data_dependencies = [
+  "MaxMind GeoLite2-City database",
+  "OpenStreetMap road network data",
+  "SRTM elevation data (30m resolution)",
+  "OpenCellID cell tower database (optional)"
+]
+
+predecessor_crates = [
+  "ctas7-foundation-core",
+  "ctas7-foundation-data"
+]
+
+follower_crates = [
+  "ctas7-neural-mux",
+  "ctas7-plasma",
+  "ctas7-wazuh-integration"
+]
+
+[[node_applications]]
+task_id = "uuid-002-000-000-A"
+task_name = "Reconnaissance and Targeting – Phase 1"
+application = "Geospatial analysis of target locations"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-010-000-000-A"
+task_name = "Logistics Planning"
+application = "Route optimization for material transport"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-025-000-000-A"
+task_name = "Counter-Surveillance"
+application = "Geofencing alerts for adversary proximity"
+priority = "medium"
+
+[[node_applications]]
+task_id = "uuid-045-000-000-A"
+task_name = "Cell Phone Tracking"
+application = "IMSI tracking across cell tower handoffs, geolocation"
+priority = "critical"
+
+[[node_applications]]
+task_id = "uuid-078-000-000-A"
+task_name = "IP Address Attribution"
+application = "GeoIP mapping of malicious IPs"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-099-000-000-A"
+task_name = "Situational Awareness"
+application = "Dynamic mapping of threat locations"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-123-000-000-A"
+task_name = "Search and Rescue"
+application = "Optimal route calculation based on terrain"
+priority = "medium"
+
+[[node_applications]]
+task_id = "uuid-145-000-000-A"
+task_name = "Border Security"
+application = "Geofencing and anomaly detection"
+priority = "high"
+
+[[node_applications]]
+task_id = "uuid-150-000-000-A"
+task_name = "Disaster Response"
+application = "Mapping of affected areas, route planning for relief efforts"
+priority = "critical"
+
+[[node_applications]]
+task_id = "uuid-160-000-000-A"
+task_name = "Asset Tracking"
+application = "Real-time location tracking of critical assets"
+priority = "medium"
+
+[toolchain_integration]
+kali_tools = [
+  { tool = "recon-ng", integration = "GeoIP module", escalation_level = "script" },
+  { tool = "maltego", integration = "Geospatial transforms", escalation_level = "crate" },
+  { tool = "wigle", integration = "WiFi geolocation correlation", escalation_level = "script" }
+]
+
+metasploit_integration = true
+metasploit_modules = [
+  "auxiliary/gather/geoip_lookup",
+  "post/multi/gather/geoip_location"
+]
+
+caldera_integration = false
+caldera_abilities = []
+
+mitre_attack_mapping = [
+  "T1590.005",
+  "T1591",
+  "T1596.001"
+]
+
+atomic_red_team_tests = []
+exploit_db_capabilities = []
+
+[[eei_requirements]]
+rank = 1
+question = "What is the location of IP address X?"
+collection_method = "GeoIP database"
+time_sensitivity = "high"
+
+[[eei_requirements]]
+rank = 2
+question = "What is the best route from A to B avoiding Y?"
+collection_method = "pgRouting"
+time_sensitivity = "high"
+
+[[eei_requirements]]
+rank = 3
+question = "Which cell towers cover location Z?"
+collection_method = "PostGIS spatial query"
+time_sensitivity = "medium"
+
+[[eei_requirements]]
+rank = 4
+question = "What is the terrain profile of route W?"
+collection_method = "SRTM data"
+time_sensitivity = "low"
+
+[[eei_requirements]]
+rank = 5
+question = "Are any adversaries near location Q?"
+collection_method = "Geofencing"
+time_sensitivity = "high"
+
+[mcp_integration]
+mcp_server = true
+mcp_server_name = "ctas7-geolocation-mcp"
+mcp_port = 15185
+mcp_capabilities = [
+  "geoip_lookup",
+  "route_calculation",
+  "cell_tower_query",
+  "terrain_analysis",
+  "geofencing"
+]
+
+[[mcp_integration.tools]]
+name = "geoip_lookup"
+description = "Lookup IP location"
+parameters = ["ip_address"]
+returns = "GeoIP result"
+
+[[mcp_integration.tools]]
+name = "calculate_route"
+description = "Calculate optimal route"
+parameters = ["start_lat", "start_lon", "end_lat", "end_lon", "risk_weight"]
+returns = "Route geometry"
+
+[[mcp_integration.tools]]
+name = "find_cell_towers"
+description = "Find cell towers near location"
+parameters = ["lat", "lon", "radius_m"]
+returns = "List of cell towers"
+
+[gnn_vector_integration]
+gnn_enabled = true
+gnn_use_cases = [
+  "Spatial relationship prediction",
+  "Threat propagation modeling",
+  "Asset clustering"
+]
+
+vector_db_enabled = true
+vector_db_type = "pgvector"
+embedding_dimensions = 768
+vector_use_cases = [
+  "Semantic search for similar locations",
+  "Threat pattern matching",
+  "Route similarity analysis"
+]
+
+[xsd_validation]
+xsd_schema = "crate-interview-playbook.xsd"
+playbook_template = "geolocation_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-core", "ctas7-foundation-data", "ctas7-neural-mux"]
+unicode_assembly = ["→", "📍", "🗺", "🛰", "📡", "🚨"]
+lisp_expression = "(geo-query :type route :start start-coords :end end-coords :risk-weight 0.7)"
+
+[phd_qa]
+phd_qa_score = 92
+quality_grade = "A"
+certification_status = "certified"
+last_qa_run = "2025-01-08T12:00:00Z"
+qa_runner = "Zen Coder"
+
+quality_issues = [
+  "Edge cases in risk-weighted routing"
+]
+
+improvement_recommendations = [
+  "Add integration tests for GeoIP fallback",
+  "Implement caching for routes",
+  "Add support for 3D routing"
+]
+
+[operational_relationships]
+trigger_conditions = [
+  "SCH hash match for geospatial query",
+  "CUID mask with geographic component",
+  "HD4 phase = hunt + geospatial EEI"
+]
+
+execution_order = 5
+semantic_relationships = [
+  "Enables spatial reasoning",
+  "Provides geographic context",
+  "Bridges physical and cyber domains"
+]
+
+ontological_connections = [
+  "Maps to NIEM Justice Domain",
+  "Integrates with N-DEx",
+  "Supports IED TTL Category 4"
+]
+
+reference_architecture_role = "Geospatial Intelligence Layer"
+ttl_book_contribution = """
+Geospatial foundation for understanding threat emergence, movement, and interdiction. Translates threat intelligence into geographic coordinates, routes, and alerts. Contextualizes the "where" of adversary operations.
+"""
+
+[ied_ttl_mapping]
+ttl_category = "4"
+ttl_subcategory = "4.2"
+ttl_task_number = "4.2.1"
+adversarial_capability = "Plan approach routes, escape paths, and identify choke points using geospatial analysis"
+defensive_opportunity = "Detect reconnaissance patterns via repeated geospatial queries, geofencing alerts"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T01:00:00Z"
+last_updated = "2025-01-09T01:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+interview_version = 1
+shipyard_quality_score = 92
+```

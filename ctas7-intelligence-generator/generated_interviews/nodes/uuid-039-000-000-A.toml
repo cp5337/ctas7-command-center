@@ -1,0 +1,384 @@
+```toml
+[node_identity]
+task_id = "uuid-039-000-000-A"
+task_name = "Evidence Removal"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+sch = "Ya83W9pG5Hk6xV2z"
+cuid = "T20250109G40N74SD3b94k27j5"
+uuid = "W1c6d8e0a7f52g3h"
+hash_48 = "Ya83W9pG5Hk6xV2zT20250109G40N74SD3b94k27j5W1c6d8e0a7f52g3h"
+
+[capabilities]
+narrative = """
+I am the eraser. I make things disappear. Logs, documents, hard drives—anything that could connect me to the operation, I eliminate. I use secure deletion tools to wipe drives beyond recovery. I shred documents and burn them to ash. I overwrite logs with false data.
+
+I target security camera footage, deleting the recordings that capture my movements. I sanitize computers used for planning, removing any trace of my activities. I erase browser histories, clear caches, and delete temporary files. I know the hiding places of digital artifacts and the weaknesses of forensic tools.
+
+I sometimes resort to physical destruction, smashing hard drives, dissolving SIM cards in acid, or incinerating entire systems. I am thorough. I am meticulous. By the time anyone investigates, the evidence is gone, leaving no trail to follow. My goal is simple: complete deniability.
+"""
+
+limitations = """
+My effectiveness depends on timing and access. If the system is already compromised or the evidence has been backed up, my job becomes much harder. Skilled forensic investigators can sometimes recover fragments of deleted data or reconstruct events from fragmented logs.
+
+I am vulnerable to observation. Witnesses can testify about my actions. Surveillance cameras might capture me in the act of destroying evidence. I leave traces of my own: disk wiping tools create signatures, unusual network activity raises flags, and physical destruction attracts attention. My actions can be undone.
+"""
+
+[time_of_value]
+half_life = { words = "hours to days", range = [12, 72], units = "hours" }
+collection_phase = { words = "minutes after", range = [5, 60], units = "minutes" }
+actionable_window = { words = "hours to days", range = [24, 168], units = "hours" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Discovery by incident response team",
+  "Forensic investigation initiated",
+  "Backup systems activated",
+  "Intrusion detection systems trigger alerts"
+]
+persistence_conditions = [
+  "Data physically destroyed or overwritten",
+  "System never connected to a network",
+  "Physical access fully controlled"
+]
+
+[cuid_mask]
+temporal = "T+0d-{7}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 1.0
+semantic = "Er"
+semantic_full = "exfiltration:removal:erasure"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = false, priority = "low", description = "Not applicable for evidence removal" }
+detect = { enabled = true, priority = "high", description = "Detect attempts to delete or modify logs" }
+disrupt = { enabled = true, priority = "critical", description = "Prevent deletion of critical logs and data" }
+disable = { enabled = true, priority = "medium", description = "Isolate systems to prevent further data loss" }
+dominate = { enabled = false, priority = "low", description = "Not applicable for evidence removal" }
+
+[[indicators]]
+observable = "Unusual disk activity, especially during off-hours"
+priority = "high"
+detection_method = "Disk monitoring tools, SIEM alerts"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Modification or deletion of security logs"
+priority = "critical"
+detection_method = "Log integrity monitoring, SIEM correlation"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Use of secure deletion tools (sdelete, shred, etc.)"
+priority = "high"
+detection_method = "File system analysis, process monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Overwriting of data files with random data"
+priority = "medium"
+detection_method = "File signature analysis, entropy checks"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Sudden decrease in available disk space"
+priority = "medium"
+detection_method = "System monitoring, capacity planning"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Disabling of logging services"
+priority = "critical"
+detection_method = "System audit logs, service monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Tampering with forensic tools or anti-virus software"
+priority = "high"
+detection_method = "Software integrity checks, system monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Physical destruction of hardware (hard drives, SIM cards)"
+priority = "critical"
+detection_method = "Physical security reports, inventory discrepancies"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Network traffic to anonymization services (Tor, VPNs)"
+priority = "medium"
+detection_method = "Network monitoring, proxy logs"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Attempting to access or modify backup systems"
+priority = "critical"
+detection_method = "Access control logs, system monitoring"
+false_positive_rate = "low"
+
+[[toolchain]]
+tool = "SDelete / BCWipe"
+mode_1n = "Securely erase sensitive data to prevent unauthorized access"
+mode_2n = "Overwrite evidence files to hinder forensic recovery"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "shred"
+mode_1n = "Sanitize temporary files and caches to remove residual data"
+mode_2n = "Erase traces of activity by securely deleting files and directories"
+escalation_level = "script"
+kali_package = "coreutils"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "dd"
+mode_1n = "Overwrite entire disks to prevent data recovery"
+mode_2n = "Wipe hard drives to eliminate forensic evidence"
+escalation_level = "script"
+kali_package = "coreutils"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Logrotate"
+mode_1n = "Configure log rotation policies for system security"
+mode_2n = "Automate log deletion to remove traces of intrusion"
+escalation_level = "script"
+kali_package = "logrotate"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Detect and remediate unauthorized file access"
+mode_2n = "Deploy anti-forensic modules to cover tracks"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Kali Linux Live"
+mode_1n = "Perform offline scans and data backups for security maintenance"
+mode_2n = "Boot a clean OS environment for evidence deletion"
+escalation_level = "microkernel"
+kali_package = "kali-linux-default"
+resource_cost = "medium"
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = ""
+cost_factors = []
+escape_route_priority = "low"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = ""
+
+[niem_mapping]
+justice_domain = "j:CriminalInvestigation"
+intelligence_domain = "intel:SuspiciousActivityReport"
+iepd_type = "Incident-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Security Incident"
+incident_subcategory = "Data Breach"
+location_type = "Workstation"
+subject_role = "Suspect"
+activity_type = "Evidence Tampering"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Evidence Removal"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1519 (Destruction of Records), 18 USC 1030 (Computer Fraud)"
+
+[[relationships]]
+target_node = "uuid-009-000-000-A"
+relationship_type = "follows"
+unicode_op = "→"
+strength = 0.90
+description = "Evidence Removal typically follows other tasks"
+
+[[relationships]]
+target_node = "uuid-045-000-000-A"
+relationship_type = "prevents"
+unicode_op = "⚠"
+strength = 0.80
+description = "Evidence removal aims to prevent forensic analysis"
+
+[[relationships]]
+target_node = "uuid-055-000-000-A"
+relationship_type = "masked_by"
+unicode_op = "👁"
+strength = 0.70
+description = "Obfuscation or misinformation can mask evidence removal"
+
+[[eei_priority]]
+rank = 1
+question = "What critical logs need to be deleted to prevent detection?"
+collection_method = "System analysis, intrusion knowledge"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What forensic tools are in use and how can they be bypassed?"
+collection_method = "Research, vulnerability analysis"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 3
+question = "What is the backup schedule and retention policy?"
+collection_method = "System analysis, insider information"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 4
+question = "Where are the most incriminating data files located?"
+collection_method = "System analysis, operation details"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 5
+question = "What physical hardware needs to be destroyed?"
+collection_method = "Operation plan, target assessment"
+time_sensitivity = "medium"
+
+[[historical_reference]]
+incidents = [
+  {
+    name = "Iran Nuclear Program - Stuxnet",
+    date = "2010",
+    description = "Sophisticated techniques to hide the malware's activities and prevent detection during its operational lifecycle.",
+    source = "https://en.wikipedia.org/wiki/Stuxnet"
+  },
+  {
+    name = "Sony Pictures Entertainment Hack",
+    date = "2014-11-24",
+    description = "Attackers wiped hard drives, making systems inoperable and hindering investigation.",
+    source = "https://en.wikipedia.org/wiki/Sony_Pictures_Entertainment_hack"
+  },
+  {
+    name = "DNC Hack",
+    date = "2016",
+    description = "Attackers deleted logs and attempted to erase traces of their presence.",
+    source = "https://en.wikipedia.org/wiki/2016_Democratic_National_Committee_email_leak"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1070"
+tactic = "Defense Evasion"
+technique = "Indicator Removal on Host"
+sub_technique = "T1070.001 - Clear Windows Event Logs"
+description = "Clear event logs to hide activity"
+
+[[ttps]]
+mitre_attack_id = "T1070"
+tactic = "Defense Evasion"
+technique = "Indicator Removal on Host"
+sub_technique = "T1070.002 - Clear Linux or macOS System Logs"
+description = "Clear system logs to hide activity"
+
+[[ttps]]
+mitre_attack_id = "T1070"
+tactic = "Defense Evasion"
+technique = "Indicator Removal on Host"
+sub_technique = "T1070.003 - Clear Command History"
+description = "Remove command history to conceal executed commands"
+
+[[ttps]]
+mitre_attack_id = "T1107"
+tactic = "Defense Evasion"
+technique = "File Deletion"
+sub_technique = "N/A"
+description = "Delete files to remove evidence"
+
+[[ttps]]
+mitre_attack_id = "T1027"
+tactic = "Defense Evasion"
+technique = "Obfuscated Files or Information"
+sub_technique = "N/A"
+description = "Obfuscate file names and content to avoid detection."
+
+[xsd_integration]
+playbook_template = "evidence_removal_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-forensics"]
+unicode_assembly = ["→", "⚠", "👁", "🗑", "🔥"]
+lisp_expression = "(evidence-removal :target system-id :phase post-compromise :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

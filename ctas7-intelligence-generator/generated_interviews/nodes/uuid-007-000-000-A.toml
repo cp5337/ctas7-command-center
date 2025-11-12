@@ -1,0 +1,521 @@
+```toml
+[node_identity]
+task_id = "uuid-007-000-000-A"
+task_name = "Personnel Recruitment and Training"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# Full hash example: "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+# ============================================================================
+
+sch = "a7B2cD9eFg3hIj6k"                    # Positions 1-16: Semantic Content Hash
+cuid = "T20241115G34N84TP5gT6q"                  # Positions 17-32: Contextual Unique ID
+uuid = "W9xYz1aBc2De3Fg4"                    # Positions 33-48: Universal Unique ID
+hash_48 = "a7B2cD9eFg3hIj6kT20241115G34N84TP5gT6qW9xYz1aBc2De3Fg4"  # Full 48-char hash
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+# This is the core intelligence requirement. Written from the adversary's
+# perspective, describing capabilities, methods, and intent.
+# ============================================================================
+
+[capabilities]
+narrative = """
+I am the architect of trust. I infiltrate organizations under the guise of opportunity.
+I comb through job boards and career fairs, seeking individuals with access and grievances.
+I craft compelling narratives, promising advancement and recognition to those who align with our cause.
+I nurture relationships, feigning empathy and understanding to gain their confidence.
+
+I exploit vulnerabilities in the hiring process, bypassing background checks and security protocols.
+I identify individuals with financial burdens, personal struggles, or ideological leanings that make them susceptible to manipulation.
+I offer them lucrative positions, training opportunities, and a sense of belonging in exchange for their loyalty.
+I indoctrinate them with our ideology, slowly shaping their beliefs and values to align with our objectives.
+
+I am the master recruiter, turning ordinary individuals into trusted insiders. Their access is our power.
+"""
+
+limitations = """
+My reach is limited by the availability of suitable candidates and the effectiveness of my persuasion.
+I am vulnerable to background checks, security screenings, and counter-intelligence operations.
+My efforts can be thwarted by strong organizational culture, employee loyalty, and ethical considerations.
+The recruitment process is time-consuming and requires significant resources, making it difficult to scale.
+My success hinges on maintaining secrecy and avoiding detection, which becomes increasingly challenging as our network grows.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+# Defines the actionable window and decay curve for this intelligence type.
+# Uses "on the order of" language for human readability + numerical ranges.
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "months", range = [3, 6], units = "months" }
+collection_phase = { words = "months to years before", range = [6, 24], units = "months" }
+actionable_window = { words = "months to years", range = [6, 36], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in personnel or organizational structure",
+  "Implementation of enhanced security measures",
+  "Increased awareness of recruitment tactics",
+  "Exposure or compromise of recruited individuals"
+]
+persistence_conditions = [
+  "Long-term strategic goals and objectives",
+  "Ideological alignment and commitment",
+  "Established trust and relationships",
+  "Financial incentives and dependencies"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+# The CUID (positions 17-32) encodes spatio-temporal + semantic + environmental
+# context using PREFIX and SUFFIX masks from CTAS 7.3 Ground Truth.
+# ============================================================================
+
+[cuid_mask]
+# Temporal context
+temporal = "T-{6-24}m"
+temporal_format = "YYYYMMDD"
+
+# Geographic context
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+
+# Semantic domain
+semantic = "TP"
+semantic_full = "training:personnel:recruitment"
+
+# PREFIX MASKS (Global Environmental Context) - Domain-Specific
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+# Domain-Specific Extensions (v7.3)
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+# SUFFIX MASKS (Local Operational Context)
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+# Priority
+priority = "high"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+# Maps this node to the 5 phases of the HD4 kill chain.
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Proactive search for indicators of personnel targeting and recruitment." }
+detect = { enabled = true, priority = "high", description = "Identify suspicious contacts with employees who have access to sensitive information." }
+disrupt = { enabled = true, priority = "medium", description = "Implement counter-recruitment measures to deter personnel from being compromised." }
+disable = { enabled = false, priority = "low", description = "Not directly applicable in this phase." }
+dominate = { enabled = false, priority = "low", description = "Not directly applicable in this phase." }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+# Key indicators that this task is occurring. Used for detection and hunting.
+# ============================================================================
+
+[[indicators]]
+observable = "Unusual communication patterns between employees and external individuals."
+priority = "high"
+detection_method = "Communication analysis, anomaly detection"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Employees expressing dissatisfaction or grievances with the organization."
+priority = "medium"
+detection_method = "Employee surveys, feedback mechanisms"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Attempts to bypass security protocols during the hiring process."
+priority = "high"
+detection_method = "Background checks, security audits"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Employees exhibiting unexplained changes in behavior or attitude."
+priority = "medium"
+detection_method = "Observation, feedback from colleagues"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Employees requesting or accepting unusual favors or gifts from external individuals."
+priority = "high"
+detection_method = "Reporting mechanisms, compliance audits"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Participation in extremist groups."
+priority = "critical"
+detection_method = "Internet and social media monitoring."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Accessing sensitive information."
+priority = "critical"
+detection_method = "Intrusion detection systems."
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Employees suddenly living above their means."
+priority = "high"
+detection_method = "Audits, law enforcement investigation"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Significant personal debt."
+priority = "medium"
+detection_method = "Background checks and financial audits, with cause."
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Taking excessive personal leave or sick days."
+priority = "medium"
+detection_method = "Human Resources monitoring"
+false_positive_rate = "medium"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+# Dual-mode tool stacks: same tools, different semantic context.
+# ============================================================================
+
+[[toolchain]]
+tool = "Social Media Analysis Tools"
+mode_1n = "Monitor social media for extremist content."
+mode_2n = "Identify potential recruits."
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Background Check Services"
+mode_1n = "Conduct background checks."
+mode_2n = "Identify vulnerabilities."
+escalation_level = "crate"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "OSINT Framework"
+mode_1n = "Gather open-source intelligence on the threat."
+mode_2n = "Gather open-source intelligence on target employees."
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Employee Monitoring Software"
+mode_1n = "Monitor employee communications and activities."
+mode_2n = "Identify individuals susceptible to manipulation."
+escalation_level = "microkernel"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Phishing simulation"
+mode_1n = "Training to recognize phishing attempts."
+mode_2n = "Phishing and email harvesting."
+escalation_level = "crate"
+kali_package = "set"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "LinkedIn Scraper"
+mode_1n = "Identify vulnerable employees."
+mode_2n = "Find potential recruits and their skillsets"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+# Location-dependent intelligence requirements and operational factors.
+# ============================================================================
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+# Distance and time constraints
+distance_range = { min_km = 0.1, max_km = 100, optimal_km = 10 }
+time_to_target = { min_minutes = 5, max_minutes = 720, optimal_minutes = 60 }
+
+# Terrain factors (affects approach, escape, line-of-sight)
+terrain_factors = []
+
+# Weather impact (from existing weather_data table)
+[geospatial.weather]
+critical_factors = []
+operational_threshold = {}
+impact_on_surveillance = "N/A"
+impact_on_comms = "N/A"
+
+# Traffic and routing (from pgRouting + PostGIS)
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "N/A"
+cost_factors = []
+escape_route_priority = "N/A"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+# COMINT (Communications Intelligence)
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+# Critical infrastructure proximity
+[geospatial.infrastructure]
+critical_assets = []
+proximity_threshold_m = 0
+impact_assessment = "N/A"
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+# Maps CTAS ontology to NIEM IEPDs for law enforcement interoperability.
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:CriminalJusticeSystem"
+intelligence_domain = "intel:TerrorismInformation"
+iepd_type = "PersonExchange"
+iepd_version = "5.2"
+
+# N-DEx field mapping
+[niem_mapping.ndex_fields]
+incident_category = "Terrorism"
+incident_subcategory = "Recruitment"
+location_type = "Workplace"
+subject_role = "Recruiter"
+activity_type = "Personnel Targeting"
+
+# NIEM core elements
+[niem_mapping.niem_core]
+"nc:Person" = "{ employee_name }"
+"nc:Employer" = "{ organization_name }"
+"nc:RoleOfPerson" = "Employee"
+"j:Subject" = "{ recruiter_name }"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+# Defines how this node connects to other nodes in the 165-task graph.
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-040-000-000-A" # Insider threat
+relationship_type = "results_in"
+unicode_op = "→"
+strength = 0.85
+description = "Personnel recruitment directly results in potential insider threats."
+
+[[relationships]]
+target_node = "uuid-005-000-000-A" # Target Vetting
+relationship_type = "requires"
+unicode_op = "⇢"
+strength = 0.70
+description = "Personnel recruitment requires thorough target vetting."
+
+[[relationships]]
+target_node = "uuid-075-000-000-A" # Financial Gain
+relationship_type = "motivates"
+unicode_op = "→"
+strength = 0.60
+description = "Potential for financial gain motivates recruitment."
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+# Ranked intelligence requirements for this task.
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "Who are the potential recruits within the organization?"
+collection_method = "Social engineering, OSINT, human intelligence"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are their vulnerabilities and grievances?"
+collection_method = "Psychological profiling, background checks, interviews"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are their access privileges and security clearances?"
+collection_method = "Insider information, security audits, network mapping"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are their communication patterns and contacts?"
+collection_method = "Communication analysis, network monitoring, surveillance"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are their ideological beliefs and affiliations?"
+collection_method = "Social media monitoring, internet activity analysis, HUMINT"
+time_sensitivity = "low"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+# Links to actual incidents where this task was observed.
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "Aldrich Ames",
+    date = "1994",
+    description = "CIA officer recruited by the KGB due to financial difficulties.",
+    source = "https://en.wikipedia.org/wiki/Aldrich_Ames"
+  },
+  {
+    name = "Robert Hanssen",
+    date = "2001",
+    description = "FBI agent recruited by the KGB for financial gain.",
+    source = "https://en.wikipedia.org/wiki/Robert_Hanssen"
+  },
+  {
+    name = "Katrina Leung",
+    date = "2003",
+    description = "FBI asset developed a romantic relationship with her handlers and exploited the relationship to gain access to classified information. Also used as Chinese espionage double agent.",
+    source = "https://en.wikipedia.org/wiki/Katrina_Leung"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+# MITRE ATT&CK mapping for cyber TTPs (where applicable).
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1199"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = ""
+description = "Compromise website to harvest credentials for recruitment"
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.003 - Spearphishing Link"
+description = "Send targeted phishing to gather intel and identify potential recruits"
+
+[[ttps]]
+mitre_attack_id = "T1192"
+tactic = "Initial Access"
+technique = "Spearphishing Attachment"
+sub_technique = ""
+description = "Send a malicious attachment disguised as a job opportunity"
+
+[[ttps]]
+mitre_attack_id = "T1189"
+tactic = "Initial Access"
+technique = "Drive-by Compromise"
+sub_technique = ""
+description = "Compromise a website frequently visited by the organization."
+
+[[ttps]]
+mitre_attack_id = "T1566"
+tactic = "Initial Access"
+technique = "Phishing"
+sub_technique = "T1566.001 - Spearphishing Attachment"
+description = "Target high-value employees for information."
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.002 - Vulnerability Scanning"
+description = "Scan for vulnerable targets"
+
+[[ttps]]
+mitre_attack_id = "T1591"
+tactic = "Reconnaissance"
+technique = "Gather Victim Org Information"
+sub_technique = "T1591.004 - Security Configuration"
+description = "Gather security configurations"
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+# Links this node to XSD playbooks for executable document generation.
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "personnel_recruitment_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-humint"]
+unicode_assembly = ["→", "⇢", "⚠", "👥", "🤝", "💸"]
+lisp_expression = "(recruitment-task :target target-org :phase pre-attack :priority high)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

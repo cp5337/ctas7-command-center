@@ -1,9 +1,9 @@
-version: '3.8'
+version: "3.8"
 
 services:
   # Command Center Frontend
   command-center:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
     ports:
@@ -81,6 +81,5 @@ services:
 networks:
   ctas7-network:
     driver: bridge
-
 # Note: This assumes canonical backend is already running via:
 # ./start-canonical-backend-docker.sh

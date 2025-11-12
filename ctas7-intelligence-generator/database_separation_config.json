@@ -1,0 +1,34 @@
+{
+  "databases": {
+    "orbital_gis": {
+      "url": "ws://localhost:8001/rpc",
+      "namespace": "ctas7",
+      "database": "orbital",
+      "purpose": "Satellite tracking and ground station management",
+      "data_types": [
+        "ground_stations",
+        "satellites",
+        "orbital_elements"
+      ],
+      "readonly_from_osint": true
+    },
+    "osint_intelligence": {
+      "url": "ws://localhost:8002/rpc",
+      "namespace": "ctas7",
+      "database": "osint",
+      "purpose": "Intelligence collection and OSINT node management",
+      "data_types": [
+        "osint_nodes",
+        "node_interviews",
+        "crate_interviews"
+      ],
+      "isolated_from_orbital": true
+    }
+  },
+  "separation_rules": {
+    "osint_cannot_write_to_orbital": true,
+    "orbital_cannot_write_to_osint": true,
+    "shared_read_only": false,
+    "duplicate_prevention": true
+  }
+}

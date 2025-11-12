@@ -1,0 +1,401 @@
+```toml
+[node_identity]
+task_id = "uuid-116-000-000-A"
+task_name = "Task 116 - Phase 3"
+classification = "unclassified"
+ttl_category = "desirable"
+
+sch = "b3K0a8Vp9W1xRsYm"
+cuid = "T20250315G34N84SAu9482c7fa18b94b"
+uuid = "V6f105b329c54d60"
+hash_48 = "b3K0a8Vp9W1xRsYmT20250315G34N84SAu9482c7fa18b94bV6f105b329c54d60"
+
+[capabilities]
+narrative = """
+I am the silent observer, the unseen hand shaping the battlefield. I specialize in gathering intelligence on critical infrastructure, focusing on choke points like power substations, communication hubs, and water treatment plants. My mission is to identify vulnerabilities that can be exploited to disrupt essential services.
+
+I conduct covert site surveys, documenting security measures, personnel routines, and potential weaknesses. I use advanced surveillance techniques, including hidden cameras, directional microphones, and thermal imaging, to capture detailed information. I analyze network traffic patterns and communication protocols to map interdependencies and identify critical nodes.
+
+I blend into the environment, posing as a utility worker, a delivery driver, or a concerned citizen to gain access to restricted areas. I cultivate relationships with insiders, leveraging their knowledge and access to gather sensitive information. I am patient and meticulous, building a comprehensive intelligence picture that will enable decisive action.
+"""
+
+limitations = """
+My operations are highly dependent on access and concealment. Gaining access to heavily guarded facilities requires sophisticated techniques and a degree of luck. I am vulnerable to detection by counter-surveillance measures, such as perimeter monitoring, alarm systems, and security personnel.
+
+My effectiveness is limited by the availability of resources and the expertise of my team. Gathering intelligence on complex infrastructure requires specialized equipment and skilled analysts. I am also constrained by legal and ethical considerations, as my activities may violate privacy laws and expose me to legal repercussions.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [21, 60], units = "days" }
+collection_phase = { words = "months to years", range = [6, 24], units = "months" }
+actionable_window = { words = "months", range = [1, 6], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Upgrades to security systems and protocols",
+  "Changes in staffing and operational procedures",
+  "Implementation of new regulations and compliance measures",
+  "Emergency repairs and maintenance activities"
+]
+persistence_conditions = [
+  "Underlying infrastructure design and layout",
+  "Geographic location and environmental factors",
+  "Regulatory frameworks and industry standards",
+  "Interdependencies with other critical systems"
+]
+
+[cuid_mask]
+temporal = "T-{180-720}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 2.0
+semantic = "Au"
+semantic_full = "recon:infrastructure:assessment"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactively search for infrastructure-focused reconnaissance activity patterns." }
+detect = { enabled = true, priority = "critical", description = "Identify surveillance indicators targeting critical infrastructure in real-time." }
+disrupt = { enabled = true, priority = "medium", description = "Counter-surveillance operations to deter infrastructure reconnaissance." }
+disable = { enabled = true, priority = "low", description = "Degrade adversary's reconnaissance capabilities targeting critical infrastructure." }
+dominate = { enabled = false, priority = "low", description = "Not applicable for reconnaissance phase." }
+
+[[indicators]]
+observable = "Unexplained interest in facility schematics or building plans"
+priority = "high"
+detection_method = "Document control audits, insider threat detection"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Anomalous network scanning activity originating from external sources"
+priority = "critical"
+detection_method = "Intrusion detection systems, firewall logs"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Suspicious individuals loitering near critical infrastructure sites"
+priority = "high"
+detection_method = "Physical security patrols, video surveillance"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Elevated levels of drone activity over infrastructure facilities"
+priority = "critical"
+detection_method = "RF detection systems, radar surveillance"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Inquiries about facility security protocols and emergency response plans"
+priority = "medium"
+detection_method = "Employee awareness training, social engineering detection"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Monitoring of SCADA/ICS systems without authorization"
+priority = "critical"
+detection_method = "Network intrusion detection, anomaly detection"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Attempts to access restricted areas using forged credentials"
+priority = "high"
+detection_method = "Access control systems, badge readers, security cameras"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Collection of open-source intelligence (OSINT) on critical infrastructure"
+priority = "medium"
+detection_method = "Web monitoring tools, threat intelligence feeds"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Unusual traffic patterns around critical infrastructure sites"
+priority = "high"
+detection_method = "Traffic monitoring systems, law enforcement reports"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Use of directional microphones to intercept communications"
+priority = "medium"
+detection_method = "RF spectrum analysis, countermeasures"
+false_positive_rate = "high"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Conduct port scanning to identify open ports and potential vulnerabilities in IT and OT systems."
+mode_2n = "Map attack surface, discover running services and versions on critical infrastructure systems for targeted exploitation."
+escalation_level = "microkernel"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic to detect suspicious communication patterns and protocol anomalies."
+mode_2n = "Capture and analyze network traffic to reverse engineer ICS/SCADA protocols and extract sensitive data."
+escalation_level = "script"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Penetration testing against IT network segments to validate security controls and identify misconfigurations."
+mode_2n = "Exploit vulnerabilities in ICS/SCADA systems to gain unauthorized access and disrupt operations."
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Shodan"
+mode_1n = "Discover internet-exposed industrial control systems and assess their security posture."
+mode_2n = "Identify vulnerable ICS devices and systems accessible from the internet for remote exploitation."
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Kali Linux"
+mode_1n = "Use as a platform for security testing and incident response, running various tools and scripts for infrastructure defense."
+mode_2n = "Use as a platform for launching attacks against critical infrastructure systems, leveraging various tools and exploits."
+escalation_level = "foundation"
+kali_package = "kali-linux-default"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Scapy"
+mode_1n = "Craft and analyze network packets to understand network protocols and detect anomalies."
+mode_2n = "Craft malicious packets to exploit vulnerabilities in ICS/SCADA protocols and disrupt communications."
+escalation_level = "script"
+kali_package = "python3-scapy"
+resource_cost = "low"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+distance_range = { min_km = 0.5, max_km = 10, optimal_km = 2 }
+time_to_target = { min_minutes = 30, max_minutes = 120, optimal_minutes = 60 }
+
+terrain_factors = ["urban_density", "elevation", "vegetation_cover", "industrial_zones"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "temperature"]
+operational_threshold = { visibility_km = 2.0, wind_speed_ms = 10.0 }
+impact_on_surveillance = "Poor visibility and high winds can significantly impede surveillance operations."
+impact_on_comms = "Heavy precipitation and extreme temperatures can affect communication system reliability."
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "congestion_cost"]
+escape_route_priority = "high"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [7, 9, 16, 19], off_peak_hours = [22, 6] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -85
+imsi_tracking = true
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["power_grid", "telecom_hub", "water_treatment", "gas_pipeline", "transportation_hub"]
+proximity_threshold_m = 250
+impact_assessment = "Proximity to multiple critical assets increases overall vulnerability and potential impact of an attack."
+
+[niem_mapping]
+justice_domain = "j:InfrastructureSecurity"
+intelligence_domain = "intel:CriticalInfrastructureAssessment"
+iepd_type = "Infrastructure-Exchange"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Critical Infrastructure Threat"
+incident_subcategory = "Surveillance"
+location_type = "Critical Infrastructure"
+subject_role = "Suspect"
+activity_type = "Pre-Operational Planning"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Infrastructure Reconnaissance"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1361 (Destruction of Government Property), 42 USC 5195c (Terrorism)"
+
+[[relationships]]
+target_node = "uuid-117-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.95
+description = "Detailed reconnaissance of infrastructure directly enables vulnerability assessments and exploitation planning."
+
+[[relationships]]
+target_node = "uuid-120-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.80
+description = "Infrastructure reconnaissance informs the selection of attack vectors and the development of targeted exploits."
+
+[[relationships]]
+target_node = "uuid-025-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.70
+description = "Infrastructure reconnaissance is vulnerable to sophisticated counter-surveillance measures and deception operations."
+
+[[eei_priority]]
+rank = 1
+question = "What are the specific vulnerabilities of the target infrastructure?"
+collection_method = "Network scanning, vulnerability assessments, penetration testing"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "What are the security protocols and incident response plans in place?"
+collection_method = "Social engineering, insider threat detection, documentation analysis"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the interdependencies between different critical infrastructure systems?"
+collection_method = "Network mapping, dependency analysis, simulation modeling"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What is the physical layout and security posture of the target facility?"
+collection_method = "Physical surveillance, drone imagery, OSINT"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the communication protocols and network architectures in use?"
+collection_method = "Network traffic analysis, protocol reverse engineering, spectrum analysis"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 6
+question = "What are the backup systems and recovery procedures in place?"
+collection_method = "Social engineering, documentation analysis, site surveys"
+time_sensitivity = "low"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Ukraine Power Grid Attacks (2015, 2016)",
+    date = "2015-12-23",
+    description = "Extensive reconnaissance and planning preceded cyberattacks that caused widespread power outages.",
+    source = "https://www.nerc.com/pa/CI/CIPOutreach/Documents/Ukraine-Cyber-Incident-Report-12-18-2016.pdf"
+  },
+  {
+    name = "Maroochy Water Services Hack (2000)",
+    date = "2000-03-00",
+    description = "Disgruntled employee used detailed knowledge of SCADA system to release sewage into public parks.",
+    source = "https://www.wired.com/2011/03/water-plant-hack/"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.002 - Vulnerability Scanning"
+description = "Adversary scans for known vulnerabilities in infrastructure systems."
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Victim Infrastructure Information"
+sub_technique = "T1592.004 - Industrial Control Systems"
+description = "Gather information about victim ICS/SCADA systems."
+
+[[ttps]]
+mitre_attack_id = "T1615"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1615.001 - Security Software Discovery"
+description = "Identify security software and configurations protecting the target infrastructure."
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.001 - Credentials"
+description = "Collect valid credentials that could be used to gain access to the target."
+
+[[ttps]]
+mitre_attack_id = "T1594"
+tactic = "Reconnaissance"
+technique = "Search Closed Sources"
+sub_technique = "N/A"
+description = "Search for sensitive data in closed sources that is relevant to critical infrastructure operations."
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.003 - Spearphishing Link"
+description = "Craft a spearphishing campaign targeting people associated with targeted infrastructure."
+
+[xsd_integration]
+playbook_template = "infrastructure_recon_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-geolocation"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🛰"]
+lisp_expression = "(recon-task :target infrastructure :phase pre-operational :priority critical)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-03-15T00:00:00Z"
+last_updated = "2025-03-15T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

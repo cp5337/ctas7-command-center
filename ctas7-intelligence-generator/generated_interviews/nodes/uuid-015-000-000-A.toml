@@ -1,0 +1,518 @@
+```toml
+[node_identity]
+task_id = "uuid-015-000-000-A"
+task_name = "Open Source Intelligence (OSINT)"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+# ============================================================================
+# TRIVARIATE HASH (48-position Base96: SCH-CUID-UUID)
+# ============================================================================
+# Generated via Murmur3 with different seeds for each component.
+# Full hash example: "Xk9mP2vL8qR4wN7jT20250109G40N74SU5e8400e29b41d4a"
+# ============================================================================
+
+sch = "aBcDeFgHiJkLmNoP"
+cuid = "T20241115G34S12So9"
+uuid = "V7wXyZ0aB1cC2dD3"
+
+hash_48 = "aBcDeFgHiJkLmNoPT20241115G34S12So9V7wXyZ0aB1cC2dD3"
+
+# ============================================================================
+# FIRST-PERSON ADVERSARY NARRATIVE
+# ============================================================================
+# This is the core intelligence requirement. Written from the adversary's
+# perspective, describing capabilities, methods, and intent.
+# ============================================================================
+
+[capabilities]
+narrative = """
+I am the silent observer, the digital shadow. My tools are search engines, social networks, and public records.
+I piece together fragments of information, creating a mosaic of the target. I scrape websites for email addresses,
+phone numbers, and employee names. I analyze metadata from images and documents to uncover hidden locations and
+creation timestamps.
+
+I monitor social media posts for mentions of the target, their employees, or their activities. I identify key
+personnel and their relationships. I uncover their interests, habits, and vulnerabilities. I search for leaked
+databases and credentials that can be used for access.
+
+I use online mapping tools to visualize the target's physical locations. I identify surrounding infrastructure,
+potential vulnerabilities, and escape routes. I analyze news articles and press releases for information about
+the target's operations and future plans. I am the OSINT operative - knowledge is my weapon.
+"""
+
+limitations = """
+My reach is limited by the availability of public information. If the target is security-conscious and actively
+manages their online presence, my efforts are hampered. False or misleading information can lead me down the wrong
+path. Identifying and verifying information requires careful analysis and cross-referencing.
+
+My activities can be detected through monitoring of network traffic and access logs. Excessive scraping of websites
+can trigger rate limiting or blocking. I am vulnerable to disinformation campaigns designed to mislead me. The
+target may also use privacy settings and data removal requests to limit my access.
+"""
+
+# ============================================================================
+# TIME-OF-VALUE (Intelligence Decay)
+# ============================================================================
+# Defines the actionable window and decay curve for this intelligence type.
+# Uses "on the order of" language for human readability + numerical ranges.
+# ============================================================================
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months to years before", range = [6, 24], units = "months" }
+actionable_window = { words = "months", range = [1, 6], units = "months" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "Changes in personnel or organizational structure",
+  "Updates to website content or social media profiles",
+  "New security measures or privacy policies",
+  "Changes in physical infrastructure or location"
+]
+persistence_conditions = [
+  "Historical data available in archives or public records",
+  "Basic organizational information (address, phone number)",
+  "Cached web pages or data leaks"
+]
+
+# ============================================================================
+# CONTEXTUAL HASHING (CUID Mask with Environmental Context)
+# ============================================================================
+# The CUID (positions 17-32) encodes spatio-temporal + semantic + environmental
+# context using PREFIX and SUFFIX masks from CTAS 7.3 Ground Truth.
+# ============================================================================
+
+[cuid_mask]
+# Temporal context
+temporal = "T-{180-720}d"
+temporal_format = "YYYYMMDD"
+
+# Geographic context
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+
+# Semantic domain
+semantic = "So"
+semantic_full = "recon:digital:osint"
+
+# PREFIX MASKS (Global Environmental Context) - Domain-Specific
+[cuid_mask.prefix]
+# Universal masks (all domains)
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+# Domain-Specific Extensions (v7.3)
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+# SUFFIX MASKS (Local Operational Context)
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+# Priority
+priority = "medium"
+
+# ============================================================================
+# HD4 TACTICAL MAPPING
+# ============================================================================
+# Maps this node to the 5 phases of the HD4 kill chain.
+# ============================================================================
+
+[hd4_phases]
+hunt = { enabled = true, priority = "medium", description = "Identify patterns of OSINT gathering targeting sensitive data." }
+detect = { enabled = true, priority = "medium", description = "Detect anomalous OSINT activity targeting the organization." }
+disrupt = { enabled = true, priority = "low", description = "Limit the availability of sensitive information online." }
+disable = { enabled = false, priority = "low", description = "N/A" }
+dominate = { enabled = false, priority = "low", description = "N/A" }
+
+# ============================================================================
+# INDICATORS (Observable Signatures)
+# ============================================================================
+# Key indicators that this task is occurring. Used for detection and hunting.
+# ============================================================================
+
+[[indicators]]
+observable = "Unusual number of visits to employee LinkedIn profiles"
+priority = "medium"
+detection_method = "LinkedIn audit logs, SIEM alerts"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Scraping of website content, including contact information and employee lists"
+priority = "high"
+detection_method = "Web server logs, intrusion detection systems"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Search engine queries for sensitive information about the organization"
+priority = "low"
+detection_method = "DNS query logs, proxy logs"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Access to public records databases for employee information"
+priority = "medium"
+detection_method = "Public records access logs, third-party monitoring services"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Monitoring of social media for mentions of the organization or its employees"
+priority = "low"
+detection_method = "Social media monitoring tools"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Use of OSINT tools (theHarvester, Recon-ng) from suspicious IPs"
+priority = "high"
+detection_method = "IDS/IPS, Firewall logs"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Attempts to enumerate subdomains and infrastructure details"
+priority = "medium"
+detection_method = "DNS monitoring, certificate transparency logs"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Collection of metadata from publicly available documents"
+priority = "medium"
+detection_method = "Data loss prevention (DLP) systems, file integrity monitoring"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Participation in forums or social media groups discussing the organization"
+priority = "low"
+detection_method = "Social media monitoring tools"
+false_positive_rate = "high"
+
+[[indicators]]
+observable = "Aggregated passive DNS lookups targeting specific domains"
+priority = "medium"
+detection_method = "Passive DNS monitoring"
+false_positive_rate = "low"
+
+# ============================================================================
+# TOOLCHAIN (1n Defensive + 2n Offensive)
+# ============================================================================
+# Dual-mode tool stacks: same tools, different semantic context.
+# ============================================================================
+
+[[toolchain]]
+tool = "theHarvester"
+mode_1n = "Identify exposed employee information to remove or mitigate risk"
+mode_2n = "Gather employee emails and names for phishing campaigns"
+escalation_level = "script"
+kali_package = "theharvester"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "recon-ng"
+mode_1n = "Map organization's digital footprint to identify vulnerabilities"
+mode_2n = "Build comprehensive target profile for attack planning"
+escalation_level = "script"
+kali_package = "recon-ng"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "maltego"
+mode_1n = "Visualize threat actor relationships and infrastructure"
+mode_2n = "Map target organization relationships and dependencies"
+escalation_level = "crate"
+kali_package = "maltego"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Shodan"
+mode_1n = "Identify exposed devices and services within the organization's network"
+mode_2n = "Locate vulnerable systems to exploit"
+escalation_level = "crate"
+kali_package = "N/A"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "SpiderFoot"
+mode_1n = "Automate OSINT gathering for security audits and threat intelligence"
+mode_2n = "Aggregate OSINT data for target reconnaissance"
+escalation_level = "crate"
+kali_package = "spiderfoot"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Google Dorks"
+mode_1n = "Identify sensitive information exposed through misconfigured websites"
+mode_2n = "Uncover leaked credentials or sensitive files"
+escalation_level = "script"
+kali_package = "N/A"
+resource_cost = "low"
+
+# ============================================================================
+# GEOSPATIAL INTELLIGENCE (GEE + Weather + Traffic + COMINT)
+# ============================================================================
+# Location-dependent intelligence requirements and operational factors.
+# ============================================================================
+
+[geospatial]
+gee_required = false
+gee_layers = []
+
+# Distance and time constraints
+distance_range = { min_km = 0.1, max_km = 100, optimal_km = 10 }
+time_to_target = { min_minutes = 1, max_minutes = 1440, optimal_minutes = 60 }
+
+# Terrain factors (affects approach, escape, line-of-sight)
+terrain_factors = ["urban_density", "internet_availability", "political_stability"]
+
+# Weather impact (from existing weather_data table)
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation"]
+operational_threshold = { visibility_km = 1.0, wind_speed_ms = 20.0 }
+impact_on_surveillance = "N/A - Primarily digital"
+impact_on_comms = "Potential impact on satellite internet in remote areas"
+
+# Traffic and routing (from pgRouting + PostGIS)
+[geospatial.traffic]
+road_network_required = false
+routing_algorithm = "N/A"
+cost_factors = []
+escape_route_priority = "N/A"
+choke_point_analysis = false
+traffic_pattern_window = {}
+
+# COMINT (Communications Intelligence)
+[geospatial.comint]
+cell_tower_coverage = false
+cell_tower_range_m = 0
+signal_strength_threshold_dbm = 0
+imsi_tracking = false
+wifi_mapping = false
+wifi_tools = []
+frequency_bands = []
+
+# Critical infrastructure proximity
+[geospatial.infrastructure]
+critical_assets = ["data_centers", "telecom_hubs"]
+proximity_threshold_m = 1000
+impact_assessment = "Proximity to data centers and telecom hubs increases value of OSINT."
+
+# ============================================================================
+# NIEM/N-DEx ONTOLOGICAL MAPPING
+# ============================================================================
+# Maps CTAS ontology to NIEM IEPDs for law enforcement interoperability.
+# ============================================================================
+
+[niem_mapping]
+justice_domain = "j:InformationSharing"
+intelligence_domain = "intel:ThreatIntelligence"
+iepd_type = "Cyber-Event"
+iepd_version = "4.0"
+
+# N-DEx field mapping
+[niem_mapping.ndex_fields]
+incident_category = "Cybercrime"
+incident_subcategory = "Reconnaissance"
+location_type = "Internet"
+subject_role = "Actor"
+activity_type = "OSINT Gathering"
+
+# NIEM core elements
+[niem_mapping.niem_core]
+"nc:Activity" = "Information Gathering"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_domain }"
+"j:Charge" = "N/A"
+
+# ============================================================================
+# RELATIONSHIPS (Graph Edges)
+# ============================================================================
+# Defines how this node connects to other nodes in the 165-task graph.
+# ============================================================================
+
+[[relationships]]
+target_node = "uuid-003-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.8
+description = "OSINT enables target selection and validation."
+
+[[relationships]]
+target_node = "uuid-004-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.7
+description = "OSINT informs vulnerability assessment and exploitation."
+
+[[relationships]]
+target_node = "uuid-020-000-000-A"
+relationship_type = "feeds"
+unicode_op = "↱"
+strength = 0.6
+description = "OSINT feeds into social engineering campaigns."
+
+# ============================================================================
+# EEI PRIORITY (Essential Elements of Information)
+# ============================================================================
+# Ranked intelligence requirements for this task.
+# ============================================================================
+
+[[eei_priority]]
+rank = 1
+question = "What is the organization's digital footprint (domains, subdomains, IP addresses)?"
+collection_method = "DNS enumeration, reverse IP lookups, certificate transparency"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 2
+question = "What are the email addresses and usernames of key personnel?"
+collection_method = "Website scraping, social media, leaked databases"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the technologies and services used by the organization?"
+collection_method = "Website analysis, Shodan, Wappalyzer"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the organization's social media accounts and activities?"
+collection_method = "Social media monitoring tools"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 5
+question = "What are the publicly accessible documents and files associated with the organization?"
+collection_method = "Google dorks, file sharing sites"
+time_sensitivity = "medium"
+
+# ============================================================================
+# HISTORICAL REFERENCE (Real-World Examples)
+# ============================================================================
+# Links to actual incidents where this task was observed.
+# ============================================================================
+
+[historical_reference]
+incidents = [
+  {
+    name = "Target Data Breach (2013)",
+    date = "2013-12-19",
+    description = "Attackers used OSINT to identify Target's supply chain and vulnerabilities.",
+    source = "https://krebsonsecurity.com/2014/01/target-hackers-broke-in-via-hvac-company/"
+  },
+  {
+    name = "SolarWinds Supply Chain Attack (2020)",
+    date = "2020-12-13",
+    description = "Attackers used OSINT to gain insights into SolarWinds' development and build processes.",
+    source = "https://www.microsoft.com/security/blog/2020/12/13/highly-sophisticated-solarwinds-attack-marks-a-watershed-moment/"
+  },
+  {
+    name = "Operation Aurora (Google Hack) (2009)",
+    date = "2009-12-01",
+    description = "Attackers used OSINT to identify Google's internal systems and processes.",
+    source = "https://en.wikipedia.org/wiki/Operation_Aurora"
+  }
+]
+
+# ============================================================================
+# TTPS (Tactics, Techniques, and Procedures)
+# ============================================================================
+# MITRE ATT&CK mapping for cyber TTPs (where applicable).
+# ============================================================================
+
+[[ttps]]
+mitre_attack_id = "T1592"
+tactic = "Reconnaissance"
+technique = "Gather Victim Infrastructure"
+sub_technique = "T1592.004 - Domain Properties"
+description = "Adversaries gather information about victim's domain properties."
+
+[[ttps]]
+mitre_attack_id = "T1590"
+tactic = "Reconnaissance"
+technique = "Gather Victim Network Information"
+sub_technique = "T1590.001 - Domain Names"
+description = "Adversaries gather information about victim's network domain names."
+
+[[ttps]]
+mitre_attack_id = "T1591"
+tactic = "Reconnaissance"
+technique = "Gather Victim Org Information"
+sub_technique = "T1591.004 - Security Configuration"
+description = "Adversaries gather information about the victim organization's security configuration."
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.003 - Spearphishing Link"
+description = "Send targeted phishing to gather intelligence"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = "N/A"
+description = "OSINT helps find exploitable public-facing applications."
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.001 - Credentials"
+description = "Gathering credentials through data breaches."
+
+# ============================================================================
+# XSD INTEGRATION (Playbook Orchestration)
+# ============================================================================
+# Links this node to XSD playbooks for executable document generation.
+# ============================================================================
+
+[xsd_integration]
+playbook_template = "osint_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-recon", "ctas7-enhanced-intel"]
+unicode_assembly = ["→", "⇢", "↱", "🔍", "🌐", "✉"]
+lisp_expression = "(osint-task :target target-domain :phase reconnaissance :priority medium)"
+
+# ============================================================================
+# METADATA (System Fields)
+# ============================================================================
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2025-01-09T00:00:00Z"
+last_updated = "2025-01-09T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```

@@ -1,0 +1,460 @@
+```toml
+[node_identity]
+task_id = "uuid-004-000-000-A"
+task_name = "Financial Operations"
+classification = "unclassified"
+ttl_category = "mandatory"
+
+[sch]
+sch = "Y76mP4wL9sR3xN8k"
+
+[cuid]
+cuid = "T20241115G34N11SKe739800b53c41da6"
+
+[uuid]
+uuid = "V6f2195c8ad760be"
+
+hash_48 = "Y76mP4wL9sR3xN8kT20241115G34N11SKe739800b53c41da6V6f2195c8ad760be"
+
+[capabilities]
+narrative = """
+I am the auditor's shadow. I infiltrate systems disguised as routine maintenance,
+mapping financial flows like arteries on a body. I scrutinize transaction logs
+for anomalies, patterns that betray hidden wealth. I eavesdrop on executive
+communications, gleaning insights into investment strategies and vulnerabilities.
+
+I probe databases for weaknesses, backdoors, and forgotten accounts. I analyze
+employee access privileges, searching for those with excessive permissions. I
+cultivate relationships with disgruntled insiders, leveraging their knowledge for
+access and intelligence.
+
+I study annual reports, SEC filings, and news articles to understand the
+organization's financial health, key stakeholders, and potential liabilities. I
+use open-source intelligence to identify offshore accounts, shell corporations,
+and hidden assets. I am the financial whisperer—I know where the money flows.
+"""
+
+limitations = """
+I am bound by audit trails and digital fingerprints. Every query leaves a trace,
+every login is logged. Sophisticated security systems and forensic analysis can
+uncover my activities. I am vulnerable to detection by intrusion detection systems,
+data loss prevention tools, and behavioral analytics.
+
+I require specialized knowledge of financial systems, regulations, and
+accounting practices. My reliance on technology creates vulnerabilities: if the
+systems are secure, I am blind. My effectiveness degrades with time: financial
+data is constantly updated, new regulations are enacted, and security measures
+are improved.
+"""
+
+[time_of_value]
+half_life = { words = "weeks to months", range = [14, 60], units = "days" }
+collection_phase = { words = "months before", range = [90, 270], units = "days" }
+actionable_window = { words = "months to years", range = [60, 365], units = "days" }
+decay_curve = "exponential"
+ephemeral_conditions = [
+  "New financial regulations and reporting requirements",
+  "Changes in executive leadership or organizational structure",
+  "Implementation of new accounting software or security systems",
+  "Increased audit scrutiny or regulatory investigations"
+]
+persistence_conditions = [
+  "Underlying financial infrastructure and data structures",
+  "Long-term investment strategies and asset allocation",
+  "Established relationships with financial institutions"
+]
+
+[cuid_mask]
+temporal = "T-{90-270}d"
+temporal_format = "YYYYMMDD"
+geographic = "G{lat}{lon}"
+geographic_radius_km = 10.0
+semantic = "Ke"
+semantic_full = "recon:cyber:financial"
+
+[cuid_mask.prefix]
+WX = "weather_mask"
+TF = "traffic_mask"
+OB = "order_of_battle_mask"
+JU = "jurisdiction_mask"
+TH = "threat_posture_mask"
+
+[cuid_mask.prefix.space]
+SR = "solar_radiation"
+GM = "geomagnetic_disturbance"
+DE = "debris_density"
+JS = "jurisdictional_shell"
+
+[cuid_mask.prefix.cyber]
+NW = "network_weather"
+DT = "data_traffic"
+AS = "attack_surface"
+FW = "firewall_posture"
+
+[cuid_mask.prefix.maritime]
+SS = "sea_state"
+CT = "current_tide"
+SL = "shipping_lanes"
+TW = "territorial_waters"
+SC = "submarine_cables"
+PT = "port_traffic"
+
+[cuid_mask.prefix.network]
+TP = "topology"
+RT = "routing"
+LT = "latency"
+PL = "packet_loss"
+BU = "bandwidth_utilization"
+AS = "autonomous_system"
+
+[cuid_mask.suffix]
+RP = "personnel_availability"
+RE = "equipment_readiness"
+RS = "supplies_availability"
+BW = "bandwidth_comms"
+RO = "rules_of_engagement"
+
+priority = "high"
+
+[hd4_phases]
+hunt = { enabled = true, priority = "high", description = "Proactive search for anomalous financial activity patterns" }
+detect = { enabled = true, priority = "critical", description = "Identify unauthorized access to financial systems in real-time" }
+disrupt = { enabled = true, priority = "medium", description = "Implement stricter access controls and monitoring to deter reconnaissance" }
+disable = { enabled = true, priority = "medium", description = "Honeypots" }
+dominate = { enabled = false, priority = "low", description = "Not applicable for reconnaissance phase" }
+
+[[indicators]]
+observable = "Unusual database query patterns accessing financial data"
+priority = "critical"
+detection_method = "Database activity monitoring, SIEM alerts"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Access to financial systems from unusual geographic locations"
+priority = "high"
+detection_method = "Geo-location analysis, VPN detection"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Large data exfiltration events from financial databases"
+priority = "critical"
+detection_method = "Data loss prevention (DLP) systems, network traffic analysis"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Anomalous user account activity on financial systems"
+priority = "high"
+detection_method = "User and Entity Behavior Analytics (UEBA)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Eavesdropping on executive communications mentioning financials"
+priority = "critical"
+detection_method = "Insider threat detection, communication monitoring"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Attempts to bypass or disable security controls on financial systems"
+priority = "high"
+detection_method = "Intrusion detection systems (IDS), endpoint detection and response (EDR)"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Collection of information on offshore accounts, shell corporations"
+priority = "high"
+detection_method = "Open source intelligence (OSINT) monitoring, financial investigations"
+false_positive_rate = "medium"
+
+[[indicators]]
+observable = "Scanning of financial network segments"
+priority = "high"
+detection_method = "Network Intrusion Detection System (NIDS)"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Review of sensitive financial reports by unauthorized personnel"
+priority = "critical"
+detection_method = "Data Access Governance (DAG) tools"
+false_positive_rate = "low"
+
+[[indicators]]
+observable = "Disgruntled employee activity relating to access privilege escalation"
+priority = "medium"
+detection_method = "HR monitoring, behavioral analytics"
+false_positive_rate = "high"
+
+[[toolchain]]
+tool = "Nmap"
+mode_1n = "Identify open ports and services on financial systems"
+mode_2n = "Map network vulnerabilities in financial infrastructure"
+escalation_level = "script"
+kali_package = "nmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Metasploit"
+mode_1n = "Test financial system vulnerabilities"
+mode_2n = "Exploit vulnerabilities in financial systems"
+escalation_level = "crate"
+kali_package = "metasploit-framework"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Wireshark"
+mode_1n = "Analyze network traffic for suspicious financial activity"
+mode_2n = "Capture credentials and sensitive financial data"
+escalation_level = "microkernel"
+kali_package = "wireshark"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "SQLmap"
+mode_1n = "Identify SQL injection vulnerabilities in financial databases"
+mode_2n = "Exploit SQL injection vulnerabilities to access sensitive financial data"
+escalation_level = "script"
+kali_package = "sqlmap"
+resource_cost = "low"
+
+[[toolchain]]
+tool = "Burp Suite"
+mode_1n = "Audit financial web applications for vulnerabilities"
+mode_2n = "Intercept and modify financial web traffic"
+escalation_level = "crate"
+kali_package = "burpsuite"
+resource_cost = "medium"
+
+[[toolchain]]
+tool = "Mimikatz"
+mode_1n = "Detect and prevent credential theft from financial systems"
+mode_2n = "Extract credentials from financial systems for lateral movement"
+escalation_level = "microkernel"
+kali_package = "mimikatz"
+resource_cost = "low"
+
+[geospatial]
+gee_required = true
+gee_layers = [
+  "USGS/SRTMGL1_003",
+  "MODIS/006/MCD12Q1",
+  "COPERNICUS/S2",
+  "JRC/GSW1_3/GlobalSurfaceWater"
+]
+
+distance_range = { min_km = 1.0, max_km = 100, optimal_km = 10 }
+time_to_target = { min_minutes = 30, max_minutes = 240, optimal_minutes = 60 }
+
+terrain_factors = ["urban_density", "building_density", "transportation_networks"]
+
+[geospatial.weather]
+critical_factors = ["visibility", "precipitation", "wind_speed", "temperature"]
+operational_threshold = { visibility_km = 1.0, wind_speed_ms = 20.0 }
+impact_on_surveillance = "Low visibility impacts ability to observe physical locations"
+impact_on_comms = "High winds can disrupt satellite communications"
+
+[geospatial.traffic]
+road_network_required = true
+routing_algorithm = "pgr_dijkstra"
+cost_factors = ["time_cost", "risk_cost", "slope_cost", "darkness_cost"]
+escape_route_priority = "medium"
+choke_point_analysis = true
+traffic_pattern_window = { peak_hours = [8, 10, 17, 19], off_peak_hours = [23, 5] }
+
+[geospatial.comint]
+cell_tower_coverage = true
+cell_tower_range_m = 2000
+signal_strength_threshold_dbm = -80
+imsi_tracking = true
+wifi_mapping = true
+wifi_tools = ["wigle", "kismet", "aircrack-ng"]
+frequency_bands = ["GSM-900", "GSM-1800", "UMTS-2100", "LTE-700", "LTE-2600", "5G-3500"]
+
+[geospatial.infrastructure]
+critical_assets = ["financial_institutions", "data_centers", "telecom_hubs"]
+proximity_threshold_m = 1000
+impact_assessment = "Reconnaissance near financial infrastructure triggers heightened security response"
+
+[niem_mapping]
+justice_domain = "j:FinancialCrimeInvestigation"
+intelligence_domain = "intel:FinancialIntelligenceReport"
+iepd_type = "Suspicious-Activity-Report"
+iepd_version = "5.2"
+
+[niem_mapping.ndex_fields]
+incident_category = "Financial Crime"
+incident_subcategory = "Fraud/Embezzlement"
+location_type = "Financial Institution"
+subject_role = "Suspect"
+activity_type = "Pre-Operational Cyber Surveillance"
+
+[niem_mapping.niem_core]
+"nc:Activity" = "Financial Reconnaissance"
+"nc:ActivityDate" = "{ collection_phase }"
+"nc:Location" = "{ target_location }"
+"j:Charge" = "18 USC 1344 (Bank Fraud), 18 USC 1030 (Computer Fraud)"
+
+[[relationships]]
+target_node = "uuid-005-000-000-A"
+relationship_type = "enables"
+unicode_op = "→"
+strength = 0.90
+description = "Financial reconnaissance directly enables financial manipulation"
+
+[[relationships]]
+target_node = "uuid-011-000-000-A"
+relationship_type = "informs"
+unicode_op = "⇢"
+strength = 0.70
+description = "Financial reconnaissance informs fund transfer strategy"
+
+[[relationships]]
+target_node = "uuid-026-000-000-A"
+relationship_type = "vulnerable_to"
+unicode_op = "⚠"
+strength = 0.65
+description = "Financial reconnaissance is vulnerable to forensic accounting"
+
+[[eei_priority]]
+rank = 1
+question = "What are the key financial systems and databases?"
+collection_method = "Network scanning, system documentation, insider information"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 2
+question = "Who has access to sensitive financial data and systems?"
+collection_method = "Access control lists, employee directories, social engineering"
+time_sensitivity = "high"
+
+[[eei_priority]]
+rank = 3
+question = "What are the security controls and vulnerabilities in financial systems?"
+collection_method = "Vulnerability scanning, penetration testing, system audits"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 4
+question = "What are the financial transaction patterns and flows?"
+collection_method = "Transaction analysis, database queries, regulatory filings"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 5
+question = "What are the internal audit and compliance procedures?"
+collection_method = "Public records, employee surveys, black market contacts"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 6
+question = "What are the external financial relationships?"
+collection_method = "Open source intelligence, corporate registries, data broker"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 7
+question = "What is the financial risk assessment?"
+collection_method = "Internal memos, executive communications, system logs"
+time_sensitivity = "medium"
+
+[[eei_priority]]
+rank = 8
+question = "What is the company's offshore banking strategy?"
+collection_method = "Leaks, insider threat, malware"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 9
+question = "What is the financial health?"
+collection_method = "Financials scraping"
+time_sensitivity = "low"
+
+[[eei_priority]]
+rank = 10
+question = "What are the access control lists?"
+collection_method = "Enumeration, vulnerability assessment"
+time_sensitivity = "high"
+
+[historical_reference]
+incidents = [
+  {
+    name = "Enron Scandal",
+    date = "2001-10-16",
+    description = "Financial reconnaissance to exploit accounting loopholes and hide debt",
+    source = "https://en.wikipedia.org/wiki/Enron_scandal"
+  },
+  {
+    name = "WorldCom Fraud",
+    date = "2002-06-26",
+    description = "Financial reconnaissance to inflate assets and revenues",
+    source = "https://en.wikipedia.org/wiki/WorldCom_scandal"
+  },
+  {
+    name = "Panama Papers",
+    date = "2016-04-03",
+    description = "Reconnaissance on the system led to data exfiltration",
+    source = "https://en.wikipedia.org/wiki/Panama_Papers"
+  }
+]
+
+[[ttps]]
+mitre_attack_id = "T1595"
+tactic = "Reconnaissance"
+technique = "Active Scanning"
+sub_technique = "T1595.002 - Vulnerability Scanning"
+description = "Adversary scans financial systems for vulnerabilities"
+
+[[ttps]]
+mitre_attack_id = "T1589"
+tactic = "Reconnaissance"
+technique = "Gather Victim Identity Information"
+sub_technique = "T1589.001 - Credentials"
+description = "Collect employee credentials for financial system access"
+
+[[ttps]]
+mitre_attack_id = "T1598"
+tactic = "Reconnaissance"
+technique = "Phishing for Information"
+sub_technique = "T1598.001 - Spearphishing Attachment"
+description = "Send targeted phishing to gather financial system information"
+
+[[ttps]]
+mitre_attack_id = "T1190"
+tactic = "Initial Access"
+technique = "Exploit Public-Facing Application"
+sub_technique = ""
+description = "Exploit vulnerability on a financial web server"
+
+[[ttps]]
+mitre_attack_id = "T1059"
+tactic = "Execution"
+technique = "Command and Scripting Interpreter"
+sub_technique = "T1059.004 - Unix Shell"
+description = "Execute shell commands to gather info"
+
+[[ttps]]
+mitre_attack_id = "T1078"
+tactic = "Defense Evasion"
+technique = "Valid Accounts"
+sub_technique = "T1078.004 - Cloud Accounts"
+description = "Compromised cloud accounts"
+
+[[ttps]]
+mitre_attack_id = "T1119"
+tactic = "Collection"
+technique = "Automated Collection"
+sub_technique = ""
+description = "Use of scripts to collect financial data"
+
+[xsd_integration]
+playbook_template = "financial_reconnaissance_playbook_v7.3.1.xsd"
+crate_orchestration = ["ctas7-foundation-tactical", "ctas7-enhanced-geolocation"]
+unicode_assembly = ["→", "⇢", "⚠", "👁", "📍", "🛰"]
+lisp_expression = "(financial-recon-task :target target-id :phase pre-operational :priority high)"
+
+[metadata]
+schema_version = "7.3.1"
+created_by = "Marcus Chen (Gemini 2M)"
+created_at = "2024-01-01T00:00:00Z"
+last_updated = "2024-01-01T00:00:00Z"
+reviewed_by = "Natasha Volkov"
+status = "active"
+```
