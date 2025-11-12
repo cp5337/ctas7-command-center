@@ -30,6 +30,12 @@ PHD_QA_SCRIPT="$SHIPYARD_PATH/run-qa.sh"
 RESULTS_DIR="$SHIPYARD_PATH/qa-results"
 ASSEMBLY_LINE_LOG="./qa-assembly-line.log"
 
+# Google Sheets upload configuration (optional)
+SHEETS_CREDS_PATH="${SHEETS_CREDS_PATH:-}"
+SHEETS_NAME="${SHEETS_NAME:-CTAS7 QA Results}"
+UPLOAD_TO_SHEETS="${UPLOAD_TO_SHEETS:-false}"
+PYTHON_UPLOADER="./qa_results_to_sheets.py"
+
 # Parse arguments
 SPECIFIC_CRATE=""
 COMMIT_MODE=false
@@ -169,6 +175,20 @@ echo ""
 
 # Log results
 echo "[$(date)] QA Complete - Pass:$PASS_COUNT Warn:$WARNING_COUNT Error:$ERROR_COUNT Critical:$CRITICAL_COUNT" >> "$ASSEMBLY_LINE_LOG"
+
+# If requested, upload results to Google Sheets
+if [ "$UPLOAD_TO_SHEETS" = "true" ]; then
+    if [ -z "$SHEETS_CREDS_PATH" ]; then
+        echo -e "${YELLOW}⚠️  SHEETS_CREDS_PATH not set. Skipping upload to Google Sheets.${NC}"
+    else
+        if [ -f "$PYTHON_UPLOADER" ]; then
+            echo -e "${BLUE}📤 Uploading QA results to Google Sheets: $SHEETS_NAME${NC}"
+            python3 "$PYTHON_UPLOADER" --creds "$SHEETS_CREDS_PATH" --sheet "$SHEETS_NAME" --results "$RESULTS_DIR"
+        else
+            echo -e "${YELLOW}⚠️  Python uploader not found at $PYTHON_UPLOADER${NC}"
+        fi
+    fi
+fi
 
 # Post to Linear if requested
 if [ "$LINEAR_MODE" = true ]; then
