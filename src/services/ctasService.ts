@@ -7,30 +7,35 @@
 // CTAS Service Configuration
 export const CTAS_SERVICES = {
   // Core CTAS Services
-  STATISTICAL_CDN: 'http://localhost:18108',
-  PORT_MANAGER: 'http://localhost:18103',
-  HASHING_SERVICE: 'http://localhost:18105',
-  UNIVERSAL_TELEMETRY: 'http://localhost:18101',
-  CONTEXT_INTELLIGENCE: 'http://localhost:18109',
+  STATISTICAL_CDN: "http://localhost:18108",
+  PORT_MANAGER: "http://localhost:18103",
+  HASHING_SERVICE: "http://localhost:18105",
+  UNIVERSAL_TELEMETRY: "http://localhost:18101",
+  CONTEXT_INTELLIGENCE: "http://localhost:18109",
 
   // Command Center
-  COMMAND_CENTER: 'http://localhost:15175',
+  COMMAND_CENTER: "http://localhost:15175",
 } as const;
 
 // AI Persona Types
 export enum AIPersona {
-  VOLKOV = 'volkov',
-  ECHO = 'echo',
-  CIPHER = 'cipher',
-  SENTINEL = 'sentinel',
-  ECHO_DEVOPS = 'echo_devops',
-  VOLKOV_TACTICAL = 'volkov_tactical'
+  VOLKOV = "volkov",
+  ECHO = "echo",
+  CIPHER = "cipher",
+  SENTINEL = "sentinel",
+  ECHO_DEVOPS = "echo_devops",
+  VOLKOV_TACTICAL = "volkov_tactical",
 }
 
 // Statistical Analysis Types
 export interface StatisticalAnalysisRequest {
   analysis_name: string;
-  analysis_type: 'performance_comparison' | 'hash_algorithm_analysis' | 'anomaly_detection' | 'behavioral_analysis' | 'threat_classification';
+  analysis_type:
+    | "performance_comparison"
+    | "hash_algorithm_analysis"
+    | "anomaly_detection"
+    | "behavioral_analysis"
+    | "threat_classification";
   data_source: string;
   parameters: Record<string, any>;
 }
@@ -67,7 +72,13 @@ export interface GNNRequest {
     }>;
     graph_metadata: Record<string, any>;
   };
-  task_type: 'NodeClassification' | 'LinkPrediction' | 'GraphClassification' | 'NodeEmbedding' | 'CommunityDetection' | 'AnomalyDetection';
+  task_type:
+    | "NodeClassification"
+    | "LinkPrediction"
+    | "GraphClassification"
+    | "NodeEmbedding"
+    | "CommunityDetection"
+    | "AnomalyDetection";
   target_nodes?: string[];
   parameters: Record<string, any>;
 }
@@ -87,29 +98,31 @@ export interface GNNResponse {
   };
 }
 
-// Blake3 Hash Types
-export interface Blake3HashRequest {
+// MurmurHash3 Hash Types
+export interface Murmur3HashRequest {
   content: string;
 }
 
-export interface Blake3HashResponse {
+export interface Murmur3HashResponse {
   hash: string;
-  algorithm: 'blake3';
+  algorithm: "murmur3";
+  format: "base96";
   input_size: number;
   timestamp: string;
   service: string;
 }
 
-export interface Blake3VerifyRequest {
+export interface Murmur3VerifyRequest {
   content: string;
   expected_hash: string;
 }
 
-export interface Blake3VerifyResponse {
+export interface Murmur3VerifyResponse {
   is_valid: boolean;
   computed_hash: string;
   expected_hash: string;
-  algorithm: 'blake3';
+  algorithm: "murmur3";
+  format: "base96";
   timestamp: string;
 }
 
@@ -118,9 +131,9 @@ export interface PersonaRequest {
   persona: AIPersona;
   task: string;
   context: {
-    environment: 'development' | 'staging' | 'production';
+    environment: "development" | "staging" | "production";
     service: string;
-    operation: 'deploy' | 'test' | 'monitor' | 'analyze' | 'troubleshoot';
+    operation: "deploy" | "test" | "monitor" | "analyze" | "troubleshoot";
     metadata?: Record<string, any>;
   };
   data?: any;
@@ -134,11 +147,11 @@ export interface PersonaResponse {
     actions: Array<{
       type: string;
       description: string;
-      priority: 'low' | 'medium' | 'high' | 'critical';
+      priority: "low" | "medium" | "high" | "critical";
       estimated_time?: string;
     }>;
     risk_assessment?: {
-      level: 'low' | 'medium' | 'high' | 'critical';
+      level: "low" | "medium" | "high" | "critical";
       factors: string[];
       mitigation: string[];
     };
@@ -175,11 +188,13 @@ class CTASService {
   }
 
   // Statistical Analysis
-  async runStatisticalAnalysis(request: StatisticalAnalysisRequest): Promise<StatisticalAnalysisResponse> {
+  async runStatisticalAnalysis(
+    request: StatisticalAnalysisRequest
+  ): Promise<StatisticalAnalysisResponse> {
     const response = await fetch(`${this.baseUrl}/analysis/run`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(request)
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(request),
     });
     return response.json();
   }
@@ -190,68 +205,80 @@ class CTASService {
   }
 
   async getAnalysisByHash(hash: string): Promise<any> {
-    const response = await fetch(`${this.baseUrl}/analysis/blake3/${hash}`);
+    const response = await fetch(`${this.baseUrl}/analysis/murmur3/${hash}`);
     return response.json();
   }
 
   // GNN Processing
   async processGNN(request: GNNRequest): Promise<GNNResponse> {
     const response = await fetch(`${this.baseUrl}/ai/gnn/process`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(request)
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(request),
     });
     return response.json();
   }
 
-  async processGNNByHash(hash: string, request: GNNRequest): Promise<GNNResponse> {
-    const response = await fetch(`${this.baseUrl}/ai/gnn/process/blake3/${hash}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(request)
+  async processGNNByHash(
+    hash: string,
+    request: GNNRequest
+  ): Promise<GNNResponse> {
+    const response = await fetch(
+      `${this.baseUrl}/ai/gnn/process/murmur3/${hash}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(request),
+      }
+    );
+    return response.json();
+  }
+
+  // MurmurHash3 Hashing
+  async computeMurmur3Hash(
+    request: Murmur3HashRequest
+  ): Promise<Murmur3HashResponse> {
+    const response = await fetch(`${this.baseUrl}/hash/murmur3/compute`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(request),
     });
     return response.json();
   }
 
-  // Blake3 Hashing
-  async computeBlake3Hash(request: Blake3HashRequest): Promise<Blake3HashResponse> {
-    const response = await fetch(`${this.baseUrl}/hash/blake3/compute`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(request)
+  async verifyMurmur3Hash(
+    request: Murmur3VerifyRequest
+  ): Promise<Murmur3VerifyResponse> {
+    const response = await fetch(`${this.baseUrl}/hash/murmur3/verify`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(request),
     });
     return response.json();
   }
 
-  async verifyBlake3Hash(request: Blake3VerifyRequest): Promise<Blake3VerifyResponse> {
-    const response = await fetch(`${this.baseUrl}/hash/blake3/verify`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(request)
-    });
-    return response.json();
-  }
-
-  async getBlake3Chain(): Promise<any> {
-    const response = await fetch(`${this.baseUrl}/hash/blake3/chain`);
+  async getMurmur3Chain(): Promise<any> {
+    const response = await fetch(`${this.baseUrl}/hash/murmur3/chain`);
     return response.json();
   }
 
   // AI Persona Integration (Enhanced)
-  async invokeTacticalIntelligence(request: PersonaRequest): Promise<PersonaResponse> {
+  async invokeTacticalIntelligence(
+    request: PersonaRequest
+  ): Promise<PersonaResponse> {
     const response = await fetch(`${this.baseUrl}/ai/tactical-intelligence`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(request)
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(request),
     });
     return response.json();
   }
 
   async generatePhiResponse(prompt: string, context?: any): Promise<any> {
     const response = await fetch(`${this.baseUrl}/ai/phi/generate`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt, context })
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt, context }),
     });
     return response.json();
   }
@@ -275,24 +302,29 @@ class CTASService {
     endpoint?: string;
   }): Promise<any> {
     const response = await fetch(`${this.baseUrl}/ai/register-model`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(modelInfo)
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(modelInfo),
     });
     return response.json();
   }
 
   // Data Discovery and Integrity
   async discoverDataByHash(hash: string): Promise<any> {
-    const response = await fetch(`${this.baseUrl}/data/discover/blake3/${hash}`);
+    const response = await fetch(
+      `${this.baseUrl}/data/discover/murmur3/${hash}`
+    );
     return response.json();
   }
 
-  async verifyDataIntegrity(data: { data: string; expected_hash: string }): Promise<any> {
+  async verifyDataIntegrity(data: {
+    data: string;
+    expected_hash: string;
+  }): Promise<any> {
     const response = await fetch(`${this.baseUrl}/data/integrity/verify`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
     });
     return response.json();
   }
@@ -382,7 +414,7 @@ export class UniversalTelemetryService {
       this.getResourceMetrics(),
       this.getDiscoveryData(),
       this.getProgressData(),
-      this.getMetrics()
+      this.getMetrics(),
     ]);
 
     return {
@@ -392,7 +424,7 @@ export class UniversalTelemetryService {
       discovery: responses[3],
       progress: responses[4],
       metrics: responses[5],
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
   }
 }
@@ -417,18 +449,18 @@ export class ContextIntelligenceService {
 
   async conductNodeInterview(request: any): Promise<any> {
     const response = await fetch(`${this.baseUrl}/interview/conduct`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(request)
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(request),
     });
     return response.json();
   }
 
   async validateXSDSchema(schema: any): Promise<any> {
     const response = await fetch(`${this.baseUrl}/schema/validate`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(schema)
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(schema),
     });
     return response.json();
   }
@@ -460,9 +492,9 @@ export class ContextIntelligenceService {
 
   async pushTelemetryToCDN(payload: any): Promise<any> {
     const response = await fetch(`${this.baseUrl}/telemetry/push`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
     });
     return response.json();
   }
@@ -477,16 +509,20 @@ export class DevOpsPersonaService {
   }
 
   // Echo DevOps - Deployment and Infrastructure
-  async echoDeploymentAnalysis(environment: string, service: string, deploymentData: any): Promise<PersonaResponse> {
+  async echoDeploymentAnalysis(
+    environment: string,
+    service: string,
+    deploymentData: any
+  ): Promise<PersonaResponse> {
     return this.ctasService.invokeTacticalIntelligence({
       persona: AIPersona.ECHO_DEVOPS,
-      task: 'deployment_analysis',
+      task: "deployment_analysis",
       context: {
         environment: environment as any,
         service,
-        operation: 'deploy'
+        operation: "deploy",
       },
-      data: deploymentData
+      data: deploymentData,
     });
   }
 
@@ -494,13 +530,13 @@ export class DevOpsPersonaService {
   async volkovThreatAssessment(serviceData: any): Promise<PersonaResponse> {
     return this.ctasService.invokeTacticalIntelligence({
       persona: AIPersona.VOLKOV_TACTICAL,
-      task: 'threat_assessment',
+      task: "threat_assessment",
       context: {
-        environment: 'production',
-        service: 'security_analysis',
-        operation: 'analyze'
+        environment: "production",
+        service: "security_analysis",
+        operation: "analyze",
       },
-      data: serviceData
+      data: serviceData,
     });
   }
 
@@ -508,13 +544,13 @@ export class DevOpsPersonaService {
   async cipherDataAnalysis(analysisData: any): Promise<PersonaResponse> {
     return this.ctasService.invokeTacticalIntelligence({
       persona: AIPersona.CIPHER,
-      task: 'data_pattern_analysis',
+      task: "data_pattern_analysis",
       context: {
-        environment: 'production',
-        service: 'data_analysis',
-        operation: 'analyze'
+        environment: "production",
+        service: "data_analysis",
+        operation: "analyze",
       },
-      data: analysisData
+      data: analysisData,
     });
   }
 
@@ -522,13 +558,13 @@ export class DevOpsPersonaService {
   async sentinelMonitoringAnalysis(metrics: any): Promise<PersonaResponse> {
     return this.ctasService.invokeTacticalIntelligence({
       persona: AIPersona.SENTINEL,
-      task: 'monitoring_analysis',
+      task: "monitoring_analysis",
       context: {
-        environment: 'production',
-        service: 'monitoring',
-        operation: 'monitor'
+        environment: "production",
+        service: "monitoring",
+        operation: "monitor",
       },
-      data: metrics
+      data: metrics,
     });
   }
 }

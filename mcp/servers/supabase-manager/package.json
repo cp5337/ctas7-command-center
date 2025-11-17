@@ -1,0 +1,30 @@
+{
+  "name": "ctas-supabase-manager",
+  "version": "1.0.0",
+  "description": "MCP Server to fix and manage CTAS Supabase database",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "ctas-supabase-manager": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "fix-db": "node -e \"console.log('Use: mcp call fix_database_mess with confirm:true')\""
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "@modelcontextprotocol/sdk": "^0.4.0",
+    "zod": "^3.22.4",
+    "dotenv": "^16.3.1"
+  },
+  "keywords": [
+    "mcp",
+    "supabase",
+    "ctas",
+    "database",
+    "management"
+  ],
+  "author": "CTAS Team",
+  "license": "MIT"
+}

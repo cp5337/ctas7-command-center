@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTAS7 Cybermap - Real-time Threat Intelligence</title>
+
+    <!-- Mapbox GL JS -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+
+    <!-- Socket.IO -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+
+    <!-- Chart.js for statistics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Mono', 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00ff41;
+            overflow: hidden;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+        }
+
+        .hud {
+            position: absolute;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid #00ff41;
+            border-radius: 5px;
+            padding: 15px;
+            font-size: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+        }
+
+        .hud-title {
+            color: #00ff41;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #00ff41;
+            padding-bottom: 5px;
+        }
+
+        .top-left {
+            top: 20px;
+            left: 20px;
+            width: 300px;
+        }
+
+        .top-right {
+            top: 20px;
+            right: 20px;
+            width: 280px;
+        }
+
+        .bottom-left {
+            bottom: 20px;
+            left: 20px;
+            width: 350px;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .bottom-right {
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            padding: 3px 0;
+            border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+        }
+
+        .stat-label {
+            color: #ccc;
+        }
+
+        .stat-value {
+            color: #00ff41;
+            font-weight: bold;
+        }
+
+        .severity-critical { color: #ff0040; }
+        .severity-high { color: #ff6600; }
+        .severity-medium { color: #ffaa00; }
+        .severity-low { color: #00ff41; }
+
+        .threat-item {
+            background: rgba(0, 255, 65, 0.1);
+            border-left: 3px solid #00ff41;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+
+        .threat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3px;
+        }
+
+        .threat-type {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .threat-timestamp {
+            color: #888;
+            font-size: 10px;
+        }
+
+        .threat-path {
+            color: #ccc;
+            font-size: 10px;
+        }
+
+        .connection-status {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .connected {
+            background: rgba(0, 255, 65, 0.2);
+            color: #00ff41;
+            border: 1px solid #00ff41;
+        }
+
+        .disconnected {
+            background: rgba(255, 0, 65, 0.2);
+            color: #ff0040;
+            border: 1px solid #ff0040;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .attack-line {
+            stroke: #ff0040;
+            stroke-width: 2;
+            opacity: 0.8;
+            animation: attackFlow 3s ease-out;
+        }
+
+        @keyframes attackFlow {
+            0% { stroke-dasharray: 0 100; }
+            100% { stroke-dasharray: 100 0; }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 255, 65, 0.5);
+            border-radius: 3px;
+        }
+
+        .logo {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            color: #00ff41;
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #00ff41;
+        }
+
+        .chart-container {
+            height: 120px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="connection-status" class="connection-status disconnected">
+        ⚡ Connecting to CTAS7 Intelligence...
+    </div>
+
+    <div id="map"></div>
+
+    <!-- Statistics HUD -->
+    <div class="hud top-left">
+        <div class="hud-title">🎯 Global Threat Statistics</div>
+        <div class="stat-row">
+            <span class="stat-label">Active Threats:</span>
+            <span class="stat-value" id="active-threats">0</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">24h Total:</span>
+            <span class="stat-value" id="total-24h">0</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">Countries Affected:</span>
+            <span class="stat-value" id="countries-affected">0</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">Threat Level:</span>
+            <span class="stat-value severity-high" id="threat-level">ELEVATED</span>
+        </div>
+    </div>
+
+    <!-- Top Attack Types -->
+    <div class="hud top-right">
+        <div class="hud-title">🔥 Top Attack Types</div>
+        <div id="top-attacks">
+            <div class="stat-row">
+                <span class="stat-label">Loading...</span>
+                <span class="stat-value">-</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Threat Feed -->
+    <div class="hud bottom-left">
+        <div class="hud-title">📡 Live Threat Feed</div>
+        <div id="threat-feed">
+            <div style="color: #888; text-align: center; padding: 20px;">
+                Waiting for threat intelligence...
+            </div>
+        </div>
+    </div>
+
+    <!-- Source Countries -->
+    <div class="hud bottom-right">
+        <div class="hud-title">🌍 Attack Origins</div>
+        <div class="chart-container">
+            <canvas id="origins-chart"></canvas>
+        </div>
+    </div>
+
+    <div class="logo">
+        CTAS7 CYBERMAP v2.0 - THREAT INTELLIGENCE PLATFORM
+    </div>
+
+    <script>
+        // Global variables
+        let map;
+        let socket;
+        let threatMarkers = new Map();
+        let originsChart;
+
+        // Mapbox token from server
+        const MAPBOX_TOKEN = "{{ mapbox_token }}";
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMap();
+            initializeSocket();
+            initializeCharts();
+        });
+
+        function initializeMap() {
+            // Check if we have a valid Mapbox token
+            if (!MAPBOX_TOKEN || MAPBOX_TOKEN.includes('your_mapbox_token_here')) {
+                console.error('Mapbox token not configured');
+                document.getElementById('map').innerHTML = `
+                    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: #0a0a0a; color: #ff0040; font-family: monospace; flex-direction: column;">
+                        <h1>⚠️ MAPBOX TOKEN REQUIRED</h1>
+                        <p>Configure VITE_MAPBOX_TOKEN in your .env file</p>
+                        <p>Get free token at: <a href="https://account.mapbox.com" style="color: #00ff41;">https://account.mapbox.com</a></p>
+                    </div>
+                `;
+                return;
+            }
+
+            mapboxgl.accessToken = MAPBOX_TOKEN;
+
+            map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/dark-v10',
+                center: [0, 20],
+                zoom: 2,
+                pitch: 0,
+                bearing: 0
+            });
+
+            map.on('load', function() {
+                // Add glow effect to map
+                map.getCanvas().style.filter = 'contrast(1.2) brightness(0.8)';
+
+                // Add threat path source
+                map.addSource('threat-paths', {
+                    'type': 'geojson',
+                    'data': {
+                        'type': 'FeatureCollection',
+                        'features': []
+                    }
+                });
+
+                // Add threat path layer
+                map.addLayer({
+                    'id': 'threat-paths-layer',
+                    'type': 'line',
+                    'source': 'threat-paths',
+                    'layout': {
+                        'line-join': 'round',
+                        'line-cap': 'round'
+                    },
+                    'paint': {
+                        'line-color': [
+                            'case',
+                            ['==', ['get', 'severity'], 'critical'], '#ff0040',
+                            ['==', ['get', 'severity'], 'high'], '#ff6600',
+                            ['==', ['get', 'severity'], 'medium'], '#ffaa00',
+                            '#00ff41'
+                        ],
+                        'line-width': [
+                            'case',
+                            ['==', ['get', 'severity'], 'critical'], 4,
+                            ['==', ['get', 'severity'], 'high'], 3,
+                            2
+                        ],
+                        'line-opacity': 0.8
+                    }
+                });
+
+                console.log('🗺️ Mapbox initialized');
+            });
+        }
+
+        function initializeSocket() {
+            socket = io();
+
+            socket.on('connect', function() {
+                console.log('🔗 Connected to CTAS7 Intelligence');
+                updateConnectionStatus(true);
+            });
+
+            socket.on('disconnect', function() {
+                console.log('❌ Disconnected from CTAS7 Intelligence');
+                updateConnectionStatus(false);
+            });
+
+            socket.on('threats_update', function(data) {
+                console.log('📊 Received threats update:', data.threats.length);
+                updateThreats(data.threats);
+                updateStatistics(data.statistics);
+            });
+
+            socket.on('new_threat', function(data) {
+                console.log('🚨 New threat detected:', data.threat);
+                addThreat(data.threat);
+                updateStatistics(data.statistics);
+            });
+
+            socket.on('threats_cleanup', function(data) {
+                console.log('🧹 Cleaning up threats:', data.removed.length);
+                data.removed.forEach(threatId => removeThreat(threatId));
+            });
+        }
+
+        function initializeCharts() {
+            const ctx = document.getElementById('origins-chart').getContext('2d');
+
+            originsChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        data: [],
+                        backgroundColor: [
+                            '#ff0040', '#ff6600', '#ffaa00', '#00ff41', '#0099ff'
+                        ],
+                        borderColor: '#000',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateConnectionStatus(connected) {
+            const statusEl = document.getElementById('connection-status');
+            if (connected) {
+                statusEl.textContent = '⚡ CTAS7 Intelligence - ONLINE';
+                statusEl.className = 'connection-status connected';
+            } else {
+                statusEl.textContent = '❌ CTAS7 Intelligence - OFFLINE';
+                statusEl.className = 'connection-status disconnected pulse';
+            }
+        }
+
+        function addThreat(threat) {
+            if (!map || !map.isStyleLoaded()) return;
+
+            // Add threat path
+            const pathFeature = {
+                'type': 'Feature',
+                'properties': {
+                    'id': threat.id,
+                    'severity': threat.severity,
+                    'type': threat.threat_type
+                },
+                'geometry': {
+                    'type': 'LineString',
+                    'coordinates': [
+                        threat.source_coords.reverse(),
+                        threat.target_coords.reverse()
+                    ]
+                }
+            };
+
+            // Get current features and add new one
+            const currentData = map.getSource('threat-paths')._data;
+            currentData.features.push(pathFeature);
+            map.getSource('threat-paths').setData(currentData);
+
+            // Add source marker
+            const sourceMarker = new mapboxgl.Marker({
+                color: getSeverityColor(threat.severity),
+                scale: getSeverityScale(threat.severity)
+            })
+            .setLngLat(threat.source_coords)
+            .setPopup(new mapboxgl.Popup().setHTML(`
+                <div style="background: #000; color: #00ff41; padding: 10px; border: 1px solid #00ff41;">
+                    <strong>🎯 ${threat.threat_type.toUpperCase()}</strong><br>
+                    <strong>Source:</strong> ${threat.source_country} (${threat.source_ip})<br>
+                    <strong>Target:</strong> ${threat.target_country} (${threat.target_ip})<br>
+                    <strong>Severity:</strong> <span class="severity-${threat.severity}">${threat.severity.toUpperCase()}</span><br>
+                    <strong>Vector:</strong> ${threat.attack_vector}<br>
+                    <strong>Confidence:</strong> ${(threat.confidence * 100).toFixed(1)}%
+                </div>
+            `))
+            .addTo(map);
+
+            // Store marker for cleanup
+            threatMarkers.set(threat.id, {
+                sourceMarker: sourceMarker,
+                timestamp: Date.now()
+            });
+
+            // Add to threat feed
+            addToThreatFeed(threat);
+
+            // Auto-remove after TTL
+            setTimeout(() => removeThreat(threat.id), threat.ttl * 1000);
+        }
+
+        function removeThreat(threatId) {
+            // Remove markers
+            if (threatMarkers.has(threatId)) {
+                const markers = threatMarkers.get(threatId);
+                markers.sourceMarker.remove();
+                threatMarkers.delete(threatId);
+            }
+
+            // Remove path from map
+            if (map && map.getSource('threat-paths')) {
+                const currentData = map.getSource('threat-paths')._data;
+                currentData.features = currentData.features.filter(
+                    feature => feature.properties.id !== threatId
+                );
+                map.getSource('threat-paths').setData(currentData);
+            }
+        }
+
+        function updateThreats(threats) {
+            // Clear existing threats
+            threatMarkers.forEach((markers) => {
+                markers.sourceMarker.remove();
+            });
+            threatMarkers.clear();
+
+            // Clear paths
+            if (map && map.getSource('threat-paths')) {
+                map.getSource('threat-paths').setData({
+                    'type': 'FeatureCollection',
+                    'features': []
+                });
+            }
+
+            // Add all threats
+            threats.forEach(threat => addThreat(threat));
+        }
+
+        function updateStatistics(stats) {
+            document.getElementById('active-threats').textContent = stats.active_threats;
+            document.getElementById('total-24h').textContent = stats.total_attacks_24h;
+            document.getElementById('countries-affected').textContent = stats.countries_affected;
+
+            // Update threat level based on active threats
+            const threatLevel = document.getElementById('threat-level');
+            if (stats.active_threats > 50) {
+                threatLevel.textContent = 'CRITICAL';
+                threatLevel.className = 'stat-value severity-critical';
+            } else if (stats.active_threats > 20) {
+                threatLevel.textContent = 'HIGH';
+                threatLevel.className = 'stat-value severity-high';
+            } else if (stats.active_threats > 5) {
+                threatLevel.textContent = 'ELEVATED';
+                threatLevel.className = 'stat-value severity-medium';
+            } else {
+                threatLevel.textContent = 'LOW';
+                threatLevel.className = 'stat-value severity-low';
+            }
+
+            // Update top attacks
+            const topAttacksEl = document.getElementById('top-attacks');
+            topAttacksEl.innerHTML = '';
+
+            stats.top_attack_types.forEach(attack => {
+                const row = document.createElement('div');
+                row.className = 'stat-row';
+                row.innerHTML = `
+                    <span class="stat-label">${attack.name}:</span>
+                    <span class="stat-value">${attack.count}</span>
+                `;
+                topAttacksEl.appendChild(row);
+            });
+
+            // Update origins chart
+            if (originsChart && stats.top_source_countries.length > 0) {
+                originsChart.data.labels = stats.top_source_countries.map(c => c.country);
+                originsChart.data.datasets[0].data = stats.top_source_countries.map(c => c.count);
+                originsChart.update('none');
+            }
+        }
+
+        function addToThreatFeed(threat) {
+            const feedEl = document.getElementById('threat-feed');
+            const threatItem = document.createElement('div');
+            threatItem.className = 'threat-item';
+            threatItem.innerHTML = `
+                <div class="threat-header">
+                    <span class="threat-type severity-${threat.severity}">${threat.threat_type}</span>
+                    <span class="threat-timestamp">${new Date(threat.timestamp).toLocaleTimeString()}</span>
+                </div>
+                <div class="threat-path">${threat.source_country} → ${threat.target_country}</div>
+                <div style="font-size: 10px; color: #888;">${threat.attack_vector} | Confidence: ${(threat.confidence * 100).toFixed(0)}%</div>
+            `;
+
+            // Add to top of feed
+            feedEl.insertBefore(threatItem, feedEl.firstChild);
+
+            // Keep only last 20 items
+            while (feedEl.children.length > 20) {
+                feedEl.removeChild(feedEl.lastChild);
+            }
+        }
+
+        function getSeverityColor(severity) {
+            switch (severity) {
+                case 'critical': return '#ff0040';
+                case 'high': return '#ff6600';
+                case 'medium': return '#ffaa00';
+                case 'low': return '#00ff41';
+                default: return '#00ff41';
+            }
+        }
+
+        function getSeverityScale(severity) {
+            switch (severity) {
+                case 'critical': return 1.5;
+                case 'high': return 1.2;
+                case 'medium': return 1.0;
+                case 'low': return 0.8;
+                default: return 1.0;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+% CTAS-7: Intellectual Property Search Overleaf Template
+% Minimal LaTeX template for notes, ingestion outputs and patent reports
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+\title{CTAS-7 IP Search Report}
+\author{CTAS-7 Automated Ingest System}
+\date{\today}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Brief summary of findings and scan parameters.
+\end{abstract}
+
+\section{Parameters}
+\begin{itemize}
+  \item Corpus: \texttt{<path/to/corpus>}
+  \item Embedding model: \texttt{<model-name>}
+  \item Screening regexes / rules: \texttt{<list>}
+\end{itemize}
+
+\section{Matches}
+% Table of matches produced by screening script
+\begin{tabular}{p{0.2\linewidth} p{0.6\linewidth} p{0.15\linewidth}}
+Path & Snippet & Score \\
+\hline
+% rows inserted programmatically
+\end{tabular}
+
+\section{Notes and Actions}
+\begin{itemize}
+\item Recommendations
+\item Next steps
+\end{itemize}
+\end{document}

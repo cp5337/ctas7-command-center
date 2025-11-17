@@ -1,10 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { Lock, Zap, Database, Target, Hash, Activity, CheckCircle, AlertCircle, Clock } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import {
+  Lock,
+  Zap,
+  Database,
+  Target,
+  Hash,
+  Activity,
+  CheckCircle,
+  AlertCircle,
+  Clock,
+} from "lucide-react";
 
 interface HashRequest {
   data: string;
-  algorithm: 'blake3' | 'sha256' | 'sha3' | 'argon2';
-  format: 'hex' | 'base64' | 'binary';
+  algorithm: "murmur3";
+  format: "hex" | "base64" | "base96" | "binary";
   compress: boolean;
 }
 
@@ -15,7 +25,7 @@ interface HashResult {
   compressed: boolean;
   compressionRatio?: number;
   processingTime: number;
-  status: 'success' | 'error';
+  status: "success" | "error";
   error?: string;
 }
 
@@ -38,10 +48,10 @@ interface EngineStatus {
 
 const HashingEngineConsole: React.FC = () => {
   const [request, setRequest] = useState<HashRequest>({
-    data: '',
-    algorithm: 'blake3',
-    format: 'hex',
-    compress: false
+    data: "",
+    algorithm: "murmur3",
+    format: "base96",
+    compress: false,
   });
 
   const [result, setResult] = useState<HashResult | null>(null);
@@ -57,12 +67,12 @@ const HashingEngineConsole: React.FC = () => {
 
   const checkEngineStatus = async () => {
     try {
-      const response = await fetch('http://localhost:18005/status');
+      const response = await fetch("http://localhost:18005/status");
       if (response.ok) {
         const engineStatus = await response.json();
         setStatus({
           online: true,
-          ...engineStatus
+          ...engineStatus,
         });
       } else {
         setStatus({ online: false });
@@ -74,7 +84,7 @@ const HashingEngineConsole: React.FC = () => {
 
   const handleHash = async () => {
     if (!request.data.trim()) {
-      alert('Please enter data to hash');
+      alert("Please enter data to hash");
       return;
     }
 
@@ -82,10 +92,10 @@ const HashingEngineConsole: React.FC = () => {
     setResult(null);
 
     try {
-      const response = await fetch('http://localhost:18005/hash', {
-        method: 'POST',
+      const response = await fetch("http://localhost:18005/hash", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           data: request.data,
@@ -94,9 +104,9 @@ const HashingEngineConsole: React.FC = () => {
           compress: request.compress,
           metadata: {
             timestamp: new Date().toISOString(),
-            source: 'ctas_ui'
-          }
-        })
+            source: "ctas_ui",
+          },
+        }),
       });
 
       if (!response.ok) {
@@ -107,17 +117,16 @@ const HashingEngineConsole: React.FC = () => {
       setResult(hashResult);
 
       // Add to history
-      setHistory(prev => [hashResult, ...prev.slice(0, 9)]); // Keep last 10 results
-
+      setHistory((prev) => [hashResult, ...prev.slice(0, 9)]); // Keep last 10 results
     } catch (error) {
       const errorResult: HashResult = {
-        hash: '',
+        hash: "",
         algorithm: request.algorithm,
         format: request.format,
         compressed: false,
         processingTime: 0,
-        status: 'error',
-        error: error instanceof Error ? error.message : String(error)
+        status: "error",
+        error: error instanceof Error ? error.message : String(error),
       };
       setResult(errorResult);
     } finally {
@@ -125,39 +134,41 @@ const HashingEngineConsole: React.FC = () => {
     }
   };
 
-  const handleQuickHash = async (type: 'threat-intel' | 'document' | 'legion-task') => {
-    let sampleData = '';
-    let algorithm: 'blake3' | 'sha256' | 'sha3' | 'argon2' = 'blake3';
+  const handleQuickHash = async (
+    type: "threat-intel" | "document" | "legion-task"
+  ) => {
+    let sampleData = "";
+    let algorithm: "murmur3" = "murmur3";
 
     switch (type) {
-      case 'threat-intel':
-        sampleData = '192.168.1.100,suspicious_binary.exe,malware.domain.com';
-        algorithm = 'blake3';
+      case "threat-intel":
+        sampleData = "192.168.1.100,suspicious_binary.exe,malware.domain.com";
+        algorithm = "murmur3";
         break;
-      case 'document':
+      case "document":
         sampleData = `CTAS Document ${Date.now()}\nClassification: UNCLASSIFIED\nContent: Sample document for hashing demonstration.`;
-        algorithm = 'sha3';
+        algorithm = "murmur3";
         break;
-      case 'legion-task':
+      case "legion-task":
         sampleData = `#!/bin/bash\n# Legion Task Script\necho "Executing adversary simulation"\nnmap -sS 192.168.1.0/24`;
-        algorithm = 'blake3';
+        algorithm = "murmur3";
         break;
     }
 
     setRequest({
       data: sampleData,
       algorithm,
-      format: 'hex',
-      compress: true
+      format: "base96",
+      compress: true,
     });
   };
 
   const formatBytes = (bytes: number): string => {
-    if (bytes === 0) return '0 Bytes';
+    if (bytes === 0) return "0 Bytes";
     const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const sizes = ["Bytes", "KB", "MB", "GB"];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
   };
 
   return (
@@ -168,9 +179,12 @@ const HashingEngineConsole: React.FC = () => {
           <div className="flex items-center space-x-3">
             <Lock className="w-8 h-8 text-blue-400" />
             <div>
-              <h1 className="text-2xl font-bold text-white">Hashing Engine Console</h1>
+              <h1 className="text-2xl font-bold text-white">
+                Hashing Engine Console
+              </h1>
               <p className="text-gray-400">
-                Containerized Rust Implementation • Port 18005 • Production Ready
+                Containerized Rust Implementation • Port 18005 • Production
+                Ready
               </p>
             </div>
           </div>
@@ -196,20 +210,26 @@ const HashingEngineConsole: React.FC = () => {
         {status.performance && (
           <div className="grid grid-cols-4 gap-4 bg-gray-800 rounded-lg p-4">
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-400">{status.performance.requestsPerSecond}</div>
+              <div className="text-2xl font-bold text-blue-400">
+                {status.performance.requestsPerSecond}
+              </div>
               <div className="text-xs text-gray-400">Requests/sec</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-400">{status.performance.averageProcessingTime}ms</div>
+              <div className="text-2xl font-bold text-green-400">
+                {status.performance.averageProcessingTime}ms
+              </div>
               <div className="text-xs text-gray-400">Avg Processing</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-purple-400">{status.performance.totalRequests}</div>
+              <div className="text-2xl font-bold text-purple-400">
+                {status.performance.totalRequests}
+              </div>
               <div className="text-xs text-gray-400">Total Requests</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-yellow-400">
-                {status.memory ? `${status.memory.percentage}%` : 'N/A'}
+                {status.memory ? `${status.memory.percentage}%` : "N/A"}
               </div>
               <div className="text-xs text-gray-400">Memory Usage</div>
             </div>
@@ -230,21 +250,21 @@ const HashingEngineConsole: React.FC = () => {
             <div className="text-sm text-gray-400 mb-2">Quick Actions:</div>
             <div className="flex space-x-2">
               <button
-                onClick={() => handleQuickHash('threat-intel')}
+                onClick={() => handleQuickHash("threat-intel")}
                 className="flex items-center px-3 py-1 bg-red-600 hover:bg-red-700 rounded text-xs"
               >
                 <Target className="w-3 h-3 mr-1" />
                 Threat Intel
               </button>
               <button
-                onClick={() => handleQuickHash('document')}
+                onClick={() => handleQuickHash("document")}
                 className="flex items-center px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded text-xs"
               >
                 <Database className="w-3 h-3 mr-1" />
                 Document
               </button>
               <button
-                onClick={() => handleQuickHash('legion-task')}
+                onClick={() => handleQuickHash("legion-task")}
                 className="flex items-center px-3 py-1 bg-purple-600 hover:bg-purple-700 rounded text-xs"
               >
                 <Zap className="w-3 h-3 mr-1" />
@@ -255,7 +275,9 @@ const HashingEngineConsole: React.FC = () => {
 
           {/* Data Input */}
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">Data to Hash:</label>
+            <label className="block text-sm font-medium mb-2">
+              Data to Hash:
+            </label>
             <textarea
               value={request.data}
               onChange={(e) => setRequest({ ...request, data: e.target.value })}
@@ -267,25 +289,29 @@ const HashingEngineConsole: React.FC = () => {
           {/* Configuration */}
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <label className="block text-sm font-medium mb-2">Algorithm:</label>
+              <label className="block text-sm font-medium mb-2">
+                Algorithm:
+              </label>
               <select
                 value={request.algorithm}
-                onChange={(e) => setRequest({ ...request, algorithm: e.target.value as any })}
+                onChange={(e) =>
+                  setRequest({ ...request, algorithm: e.target.value as any })
+                }
                 className="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-sm"
               >
-                <option value="blake3">BLAKE3 (Fast)</option>
-                <option value="sha256">SHA-256</option>
-                <option value="sha3">SHA-3</option>
-                <option value="argon2">Argon2 (Password)</option>
+                <option value="murmur3">MurmurHash3 (CTAS-7 Standard)</option>
               </select>
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">Format:</label>
               <select
                 value={request.format}
-                onChange={(e) => setRequest({ ...request, format: e.target.value as any })}
+                onChange={(e) =>
+                  setRequest({ ...request, format: e.target.value as any })
+                }
                 className="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-sm"
               >
+                <option value="base96">Base96 (Default)</option>
                 <option value="hex">Hexadecimal</option>
                 <option value="base64">Base64</option>
                 <option value="binary">Binary</option>
@@ -299,7 +325,9 @@ const HashingEngineConsole: React.FC = () => {
               <input
                 type="checkbox"
                 checked={request.compress}
-                onChange={(e) => setRequest({ ...request, compress: e.target.checked })}
+                onChange={(e) =>
+                  setRequest({ ...request, compress: e.target.checked })
+                }
                 className="mr-2"
               />
               <span className="text-sm">Enable Compression (95%+ ratio)</span>
@@ -335,15 +363,19 @@ const HashingEngineConsole: React.FC = () => {
 
           {result && (
             <div className="mb-6">
-              <div className={`p-4 rounded-lg border-l-4 ${
-                result.status === 'success'
-                  ? 'bg-green-900/20 border-green-500'
-                  : 'bg-red-900/20 border-red-500'
-              }`}>
-                {result.status === 'success' ? (
+              <div
+                className={`p-4 rounded-lg border-l-4 ${
+                  result.status === "success"
+                    ? "bg-green-900/20 border-green-500"
+                    : "bg-red-900/20 border-red-500"
+                }`}
+              >
+                {result.status === "success" ? (
                   <>
                     <div className="mb-2">
-                      <span className="text-sm text-gray-400">Hash ({result.algorithm}, {result.format}):</span>
+                      <span className="text-sm text-gray-400">
+                        Hash ({result.algorithm}, {result.format}):
+                      </span>
                       <div className="font-mono text-sm bg-gray-700 p-2 rounded mt-1 break-all">
                         {result.hash}
                       </div>
@@ -355,7 +387,8 @@ const HashingEngineConsole: React.FC = () => {
                       </div>
                       {result.compressed && result.compressionRatio && (
                         <div>
-                          Compressed: {(result.compressionRatio * 100).toFixed(1)}%
+                          Compressed:{" "}
+                          {(result.compressionRatio * 100).toFixed(1)}%
                         </div>
                       )}
                     </div>
@@ -378,11 +411,17 @@ const HashingEngineConsole: React.FC = () => {
                 <div key={index} className="bg-gray-700 p-2 rounded text-xs">
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-gray-400">{item.algorithm}</span>
-                    <span className={item.status === 'success' ? 'text-green-400' : 'text-red-400'}>
-                      {item.status === 'success' ? '✓' : '✗'}
+                    <span
+                      className={
+                        item.status === "success"
+                          ? "text-green-400"
+                          : "text-red-400"
+                      }
+                    >
+                      {item.status === "success" ? "✓" : "✗"}
                     </span>
                   </div>
-                  {item.status === 'success' && (
+                  {item.status === "success" && (
                     <div className="font-mono text-gray-300 truncate">
                       {item.hash.substring(0, 32)}...
                     </div>

@@ -1,0 +1,317 @@
+{
+  "timestamp": "2025-11-16T20:21:56.761267",
+  "api_keys": {
+    "virustotal": {
+      "status": "valid",
+      "tier": "free",
+      "limits": {
+        "api_requests_hourly": {
+          "allowed": 240,
+          "used": 0
+        },
+        "api_requests_daily": {
+          "allowed": 500,
+          "used": 0
+        },
+        "api_requests_monthly": {
+          "allowed": 1000000000,
+          "used": 0
+        },
+        "intelligence_downloads_monthly": {
+          "allowed": 0,
+          "used": 0
+        },
+        "intelligence_searches_monthly": {
+          "allowed": 0,
+          "used": 0
+        },
+        "intelligence_retrohunt_jobs_monthly": {
+          "allowed": 0,
+          "used": 0
+        },
+        "intelligence_hunting_rules": {
+          "allowed": 0,
+          "used": 0
+        },
+        "intelligence_graphs_private": {
+          "allowed": 0,
+          "used": 0
+        },
+        "intelligence_vtdiff_creation_monthly": {
+          "allowed": 0,
+          "used": 0
+        },
+        "monitor_storage_bytes": {
+          "allowed": 0,
+          "used": 0
+        },
+        "monitor_storage_files": {
+          "allowed": 0,
+          "used": 0
+        },
+        "monitor_uploaded_bytes": {
+          "allowed": 0,
+          "used": 0
+        },
+        "monitor_uploaded_files": {
+          "allowed": 0,
+          "used": 0
+        },
+        "collections_creation_monthly": {
+          "allowed": 20,
+          "used": 0
+        },
+        "private_scans_monthly": {
+          "allowed": 0,
+          "used": 0
+        },
+        "private_scans_per_minute": {
+          "allowed": 0,
+          "used": 0
+        },
+        "private_urlscans_monthly": {
+          "allowed": 0,
+          "used": 0
+        },
+        "private_urlscans_per_minute": {
+          "allowed": 0,
+          "used": 0
+        }
+      }
+    },
+    "otx": {
+      "status": "valid",
+      "username": "cp5337-24",
+      "member_since": "460 days ago "
+    }
+  },
+  "rss_feeds": {
+    "government": [
+      {
+        "name": "CISA Alerts",
+        "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+        "category": "government_advisories",
+        "priority": "critical",
+        "status": "active",
+        "total_entries": 30,
+        "recent_entries_7d": 10,
+        "latest_entry_age_days": 2,
+        "feed_title": "All CISA Advisories",
+        "quality_score": 0.9666666666666666
+      },
+      {
+        "name": "US-CERT Alerts",
+        "url": "https://www.us-cert.gov/ncas/alerts.xml",
+        "category": "government_alerts",
+        "priority": "critical",
+        "status": "active",
+        "total_entries": 10,
+        "recent_entries_7d": 0,
+        "latest_entry_age_days": 55,
+        "feed_title": "CISA Cybersecurity Advisories",
+        "quality_score": 0.2
+      },
+      {
+        "name": "FBI IC3 Alerts",
+        "url": "https://www.ic3.gov/Media/RSS",
+        "category": "law_enforcement",
+        "priority": "high",
+        "status": "unreachable",
+        "code": 404
+      }
+    ],
+    "commercial": [
+      {
+        "name": "Krebs on Security",
+        "url": "https://krebsonsecurity.com/feed/",
+        "category": "cybersecurity_news",
+        "priority": "high",
+        "status": "active",
+        "total_entries": 10,
+        "recent_entries_7d": 3,
+        "latest_entry_age_days": -1,
+        "feed_title": "Krebs on Security",
+        "quality_score": 1.0166666666666666
+      },
+      {
+        "name": "Schneier on Security",
+        "url": "https://www.schneier.com/blog/atom.xml",
+        "category": "security_analysis",
+        "priority": "high",
+        "status": "active",
+        "total_entries": 10,
+        "recent_entries_7d": 7,
+        "latest_entry_age_days": 1,
+        "feed_title": "Schneier on Security",
+        "quality_score": 0.9833333333333334
+      },
+      {
+        "name": "Threatpost",
+        "url": "https://threatpost.com/feed/",
+        "category": "threat_news",
+        "priority": "high",
+        "status": "active",
+        "total_entries": 10,
+        "recent_entries_7d": 0,
+        "latest_entry_age_days": 1173,
+        "feed_title": "Threatpost",
+        "quality_score": 0.2
+      },
+      {
+        "name": "Dark Reading",
+        "url": "https://www.darkreading.com/rss_simple.asp",
+        "category": "enterprise_security",
+        "priority": "medium",
+        "status": "unreachable",
+        "code": 403
+      },
+      {
+        "name": "The Hacker News",
+        "url": "https://feeds.feedburner.com/TheHackersNews",
+        "category": "security_news",
+        "priority": "medium",
+        "status": "active",
+        "total_entries": 50,
+        "recent_entries_7d": 10,
+        "latest_entry_age_days": 1,
+        "feed_title": "The Hacker News",
+        "quality_score": 0.9833333333333334
+      }
+    ],
+    "vendor": [
+      {
+        "name": "Microsoft Security",
+        "url": "https://www.microsoft.com/en-us/security/blog/feed/",
+        "category": "vendor_intelligence",
+        "priority": "high",
+        "status": "active",
+        "total_entries": 10,
+        "recent_entries_7d": 1,
+        "latest_entry_age_days": 6,
+        "feed_title": "Microsoft Security Blog",
+        "quality_score": 0.7
+      },
+      {
+        "name": "Cisco Talos",
+        "url": "https://blog.talosintelligence.com/feeds/posts/default",
+        "category": "threat_research",
+        "priority": "critical",
+        "status": "unreachable",
+        "code": 404
+      },
+      {
+        "name": "Mandiant",
+        "url": "https://www.mandiant.com/resources/blog/rss.xml",
+        "category": "apt_research",
+        "priority": "critical",
+        "status": "active",
+        "total_entries": 20,
+        "recent_entries_7d": 2,
+        "latest_entry_age_days": 3,
+        "feed_title": "Threat Intelligence",
+        "quality_score": 0.8500000000000001
+      },
+      {
+        "name": "Recorded Future",
+        "url": "https://www.recordedfuture.com/feed",
+        "category": "threat_intelligence",
+        "priority": "high",
+        "status": "active",
+        "total_entries": 50,
+        "recent_entries_7d": 4,
+        "latest_entry_age_days": 3,
+        "feed_title": "Recorded Future",
+        "quality_score": 0.95
+      }
+    ],
+    "research": [
+      {
+        "name": "SANS ISC",
+        "url": "https://isc.sans.edu/rssfeed.xml",
+        "category": "security_research",
+        "priority": "high",
+        "status": "active",
+        "total_entries": 10,
+        "recent_entries_7d": 10,
+        "latest_entry_age_days": 0,
+        "feed_title": "SANS Internet Storm Center, InfoCON: green",
+        "quality_score": 1.0
+      },
+      {
+        "name": "Malwarebytes Labs",
+        "url": "https://blog.malwarebytes.com/feed/",
+        "category": "malware_research",
+        "priority": "medium",
+        "status": "active",
+        "total_entries": 20,
+        "recent_entries_7d": 10,
+        "latest_entry_age_days": 2,
+        "feed_title": "Malwarebytes",
+        "quality_score": 0.9666666666666666
+      },
+      {
+        "name": "Unit 42",
+        "url": "https://unit42.paloaltonetworks.com/feed/",
+        "category": "threat_research",
+        "priority": "critical",
+        "status": "active",
+        "total_entries": 15,
+        "recent_entries_7d": 2,
+        "latest_entry_age_days": 1,
+        "feed_title": "Unit 42",
+        "quality_score": 0.8833333333333333
+      }
+    ]
+  },
+  "discovered_feeds": [
+    {
+      "url": "https://blog.google/threat-analysis-group/threat-analysis-group/rss/",
+      "source_domain": "https://blog.google/threat-analysis-group",
+      "discovered": true
+    },
+    {
+      "url": "https://blog.google/threat-analysis-group/static/blogv2/images/icons.svg?version=pr20251113-1736#mi-rss-feed",
+      "source_domain": "https://blog.google/threat-analysis-group",
+      "discovered": true
+    },
+    {
+      "url": "https://www.elastic.co/security-labs/rss/feed.xml",
+      "source_domain": "https://www.elastic.co/security-labs",
+      "discovered": true
+    },
+    {
+      "url": "https://www.elastic.co/security-labs/rss/feed.xml",
+      "source_domain": "https://www.elastic.co/security-labs",
+      "discovered": true
+    },
+    {
+      "url": "https://www.elastic.co/security-labs/security-labs/sitemap.xml",
+      "source_domain": "https://www.elastic.co/security-labs",
+      "discovered": true
+    },
+    {
+      "url": "https://blog.checkpoint.com/feed/",
+      "source_domain": "https://blog.checkpoint.com",
+      "discovered": true
+    },
+    {
+      "url": "https://blog.checkpoint.com/feed/",
+      "source_domain": "https://blog.checkpoint.com",
+      "discovered": true
+    }
+  ],
+  "recommendations": [
+    {
+      "type": "feed_quality",
+      "priority": "info",
+      "message": "High quality feeds: CISA Alerts, Krebs on Security, Schneier on Security",
+      "action": "Consider prioritizing these feeds for monitoring"
+    },
+    {
+      "type": "feed_quality",
+      "priority": "low",
+      "message": "Low activity feeds: US-CERT Alerts, FBI IC3 Alerts, Threatpost",
+      "action": "Consider finding alternative feeds or reducing priority"
+    }
+  ]
+}

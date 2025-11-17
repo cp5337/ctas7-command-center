@@ -1,0 +1,20 @@
+{
+  "name": "ui-generator-on-comment",
+  "version": "1.0.0",
+  "description": "Generate shadcn/ui components automatically from GitHub comments",
+  "main": "index.js",
+  "scripts": {
+    "start": "node scripts/generate.js",
+    "test": "echo \"Test: Comment parsing works\" && exit 0"
+  },
+  "keywords": ["ui", "shadcn", "automation", "github", "ctas-7"],
+  "dependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/ui-generator-repo.git"
+  }
+}

@@ -1,0 +1,62 @@
+name: "Simple UI Generator"
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  generate-ui:
+    if: contains(github.event.comment.body, '@generate-ui')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Parse Comment
+        id: parse
+        run: |
+          echo "comment=${{ github.event.comment.body }}" >> $GITHUB_OUTPUT
+          echo "user=${{ github.event.comment.user.login }}" >> $GITHUB_OUTPUT
+
+      - name: Generate Component
+        run: |
+          mkdir -p generated/components
+          node scripts/generate-component.js
+        env:
+          COMMENT_BODY: ${{ steps.parse.outputs.comment }}
+          OUTPUT_DIR: "generated/components"
+
+      - name: Reply to Comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let replyMessage = '✅ Generated UI component from your comment!';
+
+            try {
+              const manifest = JSON.parse(fs.readFileSync('generated/components/manifest.json', 'utf8'));
+              replyMessage = `## 🤖 UI Generation Complete!
+
+**Generated Component:** \`${manifest.result.component}\`
+**File:** \`${manifest.result.path}\`
+**Dependencies:** ${manifest.result.dependencies.join(', ')}
+
+Based on the CTAS-7 shadcn specification with military-inspired dark theme.
+
+_Generated at ${manifest.generated}_`;
+            } catch (e) {
+              console.log('Could not read manifest, using default message');
+            }
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: replyMessage
+            });
