@@ -74,3 +74,15 @@ whisper.cpp/models/
 *.key
 *.pem
 *.crt
+# ABE Secrets Management System
+.env
+.env.*
+!.env.example
+.credentials.json
+.credentials-backup/
+secrets/
+*.key
+*.pem
+*_key
+*_secret
+*_token
