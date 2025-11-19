@@ -4,16 +4,19 @@ import {
   BookOpen,
   Wifi,
   DollarSign,
+  Target,
   ChevronLeft,
   ChevronRight
 } from 'lucide-react';
+import { getWalkerDeltaPositions } from '../services/orbitalMechanics';
 
 interface CollapsibleSidebarProps {
   activeTab: 'satellites' | 'research' | 'laser' | 'financial';
   onTabChange: (tab: 'satellites' | 'research' | 'laser' | 'financial') => void;
+  onQuickJump: (target: string) => void;
 }
 
-export function CollapsibleSidebar({ activeTab, onTabChange }: CollapsibleSidebarProps) {
+export function CollapsibleSidebar({ activeTab, onTabChange, onQuickJump }: CollapsibleSidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   const navigationTabs = [
@@ -93,6 +96,7 @@ export function CollapsibleSidebar({ activeTab, onTabChange }: CollapsibleSideba
             })}
           </div>
         </nav>
+
 
       </div>
 

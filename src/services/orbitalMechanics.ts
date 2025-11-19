@@ -50,14 +50,14 @@ const EARTH_RADIUS_KM = 6378.137;
 const EARTH_FLATTENING = 1 / 298.257223563;
 const MU_EARTH = 398600.4418; // km³/s²
 
-// Van Allen Belt Walker Delta Configuration
+// Van Allen Belt Walker Delta Configuration - 12/4/1 Pattern
 export const WALKER_DELTA_CONFIG: WalkerDeltaConstellation = {
   totalSatellites: 12,
-  planes: 3,
-  satellitesPerPlane: 4,
-  altitude: 15000,  // Middle Van Allen belt
+  planes: 3,              // 12 satellites / 4 per plane = 3 planes
+  satellitesPerPlane: 4,  // 4 satellites per plane
+  altitude: 15000,        // Middle Van Allen belt
   inclination: 55.0,
-  phasing: 1
+  phasing: 1              // Walker Delta phasing parameter
 };
 
 /**

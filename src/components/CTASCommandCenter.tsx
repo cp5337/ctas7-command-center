@@ -2,18 +2,10 @@ import { useState } from 'react';
 import { CesiumWorldView } from './CesiumWorldView';
 import { KeplerSatelliteViewer } from './KeplerSatelliteViewer';
 import { CollapsibleSidebar } from './CollapsibleSidebar';
+import { SatelliteControlPanel } from './SatelliteControlPanel';
 import { ZoteroAPIIntegration } from './ZoteroAPIIntegration';
 import { LibraryOfCongressAPI } from './LibraryOfCongressAPI';
 
-// Simplified placeholder components
-const LaserControlPanel = () => (
-  <div className="absolute left-4 top-4 w-72 bg-slate-900/95 backdrop-blur border border-red-500/30 rounded-lg p-4 z-50">
-    <div className="text-center text-red-400">
-      <h3 className="text-lg font-semibold mb-2">Laser Control Panel</h3>
-      <p className="text-sm text-slate-300">Advanced laser targeting controls will be available here.</p>
-    </div>
-  </div>
-);
 
 const FinancialView = () => (
   <div className="h-full flex items-center justify-center text-slate-400">
@@ -30,6 +22,13 @@ export function CTASCommandCenter() {
   const [activeTab, setActiveTab] = useState<'satellites' | 'research' | 'laser' | 'financial'>('satellites');
   const [researchTab, setResearchTab] = useState<'zotero' | 'loc'>('zotero');
 
+  const handleQuickJump = (target: string) => {
+    console.log(`Jumping to ${target}`);
+    const event = new CustomEvent('ctas-camera-flyto', {
+      detail: { target }
+    });
+    window.dispatchEvent(event);
+  };
 
   return (
     <div className="flex h-full bg-slate-950 text-slate-100 font-sans">
@@ -37,10 +36,11 @@ export function CTASCommandCenter() {
       <CollapsibleSidebar
         activeTab={activeTab}
         onTabChange={setActiveTab}
+        onQuickJump={handleQuickJump}
       />
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col ml-12 min-h-0">
+      <div className={`flex-1 flex flex-col ml-12 min-h-0 ${activeTab === 'satellites' ? 'mr-80' : 'mr-0'}`}>
         {/* Main Content */}
         <main className="flex-1 overflow-hidden relative">
 
@@ -51,11 +51,10 @@ export function CTASCommandCenter() {
             </div>
           )}
 
-          {/* Laser Light View (3D + Control Panel) */}
+          {/* Laser Light View (3D) */}
           {activeTab === 'laser' && (
             <div className="flex-1 relative overflow-hidden h-full">
               <CesiumWorldView />
-              <LaserControlPanel />
             </div>
           )}
 
@@ -96,6 +95,11 @@ export function CTASCommandCenter() {
 
         </main>
       </div>
+
+      {/* Right Panel - Satellite Controls */}
+      {activeTab === 'satellites' && (
+        <SatelliteControlPanel onQuickJump={handleQuickJump} />
+      )}
     </div>
   );
 }
