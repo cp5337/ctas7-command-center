@@ -39,7 +39,7 @@ export function CollapsibleSidebar({ activeTab, onTabChange, onQuickJump }: Coll
   return (
     <div className={`
       fixed left-0 top-[73px] h-[calc(100vh-73px)] bg-slate-900/95 backdrop-blur border-r border-slate-700/50
-      transition-all duration-300 z-40 flex flex-col
+      transition-all duration-300 z-30 flex flex-col
       ${isCollapsed ? 'w-12' : 'w-64'}
     `}>
 

@@ -39,6 +39,12 @@ export const generateMockSatelliteData = (): SatelliteData[] => {
     inclination: 55.0, // Walker Delta inclination
   };
 
+  // Greek alphabet names for satellites
+  const greekAlphabet = [
+    'Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon', 'Zeta',
+    'Eta', 'Theta', 'Iota', 'Kappa', 'Lambda', 'Mu'
+  ];
+
   const time = Date.now() / 100000;
   const satellites = [];
 
@@ -72,7 +78,7 @@ export const generateMockSatelliteData = (): SatelliteData[] => {
       const thermalStates: ('nominal' | 'marginal' | 'critical')[] = ['nominal', 'nominal', 'nominal', 'marginal'];
 
       satellites.push({
-        name: `Walker–MEO Node ${plane}-${sat}`,
+        name: greekAlphabet[satIndex],
         lat: lat,
         lon: lon,
         alt: walkerDeltaParams.altitude + (satIndex * 50),
