@@ -1,4 +1,4 @@
-// Preserved satellite data from GISViewer.tsx
+// Enhanced satellite data for Walker Delta FSO constellation
 export interface SatelliteData {
   name: string;
   lat: number;
@@ -6,119 +6,113 @@ export interface SatelliteData {
   alt: number;
   velocity: number;
   noradId: string;
-  status: string;
+  status: 'active' | 'tracking' | 'offline' | 'simulated';
+  // Orbital parameters
+  inclination: number;
+  raan: number; // Right Ascension of Ascending Node
+  meanAnomaly: number;
+  plane: number;
+  slot: number;
+  // Cross-link information
+  crossLinks: {
+    forward: { node: string; status: 'good' | 'marginal' | 'poor' };
+    backward: { node: string; status: 'good' | 'marginal' | 'poor' };
+    left: { node: string; status: 'good' | 'marginal' | 'poor' };
+    right: { node: string; status: 'good' | 'marginal' | 'poor' };
+  };
+  // Physical bus data
+  busType: string;
+  mass: number;
+  powerLevel: number; // percentage
+  payloadStatus: 'active' | 'standby' | 'offline';
+  thermalStatus: 'nominal' | 'marginal' | 'critical';
 }
 
 export const generateMockSatelliteData = (): SatelliteData[] => {
-  // Generate mock MEO satellite data - preserved from original implementation
-  return [
-    {
-      name: 'GPS BIIR-2 (PRN 13)',
-      lat: 55.2 * Math.sin(Date.now() / 100000),
-      lon: (Date.now() / 50000) % 360 - 180,
-      alt: 20200,
-      velocity: 3.87,
-      noradId: '28474',
-      status: 'active'
-    },
-    {
-      name: 'GPS BIIR-3 (PRN 11)',
-      lat: 55.2 * Math.sin((Date.now() / 100000) + Math.PI / 6),
-      lon: ((Date.now() / 50000) + 30) % 360 - 180,
-      alt: 20180,
-      velocity: 3.89,
-      noradId: '26360',
-      status: 'tracking'
-    },
-    {
-      name: 'GPS BIIR-4 (PRN 20)',
-      lat: 55.2 * Math.sin((Date.now() / 100000) + Math.PI / 3),
-      lon: ((Date.now() / 50000) + 60) % 360 - 180,
-      alt: 20220,
-      velocity: 3.85,
-      noradId: '26407',
-      status: 'active'
-    },
-    {
-      name: 'GPS BIIR-5 (PRN 28)',
-      lat: 55.2 * Math.sin((Date.now() / 100000) + Math.PI / 2),
-      lon: ((Date.now() / 50000) + 90) % 360 - 180,
-      alt: 20195,
-      velocity: 3.88,
-      noradId: '26605',
-      status: 'active'
-    },
-    {
-      name: 'GPS BIIR-6 (PRN 14)',
-      lat: 55.2 * Math.sin((Date.now() / 100000) + 2 * Math.PI / 3),
-      lon: ((Date.now() / 50000) + 120) % 360 - 180,
-      alt: 20210,
-      velocity: 3.86,
-      noradId: '26690',
-      status: 'tracking'
-    },
-    {
-      name: 'GPS BIIR-7 (PRN 18)',
-      lat: 55.2 * Math.sin((Date.now() / 100000) + 5 * Math.PI / 6),
-      lon: ((Date.now() / 50000) + 150) % 360 - 180,
-      alt: 20185,
-      velocity: 3.90,
-      noradId: '28129',
-      status: 'active'
-    },
-    {
-      name: 'GPS BIIR-8 (PRN 16)',
-      lat: 55.2 * Math.sin((Date.now() / 100000) + Math.PI),
-      lon: ((Date.now() / 50000) + 180) % 360 - 180,
-      alt: 20215,
-      velocity: 3.84,
-      noradId: '28190',
-      status: 'active'
-    },
-    {
-      name: 'GPS BIIR-9 (PRN 21)',
-      lat: 55.2 * Math.sin((Date.now() / 100000) + 7 * Math.PI / 6),
-      lon: ((Date.now() / 50000) + 210) % 360 - 180,
-      alt: 20205,
-      velocity: 3.87,
-      noradId: '28361',
-      status: 'tracking'
-    },
-    {
-      name: 'GPS BIIR-10 (PRN 22)',
-      lat: 55.2 * Math.sin((Date.now() / 100000) + 4 * Math.PI / 3),
-      lon: ((Date.now() / 50000) + 240) % 360 - 180,
-      alt: 20190,
-      velocity: 3.89,
-      noradId: '28874',
-      status: 'active'
-    },
-    {
-      name: 'GPS BIIR-11 (PRN 19)',
-      lat: 55.2 * Math.sin((Date.now() / 100000) + 3 * Math.PI / 2),
-      lon: ((Date.now() / 50000) + 270) % 360 - 180,
-      alt: 20200,
-      velocity: 3.86,
-      noradId: '29486',
-      status: 'active'
-    },
-    {
-      name: 'GPS BIIR-12 (PRN 23)',
-      lat: 55.2 * Math.sin((Date.now() / 100000) + 5 * Math.PI / 3),
-      lon: ((Date.now() / 50000) + 300) % 360 - 180,
-      alt: 20225,
-      velocity: 3.83,
-      noradId: '29601',
-      status: 'tracking'
-    },
-    {
-      name: 'GPS BIIR-13 (PRN 02)',
-      lat: 55.2 * Math.sin((Date.now() / 100000) + 11 * Math.PI / 6),
-      lon: ((Date.now() / 50000) + 330) % 360 - 180,
-      alt: 20175,
-      velocity: 3.91,
-      noradId: '32260',
-      status: 'active'
+  // Walker Delta constellation in Van Allen belt for Laser Light Free Space Optical satellites
+  const walkerDeltaParams = {
+    totalSats: 12,
+    planes: 3,
+    satsPerPlane: 4,
+    phasing: 1,
+    altitude: 15000, // Van Allen belt middle region (13,000-60,000 km)
+    inclination: 55.0, // Walker Delta inclination
+  };
+
+  const time = Date.now() / 100000;
+  const satellites = [];
+
+  for (let plane = 0; plane < walkerDeltaParams.planes; plane++) {
+    for (let sat = 0; sat < walkerDeltaParams.satsPerPlane; sat++) {
+      const satIndex = plane * walkerDeltaParams.satsPerPlane + sat;
+
+      // Walker Delta pattern calculations
+      const meanAnomaly = (sat * 360 / walkerDeltaParams.satsPerPlane) +
+                         (plane * walkerDeltaParams.phasing * 360 / walkerDeltaParams.totalSats) +
+                         (time * 2); // orbital motion
+      const raan = plane * 360 / walkerDeltaParams.planes; // Right Ascension of Ascending Node
+
+      // Convert to lat/lon for display
+      const lat = walkerDeltaParams.inclination * Math.sin((meanAnomaly + raan) * Math.PI / 180);
+      const lon = ((meanAnomaly + raan + time) % 360) - 180;
+
+      // Calculate cross-link neighbors in Walker Delta pattern
+      const forwardSlot = (sat + 1) % walkerDeltaParams.satsPerPlane;
+      const backwardSlot = (sat - 1 + walkerDeltaParams.satsPerPlane) % walkerDeltaParams.satsPerPlane;
+      const leftPlane = (plane - 1 + walkerDeltaParams.planes) % walkerDeltaParams.planes;
+      const rightPlane = (plane + 1) % walkerDeltaParams.planes;
+
+      // Random link health simulation
+      const linkHealth = () => {
+        const rand = Math.random();
+        return rand > 0.8 ? 'marginal' : rand > 0.95 ? 'poor' : 'good';
+      };
+
+      const statusTypes: ('active' | 'tracking' | 'offline' | 'simulated')[] = ['active', 'tracking', 'simulated'];
+      const thermalStates: ('nominal' | 'marginal' | 'critical')[] = ['nominal', 'nominal', 'nominal', 'marginal'];
+
+      satellites.push({
+        name: `Walker–MEO Node ${plane}-${sat}`,
+        lat: lat,
+        lon: lon,
+        alt: walkerDeltaParams.altitude + (satIndex * 50),
+        velocity: 4.2,
+        noradId: `FSO${String(satIndex + 1).padStart(3, '0')}`,
+        status: statusTypes[satIndex % statusTypes.length],
+        // Orbital parameters
+        inclination: walkerDeltaParams.inclination,
+        raan: raan,
+        meanAnomaly: meanAnomaly % 360,
+        plane: plane,
+        slot: sat,
+        // Cross-link information
+        crossLinks: {
+          forward: {
+            node: `(${plane},${forwardSlot})`,
+            status: linkHealth() as 'good' | 'marginal' | 'poor'
+          },
+          backward: {
+            node: `(${plane},${backwardSlot})`,
+            status: linkHealth() as 'good' | 'marginal' | 'poor'
+          },
+          left: {
+            node: `(${leftPlane},${sat})`,
+            status: linkHealth() as 'good' | 'marginal' | 'poor'
+          },
+          right: {
+            node: `(${rightPlane},${sat})`,
+            status: linkHealth() as 'good' | 'marginal' | 'poor'
+          }
+        },
+        // Physical bus data
+        busType: 'MEO Optical Node',
+        mass: 850 + (satIndex * 10), // kg
+        powerLevel: 75 + Math.floor(Math.random() * 20), // 75-95%
+        payloadStatus: (satIndex % 5 === 0 ? 'standby' : 'active') as 'active' | 'standby' | 'offline',
+        thermalStatus: thermalStates[satIndex % thermalStates.length]
+      });
     }
-  ];
+  }
+
+  return satellites;
 };

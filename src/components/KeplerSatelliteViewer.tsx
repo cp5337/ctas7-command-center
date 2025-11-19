@@ -33,25 +33,26 @@ export const KeplerSatelliteViewer: React.FC<KeplerSatelliteViewerProps> = ({ on
   };
 
   return (
-    <div className="flex flex-col h-full bg-slate-900">
+    <div className="flex flex-col h-full">
+      {/* Breadcrumb */}
+      <div className="px-6 py-3 border-b border-slate-700/50">
+        <button
+          onClick={onBack}
+          className="text-sm text-slate-400 hover:text-slate-200 transition-colors"
+        >
+          ← Back to Main View
+        </button>
+      </div>
+
       {/* Header Controls */}
-      <div className="bg-slate-800 border-b border-slate-700 p-4">
+      <div className="px-6 py-4 border-b border-slate-700/50">
         <div className="flex items-center justify-between">
+          <h2 className="text-xl font-semibold text-slate-100 flex items-center">
+            <Globe className="w-6 h-6 mr-2" />
+            Satellite Data Viewer
+          </h2>
+
           <div className="flex items-center space-x-4">
-            <button
-              onClick={onBack}
-              className="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-slate-200 text-sm font-medium"
-            >
-              ← Back to Main View
-            </button>
-
-            <h2 className="text-xl font-semibold text-slate-100 flex items-center">
-              <Globe className="w-6 h-6 mr-2" />
-              Satellite Data Viewer
-            </h2>
-          </div>
-
-          <div className="flex items-center space-x-2">
             <div className="flex items-center space-x-2 text-sm text-slate-300">
               <Satellite className="w-4 h-4" />
               <span>{satelliteData.length} satellites</span>
@@ -61,7 +62,7 @@ export const KeplerSatelliteViewer: React.FC<KeplerSatelliteViewerProps> = ({ on
 
             <button
               onClick={exportData}
-              className="p-2 bg-slate-700 hover:bg-slate-600 rounded-lg"
+              className="p-2 bg-slate-700/50 hover:bg-slate-600/50 rounded-lg transition-colors"
               title="Export Data"
             >
               <Download className="w-4 h-4 text-slate-300" />
@@ -71,11 +72,11 @@ export const KeplerSatelliteViewer: React.FC<KeplerSatelliteViewerProps> = ({ on
       </div>
 
       {/* Satellite Data Display */}
-      <div className="flex-1 relative">
-        <div className="w-full h-full bg-slate-800 p-6">
-          <div className="text-center text-slate-400 max-w-4xl mx-auto">
+      <div className="flex-1 relative overflow-auto">
+        <div className="w-full h-full p-6">
+          <div className="text-center text-slate-400 max-w-7xl mx-auto">
             <Globe className="w-16 h-16 mx-auto mb-4 opacity-50" />
-            <h3 className="text-lg font-semibold mb-4">GPS Satellite Constellation</h3>
+            <h3 className="text-lg font-semibold mb-4">Walker Delta Free Space Optical Constellation</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
               {satelliteData.map((satellite, index) => (
