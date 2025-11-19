@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { PersonaCard } from './components/PersonaCard';
 import { ChatInterface } from './components/ChatInterface';
 import { ChannelList } from './components/ChannelList';
@@ -15,7 +15,7 @@ import { MissionCriticalDevOps } from './components/MissionCriticalDevOps';
 import { LinearStyleProjectManagement } from './components/LinearStyleProjectManagement';
 import { LinearMultiLLMOnboarding } from './components/LinearMultiLLMOnboarding';
 import { SmartCrateControl } from './components/SmartCrateControl';
-import { GISViewer } from './components/GISViewer';
+import { CTASCommandCenter } from './components/CTASCommandCenter';
 import { useWebSocket } from './hooks/useWebSocket';
 import { getWebSocketUrl } from './utils/url';
 import { getRealPersonas, getRealTasks, getRealMetrics } from './services/realDataService';
@@ -277,9 +277,9 @@ function App() {
     }
   };
 
-  const tryMirrorVoiceService = async (audioBlob: Blob) => {
+  const tryMirrorVoiceService = async (_audioBlob: Blob) => {
     try {
-      const ws = new WebSocket('ws://localhost:28765');
+      const _ws = new WebSocket('ws://localhost:28765');
       // Same logic as above but with fallback port
       // ... (similar implementation)
     } catch (error) {
@@ -326,19 +326,9 @@ function App() {
     ));
   };
 
-  const handleTaskCreate = (newTask: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>) => {
-    const task: Task = {
-      ...newTask,
-      id: `task-${Date.now()}`,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
-    setTasks(prev => [...prev, task]);
-  };
 
-  const handleTaskDelete = (taskId: string) => {
-    setTasks(prev => prev.filter(task => task.id !== taskId));
-  };
+
+
 
   const activeChannel = channels.find(c => c.id === activeChannelId);
   const channelMessages = messages.filter(m => m.channelId === activeChannelId);
@@ -553,6 +543,28 @@ function App() {
             <div className="bg-slate-800 border border-cyan-400/20 rounded-lg p-6">
               <h2 className="text-lg font-semibold text-slate-100 mb-6">Kanban Operations Board</h2>
               <KanbanBoard tasks={tasks} onTaskUpdate={handleTaskUpdate} />
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'gis' && (
+          <CTASCommandCenter />
+        )}
+
+        {activeTab === 'hft' && (
+          <div className="bg-slate-800 border border-cyan-400/20 rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-slate-100 mb-6">High Frequency Trading</h2>
+            <div className="text-center py-12 text-slate-400">
+              HFT Module Loading...
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'sdc' && (
+          <div className="bg-slate-800 border border-cyan-400/20 rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-slate-100 mb-6">Software Defined Cockpit</h2>
+            <div className="text-center py-12 text-slate-400">
+              SDC Module Loading...
             </div>
           </div>
         )}
@@ -922,26 +934,7 @@ function App() {
           </div>
         )}
 
-        {activeTab === 'gis' && (
-          <div className="h-[calc(100vh-200px)]">
-            <div className="bg-slate-800 border border-cyan-400/20 rounded-lg h-full overflow-hidden">
-              <div className="flex items-center space-x-2 p-4 border-b border-slate-700">
-                <Satellite className="w-5 h-5 text-cyan-400" />
-                <h3 className="text-lg font-semibold text-slate-100">3D Orbital Satellite Tracking</h3>
-                <div className="flex items-center space-x-2 text-xs text-slate-400 ml-auto">
-                  <span>MEO Constellation</span>
-                  <span>•</span>
-                  <span>N2YO API</span>
-                  <span>•</span>
-                  <span>Real-time 3D</span>
-                </div>
-              </div>
-              <div className="h-[calc(100%-4rem)]">
-                <GISViewer />
-              </div>
-            </div>
-          </div>
-        )}
+
 
       </main>
       
