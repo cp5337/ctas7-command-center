@@ -40,13 +40,22 @@ export function SatelliteControlPanel({ onQuickJump }: SatelliteControlPanelProp
     return () => clearInterval(interval);
   }, []);
 
+  // Greek alphabet names for satellites
+  const greekAlphabet = [
+    'Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon', 'Zeta',
+    'Eta', 'Theta', 'Iota', 'Kappa', 'Lambda', 'Mu'
+  ];
+
   const satelliteList = Array.from({ length: 4 }, (_, plane) =>
-    Array.from({ length: 3 }, (_, slot) => ({
-      id: `${plane}-${slot}`,
-      name: `Walker–MEO Node ${plane}-${slot}`,
-      plane,
-      slot
-    }))
+    Array.from({ length: 3 }, (_, slot) => {
+      const satIndex = plane * 3 + slot;
+      return {
+        id: `${plane}-${slot}`,
+        name: greekAlphabet[satIndex],
+        plane,
+        slot
+      };
+    })
   ).flat();
 
   const getVisibleSatellites = () => {
@@ -60,8 +69,8 @@ export function SatelliteControlPanel({ onQuickJump }: SatelliteControlPanelProp
 
   return (
     <div className={`
-      fixed right-0 top-[73px] h-[calc(100vh-73px)] bg-slate-900/95 backdrop-blur border-l border-slate-700/50
-      transition-all duration-300 z-40 flex flex-col
+      fixed right-0 top-[129px] h-[calc(100vh-129px)] bg-slate-900/95 backdrop-blur border-l border-slate-700/50
+      transition-all duration-300 z-30 flex flex-col
       ${isCollapsed ? 'w-12' : 'w-80'}
     `}>
 

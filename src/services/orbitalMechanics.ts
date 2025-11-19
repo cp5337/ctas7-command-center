@@ -320,11 +320,17 @@ export function calculateGroundStationTracking(
   lookAngles: GroundStationLookAngles;
   visible: boolean;
 }>> {
+  // Greek alphabet names for satellites
+  const greekAlphabet = [
+    'Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon', 'Zeta',
+    'Eta', 'Theta', 'Iota', 'Kappa', 'Lambda', 'Mu'
+  ];
+
   const trackingData = new Map();
   const satellitePositions = getWalkerDeltaPositions(timestamp);
 
   groundStations.forEach(station => {
-    const stationTracking = satellitePositions.map((satPos, index) => {
+    const stationTracking = satellitePositions.map((satPos) => {
       const lookAngles = calculateLookAngles(
         station.lat,
         station.lon,
@@ -334,8 +340,10 @@ export function calculateGroundStationTracking(
         satPos.position.alt
       );
 
+      const satIndex = satPos.plane * 3 + satPos.slot;
+
       return {
-        satellite: `Walker–MEO Node ${satPos.plane}-${satPos.slot}`,
+        satellite: greekAlphabet[satIndex] || `Satellite-${satIndex}`,
         lookAngles,
         visible: lookAngles.elevation > 10 // Visible above 10 degrees elevation
       };

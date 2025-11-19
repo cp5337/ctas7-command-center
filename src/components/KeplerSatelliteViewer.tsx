@@ -21,32 +21,45 @@ export const KeplerSatelliteViewer: React.FC<KeplerSatelliteViewerProps> = () =>
   return (
     <div className="flex flex-col h-full">
       {/* Satellite Data Display */}
-      <div className="flex-1 relative overflow-auto">
-        <div className="w-full h-full p-4">
-          <div className="text-center text-slate-400 max-w-7xl mx-auto">
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
-              {satelliteData.map((satellite, index) => (
-                <div key={index} className="bg-slate-900 rounded-lg p-4 border border-slate-700">
-                  <div className="flex items-center justify-between mb-2">
-                    <h4 className="text-sm font-medium text-slate-200">{satellite.name}</h4>
-                    <span className={`text-xs px-2 py-1 rounded ${
-                      satellite.status === 'active' ? 'bg-green-900 text-green-300' : 'bg-yellow-900 text-yellow-300'
-                    }`}>
-                      {satellite.status}
-                    </span>
+      <div className="flex-1 overflow-auto">
+        <div className="container mx-auto p-6 max-w-6xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {satelliteData.map((satellite, index) => (
+              <div key={index} className="bg-slate-800/90 backdrop-blur rounded-xl p-5 border border-slate-600/30 hover:border-slate-500/50 transition-all duration-200 hover:shadow-xl hover:shadow-slate-900/20">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-lg font-semibold text-slate-100">{satellite.name}</h3>
+                  <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${
+                    satellite.status === 'active' ? 'bg-green-500/20 text-green-400 border border-green-500/30' :
+                    satellite.status === 'tracking' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' :
+                    'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+                  }`}>
+                    {satellite.status}
+                  </span>
+                </div>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">Lat:</span>
+                    <span className="text-slate-200 font-mono">{satellite.lat.toFixed(2)}°</span>
                   </div>
-                  <div className="space-y-1 text-xs text-slate-400">
-                    <div>Lat: {satellite.lat.toFixed(2)}°</div>
-                    <div>Lon: {satellite.lon.toFixed(2)}°</div>
-                    <div>Alt: {satellite.alt.toLocaleString()} km</div>
-                    <div>Vel: {satellite.velocity} km/s</div>
-                    <div>NORAD: {satellite.noradId}</div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">Lon:</span>
+                    <span className="text-slate-200 font-mono">{satellite.lon.toFixed(2)}°</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">Alt:</span>
+                    <span className="text-slate-200 font-mono">{satellite.alt.toLocaleString()} km</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">Vel:</span>
+                    <span className="text-slate-200 font-mono">{satellite.velocity} km/s</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">NORAD:</span>
+                    <span className="text-slate-300 font-mono">{satellite.noradId}</span>
                   </div>
                 </div>
-              ))}
-            </div>
-
+              </div>
+            ))}
           </div>
         </div>
       </div>

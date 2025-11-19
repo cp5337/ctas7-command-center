@@ -318,16 +318,10 @@ export function CesiumWorldView() {
 
   return (
     <div className="relative w-full h-screen bg-slate-950">
-      <LeftPanel
-        currentWorld={currentWorld}
-        onWorldChange={handleWorldChange}
-        stats={stats}
-      />
-
+      {/* Full-screen Cesium container */}
       <div
         ref={containerRef}
         className="absolute inset-0"
-        style={{ marginLeft: '280px', marginRight: '320px' }}
       />
 
       {isLoading && (
@@ -342,7 +336,14 @@ export function CesiumWorldView() {
         </div>
       )}
 
+      {/* Left Glyph Rail - Operator Controls */}
+      <LeftPanel
+        currentWorld={currentWorld}
+        onWorldChange={handleWorldChange}
+        stats={stats}
+      />
 
+      {/* Right Glyph Rail - Layer Controls */}
       <RightPanel
         layers={layers}
         onLayerToggle={handleLayerToggle}

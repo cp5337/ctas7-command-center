@@ -40,7 +40,9 @@ export function CTASCommandCenter() {
       />
 
       {/* Main Content Area */}
-      <div className={`flex-1 flex flex-col ml-12 min-h-0 ${activeTab === 'satellites' ? 'mr-80' : 'mr-0'}`}>
+      <div className={`flex-1 flex flex-col transition-all duration-300 min-h-0 ${
+        activeTab === 'satellites' ? 'ml-12 mr-80' : 'ml-12 mr-0'
+      }`}>
         {/* Main Content */}
         <main className="flex-1 overflow-hidden relative">
 

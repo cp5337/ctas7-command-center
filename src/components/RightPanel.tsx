@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Layers, Play, Pause, RotateCcw, ChevronDown, ChevronUp } from 'lucide-react';
+import { Layers, Play, Pause, RotateCcw, ChevronDown, ChevronUp, ChevronLeft } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Checkbox } from './ui/checkbox';
@@ -46,39 +46,27 @@ export function RightPanel({
     return (
       <motion.div
         initial={false}
-        animate={{ width: 64 }}
-        className="fixed right-0 top-0 h-screen bg-slate-900/95 backdrop-blur-xl border-l border-slate-700/50 z-40 flex flex-col items-center py-4"
+        animate={{ width: 48 }}
+        className="fixed right-0 top-0 h-screen bg-slate-900/95 backdrop-blur-xl border-l border-slate-700/50 z-40 flex flex-col items-center"
+        onMouseEnter={() => setIsCollapsed(false)}
       >
-        <button
-          onClick={() => setIsCollapsed(false)}
-          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 w-6 h-24 bg-slate-800/90 hover:bg-slate-700/90 border border-slate-600/50 hover:border-cyan-400/50 rounded-l-lg shadow-lg transition-all duration-200 flex items-center justify-center group touch-manipulation"
-          aria-label="Expand panel"
-        >
-          <div className="flex flex-col gap-1">
-            <div className="w-0.5 h-3 bg-slate-500 group-hover:bg-cyan-400 rounded transition-colors" />
-            <div className="w-0.5 h-3 bg-slate-500 group-hover:bg-cyan-400 rounded transition-colors" />
-            <div className="w-0.5 h-3 bg-slate-500 group-hover:bg-cyan-400 rounded transition-colors" />
+        {/* Chevron Indicator */}
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2">
+          <div className="w-6 h-12 bg-slate-800/90 border border-slate-600/50 hover:border-cyan-400/50 rounded-l-lg flex items-center justify-center transition-all duration-200">
+            <ChevronLeft className="w-3 h-3 text-slate-400 hover:text-cyan-400" />
           </div>
-        </button>
+        </div>
 
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => setIsCollapsed(false)}
-          className="mb-4 hover:bg-slate-800"
-        >
-          <ChevronLeft className="w-4 h-4" />
-        </Button>
-
-        <div className="flex flex-col gap-3">
-          <div className="w-10 h-10 rounded-lg bg-slate-800/50 border border-slate-600 flex items-center justify-center">
-            <Layers className="w-5 h-5 text-slate-400" />
+        {/* Glyphs start at top */}
+        <div className="flex flex-col gap-3 pt-4">
+          <div className="w-8 h-8 rounded-lg bg-slate-800/50 border border-slate-600 flex items-center justify-center">
+            <Layers className="w-4 h-4 text-slate-400" />
           </div>
-          <div className="w-10 h-10 rounded-lg bg-slate-800/50 border border-slate-600 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-lg bg-slate-800/50 border border-slate-600 flex items-center justify-center">
             {timeControl.isPlaying ? (
-              <Pause className="w-5 h-5 text-green-400" />
+              <Pause className="w-4 h-4 text-green-400" />
             ) : (
-              <Play className="w-5 h-5 text-slate-400" />
+              <Play className="w-4 h-4 text-slate-400" />
             )}
           </div>
         </div>
@@ -90,7 +78,8 @@ export function RightPanel({
     <motion.div
       initial={false}
       animate={{ width: 320 }}
-      className="fixed right-3 top-3 bottom-3 w-80 bg-gradient-to-br from-slate-900/95 via-slate-900/98 to-slate-950/95 backdrop-blur-xl rounded-2xl border border-slate-700/50 shadow-2xl z-40 overflow-hidden flex flex-col"
+      className="fixed right-0 top-0 h-screen bg-slate-900/95 backdrop-blur-xl border-l border-slate-700/50 z-40 overflow-hidden flex flex-col"
+      onMouseLeave={() => setIsCollapsed(true)}
     >
       <div className="p-4 border-b border-slate-700/30 bg-slate-800/30">
         <div className="flex items-center justify-between">
@@ -98,16 +87,8 @@ export function RightPanel({
             <div className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-400/30">
               <Layers className="w-5 h-5 text-cyan-400" />
             </div>
-            <h2 className="font-bold text-lg bg-gradient-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent">Controls</h2>
+            <h2 className="font-bold text-lg text-cyan-400">Layer Controls</h2>
           </div>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsCollapsed(true)}
-            className="hover:bg-slate-800 rounded-lg"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </Button>
         </div>
       </div>
 

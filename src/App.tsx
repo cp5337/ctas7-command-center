@@ -348,65 +348,69 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100">
-      {/* Header */}
-      <header className="bg-slate-800 border-b border-slate-700 px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2">
-              <Shield className="w-8 h-8 text-cyan-400" />
-              <h1 className="text-2xl font-bold text-slate-100">Development Center</h1>
+      {/* Header - Hide for full-screen laser light view */}
+      {activeTab !== 'gis' && (
+        <header className="bg-slate-800 border-b border-slate-700 px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <Shield className="w-8 h-8 text-cyan-400" />
+                <h1 className="text-2xl font-bold text-slate-100">Development Center</h1>
+              </div>
+              <div className="flex items-center space-x-1 text-sm">
+                <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-400 animate-pulse' : 'bg-red-400'}`}></div>
+                <span className="text-slate-400">
+                  {isConnected ? 'Connected' : 'Offline Mode'}
+                </span>
+              </div>
             </div>
-            <div className="flex items-center space-x-1 text-sm">
-              <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-400 animate-pulse' : 'bg-red-400'}`}></div>
-              <span className="text-slate-400">
-                {isConnected ? 'Connected' : 'Offline Mode'}
-              </span>
-            </div>
-          </div>
-          
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2 bg-slate-700 px-3 py-1 rounded-full">
-              <Zap className="w-4 h-4 text-yellow-400" />
-              <span className="text-sm text-slate-300">Hash-Enabled</span>
-            </div>
-            <button className="p-2 text-slate-400 hover:text-slate-200 hover:bg-slate-700 rounded-md transition-colors">
-              <Settings size={20} />
-            </button>
-          </div>
-        </div>
-        
-        {/* Navigation Tabs */}
-        <nav className="flex space-x-1 mt-4">
-          {tabs.map((tab) => {
-            const Icon = tab.icon;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
-                  activeTab === tab.id
-                    ? 'bg-cyan-600 text-white'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700'
-                }`}
-              >
-                <Icon size={16} />
-                <span>{tab.label}</span>
+
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2 bg-slate-700 px-3 py-1 rounded-full">
+                <Zap className="w-4 h-4 text-yellow-400" />
+                <span className="text-sm text-slate-300">Hash-Enabled</span>
+              </div>
+              <button className="p-2 text-slate-400 hover:text-slate-200 hover:bg-slate-700 rounded-md transition-colors">
+                <Settings size={20} />
               </button>
-            );
-          })}
-        </nav>
-      </header>
+            </div>
+          </div>
+
+          {/* Navigation Tabs */}
+          <nav className="flex space-x-1 mt-4">
+            {tabs.map((tab) => {
+              const Icon = tab.icon;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id as any)}
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
+                    activeTab === tab.id
+                      ? 'bg-cyan-600 text-white'
+                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700'
+                  }`}
+                >
+                  <Icon size={16} />
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
+          </nav>
+        </header>
+      )}
 
       {/* Main Content */}
-      <main className="p-6">
-        {/* Breadcrumb Navigation */}
-        <div className="mb-4">
-          <Breadcrumb 
-            items={[{ label: tabs.find(t => t.id === activeTab)?.label || 'Unknown', id: activeTab }]}
-            activeItem={activeTab}
-            onNavigate={setActiveTab as (itemId: string) => void}
-          />
-        </div>
+      <main className={activeTab === 'gis' ? '' : 'p-6'}>
+        {/* Breadcrumb Navigation - hide for 3D Satellites */}
+        {activeTab !== 'gis' && (
+          <div className="mb-4">
+            <Breadcrumb
+              items={[{ label: tabs.find(t => t.id === activeTab)?.label || 'Unknown', id: activeTab }]}
+              activeItem={activeTab}
+              onNavigate={setActiveTab as (itemId: string) => void}
+            />
+          </div>
+        )}
         {activeTab === 'overview' && (
           <div className="grid grid-cols-12 gap-6">
             {/* Personas Sidebar */}
@@ -548,7 +552,9 @@ function App() {
         )}
 
         {activeTab === 'gis' && (
-          <CTASCommandCenter />
+          <div className="-m-6">
+            <CTASCommandCenter />
+          </div>
         )}
 
         {activeTab === 'hft' && (
