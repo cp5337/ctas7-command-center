@@ -10,6 +10,7 @@ import {
   WorldType,
 } from '@/services/cesiumWorldManager';
 import { loadInitialData } from '@/services/dataLoader';
+import { addRadiationBeltsToViewer } from '@/utils/radiationBeltRenderer';
 
 export function CesiumWorldView() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -51,6 +52,13 @@ export function CesiumWorldView() {
       visible: false,
       color: '#0ea5e9',
       opacity: 0.5,
+    },
+    {
+      id: 'radiationBelts',
+      label: 'Radiation Belts',
+      visible: true,
+      color: '#ff6b6b',
+      opacity: 0.3,
     },
     {
       id: 'activeLinks',
@@ -125,6 +133,38 @@ export function CesiumWorldView() {
 
       const worldManager = new CesiumWorldManager(viewer);
       worldManagerRef.current = worldManager;
+
+      // Add Radiation Belts
+      addRadiationBeltsToViewer(viewer);
+
+      // Handle Quick Bird Jump events
+      const handleFlyTo = (e: Event) => {
+        const customEvent = e as CustomEvent;
+        const targetName = customEvent.detail.target;
+        console.log('Flying to target:', targetName);
+        
+        const entities = viewer.entities.values;
+        let targetEntity = null;
+        
+        for (const entity of entities) {
+          if (entity.name === targetName) {
+            targetEntity = entity;
+            break;
+          }
+        }
+
+        if (targetEntity) {
+          viewer.flyTo(targetEntity, {
+            duration: 2.0,
+            offset: new Cesium.HeadingPitchRange(0, -0.5, 5000000) // View from 5000km away
+          });
+          viewer.selectedEntity = targetEntity;
+        } else {
+          console.warn('Target entity not found:', targetName);
+        }
+      };
+
+      window.addEventListener('ctas-camera-flyto', handleFlyTo);
 
       const eventBus = worldManager.getEventBus();
       eventBus.addEventListener('entity-selected', ((e: CustomEvent) => {
@@ -203,6 +243,16 @@ export function CesiumWorldView() {
 
     if (worldManagerRef.current) {
       worldManagerRef.current.setLayerVisibility(layerId, visible);
+    }
+
+    // Handle Radiation Belts visibility manually since they are not managed by WorldManager
+    if (layerId === 'radiationBelts' && viewerRef.current) {
+      const viewer = viewerRef.current;
+      viewer.entities.values.forEach(entity => {
+        if (entity.name === 'Inner Van Allen Belt' || entity.name === 'Outer Van Allen Belt') {
+          entity.show = visible;
+        }
+      });
     }
   };
 

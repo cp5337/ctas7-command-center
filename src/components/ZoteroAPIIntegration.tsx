@@ -4,7 +4,6 @@ import {
   Database,
   Download,
   Upload,
-  Sync,
   Users,
   Key,
   Globe,
@@ -608,7 +607,7 @@ export const ZoteroAPIIntegration: React.FC = () => {
               onClick={syncWithAcademicBlockchain}
               className="flex items-center justify-center space-x-2 p-4 bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-colors"
             >
-              <Sync className="w-5 h-5" />
+              <RefreshCw className="w-5 h-5" />
               <span>Sync with Blockchain</span>
             </button>
           </div>
