@@ -479,7 +479,7 @@ function App() {
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2">
               <Shield className="w-8 h-8 text-cyan-400" />
-              <h1 className="text-2xl font-bold text-slate-100">Development Center</h1>
+              <h1 className="text-2xl font-bold text-slate-100">SX9 Development Center</h1>
             </div>
             <div className="flex items-center space-x-1 text-sm">
               <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-400 animate-pulse' : 'bg-red-400'}`}></div>

@@ -30,7 +30,9 @@
     "validate:schema": "xmllint --schema ./schemas/ctas7_ea.xsd ./manifests/ctas7_ea_manifest.xml",
     "dev:setup": "npm run db:seed && echo 'CTAS-7 development environment ready'",
     "clean": "rm -rf ./tests/reports ./tests/screenshots ./tests/results && echo 'Test artifacts cleaned'",
-    "ci": "npm run test:all-devices -- --reporter=json --output-dir=./tests/reports"
+    "ci": "npm run test:all-devices -- --reporter=json --output-dir=./tests/reports",
+    "sx9-dev": "npx vite --port 22348",
+    "sx9-dev:canonical": "npx vite --port 22348"
   },
   "dependencies": {
     "@deck.gl/core": "^9.2.1",
