@@ -5,7 +5,7 @@
   "description": "CTAS-7 Enterprise Architecture Console with Dioxus + Playwright Test Harness",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 21575",
+    "dev": "vite --port 25175",
     "dev-mirror": "vite --port 25175",
     "build": "vite build",
     "lint": "eslint .",
@@ -74,7 +74,7 @@
     "@playwright/test": "^1.56.1",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.18",
     "eslint": "^9.9.1",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
@@ -85,10 +85,10 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
-    "vite": "^7.1.5",
+    "vite": "^7.2.6",
     "vite-plugin-cesium": "^1.2.23",
-    "vite-plugin-top-level-await": "^1.4.4",
-    "vite-plugin-wasm": "^3.3.0"
+    "vite-plugin-top-level-await": "^1.6.0",
+    "vite-plugin-wasm": "^3.5.0"
   },
   "main": "analyze-dev-center.js",
   "directories": {

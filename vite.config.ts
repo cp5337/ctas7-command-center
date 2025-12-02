@@ -22,7 +22,7 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   server: {
-    port: 5174,
+    port: 25175,
     host: true,
     strictPort: true,
     proxy: {
@@ -63,7 +63,7 @@ export default defineConfig({
     }
   },
   preview: {
-    port: 5175,
+    port: 55175,
     host: true,
     strictPort: true,
   },
